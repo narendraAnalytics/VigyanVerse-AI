@@ -1,0 +1,40 @@
+# --- Docs & notes: keep local, except README.md files ---
+*.md
+!README.md
+*.txt
+
+# --- Secrets & credentials ---
+.env
+.env.*
+!.env.example
+.insforge/
+insforge.toml.local
+
+# --- Dependencies & build output ---
+node_modules/
+dist/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+
+# --- Logs & OS/editor files ---
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- Agent tooling folders (installed by the InsForge CLI) ---
+.agent/
+.agents/
+.augment/
+.claude/
+.cline/
+.kilocode/
+.qoder/
+.qwen/
+.roo/
+.trae/
+.windsurf/

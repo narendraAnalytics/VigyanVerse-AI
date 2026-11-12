@@ -1,0 +1,39 @@
+{
+  "name": "vigyanverse-backend",
+  "version": "1.0.0",
+  "description": "VigyanVerse AI backend: InsForge migrations, edge functions, ingestion & eval tooling",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p .",
+    "test": "vitest run",
+    "fn:build": "node scripts/build-functions.mjs",
+    "fn:deploy": "node scripts/deploy-function.mjs",
+    "db:new": "npx -y @insforge/cli db migrations new",
+    "db:up": "npx -y @insforge/cli db migrations up --all",
+    "db:list": "npx -y @insforge/cli db migrations list",
+    "advisor": "npx -y @insforge/cli diagnose advisor",
+    "smoke:sarvam": "tsx scripts/smoke-sarvam.ts",
+    "e2e:consent": "tsx scripts/e2e-consent-flow.ts"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@insforge/sdk": "^1.5.2",
+    "@langchain/textsplitters": "^1.0.2",
+    "mathjs": "^15.2.0",
+    "openai": "^7.55.0",
+    "unpdf": "^1.9.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "dotenv": "^18.0.10",
+    "esbuild": "^0.28.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
