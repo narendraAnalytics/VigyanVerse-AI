@@ -38,3 +38,7 @@ Thumbs.db
 .roo/
 .trae/
 .windsurf/
+
+# --- Licensed source material (NCERT etc.): never commit ---
+textbooks/
+*.pdf

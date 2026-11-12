@@ -13,7 +13,9 @@
     "advisor": "npx -y @insforge/cli diagnose advisor",
     "smoke:sarvam": "tsx scripts/smoke-sarvam.ts",
     "e2e:consent": "tsx scripts/e2e-consent-flow.ts",
-    "smoke:rewrite": "tsx scripts/smoke-rewrite.ts"
+    "smoke:rewrite": "tsx scripts/smoke-rewrite.ts",
+    "ingest": "tsx scripts/ingest.ts",
+    "smoke:retrieval": "tsx scripts/smoke-retrieval.ts"
   },
   "license": "UNLICENSED",
   "private": true,
