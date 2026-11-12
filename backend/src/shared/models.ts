@@ -4,6 +4,7 @@
 
 export type ModelTask =
   | 'router'
+  | 'query_rewrite'
   | 'tutor'
   | 'socratic'
   | 'quiz'
@@ -34,6 +35,9 @@ export interface ModelRoute {
 
 export const MODEL_ROUTES: Record<ModelTask, ModelRoute> = {
   router: { model: 'glm5.3-flash', api: 'v2', maxTokens: 300, temperature: 0, json: true },
+  // Question (EN/TE) -> English textbook keywords for full-text retrieval. No model
+  // fallback: on failure retrieval falls back to the question's own words (retrieval.ts).
+  query_rewrite: { model: 'glm5.3-flash', api: 'v2', maxTokens: 200, temperature: 0, json: true },
   tutor: { model: 'sarvam-105b', api: 'v2', maxTokens: 1200, temperature: 0.3, reasoningEffort: 'none', fallback: 'glm5.3-flash' },
   socratic: { model: 'sarvam-105b', api: 'v2', maxTokens: 600, temperature: 0.4, reasoningEffort: 'none', fallback: 'glm5.3-flash' },
   quiz: { model: 'deepseekv4.1-flash-1017', api: 'v2', maxTokens: 2500, temperature: 0.5, json: true, fallback: 'sarvam-105b' },
@@ -62,11 +66,11 @@ export function estimateCostInr(model: string, inputTokens: number, outputTokens
   return (inputTokens * price.input + outputTokens * price.output) / 1_000_000;
 }
 
-// Embeddings: one model + one dimension per vector column. 768 dims is chosen on
-// purpose: it matches EmbeddingGemma 2 (Sarvam, provisioned) and can be requested
-// from hosted models that support Matryoshka truncation, so switching provider
-// later means re-embedding, not a schema migration.
+// Embeddings: NOT IN USE YET (2026-11-12). Retrieval is keyword-first (query_rewrite +
+// match_chunks_keyword). document_chunks.embedding is vector(768) to match Sarvam
+// embeddinggemma-2, which needs provisioned access requested from Sarvam. Enabling it
+// later = backfill embeddings + HNSW index + hybrid RPC; no table change.
 export const EMBEDDING = {
   dimensions: 768,
-  defaultModel: 'openai/text-embedding-3-small',
+  plannedModel: 'embeddinggemma-2',
 } as const;

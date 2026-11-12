@@ -12,7 +12,8 @@
     "db:list": "npx -y @insforge/cli db migrations list",
     "advisor": "npx -y @insforge/cli diagnose advisor",
     "smoke:sarvam": "tsx scripts/smoke-sarvam.ts",
-    "e2e:consent": "tsx scripts/e2e-consent-flow.ts"
+    "e2e:consent": "tsx scripts/e2e-consent-flow.ts",
+    "smoke:rewrite": "tsx scripts/smoke-rewrite.ts"
   },
   "license": "UNLICENSED",
   "private": true,
