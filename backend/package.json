@@ -15,7 +15,8 @@
     "e2e:consent": "tsx scripts/e2e-consent-flow.ts",
     "smoke:rewrite": "tsx scripts/smoke-rewrite.ts",
     "ingest": "tsx scripts/ingest.ts",
-    "smoke:retrieval": "tsx scripts/smoke-retrieval.ts"
+    "smoke:retrieval": "tsx scripts/smoke-retrieval.ts",
+    "eval:retrieval": "tsx scripts/eval-retrieval.ts"
   },
   "license": "UNLICENSED",
   "private": true,

@@ -64,6 +64,36 @@ export function repairHeadingTitle(title: string, vocab: ReadonlySet<string>): s
   return tokens.join(' ');
 }
 
+/** One text line of a PDF page with the baseline y of its first glyph (PDF units, y grows upward). */
+export interface PageLine { text: string; y: number | null }
+
+/**
+ * Some NCERT pages draw a section heading LAST in the text stream, glued to the footer
+ * ("1.2.2 Decomposition ReactionReprint 2026-27"), after the text it introduces. Move such a
+ * heading to just above the line printed directly below it (highest y under the heading's y).
+ * Returns plain page strings for chunkTextbook().
+ */
+export function relocateFooterHeadings(pages: readonly PageLine[][], chapterNumber: number, warn: (msg: string) => void = () => {}): string[] {
+  const glued = new RegExp(`^[?\\s]*${chapterNumber}\\s?\\.\\s?\\d{1,2}(?:\\s?\\.\\s?\\d{1,2})?\\s+\\S.*?Reprint\\s+\\d{4}-\\d{2}\\s*$`);
+  return pages.map((lines, p) => {
+    const out = [...lines];
+    for (let i = out.length - 1; i > 0; i--) {
+      const line = out[i];
+      if (line.y === null || !glued.test(collapseShadowText(line.text.trim()))) continue;
+      let target = -1;
+      for (let k = 1; k < i; k++) { // k = 0 is the running header
+        const y = out[k].y;
+        if (y !== null && y < line.y - 1 && (target < 0 || y > (out[target].y as number))) target = k;
+      }
+      if (target < 0) continue;
+      out.splice(i, 1);
+      out.splice(target, 0, { text: line.text.replace(REPRINT_MARK, ''), y: line.y });
+      warn(`PDF page ${p + 1}: moved footer-glued heading "${line.text.replace(REPRINT_MARK, '').trim()}" above "${out[target + 1].text.trim().slice(0, 40)}"`);
+    }
+    return out.map((l) => l.text).join('\n');
+  });
+}
+
 /** Compare section numbers like "2.1.4" and "2.1.5" in reading order. */
 export function compareSectionNumbers(a: string, b: string): number {
   const x = a.split('.').map(Number);

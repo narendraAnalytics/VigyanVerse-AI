@@ -1,0 +1,6786 @@
+{
+  "evalSet": "retrieval-v1",
+  "mode": "norewrite-subject",
+  "split": "all",
+  "ranAt": "2026-11-13T02:24:44.464Z",
+  "summary": {
+    "n": 150,
+    "r1": 0.6066666666666667,
+    "r5": 0.78,
+    "mrr": 0.6815185185185185
+  },
+  "costInr": 0,
+  "rows": [
+    {
+      "id": "c01",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is a balanced chemical equation?",
+      "gold": [
+        "1.1.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "balanced",
+        "chemical",
+        "equation"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 339,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 1,
+          "pages": "3-4",
+          "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+        },
+        {
+          "chapter": 1,
+          "pages": "4-5",
+          "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+        },
+        {
+          "chapter": 1,
+          "pages": "3-3",
+          "section": "1.1 Chemical Equations > 1.1.1 Writing a Chemical Equation"
+        },
+        {
+          "chapter": 1,
+          "pages": "5-5",
+          "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+        },
+        {
+          "chapter": 1,
+          "pages": "14-15",
+          "section": "Exercises"
+        }
+      ]
+    },
+    {
+      "id": "c02",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "Why should a chemical equation be balanced? What law is behind it?",
+      "gold": [
+        "1.1.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "why",
+        "should",
+        "chemical",
+        "equation",
+        "be",
+        "balanced",
+        "what",
+        "law",
+        "is",
+        "behind",
+        "it"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 310,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 1,
+          "pages": "3-4",
+          "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+        },
+        {
+          "chapter": 1,
+          "pages": "4-5",
+          "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+        },
+        {
+          "chapter": 1,
+          "pages": "3-3",
+          "section": "1.1 Chemical Equations > 1.1.1 Writing a Chemical Equation"
+        },
+        {
+          "chapter": 1,
+          "pages": "5-5",
+          "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+        },
+        {
+          "chapter": 1,
+          "pages": "14-15",
+          "section": "Exercises"
+        }
+      ]
+    },
+    {
+      "id": "c03",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "how",
+      "split": "test",
+      "question": "How do we write the physical states of reactants and products in an equation?",
+      "gold": [
+        "1.1.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "how",
+        "do",
+        "we",
+        "write",
+        "the",
+        "physical",
+        "states",
+        "of",
+        "reactants",
+        "and",
+        "products",
+        "in"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 324,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 1,
+          "pages": "5-5",
+          "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+        },
+        {
+          "chapter": 1,
+          "pages": "2-2",
+          "section": "1.1 Chemical Equations"
+        },
+        {
+          "chapter": 1,
+          "pages": "14-14",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 1,
+          "pages": "6-7",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "3-4",
+          "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+        }
+      ]
+    },
+    {
+      "id": "c04",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is a combination reaction? Give an example.",
+      "gold": [
+        "1.2.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "combination",
+        "reaction",
+        "give",
+        "an",
+        "example"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 314,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 1,
+          "pages": "6-7",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "7-8",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "14-14",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 1,
+          "pages": "12-12",
+          "section": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+        },
+        {
+          "chapter": 1,
+          "pages": "15-16",
+          "section": "Exercises"
+        }
+      ]
+    },
+    {
+      "id": "c05",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "application",
+      "split": "dev",
+      "question": "Why is respiration called an exothermic reaction?",
+      "gold": [
+        "1.2.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "why",
+        "is",
+        "respiration",
+        "called",
+        "an",
+        "exothermic",
+        "reaction"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 80,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 1,
+          "pages": "7-8",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "15-16",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 1,
+          "pages": "12-12",
+          "section": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+        },
+        {
+          "chapter": 1,
+          "pages": "14-14",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 1,
+          "pages": "6-7",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+        }
+      ]
+    },
+    {
+      "id": "c06",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "definition",
+      "split": "test",
+      "question": "What is thermal decomposition? Example with calcium carbonate",
+      "gold": [
+        "1.2.2"
+      ],
+      "rank": 5,
+      "keywords": [
+        "what",
+        "is",
+        "thermal",
+        "decomposition",
+        "example",
+        "with",
+        "calcium",
+        "carbonate"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 93,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 4,
+          "pages": "62-62",
+          "section": "4.2 Versatile Nature of Carbon"
+        },
+        {
+          "chapter": 4,
+          "pages": "63-64",
+          "section": "4.2 Versatile Nature of Carbon > 4.2.1 Saturated and Unsaturated Carbon Compounds"
+        },
+        {
+          "chapter": 4,
+          "pages": "64-65",
+          "section": "4.2 Versatile Nature of Carbon > 4.2.2 Chains, Branches and Rings"
+        },
+        {
+          "chapter": 4,
+          "pages": "67-67",
+          "section": "4.2 Versatile Nature of Carbon > 4.2.5 Nomenclature of Carbon Compounds"
+        },
+        {
+          "chapter": 1,
+          "pages": "8-9",
+          "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction"
+        }
+      ]
+    },
+    {
+      "id": "c07",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "application",
+      "split": "dev",
+      "question": "Why does silver chloride turn grey in sunlight?",
+      "gold": [
+        "1.2.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "why",
+        "does",
+        "silver",
+        "chloride",
+        "turn",
+        "grey",
+        "in",
+        "sunlight"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 74,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 1,
+          "pages": "8-9",
+          "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "14-15",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 3,
+          "pages": "47-48",
+          "section": "3.3 How Do Metals and Non-metals React?"
+        },
+        {
+          "chapter": 1,
+          "pages": "6-7",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "15-16",
+          "section": "Exercises"
+        }
+      ]
+    },
+    {
+      "id": "c08",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "iron nail in copper sulphate solution colour change why",
+      "gold": [
+        "1.2.3"
+      ],
+      "rank": 1,
+      "keywords": [
+        "iron",
+        "nail",
+        "in",
+        "copper",
+        "sulphate",
+        "solution",
+        "colour",
+        "change",
+        "why"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 78,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 1,
+          "pages": "10-11",
+          "section": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction"
+        },
+        {
+          "chapter": 3,
+          "pages": "44-45",
+          "section": "3.2 Chemical Properties of Metals > 3.2.4 How do Metals react with Solutions of other Metal Salts?"
+        },
+        {
+          "chapter": 2,
+          "pages": "32-33",
+          "section": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?"
+        },
+        {
+          "chapter": 2,
+          "pages": "18-19",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.1 Acids and Bases in the Laboratory"
+        },
+        {
+          "chapter": 2,
+          "pages": "25-25",
+          "section": "2.3 How Strong Are Acid or Base Solutions?"
+        }
+      ]
+    },
+    {
+      "id": "c09",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "definition",
+      "split": "test",
+      "question": "What is a precipitation reaction?",
+      "gold": [
+        "1.2.4"
+      ],
+      "rank": 9,
+      "keywords": [
+        "what",
+        "is",
+        "precipitation",
+        "reaction"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 93,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 1,
+          "pages": "12-12",
+          "section": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+        },
+        {
+          "chapter": 1,
+          "pages": "14-14",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 1,
+          "pages": "6-7",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "10-11",
+          "section": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "7-8",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+        }
+      ]
+    },
+    {
+      "id": "c10",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "Define oxidation and reduction in terms of oxygen and hydrogen",
+      "gold": [
+        "1.2.5"
+      ],
+      "rank": 2,
+      "keywords": [
+        "define",
+        "oxidation",
+        "and",
+        "reduction",
+        "in",
+        "terms",
+        "of",
+        "oxygen",
+        "hydrogen"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 90,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 3,
+          "pages": "41-41",
+          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+        },
+        {
+          "chapter": 1,
+          "pages": "12-12",
+          "section": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+        },
+        {
+          "chapter": 3,
+          "pages": "41-42",
+          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+        },
+        {
+          "chapter": 3,
+          "pages": "51-52",
+          "section": "3.4 Occurrence of Metals > 3.4.4 Extracting Metals in the Middle of the Activity Series"
+        },
+        {
+          "chapter": 3,
+          "pages": "55-56",
+          "section": "What you have learnt"
+        }
+      ]
+    },
+    {
+      "id": "c11",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "application",
+      "split": "dev",
+      "question": "Why are chips packets filled with nitrogen gas?",
+      "gold": [
+        "1.3.2"
+      ],
+      "rank": 5,
+      "keywords": [
+        "why",
+        "are",
+        "chips",
+        "packets",
+        "filled",
+        "with",
+        "nitrogen",
+        "gas"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 92,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 2,
+          "pages": "19-20",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.2 How do Acids and Bases React with Metals?"
+        },
+        {
+          "chapter": 1,
+          "pages": "14-15",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 2,
+          "pages": "23-24",
+          "section": "2.2 What Do All Acids and All Bases Have in Common? > 2.2.1 What Happens to an Acid or a Base in a Water Solution?"
+        },
+        {
+          "chapter": 1,
+          "pages": "9-10",
+          "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "13-13",
+          "section": "1.3 Have You Observed the Effects of Oxidation Reactions in Everyday Life? > 1.3.2 Rancidity"
+        }
+      ]
+    },
+    {
+      "id": "c12",
+      "subject": "chemistry",
+      "lang": "te",
+      "type": "definition",
+      "split": "test",
+      "question": "రసాయన చర్యలో విఘటన చర్య అంటే ఏమిటి?",
+      "gold": [
+        "1.2.2"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "c13",
+      "subject": "chemistry",
+      "lang": "te",
+      "type": "application",
+      "split": "dev",
+      "question": "నూనె పదార్థాలు చాలా రోజులు ఉంటే వాసన ఎందుకు మారుతుంది?",
+      "gold": [
+        "1.3.2"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "c14",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "How can we test whether a solution is acidic or basic using litmus and other indicators?",
+      "gold": [
+        "2.1.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "how",
+        "can",
+        "we",
+        "test",
+        "whether",
+        "solution",
+        "is",
+        "acidic",
+        "or",
+        "basic",
+        "using",
+        "litmus"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 89,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 2,
+          "pages": "18-19",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.1 Acids and Bases in the Laboratory"
+        },
+        {
+          "chapter": 4,
+          "pages": "73-73",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+        },
+        {
+          "chapter": 2,
+          "pages": "25-25",
+          "section": "2.3 How Strong Are Acid or Base Solutions?"
+        },
+        {
+          "chapter": 2,
+          "pages": "17-17",
+          "section": null
+        },
+        {
+          "chapter": 2,
+          "pages": "22-23",
+          "section": "2.2 What Do All Acids and All Bases Have in Common?"
+        }
+      ]
+    },
+    {
+      "id": "c15",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "definition",
+      "split": "test",
+      "question": "What are olfactory indicators?",
+      "gold": [
+        "2.1.1"
+      ],
+      "rank": 3,
+      "keywords": [
+        "what",
+        "are",
+        "olfactory",
+        "indicators"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 83,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 2,
+          "pages": "25-25",
+          "section": "2.3 How Strong Are Acid or Base Solutions?"
+        },
+        {
+          "chapter": 2,
+          "pages": "17-17",
+          "section": null
+        },
+        {
+          "chapter": 2,
+          "pages": "18-19",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.1 Acids and Bases in the Laboratory"
+        },
+        {
+          "chapter": 4,
+          "pages": "73-73",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+        },
+        {
+          "chapter": 1,
+          "pages": "5-5",
+          "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+        }
+      ]
+    },
+    {
+      "id": "c16",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "Which gas is produced when an acid reacts with zinc and how do we test it?",
+      "gold": [
+        "2.1.2"
+      ],
+      "rank": 3,
+      "keywords": [
+        "which",
+        "gas",
+        "is",
+        "produced",
+        "when",
+        "an",
+        "acid",
+        "reacts",
+        "with",
+        "zinc",
+        "and",
+        "how"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 274,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 4,
+          "pages": "73-73",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+        },
+        {
+          "chapter": 3,
+          "pages": "43-44",
+          "section": "3.2 Chemical Properties of Metals > 3.2.3 What happens when Metals react with Acids?"
+        },
+        {
+          "chapter": 2,
+          "pages": "19-20",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.2 How do Acids and Bases React with Metals?"
+        },
+        {
+          "chapter": 4,
+          "pages": "73-74",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+        },
+        {
+          "chapter": 2,
+          "pages": "22-23",
+          "section": "2.2 What Do All Acids and All Bases Have in Common?"
+        }
+      ]
+    },
+    {
+      "id": "c17",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "What happens when sodium carbonate reacts with hydrochloric acid? Lime water test",
+      "gold": [
+        "2.1.3"
+      ],
+      "rank": null,
+      "keywords": [
+        "what",
+        "happens",
+        "when",
+        "sodium",
+        "carbonate",
+        "reacts",
+        "with",
+        "hydrochloric",
+        "acid",
+        "lime",
+        "water",
+        "test"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 87,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 4,
+          "pages": "73-74",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+        },
+        {
+          "chapter": 4,
+          "pages": "73-73",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+        },
+        {
+          "chapter": 3,
+          "pages": "42-43",
+          "section": "3.2 Chemical Properties of Metals > 3.2.2 What happens when Metals react with Water?"
+        },
+        {
+          "chapter": 2,
+          "pages": "24-24",
+          "section": "2.2 What Do All Acids and All Bases Have in Common? > 2.2.1 What Happens to an Acid or a Base in a Water Solution?"
+        },
+        {
+          "chapter": 3,
+          "pages": "43-44",
+          "section": "3.2 Chemical Properties of Metals > 3.2.3 What happens when Metals react with Acids?"
+        }
+      ]
+    },
+    {
+      "id": "c18",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "definition",
+      "split": "test",
+      "question": "What is a neutralisation reaction?",
+      "gold": [
+        "2.1.4"
+      ],
+      "rank": 10,
+      "keywords": [
+        "what",
+        "is",
+        "neutralisation",
+        "reaction"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 89,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 1,
+          "pages": "12-12",
+          "section": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+        },
+        {
+          "chapter": 1,
+          "pages": "6-7",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "10-11",
+          "section": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "14-14",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 1,
+          "pages": "7-8",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+        }
+      ]
+    },
+    {
+      "id": "c19",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "Why does copper oxide dissolve in dilute hydrochloric acid and give a blue-green solution?",
+      "gold": [
+        "2.1.5"
+      ],
+      "rank": 1,
+      "keywords": [
+        "why",
+        "does",
+        "copper",
+        "oxide",
+        "dissolve",
+        "in",
+        "dilute",
+        "hydrochloric",
+        "acid",
+        "and",
+        "give",
+        "blue-green"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 72,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 2,
+          "pages": "21-22",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.5 Reaction of Metallic Oxides with Acids"
+        },
+        {
+          "chapter": 4,
+          "pages": "73-73",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+        },
+        {
+          "chapter": 3,
+          "pages": "41-41",
+          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+        },
+        {
+          "chapter": 3,
+          "pages": "43-44",
+          "section": "3.2 Chemical Properties of Metals > 3.2.3 What happens when Metals react with Acids?"
+        },
+        {
+          "chapter": 2,
+          "pages": "24-24",
+          "section": "2.2 What Do All Acids and All Bases Have in Common? > 2.2.1 What Happens to an Acid or a Base in a Water Solution?"
+        }
+      ]
+    },
+    {
+      "id": "c20",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "why",
+      "split": "dev",
+      "question": "Why does dry HCl gas not change the colour of dry litmus paper?",
+      "gold": [
+        "2.2.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "why",
+        "does",
+        "dry",
+        "hcl",
+        "gas",
+        "not",
+        "change",
+        "the",
+        "colour",
+        "of",
+        "litmus",
+        "paper"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 73,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 2,
+          "pages": "23-24",
+          "section": "2.2 What Do All Acids and All Bases Have in Common? > 2.2.1 What Happens to an Acid or a Base in a Water Solution?"
+        },
+        {
+          "chapter": 2,
+          "pages": "19-20",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.2 How do Acids and Bases React with Metals?"
+        },
+        {
+          "chapter": 2,
+          "pages": "18-19",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.1 Acids and Bases in the Laboratory"
+        },
+        {
+          "chapter": 2,
+          "pages": "17-17",
+          "section": null
+        },
+        {
+          "chapter": 2,
+          "pages": "25-25",
+          "section": "2.3 How Strong Are Acid or Base Solutions?"
+        }
+      ]
+    },
+    {
+      "id": "c21",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "how",
+      "split": "test",
+      "question": "Why should acid be added to water and not water to acid while diluting?",
+      "gold": [
+        "2.2.1"
+      ],
+      "rank": 2,
+      "keywords": [
+        "why",
+        "should",
+        "acid",
+        "be",
+        "added",
+        "to",
+        "water",
+        "and",
+        "not",
+        "while",
+        "diluting"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 74,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 4,
+          "pages": "73-73",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+        },
+        {
+          "chapter": 2,
+          "pages": "24-24",
+          "section": "2.2 What Do All Acids and All Bases Have in Common? > 2.2.1 What Happens to an Acid or a Base in a Water Solution?"
+        },
+        {
+          "chapter": 2,
+          "pages": "19-20",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.2 How do Acids and Bases React with Metals?"
+        },
+        {
+          "chapter": 2,
+          "pages": "23-24",
+          "section": "2.2 What Do All Acids and All Bases Have in Common? > 2.2.1 What Happens to an Acid or a Base in a Water Solution?"
+        },
+        {
+          "chapter": 2,
+          "pages": "22-23",
+          "section": "2.2 What Do All Acids and All Bases Have in Common?"
+        }
+      ]
+    },
+    {
+      "id": "c22",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is the pH scale and what does pH 7 mean?",
+      "gold": [
+        "2.3"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "the",
+        "ph",
+        "scale",
+        "and",
+        "does",
+        "mean"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 79,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 2,
+          "pages": "26-27",
+          "section": "2.3 How Strong Are Acid or Base Solutions? > 2.3.1 Importance of pH in Everyday Life"
+        },
+        {
+          "chapter": 2,
+          "pages": "25-25",
+          "section": "2.3 How Strong Are Acid or Base Solutions?"
+        },
+        {
+          "chapter": 2,
+          "pages": "29-29",
+          "section": "2.4 More About Salts > 2.4.2 pH of Salts"
+        },
+        {
+          "chapter": 2,
+          "pages": "33-34",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 2,
+          "pages": "27-27",
+          "section": "2.3 How Strong Are Acid or Base Solutions? > 2.3.1 Importance of pH in Everyday Life"
+        }
+      ]
+    },
+    {
+      "id": "c23",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "application",
+      "split": "dev",
+      "question": "How does toothpaste prevent tooth decay?",
+      "gold": [
+        "2.3.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "how",
+        "does",
+        "toothpaste",
+        "prevent",
+        "tooth",
+        "decay"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 61,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 2,
+          "pages": "27-27",
+          "section": "2.3 How Strong Are Acid or Base Solutions? > 2.3.1 Importance of pH in Everyday Life"
+        },
+        {
+          "chapter": 3,
+          "pages": "54-54",
+          "section": "3.5 Corrosion > 3.5.1 Prevention of Corrosion"
+        },
+        {
+          "chapter": 3,
+          "pages": "54-55",
+          "section": "3.5 Corrosion > 3.5.1 Prevention of Corrosion"
+        },
+        {
+          "chapter": 1,
+          "pages": "13-13",
+          "section": "1.3 Have You Observed the Effects of Oxidation Reactions in Everyday Life? > 1.3.2 Rancidity"
+        },
+        {
+          "chapter": 3,
+          "pages": "41-42",
+          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+        }
+      ]
+    },
+    {
+      "id": "c24",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "application",
+      "split": "test",
+      "question": "bee sting remedy baking soda why",
+      "gold": [
+        "2.3.1"
+      ],
+      "rank": 4,
+      "keywords": [
+        "bee",
+        "sting",
+        "remedy",
+        "baking",
+        "soda",
+        "why"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 66,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 2,
+          "pages": "30-31",
+          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+        },
+        {
+          "chapter": 2,
+          "pages": "31-32",
+          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+        },
+        {
+          "chapter": 2,
+          "pages": "35-36",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 2,
+          "pages": "27-27",
+          "section": "2.3 How Strong Are Acid or Base Solutions? > 2.3.1 Importance of pH in Everyday Life"
+        },
+        {
+          "chapter": 2,
+          "pages": "28-28",
+          "section": "2.4 More About Salts > 2.4.1 Family of Salts"
+        }
+      ]
+    },
+    {
+      "id": "c25",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "How is bleaching powder made and what is it used for?",
+      "gold": [
+        "2.4.3"
+      ],
+      "rank": 1,
+      "keywords": [
+        "how",
+        "is",
+        "bleaching",
+        "powder",
+        "made",
+        "and",
+        "what",
+        "it",
+        "used",
+        "for"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 71,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 2,
+          "pages": "30-31",
+          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+        },
+        {
+          "chapter": 2,
+          "pages": "29-30",
+          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+        },
+        {
+          "chapter": 2,
+          "pages": "31-32",
+          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+        },
+        {
+          "chapter": 4,
+          "pages": "58-58",
+          "section": null
+        },
+        {
+          "chapter": 3,
+          "pages": "52-53",
+          "section": "3.4 Occurrence of Metals > 3.4.6 Refining of Metals"
+        }
+      ]
+    },
+    {
+      "id": "c26",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is water of crystallisation? Example copper sulphate",
+      "gold": [
+        "2.4.4"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "water",
+        "of",
+        "crystallisation",
+        "example",
+        "copper",
+        "sulphate"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 83,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 2,
+          "pages": "32-33",
+          "section": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?"
+        },
+        {
+          "chapter": 3,
+          "pages": "42-43",
+          "section": "3.2 Chemical Properties of Metals > 3.2.2 What happens when Metals react with Water?"
+        },
+        {
+          "chapter": 1,
+          "pages": "10-11",
+          "section": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "6-7",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+        },
+        {
+          "chapter": 4,
+          "pages": "74-75",
+          "section": "4.5 Soaps and Detergents"
+        }
+      ]
+    },
+    {
+      "id": "c27",
+      "subject": "chemistry",
+      "lang": "te",
+      "type": "definition",
+      "split": "test",
+      "question": "pH విలువ 7 కంటే తక్కువ ఉంటే ఆ ద్రావణం ఆమ్లమా లేక క్షారమా?",
+      "gold": [
+        "2.3"
+      ],
+      "rank": 1,
+      "keywords": [
+        "ph"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 68,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 2,
+          "pages": "26-27",
+          "section": "2.3 How Strong Are Acid or Base Solutions? > 2.3.1 Importance of pH in Everyday Life"
+        },
+        {
+          "chapter": 2,
+          "pages": "25-25",
+          "section": "2.3 How Strong Are Acid or Base Solutions?"
+        },
+        {
+          "chapter": 2,
+          "pages": "29-29",
+          "section": "2.4 More About Salts > 2.4.2 pH of Salts"
+        },
+        {
+          "chapter": 2,
+          "pages": "27-27",
+          "section": "2.3 How Strong Are Acid or Base Solutions? > 2.3.1 Importance of pH in Everyday Life"
+        },
+        {
+          "chapter": 2,
+          "pages": "33-34",
+          "section": "What you have learnt"
+        }
+      ]
+    },
+    {
+      "id": "c28",
+      "subject": "chemistry",
+      "lang": "te",
+      "type": "application",
+      "split": "dev",
+      "question": "వంట సోడా (బేకింగ్ సోడా) ఎలా తయారు చేస్తారు, దాని ఉపయోగాలు ఏమిటి?",
+      "gold": [
+        "2.4.3"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "c29",
+      "subject": "chemistry",
+      "lang": "te-latn",
+      "type": "colloquial",
+      "split": "dev",
+      "question": "plaster of paris ela tayaru chestaru?",
+      "gold": [
+        "2.4.4"
+      ],
+      "rank": 1,
+      "keywords": [
+        "plaster",
+        "of",
+        "paris",
+        "ela",
+        "tayaru",
+        "chestaru"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 64,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 2,
+          "pages": "32-33",
+          "section": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?"
+        },
+        {
+          "chapter": 2,
+          "pages": "33-33",
+          "section": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?"
+        },
+        {
+          "chapter": 2,
+          "pages": "35-36",
+          "section": "Exercises"
+        }
+      ]
+    },
+    {
+      "id": "c30",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "definition",
+      "split": "test",
+      "question": "What do malleable and ductile mean for metals?",
+      "gold": [
+        "3.1.1"
+      ],
+      "rank": 4,
+      "keywords": [
+        "what",
+        "do",
+        "malleable",
+        "and",
+        "ductile",
+        "mean",
+        "for",
+        "metals"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 68,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 3,
+          "pages": "55-56",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 3,
+          "pages": "42-43",
+          "section": "3.2 Chemical Properties of Metals > 3.2.2 What happens when Metals react with Water?"
+        },
+        {
+          "chapter": 3,
+          "pages": "39-40",
+          "section": "3.1 Physical Properties > 3.1.2 Non-metals"
+        },
+        {
+          "chapter": 3,
+          "pages": "37-38",
+          "section": "3.1 Physical Properties > 3.1.1 Metals"
+        },
+        {
+          "chapter": 3,
+          "pages": "41-41",
+          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+        }
+      ]
+    },
+    {
+      "id": "c31",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "compare",
+      "split": "dev",
+      "question": "Name a non-metal that conducts electricity and a metal that is liquid at room temperature",
+      "gold": [
+        "3.1.2",
+        "3.1.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "name",
+        "non-metal",
+        "that",
+        "conducts",
+        "electricity",
+        "and",
+        "metal",
+        "is",
+        "liquid",
+        "at",
+        "room",
+        "temperature"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 75,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 3,
+          "pages": "39-40",
+          "section": "3.1 Physical Properties > 3.1.2 Non-metals"
+        },
+        {
+          "chapter": 3,
+          "pages": "55-56",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 3,
+          "pages": "42-43",
+          "section": "3.2 Chemical Properties of Metals > 3.2.2 What happens when Metals react with Water?"
+        },
+        {
+          "chapter": 3,
+          "pages": "46-47",
+          "section": "3.3 How Do Metals and Non-metals React?"
+        },
+        {
+          "chapter": 3,
+          "pages": "49-49",
+          "section": "3.3 How Do Metals and Non-metals React? > 3.3.1 Properties of Ionic Compounds"
+        }
+      ]
+    },
+    {
+      "id": "c32",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What are amphoteric oxides? Give two examples",
+      "gold": [
+        "3.2.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "are",
+        "amphoteric",
+        "oxides",
+        "give",
+        "two",
+        "examples"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 67,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 3,
+          "pages": "41-41",
+          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+        },
+        {
+          "chapter": 3,
+          "pages": "41-42",
+          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+        },
+        {
+          "chapter": 4,
+          "pages": "60-60",
+          "section": "4.1 Bonding in Carbon – the Covalent Bond"
+        },
+        {
+          "chapter": 2,
+          "pages": "21-22",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.5 Reaction of Metallic Oxides with Acids"
+        },
+        {
+          "chapter": 3,
+          "pages": "56-57",
+          "section": "Exercises"
+        }
+      ]
+    },
+    {
+      "id": "c33",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "why",
+      "split": "test",
+      "question": "Why is sodium kept immersed in kerosene oil?",
+      "gold": [
+        "3.2.1"
+      ],
+      "rank": 6,
+      "keywords": [
+        "why",
+        "is",
+        "sodium",
+        "kept",
+        "immersed",
+        "in",
+        "kerosene",
+        "oil"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 78,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 2,
+          "pages": "31-32",
+          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+        },
+        {
+          "chapter": 2,
+          "pages": "29-30",
+          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+        },
+        {
+          "chapter": 4,
+          "pages": "73-74",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+        },
+        {
+          "chapter": 2,
+          "pages": "30-31",
+          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+        },
+        {
+          "chapter": 4,
+          "pages": "74-75",
+          "section": "4.5 Soaps and Detergents"
+        }
+      ]
+    },
+    {
+      "id": "c34",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "why",
+      "split": "dev",
+      "question": "Why is hydrogen gas not evolved when a metal reacts with nitric acid?",
+      "gold": [
+        "3.2.3"
+      ],
+      "rank": 2,
+      "keywords": [
+        "why",
+        "is",
+        "hydrogen",
+        "gas",
+        "not",
+        "evolved",
+        "when",
+        "metal",
+        "reacts",
+        "with",
+        "nitric",
+        "acid"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 85,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 3,
+          "pages": "42-43",
+          "section": "3.2 Chemical Properties of Metals > 3.2.2 What happens when Metals react with Water?"
+        },
+        {
+          "chapter": 3,
+          "pages": "43-44",
+          "section": "3.2 Chemical Properties of Metals > 3.2.3 What happens when Metals react with Acids?"
+        },
+        {
+          "chapter": 2,
+          "pages": "19-20",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.2 How do Acids and Bases React with Metals?"
+        },
+        {
+          "chapter": 3,
+          "pages": "55-56",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 4,
+          "pages": "73-73",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+        }
+      ]
+    },
+    {
+      "id": "c35",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is the reactivity series of metals?",
+      "gold": [
+        "3.2.5"
+      ],
+      "rank": 6,
+      "keywords": [
+        "what",
+        "is",
+        "the",
+        "reactivity",
+        "series",
+        "of",
+        "metals"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 82,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 3,
+          "pages": "49-50",
+          "section": "3.4 Occurrence of Metals > 3.4.1 Extraction of Metals"
+        },
+        {
+          "chapter": 3,
+          "pages": "55-56",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 3,
+          "pages": "44-45",
+          "section": "3.2 Chemical Properties of Metals > 3.2.4 How do Metals react with Solutions of other Metal Salts?"
+        },
+        {
+          "chapter": 3,
+          "pages": "42-43",
+          "section": "3.2 Chemical Properties of Metals > 3.2.2 What happens when Metals react with Water?"
+        },
+        {
+          "chapter": 3,
+          "pages": "51-52",
+          "section": "3.4 Occurrence of Metals > 3.4.4 Extracting Metals in the Middle of the Activity Series"
+        }
+      ]
+    },
+    {
+      "id": "c36",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "how",
+      "split": "test",
+      "question": "Show the formation of sodium chloride by transfer of electrons",
+      "gold": [
+        "3.3"
+      ],
+      "rank": 1,
+      "keywords": [
+        "show",
+        "the",
+        "formation",
+        "of",
+        "sodium",
+        "chloride",
+        "by",
+        "transfer",
+        "electrons"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 73,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 3,
+          "pages": "47-48",
+          "section": "3.3 How Do Metals and Non-metals React?"
+        },
+        {
+          "chapter": 4,
+          "pages": "59-60",
+          "section": "4.1 Bonding in Carbon – the Covalent Bond"
+        },
+        {
+          "chapter": 4,
+          "pages": "60-60",
+          "section": "4.1 Bonding in Carbon – the Covalent Bond"
+        },
+        {
+          "chapter": 2,
+          "pages": "29-30",
+          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+        },
+        {
+          "chapter": 1,
+          "pages": "6-7",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+        }
+      ]
+    },
+    {
+      "id": "c37",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "why",
+      "split": "dev",
+      "question": "Why do ionic compounds have high melting points and conduct electricity in molten state?",
+      "gold": [
+        "3.3.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "why",
+        "do",
+        "ionic",
+        "compounds",
+        "have",
+        "high",
+        "melting",
+        "points",
+        "and",
+        "conduct",
+        "electricity",
+        "in"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 71,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 3,
+          "pages": "48-49",
+          "section": "3.3 How Do Metals and Non-metals React? > 3.3.1 Properties of Ionic Compounds"
+        },
+        {
+          "chapter": 3,
+          "pages": "49-49",
+          "section": "3.3 How Do Metals and Non-metals React? > 3.3.1 Properties of Ionic Compounds"
+        },
+        {
+          "chapter": 4,
+          "pages": "58-59",
+          "section": "4.1 Bonding in Carbon – the Covalent Bond"
+        },
+        {
+          "chapter": 4,
+          "pages": "62-62",
+          "section": "4.2 Versatile Nature of Carbon"
+        },
+        {
+          "chapter": 3,
+          "pages": "39-40",
+          "section": "3.1 Physical Properties > 3.1.2 Non-metals"
+        }
+      ]
+    },
+    {
+      "id": "c38",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "compare",
+      "split": "dev",
+      "question": "Difference between roasting and calcination",
+      "gold": [
+        "3.4.4"
+      ],
+      "rank": 1,
+      "keywords": [
+        "difference",
+        "between",
+        "roasting",
+        "and",
+        "calcination"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 80,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 3,
+          "pages": "51-52",
+          "section": "3.4 Occurrence of Metals > 3.4.4 Extracting Metals in the Middle of the Activity Series"
+        },
+        {
+          "chapter": 4,
+          "pages": "66-67",
+          "section": "4.2 Versatile Nature of Carbon > 4.2.4 Homologous Series"
+        },
+        {
+          "chapter": 4,
+          "pages": "64-65",
+          "section": "4.2 Versatile Nature of Carbon > 4.2.2 Chains, Branches and Rings"
+        },
+        {
+          "chapter": 4,
+          "pages": "61-61",
+          "section": "4.1 Bonding in Carbon – the Covalent Bond"
+        },
+        {
+          "chapter": 3,
+          "pages": "41-42",
+          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+        }
+      ]
+    },
+    {
+      "id": "c39",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "application",
+      "split": "test",
+      "question": "What is the thermite reaction used for?",
+      "gold": [
+        "3.4.4"
+      ],
+      "rank": null,
+      "keywords": [
+        "what",
+        "is",
+        "the",
+        "thermite",
+        "reaction",
+        "used",
+        "for"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 77,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 1,
+          "pages": "12-12",
+          "section": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+        },
+        {
+          "chapter": 1,
+          "pages": "10-11",
+          "section": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "6-7",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "7-8",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+        },
+        {
+          "chapter": 3,
+          "pages": "46-47",
+          "section": "3.3 How Do Metals and Non-metals React?"
+        }
+      ]
+    },
+    {
+      "id": "c40",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "How is copper purified by electrolytic refining?",
+      "gold": [
+        "3.4.6"
+      ],
+      "rank": 1,
+      "keywords": [
+        "how",
+        "is",
+        "copper",
+        "purified",
+        "by",
+        "electrolytic",
+        "refining"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 79,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 3,
+          "pages": "52-53",
+          "section": "3.4 Occurrence of Metals > 3.4.6 Refining of Metals"
+        },
+        {
+          "chapter": 1,
+          "pages": "10-11",
+          "section": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "12-12",
+          "section": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+        },
+        {
+          "chapter": 3,
+          "pages": "53-54",
+          "section": "3.5 Corrosion"
+        },
+        {
+          "chapter": 2,
+          "pages": "32-33",
+          "section": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?"
+        }
+      ]
+    },
+    {
+      "id": "c41",
+      "subject": "chemistry",
+      "lang": "te",
+      "type": "how",
+      "split": "dev",
+      "question": "ఇనుము తుప్పు పట్టకుండా ఎలా నివారించవచ్చు? గాల్వనైజేషన్ అంటే ఏమిటి?",
+      "gold": [
+        "3.5.1"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "c42",
+      "subject": "chemistry",
+      "lang": "te",
+      "type": "definition",
+      "split": "test",
+      "question": "ఖనిజం మరియు ధాతువు మధ్య తేడా ఏమిటి?",
+      "gold": [
+        "3.4"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "c43",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is a covalent bond? Explain with methane",
+      "gold": [
+        "4.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "covalent",
+        "bond",
+        "explain",
+        "with",
+        "methane"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 72,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 4,
+          "pages": "60-61",
+          "section": "4.1 Bonding in Carbon – the Covalent Bond"
+        },
+        {
+          "chapter": 4,
+          "pages": "60-60",
+          "section": "4.1 Bonding in Carbon – the Covalent Bond"
+        },
+        {
+          "chapter": 4,
+          "pages": "77-78",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 4,
+          "pages": "61-61",
+          "section": "4.1 Bonding in Carbon – the Covalent Bond"
+        },
+        {
+          "chapter": 4,
+          "pages": "58-59",
+          "section": "4.1 Bonding in Carbon – the Covalent Bond"
+        }
+      ]
+    },
+    {
+      "id": "c44",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is catenation and tetravalency of carbon?",
+      "gold": [
+        "4.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "catenation",
+        "and",
+        "tetravalency",
+        "of",
+        "carbon"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 74,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 4,
+          "pages": "62-62",
+          "section": "4.2 Versatile Nature of Carbon"
+        },
+        {
+          "chapter": 4,
+          "pages": "63-64",
+          "section": "4.2 Versatile Nature of Carbon > 4.2.1 Saturated and Unsaturated Carbon Compounds"
+        },
+        {
+          "chapter": 4,
+          "pages": "62-63",
+          "section": "4.2 Versatile Nature of Carbon"
+        },
+        {
+          "chapter": 4,
+          "pages": "64-65",
+          "section": "4.2 Versatile Nature of Carbon > 4.2.2 Chains, Branches and Rings"
+        },
+        {
+          "chapter": 4,
+          "pages": "67-67",
+          "section": "4.2 Versatile Nature of Carbon > 4.2.5 Nomenclature of Carbon Compounds"
+        }
+      ]
+    },
+    {
+      "id": "c45",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "definition",
+      "split": "test",
+      "question": "What is a homologous series?",
+      "gold": [
+        "4.2.4"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "homologous",
+        "series"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 76,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 4,
+          "pages": "66-67",
+          "section": "4.2 Versatile Nature of Carbon > 4.2.4 Homologous Series"
+        },
+        {
+          "chapter": 4,
+          "pages": "67-67",
+          "section": "4.2 Versatile Nature of Carbon > 4.2.4 Homologous Series"
+        },
+        {
+          "chapter": 3,
+          "pages": "45-46",
+          "section": "3.2 Chemical Properties of Metals > 3.2.5 The Reactivity Series"
+        },
+        {
+          "chapter": 3,
+          "pages": "49-50",
+          "section": "3.4 Occurrence of Metals > 3.4.1 Extraction of Metals"
+        },
+        {
+          "chapter": 4,
+          "pages": "67-67",
+          "section": "4.2 Versatile Nature of Carbon > 4.2.5 Nomenclature of Carbon Compounds"
+        }
+      ]
+    },
+    {
+      "id": "c46",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "Why do vegetable oils get converted to vanaspati ghee using nickel catalyst?",
+      "gold": [
+        "4.3.3"
+      ],
+      "rank": 1,
+      "keywords": [
+        "why",
+        "do",
+        "vegetable",
+        "oils",
+        "get",
+        "converted",
+        "to",
+        "vanaspati",
+        "ghee",
+        "using",
+        "nickel",
+        "catalyst"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 75,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 4,
+          "pages": "71-71",
+          "section": "4.3 Chemical Properties of Carbon Compounds > 4.3.3 Addition Reaction"
+        },
+        {
+          "chapter": 4,
+          "pages": "74-75",
+          "section": "4.5 Soaps and Detergents"
+        },
+        {
+          "chapter": 2,
+          "pages": "30-31",
+          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+        },
+        {
+          "chapter": 2,
+          "pages": "31-32",
+          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+        },
+        {
+          "chapter": 3,
+          "pages": "51-52",
+          "section": "3.4 Occurrence of Metals > 3.4.4 Extracting Metals in the Middle of the Activity Series"
+        }
+      ]
+    },
+    {
+      "id": "c47",
+      "subject": "chemistry",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "What is esterification? Reaction of ethanoic acid with ethanol",
+      "gold": [
+        "4.4.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "esterification",
+        "reaction",
+        "of",
+        "ethanoic",
+        "acid",
+        "with",
+        "ethanol"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 69,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 4,
+          "pages": "73-73",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+        },
+        {
+          "chapter": 4,
+          "pages": "73-74",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+        },
+        {
+          "chapter": 4,
+          "pages": "72-72",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.1 Properties of Ethanol"
+        },
+        {
+          "chapter": 2,
+          "pages": "24-24",
+          "section": "2.2 What Do All Acids and All Bases Have in Common? > 2.2.1 What Happens to an Acid or a Base in a Water Solution?"
+        },
+        {
+          "chapter": 2,
+          "pages": "21-22",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.5 Reaction of Metallic Oxides with Acids"
+        }
+      ]
+    },
+    {
+      "id": "c48",
+      "subject": "chemistry",
+      "lang": "te",
+      "type": "how",
+      "split": "test",
+      "question": "సబ్బు మురికిని ఎలా తొలగిస్తుంది? మిసెల్ అంటే ఏమిటి?",
+      "gold": [
+        "4.5"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "c49",
+      "subject": "chemistry",
+      "lang": "te",
+      "type": "why",
+      "split": "dev",
+      "question": "కఠిన జలంలో సబ్బు ఎందుకు నురగ రాదు?",
+      "gold": [
+        "4.5"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "c50",
+      "subject": "chemistry",
+      "lang": "te",
+      "type": "definition",
+      "split": "dev",
+      "question": "సంతృప్త మరియు అసంతృప్త కార్బన్ సమ్మేళనాలు అంటే ఏమిటి?",
+      "gold": [
+        "4.2.1"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "b01",
+      "subject": "biology",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What are life processes?",
+      "gold": [
+        "5.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "are",
+        "life",
+        "processes"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 82,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 5,
+          "pages": "79-80",
+          "section": "5.1 What Are Life Processes?"
+        },
+        {
+          "chapter": 5,
+          "pages": "87-88",
+          "section": "5.3 Respiration"
+        },
+        {
+          "chapter": 5,
+          "pages": "80-81",
+          "section": "5.1 What Are Life Processes?"
+        },
+        {
+          "chapter": 5,
+          "pages": "80-80",
+          "section": "5.1 What Are Life Processes?"
+        },
+        {
+          "chapter": 5,
+          "pages": "79-79",
+          "section": null
+        }
+      ]
+    },
+    {
+      "id": "b02",
+      "subject": "biology",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "What are the raw materials and steps of photosynthesis?",
+      "gold": [
+        "5.2.1"
+      ],
+      "rank": 3,
+      "keywords": [
+        "what",
+        "are",
+        "the",
+        "raw",
+        "materials",
+        "and",
+        "steps",
+        "of",
+        "photosynthesis"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 84,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 5,
+          "pages": "94-94",
+          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
+        },
+        {
+          "chapter": 13,
+          "pages": "213-213",
+          "section": "13.2 How Do Our Activities Affect the Environment? > 13.2.1 Ozone Layer and How it is Getting Depleted"
+        },
+        {
+          "chapter": 5,
+          "pages": "82-83",
+          "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition"
+        },
+        {
+          "chapter": 13,
+          "pages": "213-214",
+          "section": "13.2 How Do Our Activities Affect the Environment? > 13.2.2 Managing the Garbage we Produce"
+        },
+        {
+          "chapter": 5,
+          "pages": "83-84",
+          "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition"
+        }
+      ]
+    },
+    {
+      "id": "b03",
+      "subject": "biology",
+      "lang": "en",
+      "type": "how",
+      "split": "test",
+      "question": "How do stomata open and close?",
+      "gold": [
+        "5.2.1"
+      ],
+      "rank": 2,
+      "keywords": [
+        "how",
+        "do",
+        "stomata",
+        "open",
+        "and",
+        "close"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 73,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 5,
+          "pages": "89-89",
+          "section": "5.3 Respiration"
+        },
+        {
+          "chapter": 5,
+          "pages": "83-84",
+          "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition"
+        },
+        {
+          "chapter": 5,
+          "pages": "82-83",
+          "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition"
+        },
+        {
+          "chapter": 5,
+          "pages": "95-96",
+          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
+        },
+        {
+          "chapter": 6,
+          "pages": "107-108",
+          "section": "6.2 Coordination in Plants > 6.2.2 Movement Due to Growth"
+        }
+      ]
+    },
+    {
+      "id": "b04",
+      "subject": "biology",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "How does amoeba take in food?",
+      "gold": [
+        "5.2.3"
+      ],
+      "rank": 2,
+      "keywords": [
+        "how",
+        "does",
+        "amoeba",
+        "take",
+        "in",
+        "food"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 77,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 13,
+          "pages": "210-211",
+          "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+        },
+        {
+          "chapter": 5,
+          "pages": "84-84",
+          "section": "5.2 Nutrition > 5.2.3 How do Organisms obtain their Nutrition?"
+        },
+        {
+          "chapter": 5,
+          "pages": "84-85",
+          "section": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
+        },
+        {
+          "chapter": 5,
+          "pages": "85-86",
+          "section": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
+        },
+        {
+          "chapter": 13,
+          "pages": "211-212",
+          "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+        }
+      ]
+    },
+    {
+      "id": "b05",
+      "subject": "biology",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "What is the role of bile juice and pancreatic juice in digestion?",
+      "gold": [
+        "5.2.4"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "the",
+        "role",
+        "of",
+        "bile",
+        "juice",
+        "and",
+        "pancreatic",
+        "in",
+        "digestion"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 72,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 5,
+          "pages": "86-86",
+          "section": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
+        },
+        {
+          "chapter": 5,
+          "pages": "85-86",
+          "section": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
+        },
+        {
+          "chapter": 5,
+          "pages": "87-87",
+          "section": "5.3 Respiration"
+        },
+        {
+          "chapter": 5,
+          "pages": "99-99",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 13,
+          "pages": "216-217",
+          "section": "Exercises"
+        }
+      ]
+    },
+    {
+      "id": "b06",
+      "subject": "biology",
+      "lang": "en",
+      "type": "why",
+      "split": "test",
+      "question": "why do villi increase absorption in small intestine",
+      "gold": [
+        "5.2.4"
+      ],
+      "rank": 1,
+      "keywords": [
+        "why",
+        "do",
+        "villi",
+        "increase",
+        "absorption",
+        "in",
+        "small",
+        "intestine"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 74,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 5,
+          "pages": "86-86",
+          "section": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
+        },
+        {
+          "chapter": 5,
+          "pages": "85-86",
+          "section": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
+        },
+        {
+          "chapter": 5,
+          "pages": "98-98",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 5,
+          "pages": "94-94",
+          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
+        },
+        {
+          "chapter": 5,
+          "pages": "87-87",
+          "section": "5.3 Respiration"
+        }
+      ]
+    },
+    {
+      "id": "b07",
+      "subject": "biology",
+      "lang": "en",
+      "type": "compare",
+      "split": "dev",
+      "question": "Difference between aerobic and anaerobic respiration",
+      "gold": [
+        "5.3"
+      ],
+      "rank": 1,
+      "keywords": [
+        "difference",
+        "between",
+        "aerobic",
+        "and",
+        "anaerobic",
+        "respiration"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 75,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 5,
+          "pages": "87-88",
+          "section": "5.3 Respiration"
+        },
+        {
+          "chapter": 5,
+          "pages": "88-89",
+          "section": "5.3 Respiration"
+        },
+        {
+          "chapter": 5,
+          "pages": "99-99",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 5,
+          "pages": "98-99",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 5,
+          "pages": "91-91",
+          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+        }
+      ]
+    },
+    {
+      "id": "b08",
+      "subject": "biology",
+      "lang": "en",
+      "type": "why",
+      "split": "dev",
+      "question": "Why do we get muscle cramps after running fast?",
+      "gold": [
+        "5.3"
+      ],
+      "rank": 5,
+      "keywords": [
+        "why",
+        "do",
+        "we",
+        "get",
+        "muscle",
+        "cramps",
+        "after",
+        "running",
+        "fast"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 77,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 6,
+          "pages": "105-105",
+          "section": "6.1 Animals – Nervous System > 6.1.4 How does the Nervous Tissue cause Action?"
+        },
+        {
+          "chapter": 6,
+          "pages": "102-103",
+          "section": "6.1 Animals – Nervous System > 6.1.1 What happens in Reflex Actions?"
+        },
+        {
+          "chapter": 6,
+          "pages": "109-109",
+          "section": "6.3 Hormones in Animals"
+        },
+        {
+          "chapter": 13,
+          "pages": "212-213",
+          "section": "13.2 How Do Our Activities Affect the Environment? > 13.2.1 Ozone Layer and How it is Getting Depleted"
+        },
+        {
+          "chapter": 5,
+          "pages": "87-88",
+          "section": "5.3 Respiration"
+        }
+      ]
+    },
+    {
+      "id": "b09",
+      "subject": "biology",
+      "lang": "en",
+      "type": "how",
+      "split": "test",
+      "question": "Why is double circulation needed in the human heart?",
+      "gold": [
+        "5.4.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "why",
+        "is",
+        "double",
+        "circulation",
+        "needed",
+        "in",
+        "the",
+        "human",
+        "heart"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 86,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 5,
+          "pages": "92-93",
+          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+        },
+        {
+          "chapter": 5,
+          "pages": "91-92",
+          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+        },
+        {
+          "chapter": 5,
+          "pages": "93-93",
+          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+        },
+        {
+          "chapter": 5,
+          "pages": "91-91",
+          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+        },
+        {
+          "chapter": 5,
+          "pages": "79-80",
+          "section": "5.1 What Are Life Processes?"
+        }
+      ]
+    },
+    {
+      "id": "b10",
+      "subject": "biology",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is lymph and what does it do?",
+      "gold": [
+        "5.4.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "lymph",
+        "and",
+        "does",
+        "it",
+        "do"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 61,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 5,
+          "pages": "93-94",
+          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+        }
+      ]
+    },
+    {
+      "id": "b11",
+      "subject": "biology",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "How does water move up in tall trees? Role of transpiration",
+      "gold": [
+        "5.4.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "how",
+        "does",
+        "water",
+        "move",
+        "up",
+        "in",
+        "tall",
+        "trees",
+        "role",
+        "of",
+        "transpiration"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 78,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 5,
+          "pages": "94-95",
+          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
+        },
+        {
+          "chapter": 5,
+          "pages": "95-96",
+          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
+        },
+        {
+          "chapter": 5,
+          "pages": "87-87",
+          "section": "5.3 Respiration"
+        },
+        {
+          "chapter": 8,
+          "pages": "130-130",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 8,
+          "pages": "130-131",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        }
+      ]
+    },
+    {
+      "id": "b12",
+      "subject": "biology",
+      "lang": "te",
+      "type": "how",
+      "split": "test",
+      "question": "నెఫ్రాన్ నిర్మాణం మరియు పని గురించి చెప్పండి",
+      "gold": [
+        "5.5.1"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "b13",
+      "subject": "biology",
+      "lang": "te",
+      "type": "definition",
+      "split": "dev",
+      "question": "కృత్రిమ మూత్రపిండం (డయాలసిస్) ఎలా పని చేస్తుంది?",
+      "gold": [
+        "5.5.1"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "b14",
+      "subject": "biology",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is a synapse?",
+      "gold": [
+        "6.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "synapse"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 72,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 6,
+          "pages": "100-101",
+          "section": "6.1 Animals – Nervous System"
+        },
+        {
+          "chapter": 6,
+          "pages": "112-112",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 6,
+          "pages": "105-105",
+          "section": "6.1 Animals – Nervous System > 6.1.4 How does the Nervous Tissue cause Action?"
+        }
+      ]
+    },
+    {
+      "id": "b15",
+      "subject": "biology",
+      "lang": "en",
+      "type": "definition",
+      "split": "test",
+      "question": "What is a reflex arc? Example of touching a hot object",
+      "gold": [
+        "6.1.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "reflex",
+        "arc",
+        "example",
+        "of",
+        "touching",
+        "hot",
+        "object"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 73,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 6,
+          "pages": "102-103",
+          "section": "6.1 Animals – Nervous System > 6.1.1 What happens in Reflex Actions?"
+        },
+        {
+          "chapter": 6,
+          "pages": "106-107",
+          "section": "6.2 Coordination in Plants > 6.2.2 Movement Due to Growth"
+        },
+        {
+          "chapter": 6,
+          "pages": "102-102",
+          "section": "6.1 Animals – Nervous System > 6.1.1 What happens in Reflex Actions?"
+        },
+        {
+          "chapter": 6,
+          "pages": "100-101",
+          "section": "6.1 Animals – Nervous System"
+        },
+        {
+          "chapter": 6,
+          "pages": "103-104",
+          "section": "6.1 Animals – Nervous System > 6.1.2 Human Brain"
+        }
+      ]
+    },
+    {
+      "id": "b16",
+      "subject": "biology",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is the function of the cerebellum and medulla?",
+      "gold": [
+        "6.1.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "the",
+        "function",
+        "of",
+        "cerebellum",
+        "and",
+        "medulla"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 65,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 6,
+          "pages": "103-104",
+          "section": "6.1 Animals – Nervous System > 6.1.2 Human Brain"
+        },
+        {
+          "chapter": 5,
+          "pages": "98-99",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 6,
+          "pages": "111-111",
+          "section": "6.3 Hormones in Animals"
+        },
+        {
+          "chapter": 5,
+          "pages": "99-99",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 7,
+          "pages": "122-122",
+          "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
+        }
+      ]
+    },
+    {
+      "id": "b17",
+      "subject": "biology",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "How is the brain protected inside our body?",
+      "gold": [
+        "6.1.3"
+      ],
+      "rank": 2,
+      "keywords": [
+        "how",
+        "is",
+        "the",
+        "brain",
+        "protected",
+        "inside",
+        "our",
+        "body"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 87,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 6,
+          "pages": "103-103",
+          "section": "6.1 Animals – Nervous System > 6.1.2 Human Brain"
+        },
+        {
+          "chapter": 6,
+          "pages": "105-105",
+          "section": "6.1 Animals – Nervous System > 6.1.3 How are these Tissues protected?"
+        },
+        {
+          "chapter": 5,
+          "pages": "80-80",
+          "section": "5.1 What Are Life Processes?"
+        },
+        {
+          "chapter": 6,
+          "pages": "103-104",
+          "section": "6.1 Animals – Nervous System > 6.1.2 Human Brain"
+        },
+        {
+          "chapter": 5,
+          "pages": "79-80",
+          "section": "5.1 What Are Life Processes?"
+        }
+      ]
+    },
+    {
+      "id": "b18",
+      "subject": "biology",
+      "lang": "en",
+      "type": "why",
+      "split": "test",
+      "question": "Why do the leaves of touch-me-not plant fold when touched?",
+      "gold": [
+        "6.2.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "why",
+        "do",
+        "the",
+        "leaves",
+        "of",
+        "touch-me-not",
+        "plant",
+        "fold",
+        "when",
+        "touched"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 66,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 6,
+          "pages": "106-106",
+          "section": "6.2 Coordination in Plants > 6.2.1 Immediate Response to Stimulus"
+        },
+        {
+          "chapter": 5,
+          "pages": "94-94",
+          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
+        },
+        {
+          "chapter": 7,
+          "pages": "117-118",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.5 Vegetative Propagation"
+        },
+        {
+          "chapter": 6,
+          "pages": "105-106",
+          "section": "6.2 Coordination in Plants"
+        },
+        {
+          "chapter": 6,
+          "pages": "106-107",
+          "section": "6.2 Coordination in Plants > 6.2.2 Movement Due to Growth"
+        }
+      ]
+    },
+    {
+      "id": "b19",
+      "subject": "biology",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is phototropism and geotropism?",
+      "gold": [
+        "6.2.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "phototropism",
+        "and",
+        "geotropism"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 66,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 6,
+          "pages": "106-107",
+          "section": "6.2 Coordination in Plants > 6.2.2 Movement Due to Growth"
+        },
+        {
+          "chapter": 6,
+          "pages": "112-112",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 6,
+          "pages": "107-108",
+          "section": "6.2 Coordination in Plants > 6.2.2 Movement Due to Growth"
+        }
+      ]
+    },
+    {
+      "id": "b20",
+      "subject": "biology",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "Functions of auxin gibberellin cytokinin abscisic acid",
+      "gold": [
+        "6.2.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "functions",
+        "of",
+        "auxin",
+        "gibberellin",
+        "cytokinin",
+        "abscisic",
+        "acid"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 72,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 6,
+          "pages": "108-108",
+          "section": "6.2 Coordination in Plants > 6.2.2 Movement Due to Growth"
+        },
+        {
+          "chapter": 5,
+          "pages": "85-86",
+          "section": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
+        },
+        {
+          "chapter": 5,
+          "pages": "99-99",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 5,
+          "pages": "98-99",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 5,
+          "pages": "86-86",
+          "section": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
+        }
+      ]
+    },
+    {
+      "id": "b21",
+      "subject": "biology",
+      "lang": "te",
+      "type": "why",
+      "split": "test",
+      "question": "అయోడిన్ లోపం వల్ల గాయిటర్ ఎందుకు వస్తుంది?",
+      "gold": [
+        "6.3"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "b22",
+      "subject": "biology",
+      "lang": "te",
+      "type": "definition",
+      "split": "dev",
+      "question": "అడ్రినలిన్ హార్మోన్ ఏమి చేస్తుంది?",
+      "gold": [
+        "6.3"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "b23",
+      "subject": "biology",
+      "lang": "te-latn",
+      "type": "colloquial",
+      "split": "dev",
+      "question": "diabetes ki insulin ki sambandham enti?",
+      "gold": [
+        "6.3"
+      ],
+      "rank": 1,
+      "keywords": [
+        "diabetes",
+        "ki",
+        "insulin",
+        "sambandham",
+        "enti"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 65,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 6,
+          "pages": "111-111",
+          "section": "6.3 Hormones in Animals"
+        },
+        {
+          "chapter": 6,
+          "pages": "110-111",
+          "section": "6.3 Hormones in Animals"
+        },
+        {
+          "chapter": 6,
+          "pages": "112-112",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 6,
+          "pages": "111-111",
+          "section": "What you have learnt"
+        }
+      ]
+    },
+    {
+      "id": "b24",
+      "subject": "biology",
+      "lang": "en",
+      "type": "why",
+      "split": "test",
+      "question": "Why is variation important for a species to survive?",
+      "gold": [
+        "7.1.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "why",
+        "is",
+        "variation",
+        "important",
+        "for",
+        "species",
+        "to",
+        "survive"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 68,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 7,
+          "pages": "114-115",
+          "section": "7.1 Do Organisms Create Exact Copies of Themselves? > 7.1.1 The Importance of Variation"
+        },
+        {
+          "chapter": 7,
+          "pages": "119-120",
+          "section": "7.3 Sexual Reproduction > 7.3.1 Why the Sexual Mode of Reproduction?"
+        },
+        {
+          "chapter": 8,
+          "pages": "128-128",
+          "section": "8.1 Accumulation of Variation During Reproduction"
+        },
+        {
+          "chapter": 8,
+          "pages": "129-129",
+          "section": "8.2 Heredity > 8.2.1 Inherited Traits"
+        },
+        {
+          "chapter": 8,
+          "pages": "128-128",
+          "section": null
+        }
+      ]
+    },
+    {
+      "id": "b25",
+      "subject": "biology",
+      "lang": "en",
+      "type": "compare",
+      "split": "dev",
+      "question": "Difference between binary fission and multiple fission",
+      "gold": [
+        "7.2.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "difference",
+        "between",
+        "binary",
+        "fission",
+        "and",
+        "multiple"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 81,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 7,
+          "pages": "115-116",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.1 Fission"
+        },
+        {
+          "chapter": 8,
+          "pages": "128-128",
+          "section": null
+        },
+        {
+          "chapter": 7,
+          "pages": "118-119",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.6 Spore Formation"
+        },
+        {
+          "chapter": 7,
+          "pages": "116-116",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.2 Fragmentation"
+        },
+        {
+          "chapter": 5,
+          "pages": "91-91",
+          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+        }
+      ]
+    },
+    {
+      "id": "b26",
+      "subject": "biology",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "How does Planaria regenerate?",
+      "gold": [
+        "7.2.3"
+      ],
+      "rank": 1,
+      "keywords": [
+        "how",
+        "does",
+        "planaria",
+        "regenerate"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 80,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 7,
+          "pages": "116-117",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.3 Regeneration"
+        },
+        {
+          "chapter": 7,
+          "pages": "126-126",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 7,
+          "pages": "118-119",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.6 Spore Formation"
+        }
+      ]
+    },
+    {
+      "id": "b27",
+      "subject": "biology",
+      "lang": "en",
+      "type": "how",
+      "split": "test",
+      "question": "How does Hydra reproduce by budding?",
+      "gold": [
+        "7.2.4"
+      ],
+      "rank": 1,
+      "keywords": [
+        "how",
+        "does",
+        "hydra",
+        "reproduce",
+        "by",
+        "budding"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 80,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 7,
+          "pages": "117-117",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.4 Budding"
+        },
+        {
+          "chapter": 7,
+          "pages": "113-113",
+          "section": null
+        },
+        {
+          "chapter": 7,
+          "pages": "118-119",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.6 Spore Formation"
+        },
+        {
+          "chapter": 7,
+          "pages": "116-117",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.3 Regeneration"
+        },
+        {
+          "chapter": 7,
+          "pages": "114-115",
+          "section": "7.1 Do Organisms Create Exact Copies of Themselves? > 7.1.1 The Importance of Variation"
+        }
+      ]
+    },
+    {
+      "id": "b28",
+      "subject": "biology",
+      "lang": "en",
+      "type": "application",
+      "split": "dev",
+      "question": "Advantages of vegetative propagation in bananas and roses",
+      "gold": [
+        "7.2.5"
+      ],
+      "rank": 1,
+      "keywords": [
+        "advantages",
+        "of",
+        "vegetative",
+        "propagation",
+        "in",
+        "bananas",
+        "and",
+        "roses"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 70,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 7,
+          "pages": "117-118",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.5 Vegetative Propagation"
+        },
+        {
+          "chapter": 7,
+          "pages": "118-118",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.5 Vegetative Propagation"
+        },
+        {
+          "chapter": 7,
+          "pages": "126-126",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 7,
+          "pages": "119-119",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.6 Spore Formation"
+        },
+        {
+          "chapter": 8,
+          "pages": "129-130",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        }
+      ]
+    },
+    {
+      "id": "b29",
+      "subject": "biology",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "How does Rhizopus spread by spores?",
+      "gold": [
+        "7.2.6"
+      ],
+      "rank": 1,
+      "keywords": [
+        "how",
+        "does",
+        "rhizopus",
+        "spread",
+        "by",
+        "spores"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 59,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 7,
+          "pages": "118-119",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.6 Spore Formation"
+        },
+        {
+          "chapter": 7,
+          "pages": "119-119",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.6 Spore Formation"
+        },
+        {
+          "chapter": 5,
+          "pages": "91-91",
+          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+        }
+      ]
+    },
+    {
+      "id": "b30",
+      "subject": "biology",
+      "lang": "en",
+      "type": "how",
+      "split": "test",
+      "question": "What happens after pollination? How is a seed formed?",
+      "gold": [
+        "7.3.2"
+      ],
+      "rank": 2,
+      "keywords": [
+        "what",
+        "happens",
+        "after",
+        "pollination",
+        "how",
+        "is",
+        "seed",
+        "formed"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 86,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 8,
+          "pages": "130-131",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 7,
+          "pages": "121-121",
+          "section": "7.3 Sexual Reproduction > 7.3.2 Sexual Reproduction in Flowering Plants"
+        },
+        {
+          "chapter": 5,
+          "pages": "81-82",
+          "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition"
+        },
+        {
+          "chapter": 13,
+          "pages": "210-210",
+          "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+        },
+        {
+          "chapter": 7,
+          "pages": "122-122",
+          "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
+        }
+      ]
+    },
+    {
+      "id": "b31",
+      "subject": "biology",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What changes happen in the body at puberty?",
+      "gold": [
+        "7.3.3"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "changes",
+        "happen",
+        "in",
+        "the",
+        "body",
+        "at",
+        "puberty"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 74,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 7,
+          "pages": "121-122",
+          "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
+        },
+        {
+          "chapter": 7,
+          "pages": "122-122",
+          "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
+        },
+        {
+          "chapter": 7,
+          "pages": "122-123",
+          "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
+        },
+        {
+          "chapter": 5,
+          "pages": "80-80",
+          "section": "5.1 What Are Life Processes?"
+        },
+        {
+          "chapter": 6,
+          "pages": "109-110",
+          "section": "6.3 Hormones in Animals"
+        }
+      ]
+    },
+    {
+      "id": "b32",
+      "subject": "biology",
+      "lang": "en",
+      "type": "application",
+      "split": "dev",
+      "question": "What are the methods of contraception?",
+      "gold": [
+        "7.3.3"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "are",
+        "the",
+        "methods",
+        "of",
+        "contraception"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 68,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 7,
+          "pages": "125-125",
+          "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
+        },
+        {
+          "chapter": 7,
+          "pages": "127-127",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 7,
+          "pages": "126-127",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 7,
+          "pages": "117-118",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.5 Vegetative Propagation"
+        },
+        {
+          "chapter": 5,
+          "pages": "98-99",
+          "section": "What you have learnt"
+        }
+      ]
+    },
+    {
+      "id": "b33",
+      "subject": "biology",
+      "lang": "te",
+      "type": "definition",
+      "split": "test",
+      "question": "పరాగ సంపర్కం అంటే ఏమిటి? స్వపరాగ సంపర్కం, పరపరాగ సంపర్కం తేడా",
+      "gold": [
+        "7.3.2"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "b34",
+      "subject": "biology",
+      "lang": "te",
+      "type": "how",
+      "split": "dev",
+      "question": "గర్భంలో పిండానికి ఆహారం మాయ (ప్లాసెంటా) ద్వారా ఎలా అందుతుంది?",
+      "gold": [
+        "7.3.3"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "b35",
+      "subject": "biology",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What are dominant and recessive traits?",
+      "gold": [
+        "8.2.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "are",
+        "dominant",
+        "and",
+        "recessive",
+        "traits"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 68,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 8,
+          "pages": "130-131",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 8,
+          "pages": "130-130",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 8,
+          "pages": "133-133",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 8,
+          "pages": "129-130",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 8,
+          "pages": "132-133",
+          "section": "8.2 Heredity > 8.2.4 Sex Determination"
+        }
+      ]
+    },
+    {
+      "id": "b36",
+      "subject": "biology",
+      "lang": "en",
+      "type": "how",
+      "split": "test",
+      "question": "Mendel experiment with tall and short pea plants F1 F2 ratio",
+      "gold": [
+        "8.2.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "mendel",
+        "experiment",
+        "with",
+        "tall",
+        "and",
+        "short",
+        "pea",
+        "plants",
+        "f1",
+        "f2",
+        "ratio"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 74,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 8,
+          "pages": "130-131",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 8,
+          "pages": "130-130",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 8,
+          "pages": "129-130",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 5,
+          "pages": "94-94",
+          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
+        },
+        {
+          "chapter": 8,
+          "pages": "131-131",
+          "section": "8.2 Heredity > 8.2.3 How do these Traits get Expressed?"
+        }
+      ]
+    },
+    {
+      "id": "b37",
+      "subject": "biology",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "How do genes control traits like plant height?",
+      "gold": [
+        "8.2.3"
+      ],
+      "rank": 1,
+      "keywords": [
+        "how",
+        "do",
+        "genes",
+        "control",
+        "traits",
+        "like",
+        "plant",
+        "height"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 71,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 8,
+          "pages": "131-131",
+          "section": "8.2 Heredity > 8.2.3 How do these Traits get Expressed?"
+        },
+        {
+          "chapter": 8,
+          "pages": "130-131",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 8,
+          "pages": "130-130",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 7,
+          "pages": "117-118",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.5 Vegetative Propagation"
+        },
+        {
+          "chapter": 5,
+          "pages": "94-94",
+          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
+        }
+      ]
+    },
+    {
+      "id": "b38",
+      "subject": "biology",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "How is the sex of a child determined in humans?",
+      "gold": [
+        "8.2.4"
+      ],
+      "rank": 1,
+      "keywords": [
+        "how",
+        "is",
+        "the",
+        "sex",
+        "of",
+        "child",
+        "determined",
+        "in",
+        "humans"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 72,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 8,
+          "pages": "132-132",
+          "section": "8.2 Heredity > 8.2.4 Sex Determination"
+        },
+        {
+          "chapter": 8,
+          "pages": "132-133",
+          "section": "8.2 Heredity > 8.2.4 Sex Determination"
+        },
+        {
+          "chapter": 7,
+          "pages": "125-125",
+          "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
+        },
+        {
+          "chapter": 5,
+          "pages": "91-91",
+          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+        },
+        {
+          "chapter": 7,
+          "pages": "124-124",
+          "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
+        }
+      ]
+    },
+    {
+      "id": "b39",
+      "subject": "biology",
+      "lang": "en",
+      "type": "definition",
+      "split": "test",
+      "question": "What are inherited traits? Example of earlobes",
+      "gold": [
+        "8.2.1"
+      ],
+      "rank": 4,
+      "keywords": [
+        "what",
+        "are",
+        "inherited",
+        "traits",
+        "example",
+        "of",
+        "earlobes"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 74,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 8,
+          "pages": "130-130",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 8,
+          "pages": "129-130",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 8,
+          "pages": "130-131",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 8,
+          "pages": "129-129",
+          "section": "8.2 Heredity > 8.2.1 Inherited Traits"
+        },
+        {
+          "chapter": 8,
+          "pages": "131-131",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        }
+      ]
+    },
+    {
+      "id": "b40",
+      "subject": "biology",
+      "lang": "te",
+      "type": "how",
+      "split": "dev",
+      "question": "బిడ్డ ఆడ లేదా మగ అనేది తండ్రి నుండి వచ్చే క్రోమోజోమ్ మీద ఎలా ఆధారపడి ఉంటుంది?",
+      "gold": [
+        "8.2.4"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "b41",
+      "subject": "biology",
+      "lang": "te-latn",
+      "type": "colloquial",
+      "split": "dev",
+      "question": "mendel batani mokkalatho chesina prayogam enti?",
+      "gold": [
+        "8.2.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "mendel",
+        "batani",
+        "mokkalatho",
+        "chesina",
+        "prayogam",
+        "enti"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 76,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 8,
+          "pages": "130-130",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 8,
+          "pages": "129-130",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 8,
+          "pages": "131-131",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 8,
+          "pages": "130-131",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 8,
+          "pages": "132-133",
+          "section": "8.2 Heredity > 8.2.4 Sex Determination"
+        }
+      ]
+    },
+    {
+      "id": "b42",
+      "subject": "biology",
+      "lang": "en",
+      "type": "definition",
+      "split": "test",
+      "question": "What are biotic and abiotic components of an ecosystem?",
+      "gold": [
+        "13.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "are",
+        "biotic",
+        "and",
+        "abiotic",
+        "components",
+        "of",
+        "an",
+        "ecosystem"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 61,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 13,
+          "pages": "208-209",
+          "section": "13.1 Eco-system — What Are its Components?"
+        },
+        {
+          "chapter": 13,
+          "pages": "210-210",
+          "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+        },
+        {
+          "chapter": 13,
+          "pages": "211-212",
+          "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+        },
+        {
+          "chapter": 13,
+          "pages": "209-209",
+          "section": "13.1 Eco-system — What Are its Components?"
+        },
+        {
+          "chapter": 13,
+          "pages": "210-211",
+          "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+        }
+      ]
+    },
+    {
+      "id": "b43",
+      "subject": "biology",
+      "lang": "en",
+      "type": "why",
+      "split": "dev",
+      "question": "Why are decomposers important in an ecosystem?",
+      "gold": [
+        "13.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "why",
+        "are",
+        "decomposers",
+        "important",
+        "in",
+        "an",
+        "ecosystem"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 68,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 13,
+          "pages": "208-209",
+          "section": "13.1 Eco-system — What Are its Components?"
+        },
+        {
+          "chapter": 7,
+          "pages": "114-115",
+          "section": "7.1 Do Organisms Create Exact Copies of Themselves? > 7.1.1 The Importance of Variation"
+        },
+        {
+          "chapter": 13,
+          "pages": "209-209",
+          "section": "13.1 Eco-system — What Are its Components?"
+        },
+        {
+          "chapter": 13,
+          "pages": "211-212",
+          "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+        },
+        {
+          "chapter": 13,
+          "pages": "216-217",
+          "section": "Exercises"
+        }
+      ]
+    },
+    {
+      "id": "b44",
+      "subject": "biology",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is a trophic level and the 10 percent law of energy?",
+      "gold": [
+        "13.1.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "trophic",
+        "level",
+        "and",
+        "the",
+        "10",
+        "percent",
+        "law",
+        "of",
+        "energy"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 71,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 13,
+          "pages": "210-211",
+          "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+        },
+        {
+          "chapter": 13,
+          "pages": "210-210",
+          "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+        },
+        {
+          "chapter": 13,
+          "pages": "216-217",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 13,
+          "pages": "211-212",
+          "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+        },
+        {
+          "chapter": 5,
+          "pages": "94-94",
+          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
+        }
+      ]
+    },
+    {
+      "id": "b45",
+      "subject": "biology",
+      "lang": "en",
+      "type": "definition",
+      "split": "test",
+      "question": "What is biological magnification?",
+      "gold": [
+        "13.1.1",
+        "13.2"
+      ],
+      "rank": 2,
+      "keywords": [
+        "what",
+        "is",
+        "biological",
+        "magnification"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 75,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 13,
+          "pages": "216-217",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 13,
+          "pages": "211-212",
+          "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+        },
+        {
+          "chapter": 5,
+          "pages": "84-85",
+          "section": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
+        },
+        {
+          "chapter": 13,
+          "pages": "213-214",
+          "section": "13.2 How Do Our Activities Affect the Environment? > 13.2.2 Managing the Garbage we Produce"
+        },
+        {
+          "chapter": 5,
+          "pages": "96-96",
+          "section": "5.5 Excretion"
+        }
+      ]
+    },
+    {
+      "id": "b46",
+      "subject": "biology",
+      "lang": "en",
+      "type": "why",
+      "split": "dev",
+      "question": "How is the ozone layer being depleted and why is it harmful?",
+      "gold": [
+        "13.2.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "how",
+        "is",
+        "the",
+        "ozone",
+        "layer",
+        "being",
+        "depleted",
+        "and",
+        "why",
+        "it",
+        "harmful"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 91,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 13,
+          "pages": "213-213",
+          "section": "13.2 How Do Our Activities Affect the Environment? > 13.2.1 Ozone Layer and How it is Getting Depleted"
+        },
+        {
+          "chapter": 13,
+          "pages": "212-213",
+          "section": "13.2 How Do Our Activities Affect the Environment? > 13.2.1 Ozone Layer and How it is Getting Depleted"
+        },
+        {
+          "chapter": 13,
+          "pages": "216-216",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 13,
+          "pages": "212-212",
+          "section": "13.2 How Do Our Activities Affect the Environment?"
+        },
+        {
+          "chapter": 13,
+          "pages": "216-217",
+          "section": "Exercises"
+        }
+      ]
+    },
+    {
+      "id": "b47",
+      "subject": "biology",
+      "lang": "en",
+      "type": "compare",
+      "split": "dev",
+      "question": "Biodegradable vs non-biodegradable waste with examples",
+      "gold": [
+        "13.2.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "biodegradable",
+        "vs",
+        "non-biodegradable",
+        "waste",
+        "with",
+        "examples"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 70,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 13,
+          "pages": "214-215",
+          "section": "13.2 How Do Our Activities Affect the Environment? > 13.2.2 Managing the Garbage we Produce"
+        },
+        {
+          "chapter": 13,
+          "pages": "213-214",
+          "section": "13.2 How Do Our Activities Affect the Environment? > 13.2.2 Managing the Garbage we Produce"
+        },
+        {
+          "chapter": 13,
+          "pages": "216-217",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 5,
+          "pages": "98-98",
+          "section": "5.5 Excretion > 5.5.2 Excretion in Plants"
+        },
+        {
+          "chapter": 13,
+          "pages": "216-216",
+          "section": "What you have learnt"
+        }
+      ]
+    },
+    {
+      "id": "b48",
+      "subject": "biology",
+      "lang": "te",
+      "type": "definition",
+      "split": "test",
+      "question": "ఆహార గొలుసు మరియు ఆహార జాలం అంటే ఏమిటి?",
+      "gold": [
+        "13.1.1"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "b49",
+      "subject": "biology",
+      "lang": "te",
+      "type": "why",
+      "split": "dev",
+      "question": "క్లోరోఫ్లోరోకార్బన్లు ఓజోన్ పొరకు ఎందుకు హానికరం?",
+      "gold": [
+        "13.2.1"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "b50",
+      "subject": "biology",
+      "lang": "te",
+      "type": "definition",
+      "split": "dev",
+      "question": "మొక్కలలో పోషక పదార్థాల రవాణా (స్థానాంతరణ) ఫ్లోయమ్ ద్వారా ఎలా జరుగుతుంది?",
+      "gold": [
+        "5.4.2"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "p01",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "State the laws of reflection of light",
+      "gold": [
+        "9.1"
+      ],
+      "rank": 2,
+      "keywords": [
+        "state",
+        "the",
+        "laws",
+        "of",
+        "reflection",
+        "light"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 70,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 9,
+          "pages": "134-134",
+          "section": null
+        },
+        {
+          "chapter": 9,
+          "pages": "134-135",
+          "section": "9.1 Reflection of Light"
+        },
+        {
+          "chapter": 9,
+          "pages": "148-148",
+          "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+        },
+        {
+          "chapter": 9,
+          "pages": "146-147",
+          "section": "9.3 Refraction of Light > 9.3.1 Refraction through a Rectangular Glass Slab"
+        },
+        {
+          "chapter": 10,
+          "pages": "169-169",
+          "section": "10.6 Scattering of Light > 10.6.1 Tyndall Effect"
+        }
+      ]
+    },
+    {
+      "id": "p02",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is the relation between focal length and radius of curvature of a mirror?",
+      "gold": [
+        "9.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "the",
+        "relation",
+        "between",
+        "focal",
+        "length",
+        "and",
+        "radius",
+        "of",
+        "curvature",
+        "mirror"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 70,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 9,
+          "pages": "136-137",
+          "section": "9.2 Spherical Mirrors"
+        },
+        {
+          "chapter": 9,
+          "pages": "135-136",
+          "section": "9.2 Spherical Mirrors"
+        },
+        {
+          "chapter": 9,
+          "pages": "141-142",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        },
+        {
+          "chapter": 9,
+          "pages": "159-160",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 9,
+          "pages": "137-137",
+          "section": "9.2 Spherical Mirrors > 9.2.1 Image Formation by Spherical Mirrors"
+        }
+      ]
+    },
+    {
+      "id": "p03",
+      "subject": "physics",
+      "lang": "en",
+      "type": "how",
+      "split": "test",
+      "question": "Where should an object be placed in front of a concave mirror to get a real, enlarged image?",
+      "gold": [
+        "9.2.1",
+        "9.2.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "where",
+        "should",
+        "an",
+        "object",
+        "be",
+        "placed",
+        "in",
+        "front",
+        "of",
+        "concave",
+        "mirror",
+        "to"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 120,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 9,
+          "pages": "140-141",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        },
+        {
+          "chapter": 9,
+          "pages": "135-136",
+          "section": "9.2 Spherical Mirrors"
+        },
+        {
+          "chapter": 9,
+          "pages": "141-142",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        },
+        {
+          "chapter": 9,
+          "pages": "159-160",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 9,
+          "pages": "138-139",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        }
+      ]
+    },
+    {
+      "id": "p04",
+      "subject": "physics",
+      "lang": "en",
+      "type": "application",
+      "split": "dev",
+      "question": "Why are convex mirrors used as rear-view mirrors in vehicles?",
+      "gold": [
+        "9.2.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "why",
+        "are",
+        "convex",
+        "mirrors",
+        "used",
+        "as",
+        "rear-view",
+        "in",
+        "vehicles"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 106,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 9,
+          "pages": "141-142",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        },
+        {
+          "chapter": 9,
+          "pages": "140-141",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        },
+        {
+          "chapter": 9,
+          "pages": "135-136",
+          "section": "9.2 Spherical Mirrors"
+        },
+        {
+          "chapter": 9,
+          "pages": "159-160",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 9,
+          "pages": "143-145",
+          "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
+        }
+      ]
+    },
+    {
+      "id": "p05",
+      "subject": "physics",
+      "lang": "en",
+      "type": "application",
+      "split": "dev",
+      "question": "Uses of concave mirrors in torches and by dentists",
+      "gold": [
+        "9.2.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "uses",
+        "of",
+        "concave",
+        "mirrors",
+        "in",
+        "torches",
+        "and",
+        "by",
+        "dentists"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 106,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 9,
+          "pages": "140-141",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        },
+        {
+          "chapter": 9,
+          "pages": "135-136",
+          "section": "9.2 Spherical Mirrors"
+        },
+        {
+          "chapter": 9,
+          "pages": "141-142",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        },
+        {
+          "chapter": 9,
+          "pages": "139-140",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        },
+        {
+          "chapter": 9,
+          "pages": "159-160",
+          "section": "Exercises"
+        }
+      ]
+    },
+    {
+      "id": "p06",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "test",
+      "question": "What is the New Cartesian sign convention for mirrors?",
+      "gold": [
+        "9.2.3"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "the",
+        "new",
+        "cartesian",
+        "sign",
+        "convention",
+        "for",
+        "mirrors"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 96,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 9,
+          "pages": "142-143",
+          "section": "9.2 Spherical Mirrors > 9.2.3 Sign Convention for Reflection by Spherical Mirrors"
+        },
+        {
+          "chapter": 9,
+          "pages": "140-141",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        },
+        {
+          "chapter": 9,
+          "pages": "135-136",
+          "section": "9.2 Spherical Mirrors"
+        },
+        {
+          "chapter": 9,
+          "pages": "141-142",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        },
+        {
+          "chapter": 9,
+          "pages": "143-145",
+          "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
+        }
+      ]
+    },
+    {
+      "id": "p07",
+      "subject": "physics",
+      "lang": "en",
+      "type": "formula",
+      "split": "dev",
+      "question": "mirror formula and magnification formula",
+      "gold": [
+        "9.2.4"
+      ],
+      "rank": 1,
+      "keywords": [
+        "mirror",
+        "formula",
+        "and",
+        "magnification"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 65,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 9,
+          "pages": "143-143",
+          "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
+        },
+        {
+          "chapter": 9,
+          "pages": "140-141",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        },
+        {
+          "chapter": 9,
+          "pages": "135-136",
+          "section": "9.2 Spherical Mirrors"
+        },
+        {
+          "chapter": 9,
+          "pages": "141-142",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        },
+        {
+          "chapter": 9,
+          "pages": "143-145",
+          "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
+        }
+      ]
+    },
+    {
+      "id": "p08",
+      "subject": "physics",
+      "lang": "en",
+      "type": "numeric",
+      "split": "dev",
+      "question": "An object is placed 20 cm in front of a concave mirror of focal length 15 cm. Find the image position.",
+      "gold": [
+        "9.2.4"
+      ],
+      "rank": 2,
+      "keywords": [
+        "an",
+        "object",
+        "is",
+        "placed",
+        "20",
+        "cm",
+        "in",
+        "front",
+        "of",
+        "concave",
+        "mirror",
+        "focal"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 84,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 9,
+          "pages": "160-160",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 9,
+          "pages": "143-145",
+          "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
+        },
+        {
+          "chapter": 9,
+          "pages": "159-160",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 9,
+          "pages": "140-141",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        },
+        {
+          "chapter": 9,
+          "pages": "137-137",
+          "section": "9.2 Spherical Mirrors > 9.2.1 Image Formation by Spherical Mirrors"
+        }
+      ]
+    },
+    {
+      "id": "p09",
+      "subject": "physics",
+      "lang": "en",
+      "type": "why",
+      "split": "test",
+      "question": "Why does a pencil look bent when kept in a glass of water?",
+      "gold": [
+        "9.3"
+      ],
+      "rank": 1,
+      "keywords": [
+        "why",
+        "does",
+        "pencil",
+        "look",
+        "bent",
+        "when",
+        "kept",
+        "in",
+        "glass",
+        "of",
+        "water"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 79,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 9,
+          "pages": "145-146",
+          "section": "9.3 Refraction of Light"
+        },
+        {
+          "chapter": 9,
+          "pages": "146-146",
+          "section": "9.3 Refraction of Light"
+        },
+        {
+          "chapter": 9,
+          "pages": "146-147",
+          "section": "9.3 Refraction of Light > 9.3.1 Refraction through a Rectangular Glass Slab"
+        },
+        {
+          "chapter": 10,
+          "pages": "167-168",
+          "section": "10.4 Dispersion of White Light by a Glass Prism"
+        },
+        {
+          "chapter": 9,
+          "pages": "147-148",
+          "section": "9.3 Refraction of Light > 9.3.1 Refraction through a Rectangular Glass Slab"
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "State Snell's law of refraction",
+      "gold": [
+        "9.3.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "state",
+        "snell",
+        "law",
+        "of",
+        "refraction"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 72,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 9,
+          "pages": "147-148",
+          "section": "9.3 Refraction of Light > 9.3.1 Refraction through a Rectangular Glass Slab"
+        },
+        {
+          "chapter": 9,
+          "pages": "148-149",
+          "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+        },
+        {
+          "chapter": 9,
+          "pages": "146-147",
+          "section": "9.3 Refraction of Light > 9.3.1 Refraction through a Rectangular Glass Slab"
+        },
+        {
+          "chapter": 9,
+          "pages": "148-148",
+          "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+        },
+        {
+          "chapter": 10,
+          "pages": "168-168",
+          "section": "10.5 Atmospheric Refraction"
+        }
+      ]
+    },
+    {
+      "id": "p11",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is refractive index? Which is optically denser, water or kerosene?",
+      "gold": [
+        "9.3.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "refractive",
+        "index",
+        "which",
+        "optically",
+        "denser",
+        "water",
+        "or",
+        "kerosene"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 75,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 9,
+          "pages": "148-149",
+          "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+        },
+        {
+          "chapter": 9,
+          "pages": "148-148",
+          "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+        },
+        {
+          "chapter": 9,
+          "pages": "149-149",
+          "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+        },
+        {
+          "chapter": 9,
+          "pages": "150-151",
+          "section": "9.3 Refraction of Light > 9.3.3 Refraction by Spherical Lenses"
+        },
+        {
+          "chapter": 9,
+          "pages": "147-148",
+          "section": "9.3 Refraction of Light > 9.3.1 Refraction through a Rectangular Glass Slab"
+        }
+      ]
+    },
+    {
+      "id": "p12",
+      "subject": "physics",
+      "lang": "en",
+      "type": "formula",
+      "split": "test",
+      "question": "Lens formula and magnification for a convex lens",
+      "gold": [
+        "9.3.7"
+      ],
+      "rank": 1,
+      "keywords": [
+        "lens",
+        "formula",
+        "and",
+        "magnification",
+        "for",
+        "convex"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 79,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 9,
+          "pages": "155-156",
+          "section": "9.3 Refraction of Light > 9.3.7 Lens Formula and Magnification"
+        },
+        {
+          "chapter": 9,
+          "pages": "150-150",
+          "section": "9.3 Refraction of Light > 9.3.3 Refraction by Spherical Lenses"
+        },
+        {
+          "chapter": 9,
+          "pages": "157-158",
+          "section": "9.3 Refraction of Light > 9.3.8 Power of a Lens"
+        },
+        {
+          "chapter": 9,
+          "pages": "159-160",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 9,
+          "pages": "152-153",
+          "section": "9.3 Refraction of Light > 9.3.4 Image Formation by Lenses"
+        }
+      ]
+    },
+    {
+      "id": "p13",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is the power of a lens and its SI unit dioptre?",
+      "gold": [
+        "9.3.8"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "the",
+        "power",
+        "of",
+        "lens",
+        "and",
+        "its",
+        "si",
+        "unit",
+        "dioptre"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 68,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 9,
+          "pages": "157-158",
+          "section": "9.3 Refraction of Light > 9.3.8 Power of a Lens"
+        },
+        {
+          "chapter": 9,
+          "pages": "158-158",
+          "section": "9.3 Refraction of Light > 9.3.8 Power of a Lens"
+        },
+        {
+          "chapter": 11,
+          "pages": "191-192",
+          "section": "11.8 Electric Power"
+        },
+        {
+          "chapter": 9,
+          "pages": "150-150",
+          "section": "9.3 Refraction of Light > 9.3.3 Refraction by Spherical Lenses"
+        },
+        {
+          "chapter": 9,
+          "pages": "155-156",
+          "section": "9.3 Refraction of Light > 9.3.7 Lens Formula and Magnification"
+        }
+      ]
+    },
+    {
+      "id": "p14",
+      "subject": "physics",
+      "lang": "te",
+      "type": "definition",
+      "split": "dev",
+      "question": "కుంభాకార కటకం మరియు పుటాకార కటకం మధ్య తేడా ఏమిటి?",
+      "gold": [
+        "9.3.3"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "p15",
+      "subject": "physics",
+      "lang": "te",
+      "type": "definition",
+      "split": "test",
+      "question": "కాంతి వక్రీభవనం అంటే ఏమిటి?",
+      "gold": [
+        "9.3"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "p16",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is the function of the iris and pupil in the eye?",
+      "gold": [
+        "10.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "the",
+        "function",
+        "of",
+        "iris",
+        "and",
+        "pupil",
+        "in",
+        "eye"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 75,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 10,
+          "pages": "162-162",
+          "section": "10.1 The Human Eye > 10.1.1 Power of Accommodation"
+        },
+        {
+          "chapter": 10,
+          "pages": "161-162",
+          "section": "10.1 The Human Eye"
+        },
+        {
+          "chapter": 10,
+          "pages": "170-170",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 10,
+          "pages": "163-164",
+          "section": "10.2 Defects of Vision and Their Correction"
+        },
+        {
+          "chapter": 10,
+          "pages": "165-165",
+          "section": "10.3 Refraction of Light Through a Prism"
+        }
+      ]
+    },
+    {
+      "id": "p17",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is the power of accommodation of the eye? Near point 25 cm",
+      "gold": [
+        "10.1.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "the",
+        "power",
+        "of",
+        "accommodation",
+        "eye",
+        "near",
+        "point",
+        "25",
+        "cm"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 74,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 10,
+          "pages": "162-162",
+          "section": "10.1 The Human Eye > 10.1.1 Power of Accommodation"
+        },
+        {
+          "chapter": 10,
+          "pages": "170-170",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 10,
+          "pages": "163-164",
+          "section": "10.2 Defects of Vision and Their Correction"
+        },
+        {
+          "chapter": 10,
+          "pages": "162-163",
+          "section": "10.2 Defects of Vision and Their Correction"
+        },
+        {
+          "chapter": 9,
+          "pages": "160-160",
+          "section": "Exercises"
+        }
+      ]
+    },
+    {
+      "id": "p18",
+      "subject": "physics",
+      "lang": "en",
+      "type": "how",
+      "split": "test",
+      "question": "What is myopia and how is it corrected?",
+      "gold": [
+        "10.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "myopia",
+        "and",
+        "how",
+        "it",
+        "corrected"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 69,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 10,
+          "pages": "162-163",
+          "section": "10.2 Defects of Vision and Their Correction"
+        },
+        {
+          "chapter": 10,
+          "pages": "163-164",
+          "section": "10.2 Defects of Vision and Their Correction"
+        },
+        {
+          "chapter": 10,
+          "pages": "164-164",
+          "section": "10.2 Defects of Vision and Their Correction"
+        },
+        {
+          "chapter": 10,
+          "pages": "170-170",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 10,
+          "pages": "170-170",
+          "section": "What you have learnt"
+        }
+      ]
+    },
+    {
+      "id": "p19",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is the angle of deviation in a glass prism?",
+      "gold": [
+        "10.3"
+      ],
+      "rank": 2,
+      "keywords": [
+        "what",
+        "is",
+        "the",
+        "angle",
+        "of",
+        "deviation",
+        "in",
+        "glass",
+        "prism"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 72,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 10,
+          "pages": "166-167",
+          "section": "10.4 Dispersion of White Light by a Glass Prism"
+        },
+        {
+          "chapter": 10,
+          "pages": "165-166",
+          "section": "10.3 Refraction of Light Through a Prism"
+        },
+        {
+          "chapter": 10,
+          "pages": "165-165",
+          "section": "10.3 Refraction of Light Through a Prism"
+        },
+        {
+          "chapter": 10,
+          "pages": "166-166",
+          "section": "10.3 Refraction of Light Through a Prism"
+        },
+        {
+          "chapter": 10,
+          "pages": "167-168",
+          "section": "10.4 Dispersion of White Light by a Glass Prism"
+        }
+      ]
+    },
+    {
+      "id": "p20",
+      "subject": "physics",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "How is a rainbow formed?",
+      "gold": [
+        "10.4"
+      ],
+      "rank": 2,
+      "keywords": [
+        "how",
+        "is",
+        "rainbow",
+        "formed"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 66,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 9,
+          "pages": "152-153",
+          "section": "9.3 Refraction of Light > 9.3.4 Image Formation by Lenses"
+        },
+        {
+          "chapter": 10,
+          "pages": "167-168",
+          "section": "10.4 Dispersion of White Light by a Glass Prism"
+        },
+        {
+          "chapter": 9,
+          "pages": "140-141",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        },
+        {
+          "chapter": 9,
+          "pages": "141-142",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        },
+        {
+          "chapter": 9,
+          "pages": "139-140",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        }
+      ]
+    },
+    {
+      "id": "p21",
+      "subject": "physics",
+      "lang": "en",
+      "type": "why",
+      "split": "test",
+      "question": "Why do stars twinkle but planets do not?",
+      "gold": [
+        "10.5"
+      ],
+      "rank": 1,
+      "keywords": [
+        "why",
+        "do",
+        "stars",
+        "twinkle",
+        "but",
+        "planets",
+        "not"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 73,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 10,
+          "pages": "168-168",
+          "section": "10.5 Atmospheric Refraction"
+        },
+        {
+          "chapter": 10,
+          "pages": "168-168",
+          "section": "10.5 Atmospheric Refraction"
+        },
+        {
+          "chapter": 10,
+          "pages": "170-170",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 9,
+          "pages": "134-134",
+          "section": null
+        }
+      ]
+    },
+    {
+      "id": "p22",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is the Tyndall effect?",
+      "gold": [
+        "10.6.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "the",
+        "tyndall",
+        "effect"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 69,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 10,
+          "pages": "169-169",
+          "section": "10.6 Scattering of Light > 10.6.1 Tyndall Effect"
+        },
+        {
+          "chapter": 12,
+          "pages": "195-195",
+          "section": null
+        },
+        {
+          "chapter": 11,
+          "pages": "190-190",
+          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+        },
+        {
+          "chapter": 11,
+          "pages": "190-190",
+          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+        },
+        {
+          "chapter": 11,
+          "pages": "188-188",
+          "section": "11.7 Heating Effect of Electric Current"
+        }
+      ]
+    },
+    {
+      "id": "p23",
+      "subject": "physics",
+      "lang": "te",
+      "type": "why",
+      "split": "dev",
+      "question": "ఆకాశం నీలి రంగులో ఎందుకు కనిపిస్తుంది?",
+      "gold": [
+        "10.6.2"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "p24",
+      "subject": "physics",
+      "lang": "te",
+      "type": "how",
+      "split": "test",
+      "question": "హ్రస్వదృష్టి (మయోపియా) ఉన్నవారికి ఏ కటకం వాడతారు?",
+      "gold": [
+        "10.2"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "p25",
+      "subject": "physics",
+      "lang": "te-latn",
+      "type": "colloquial",
+      "split": "dev",
+      "question": "white light prism lo 7 rangulu ga enduku vidipotundi?",
+      "gold": [
+        "10.4"
+      ],
+      "rank": 1,
+      "keywords": [
+        "white",
+        "light",
+        "prism",
+        "lo",
+        "rangulu",
+        "ga",
+        "enduku",
+        "vidipotundi"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 73,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 10,
+          "pages": "167-168",
+          "section": "10.4 Dispersion of White Light by a Glass Prism"
+        },
+        {
+          "chapter": 10,
+          "pages": "166-167",
+          "section": "10.4 Dispersion of White Light by a Glass Prism"
+        },
+        {
+          "chapter": 10,
+          "pages": "165-166",
+          "section": "10.3 Refraction of Light Through a Prism"
+        },
+        {
+          "chapter": 9,
+          "pages": "134-134",
+          "section": null
+        },
+        {
+          "chapter": 9,
+          "pages": "148-148",
+          "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+        }
+      ]
+    },
+    {
+      "id": "p26",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "Define electric current and its SI unit ampere",
+      "gold": [
+        "11.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "define",
+        "electric",
+        "current",
+        "and",
+        "its",
+        "si",
+        "unit",
+        "ampere"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 65,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 11,
+          "pages": "171-172",
+          "section": "11.1 Electric Current and Circuit"
+        },
+        {
+          "chapter": 11,
+          "pages": "172-172",
+          "section": "11.1 Electric Current and Circuit"
+        },
+        {
+          "chapter": 11,
+          "pages": "190-190",
+          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+        },
+        {
+          "chapter": 11,
+          "pages": "191-192",
+          "section": "11.8 Electric Power"
+        },
+        {
+          "chapter": 12,
+          "pages": "195-195",
+          "section": null
+        }
+      ]
+    },
+    {
+      "id": "p27",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "test",
+      "question": "What is potential difference? How is a voltmeter connected?",
+      "gold": [
+        "11.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "potential",
+        "difference",
+        "how",
+        "voltmeter",
+        "connected"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 67,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 11,
+          "pages": "173-173",
+          "section": "11.2 Electric Potential and Potential Difference"
+        },
+        {
+          "chapter": 11,
+          "pages": "182-183",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series"
+        },
+        {
+          "chapter": 11,
+          "pages": "173-174",
+          "section": "11.2 Electric Potential and Potential Difference"
+        },
+        {
+          "chapter": 11,
+          "pages": "175-176",
+          "section": "11.4 Ohm’s Law"
+        },
+        {
+          "chapter": 11,
+          "pages": "193-193",
+          "section": "Exercises"
+        }
+      ]
+    },
+    {
+      "id": "p28",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "symbols used in circuit diagrams",
+      "gold": [
+        "11.3"
+      ],
+      "rank": 1,
+      "keywords": [
+        "symbols",
+        "used",
+        "in",
+        "circuit",
+        "diagrams"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 76,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 11,
+          "pages": "174-174",
+          "section": "11.3 Circuit Diagram"
+        },
+        {
+          "chapter": 12,
+          "pages": "205-205",
+          "section": "12.4 Domestic Electric Circuits"
+        },
+        {
+          "chapter": 11,
+          "pages": "172-172",
+          "section": "11.1 Electric Current and Circuit"
+        },
+        {
+          "chapter": 12,
+          "pages": "204-205",
+          "section": "12.4 Domestic Electric Circuits"
+        },
+        {
+          "chapter": 9,
+          "pages": "140-141",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        }
+      ]
+    },
+    {
+      "id": "p29",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "State Ohm's law",
+      "gold": [
+        "11.4"
+      ],
+      "rank": 1,
+      "keywords": [
+        "state",
+        "ohm",
+        "law"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 71,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 11,
+          "pages": "176-176",
+          "section": "11.4 Ohm’s Law"
+        },
+        {
+          "chapter": 11,
+          "pages": "175-176",
+          "section": "11.4 Ohm’s Law"
+        },
+        {
+          "chapter": 11,
+          "pages": "183-185",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series"
+        },
+        {
+          "chapter": 11,
+          "pages": "176-177",
+          "section": "11.4 Ohm’s Law"
+        },
+        {
+          "chapter": 11,
+          "pages": "188-189",
+          "section": "11.7 Heating Effect of Electric Current"
+        }
+      ]
+    },
+    {
+      "id": "p30",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "test",
+      "question": "On what factors does the resistance of a wire depend? What is resistivity?",
+      "gold": [
+        "11.5"
+      ],
+      "rank": 1,
+      "keywords": [
+        "on",
+        "what",
+        "factors",
+        "does",
+        "the",
+        "resistance",
+        "of",
+        "wire",
+        "depend",
+        "is",
+        "resistivity"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 74,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 11,
+          "pages": "180-181",
+          "section": "11.5 Factors on Which the Resistance of a Conductor Depends"
+        },
+        {
+          "chapter": 11,
+          "pages": "178-179",
+          "section": "11.5 Factors on Which the Resistance of a Conductor Depends"
+        },
+        {
+          "chapter": 11,
+          "pages": "177-178",
+          "section": "11.5 Factors on Which the Resistance of a Conductor Depends"
+        },
+        {
+          "chapter": 11,
+          "pages": "183-185",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series"
+        },
+        {
+          "chapter": 11,
+          "pages": "179-180",
+          "section": "11.5 Factors on Which the Resistance of a Conductor Depends"
+        }
+      ]
+    },
+    {
+      "id": "p31",
+      "subject": "physics",
+      "lang": "en",
+      "type": "why",
+      "split": "dev",
+      "question": "Why are alloys used in electric heaters instead of pure metals?",
+      "gold": [
+        "11.5"
+      ],
+      "rank": 2,
+      "keywords": [
+        "why",
+        "are",
+        "alloys",
+        "used",
+        "in",
+        "electric",
+        "heaters",
+        "instead",
+        "of",
+        "pure",
+        "metals"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 76,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 11,
+          "pages": "190-190",
+          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+        },
+        {
+          "chapter": 11,
+          "pages": "179-180",
+          "section": "11.5 Factors on Which the Resistance of a Conductor Depends"
+        },
+        {
+          "chapter": 11,
+          "pages": "171-172",
+          "section": "11.1 Electric Current and Circuit"
+        },
+        {
+          "chapter": 11,
+          "pages": "191-192",
+          "section": "11.8 Electric Power"
+        },
+        {
+          "chapter": 11,
+          "pages": "193-194",
+          "section": "Exercises"
+        }
+      ]
+    },
+    {
+      "id": "p32",
+      "subject": "physics",
+      "lang": "en",
+      "type": "numeric",
+      "split": "dev",
+      "question": "Three resistors of 5, 10 and 30 ohm are connected in series to a 12 V battery. Find the current.",
+      "gold": [
+        "11.6.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "three",
+        "resistors",
+        "of",
+        "10",
+        "and",
+        "30",
+        "ohm",
+        "are",
+        "connected",
+        "in",
+        "series",
+        "to"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 73,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 11,
+          "pages": "182-183",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series"
+        },
+        {
+          "chapter": 11,
+          "pages": "183-185",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series"
+        },
+        {
+          "chapter": 11,
+          "pages": "186-187",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.2 Resistors in Parallel"
+        },
+        {
+          "chapter": 11,
+          "pages": "181-182",
+          "section": "11.6 Resistance of a System of Resistors"
+        },
+        {
+          "chapter": 11,
+          "pages": "185-186",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.2 Resistors in Parallel"
+        }
+      ]
+    },
+    {
+      "id": "p33",
+      "subject": "physics",
+      "lang": "en",
+      "type": "why",
+      "split": "test",
+      "question": "Why are household appliances connected in parallel and not in series?",
+      "gold": [
+        "11.6.2"
+      ],
+      "rank": 2,
+      "keywords": [
+        "why",
+        "are",
+        "household",
+        "appliances",
+        "connected",
+        "in",
+        "parallel",
+        "and",
+        "not",
+        "series"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 79,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 11,
+          "pages": "188-189",
+          "section": "11.7 Heating Effect of Electric Current"
+        },
+        {
+          "chapter": 11,
+          "pages": "185-186",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.2 Resistors in Parallel"
+        },
+        {
+          "chapter": 11,
+          "pages": "193-194",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 11,
+          "pages": "193-193",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 11,
+          "pages": "187-187",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.2 Resistors in Parallel"
+        }
+      ]
+    },
+    {
+      "id": "p34",
+      "subject": "physics",
+      "lang": "en",
+      "type": "formula",
+      "split": "dev",
+      "question": "Joule's law of heating formula H = I2Rt",
+      "gold": [
+        "11.7"
+      ],
+      "rank": 1,
+      "keywords": [
+        "joule",
+        "law",
+        "of",
+        "heating",
+        "formula",
+        "i2rt"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 77,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 11,
+          "pages": "190-190",
+          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+        },
+        {
+          "chapter": 11,
+          "pages": "188-189",
+          "section": "11.7 Heating Effect of Electric Current"
+        },
+        {
+          "chapter": 11,
+          "pages": "190-190",
+          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+        },
+        {
+          "chapter": 9,
+          "pages": "155-156",
+          "section": "9.3 Refraction of Light > 9.3.7 Lens Formula and Magnification"
+        },
+        {
+          "chapter": 11,
+          "pages": "189-189",
+          "section": "11.7 Heating Effect of Electric Current"
+        }
+      ]
+    },
+    {
+      "id": "p35",
+      "subject": "physics",
+      "lang": "en",
+      "type": "application",
+      "split": "dev",
+      "question": "Why is tungsten used for the filament of electric bulbs?",
+      "gold": [
+        "11.7.1"
+      ],
+      "rank": 1,
+      "keywords": [
+        "why",
+        "is",
+        "tungsten",
+        "used",
+        "for",
+        "the",
+        "filament",
+        "of",
+        "electric",
+        "bulbs"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 75,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 11,
+          "pages": "190-190",
+          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+        },
+        {
+          "chapter": 11,
+          "pages": "191-192",
+          "section": "11.8 Electric Power"
+        },
+        {
+          "chapter": 11,
+          "pages": "179-180",
+          "section": "11.5 Factors on Which the Resistance of a Conductor Depends"
+        },
+        {
+          "chapter": 11,
+          "pages": "171-172",
+          "section": "11.1 Electric Current and Circuit"
+        },
+        {
+          "chapter": 11,
+          "pages": "172-172",
+          "section": "11.1 Electric Current and Circuit"
+        }
+      ]
+    },
+    {
+      "id": "p36",
+      "subject": "physics",
+      "lang": "en",
+      "type": "numeric",
+      "split": "test",
+      "question": "What is 1 kilowatt hour in joules? Electric power unit",
+      "gold": [
+        "11.8"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "kilowatt",
+        "hour",
+        "in",
+        "joules",
+        "electric",
+        "power",
+        "unit"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 67,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 11,
+          "pages": "191-192",
+          "section": "11.8 Electric Power"
+        },
+        {
+          "chapter": 11,
+          "pages": "190-190",
+          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+        },
+        {
+          "chapter": 11,
+          "pages": "171-172",
+          "section": "11.1 Electric Current and Circuit"
+        },
+        {
+          "chapter": 9,
+          "pages": "157-158",
+          "section": "9.3 Refraction of Light > 9.3.8 Power of a Lens"
+        },
+        {
+          "chapter": 11,
+          "pages": "172-172",
+          "section": "11.1 Electric Current and Circuit"
+        }
+      ]
+    },
+    {
+      "id": "p37",
+      "subject": "physics",
+      "lang": "te",
+      "type": "definition",
+      "split": "dev",
+      "question": "ఓమ్ నియమం ఏమి చెబుతుంది?",
+      "gold": [
+        "11.4"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "p38",
+      "subject": "physics",
+      "lang": "te",
+      "type": "how",
+      "split": "dev",
+      "question": "విద్యుత్ ఫ్యూజ్ ఎలా పని చేస్తుంది?",
+      "gold": [
+        "11.7.1",
+        "12.4"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "p39",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "test",
+      "question": "Properties of magnetic field lines. Why do two field lines never cross?",
+      "gold": [
+        "12.1"
+      ],
+      "rank": 2,
+      "keywords": [
+        "properties",
+        "of",
+        "magnetic",
+        "field",
+        "lines",
+        "why",
+        "do",
+        "two",
+        "never",
+        "cross"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 66,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 12,
+          "pages": "200-201",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.3 Magnetic Field due to a Current through a Circular Loop"
+        },
+        {
+          "chapter": 12,
+          "pages": "196-197",
+          "section": "12.1 Magnetic Field and Field Lines"
+        },
+        {
+          "chapter": 12,
+          "pages": "201-201",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.4 Magnetic Field due to a Current in a Solenoid"
+        },
+        {
+          "chapter": 12,
+          "pages": "196-196",
+          "section": "12.1 Magnetic Field and Field Lines"
+        },
+        {
+          "chapter": 12,
+          "pages": "206-206",
+          "section": "What you have learnt"
+        }
+      ]
+    },
+    {
+      "id": "p40",
+      "subject": "physics",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "How does a compass needle get deflected near a current-carrying wire?",
+      "gold": [
+        "12.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "how",
+        "does",
+        "compass",
+        "needle",
+        "get",
+        "deflected",
+        "near",
+        "current-carrying",
+        "wire"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 82,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 12,
+          "pages": "198-199",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.1 Magnetic Field due to a Current through a Straight Conductor"
+        },
+        {
+          "chapter": 12,
+          "pages": "200-201",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.3 Magnetic Field due to a Current through a Circular Loop"
+        },
+        {
+          "chapter": 12,
+          "pages": "198-198",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.1 Magnetic Field due to a Current through a Straight Conductor"
+        },
+        {
+          "chapter": 12,
+          "pages": "195-195",
+          "section": null
+        },
+        {
+          "chapter": 12,
+          "pages": "199-199",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.2 Right-Hand Thumb Rule"
+        }
+      ]
+    },
+    {
+      "id": "p41",
+      "subject": "physics",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "Magnetic field pattern around a straight current-carrying conductor",
+      "gold": [
+        "12.2.1"
+      ],
+      "rank": 3,
+      "keywords": [
+        "magnetic",
+        "field",
+        "pattern",
+        "around",
+        "straight",
+        "current-carrying",
+        "conductor"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 72,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 12,
+          "pages": "200-201",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.3 Magnetic Field due to a Current through a Circular Loop"
+        },
+        {
+          "chapter": 12,
+          "pages": "201-201",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.4 Magnetic Field due to a Current in a Solenoid"
+        },
+        {
+          "chapter": 12,
+          "pages": "198-198",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.1 Magnetic Field due to a Current through a Straight Conductor"
+        },
+        {
+          "chapter": 12,
+          "pages": "202-202",
+          "section": "12.3 Force on a Current-carrying Conductor in a Magnetic Field"
+        },
+        {
+          "chapter": 12,
+          "pages": "199-199",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.2 Right-Hand Thumb Rule"
+        }
+      ]
+    },
+    {
+      "id": "p42",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "test",
+      "question": "State the right-hand thumb rule",
+      "gold": [
+        "12.2.2"
+      ],
+      "rank": 1,
+      "keywords": [
+        "state",
+        "the",
+        "right-hand",
+        "thumb",
+        "rule"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 70,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 12,
+          "pages": "199-200",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.2 Right-Hand Thumb Rule"
+        },
+        {
+          "chapter": 12,
+          "pages": "199-199",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.2 Right-Hand Thumb Rule"
+        },
+        {
+          "chapter": 12,
+          "pages": "202-203",
+          "section": "12.3 Force on a Current-carrying Conductor in a Magnetic Field"
+        },
+        {
+          "chapter": 12,
+          "pages": "203-203",
+          "section": "12.3 Force on a Current-carrying Conductor in a Magnetic Field"
+        },
+        {
+          "chapter": 12,
+          "pages": "206-206",
+          "section": "What you have learnt"
+        }
+      ]
+    },
+    {
+      "id": "p43",
+      "subject": "physics",
+      "lang": "en",
+      "type": "how",
+      "split": "dev",
+      "question": "Magnetic field due to current through a circular loop",
+      "gold": [
+        "12.2.3"
+      ],
+      "rank": 1,
+      "keywords": [
+        "magnetic",
+        "field",
+        "due",
+        "to",
+        "current",
+        "through",
+        "circular",
+        "loop"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 75,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 12,
+          "pages": "200-201",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.3 Magnetic Field due to a Current through a Circular Loop"
+        },
+        {
+          "chapter": 12,
+          "pages": "201-201",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.4 Magnetic Field due to a Current in a Solenoid"
+        },
+        {
+          "chapter": 12,
+          "pages": "198-199",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.1 Magnetic Field due to a Current through a Straight Conductor"
+        },
+        {
+          "chapter": 12,
+          "pages": "198-198",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.1 Magnetic Field due to a Current through a Straight Conductor"
+        },
+        {
+          "chapter": 12,
+          "pages": "206-206",
+          "section": "What you have learnt"
+        }
+      ]
+    },
+    {
+      "id": "p44",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is a solenoid and how is an electromagnet made?",
+      "gold": [
+        "12.2.4"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "solenoid",
+        "and",
+        "how",
+        "an",
+        "electromagnet",
+        "made"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 61,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 12,
+          "pages": "201-201",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.4 Magnetic Field due to a Current in a Solenoid"
+        },
+        {
+          "chapter": 12,
+          "pages": "195-195",
+          "section": null
+        },
+        {
+          "chapter": 12,
+          "pages": "206-206",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 12,
+          "pages": "202-202",
+          "section": "12.3 Force on a Current-carrying Conductor in a Magnetic Field"
+        },
+        {
+          "chapter": 11,
+          "pages": "190-190",
+          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+        }
+      ]
+    },
+    {
+      "id": "p45",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "test",
+      "question": "State Fleming's left-hand rule",
+      "gold": [
+        "12.3"
+      ],
+      "rank": 2,
+      "keywords": [
+        "state",
+        "fleming",
+        "left-hand",
+        "rule"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 75,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 12,
+          "pages": "199-200",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.2 Right-Hand Thumb Rule"
+        },
+        {
+          "chapter": 12,
+          "pages": "203-203",
+          "section": "12.3 Force on a Current-carrying Conductor in a Magnetic Field"
+        },
+        {
+          "chapter": 12,
+          "pages": "202-203",
+          "section": "12.3 Force on a Current-carrying Conductor in a Magnetic Field"
+        },
+        {
+          "chapter": 12,
+          "pages": "206-206",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 9,
+          "pages": "142-143",
+          "section": "9.2 Spherical Mirrors > 9.2.3 Sign Convention for Reflection by Spherical Mirrors"
+        }
+      ]
+    },
+    {
+      "id": "p46",
+      "subject": "physics",
+      "lang": "en",
+      "type": "why",
+      "split": "dev",
+      "question": "What is the use of the earth wire in domestic circuits?",
+      "gold": [
+        "12.4"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "the",
+        "use",
+        "of",
+        "earth",
+        "wire",
+        "in",
+        "domestic",
+        "circuits"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 74,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 12,
+          "pages": "204-204",
+          "section": "12.4 Domestic Electric Circuits"
+        },
+        {
+          "chapter": 12,
+          "pages": "205-205",
+          "section": "12.4 Domestic Electric Circuits"
+        },
+        {
+          "chapter": 11,
+          "pages": "175-176",
+          "section": "11.4 Ohm’s Law"
+        },
+        {
+          "chapter": 12,
+          "pages": "204-205",
+          "section": "12.4 Domestic Electric Circuits"
+        },
+        {
+          "chapter": 11,
+          "pages": "178-179",
+          "section": "11.5 Factors on Which the Resistance of a Conductor Depends"
+        }
+      ]
+    },
+    {
+      "id": "p47",
+      "subject": "physics",
+      "lang": "en",
+      "type": "definition",
+      "split": "dev",
+      "question": "What is short-circuiting and overloading?",
+      "gold": [
+        "12.4"
+      ],
+      "rank": 1,
+      "keywords": [
+        "what",
+        "is",
+        "short-circuiting",
+        "and",
+        "overloading"
+      ],
+      "keywordSource": "question",
+      "latencyMs": 72,
+      "costInr": 0,
+      "top": [
+        {
+          "chapter": 12,
+          "pages": "205-205",
+          "section": "12.4 Domestic Electric Circuits"
+        },
+        {
+          "chapter": 11,
+          "pages": "172-172",
+          "section": "11.1 Electric Current and Circuit"
+        },
+        {
+          "chapter": 11,
+          "pages": "175-176",
+          "section": "11.4 Ohm’s Law"
+        },
+        {
+          "chapter": 11,
+          "pages": "187-187",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.2 Resistors in Parallel"
+        },
+        {
+          "chapter": 11,
+          "pages": "171-172",
+          "section": "11.1 Electric Current and Circuit"
+        }
+      ]
+    },
+    {
+      "id": "p48",
+      "subject": "physics",
+      "lang": "te",
+      "type": "definition",
+      "split": "test",
+      "question": "అయస్కాంత క్షేత్ర రేఖలు అంటే ఏమిటి?",
+      "gold": [
+        "12.1"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "p49",
+      "subject": "physics",
+      "lang": "te",
+      "type": "how",
+      "split": "dev",
+      "question": "సోలినాయిడ్ లోపల అయస్కాంత క్షేత్రం ఎలా ఉంటుంది?",
+      "gold": [
+        "12.2.4"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    },
+    {
+      "id": "p50",
+      "subject": "physics",
+      "lang": "te",
+      "type": "definition",
+      "split": "dev",
+      "question": "విద్యుత్ ప్రవాహం వల్ల ఉష్ణం ఎందుకు ఉత్పత్తి అవుతుంది?",
+      "gold": [
+        "11.7"
+      ],
+      "rank": null,
+      "keywords": [],
+      "keywordSource": "question",
+      "latencyMs": 0,
+      "costInr": 0,
+      "top": []
+    }
+  ]
+}

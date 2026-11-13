@@ -13,7 +13,27 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { extractText, getDocumentProxy } from 'unpdf';
 import { createAdminClient } from '@insforge/sdk';
-import { chunkTextbook, type Chunk } from '../src/ingest/textbook.ts';
+import { chunkTextbook, relocateFooterHeadings, type Chunk, type PageLine } from '../src/ingest/textbook.ts';
+
+type PdfDoc = Awaited<ReturnType<typeof getDocumentProxy>>;
+
+/** Page text exactly as unpdf's extractText builds it, split into lines with the y of each line's first glyph. */
+async function extractLines(pdf: PdfDoc): Promise<PageLine[][]> {
+  const pages: PageLine[][] = [];
+  for (let n = 1; n <= pdf.numPages; n++) {
+    const { items } = await (await pdf.getPage(n)).getTextContent();
+    const lines: PageLine[] = [{ text: '', y: null }];
+    for (const item of items as { str?: string; hasEOL?: boolean; transform?: number[] }[]) {
+      if (item.str == null) continue;
+      const line = lines[lines.length - 1];
+      if (line.y === null && item.str.trim() && item.transform) line.y = item.transform[5];
+      line.text += item.str;
+      if (item.hasEOL) lines.push({ text: '', y: null });
+    }
+    pages.push(lines);
+  }
+  return pages;
+}
 
 interface Manifest {
   board_code: string; grade: number; academic_year: string; publisher: string; book: string;
@@ -66,9 +86,15 @@ for (const ch of manifest.chapters) {
   if (ch.sha256 && sha !== ch.sha256) throw new Error(`${ch.file}: checksum ${sha} does not match manifest`);
 
   const pdf = await getDocumentProxy(new Uint8Array(bytes));
-  const { text: pages } = await extractText(pdf, { mergePages: false });
-  console.log(`\nCh ${ch.number} (${ch.file}, ${pages.length} PDF pages)`);
-  const chunks = chunkTextbook(pages, ch.number, { onWarning: (msg) => console.log(`  ⚠ ${msg}`) });
+  const { text: plainPages } = await extractText(pdf, { mergePages: false });
+  console.log(`\nCh ${ch.number} (${ch.file}, ${plainPages.length} PDF pages)`);
+  const warn = (msg: string) => console.log(`  ⚠ ${msg}`);
+  const pageLines = await extractLines(pdf);
+  pageLines.forEach((lines, i) => { // same text as unpdf, plus positions
+    if (lines.map((l) => l.text).join('\n') !== plainPages[i]) throw new Error(`${ch.file} p${i + 1}: positional text differs from extractText`);
+  });
+  const pages = relocateFooterHeadings(pageLines, ch.number, warn);
+  const chunks = chunkTextbook(pages, ch.number, { onWarning: warn });
   report(ch.file, chunks);
   if (dryRun || !admin) continue;
 

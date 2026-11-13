@@ -4,6 +4,7 @@ import {
   chunkTextbook,
   collapseShadowText,
   compareSectionNumbers,
+  relocateFooterHeadings,
   repairHeadingTitle,
   detectPageOffset,
   normalizeHeadingNumber,
@@ -43,6 +44,31 @@ describe('repairHeadingTitle', () => {
   });
   it('leaves real words alone', () => {
     expect(repairHeadingTitle('PLANTS IN A POPULATION', vocab)).toBe('PLANTS IN A POPULATION');
+  });
+});
+
+describe('relocateFooterHeadings', () => {
+  it('moves a heading glued to the footer to just above the line printed below it', () => {
+    const page = [
+      { text: 'Science8', y: 800 },
+      { text: 'end of the combination text.', y: 700 },
+      { text: 'Activity 1.5', y: 500 },
+      { text: 'Heat ferrous sulphate crystals.', y: 480 },
+      { text: 'This is a decomposition reaction.', y: 300 },
+      { text: '1.2.2 Decomposition ReactionReprint 2026-27', y: 560 },
+    ];
+    const warnings: string[] = [];
+    const [text] = relocateFooterHeadings([page], 1, (m) => warnings.push(m));
+    expect(text.split('\n')).toEqual([
+      'Science8', 'end of the combination text.', '1.2.2 Decomposition Reaction', 'Activity 1.5',
+      'Heat ferrous sulphate crystals.', 'This is a decomposition reaction.',
+    ]);
+    expect(warnings).toHaveLength(1);
+  });
+
+  it('leaves ordinary lines and footers alone', () => {
+    const page = [{ text: 'Science8', y: 800 }, { text: 'Some text 1.2 times.Reprint 2026-27', y: 100 }];
+    expect(relocateFooterHeadings([page], 1)).toEqual(['Science8\nSome text 1.2 times.Reprint 2026-27']);
   });
 });
 

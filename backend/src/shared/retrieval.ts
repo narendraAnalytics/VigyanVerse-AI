@@ -71,10 +71,13 @@ export interface RewriteResult {
   source: 'model' | 'question';
   /** Present when the model was called (for model_usage accounting), even if unusable. */
   usage?: Pick<ChatResult, 'model' | 'inputTokens' | 'outputTokens' | 'costInr' | 'latencyMs'>;
+  /** Why the model keywords were not used (e.g. "429 Rate limit exceeded"); log it. */
+  error?: string;
 }
 
 export async function rewriteQuery(question: string, subjectHint?: string): Promise<RewriteResult> {
   let usage: RewriteResult['usage'];
+  let error = 'model returned no usable keywords';
   try {
     const result = await chat('query_rewrite', buildRewriteMessages(question, subjectHint));
     usage = {
@@ -86,10 +89,11 @@ export async function rewriteQuery(question: string, subjectHint?: string): Prom
     };
     const keywords = parseRewrite(result.content);
     if (keywords.length) return { keywords, source: 'model', usage };
-  } catch {
+  } catch (e) {
     // fall through to the deterministic fallback
+    error = e instanceof Error ? e.message : String(e);
   }
-  return { keywords: sanitizeKeywords([question]), source: 'question', usage };
+  return { keywords: sanitizeKeywords([question]), source: 'question', usage, error };
 }
 
 export interface ChunkHit {
