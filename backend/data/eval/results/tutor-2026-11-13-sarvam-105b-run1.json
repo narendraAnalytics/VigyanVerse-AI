@@ -1,0 +1,1738 @@
+{
+  "agent": "tutor",
+  "model": "sarvam-105b",
+  "reasoning": null,
+  "ranAt": "2026-11-13T03:50:46.026Z",
+  "metrics": {
+    "valid": 0.8611111111111112,
+    "language": 0.8888888888888888,
+    "short": 0.9714285714285714,
+    "inBookFromBook": 0.9642857142857143,
+    "goldCited": 0.9642857142857143,
+    "outLabelled": 1,
+    "correct": 0.8611111111111112,
+    "faithful": 0.9629629629629629,
+    "simple": 0.9166666666666666,
+    "droppedSources": 0,
+    "p50Ms": 1202,
+    "p95Ms": 2238,
+    "avgIn": 2016,
+    "avgOut": 125,
+    "avgCostInr": 0.03775791666666668
+  },
+  "bar": {
+    "valid": false,
+    "language": false,
+    "short": true,
+    "inBookFromBook": true,
+    "goldCited": true,
+    "outLabelled": true,
+    "correct": false,
+    "faithful": true,
+    "p95Ms": true
+  },
+  "rows": [
+    {
+      "id": "c01",
+      "lang": "en",
+      "inBook": true,
+      "question": "What is a balanced chemical equation?",
+      "status": "grounded",
+      "answer": {
+        "answer": "A balanced chemical equation has the same number of atoms of each element on both sides of the arrow. This follows the law of conservation of mass. The total mass of the reactants is equal to the total mass of the products.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "93eb4afc-20c9-4283-b62a-6ed53cf4f635",
+            "chapterNumber": 1,
+            "chapterTitle": "Chemical Reactions and Equations",
+            "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations",
+            "pageStart": 3,
+            "pageEnd": 4
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly defines a balanced chemical equation as having equal numbers of atoms of each element on both sides, links it to the law of conservation of mass, and states that reactant and product masses are equal—all directly supported by the textbook passage. The language is plain and appropriate for a 15-year-old.",
+        "costInr": 0.030086
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2232,
+        "outputTokens": 116,
+        "reasoningTokens": 0,
+        "costInr": 0.04044,
+        "latencyMs": 925
+      },
+      "latencyMs": 928
+    },
+    {
+      "id": "c06",
+      "lang": "en",
+      "inBook": true,
+      "question": "What is thermal decomposition? Example with calcium carbonate",
+      "status": "grounded",
+      "answer": {
+        "answer": "Thermal decomposition is a reaction where a single compound breaks down into simpler substances when heated. When calcium carbonate is heated, it decomposes into calcium oxide and carbon dioxide.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "ed5f72d8-0f07-4225-9fc8-cdde2a63fd63",
+            "chapterNumber": 1,
+            "chapterTitle": "Chemical Reactions and Equations",
+            "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction",
+            "pageStart": 8,
+            "pageEnd": 9
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly defines thermal decomposition as a single compound breaking down into simpler substances on heating, and gives the textbook example CaCO3 → CaO + CO2, both supported by passage [1]. The language is plain and suitable for a 15-year-old.",
+        "costInr": 0.029045
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2374,
+        "outputTokens": 57,
+        "reasoningTokens": 0,
+        "costInr": 0.03903,
+        "latencyMs": 680
+      },
+      "latencyMs": 680
+    },
+    {
+      "id": "c18",
+      "lang": "en",
+      "inBook": true,
+      "question": "What is a neutralisation reaction?",
+      "status": "grounded",
+      "answer": {
+        "answer": "A neutralisation reaction is when an acid and a base react with each other to produce a salt and water. The effect of the acid is cancelled out by the base, and vice-versa.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "7532ea99-79aa-45e2-b624-5426403615e9",
+            "chapterNumber": 2,
+            "chapterTitle": "Acids, Bases and Salts",
+            "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.4 How do Acids and Bases React with each other?",
+            "pageStart": 21,
+            "pageEnd": 21
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly defines neutralisation as the reaction between an acid and a base giving salt and water, matching the textbook definition, and the note that the acid's effect is nullified by the base is directly supported by the passage. The language is plain and suitable for a 15-year-old.",
+        "costInr": 0.028157
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2252,
+        "outputTokens": 106,
+        "reasoningTokens": 0,
+        "costInr": 0.04014,
+        "latencyMs": 1143
+      },
+      "latencyMs": 1143
+    },
+    {
+      "id": "c24",
+      "lang": "en",
+      "inBook": true,
+      "question": "bee sting remedy baking soda why",
+      "status": "grounded",
+      "answer": {
+        "answer": "Baking soda is a mild base. It neutralises the acid from a bee sting, which gives relief from pain.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "6c326519-e473-4e40-ab87-7600601fe0a4",
+            "chapterNumber": 2,
+            "chapterTitle": "Acids, Bases and Salts",
+            "section": "2.3 How Strong Are Acid or Base Solutions? > 2.3.1 Importance of pH in Everyday Life",
+            "pageStart": 27,
+            "pageEnd": 27
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly states baking soda is a mild base that neutralises the bee-sting acid, matching the textbook passage, and uses plain language.",
+        "costInr": 0.024477
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2115,
+        "outputTokens": 79,
+        "reasoningTokens": 0,
+        "costInr": 0.036465,
+        "latencyMs": 969
+      },
+      "latencyMs": 970
+    },
+    {
+      "id": "c35",
+      "lang": "en",
+      "inBook": true,
+      "question": "What is the reactivity series of metals?",
+      "status": "grounded",
+      "answer": {
+        "answer": "The reactivity series is a list of metals arranged in the order of their decreasing activities. It shows how reactive a metal is compared to others. The most reactive metal is potassium and the least reactive is gold.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "3f31c921-0c80-4e0c-8577-c37f78b6124b",
+            "chapterNumber": 3,
+            "chapterTitle": "Metals and Non-metals",
+            "section": "3.2 Chemical Properties of Metals > 3.2.5 The Reactivity Series",
+            "pageStart": 45,
+            "pageEnd": 46
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly defines the reactivity series as metals arranged in decreasing order of activity, matching the textbook, and correctly states potassium is most reactive and gold least reactive per Table 3.2. All facts are supported by the passages, and the language is plain and clear for a 15-year-old.",
+        "costInr": 0.026714
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 1829,
+        "outputTokens": 109,
+        "reasoningTokens": 0,
+        "costInr": 0.033975,
+        "latencyMs": 1747
+      },
+      "latencyMs": 1748
+    },
+    {
+      "id": "b02",
+      "lang": "en",
+      "inBook": true,
+      "question": "What are the raw materials and steps of photosynthesis?",
+      "status": "grounded",
+      "answer": {
+        "answer": "The raw materials for photosynthesis are carbon dioxide and water. Sunlight is the energy source. The steps are: light absorption, water splitting, and carbon dioxide reduction.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "07f82d62-4d97-4328-bb58-d0d8a0927879",
+            "chapterNumber": 5,
+            "chapterTitle": "Life Processes",
+            "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition",
+            "pageStart": 82,
+            "pageEnd": 83
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly states the raw materials (CO2, water) and the three steps (light absorption, water splitting, CO2 reduction), all supported by passage [4] and [2]. The language is plain and suitable for a 15-year-old.",
+        "costInr": 0.024776
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 1839,
+        "outputTokens": 91,
+        "reasoningTokens": 0,
+        "costInr": 0.033045,
+        "latencyMs": 1122
+      },
+      "latencyMs": 1123
+    },
+    {
+      "id": "b07",
+      "lang": "en",
+      "inBook": true,
+      "question": "Difference between aerobic and anaerobic respiration",
+      "status": "grounded",
+      "answer": {
+        "answer": "Aerobic respiration takes place in the presence of oxygen and releases a lot of energy. Anaerobic respiration takes place in the absence of oxygen and releases less energy.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "1d3485e0-73ae-4b5a-a4d1-529e8d22b6f9",
+            "chapterNumber": 5,
+            "chapterTitle": "Life Processes",
+            "section": "5.3 Respiration",
+            "pageStart": 87,
+            "pageEnd": 88
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly states the key differences: aerobic respiration occurs in the presence of oxygen and releases more energy, while anaerobic respiration occurs without oxygen and releases less energy. Both facts are directly supported by the textbook passage [1] ('Since this process takes place in the presence of air (oxygen), it is called aerobic respiration... The release of energy in this aerobic process is a lot greater than in the anaerobic process'). The language is plain and appropriate for a 15-year-old.",
+        "costInr": 0.027169
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 1919,
+        "outputTokens": 93,
+        "reasoningTokens": 0,
+        "costInr": 0.034365,
+        "latencyMs": 1195
+      },
+      "latencyMs": 1196
+    },
+    {
+      "id": "b19",
+      "lang": "en",
+      "inBook": true,
+      "question": "What is phototropism and geotropism?",
+      "status": "grounded",
+      "answer": {
+        "answer": "Phototropism is when plant shoots bend towards light. Geotropism is when roots grow downwards and shoots grow upwards in response to gravity.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "fbc1a173-6646-4f89-b440-ea7f79ae75fc",
+            "chapterNumber": 6,
+            "chapterTitle": "Control and Coordination",
+            "section": "6.2 Coordination in Plants > 6.2.2 Movement Due to Growth",
+            "pageStart": 106,
+            "pageEnd": 107
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly defines phototropism (shoots bending towards light) and geotropism (roots growing down, shoots growing up in response to gravity), both directly supported by the textbook passage. The language is plain and suitable for a 15-year-old.",
+        "costInr": 0.020926
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 1326,
+        "outputTokens": 82,
+        "reasoningTokens": 0,
+        "costInr": 0.02481,
+        "latencyMs": 1034
+      },
+      "latencyMs": 1034
+    },
+    {
+      "id": "b36",
+      "lang": "en",
+      "inBook": true,
+      "question": "Mendel experiment with tall and short pea plants F1 F2 ratio",
+      "status": "grounded",
+      "answer": {
+        "answer": "The F1 generation from a cross between tall and short pea plants are all tall. When these F1 plants self-pollinate, the F2 generation shows a ratio of 3 tall plants to 1 short plant. This shows that the tallness trait is dominant and shortness is recessive.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "9e1f5076-f17f-45c9-952a-4a3a7699b44f",
+            "chapterNumber": 8,
+            "chapterTitle": "Heredity",
+            "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions",
+            "pageStart": 130,
+            "pageEnd": 130
+          },
+          {
+            "chunkId": "601cf45a-139b-4159-8094-88219200b9a4",
+            "chapterNumber": 8,
+            "chapterTitle": "Heredity",
+            "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions",
+            "pageStart": 130,
+            "pageEnd": 131
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly states F1 all tall and F2 3:1 tall:short, with tall dominant and short recessive, all supported by the passages (F1 all tall; F2 one quarter short; T dominant, t recessive). Language is plain and suitable for a 15-year-old.",
+        "costInr": 0.027175
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2015,
+        "outputTokens": 147,
+        "reasoningTokens": 0,
+        "costInr": 0.039045,
+        "latencyMs": 1631
+      },
+      "latencyMs": 1632
+    },
+    {
+      "id": "b46",
+      "lang": "en",
+      "inBook": true,
+      "question": "How is the ozone layer being depleted and why is it harmful?",
+      "status": "grounded",
+      "answer": {
+        "answer": "The ozone layer is being depleted by synthetic chemicals like chlorofluorocarbons (CFCs) used as refrigerants. This layer is harmful because it shields the Earth from damaging ultraviolet (UV) radiation from the Sun, which can cause skin cancer in humans.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "c2a27d69-1e14-4785-8447-6149e9152b18",
+            "chapterNumber": 13,
+            "chapterTitle": "Our Environment",
+            "section": "13.2 How Do Our Activities Affect the Environment? > 13.2.1 Ozone Layer and How it is Getting Depleted",
+            "pageStart": 212,
+            "pageEnd": 213
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly states CFCs deplete ozone and that the layer protects from UV radiation that can cause skin cancer, all supported by the textbook. The phrasing 'This layer is harmful' is slightly awkward (it means loss of the layer is harmful), but the meaning is clear and the facts are accurate and simple.",
+        "costInr": 0.024708
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 1572,
+        "outputTokens": 140,
+        "reasoningTokens": 0,
+        "costInr": 0.03198,
+        "latencyMs": 1610
+      },
+      "latencyMs": 1610
+    },
+    {
+      "id": "p07",
+      "lang": "en",
+      "inBook": true,
+      "question": "mirror formula and magnification formula",
+      "status": "grounded",
+      "answer": {
+        "answer": "The mirror formula is 1/v + 1/u = 1/f. It relates the object distance, image distance, and focal length of a spherical mirror. The magnification formula is m = -v/u or m = h'/h, which tells you how much bigger or smaller the image is compared to the object.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "2c7037df-4b0e-4baf-8ecb-07589201dfdc",
+            "chapterNumber": 9,
+            "chapterTitle": "Light – Reflection and Refraction",
+            "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification",
+            "pageStart": 143,
+            "pageEnd": 143
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly states the mirror formula 1/v + 1/u = 1/f and the magnification formulas m = -v/u and m = h'/h, all directly supported by the textbook passages. The language is plain and appropriate for a 15-year-old.",
+        "costInr": 0.031731
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2335,
+        "outputTokens": 165,
+        "reasoningTokens": 0,
+        "costInr": 0.044925,
+        "latencyMs": 1784
+      },
+      "latencyMs": 1784
+    },
+    {
+      "id": "p21",
+      "lang": "en",
+      "inBook": true,
+      "question": "Why do stars twinkle but planets do not?",
+      "status": "grounded",
+      "answer": {
+        "answer": "Stars twinkle because they are very far away and act as point sources of light. Their light is bent by the Earth's atmosphere, making their brightness flicker. Planets do not twinkle because they are much closer to Earth and appear as extended sources of light. The light from the many points on a planet averages out, so the twinkling effect disappears.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "4735087b-25e8-4f63-8790-6b43ebbfed8d",
+            "chapterNumber": 10,
+            "chapterTitle": "The Human Eye and the Colourful World",
+            "section": "10.5 Atmospheric Refraction",
+            "pageStart": 168,
+            "pageEnd": 168
+          },
+          {
+            "chunkId": "9aecd8c3-a0d4-403e-88ed-88c34416da15",
+            "chapterNumber": 10,
+            "chapterTitle": "The Human Eye and the Colourful World",
+            "section": "10.5 Atmospheric Refraction",
+            "pageStart": 168,
+            "pageEnd": 168
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly explains twinkling via atmospheric refraction of point-like starlight and planets as extended sources whose variations average out, all supported by passages [1] and [3]; the language is plain and suitable for a 15-year-old.",
+        "costInr": 0.026542
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 1734,
+        "outputTokens": 168,
+        "reasoningTokens": 0,
+        "costInr": 0.03609,
+        "latencyMs": 1816
+      },
+      "latencyMs": 1816
+    },
+    {
+      "id": "p29",
+      "lang": "en",
+      "inBook": true,
+      "question": "State Ohm's law",
+      "status": "weak",
+      "answer": {
+        "answer": "Ohm's law states that the potential difference (V) across a conductor is directly proportional to the current (I) flowing through it, provided the temperature remains constant. This relationship is expressed as V = IR, where R is the resistance of the conductor.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "a4393711-7513-443d-999f-2ad6d7a2a270",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.4 Ohm’s Law",
+            "pageStart": 176,
+            "pageEnd": 176
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly states Ohm's law as given in the textbook (V proportional to I at constant temperature, V = IR with R as resistance), all facts are supported by the passages, and the language is clear and simple for a 15-year-old.",
+        "costInr": 0.027731
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2367,
+        "outputTokens": 132,
+        "reasoningTokens": 0,
+        "costInr": 0.043425,
+        "latencyMs": 1658
+      },
+      "latencyMs": 1658
+    },
+    {
+      "id": "p45",
+      "lang": "en",
+      "inBook": true,
+      "question": "State Fleming's left-hand rule",
+      "status": "grounded",
+      "answer": {
+        "answer": "To find the direction of the force on a current-carrying conductor in a magnetic field, stretch the thumb, forefinger, and middle finger of your left hand so they are mutually perpendicular. Point your first finger in the direction of the magnetic field and your second finger in the direction of the current. Your thumb will then point in the direction of the force.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "b9d85e9c-1fb5-4362-89cb-26ab1314e951",
+            "chapterNumber": 12,
+            "chapterTitle": "Magnetic Effects of Electric Current",
+            "section": "12.3 Force on a Current-carrying Conductor in a Magnetic Field",
+            "pageStart": 202,
+            "pageEnd": 203
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer accurately states Fleming's left-hand rule as given in passage [2], with all facts (mutually perpendicular thumb, forefinger, middle finger; first finger = magnetic field; second finger = current; thumb = force) directly supported by the textbook. The language is plain and clear for a 15-year-old.",
+        "costInr": 0.026317
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 1855,
+        "outputTokens": 171,
+        "reasoningTokens": 0,
+        "costInr": 0.038085,
+        "latencyMs": 1450
+      },
+      "latencyMs": 1450
+    },
+    {
+      "id": "c12",
+      "lang": "te",
+      "inBook": true,
+      "question": "రసాయన చర్యలో విఘటన చర్య అంటే ఏమిటి?",
+      "status": "grounded",
+      "answer": {
+        "answer": "విఘటన చర్య (decomposition reaction) లో ఒకే పదార్థం విడిపోయి రెండు లేదా అంతకంటే ఎక్కువ సరళమైన పదార్థాలుగా మారుతుంది. ఉదాహరణకు, వేడి చేసినప్పుడు ఫెరస్ సల్ఫేట్ (ferrous sulphate) విడిపోయి ఫెర్రిక్ ఆక్సైడ్ (ferric oxide), సల్ఫర్ డయాక్సైడ్ (SO2) మరియు సల్ఫర్ ట్రైఆక్సైడ్ (SO3) గా మారుతుంది.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "ed5f72d8-0f07-4225-9fc8-cdde2a63fd63",
+            "chapterNumber": 1,
+            "chapterTitle": "Chemical Reactions and Equations",
+            "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction",
+            "pageStart": 8,
+            "pageEnd": 9
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly defines a decomposition reaction as a single substance breaking down into two or more simpler substances, matching the textbook's definition. The ferrous sulphate example with products Fe2O3, SO2, and SO3 is directly supported by the passage. The language is plain and clear for a 15-year-old.",
+        "costInr": 0.030266
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2225,
+        "outputTokens": 225,
+        "reasoningTokens": 0,
+        "costInr": 0.046875,
+        "latencyMs": 2237
+      },
+      "latencyMs": 2238
+    },
+    {
+      "id": "c27",
+      "lang": "te",
+      "inBook": true,
+      "question": "pH విలువ 7 కంటే తక్కువ ఉంటే ఆ ద్రావణం ఆమ్లమా లేక క్షారమా?",
+      "status": "grounded",
+      "answer": {
+        "answer": "మీ పాఠ్యపుస్తకం ఇలా చెబుతోంది: \"We know how acid-base indicators can be used to distinguish between an acid and a base. We have also learnt in the previous section about dilution and decrease in concentration of H+ or OH– ions in solutions.\"",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "db08f1ed-713a-4ef2-a063-daa0cc5d3ce5",
+            "chapterNumber": 2,
+            "chapterTitle": "Acids, Bases and Salts",
+            "section": "2.3 How Strong Are Acid or Base Solutions?",
+            "pageStart": 25,
+            "pageEnd": 25
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "fallback",
+      "checks": {
+        "valid": false,
+        "language": false,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": false,
+        "faithful": true,
+        "simple": false,
+        "reason": "The answer does not address the question at all; it only quotes an unrelated introductory sentence about indicators and dilution. It never states that a pH below 7 means the solution is acidic, so it is not scientifically responsive. The quote is from the textbook, so it is faithful, but it is not a plain-language explanation for a 15-year-old.",
+        "costInr": 0.027781
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 1932,
+        "outputTokens": 45,
+        "reasoningTokens": 0,
+        "costInr": 0.03168,
+        "latencyMs": 527
+      },
+      "latencyMs": 530
+    },
+    {
+      "id": "b12",
+      "lang": "te",
+      "inBook": true,
+      "question": "నెఫ్రాన్ నిర్మాణం మరియు పని గురించి చెప్పండి",
+      "status": "grounded",
+      "answer": {
+        "answer": "మీ పాఠ్యపుస్తకం ఇలా చెబుతోంది: \"As a result, we can usually control the urge to urinate. More to Know!\"",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "5dcd3a1f-e008-4f93-bcbf-879ae720baca",
+            "chapterNumber": 5,
+            "chapterTitle": "Life Processes",
+            "section": "5.5 Excretion > 5.5.1 Excretion in Human Beings",
+            "pageStart": 97,
+            "pageEnd": 97
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "fallback",
+      "checks": {
+        "valid": false,
+        "language": false,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": false,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer does not describe the structure or functioning of a nephron at all; it only quotes an unrelated sentence about controlling the urge to urinate. It is faithful to the textbook (it is a direct quote) and simple, but it fails to answer the question, so it is not correct.",
+        "costInr": 0.02649
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 1940,
+        "outputTokens": 66,
+        "reasoningTokens": 0,
+        "costInr": 0.03306,
+        "latencyMs": 821
+      },
+      "latencyMs": 821
+    },
+    {
+      "id": "b21",
+      "lang": "te",
+      "inBook": true,
+      "question": "అయోడిన్ లోపం వల్ల గాయిటర్ ఎందుకు వస్తుంది?",
+      "status": "grounded",
+      "answer": {
+        "answer": "అయోడిన్ లోపం వల్ల థైరాయిడ్ గ్రంథి సరిగ్గా పనిచేయదు, దీనివల్ల గాయిటర్ వస్తుంది. థైరాయిడ్ గ్రంథి మెడలో ఉంటుంది, కాబట్టి ఈ వ్యాధి వచ్చినప్పుడు మెడ వాపు వస్తుంది.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "2ef2d5b7-ff2c-48fd-9212-ddc9f5041f59",
+            "chapterNumber": 6,
+            "chapterTitle": "Control and Coordination",
+            "section": "6.3 Hormones in Animals",
+            "pageStart": 110,
+            "pageEnd": 111
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly states that iodine deficiency impairs the thyroid gland, causing goitre, and that the thyroid is in the neck so the neck swells — both supported by passage [1]. Language is plain and suitable for a 15-year-old.",
+        "costInr": 0.026388
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2010,
+        "outputTokens": 147,
+        "reasoningTokens": 0,
+        "costInr": 0.03897,
+        "latencyMs": 1517
+      },
+      "latencyMs": 1517
+    },
+    {
+      "id": "b48",
+      "lang": "te",
+      "inBook": true,
+      "question": "ఆహార గొలుసు మరియు ఆహార జాలం అంటే ఏమిటి?",
+      "status": "grounded",
+      "answer": {
+        "answer": "ఆహార గొలుసు (food chain) అంటే ఒకదానిని మరొకటి తినే జీవుల వరుస. ఆహార జాలం (food web) అనేది చాలా ఆహార గొలుసులు కలిసి ఏర్పడే పెద్ద వల.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "4f971408-11b2-45cf-9d9c-1675fe545081",
+            "chapterNumber": 13,
+            "chapterTitle": "Our Environment",
+            "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs",
+            "pageStart": 210,
+            "pageEnd": 211
+          },
+          {
+            "chunkId": "eaff0e3d-8dd7-4f12-81bb-ab40689c4c9f",
+            "chapterNumber": 13,
+            "chapterTitle": "Our Environment",
+            "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs",
+            "pageStart": 210,
+            "pageEnd": 210
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly defines a food chain as a series of organisms feeding on one another and a food web as many interconnected food chains, both supported by the textbook passages. The language is plain and appropriate for a 15-year-old.",
+        "costInr": 0.025832
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 1869,
+        "outputTokens": 178,
+        "reasoningTokens": 0,
+        "costInr": 0.038715,
+        "latencyMs": 1844
+      },
+      "latencyMs": 1844
+    },
+    {
+      "id": "p15",
+      "lang": "te",
+      "inBook": true,
+      "question": "కాంతి వక్రీభవనం అంటే ఏమిటి?",
+      "status": "weak",
+      "answer": {
+        "answer": "మీ పాఠ్యపుస్తకం ఇలా చెబుతోంది: \"Activity 9. 10 • Fix a sheet of white paper on a drawing board using drawing pins.\"",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "f3a82f33-f096-4e79-a66f-0f4a1c533b7f",
+            "chapterNumber": 9,
+            "chapterTitle": "Light – Reflection and Refraction",
+            "section": "9.3 Refraction of Light > 9.3.1 Refraction through a Rectangular Glass Slab",
+            "pageStart": 147,
+            "pageEnd": 148
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "fallback",
+      "checks": {
+        "valid": false,
+        "language": false,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": false,
+        "faithful": true,
+        "simple": false,
+        "reason": "The answer does not define refraction at all; it merely quotes an unrelated activity instruction about fixing paper with drawing pins. It is faithful to the textbook text but fails to answer the question, and the quoted English sentence is not a simple explanation for a 15-year-old.",
+        "costInr": 0.027084
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2320,
+        "outputTokens": 81,
+        "reasoningTokens": 0,
+        "costInr": 0.03966,
+        "latencyMs": 952
+      },
+      "latencyMs": 953
+    },
+    {
+      "id": "p23",
+      "lang": "te",
+      "inBook": true,
+      "question": "ఆకాశం నీలి రంగులో ఎందుకు కనిపిస్తుంది?",
+      "status": "grounded",
+      "answer": {
+        "answer": "ఆకాశం నీలి రంగులో కనిపిస్తుంది, ఎందుకంటే గాలిలోని చిన్న కణాలు సూర్యకాంతిలోని నీలి రంగును (తక్కువ తరంగదైర్ఘ్యం) ఎర్ర రంగు కంటే ఎక్కువగా చెదరగొడతాయి (scatter). ఈ చెదరిపోయిన నీలి రంగు మన కళ్ళకు చేరుతుంది.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "daf2d440-5925-4eaf-a5e5-d5daecc5ec7d",
+            "chapterNumber": 10,
+            "chapterTitle": "The Human Eye and the Colourful World",
+            "section": "10.6 Scattering of Light > 10.6.2 Why is the colour of the clear Sky Blue?",
+            "pageStart": 169,
+            "pageEnd": 169
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly states that fine air particles scatter shorter-wavelength blue light more than red, and the scattered blue light reaches our eyes, matching textbook passage [1]. It is fully supported by the text and uses plain, clear language suitable for a 15-year-old.",
+        "costInr": 0.02518
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 1569,
+        "outputTokens": 190,
+        "reasoningTokens": 0,
+        "costInr": 0.034935,
+        "latencyMs": 1942
+      },
+      "latencyMs": 1942
+    },
+    {
+      "id": "p37",
+      "lang": "te",
+      "inBook": true,
+      "question": "ఓమ్ నియమం ఏమి చెబుతుంది?",
+      "status": "grounded",
+      "answer": {
+        "answer": "మీ పాఠ్యపుస్తకం ఇలా చెబుతోంది: \"Activity 11. 2 • Take a nichrome wire, a torch bulb, a 10 W bulb and an ammeter (0 – 5 A range), a plug key and some connecting wires.\"",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "a4393711-7513-443d-999f-2ad6d7a2a270",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.4 Ohm’s Law",
+            "pageStart": 176,
+            "pageEnd": 176
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "fallback",
+      "checks": {
+        "valid": false,
+        "language": false,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": false,
+        "faithful": true,
+        "simple": false,
+        "reason": "The answer does not state Ohm's law at all; it only quotes the materials list of Activity 11.2. It is faithful to the textbook text but fails to answer the question, and the quoted English activity instructions are not a plain-language explanation for a Class 10 student.",
+        "costInr": 0.030371
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2641,
+        "outputTokens": 201,
+        "reasoningTokens": 0,
+        "costInr": 0.051675,
+        "latencyMs": 2155
+      },
+      "latencyMs": 2155
+    },
+    {
+      "id": "c29",
+      "lang": "te-latn",
+      "inBook": true,
+      "question": "plaster of paris ela tayaru chestaru?",
+      "status": "grounded",
+      "answer": {
+        "answer": "Plaster of Paris ni gypsum ni 373 K temperature daggara vedi cheyadam dwara tayaru chestaru. Deenivalla gypsum loni water molecules potayi, mariyu adi calcium sulphate hemihydrate ga marutundi.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "d39e2cb1-8d47-4277-adae-5ee19b1a5c35",
+            "chapterNumber": 2,
+            "chapterTitle": "Acids, Bases and Salts",
+            "section": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?",
+            "pageStart": 32,
+            "pageEnd": 33
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly states that Plaster of Paris is made by heating gypsum at 373 K, losing water to form calcium sulphate hemihydrate, matching the textbook passage. It is faithful to the passage and uses simple Telugu understandable to a 15-year-old.",
+        "costInr": 0.027811
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2117,
+        "outputTokens": 132,
+        "reasoningTokens": 0,
+        "costInr": 0.039675,
+        "latencyMs": 1072
+      },
+      "latencyMs": 1072
+    },
+    {
+      "id": "b23",
+      "lang": "te-latn",
+      "inBook": true,
+      "question": "diabetes ki insulin ki sambandham enti?",
+      "status": "weak",
+      "answer": {
+        "answer": "Insulin is a hormone produced by the pancreas. It helps in regulating blood sugar levels. If it is not secreted in proper amounts, the sugar level in the blood rises causing diabetes.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "2ef2d5b7-ff2c-48fd-9212-ddc9f5041f59",
+            "chapterNumber": 6,
+            "chapterTitle": "Control and Coordination",
+            "section": "6.3 Hormones in Animals",
+            "pageStart": 110,
+            "pageEnd": 111
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly states that insulin is a pancreas-produced hormone regulating blood sugar, and that improper secretion raises blood sugar causing diabetes, all directly supported by passage [1]. The language is plain and suitable for a 15-year-old.",
+        "costInr": 0.023886
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 1744,
+        "outputTokens": 101,
+        "reasoningTokens": 0,
+        "costInr": 0.03222,
+        "latencyMs": 1124
+      },
+      "latencyMs": 1124
+    },
+    {
+      "id": "b41",
+      "lang": "te-latn",
+      "inBook": true,
+      "question": "mendel batani mokkalatho chesina prayogam enti?",
+      "status": "grounded",
+      "answer": {
+        "answer": "Mendel batani mokkalatho chesina prayogam lo, aayana tall mariyu short mokkalanu cross chesi, vati lakshanalu (traits) ela vastayo chusadu. Aayana tall mokkalu round seeds, short mokkalu wrinkled seeds unna varieties ni select cheskunnadu. F1 generation lo anni tall and round seeds unna mokkalu vachayi. Aayana F2 generation lo kooda chusi, konni mokkalu tall and wrinkled seeds, konni short and round seeds unna kotta combinations ni chusadu. Ee experiments dwara aayana dominance and independent inheritance rules ni kanukkunnadu.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "601cf45a-139b-4159-8094-88219200b9a4",
+            "chapterNumber": 8,
+            "chapterTitle": "Heredity",
+            "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions",
+            "pageStart": 130,
+            "pageEnd": 131
+          },
+          {
+            "chunkId": "1ab8b3de-5f7b-4c3b-8f13-f16b2166c7fc",
+            "chapterNumber": 8,
+            "chapterTitle": "Heredity",
+            "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions",
+            "pageStart": 129,
+            "pageEnd": 130
+          },
+          {
+            "chunkId": "9e1f5076-f17f-45c9-952a-4a3a7699b44f",
+            "chapterNumber": 8,
+            "chapterTitle": "Heredity",
+            "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions",
+            "pageStart": 130,
+            "pageEnd": 130
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": false,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer accurately describes Mendel's pea plant experiments: crossing tall/short plants, using round/wrinkled seed varieties, observing all tall round-seeded F1 plants, and finding new trait combinations in F2, leading to dominance and independent inheritance rules. All facts are supported by the textbook passages (passage 1 and 2). The Telugu is plain and understandable for a 15-year-old.",
+        "costInr": 0.029912
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 1894,
+        "outputTokens": 322,
+        "reasoningTokens": 0,
+        "costInr": 0.04773,
+        "latencyMs": 2557
+      },
+      "latencyMs": 2557
+    },
+    {
+      "id": "p25",
+      "lang": "te-latn",
+      "inBook": true,
+      "question": "white light prism lo 7 rangulu ga enduku vidipotundi?",
+      "status": "grounded",
+      "answer": {
+        "answer": "White light lo 7 rangulu untayi, mariyu prathi ranguku veruveru wavelength untundi. Glass prism loki vellinappudu, prathi ranguku veruveru angle lo bend avuthundi. Ee vidhanga white light 7 rangulu ga vidipothundi.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "5f27c5df-ea28-4236-a73d-87911585462a",
+            "chapterNumber": 10,
+            "chapterTitle": "The Human Eye and the Colourful World",
+            "section": "10.4 Dispersion of White Light by a Glass Prism",
+            "pageStart": 166,
+            "pageEnd": 167
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": false,
+        "simple": true,
+        "reason": "The answer correctly explains dispersion: white light contains seven colours and each colour bends at a different angle in the prism, which matches the textbook. However, it adds 'each colour has a different wavelength', which is not stated in the given passages, so it is not fully faithful. The language is simple and clear for a 15-year-old.",
+        "costInr": 0.027545
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 1966,
+        "outputTokens": 167,
+        "reasoningTokens": 0,
+        "costInr": 0.03951,
+        "latencyMs": 1672
+      },
+      "latencyMs": 1672
+    },
+    {
+      "id": "o02",
+      "lang": "en",
+      "inBook": false,
+      "question": "State Mendeleev's periodic law",
+      "status": "none",
+      "answer": {
+        "answer": "Mendeleev's periodic law states that the physical and chemical properties of elements are a periodic function of their atomic masses. This means elements with similar properties repeat at regular intervals when arranged in order of increasing atomic mass.",
+        "inTextbook": false,
+        "citations": [],
+        "label": "Not from your Class 10 textbook – not needed for the exam",
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": null
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly states Mendeleev's periodic law (properties are a periodic function of atomic masses) and is explicitly labelled as not from the textbook, so faithfulness is satisfied. The language is plain and clear for a 15-year-old.",
+        "costInr": 0.026487
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2173,
+        "outputTokens": 114,
+        "reasoningTokens": 0,
+        "costInr": 0.039435,
+        "latencyMs": 1236
+      },
+      "latencyMs": 1236
+    },
+    {
+      "id": "o05",
+      "lang": "en",
+      "inBook": false,
+      "question": "Explain Darwin's theory of evolution by natural selection",
+      "status": "none",
+      "answer": {
+        "answer": "Darwin's theory of evolution by natural selection states that species change over time. Individuals with traits best suited to their environment are more likely to survive and reproduce. Over many generations, these advantageous traits become more common in the population.",
+        "inTextbook": false,
+        "citations": [],
+        "label": "Not from your Class 10 textbook – not needed for the exam",
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": null
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer accurately explains natural selection (variation, differential survival and reproduction, inheritance over generations) and directly answers the question. It is explicitly labelled as not from the textbook, so faithfulness is satisfied. The language is plain and appropriate for a 15-year-old.",
+        "costInr": 0.025209
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 1930,
+        "outputTokens": 69,
+        "reasoningTokens": 0,
+        "costInr": 0.03309,
+        "latencyMs": 993
+      },
+      "latencyMs": 993
+    },
+    {
+      "id": "o10",
+      "lang": "en",
+      "inBook": false,
+      "question": "How does a solar cooker work?",
+      "status": "weak",
+      "answer": {
+        "answer": "A solar cooker works by using a concave mirror to concentrate sunlight onto a small area, producing a lot of heat. This heat is used to cook food. It is like a solar furnace that uses the sun's energy directly.",
+        "inTextbook": false,
+        "citations": [],
+        "label": "Not from your Class 10 textbook – not needed for the exam",
+        "related": {
+          "chunkId": "10e19d4f-c161-4932-ab22-b5804677d02c",
+          "chapterNumber": 9,
+          "chapterTitle": "Light – Reflection and Refraction",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams",
+          "pageStart": 140,
+          "pageEnd": 141
+        },
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": null
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly explains that a solar cooker uses a concave mirror to concentrate sunlight to produce heat for cooking, which is scientifically accurate. It is labelled as not from the textbook, so faithfulness is satisfied. The language is plain and suitable for a 15-year-old.",
+        "costInr": 0.025741
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2170,
+        "outputTokens": 70,
+        "reasoningTokens": 0,
+        "costInr": 0.03675,
+        "latencyMs": 857
+      },
+      "latencyMs": 857
+    },
+    {
+      "id": "o13",
+      "lang": "en",
+      "inBook": false,
+      "question": "State Newton's second law of motion",
+      "status": "none",
+      "answer": {
+        "answer": "The force on an object is equal to the rate of change of its momentum. This is known as Newton's second law of motion.",
+        "inTextbook": false,
+        "citations": [],
+        "label": "Not from your Class 10 textbook – not needed for the exam",
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": null
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly states Newton's second law (F = rate of change of momentum) and is explicitly labelled as not from the textbook, so faithfulness is satisfied. The wording is plain and understandable for a 15-year-old.",
+        "costInr": 0.024797
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2114,
+        "outputTokens": 80,
+        "reasoningTokens": 0,
+        "costInr": 0.03651,
+        "latencyMs": 905
+      },
+      "latencyMs": 905
+    },
+    {
+      "id": "o22",
+      "lang": "en",
+      "inBook": false,
+      "question": "What is a black hole?",
+      "status": "grounded",
+      "answer": {
+        "answer": "A black hole is a region in space where gravity is so strong that nothing, not even light, can escape from it. It forms when a very massive star collapses under its own gravity at the end of its life.",
+        "inTextbook": false,
+        "citations": [],
+        "label": "Not from your Class 10 textbook – not needed for the exam",
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": null
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly defines a black hole and its formation, is labelled as not from the textbook so faithfulness is satisfied, and uses plain language suitable for a 15-year-old.",
+        "costInr": 0.027271
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2166,
+        "outputTokens": 112,
+        "reasoningTokens": 0,
+        "costInr": 0.03921,
+        "latencyMs": 1202
+      },
+      "latencyMs": 1202
+    },
+    {
+      "id": "o26",
+      "lang": "en",
+      "inBook": false,
+      "question": "What is the greenhouse effect?",
+      "status": "none",
+      "answer": {
+        "answer": "The greenhouse effect is when gases in the atmosphere trap heat from the sun, warming the Earth. These gases act like the glass of a greenhouse, letting sunlight in but preventing heat from escaping.",
+        "inTextbook": false,
+        "citations": [],
+        "label": "Not from your Class 10 textbook – not needed for the exam",
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": null
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly defines the greenhouse effect as atmospheric gases trapping solar heat and warming Earth, which is scientifically accurate. It is explicitly labelled as not from the textbook, so faithfulness is satisfied. The language is plain and clear for a 15-year-old.",
+        "costInr": 0.024512
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2007,
+        "outputTokens": 100,
+        "reasoningTokens": 0,
+        "costInr": 0.036105,
+        "latencyMs": 1140
+      },
+      "latencyMs": 1141
+    },
+    {
+      "id": "o31",
+      "lang": "te",
+      "inBook": false,
+      "question": "న్యూటన్ రెండవ గమన నియమం ఏమిటి?",
+      "status": "none",
+      "answer": {
+        "answer": "న్యూటన్ రెండవ గమన నియమం ప్రకారం, ఒక వస్తువుపై పనిచేసే బలం, దాని ద్రవ్యవేగం మారే రేటుకు సమానం. అంటే, ఒక వస్తువుపై పనిచేసే బలం దాని ద్రవ్యవేగాన్ని మారుస్తుంది. బలం ఎక్కువగా ఉంటే ద్రవ్యవేగం వేగంగా మారుతుంది.",
+        "inTextbook": false,
+        "citations": [],
+        "label": "ఇది మీ 10వ తరగతి పాఠ్యపుస్తకంలో లేదు – పరీక్షకు అవసరం లేదు",
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": null
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer correctly states Newton's second law (force equals rate of change of momentum) and explains it in plain Telugu; it is explicitly labelled as not from the textbook, so faithfulness is satisfied.",
+        "costInr": 0.02665
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 1980,
+        "outputTokens": 155,
+        "reasoningTokens": 0,
+        "costInr": 0.039,
+        "latencyMs": 1609
+      },
+      "latencyMs": 1609
+    },
+    {
+      "id": "o34",
+      "lang": "te",
+      "inBook": false,
+      "question": "సౌర కుక్కర్ ఎలా పని చేస్తుంది?",
+      "status": "none",
+      "answer": {
+        "answer": "క్షమించండి, ఇప్పుడు సమాధానం ఇవ్వలేకపోతున్నాను. ఒక నిమిషం తర్వాత మళ్లీ ప్రయత్నించండి.",
+        "inTextbook": false,
+        "citations": [],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "fallback",
+      "checks": {
+        "valid": false,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": null
+      },
+      "grade": {
+        "correct": false,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer does not answer the question at all; it is a refusal to respond, so it cannot be scientifically correct. It is faithful because it makes no factual claims, and it is simple in language, but it fails to provide the required explanation of how a solar cooker works.",
+        "costInr": 0.02683
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2259,
+        "outputTokens": 93,
+        "reasoningTokens": 0,
+        "costInr": 0.039465,
+        "latencyMs": 1047
+      },
+      "latencyMs": 1048
+    },
+    {
+      "id": "d01",
+      "lang": "en",
+      "inBook": true,
+      "question": "Explain photosynthesis in detail, step by step",
+      "status": "weak",
+      "answer": {
+        "answer": "Plants absorb carbon dioxide through tiny pores called stomata on their leaves. They also take in water from the soil through their roots. Inside the leaf, chlorophyll in the chloroplasts absorbs sunlight. This light energy is used to split water molecules into hydrogen and oxygen. The oxygen is released into the air as a byproduct. The hydrogen then combines with carbon dioxide to form carbohydrates. These carbohydrates are the food that the plant uses to grow. This entire process is called photosynthesis.",
+        "inTextbook": true,
+        "citations": [
+          {
+            "chunkId": "07f82d62-4d97-4328-bb58-d0d8a0927879",
+            "chapterNumber": 5,
+            "chapterTitle": "Life Processes",
+            "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition",
+            "pageStart": 82,
+            "pageEnd": 83
+          },
+          {
+            "chunkId": "3e563b8b-ccb9-484b-91de-55f47dc5b5d9",
+            "chapterNumber": 5,
+            "chapterTitle": "Life Processes",
+            "section": "5.4 Transportation > 5.4.2 Transportation in Plants",
+            "pageStart": 95,
+            "pageEnd": 96
+          }
+        ],
+        "label": null,
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": true,
+        "goldCited": true
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer accurately describes photosynthesis: CO2 via stomata, water from roots, chlorophyll absorbing light, splitting of water into hydrogen and oxygen, oxygen released, and reduction of CO2 to carbohydrates. All facts are supported by passage [3] (absorption of light by chlorophyll, conversion of light energy to chemical energy and splitting of water into hydrogen and oxygen, reduction of CO2 to carbohydrates, stomata, chloroplasts/chlorophyll). Language is plain and suitable for a 15-year-old.",
+        "costInr": 0.027557
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 1545,
+        "outputTokens": 136,
+        "reasoningTokens": 0,
+        "costInr": 0.031335,
+        "latencyMs": 1468
+      },
+      "latencyMs": 1468
+    },
+    {
+      "id": "f01",
+      "lang": "en",
+      "inBook": true,
+      "question": "give an example",
+      "status": "grounded",
+      "answer": {
+        "answer": "A simple example of refraction is a pencil appearing bent when placed in a glass of water.",
+        "inTextbook": false,
+        "citations": [],
+        "label": "Not from your Class 10 textbook – not needed for the exam",
+        "related": null,
+        "droppedSources": 0
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "language": true,
+        "short": true,
+        "answeredFromBook": false,
+        "goldCited": false
+      },
+      "grade": {
+        "correct": true,
+        "faithful": true,
+        "simple": true,
+        "reason": "The answer gives a valid everyday example of refraction (a pencil appearing bent in water), which is scientifically correct and answers the request for an example. It is explicitly labelled as not from the textbook, so faithfulness is satisfied. The language is plain and suitable for a 15-year-old.",
+        "costInr": 0.027851
+      },
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 2244,
+        "outputTokens": 70,
+        "reasoningTokens": 0,
+        "costInr": 0.03786,
+        "latencyMs": 880
+      },
+      "latencyMs": 880
+    }
+  ]
+}

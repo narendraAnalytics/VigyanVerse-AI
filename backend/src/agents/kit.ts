@@ -45,15 +45,18 @@ export interface AgentRun<O> {
   usage?: AgentUsage;
 }
 
-export interface JsonAgentSpec<I, O> {
+/** I = input, O = agent output, M = what the model returns (parsed by `schema`; = O by default). */
+export interface JsonAgentSpec<I, O, M = O> {
   name: string;
   task: ModelTask;
-  schema: z.ZodType<O>;
+  schema: z.ZodType<M>;
   buildMessages(input: I): ChatCompletionMessageParam[];
   /** Deterministic output when the model fails, times out or returns invalid JSON. */
   fallback(input: I): O;
-  /** Optional deterministic clean-up after parsing (clamp values, drop junk). */
-  postProcess?(output: O, input: I): O;
+  /** Deterministic step after parsing: clean up, or turn the model output into O. Required when M differs from O. */
+  postProcess?(output: M, input: I): O;
+  /** Per-input call settings (e.g. a bigger max_tokens when the student asks for detail). */
+  callOverrides?(input: I): ChatOverrides;
 }
 
 /** First {...} object in a model reply (tolerates code fences and stray text), or null. */
@@ -69,19 +72,19 @@ export function extractJson(content: string): unknown {
 }
 
 /** Run a JSON-output agent. Never throws: on any failure it returns the fallback output. */
-export async function runJsonAgent<I, O>(spec: JsonAgentSpec<I, O>, input: I, ctx: AgentContext = {}): Promise<AgentRun<O>> {
+export async function runJsonAgent<I, O, M = O>(spec: JsonAgentSpec<I, O, M>, input: I, ctx: AgentContext = {}): Promise<AgentRun<O>> {
   const call = ctx.chat ?? sarvamChat;
   let usage: AgentUsage | undefined;
   let error: string;
   try {
-    const result = await call(spec.task, spec.buildMessages(input), ctx.overrides);
+    const result = await call(spec.task, spec.buildMessages(input), { ...spec.callOverrides?.(input), ...ctx.overrides });
     usage = {
       model: result.model, inputTokens: result.inputTokens, outputTokens: result.outputTokens,
       reasoningTokens: result.reasoningTokens, costInr: result.costInr, latencyMs: result.latencyMs,
     };
     const parsed = spec.schema.safeParse(extractJson(result.content));
     if (parsed.success) {
-      const output = spec.postProcess ? spec.postProcess(parsed.data, input) : parsed.data;
+      const output = spec.postProcess ? spec.postProcess(parsed.data, input) : (parsed.data as unknown as O);
       return { output, source: 'model', usage };
     }
     error = `${spec.name}: invalid output: ${parsed.error.issues.slice(0, 3).map((i) => `${i.path.join('.')} ${i.message}`).join('; ')}`;

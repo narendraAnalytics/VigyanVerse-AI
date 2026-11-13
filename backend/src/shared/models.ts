@@ -31,6 +31,12 @@ export interface ModelRoute {
   reasoningEffort?: 'none' | 'low' | 'medium' | 'high';
   /** Tried once if the primary model errors or times out. */
   fallback?: string;
+  /**
+   * Timeout for the PRIMARY model when a fallback exists, so a hung call still leaves time
+   * for the fallback inside the 30 s Edge Function limit (tutor eval 2026-11-13: 2/36
+   * sarvam-105b calls hung for the full 22 s).
+   */
+  timeoutMs?: number;
 }
 
 export const MODEL_ROUTES: Record<ModelTask, ModelRoute> = {
@@ -42,7 +48,9 @@ export const MODEL_ROUTES: Record<ModelTask, ModelRoute> = {
   // Question (EN/TE) -> English textbook keywords for full-text retrieval. No model
   // fallback: on failure retrieval falls back to the question's own words (retrieval.ts).
   query_rewrite: { model: 'glm5.3-flash', api: 'v2', maxTokens: 200, temperature: 0, json: true },
-  tutor: { model: 'sarvam-105b', api: 'v2', maxTokens: 1200, temperature: 0.3, reasoningEffort: 'none', fallback: 'glm5.3-flash' },
+  // JSON mode on: without it sarvam-105b answered 5/8 Telugu questions as plain prose (tutor
+  // eval 2026-11-13). max_tokens is set per call by the agent (600 short / 1100 detail).
+  tutor: { model: 'sarvam-105b', api: 'v2', maxTokens: 1200, temperature: 0.3, json: true, reasoningEffort: 'none', fallback: 'glm5.3-flash', timeoutMs: 9_000 },
   socratic: { model: 'sarvam-105b', api: 'v2', maxTokens: 600, temperature: 0.4, reasoningEffort: 'none', fallback: 'glm5.3-flash' },
   quiz: { model: 'deepseekv4.1-flash-1017', api: 'v2', maxTokens: 2500, temperature: 0.5, json: true, fallback: 'sarvam-105b' },
   // Correctness matters more than speed here, but reasoning at ~75 tokens/s cannot fit

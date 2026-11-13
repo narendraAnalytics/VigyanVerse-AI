@@ -5,6 +5,8 @@ import { readEnv, requireEnv } from './env.ts';
 
 // Edge Functions are capped at 30s. Leave headroom for retrieval and DB writes.
 const REQUEST_TIMEOUT_MS = 22_000;
+/** A fallback call is only started if at least this much of the budget is left. */
+const MIN_FALLBACK_MS = 8_000;
 
 const clients = new Map<string, OpenAI>();
 
@@ -60,6 +62,10 @@ export async function chat(
 
   for (const [i, model] of candidates.entries()) {
     try {
+      // The primary model gets the route's own timeout (if any) so a hung call still leaves
+      // time for the fallback model; the fallback gets whatever is left of the total budget.
+      const remaining = REQUEST_TIMEOUT_MS - (Date.now() - started);
+      const timeout = i === 0 && route.fallback && route.timeoutMs ? Math.min(route.timeoutMs, remaining) : remaining;
       const response = await sarvamClient(route.api).chat.completions.create({
         model,
         messages,
@@ -67,7 +73,7 @@ export async function chat(
         temperature: overrides.temperature ?? route.temperature,
         ...(route.json ? { response_format: { type: 'json_object' as const } } : {}),
         ...(i === 0 && route.reasoningEffort ? { reasoning_effort: route.reasoningEffort } : {}),
-      });
+      }, { timeout });
       const content = response.choices[0]?.message?.content ?? '';
       if (!content.trim()) {
         // Typically finish_reason "length" after the budget went to hidden reasoning.
@@ -90,7 +96,7 @@ export async function chat(
     } catch (error) {
       lastError = error;
       // Not enough time left for a second full call inside the 30s function limit.
-      if (Date.now() - started > 12_000) break;
+      if (Date.now() - started > REQUEST_TIMEOUT_MS - MIN_FALLBACK_MS) break;
     }
   }
   throw lastError;

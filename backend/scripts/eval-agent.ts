@@ -12,11 +12,12 @@ import type { AgentContext } from '../src/agents/kit.ts';
 import { MODEL_ROUTES } from '../src/shared/models.ts';
 import { evalRetrieval } from './evals/retrieval.ts';
 import { evalRouter } from './evals/router.ts';
+import { evalTutor } from './evals/tutor.ts';
 
 const argv = process.argv.slice(2);
 const option = (name: string) => (argv.includes(name) ? argv[argv.indexOf(name) + 1] : undefined);
 const agent = argv[0];
-const EVALS = { router: evalRouter, retrieval: evalRetrieval } as const;
+const EVALS = { router: evalRouter, retrieval: evalRetrieval, tutor: evalTutor } as const;
 
 if (!agent || !(agent in EVALS)) {
   console.error(`Usage: npm run eval:agent -- <${Object.keys(EVALS).join('|')}> [--model m] [--reasoning none|low] [--only ids] [--save]`);
@@ -26,7 +27,7 @@ const model = option('--model');
 const reasoning = option('--reasoning') as AgentContext['overrides'] extends infer O ? O extends { reasoningEffort?: infer R } ? R : never : never;
 const ctx: AgentContext = model ? { overrides: { model, reasoningEffort: reasoning ?? null } } : {};
 
-const result = await EVALS[agent as keyof typeof EVALS](ctx, { only: option('--only')?.split(','), tune: argv.includes('--tune') });
+const result = await EVALS[agent as keyof typeof EVALS](ctx, { only: option('--only')?.split(','), tune: argv.includes('--tune'), save: argv.includes('--save') });
 
 if (argv.includes('--save')) {
   const used = model ?? MODEL_ROUTES[agent as keyof typeof MODEL_ROUTES]?.model ?? 'default';
