@@ -21,8 +21,9 @@ const QUESTIONS: [string, string | undefined, string][] = custom
       ['ఆకులు ఆకుపచ్చగా ఎందుకు ఉంటాయి?', 'biology', '5.2.1'],
       ['How does blood flow through the human heart?', 'biology', '5.4.1'],
       ['మూత్రపిండాలు ఎలా పని చేస్తాయి?', 'biology', '5.5.1'],
-      ['Why does iron rust?', 'chemistry', '1.3.1'],
-      ['ఇనుము తుప్పు ఎందుకు పడుతుంది?', 'chemistry', '1.3.1'],
+      // Rusting is taught in Ch 1 (1.3.1 Corrosion) and Ch 3 (3.5 Corrosion): either is correct.
+      ['Why does iron rust?', 'chemistry', '1.3.1|3.5'],
+      ['ఇనుము తుప్పు ఎందుకు పడుతుంది?', 'chemistry', '1.3.1|3.5'],
       ['How to balance a chemical equation?', 'chemistry', '1.1.2'],
       ['what happens to current if resistance doubles', 'physics', '11.4'],
       ['Resistors in parallel formula', 'physics', '11.6.2'],
@@ -34,7 +35,8 @@ let hitsAt5 = 0;
 for (const [question, subject, expect] of QUESTIONS) {
   const t0 = Date.now();
   const { hits, rewrite } = await retrieve(admin, question, { board: 'CBSE', subject, limit: 5 });
-  const rankOk = expect ? hits.findIndex((h) => h.section_path?.includes(expect)) : -1;
+  // expect = one or more section numbers separated by '|'; any of them counts as correct.
+  const rankOk = expect ? hits.findIndex((h) => expect.split('|').some((e) => h.section_path?.includes(`${e} `))) : -1;
   if (rankOk === 0) hitsAt1++;
   if (rankOk >= 0) hitsAt5++;
   console.log(`\n${question}  [${Date.now() - t0} ms, keywords(${rewrite.source}): ${rewrite.keywords.join(' ')}]`);

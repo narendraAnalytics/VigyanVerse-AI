@@ -47,6 +47,16 @@ function report(file: string, chunks: Chunk[]) {
   const sections = new Map<string, number>();
   for (const c of chunks) sections.set(c.sectionPath ?? '(intro)', (sections.get(c.sectionPath ?? '(intro)') ?? 0) + 1);
   for (const [s, n] of sections) console.log(`    ${String(n).padStart(2)} × ${s}`);
+  // Numbering gaps (e.g. 12.1 then 12.4) usually mean a heading was not recognised.
+  const numbers = new Set<string>();
+  for (const s of sections.keys()) for (const m of s.matchAll(/(?:^|> )(\d+(?:\.\d+)+) /g)) numbers.add(m[1]);
+  for (const n of numbers) {
+    const parts = n.split('.').map(Number);
+    const last = parts.pop()!;
+    const prefix = parts.join('.');
+    if (last > 1 && !numbers.has(`${prefix}.${last - 1}`)) console.log(`    ⚠ gap: ${prefix}.${last - 1} missing before ${n}`);
+    if (parts.length > 1 && !numbers.has(prefix)) console.log(`    ⚠ gap: parent ${prefix} missing for ${n}`);
+  }
 }
 
 for (const ch of manifest.chapters) {
@@ -57,8 +67,8 @@ for (const ch of manifest.chapters) {
 
   const pdf = await getDocumentProxy(new Uint8Array(bytes));
   const { text: pages } = await extractText(pdf, { mergePages: false });
-  const chunks = chunkTextbook(pages, ch.number);
   console.log(`\nCh ${ch.number} (${ch.file}, ${pages.length} PDF pages)`);
+  const chunks = chunkTextbook(pages, ch.number, { onWarning: (msg) => console.log(`  ⚠ ${msg}`) });
   report(ch.file, chunks);
   if (dryRun || !admin) continue;
 

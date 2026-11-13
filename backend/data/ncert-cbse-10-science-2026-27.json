@@ -12,7 +12,17 @@
   "storage_prefix": "ncert/science-x/2026-27",
   "chapters": [
     { "number": 1, "subject_code": "chemistry", "file": "jesc101.pdf", "url": "https://ncert.nic.in/textbook/pdf/jesc101.pdf", "sha256": "9d58fa614b2d1064f4ef13423eaf85155b0efc5e74bdf3e8c5e6f15f1b742d36" },
+    { "number": 2, "subject_code": "chemistry", "file": "jesc102.pdf", "url": "https://ncert.nic.in/textbook/pdf/jesc102.pdf", "sha256": "8ce001e9cd1ab5f842064d1f332d4a64e010c37d5e5e29664bacd9da526f7340" },
+    { "number": 3, "subject_code": "chemistry", "file": "jesc103.pdf", "url": "https://ncert.nic.in/textbook/pdf/jesc103.pdf", "sha256": "cda8ac2d0dfd62366bc8949b901df3f28128137b7e0971968f7568dccb715117" },
+    { "number": 4, "subject_code": "chemistry", "file": "jesc104.pdf", "url": "https://ncert.nic.in/textbook/pdf/jesc104.pdf", "sha256": "efbb053ea8cedf29bc6891834613fdbcc17772e369f6b35405f3bb4701c41abe" },
     { "number": 5, "subject_code": "biology", "file": "jesc105.pdf", "url": "https://ncert.nic.in/textbook/pdf/jesc105.pdf", "sha256": "685ec7228afeb79d7bc9b989648e381e5eb4b5a6d290d6a13374489c9284054f" },
-    { "number": 11, "subject_code": "physics", "file": "jesc111.pdf", "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf", "sha256": "640a680a24070d4add6d580d03d5377768ee5a6b4f89f9bfb66b350d457ab52f" }
+    { "number": 6, "subject_code": "biology", "file": "jesc106.pdf", "url": "https://ncert.nic.in/textbook/pdf/jesc106.pdf", "sha256": "bf4ddfa158e117a71a32b2f19c8fcd87140ef325e8672faad5d4a599d36ea913" },
+    { "number": 7, "subject_code": "biology", "file": "jesc107.pdf", "url": "https://ncert.nic.in/textbook/pdf/jesc107.pdf", "sha256": "575cb5a50b488a46715e500d4cbeaf3b687bf01f9da7989c928d35f1a3a88ec0" },
+    { "number": 8, "subject_code": "biology", "file": "jesc108.pdf", "url": "https://ncert.nic.in/textbook/pdf/jesc108.pdf", "sha256": "b0357c0bcc860190c9d3dccc7c91ee31a65012442e795be5bc00cd9f621bff5b" },
+    { "number": 9, "subject_code": "physics", "file": "jesc109.pdf", "url": "https://ncert.nic.in/textbook/pdf/jesc109.pdf", "sha256": "a647d66cd9dd9e767c1fea57baac3a7aeaf9cb7461f87dc3f619e6fee8947497" },
+    { "number": 10, "subject_code": "physics", "file": "jesc110.pdf", "url": "https://ncert.nic.in/textbook/pdf/jesc110.pdf", "sha256": "c8ed49fa55eedeb9ee5d5fbfa6d02061adb94075e94a32ca9bd16f4caf67c423" },
+    { "number": 11, "subject_code": "physics", "file": "jesc111.pdf", "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf", "sha256": "640a680a24070d4add6d580d03d5377768ee5a6b4f89f9bfb66b350d457ab52f" },
+    { "number": 12, "subject_code": "physics", "file": "jesc112.pdf", "url": "https://ncert.nic.in/textbook/pdf/jesc112.pdf", "sha256": "ab82bae095324b3854eed3db8513d201e01477154df902b9dfc166be3dfd0a42" },
+    { "number": 13, "subject_code": "biology", "file": "jesc113.pdf", "url": "https://ncert.nic.in/textbook/pdf/jesc113.pdf", "sha256": "3f61f0574e60bb8fc41feb3cc13f818621d9c17a5d5f51634154a5de35918b2d" }
   ]
 }

@@ -1,7 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import {
+  buildVocabulary,
   chunkTextbook,
   collapseShadowText,
+  compareSectionNumbers,
+  repairHeadingTitle,
   detectPageOffset,
   normalizeHeadingNumber,
   parseHeaderPageNumber,
@@ -25,6 +28,29 @@ describe('normalizeHeadingNumber', () => {
     expect(normalizeHeadingNumber('?11.3 CIRCUIT DIAGRAM')).toBe('11.3 CIRCUIT DIAGRAM');
     expect(normalizeHeadingNumber('1 . 3 HAVE YOU OBSERVED')).toBe('1.3 HAVE YOU OBSERVED');
     expect(normalizeHeadingNumber('5.2.1 Autotrophic Nutrition')).toBe('5.2.1 Autotrophic Nutrition');
+    expect(normalizeHeadingNumber('1 2 . 2 MAGNETIC FIELD')).toBe('12.2 MAGNETIC FIELD');
+    expect(normalizeHeadingNumber('1 3 . 2 HOW DO OUR ACTIVITIES')).toBe('13.2 HOW DO OUR ACTIVITIES');
+  });
+});
+
+describe('repairHeadingTitle', () => {
+  const vocab = buildVocabulary(['Plants respond to light.', 'The force on a current-carrying conductor', 'variation in a population']);
+  it('joins letter-spaced fragments and collapses repeated dashes', () => {
+    expect(repairHeadingTitle('COORDINATION IN PL ANTS', vocab)).toBe('COORDINATION IN PLANTS');
+    expect(repairHeadingTitle('FORCE ON A CURRENT-----C ARRYING CONDUCTOR', vocab)).toBe('FORCE ON A CURRENT-CARRYING CONDUCTOR');
+    expect(repairHeadingTitle('ACCUMUL ATION OF VARIATION', vocab)).toBe('ACCUMULATION OF VARIATION');
+    expect(repairHeadingTitle('Rules for the Inheritance of Traits –––––', vocab)).toBe('Rules for the Inheritance of Traits –');
+  });
+  it('leaves real words alone', () => {
+    expect(repairHeadingTitle('PLANTS IN A POPULATION', vocab)).toBe('PLANTS IN A POPULATION');
+  });
+});
+
+describe('compareSectionNumbers', () => {
+  it('orders section numbers numerically', () => {
+    expect(compareSectionNumbers('2.1.4', '2.1.5')).toBeLessThan(0);
+    expect(compareSectionNumbers('2.2', '2.1.6')).toBeGreaterThan(0);
+    expect(compareSectionNumbers('2.10', '2.9')).toBeGreaterThan(0);
   });
 });
 
@@ -79,5 +105,23 @@ describe('chunkTextbook', () => {
     expect(chunks[1].content).toBe('Maintenance processes are needed. Energy is needed for them. The energy comes from food, which is broken down by oxidation.');
     expect(chunks.every((c) => !c.content.includes('Reprint'))).toBe(true);
     expect(chunks.map((c) => c.chunkIndex)).toEqual([0, 1, 2, 3]);
+  });
+
+  it('joins wrapped headings, accepts "pH", and drops out-of-order headings', () => {
+    const p = [
+      'Acids 1\nIntroductory text about acids, bases and salts in daily life.',
+      'Science2\n2.1.3 How do Metal Carbonates and Metal\nHydrogencarbonates React with Acids?\nThey react with acids to give carbon dioxide gas.',
+      'Acids 3\n2.1.5 Reaction of Metallic Oxides with Acids\nCopper oxide dissolves in dilute hydrochloric acid.\n2.1.4 How do Acids and Bases React with each other?',
+      'Science4\n2.4.2 pH of Salts\nSome salts are acidic and some salts are basic in nature.',
+    ];
+    const warnings: string[] = [];
+    const chunks = chunkTextbook(p, 2, { onWarning: (m) => warnings.push(m) });
+    expect(chunks.map((c) => c.sectionPath)).toEqual([
+      null,
+      '2.1.3 How do Metal Carbonates and Metal Hydrogencarbonates React with Acids?',
+      '2.1.5 Reaction of Metallic Oxides with Acids',
+      '2.4.2 pH of Salts',
+    ]);
+    expect(warnings).toEqual(['p3: heading 2.1.4 appears after 2.1.5; ignored (out of reading order)']);
   });
 });

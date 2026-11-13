@@ -23,11 +23,56 @@ export function collapseShadowText(line: string): string {
   return line.replace(/(.+?)\1{4,}/g, (match, unit: string) => (/[A-Za-z]/.test(unit) || unit.length >= 3 ? unit : match));
 }
 
-/** "?11.3 CIRCUIT" -> "11.3 CIRCUIT"; "1 . 3 HAVE" -> "1.3 HAVE" (icon glyphs, letter-spaced numbers). */
+/**
+ * "?11.3 CIRCUIT" -> "11.3 CIRCUIT"; "1 . 3 HAVE" -> "1.3 HAVE"; "1 2 . 2 MAGNETIC" -> "12.2 MAGNETIC"
+ * (icon glyphs, letter-spaced numbers).
+ */
 export function normalizeHeadingNumber(line: string): string {
   return line
     .replace(/^[?\s]+(?=\d)/, '')
-    .replace(/^(\d{1,2}) ?\. ?(\d{1,2})(?: ?\. ?(\d{1,2}))?(?=\s)/, (_, a: string, b: string, c?: string) => [a, b, c].filter(Boolean).join('.'));
+    .replace(/^(\d(?: ?\d)?) ?\. ?(\d{1,2})(?: ?\. ?(\d{1,2}))?(?=\s)/, (_, a: string, b: string, c?: string) =>
+      [a.replace(' ', ''), b, c].filter(Boolean).join('.'));
+}
+
+/** Lower-case words (letters, hyphens, apostrophes) used in body text, for heading repair. */
+export function buildVocabulary(lines: Iterable<string>): Set<string> {
+  const vocab = new Set<string>();
+  for (const line of lines) for (const w of line.toLowerCase().match(/[a-z][a-z'’-]*[a-z]/g) ?? []) vocab.add(w);
+  return vocab;
+}
+
+/**
+ * Repair ALL-CAPS headings that the PDF letter-spaces ("COORDINATION IN PL ANTS",
+ * "CURRENT-C ARRYING", "ACCUMUL ATION"): join two tokens when the first is not a body-text
+ * word and either the join is one, or the second is a non-word starting with "A".
+ * Also collapses shadow-repeated dashes ("CURRENT-----CARRYING", "Traits –––––").
+ */
+export function repairHeadingTitle(title: string, vocab: ReadonlySet<string>): string {
+  const t = title.replace(/([-–—])\1{2,}/g, '$1');
+  if (t !== t.toUpperCase()) return t;
+  const key = (w: string) => w.toLowerCase().replace(/[^a-z'’-]/g, '');
+  const tokens = t.split(' ');
+  for (let i = 0; i < tokens.length - 1; i++) {
+    const [a, b] = [key(tokens[i]), key(tokens[i + 1])];
+    const isWord = (w: string) => vocab.has(w) || SMALL_WORDS.has(w);
+    // The PDF's kerning gap comes before an "A" ("PL ANTS", "ACCUMUL ATION").
+    if (a && b && !isWord(a) && (vocab.has(key(tokens[i] + tokens[i + 1])) || (b.startsWith('a') && !isWord(b)))) {
+      tokens.splice(i, 2, tokens[i] + tokens[i + 1]);
+      i--;
+    }
+  }
+  return tokens.join(' ');
+}
+
+/** Compare section numbers like "2.1.4" and "2.1.5" in reading order. */
+export function compareSectionNumbers(a: string, b: string): number {
+  const x = a.split('.').map(Number);
+  const y = b.split('.').map(Number);
+  for (let i = 0; i < Math.max(x.length, y.length); i++) {
+    const d = (x[i] ?? -1) - (y[i] ?? -1);
+    if (d) return d;
+  }
+  return 0;
 }
 
 /** Printed page number in a page's running header, or null. Handles "Science194194194". */
@@ -73,16 +118,25 @@ export function titleCase(s: string): string {
 type Item = { kind: 'heading'; path: 'section' | 'subsection' | 'end'; title: string; page: number } | { kind: 'line'; text: string; page: number };
 
 const TRAILING_JOINERS = /\b(of|and|the|in|on|a|an|to|for|with|its)$/i;
+// A short Title Case line ("Conductor", "Hydrogencarbonates React with Acids?"): the second line
+// of a wrapped mixed-case heading. Body text has lower-case words or punctuation instead.
+const TITLE_CONTINUATION = /^(?!(?:Activity|Figure|Table|Example|Fig|Do You Know|More to Know)\b)[A-Z][A-Za-z'’-]*\??(?: (?:[A-Z][A-Za-z'’-]*|of|and|the|in|on|a|an|to|for|with|its|or|by|at|from)\??)*$/;
 
 /** Turn pages into a stream of heading markers and text lines with printed page numbers. */
-export function toItems(pages: readonly string[], chapterNumber: number, offset: number): Item[] {
+export function toItems(pages: readonly string[], chapterNumber: number, offset: number, warn: (msg: string) => void = () => {}): Item[] {
   const items: Item[] = [];
-  const headingRe = new RegExp(`^(${chapterNumber}\\.\\d{1,2}(?:\\.\\d{1,2})?)\\s+([A-Z][^=]{2,120})$`);
-
-  pages.forEach((raw, i) => {
-    const page = i + 1 + offset;
+  // Titles start upper-case, except "pH of Salts".
+  const headingRe = new RegExp(`^(${chapterNumber}\\.\\d{1,2}(?:\\.\\d{1,2})?)\\s+((?:[A-Z]|pH\\b)[^=]{2,120})$`);
+  const pageLines = pages.map((raw) => {
     const lines = raw.replace(REPRINT_MARK, '').split('\n').map((l) => normalizeHeadingNumber(collapseShadowText(l).trim()));
     if (lines.length && parseHeaderPageNumber(lines[0]) !== null) lines.shift(); // running header
+    return lines;
+  });
+  const vocab = buildVocabulary(pageLines.flat().filter((l) => l !== l.toUpperCase()));
+  let lastNumber: string | null = null;
+
+  pageLines.forEach((lines, i) => {
+    const page = i + 1 + offset;
 
     for (let j = 0; j < lines.length; j++) {
       let line = lines[j];
@@ -98,13 +152,27 @@ export function toItems(pages: readonly string[], chapterNumber: number, offset:
       }
       const m = line.match(headingRe);
       if (m && !/[.:;]$/.test(m[2])) {
-        let title = m[2];
-        // Headings that wrap: an ALL-CAPS continuation line, or a title ending in "of"/"and".
+        let title = repairHeadingTitle(m[2], vocab);
+        // Headings that wrap: an ALL-CAPS continuation line, a title ending in "of"/"and" or a
+        // dash, or a short Title Case continuation line.
         const next = lines[j + 1];
-        if (next && next.length < 80 && ((title === title.toUpperCase() && next === next.toUpperCase() && /[A-Z]/.test(next)) || TRAILING_JOINERS.test(title))) {
-          title = `${title} ${next}`;
+        const caps = title === title.toUpperCase();
+        const endsWithDash = /[–—-]$/.test(title);
+        if (next && next.length < 80 && (
+          (caps && next === next.toUpperCase() && /[A-Z]/.test(next)) ||
+          TRAILING_JOINERS.test(title) || endsWithDash ||
+          (!caps && next.length <= 60 && TITLE_CONTINUATION.test(next))
+        )) {
+          title = repairHeadingTitle(endsWithDash ? `${title.replace(/\s*[–—-]$/, '')} – ${next}` : `${title} ${next}`, vocab);
           j++;
         }
+        // Some PDFs draw a heading out of reading order (Ch 2: "2.1.4" comes after 2.1.5's
+        // text). Attaching it would mislabel everything after it, so drop it.
+        if (lastNumber && compareSectionNumbers(m[1], lastNumber) < 0) {
+          warn(`p${page}: heading ${m[1]} appears after ${lastNumber}; ignored (out of reading order)`);
+          continue;
+        }
+        lastNumber = m[1];
         const depth = m[1].split('.').length; // 2 = section, 3 = subsection
         items.push({ kind: 'heading', path: depth === 2 ? 'section' : 'subsection', title: `${m[1]} ${titleCase(title)}`, page });
         continue;
@@ -163,14 +231,14 @@ function toSentences(items: readonly Item[]): Sentence[] {
   return out;
 }
 
-export interface ChunkOptions { targetChars?: number; maxChars?: number }
+export interface ChunkOptions { targetChars?: number; maxChars?: number; onWarning?: (msg: string) => void }
 
 /** Group sentences into chunks that never cross a section boundary. */
 export function chunkTextbook(pages: readonly string[], chapterNumber: number, opts: ChunkOptions = {}): Chunk[] {
   const target = opts.targetChars ?? 1600;
   const max = opts.maxChars ?? 2400;
   const offset = detectPageOffset(pages);
-  const sentences = toSentences(toItems(pages, chapterNumber, offset));
+  const sentences = toSentences(toItems(pages, chapterNumber, offset, opts.onWarning));
 
   const chunks: Chunk[] = [];
   let current: Sentence[] = [];
