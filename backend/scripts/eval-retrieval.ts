@@ -1,9 +1,10 @@
 // Retrieval eval: runs every question in data/eval/retrieval-v1.json through the same
-// retrieve() the tutor uses (Sarvam query rewrite -> match_chunks_keyword) and scores the
-// ranked chunks against gold section numbers.
+// retrieve() the tutor uses (Sarvam query rewrite for Telugu script -> match_chunks_keyword)
+// and scores the ranked chunks against gold section numbers.
 //
-//   npm run eval:retrieval                     all questions, subject filter on, rewrite on
+//   npm run eval:retrieval                     production setting: rewrite only Telugu script
 //   npm run eval:retrieval -- --split dev      only the dev split (tune on this)
+//   npm run eval:retrieval -- --always-rewrite rewrite every question (pre-2026-11-13 setting)
 //   npm run eval:retrieval -- --no-rewrite     baseline: the question's own words as keywords
 //   npm run eval:retrieval -- --no-subject     search all subjects (no subject filter)
 //   npm run eval:retrieval -- --only c01,p29   selected ids, with full top-5 output
@@ -15,7 +16,7 @@
 import 'dotenv/config';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createAdminClient } from '@insforge/sdk';
-import { retrieve, sanitizeKeywords, searchChunks, type ChunkHit, type RewriteResult } from '../src/shared/retrieval.ts';
+import { needsRewrite, retrieve, type ChunkHit, type RewriteResult } from '../src/shared/retrieval.ts';
 
 interface EvalQuestion {
   id: string; subject: string; lang: 'en' | 'te' | 'te-latn'; type: string; question: string; gold: string[];
@@ -33,9 +34,9 @@ const only = option('--only')?.split(',');
 const split = option('--split');
 const questions = evalSet.questions.filter((q) =>
   (!only || only.includes(q.id)) && (!split || split === 'all' || splitOf(q.id) === split));
-const useRewrite = !flag('--no-rewrite');
+const rewriteMode: 'auto' | 'always' | 'never' = flag('--always-rewrite') ? 'always' : flag('--no-rewrite') ? 'never' : 'auto';
 const useSubject = !flag('--no-subject');
-const mode = [useRewrite ? 'rewrite' : 'norewrite', useSubject ? 'subject' : 'nosubject'].join('-');
+const mode = [{ auto: 'rewrite-te', always: 'rewrite', never: 'norewrite' }[rewriteMode], useSubject ? 'subject' : 'nosubject'].join('-');
 
 const project = JSON.parse(readFileSync(new URL('../.insforge/project.json', import.meta.url), 'utf8'));
 const admin = createAdminClient({
@@ -81,26 +82,22 @@ async function runOne(q: EvalQuestion): Promise<Row> {
   const opts = { board: 'CBSE', subject: useSubject ? q.subject : undefined, limit: K };
   let hits: ChunkHit[];
   let rewrite: RewriteResult;
-  if (useRewrite) {
-    // Sarvam pay-as-you-go allows 50 req/min for glm5.3-flash (account-wide). A 429 would
-    // score the fallback, not retrieval quality, so wait and retry instead.
-    for (let attempt = 1; ; attempt++) {
-      await throttle();
-      t0 = Date.now(); // latency excludes the throttle wait
-      ({ hits, rewrite } = await retrieve(admin, q.question, opts));
-      if (!rewrite.error?.includes('429') || attempt === 4) break;
-      rateLimited++;
-      await new Promise((r) => setTimeout(r, 20_000));
-    }
-  } else {
-    rewrite = { keywords: sanitizeKeywords([q.question]), source: 'question' };
-    hits = await searchChunks(admin, rewrite.keywords, opts);
+  const callsModel = rewriteMode === 'always' || (rewriteMode === 'auto' && needsRewrite(q.question));
+  // Sarvam pay-as-you-go allows 50 req/min for glm5.3-flash (account-wide). A 429 would
+  // score the fallback, not retrieval quality, so wait and retry instead.
+  for (let attempt = 1; ; attempt++) {
+    if (callsModel) await throttle();
+    t0 = Date.now(); // latency excludes the throttle wait
+    ({ hits, rewrite } = await retrieve(admin, q.question, { ...opts, rewrite: rewriteMode }));
+    if (!rewrite.error?.includes('429') || attempt === 4) break;
+    rateLimited++;
+    await new Promise((r) => setTimeout(r, 20_000));
   }
   const idx = hits.findIndex((h) => matchesGold(h.section_path, q.gold));
   return {
     id: q.id, subject: q.subject, lang: q.lang, type: q.type, split: splitOf(q.id), question: q.question, gold: q.gold,
     rank: idx >= 0 ? idx + 1 : null,
-    keywords: rewrite.keywords, keywordSource: rewrite.source, rewriteError: useRewrite ? rewrite.error : undefined,
+    keywords: rewrite.keywords, keywordSource: rewrite.source, rewriteError: rewrite.error,
     latencyMs: Date.now() - t0, costInr: rewrite.usage?.costInr ?? 0,
     top: hits.slice(0, 5).map((h) => ({ chapter: h.chapter_number, pages: `${h.page_start}-${h.page_end}`, section: h.section_path })),
   };
@@ -146,7 +143,7 @@ for (const key of ['split', 'subject', 'lang', 'type'] as const) {
 }
 const lat = rows.map((r) => r.latencyMs).sort((a, b) => a - b);
 const cost = rows.reduce((s, r) => s + r.costInr, 0);
-const fallbacks = rows.filter((r) => useRewrite && r.keywordSource !== 'model').length;
+const fallbacks = rows.filter((r) => r.keywordSource === 'question').length;
 console.log(`latency p50 ${lat[Math.floor(lat.length / 2)]} ms, p95 ${lat[Math.floor(lat.length * 0.95)]} ms; ` +
   `rewrite cost ₹${cost.toFixed(3)}; rewrite fallbacks ${fallbacks}; 429 retries ${rateLimited}`);
 const errors = [...new Set(rows.map((r) => r.rewriteError).filter(Boolean))];

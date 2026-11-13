@@ -1,7 +1,8 @@
 // Keyword-first curriculum retrieval (decision 2026-11-12: no embedding provider yet).
 //
 //   question (EN / TE / mixed)
-//     -> rewriteQuery(): Sarvam chat model returns English textbook keywords (JSON)
+//     -> Telugu script only: rewriteQuery(): Sarvam chat model returns English textbook keywords
+//        (English and Latin-script questions are searched with their own words, see needsRewrite)
 //     -> searchChunks(): rpc match_chunks_keyword, run as the calling user (RLS applies)
 //
 // The model only produces search terms. They are sanitised to plain ASCII words before
@@ -67,8 +68,11 @@ export function parseRewrite(content: string): string[] {
 
 export interface RewriteResult {
   keywords: string[];
-  /** 'model' = from the LLM; 'question' = fallback to the question's own words. */
-  source: 'model' | 'question';
+  /**
+   * 'model' = from the LLM; 'question' = the rewrite failed, fallback to the question's own
+   * words; 'direct' = no rewrite needed (no Telugu script), the question's own words.
+   */
+  source: 'model' | 'question' | 'direct';
   /** Present when the model was called (for model_usage accounting), even if unusable. */
   usage?: Pick<ChatResult, 'model' | 'inputTokens' | 'outputTokens' | 'costInr' | 'latencyMs'>;
   /** Why the model keywords were not used (e.g. "429 Rate limit exceeded"); log it. */
@@ -144,12 +148,28 @@ export interface RetrievalResult {
   rewrite: RewriteResult;
 }
 
+const TELUGU_SCRIPT = /[ఀ-౿]/;
+
+/**
+ * Owner decision 2026-11-13: call the LLM rewrite only for questions containing Telugu
+ * script. Eval v1: the rewrite lifts Telugu-script R@5 from 4% to 100% but English only
+ * 95% -> 96%, and it costs one call against Sarvam's 50 req/min account limit.
+ * Telugu typed in Latin letters ("ela tayaru chestaru") keeps its English science terms
+ * and is searched directly.
+ */
+export function needsRewrite(question: string): boolean {
+  return TELUGU_SCRIPT.test(question);
+}
+
 export async function retrieve(
   client: RpcClient,
   question: string,
-  opts: SearchOptions,
+  opts: SearchOptions & { rewrite?: 'auto' | 'always' | 'never' },
 ): Promise<RetrievalResult> {
-  const rewrite = await rewriteQuery(question, opts.subject);
+  const mode = opts.rewrite ?? 'auto';
+  const rewrite: RewriteResult = mode === 'always' || (mode === 'auto' && needsRewrite(question))
+    ? await rewriteQuery(question, opts.subject)
+    : { keywords: sanitizeKeywords([question]), source: 'direct' };
   const hits = await searchChunks(client, rewrite.keywords, opts);
   return { hits, rewrite };
 }

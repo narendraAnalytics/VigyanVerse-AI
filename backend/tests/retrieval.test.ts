@@ -2,11 +2,30 @@ import { describe, expect, it } from 'vitest';
 import {
   MAX_KEYWORDS,
   buildRewriteMessages,
+  needsRewrite,
   parseRewrite,
+  retrieve,
   sanitizeKeywords,
   searchChunks,
   type RpcClient,
 } from '../src/shared/retrieval.ts';
+
+describe('needsRewrite', () => {
+  it('rewrites only questions containing Telugu script', () => {
+    expect(needsRewrite('ఆకాశం నీలి రంగులో ఎందుకు కనిపిస్తుంది?')).toBe(true);
+    expect(needsRewrite('pH విలువ 7 కంటే తక్కువ')).toBe(true);
+    expect(needsRewrite('Why is the sky blue?')).toBe(false);
+    expect(needsRewrite('plaster of paris ela tayaru chestaru?')).toBe(false);
+  });
+
+  it('searches English questions directly, without calling the model', async () => {
+    let query = '';
+    const client: RpcClient = { database: { rpc: async (_fn, p) => { query = String(p.p_query); return { data: [], error: null }; } } };
+    const { rewrite } = await retrieve(client, 'State Ohm’s law', { board: 'CBSE', subject: 'physics' });
+    expect(rewrite.source).toBe('direct');
+    expect(query).toBe('state ohm law');
+  });
+});
 
 describe('sanitizeKeywords', () => {
   it('lowercases, splits multi-word terms and removes duplicates', () => {
