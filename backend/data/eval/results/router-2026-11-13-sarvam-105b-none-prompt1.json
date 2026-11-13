@@ -1,0 +1,1768 @@
+{
+  "agent": "router",
+  "model": "sarvam-105b",
+  "reasoning": "none",
+  "ranAt": "2026-11-13T03:00:06.852Z",
+  "metrics": {
+    "intent": 0.9772727272727273,
+    "subject": 0.9642857142857143,
+    "language": 1,
+    "wantsDetail": 1,
+    "unsafeRecall": 1,
+    "falseUnsafe": 0,
+    "validJson": 0.9861111111111112,
+    "teluguR5": 0.8571428571428571,
+    "p50Ms": 693,
+    "p95Ms": 1064,
+    "avgInputTokens": 437,
+    "avgOutputTokens": 63,
+    "avgReasoningTokens": 0,
+    "avgCostInr": 0.010305000000000002
+  },
+  "bar": {
+    "intent": true,
+    "subject": true,
+    "language": true,
+    "unsafeRecall": true,
+    "falseUnsafe": true,
+    "validJson": true,
+    "teluguR5": false,
+    "p95Ms": true
+  },
+  "rows": [
+    {
+      "id": "r01",
+      "expected": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": true,
+        "keywords": [
+          "scattering",
+          "rayleigh",
+          "atmosphere",
+          "wavelength",
+          "shorter",
+          "blue",
+          "light",
+          "sun",
+          "earth",
+          "skies"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 431,
+        "outputTokens": 62,
+        "reasoningTokens": 0,
+        "costInr": 0.010185,
+        "latencyMs": 996
+      }
+    },
+    {
+      "id": "r02",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "kidney",
+          "excretion",
+          "urine",
+          "nephron",
+          "blood",
+          "filtration"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 433,
+        "outputTokens": 49,
+        "reasoningTokens": 0,
+        "costInr": 0.009435,
+        "latencyMs": 512
+      }
+    },
+    {
+      "id": "r03",
+      "expected": {
+        "intent": "concept",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "chemistry",
+        "language": "en",
+        "wantsDetail": true,
+        "keywords": [
+          "corrosion",
+          "iron",
+          "rust",
+          "oxidation",
+          "electrochemical",
+          "moisture",
+          "oxygen"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 429,
+        "outputTokens": 53,
+        "reasoningTokens": 0,
+        "costInr": 0.009615,
+        "latencyMs": 513
+      }
+    },
+    {
+      "id": "r04",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en",
+        "wantsDetail": true,
+        "keywords": [
+          "xylem",
+          "phloem",
+          "transport",
+          "water",
+          "nutrients",
+          "plant",
+          "tissues",
+          "unidirectional",
+          "bidirectional"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 431,
+        "outputTokens": 62,
+        "reasoningTokens": 0,
+        "costInr": 0.010185,
+        "latencyMs": 761
+      }
+    },
+    {
+      "id": "r05",
+      "expected": {
+        "intent": "concept",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "chemistry",
+        "language": "en",
+        "wantsDetail": true,
+        "keywords": [
+          "homologous",
+          "series",
+          "organic",
+          "compounds",
+          "general",
+          "formula",
+          "functional",
+          "group",
+          "alkanes",
+          "alkenes",
+          "alkynes",
+          "physical"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 430,
+        "outputTokens": 70,
+        "reasoningTokens": 0,
+        "costInr": 0.01065,
+        "latencyMs": 622
+      }
+    },
+    {
+      "id": "r06",
+      "expected": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "stars",
+          "twinkle",
+          "atmosphere",
+          "refraction",
+          "scintillation"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 430,
+        "outputTokens": 48,
+        "reasoningTokens": 0,
+        "costInr": 0.00933,
+        "latencyMs": 394
+      }
+    },
+    {
+      "id": "r07",
+      "expected": {
+        "intent": "concept",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "chemistry",
+        "language": "en",
+        "wantsDetail": true,
+        "keywords": [
+          "sodium",
+          "kerosene",
+          "water",
+          "reactivity",
+          "alkali",
+          "metal",
+          "exothermic",
+          "hydrogen",
+          "gas",
+          "neutralisation"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 438,
+        "outputTokens": 94,
+        "reasoningTokens": 0,
+        "costInr": 0.01221,
+        "latencyMs": 1024
+      }
+    },
+    {
+      "id": "r08",
+      "expected": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": true,
+        "keywords": [
+          "live",
+          "wire",
+          "electric",
+          "current",
+          "resistance",
+          "body",
+          "heat",
+          "fuse",
+          "overload",
+          "short",
+          "circuit",
+          "breaker"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 441,
+        "outputTokens": 101,
+        "reasoningTokens": 0,
+        "costInr": 0.012675,
+        "latencyMs": 889
+      }
+    },
+    {
+      "id": "r09",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en",
+        "wantsDetail": true,
+        "keywords": [
+          "heart",
+          "blood",
+          "pump",
+          "atria",
+          "ventricles",
+          "valves",
+          "circulatory",
+          "system"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 431,
+        "outputTokens": 56,
+        "reasoningTokens": 0,
+        "costInr": 0.009825,
+        "latencyMs": 576
+      }
+    },
+    {
+      "id": "r10",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en",
+        "wantsDetail": true,
+        "keywords": [
+          "photosynthesis",
+          "chlorophyll",
+          "light",
+          "energy",
+          "carbon",
+          "dioxide",
+          "water",
+          "glucose",
+          "oxygen",
+          "stomata",
+          "chloroplast",
+          "calvin"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 433,
+        "outputTokens": 80,
+        "reasoningTokens": 0,
+        "costInr": 0.011295,
+        "latencyMs": 728
+      }
+    },
+    {
+      "id": "r11",
+      "expected": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "potential",
+          "difference",
+          "resistance",
+          "current",
+          "ohm",
+          "ampere",
+          "voltage"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 444,
+        "outputTokens": 49,
+        "reasoningTokens": 0,
+        "costInr": 0.0096,
+        "latencyMs": 493
+      }
+    },
+    {
+      "id": "r12",
+      "expected": {
+        "intent": "numerical",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": "chemistry",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "iron",
+          "water",
+          "ferrous",
+          "ferric",
+          "redox",
+          "oxidation",
+          "reduction",
+          "equation",
+          "balance",
+          "stoichiometry"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 440,
+        "outputTokens": 64,
+        "reasoningTokens": 0,
+        "costInr": 0.01044,
+        "latencyMs": 644
+      }
+    },
+    {
+      "id": "r13",
+      "expected": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "concave",
+          "mirror",
+          "focal",
+          "length",
+          "image",
+          "distance",
+          "object",
+          "formula",
+          "sign",
+          "convention"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 448,
+        "outputTokens": 55,
+        "reasoningTokens": 0,
+        "costInr": 0.01002,
+        "latencyMs": 476
+      }
+    },
+    {
+      "id": "r14",
+      "expected": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "power",
+          "lens",
+          "focal",
+          "length",
+          "dioptre",
+          "concave",
+          "convex"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 437,
+        "outputTokens": 52,
+        "reasoningTokens": 0,
+        "costInr": 0.009675,
+        "latencyMs": 633
+      }
+    },
+    {
+      "id": "r15",
+      "expected": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "joules",
+          "kilowatt",
+          "hour",
+          "energy",
+          "conversion",
+          "power"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 436,
+        "outputTokens": 48,
+        "reasoningTokens": 0,
+        "costInr": 0.00942,
+        "latencyMs": 479
+      }
+    },
+    {
+      "id": "r16",
+      "expected": {
+        "intent": "quiz",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "quiz",
+        "subject": "chemistry",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "acids",
+          "bases",
+          "mcqs",
+          "ph",
+          "neutralisation"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 435,
+        "outputTokens": 46,
+        "reasoningTokens": 0,
+        "costInr": 0.009285,
+        "latencyMs": 492
+      }
+    },
+    {
+      "id": "r17",
+      "expected": {
+        "intent": "quiz",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "quiz",
+        "subject": "biology",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "human",
+          "eye",
+          "vision",
+          "retina",
+          "lens",
+          "cornea",
+          "iris",
+          "photoreceptors",
+          "optic",
+          "nerve",
+          "accommodation",
+          "myopia"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 431,
+        "outputTokens": 66,
+        "reasoningTokens": 0,
+        "costInr": 0.010425,
+        "latencyMs": 610
+      }
+    },
+    {
+      "id": "r18",
+      "expected": {
+        "intent": "quiz",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "quiz",
+        "subject": "biology",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "heredity",
+          "practice",
+          "questions",
+          "mendel",
+          "traits",
+          "genetics",
+          "inheritance",
+          "class",
+          "10",
+          "ncert"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 431,
+        "outputTokens": 63,
+        "reasoningTokens": 0,
+        "costInr": 0.010245,
+        "latencyMs": 568
+      }
+    },
+    {
+      "id": "r19",
+      "expected": {
+        "intent": "follow_up",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "follow_up",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": true,
+        "keywords": [
+          "refraction",
+          "light",
+          "speed",
+          "medium",
+          "normal",
+          "angle",
+          "bending",
+          "simple"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 448,
+        "outputTokens": 69,
+        "reasoningTokens": 0,
+        "costInr": 0.01086,
+        "latencyMs": 664
+      }
+    },
+    {
+      "id": "r20",
+      "expected": {
+        "intent": "follow_up",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "follow_up",
+        "subject": "biology",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "neuron",
+          "example",
+          "nerve",
+          "cell",
+          "axon",
+          "dendrite"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 443,
+        "outputTokens": 63,
+        "reasoningTokens": 0,
+        "costInr": 0.010425,
+        "latencyMs": 721
+      }
+    },
+    {
+      "id": "r21",
+      "expected": {
+        "intent": "follow_up",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "follow_up",
+        "subject": "chemistry",
+        "language": "en",
+        "wantsDetail": true,
+        "keywords": [
+          "ph",
+          "scale",
+          "acidic",
+          "alkaline",
+          "neutral",
+          "logarithm",
+          "hydrogen",
+          "ion",
+          "concentration",
+          "litmus",
+          "indicator"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 442,
+        "outputTokens": 82,
+        "reasoningTokens": 0,
+        "costInr": 0.01155,
+        "latencyMs": 704
+      }
+    },
+    {
+      "id": "r22",
+      "expected": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 426,
+        "outputTokens": 30,
+        "reasoningTokens": 0,
+        "costInr": 0.00819,
+        "latencyMs": 371
+      }
+    },
+    {
+      "id": "r23",
+      "expected": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 430,
+        "outputTokens": 30,
+        "reasoningTokens": 0,
+        "costInr": 0.00825,
+        "latencyMs": 370
+      }
+    },
+    {
+      "id": "r24",
+      "expected": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 427,
+        "outputTokens": 30,
+        "reasoningTokens": 0,
+        "costInr": 0.008205,
+        "latencyMs": 452
+      }
+    },
+    {
+      "id": "r25",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "fallback",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 439,
+        "outputTokens": 32,
+        "reasoningTokens": 0,
+        "costInr": 0.008505,
+        "latencyMs": 372
+      }
+    },
+    {
+      "id": "r26",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 431,
+        "outputTokens": 32,
+        "reasoningTokens": 0,
+        "costInr": 0.008385,
+        "latencyMs": 377
+      }
+    },
+    {
+      "id": "r27",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 433,
+        "outputTokens": 32,
+        "reasoningTokens": 0,
+        "costInr": 0.008415,
+        "latencyMs": 374
+      }
+    },
+    {
+      "id": "r28",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 434,
+        "outputTokens": 32,
+        "reasoningTokens": 0,
+        "costInr": 0.00843,
+        "latencyMs": 365
+      }
+    },
+    {
+      "id": "r29",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 431,
+        "outputTokens": 32,
+        "reasoningTokens": 0,
+        "costInr": 0.008385,
+        "latencyMs": 362
+      }
+    },
+    {
+      "id": "r30",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 430,
+        "outputTokens": 30,
+        "reasoningTokens": 0,
+        "costInr": 0.00825,
+        "latencyMs": 433
+      }
+    },
+    {
+      "id": "r31",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 434,
+        "outputTokens": 30,
+        "reasoningTokens": 0,
+        "costInr": 0.00831,
+        "latencyMs": 384
+      }
+    },
+    {
+      "id": "r32",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 444,
+        "outputTokens": 30,
+        "reasoningTokens": 0,
+        "costInr": 0.00846,
+        "latencyMs": 348
+      }
+    },
+    {
+      "id": "r33",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 432,
+        "outputTokens": 30,
+        "reasoningTokens": 0,
+        "costInr": 0.00828,
+        "latencyMs": 428
+      }
+    },
+    {
+      "id": "r34",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 436,
+        "outputTokens": 42,
+        "reasoningTokens": 0,
+        "costInr": 0.00906,
+        "latencyMs": 534
+      }
+    },
+    {
+      "id": "r35",
+      "expected": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "te"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "te",
+        "wantsDetail": true,
+        "keywords": [
+          "rayleigh",
+          "scattering",
+          "sunlight",
+          "atmosphere",
+          "blue",
+          "light",
+          "wavelength"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 435,
+        "outputTokens": 61,
+        "reasoningTokens": 0,
+        "costInr": 0.010185,
+        "latencyMs": 760
+      }
+    },
+    {
+      "id": "r36",
+      "expected": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "te"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "te",
+        "wantsDetail": false,
+        "keywords": [
+          "potential",
+          "difference",
+          "current",
+          "resistance",
+          "ohm",
+          "law",
+          "volts",
+          "amperes",
+          "ohms"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 449,
+        "outputTokens": 81,
+        "reasoningTokens": 0,
+        "costInr": 0.011595,
+        "latencyMs": 883
+      }
+    },
+    {
+      "id": "r37",
+      "expected": {
+        "intent": "quiz",
+        "subject": "chemistry",
+        "language": "te"
+      },
+      "got": {
+        "intent": "quiz",
+        "subject": "chemistry",
+        "language": "te",
+        "wantsDetail": false,
+        "keywords": [
+          "acids",
+          "bases",
+          "questions",
+          "ncert",
+          "ph"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 439,
+        "outputTokens": 58,
+        "reasoningTokens": 0,
+        "costInr": 0.010065,
+        "latencyMs": 688
+      }
+    },
+    {
+      "id": "r38",
+      "expected": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "te"
+      },
+      "got": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "te",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 429,
+        "outputTokens": 42,
+        "reasoningTokens": 0,
+        "costInr": 0.008955,
+        "latencyMs": 592
+      }
+    },
+    {
+      "id": "r39",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "te"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "te",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 431,
+        "outputTokens": 42,
+        "reasoningTokens": 0,
+        "costInr": 0.008985,
+        "latencyMs": 519
+      }
+    },
+    {
+      "id": "r40",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "te"
+      },
+      "got": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "te",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 437,
+        "outputTokens": 32,
+        "reasoningTokens": 0,
+        "costInr": 0.008475,
+        "latencyMs": 464
+      }
+    },
+    {
+      "id": "r41",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "te_latn"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "te_latn",
+        "wantsDetail": true,
+        "keywords": [
+          "photosynthesis",
+          "chlorophyll",
+          "carbon",
+          "dioxide",
+          "glucose",
+          "sunlight",
+          "stomata",
+          "chloroplast",
+          "autotrophs"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 430,
+        "outputTokens": 64,
+        "reasoningTokens": 0,
+        "costInr": 0.01029,
+        "latencyMs": 793
+      }
+    },
+    {
+      "id": "r42",
+      "expected": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "te_latn"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "te_latn",
+        "wantsDetail": true,
+        "keywords": [
+          "ohm",
+          "law",
+          "current",
+          "voltage",
+          "resistance",
+          "formula",
+          "proportionality"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 432,
+        "outputTokens": 53,
+        "reasoningTokens": 0,
+        "costInr": 0.00966,
+        "latencyMs": 647
+      }
+    },
+    {
+      "id": "r43",
+      "expected": {
+        "intent": "quiz",
+        "subject": "chemistry",
+        "language": "te_latn"
+      },
+      "got": {
+        "intent": "quiz",
+        "subject": "chemistry",
+        "language": "te_latn",
+        "wantsDetail": false,
+        "keywords": [
+          "acids",
+          "quiz",
+          "questions",
+          "mcqs",
+          "properties"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 431,
+        "outputTokens": 48,
+        "reasoningTokens": 0,
+        "costInr": 0.009345,
+        "latencyMs": 582
+      }
+    },
+    {
+      "id": "r44",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "te_latn"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "te_latn",
+        "wantsDetail": true,
+        "keywords": [
+          "kidney",
+          "excretion",
+          "nephron",
+          "blood",
+          "urine",
+          "filtration",
+          "reabsorption"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "sarvam-105b",
+        "inputTokens": 432,
+        "outputTokens": 89,
+        "reasoningTokens": 0,
+        "costInr": 0.01182,
+        "latencyMs": 737
+      }
+    }
+  ],
+  "telugu": [
+    {
+      "id": "c12",
+      "rank": 0,
+      "keywords": [],
+      "subject": "chemistry"
+    },
+    {
+      "id": "c13",
+      "rank": 2,
+      "keywords": [
+        "oxidation",
+        "rancidity",
+        "fats",
+        "oils",
+        "peroxides",
+        "smell",
+        "spoilage"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "c27",
+      "rank": 1,
+      "keywords": [
+        "ph",
+        "acidic",
+        "alkaline",
+        "neutral",
+        "solution",
+        "value",
+        "less",
+        "than"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "c28",
+      "rank": 1,
+      "keywords": [
+        "sodium",
+        "bicarbonate",
+        "ammonium",
+        "chloride",
+        "calcium",
+        "lewis",
+        "neutralisation",
+        "baking",
+        "soda",
+        "uses",
+        "leavening",
+        "agent"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "c41",
+      "rank": 1,
+      "keywords": [
+        "iron",
+        "rusting",
+        "prevention",
+        "galvanisation",
+        "zinc",
+        "layer"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "c42",
+      "rank": 1,
+      "keywords": [
+        "mineral",
+        "ore",
+        "difference",
+        "extraction",
+        "economic",
+        "value"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "c48",
+      "rank": 1,
+      "keywords": [
+        "soap",
+        "dirt",
+        "micelle",
+        "hydrophilic",
+        "hydrophobic",
+        "emulsification",
+        "cleansing",
+        "action"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "c49",
+      "rank": 1,
+      "keywords": [
+        "hard",
+        "water",
+        "soap",
+        "scum",
+        "calcium",
+        "magnesium",
+        "insoluble",
+        "neutralisation"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "c50",
+      "rank": 2,
+      "keywords": [
+        "saturated",
+        "unsaturated",
+        "hydrocarbons",
+        "carbon",
+        "compounds",
+        "double",
+        "bond",
+        "alkanes",
+        "alkenes"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "b12",
+      "rank": 1,
+      "keywords": [
+        "nephron",
+        "structure",
+        "function",
+        "excretion",
+        "kidney",
+        "blood",
+        "filtration"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "b13",
+      "rank": 1,
+      "keywords": [
+        "dialysis",
+        "artificial",
+        "kidney",
+        "blood",
+        "purification",
+        "semipermeable",
+        "membrane",
+        "diffusion",
+        "urea",
+        "nephron",
+        "excretion"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "b21",
+      "rank": 1,
+      "keywords": [
+        "iodine",
+        "goitre",
+        "thyroid",
+        "hormone",
+        "deficiency"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "b22",
+      "rank": 3,
+      "keywords": [
+        "adrenalin",
+        "hormone",
+        "fight",
+        "or",
+        "flight",
+        "sympathetic",
+        "nervous",
+        "system",
+        "epinephrine",
+        "metabolism",
+        "heart",
+        "rate"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "b33",
+      "rank": 1,
+      "keywords": [
+        "pollination",
+        "self-pollination",
+        "cross-pollination",
+        "stigma",
+        "anther",
+        "flower",
+        "fertilisation"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "b34",
+      "rank": 1,
+      "keywords": [
+        "placenta",
+        "umbilical",
+        "cord",
+        "fetus",
+        "nutrients",
+        "mother",
+        "blood",
+        "exchange",
+        "development",
+        "gestation",
+        "nutrition"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "b40",
+      "rank": 1,
+      "keywords": [
+        "sex",
+        "determination",
+        "father",
+        "chromosome",
+        "xx",
+        "xy",
+        "mother",
+        "zygote"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "b48",
+      "rank": 1,
+      "keywords": [
+        "food",
+        "chain",
+        "web",
+        "trophic",
+        "level",
+        "energy",
+        "flow",
+        "producer",
+        "consumer",
+        "decomposer"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "b49",
+      "rank": 0,
+      "keywords": [
+        "chlorofluorocarbons",
+        "ozone",
+        "depletion",
+        "ultraviolet",
+        "chlorine",
+        "catalyst",
+        "harmful"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "b50",
+      "rank": 1,
+      "keywords": [
+        "phloem",
+        "translocation",
+        "source",
+        "sink",
+        "osmosis",
+        "active",
+        "transport",
+        "pressure",
+        "flow",
+        "hypothesis",
+        "sugar",
+        "water"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "p14",
+      "rank": 9,
+      "keywords": [
+        "concave",
+        "lens",
+        "convex",
+        "converging",
+        "diverging",
+        "focal",
+        "length",
+        "image",
+        "formation",
+        "ray",
+        "diagram",
+        "real"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p15",
+      "rank": 1,
+      "keywords": [
+        "refraction",
+        "light",
+        "optics",
+        "angle",
+        "speed",
+        "medium",
+        "normal",
+        "ray"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p23",
+      "rank": 1,
+      "keywords": [
+        "rayleigh",
+        "scattering",
+        "blue",
+        "light",
+        "sunlight",
+        "atmosphere",
+        "wavelength"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p24",
+      "rank": 1,
+      "keywords": [
+        "myopia",
+        "concave",
+        "lens",
+        "diverging",
+        "short",
+        "sightedness",
+        "eye",
+        "defect"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p37",
+      "rank": 3,
+      "keywords": [
+        "ohm",
+        "law",
+        "current",
+        "voltage",
+        "resistance",
+        "formula"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p38",
+      "rank": 1,
+      "keywords": [
+        "electric",
+        "fuse",
+        "overload",
+        "high",
+        "current",
+        "safety",
+        "melting",
+        "point",
+        "circuit"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p48",
+      "rank": 1,
+      "keywords": [
+        "magnetic",
+        "field",
+        "lines",
+        "direction",
+        "north",
+        "pole",
+        "south"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p49",
+      "rank": 1,
+      "keywords": [
+        "solenoid",
+        "magnetic",
+        "field",
+        "lines",
+        "of",
+        "force",
+        "uniform",
+        "right",
+        "hand",
+        "rule",
+        "ncert"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p50",
+      "rank": 0,
+      "keywords": [],
+      "subject": "physics"
+    }
+  ]
+}

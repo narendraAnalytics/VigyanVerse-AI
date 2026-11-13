@@ -34,7 +34,11 @@ export interface ModelRoute {
 }
 
 export const MODEL_ROUTES: Record<ModelTask, ModelRoute> = {
-  router: { model: 'glm5.3-flash', api: 'v2', maxTokens: 300, temperature: 0, json: true },
+  // Router eval 2026-11-13 (44 cases + 28 Telugu retrieval, prompt v2, all pass the bar):
+  // deepseek (reasoning off) p50 547 ms ₹0.0110/call; glm5.3-flash p50 926 ms ₹0.0113 (24
+  // hidden reasoning tokens, cannot be turned off); gemma4 p50 271 ms but ₹0.0246;
+  // sarvam-105b failed (empty Telugu keywords, invalid JSON). See backendplan.txt 3b.
+  router: { model: 'deepseekv4.1-flash-1017', api: 'v2', maxTokens: 300, temperature: 0, json: true, reasoningEffort: 'none', fallback: 'glm5.3-flash' },
   // Question (EN/TE) -> English textbook keywords for full-text retrieval. No model
   // fallback: on failure retrieval falls back to the question's own words (retrieval.ts).
   query_rewrite: { model: 'glm5.3-flash', api: 'v2', maxTokens: 200, temperature: 0, json: true },
@@ -50,11 +54,14 @@ export const MODEL_ROUTES: Record<ModelTask, ModelRoute> = {
   voice_dialogue: { model: 'sarvam-105b-conversations', api: 'v2', maxTokens: 400, temperature: 0.4 },
 };
 
-/** INR per 1M tokens, excluding GST. Recheck before budgeting. */
+/**
+ * INR per 1M tokens, excluding GST. Hidden reasoning tokens are billed as output.
+ * Checked against docs.sarvam.ai/api/token-factory/models on 2026-11-13. Recheck before budgeting.
+ */
 export const MODEL_PRICING_INR: Record<string, { input: number; output: number }> = {
   'sarvam-105b': { input: 15, output: 60 },
   'sarvam-105b-conversations': { input: 15, output: 60 },
-  'deepseekv4.1-flash-1017': { input: 25, output: 105 },
+  'deepseekv4.1-flash-1017': { input: 14, output: 55 },
   gemma4: { input: 35, output: 90 },
   'glm5.3-flash': { input: 13.5, output: 45 },
   'glm5.3': { input: 126, output: 390 },

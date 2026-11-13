@@ -28,17 +28,32 @@ export interface ChatResult {
   model: string;
   usedFallback: boolean;
   inputTokens: number;
+  /** Includes hidden reasoning tokens (billed as output). */
   outputTokens: number;
+  /** Hidden reasoning tokens, when the API reports them. */
+  reasoningTokens?: number;
   costInr: number;
   latencyMs: number;
+}
+
+export interface ChatOverrides {
+  maxTokens?: number;
+  temperature?: number;
+  /** Evals only: try another model for this task (no fallback is used then). */
+  model?: string;
+  /** Evals only: reasoning effort for the overridden model ('none' for sarvam-105b/deepseek). */
+  reasoningEffort?: 'none' | 'low' | 'medium' | 'high' | null;
 }
 
 export async function chat(
   task: ModelTask,
   messages: ChatCompletionMessageParam[],
-  overrides: { maxTokens?: number; temperature?: number } = {},
+  overrides: ChatOverrides = {},
 ): Promise<ChatResult> {
-  const route = MODEL_ROUTES[task];
+  const baseRoute = MODEL_ROUTES[task];
+  const route = overrides.model
+    ? { ...baseRoute, model: overrides.model, fallback: undefined, reasoningEffort: overrides.reasoningEffort ?? undefined }
+    : baseRoute;
   const candidates = route.fallback ? [route.model, route.fallback] : [route.model];
   const started = Date.now();
   let lastError: unknown;
@@ -60,12 +75,15 @@ export async function chat(
       }
       const inputTokens = response.usage?.prompt_tokens ?? 0;
       const outputTokens = response.usage?.completion_tokens ?? 0;
+      const reasoningTokens = (response.usage as { completion_tokens_details?: { reasoning_tokens?: number } } | undefined)
+        ?.completion_tokens_details?.reasoning_tokens;
       return {
         content,
         model,
         usedFallback: i > 0,
         inputTokens,
         outputTokens,
+        reasoningTokens,
         costInr: estimateCostInr(model, inputTokens, outputTokens),
         latencyMs: Date.now() - started,
       };

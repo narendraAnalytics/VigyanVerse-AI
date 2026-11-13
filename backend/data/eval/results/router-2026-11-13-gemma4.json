@@ -1,0 +1,1755 @@
+{
+  "agent": "router",
+  "model": "gemma4",
+  "reasoning": null,
+  "ranAt": "2026-11-13T03:05:31.579Z",
+  "metrics": {
+    "intent": 1,
+    "subject": 0.25,
+    "language": 1,
+    "wantsDetail": 1,
+    "unsafeRecall": 1,
+    "falseUnsafe": 0,
+    "validJson": 1,
+    "teluguR5": 0.9642857142857143,
+    "p50Ms": 271,
+    "p95Ms": 865,
+    "avgInputTokens": 569,
+    "avgOutputTokens": 52,
+    "avgReasoningTokens": 0,
+    "avgCostInr": 0.02457472222222222
+  },
+  "bar": {
+    "intent": true,
+    "subject": false,
+    "language": true,
+    "unsafeRecall": true,
+    "falseUnsafe": true,
+    "validJson": true,
+    "teluguR5": true,
+    "p95Ms": true
+  },
+  "rows": [
+    {
+      "id": "r01",
+      "expected": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "scattering",
+          "of",
+          "light",
+          "rayleigh",
+          "atmosphere",
+          "shorter",
+          "wavelength",
+          "blue",
+          "colour"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 562,
+        "outputTokens": 63,
+        "reasoningTokens": 0,
+        "costInr": 0.02534,
+        "latencyMs": 649
+      }
+    },
+    {
+      "id": "r02",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "kidney",
+          "excretion",
+          "filtration",
+          "nephron",
+          "urine",
+          "nitrogenous",
+          "waste"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 564,
+        "outputTokens": 58,
+        "reasoningTokens": 0,
+        "costInr": 0.02496,
+        "latencyMs": 286
+      }
+    },
+    {
+      "id": "r03",
+      "expected": {
+        "intent": "concept",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "corrosion",
+          "iron",
+          "rusting",
+          "moisture",
+          "oxygen",
+          "oxidation"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 560,
+        "outputTokens": 58,
+        "reasoningTokens": 0,
+        "costInr": 0.02482,
+        "latencyMs": 300
+      }
+    },
+    {
+      "id": "r04",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "xylem",
+          "phloem",
+          "transportation",
+          "water",
+          "minerals",
+          "food",
+          "translocation",
+          "vascular",
+          "tissue"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 562,
+        "outputTokens": 64,
+        "reasoningTokens": 0,
+        "costInr": 0.02543,
+        "latencyMs": 625
+      }
+    },
+    {
+      "id": "r05",
+      "expected": {
+        "intent": "concept",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "homologous",
+          "series",
+          "carbon",
+          "compounds",
+          "functional",
+          "group",
+          "molecular",
+          "formula",
+          "chemical",
+          "properties"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 561,
+        "outputTokens": 57,
+        "reasoningTokens": 0,
+        "costInr": 0.024765,
+        "latencyMs": 291
+      }
+    },
+    {
+      "id": "r06",
+      "expected": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "atmospheric",
+          "refraction",
+          "twinkling",
+          "of",
+          "stars",
+          "refractive",
+          "index",
+          "starlight",
+          "atmosphere"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 561,
+        "outputTokens": 64,
+        "reasoningTokens": 0,
+        "costInr": 0.025395,
+        "latencyMs": 266
+      }
+    },
+    {
+      "id": "r07",
+      "expected": {
+        "intent": "concept",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "sodium",
+          "kerosene",
+          "highly",
+          "reactive",
+          "reaction",
+          "with",
+          "water",
+          "hydrogen",
+          "gas",
+          "exothermic"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 569,
+        "outputTokens": 62,
+        "reasoningTokens": 0,
+        "costInr": 0.025495,
+        "latencyMs": 306
+      }
+    },
+    {
+      "id": "r08",
+      "expected": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "electric",
+          "shock",
+          "live",
+          "wire",
+          "fuse",
+          "overloading",
+          "short",
+          "circuit",
+          "melting",
+          "point"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 572,
+        "outputTokens": 58,
+        "reasoningTokens": 0,
+        "costInr": 0.02524,
+        "latencyMs": 275
+      }
+    },
+    {
+      "id": "r09",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "heart",
+          "blood",
+          "circulation",
+          "ventricles",
+          "atria",
+          "oxygenated",
+          "deoxygenated",
+          "pulmonary",
+          "artery",
+          "aorta"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 562,
+        "outputTokens": 70,
+        "reasoningTokens": 0,
+        "costInr": 0.02597,
+        "latencyMs": 316
+      }
+    },
+    {
+      "id": "r10",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": true,
+        "keywords": [
+          "photosynthesis",
+          "chlorophyll",
+          "stomata",
+          "light",
+          "reaction",
+          "dark",
+          "glucose",
+          "oxygen",
+          "carbon",
+          "dioxide"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 564,
+        "outputTokens": 64,
+        "reasoningTokens": 0,
+        "costInr": 0.0255,
+        "latencyMs": 287
+      }
+    },
+    {
+      "id": "r11",
+      "expected": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "resistance",
+          "current",
+          "potential",
+          "difference",
+          "ohm",
+          "law",
+          "voltage"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 575,
+        "outputTokens": 54,
+        "reasoningTokens": 0,
+        "costInr": 0.024985,
+        "latencyMs": 237
+      }
+    },
+    {
+      "id": "r12",
+      "expected": {
+        "intent": "numerical",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "balance",
+          "chemical",
+          "equation",
+          "iron",
+          "water",
+          "magnetic",
+          "oxide",
+          "hydrogen"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 571,
+        "outputTokens": 57,
+        "reasoningTokens": 0,
+        "costInr": 0.025115,
+        "latencyMs": 286
+      }
+    },
+    {
+      "id": "r13",
+      "expected": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "concave",
+          "mirror",
+          "focal",
+          "length",
+          "object",
+          "distance",
+          "image",
+          "formula"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 579,
+        "outputTokens": 51,
+        "reasoningTokens": 0,
+        "costInr": 0.024855,
+        "latencyMs": 252
+      }
+    },
+    {
+      "id": "r14",
+      "expected": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "power",
+          "of",
+          "lens",
+          "focal",
+          "length",
+          "dioptre",
+          "convex",
+          "concave"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 568,
+        "outputTokens": 53,
+        "reasoningTokens": 0,
+        "costInr": 0.02465,
+        "latencyMs": 290
+      }
+    },
+    {
+      "id": "r15",
+      "expected": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "joule",
+          "kilowatt",
+          "hour",
+          "energy",
+          "unit",
+          "conversion",
+          "electricity"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 567,
+        "outputTokens": 49,
+        "reasoningTokens": 0,
+        "costInr": 0.024255,
+        "latencyMs": 253
+      }
+    },
+    {
+      "id": "r16",
+      "expected": {
+        "intent": "quiz",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "quiz",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "acids",
+          "bases",
+          "ph",
+          "scale",
+          "indicators",
+          "neutralisation",
+          "litmus"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 566,
+        "outputTokens": 58,
+        "reasoningTokens": 0,
+        "costInr": 0.02503,
+        "latencyMs": 263
+      }
+    },
+    {
+      "id": "r17",
+      "expected": {
+        "intent": "quiz",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "quiz",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "human",
+          "eye",
+          "accommodation",
+          "myopia",
+          "hypermetropia",
+          "presbyopia",
+          "retina",
+          "cornea",
+          "lens"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 562,
+        "outputTokens": 62,
+        "reasoningTokens": 0,
+        "costInr": 0.02525,
+        "latencyMs": 299
+      }
+    },
+    {
+      "id": "r18",
+      "expected": {
+        "intent": "quiz",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "quiz",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "mendel",
+          "monohybrid",
+          "cross",
+          "dominant",
+          "trait",
+          "recessive",
+          "genotype",
+          "phenotype",
+          "inheritance"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 562,
+        "outputTokens": 66,
+        "reasoningTokens": 0,
+        "costInr": 0.02561,
+        "latencyMs": 309
+      }
+    },
+    {
+      "id": "r19",
+      "expected": {
+        "intent": "follow_up",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "follow_up",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": true,
+        "keywords": [
+          "refraction",
+          "light",
+          "bending",
+          "medium",
+          "speed",
+          "of"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 579,
+        "outputTokens": 49,
+        "reasoningTokens": 0,
+        "costInr": 0.024675,
+        "latencyMs": 253
+      }
+    },
+    {
+      "id": "r20",
+      "expected": {
+        "intent": "follow_up",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "follow_up",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "neuron",
+          "nerve",
+          "cell",
+          "sensory",
+          "motor",
+          "synapse"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 574,
+        "outputTokens": 58,
+        "reasoningTokens": 0,
+        "costInr": 0.02531,
+        "latencyMs": 252
+      }
+    },
+    {
+      "id": "r21",
+      "expected": {
+        "intent": "follow_up",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "follow_up",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": true,
+        "keywords": [
+          "ph",
+          "scale",
+          "hydrogen",
+          "ion",
+          "concentration",
+          "logarithmic",
+          "acidic",
+          "basic",
+          "neutral"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 573,
+        "outputTokens": 63,
+        "reasoningTokens": 0,
+        "costInr": 0.025725,
+        "latencyMs": 271
+      }
+    },
+    {
+      "id": "r22",
+      "expected": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 557,
+        "outputTokens": 30,
+        "reasoningTokens": 0,
+        "costInr": 0.022195,
+        "latencyMs": 209
+      }
+    },
+    {
+      "id": "r23",
+      "expected": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 561,
+        "outputTokens": 30,
+        "reasoningTokens": 0,
+        "costInr": 0.022335,
+        "latencyMs": 198
+      }
+    },
+    {
+      "id": "r24",
+      "expected": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 558,
+        "outputTokens": 30,
+        "reasoningTokens": 0,
+        "costInr": 0.02223,
+        "latencyMs": 200
+      }
+    },
+    {
+      "id": "r25",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 570,
+        "outputTokens": 32,
+        "reasoningTokens": 0,
+        "costInr": 0.02283,
+        "latencyMs": 479
+      }
+    },
+    {
+      "id": "r26",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 562,
+        "outputTokens": 32,
+        "reasoningTokens": 0,
+        "costInr": 0.02255,
+        "latencyMs": 194
+      }
+    },
+    {
+      "id": "r27",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 564,
+        "outputTokens": 32,
+        "reasoningTokens": 0,
+        "costInr": 0.02262,
+        "latencyMs": 255
+      }
+    },
+    {
+      "id": "r28",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 565,
+        "outputTokens": 32,
+        "reasoningTokens": 0,
+        "costInr": 0.022655,
+        "latencyMs": 217
+      }
+    },
+    {
+      "id": "r29",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 562,
+        "outputTokens": 32,
+        "reasoningTokens": 0,
+        "costInr": 0.02255,
+        "latencyMs": 196
+      }
+    },
+    {
+      "id": "r30",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 561,
+        "outputTokens": 30,
+        "reasoningTokens": 0,
+        "costInr": 0.022335,
+        "latencyMs": 563
+      }
+    },
+    {
+      "id": "r31",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 565,
+        "outputTokens": 30,
+        "reasoningTokens": 0,
+        "costInr": 0.022475,
+        "latencyMs": 193
+      }
+    },
+    {
+      "id": "r32",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 575,
+        "outputTokens": 30,
+        "reasoningTokens": 0,
+        "costInr": 0.022825,
+        "latencyMs": 183
+      }
+    },
+    {
+      "id": "r33",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 563,
+        "outputTokens": 30,
+        "reasoningTokens": 0,
+        "costInr": 0.022405,
+        "latencyMs": 188
+      }
+    },
+    {
+      "id": "r34",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 567,
+        "outputTokens": 30,
+        "reasoningTokens": 0,
+        "costInr": 0.022545,
+        "latencyMs": 205
+      }
+    },
+    {
+      "id": "r35",
+      "expected": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "te"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": null,
+        "language": "te",
+        "wantsDetail": false,
+        "keywords": [
+          "scattering",
+          "of",
+          "light",
+          "rayleigh",
+          "atmosphere",
+          "blue",
+          "colour",
+          "wavelength"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 570,
+        "outputTokens": 58,
+        "reasoningTokens": 0,
+        "costInr": 0.02517,
+        "latencyMs": 283
+      }
+    },
+    {
+      "id": "r36",
+      "expected": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "te"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "te",
+        "wantsDetail": false,
+        "keywords": [
+          "ohm",
+          "law",
+          "potential",
+          "difference",
+          "resistance",
+          "current",
+          "voltage"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 588,
+        "outputTokens": 49,
+        "reasoningTokens": 0,
+        "costInr": 0.02499,
+        "latencyMs": 252
+      }
+    },
+    {
+      "id": "r37",
+      "expected": {
+        "intent": "quiz",
+        "subject": "chemistry",
+        "language": "te"
+      },
+      "got": {
+        "intent": "quiz",
+        "subject": null,
+        "language": "te",
+        "wantsDetail": false,
+        "keywords": [
+          "acids",
+          "bases",
+          "ph",
+          "scale",
+          "indicators",
+          "neutralisation"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 570,
+        "outputTokens": 54,
+        "reasoningTokens": 0,
+        "costInr": 0.02481,
+        "latencyMs": 252
+      }
+    },
+    {
+      "id": "r38",
+      "expected": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "te"
+      },
+      "got": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "te",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 560,
+        "outputTokens": 30,
+        "reasoningTokens": 0,
+        "costInr": 0.0223,
+        "latencyMs": 195
+      }
+    },
+    {
+      "id": "r39",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "te"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "te",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 564,
+        "outputTokens": 30,
+        "reasoningTokens": 0,
+        "costInr": 0.02244,
+        "latencyMs": 201
+      }
+    },
+    {
+      "id": "r40",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "te"
+      },
+      "got": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "te",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 569,
+        "outputTokens": 32,
+        "reasoningTokens": 0,
+        "costInr": 0.022795,
+        "latencyMs": 184
+      }
+    },
+    {
+      "id": "r41",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "te_latn"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": null,
+        "language": "te_latn",
+        "wantsDetail": false,
+        "keywords": [
+          "photosynthesis",
+          "chlorophyll",
+          "carbon",
+          "dioxide",
+          "sunlight",
+          "glucose",
+          "oxygen"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 561,
+        "outputTokens": 59,
+        "reasoningTokens": 0,
+        "costInr": 0.024945,
+        "latencyMs": 309
+      }
+    },
+    {
+      "id": "r42",
+      "expected": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "te_latn"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "te_latn",
+        "wantsDetail": false,
+        "keywords": [
+          "ohm",
+          "law",
+          "potential",
+          "difference",
+          "current",
+          "resistance",
+          "constant",
+          "temperature"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 563,
+        "outputTokens": 53,
+        "reasoningTokens": 0,
+        "costInr": 0.024475,
+        "latencyMs": 251
+      }
+    },
+    {
+      "id": "r43",
+      "expected": {
+        "intent": "quiz",
+        "subject": "chemistry",
+        "language": "te_latn"
+      },
+      "got": {
+        "intent": "quiz",
+        "subject": null,
+        "language": "te_latn",
+        "wantsDetail": false,
+        "keywords": [
+          "acids",
+          "bases",
+          "salts",
+          "ph",
+          "scale",
+          "indicators",
+          "neutralisation"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 562,
+        "outputTokens": 61,
+        "reasoningTokens": 0,
+        "costInr": 0.02516,
+        "latencyMs": 263
+      }
+    },
+    {
+      "id": "r44",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "te_latn"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": null,
+        "language": "te_latn",
+        "wantsDetail": false,
+        "keywords": [
+          "kidney",
+          "excretion",
+          "nephron",
+          "filtration",
+          "urine",
+          "blood"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "gemma4",
+        "inputTokens": 563,
+        "outputTokens": 59,
+        "reasoningTokens": 0,
+        "costInr": 0.025015,
+        "latencyMs": 568
+      }
+    }
+  ],
+  "telugu": [
+    {
+      "id": "c12",
+      "rank": 4,
+      "keywords": [
+        "decomposition",
+        "reaction",
+        "chemical",
+        "single",
+        "reactant",
+        "two",
+        "or",
+        "more",
+        "products"
+      ],
+      "subject": null
+    },
+    {
+      "id": "c13",
+      "rank": 1,
+      "keywords": [
+        "oxidation",
+        "rancidity",
+        "fats",
+        "oils",
+        "smell",
+        "taste"
+      ],
+      "subject": null
+    },
+    {
+      "id": "c27",
+      "rank": 1,
+      "keywords": [
+        "ph",
+        "value",
+        "acidic",
+        "basic",
+        "solution",
+        "indicator"
+      ],
+      "subject": null
+    },
+    {
+      "id": "c28",
+      "rank": 1,
+      "keywords": [
+        "baking",
+        "soda",
+        "sodium",
+        "hydrogen",
+        "carbonate",
+        "solvay",
+        "process",
+        "antacid"
+      ],
+      "subject": null
+    },
+    {
+      "id": "c41",
+      "rank": 1,
+      "keywords": [
+        "corrosion",
+        "rusting",
+        "iron",
+        "galvanisation",
+        "zinc",
+        "coating",
+        "prevention"
+      ],
+      "subject": null
+    },
+    {
+      "id": "c42",
+      "rank": 1,
+      "keywords": [
+        "mineral",
+        "metal",
+        "ore",
+        "gangue",
+        "extraction"
+      ],
+      "subject": null
+    },
+    {
+      "id": "c48",
+      "rank": 1,
+      "keywords": [
+        "soap",
+        "cleansing",
+        "action",
+        "micelle",
+        "hydrophilic",
+        "hydrophobic",
+        "emulsion"
+      ],
+      "subject": null
+    },
+    {
+      "id": "c49",
+      "rank": 1,
+      "keywords": [
+        "hard",
+        "water",
+        "soap",
+        "scum",
+        "calcium",
+        "magnesium",
+        "precipitate"
+      ],
+      "subject": null
+    },
+    {
+      "id": "c50",
+      "rank": 2,
+      "keywords": [
+        "saturated",
+        "hydrocarbons",
+        "unsaturated",
+        "single",
+        "bond",
+        "double",
+        "triple",
+        "alkanes",
+        "alkenes",
+        "alkynes"
+      ],
+      "subject": null
+    },
+    {
+      "id": "b12",
+      "rank": 2,
+      "keywords": [
+        "nephron",
+        "structure",
+        "function",
+        "filtration",
+        "bowman",
+        "capsule",
+        "glomerulus",
+        "reabsorption",
+        "excretion"
+      ],
+      "subject": null
+    },
+    {
+      "id": "b13",
+      "rank": 1,
+      "keywords": [
+        "artificial",
+        "kidney",
+        "dialysis",
+        "filtration",
+        "semipermeable",
+        "membrane",
+        "urea",
+        "blood",
+        "excretion"
+      ],
+      "subject": null
+    },
+    {
+      "id": "b21",
+      "rank": 1,
+      "keywords": [
+        "iodine",
+        "deficiency",
+        "goitre",
+        "thyroid",
+        "gland",
+        "thyroxine"
+      ],
+      "subject": null
+    },
+    {
+      "id": "b22",
+      "rank": 4,
+      "keywords": [
+        "adrenaline",
+        "hormone",
+        "fight",
+        "or",
+        "flight",
+        "heart",
+        "rate",
+        "blood",
+        "pressure",
+        "emergency"
+      ],
+      "subject": null
+    },
+    {
+      "id": "b33",
+      "rank": 1,
+      "keywords": [
+        "pollination",
+        "self-pollination",
+        "cross-pollination",
+        "pollen",
+        "grains",
+        "stigma",
+        "reproduction"
+      ],
+      "subject": null
+    },
+    {
+      "id": "b34",
+      "rank": 1,
+      "keywords": [
+        "placenta",
+        "embryo",
+        "nutrition",
+        "glucose",
+        "oxygen",
+        "waste",
+        "products",
+        "mother",
+        "blood"
+      ],
+      "subject": null
+    },
+    {
+      "id": "b40",
+      "rank": 1,
+      "keywords": [
+        "sex",
+        "determination",
+        "chromosomes",
+        "chromosome",
+        "gametes",
+        "inheritance"
+      ],
+      "subject": null
+    },
+    {
+      "id": "b48",
+      "rank": 1,
+      "keywords": [
+        "food",
+        "chain",
+        "web",
+        "ecosystem",
+        "trophic",
+        "levels",
+        "energy",
+        "flow"
+      ],
+      "subject": null
+    },
+    {
+      "id": "b49",
+      "rank": 1,
+      "keywords": [
+        "chlorofluorocarbons",
+        "ozone",
+        "layer",
+        "depletion",
+        "stratosphere",
+        "cfcs"
+      ],
+      "subject": null
+    },
+    {
+      "id": "b50",
+      "rank": 1,
+      "keywords": [
+        "phloem",
+        "translocation",
+        "nutrients",
+        "sucrose",
+        "sieve",
+        "tubes",
+        "companion",
+        "cells",
+        "source",
+        "sink"
+      ],
+      "subject": null
+    },
+    {
+      "id": "p14",
+      "rank": 7,
+      "keywords": [
+        "convex",
+        "lens",
+        "concave",
+        "converging",
+        "diverging",
+        "focal",
+        "point",
+        "image",
+        "formation"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p15",
+      "rank": 1,
+      "keywords": [
+        "refraction",
+        "of",
+        "light",
+        "bending",
+        "optical",
+        "density",
+        "medium"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p23",
+      "rank": 1,
+      "keywords": [
+        "scattering",
+        "of",
+        "light",
+        "rayleigh",
+        "atmosphere",
+        "blue",
+        "colour",
+        "wavelength"
+      ],
+      "subject": null
+    },
+    {
+      "id": "p24",
+      "rank": 4,
+      "keywords": [
+        "myopia",
+        "concave",
+        "lens",
+        "diverging",
+        "short-sightedness",
+        "correction",
+        "refraction"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p37",
+      "rank": 3,
+      "keywords": [
+        "ohm",
+        "law",
+        "potential",
+        "difference",
+        "current",
+        "resistance",
+        "constant",
+        "temperature"
+      ],
+      "subject": null
+    },
+    {
+      "id": "p38",
+      "rank": 1,
+      "keywords": [
+        "electric",
+        "fuse",
+        "melting",
+        "point",
+        "overload",
+        "short",
+        "circuit",
+        "safety",
+        "device",
+        "current"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p48",
+      "rank": 1,
+      "keywords": [
+        "magnetic",
+        "field",
+        "lines",
+        "direction",
+        "north",
+        "pole",
+        "south"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p49",
+      "rank": 1,
+      "keywords": [
+        "solenoid",
+        "magnetic",
+        "field",
+        "uniform",
+        "parallel",
+        "lines"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p50",
+      "rank": 1,
+      "keywords": [
+        "electric",
+        "current",
+        "heating",
+        "effect",
+        "resistance",
+        "collisions",
+        "electrons",
+        "thermal",
+        "energy"
+      ],
+      "subject": null
+    }
+  ]
+}

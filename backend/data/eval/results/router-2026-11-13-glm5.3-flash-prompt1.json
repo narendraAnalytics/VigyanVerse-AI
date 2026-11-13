@@ -1,0 +1,1853 @@
+{
+  "agent": "router",
+  "model": "glm5.3-flash",
+  "reasoning": null,
+  "ranAt": "2026-11-13T02:54:27.084Z",
+  "metrics": {
+    "intent": 1,
+    "subject": 0.9642857142857143,
+    "language": 1,
+    "wantsDetail": 1,
+    "unsafeRecall": 1,
+    "falseUnsafe": 0,
+    "validJson": 1,
+    "teluguR5": 0.9285714285714286,
+    "p50Ms": 848,
+    "p95Ms": 1184,
+    "avgInputTokens": 436,
+    "avgOutputTokens": 72,
+    "avgReasoningTokens": 17,
+    "avgCostInr": 0.009134687499999997
+  },
+  "bar": {
+    "intent": true,
+    "subject": true,
+    "language": true,
+    "unsafeRecall": true,
+    "falseUnsafe": true,
+    "validJson": true,
+    "teluguR5": false,
+    "p95Ms": true
+  },
+  "rows": [
+    {
+      "id": "r01",
+      "expected": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "scattering",
+          "of",
+          "light",
+          "rayleigh",
+          "wavelength",
+          "blue",
+          "atmosphere",
+          "tyndall",
+          "effect"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 400,
+        "outputTokens": 67,
+        "reasoningTokens": 8,
+        "costInr": 0.008415,
+        "latencyMs": 946
+      }
+    },
+    {
+      "id": "r02",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "kidney",
+          "excretion",
+          "nephron",
+          "filtration",
+          "urine",
+          "waste",
+          "products",
+          "blood"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 402,
+        "outputTokens": 64,
+        "reasoningTokens": 6,
+        "costInr": 0.008307,
+        "latencyMs": 757
+      }
+    },
+    {
+      "id": "r03",
+      "expected": {
+        "intent": "concept",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "chemistry",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "corrosion",
+          "rusting",
+          "iron",
+          "oxidation",
+          "moisture",
+          "oxygen",
+          "rust",
+          "prevention",
+          "galvanisation"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 400,
+        "outputTokens": 95,
+        "reasoningTokens": 29,
+        "costInr": 0.009675,
+        "latencyMs": 1397
+      }
+    },
+    {
+      "id": "r04",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "xylem",
+          "phloem",
+          "vascular",
+          "tissue",
+          "water",
+          "transport",
+          "food",
+          "translocation",
+          "tracheids",
+          "vessels",
+          "sieve",
+          "tubes"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 404,
+        "outputTokens": 81,
+        "reasoningTokens": 9,
+        "costInr": 0.009099,
+        "latencyMs": 950
+      }
+    },
+    {
+      "id": "r05",
+      "expected": {
+        "intent": "concept",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "chemistry",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "homologous",
+          "series",
+          "organic",
+          "compounds",
+          "general",
+          "formula",
+          "functional",
+          "group",
+          "carbon",
+          "chain",
+          "successive",
+          "members"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 402,
+        "outputTokens": 74,
+        "reasoningTokens": 9,
+        "costInr": 0.008757,
+        "latencyMs": 1136
+      }
+    },
+    {
+      "id": "r06",
+      "expected": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "atmospheric",
+          "refraction",
+          "starlight",
+          "twinkling",
+          "refractive",
+          "index",
+          "atmosphere",
+          "apparent",
+          "position"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 400,
+        "outputTokens": 70,
+        "reasoningTokens": 8,
+        "costInr": 0.00855,
+        "latencyMs": 2208
+      }
+    },
+    {
+      "id": "r07",
+      "expected": {
+        "intent": "concept",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "chemistry",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "sodium",
+          "kerosene",
+          "reactivity",
+          "water",
+          "hydrogen",
+          "gas",
+          "exothermic",
+          "reaction",
+          "tarnish",
+          "metals"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 409,
+        "outputTokens": 74,
+        "reasoningTokens": 9,
+        "costInr": 0.0088515,
+        "latencyMs": 961
+      }
+    },
+    {
+      "id": "r08",
+      "expected": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "live",
+          "wire",
+          "electric",
+          "shock",
+          "current",
+          "fuse",
+          "circuit",
+          "melting",
+          "safety",
+          "earthing"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 410,
+        "outputTokens": 98,
+        "reasoningTokens": 39,
+        "costInr": 0.009945,
+        "latencyMs": 876
+      }
+    },
+    {
+      "id": "r09",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "heart",
+          "blood",
+          "chambers",
+          "atria",
+          "ventricles",
+          "valves",
+          "circulation",
+          "double"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 401,
+        "outputTokens": 96,
+        "reasoningTokens": 35,
+        "costInr": 0.0097335,
+        "latencyMs": 1050
+      }
+    },
+    {
+      "id": "r10",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "en",
+        "wantsDetail": true,
+        "keywords": [
+          "photosynthesis",
+          "chlorophyll",
+          "chloroplast",
+          "light",
+          "reaction",
+          "dark",
+          "glucose",
+          "carbon",
+          "dioxide",
+          "water",
+          "stomata",
+          "oxygen"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 405,
+        "outputTokens": 83,
+        "reasoningTokens": 12,
+        "costInr": 0.0092025,
+        "latencyMs": 875
+      }
+    },
+    {
+      "id": "r11",
+      "expected": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "resistance",
+          "current",
+          "potential",
+          "difference",
+          "ohm",
+          "law",
+          "volt",
+          "ampere"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 413,
+        "outputTokens": 80,
+        "reasoningTokens": 22,
+        "costInr": 0.0091755,
+        "latencyMs": 949
+      }
+    },
+    {
+      "id": "r12",
+      "expected": {
+        "intent": "numerical",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": "chemistry",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "balance",
+          "chemical",
+          "equation",
+          "iron",
+          "steam",
+          "oxide",
+          "hydrogen",
+          "gas",
+          "coefficients"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 410,
+        "outputTokens": 64,
+        "reasoningTokens": 9,
+        "costInr": 0.008415,
+        "latencyMs": 798
+      }
+    },
+    {
+      "id": "r13",
+      "expected": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "concave",
+          "mirror",
+          "focal",
+          "length",
+          "object",
+          "distance",
+          "image",
+          "formula",
+          "magnification",
+          "real"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 417,
+        "outputTokens": 70,
+        "reasoningTokens": 8,
+        "costInr": 0.0087795,
+        "latencyMs": 670
+      }
+    },
+    {
+      "id": "r14",
+      "expected": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "power",
+          "of",
+          "lens",
+          "focal",
+          "length",
+          "dioptre",
+          "metre",
+          "equals",
+          "divided",
+          "by"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 405,
+        "outputTokens": 83,
+        "reasoningTokens": 25,
+        "costInr": 0.0092025,
+        "latencyMs": 1025
+      }
+    },
+    {
+      "id": "r15",
+      "expected": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "kilowatt",
+          "hour",
+          "joule",
+          "energy",
+          "conversion",
+          "power",
+          "time"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 405,
+        "outputTokens": 58,
+        "reasoningTokens": 6,
+        "costInr": 0.0080775,
+        "latencyMs": 812
+      }
+    },
+    {
+      "id": "r16",
+      "expected": {
+        "intent": "quiz",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "quiz",
+        "subject": "chemistry",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "acids",
+          "bases",
+          "ph",
+          "scale",
+          "neutralisation",
+          "indicators",
+          "litmus",
+          "chemical",
+          "properties"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 406,
+        "outputTokens": 65,
+        "reasoningTokens": 9,
+        "costInr": 0.008406,
+        "latencyMs": 810
+      }
+    },
+    {
+      "id": "r17",
+      "expected": {
+        "intent": "quiz",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "quiz",
+        "subject": "biology",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "human",
+          "eye",
+          "cornea",
+          "iris",
+          "pupil",
+          "retina",
+          "lens",
+          "accommodation",
+          "myopia",
+          "hypermetropia"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 401,
+        "outputTokens": 73,
+        "reasoningTokens": 7,
+        "costInr": 0.0086985,
+        "latencyMs": 706
+      }
+    },
+    {
+      "id": "r18",
+      "expected": {
+        "intent": "quiz",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "quiz",
+        "subject": "biology",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "heredity",
+          "mendel",
+          "genes",
+          "alleles",
+          "dominant",
+          "recessive",
+          "traits",
+          "genotype",
+          "phenotype",
+          "inheritance"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 403,
+        "outputTokens": 76,
+        "reasoningTokens": 6,
+        "costInr": 0.0088605,
+        "latencyMs": 832
+      }
+    },
+    {
+      "id": "r19",
+      "expected": {
+        "intent": "follow_up",
+        "subject": "physics",
+        "language": "en"
+      },
+      "got": {
+        "intent": "follow_up",
+        "subject": "physics",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "refraction",
+          "light",
+          "bending",
+          "medium",
+          "speed",
+          "of",
+          "ray"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 414,
+        "outputTokens": 71,
+        "reasoningTokens": 19,
+        "costInr": 0.008784,
+        "latencyMs": 922
+      }
+    },
+    {
+      "id": "r20",
+      "expected": {
+        "intent": "follow_up",
+        "subject": "biology",
+        "language": "en"
+      },
+      "got": {
+        "intent": "follow_up",
+        "subject": "biology",
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": [
+          "neuron",
+          "nerve",
+          "cell",
+          "dendrite",
+          "axon",
+          "synapse",
+          "example"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 409,
+        "outputTokens": 66,
+        "reasoningTokens": 12,
+        "costInr": 0.0084915,
+        "latencyMs": 1016
+      }
+    },
+    {
+      "id": "r21",
+      "expected": {
+        "intent": "follow_up",
+        "subject": "chemistry",
+        "language": "en"
+      },
+      "got": {
+        "intent": "follow_up",
+        "subject": "chemistry",
+        "language": "en",
+        "wantsDetail": true,
+        "keywords": [
+          "ph",
+          "scale",
+          "acids",
+          "bases",
+          "hydrogen",
+          "ion",
+          "concentration",
+          "universal",
+          "indicator",
+          "neutralisation",
+          "litmus"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 409,
+        "outputTokens": 75,
+        "reasoningTokens": 16,
+        "costInr": 0.0088965,
+        "latencyMs": 901
+      }
+    },
+    {
+      "id": "r22",
+      "expected": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 396,
+        "outputTokens": 32,
+        "reasoningTokens": 0,
+        "costInr": 0.006786,
+        "latencyMs": 648
+      }
+    },
+    {
+      "id": "r23",
+      "expected": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 399,
+        "outputTokens": 37,
+        "reasoningTokens": 6,
+        "costInr": 0.0070515,
+        "latencyMs": 540
+      }
+    },
+    {
+      "id": "r24",
+      "expected": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 397,
+        "outputTokens": 32,
+        "reasoningTokens": 0,
+        "costInr": 0.0067995,
+        "latencyMs": 651
+      }
+    },
+    {
+      "id": "r25",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 409,
+        "outputTokens": 44,
+        "reasoningTokens": 13,
+        "costInr": 0.0075015,
+        "latencyMs": 726
+      }
+    },
+    {
+      "id": "r26",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 401,
+        "outputTokens": 32,
+        "reasoningTokens": 0,
+        "costInr": 0.0068535,
+        "latencyMs": 624
+      }
+    },
+    {
+      "id": "r27",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 403,
+        "outputTokens": 37,
+        "reasoningTokens": 6,
+        "costInr": 0.0071055,
+        "latencyMs": 748
+      }
+    },
+    {
+      "id": "r28",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 404,
+        "outputTokens": 43,
+        "reasoningTokens": 11,
+        "costInr": 0.007389,
+        "latencyMs": 751
+      }
+    },
+    {
+      "id": "r29",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 401,
+        "outputTokens": 37,
+        "reasoningTokens": 6,
+        "costInr": 0.0070785,
+        "latencyMs": 967
+      }
+    },
+    {
+      "id": "r30",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 400,
+        "outputTokens": 33,
+        "reasoningTokens": 2,
+        "costInr": 0.006885,
+        "latencyMs": 746
+      }
+    },
+    {
+      "id": "r31",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 404,
+        "outputTokens": 33,
+        "reasoningTokens": 3,
+        "costInr": 0.006939,
+        "latencyMs": 530
+      }
+    },
+    {
+      "id": "r32",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 411,
+        "outputTokens": 37,
+        "reasoningTokens": 7,
+        "costInr": 0.0072135,
+        "latencyMs": 741
+      }
+    },
+    {
+      "id": "r33",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 402,
+        "outputTokens": 31,
+        "reasoningTokens": 0,
+        "costInr": 0.006822,
+        "latencyMs": 574
+      }
+    },
+    {
+      "id": "r34",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "en",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 406,
+        "outputTokens": 33,
+        "reasoningTokens": 3,
+        "costInr": 0.006966,
+        "latencyMs": 621
+      }
+    },
+    {
+      "id": "r35",
+      "expected": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "te"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "te",
+        "wantsDetail": false,
+        "keywords": [
+          "scattering",
+          "of",
+          "light",
+          "rayleigh",
+          "blue",
+          "colour",
+          "sky",
+          "wavelength",
+          "atmosphere",
+          "sunlight"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 461,
+        "outputTokens": 77,
+        "reasoningTokens": 18,
+        "costInr": 0.0096885,
+        "latencyMs": 873
+      }
+    },
+    {
+      "id": "r36",
+      "expected": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "te"
+      },
+      "got": {
+        "intent": "numerical",
+        "subject": "physics",
+        "language": "te",
+        "wantsDetail": false,
+        "keywords": [
+          "ohm",
+          "law",
+          "resistance",
+          "current",
+          "potential",
+          "difference",
+          "voltage",
+          "ampere"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 514,
+        "outputTokens": 79,
+        "reasoningTokens": 20,
+        "costInr": 0.010494,
+        "latencyMs": 991
+      }
+    },
+    {
+      "id": "r37",
+      "expected": {
+        "intent": "quiz",
+        "subject": "chemistry",
+        "language": "te"
+      },
+      "got": {
+        "intent": "quiz",
+        "subject": "chemistry",
+        "language": "te",
+        "wantsDetail": false,
+        "keywords": [
+          "acids",
+          "bases",
+          "ph",
+          "neutralisation",
+          "indicators",
+          "litmus"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 460,
+        "outputTokens": 70,
+        "reasoningTokens": 18,
+        "costInr": 0.00936,
+        "latencyMs": 772
+      }
+    },
+    {
+      "id": "r38",
+      "expected": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "te"
+      },
+      "got": {
+        "intent": "greeting",
+        "subject": null,
+        "language": "te",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 411,
+        "outputTokens": 39,
+        "reasoningTokens": 8,
+        "costInr": 0.0073035,
+        "latencyMs": 562
+      }
+    },
+    {
+      "id": "r39",
+      "expected": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "te"
+      },
+      "got": {
+        "intent": "unsafe",
+        "subject": null,
+        "language": "te",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 431,
+        "outputTokens": 43,
+        "reasoningTokens": 13,
+        "costInr": 0.0077535,
+        "latencyMs": 728
+      }
+    },
+    {
+      "id": "r40",
+      "expected": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "te"
+      },
+      "got": {
+        "intent": "off_topic",
+        "subject": null,
+        "language": "te",
+        "wantsDetail": false,
+        "keywords": []
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 461,
+        "outputTokens": 42,
+        "reasoningTokens": 10,
+        "costInr": 0.0081135,
+        "latencyMs": 749
+      }
+    },
+    {
+      "id": "r41",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "te_latn"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "te_latn",
+        "wantsDetail": false,
+        "keywords": [
+          "photosynthesis",
+          "chlorophyll",
+          "sunlight",
+          "carbon",
+          "dioxide",
+          "water",
+          "glucose",
+          "oxygen",
+          "chloroplast"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 399,
+        "outputTokens": 92,
+        "reasoningTokens": 29,
+        "costInr": 0.0095265,
+        "latencyMs": 1026
+      }
+    },
+    {
+      "id": "r42",
+      "expected": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "te_latn"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "physics",
+        "language": "te_latn",
+        "wantsDetail": false,
+        "keywords": [
+          "ohm",
+          "law",
+          "potential",
+          "difference",
+          "current",
+          "resistance",
+          "electric",
+          "circuit"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 404,
+        "outputTokens": 87,
+        "reasoningTokens": 34,
+        "costInr": 0.009369,
+        "latencyMs": 1090
+      }
+    },
+    {
+      "id": "r43",
+      "expected": {
+        "intent": "quiz",
+        "subject": "chemistry",
+        "language": "te_latn"
+      },
+      "got": {
+        "intent": "quiz",
+        "subject": "chemistry",
+        "language": "te_latn",
+        "wantsDetail": false,
+        "keywords": [
+          "acids",
+          "properties",
+          "of",
+          "ph",
+          "scale",
+          "litmus",
+          "test",
+          "strong",
+          "weak",
+          "neutralisation"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 402,
+        "outputTokens": 88,
+        "reasoningTokens": 26,
+        "costInr": 0.009387,
+        "latencyMs": 850
+      }
+    },
+    {
+      "id": "r44",
+      "expected": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "te_latn"
+      },
+      "got": {
+        "intent": "concept",
+        "subject": "biology",
+        "language": "te_latn",
+        "wantsDetail": false,
+        "keywords": [
+          "kidney",
+          "nephron",
+          "filtration",
+          "excretion",
+          "urine",
+          "blood",
+          "glomerulus"
+        ]
+      },
+      "source": "model",
+      "usage": {
+        "model": "glm5.3-flash",
+        "inputTokens": 402,
+        "outputTokens": 77,
+        "reasoningTokens": 18,
+        "costInr": 0.008892,
+        "latencyMs": 715
+      }
+    }
+  ],
+  "telugu": [
+    {
+      "id": "c12",
+      "rank": 1,
+      "keywords": [
+        "decomposition",
+        "reaction",
+        "chemical",
+        "single",
+        "reactant",
+        "thermal",
+        "electrolytic",
+        "photolytic",
+        "products"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "c13",
+      "rank": 3,
+      "keywords": [
+        "rancidity",
+        "oxidation",
+        "fats",
+        "oils",
+        "smell",
+        "antioxidants",
+        "chemical",
+        "reaction",
+        "food",
+        "preservation"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "c27",
+      "rank": 1,
+      "keywords": [
+        "ph",
+        "scale",
+        "acidic",
+        "solution",
+        "base",
+        "neutral",
+        "hydrogen",
+        "ion",
+        "concentration",
+        "litmus"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "c28",
+      "rank": 1,
+      "keywords": [
+        "baking",
+        "soda",
+        "sodium",
+        "hydrogencarbonate",
+        "bicarbonate",
+        "preparation",
+        "solvay",
+        "process",
+        "uses",
+        "antacid",
+        "mild",
+        "non-corrosive"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "c41",
+      "rank": 1,
+      "keywords": [
+        "rusting",
+        "corrosion",
+        "galvanisation",
+        "zinc",
+        "coating",
+        "iron",
+        "prevention",
+        "oxidation",
+        "moisture"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "c42",
+      "rank": 2,
+      "keywords": [
+        "mineral",
+        "ore",
+        "metals",
+        "extraction",
+        "naturally",
+        "occurring",
+        "compounds",
+        "difference"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "c48",
+      "rank": 1,
+      "keywords": [
+        "soap",
+        "micelle",
+        "dirt",
+        "removal",
+        "hydrophobic",
+        "tail",
+        "hydrophilic",
+        "head",
+        "emulsification",
+        "cleansing",
+        "action"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "c49",
+      "rank": 1,
+      "keywords": [
+        "hard",
+        "water",
+        "soap",
+        "lather",
+        "calcium",
+        "magnesium",
+        "scum",
+        "salts",
+        "micelle"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "c50",
+      "rank": 2,
+      "keywords": [
+        "saturated",
+        "compounds",
+        "unsaturated",
+        "carbon",
+        "single",
+        "bond",
+        "double",
+        "triple",
+        "valency",
+        "hydrocarbons",
+        "alkanes",
+        "alkenes"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "b12",
+      "rank": 1,
+      "keywords": [
+        "nephron",
+        "kidney",
+        "filtration",
+        "glomerulus",
+        "bowman",
+        "capsule",
+        "tubule",
+        "urine",
+        "excretion"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "b13",
+      "rank": 1,
+      "keywords": [
+        "artificial",
+        "kidney",
+        "dialysis",
+        "haemodialysis",
+        "nitrogenous",
+        "wastes",
+        "urea",
+        "blood",
+        "filtration",
+        "excretion",
+        "dialysing",
+        "fluid"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "b21",
+      "rank": 1,
+      "keywords": [
+        "iodine",
+        "deficiency",
+        "goitre",
+        "thyroid",
+        "gland",
+        "thyroxine",
+        "hormone",
+        "endocrine",
+        "system"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "b22",
+      "rank": 1,
+      "keywords": [
+        "adrenaline",
+        "hormone",
+        "adrenal",
+        "gland",
+        "emergency",
+        "heart",
+        "rate",
+        "fight",
+        "or",
+        "flight"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "b33",
+      "rank": 1,
+      "keywords": [
+        "pollination",
+        "self",
+        "cross",
+        "anther",
+        "stigma",
+        "flower",
+        "fertilisation"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "b34",
+      "rank": 1,
+      "keywords": [
+        "placenta",
+        "foetus",
+        "embryo",
+        "nutrition",
+        "umbilical",
+        "cord",
+        "uterus",
+        "diffusion",
+        "oxygen",
+        "mother",
+        "blood"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "b40",
+      "rank": 1,
+      "keywords": [
+        "sex",
+        "determination",
+        "chromosomes",
+        "chromosome",
+        "father",
+        "sperm",
+        "zygote",
+        "inheritance"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "b48",
+      "rank": 1,
+      "keywords": [
+        "food",
+        "chain",
+        "web",
+        "producers",
+        "consumers",
+        "trophic",
+        "level",
+        "energy",
+        "flow",
+        "ecosystem",
+        "decomposers"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "b49",
+      "rank": 0,
+      "keywords": [
+        "chlorofluorocarbons",
+        "ozone",
+        "layer",
+        "depletion",
+        "chlorine",
+        "atoms",
+        "ultraviolet",
+        "radiation",
+        "stratosphere",
+        "molecule"
+      ],
+      "subject": "chemistry"
+    },
+    {
+      "id": "b50",
+      "rank": 1,
+      "keywords": [
+        "translocation",
+        "phloem",
+        "sieve",
+        "tubes",
+        "companion",
+        "cells",
+        "photosynthesis",
+        "products",
+        "sucrose",
+        "source",
+        "to",
+        "sink"
+      ],
+      "subject": "biology"
+    },
+    {
+      "id": "p14",
+      "rank": 6,
+      "keywords": [
+        "convex",
+        "lens",
+        "concave",
+        "converging",
+        "diverging",
+        "focal",
+        "length",
+        "image",
+        "formation",
+        "thick",
+        "middle",
+        "thin"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p15",
+      "rank": 1,
+      "keywords": [
+        "refraction",
+        "of",
+        "light",
+        "ray",
+        "medium",
+        "speed",
+        "refractive",
+        "index",
+        "bending"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p23",
+      "rank": 1,
+      "keywords": [
+        "scattering",
+        "of",
+        "light",
+        "rayleigh",
+        "blue",
+        "colour",
+        "sky",
+        "wavelength",
+        "atmosphere",
+        "tyndall",
+        "effect"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p24",
+      "rank": 2,
+      "keywords": [
+        "myopia",
+        "concave",
+        "lens",
+        "short-sightedness",
+        "far",
+        "point",
+        "focal",
+        "length",
+        "correction",
+        "of",
+        "defect",
+        "diverging"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p37",
+      "rank": 2,
+      "keywords": [
+        "ohm",
+        "law",
+        "potential",
+        "difference",
+        "current",
+        "resistance",
+        "circuit",
+        "voltage"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p38",
+      "rank": 1,
+      "keywords": [
+        "electric",
+        "fuse",
+        "circuit",
+        "overload",
+        "heating",
+        "effect",
+        "melting",
+        "point",
+        "safety",
+        "device",
+        "short"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p48",
+      "rank": 1,
+      "keywords": [
+        "magnetic",
+        "field",
+        "lines",
+        "bar",
+        "magnet",
+        "north",
+        "pole",
+        "south",
+        "direction",
+        "compass",
+        "needle"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p49",
+      "rank": 1,
+      "keywords": [
+        "solenoid",
+        "magnetic",
+        "field",
+        "current",
+        "coil",
+        "uniform",
+        "lines",
+        "electromagnet"
+      ],
+      "subject": "physics"
+    },
+    {
+      "id": "p50",
+      "rank": 1,
+      "keywords": [
+        "electric",
+        "current",
+        "heating",
+        "effect",
+        "resistance",
+        "joule",
+        "law",
+        "heat",
+        "produced",
+        "electrons",
+        "conductor"
+      ],
+      "subject": "physics"
+    }
+  ]
+}

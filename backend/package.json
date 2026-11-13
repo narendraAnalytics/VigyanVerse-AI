@@ -16,7 +16,8 @@
     "smoke:rewrite": "tsx scripts/smoke-rewrite.ts",
     "ingest": "tsx scripts/ingest.ts",
     "smoke:retrieval": "tsx scripts/smoke-retrieval.ts",
-    "eval:retrieval": "tsx scripts/eval-retrieval.ts"
+    "eval:retrieval": "tsx scripts/eval-retrieval.ts",
+    "eval:agent": "tsx scripts/eval-agent.ts"
   },
   "license": "UNLICENSED",
   "private": true,
