@@ -3,7 +3,8 @@
 //   question (EN / TE / mixed)
 //     -> Telugu script only: rewriteQuery(): Sarvam chat model returns English textbook keywords
 //        (English and Latin-script questions are searched with their own words, see needsRewrite)
-//     -> searchChunks(): rpc match_chunks_keyword, run as the calling user (RLS applies)
+//     -> searchChunks(): rpc match_chunks_weighted (IDF-weighted, migration 20261113032258),
+//        run as the calling user (RLS applies)
 //
 // The model only produces search terms. They are sanitised to plain ASCII words before
 // reaching SQL, so a prompt-injected question can at worst produce bad search terms.
@@ -110,7 +111,12 @@ export interface ChunkHit {
   page_end: number;
   section_path: string | null;
   content: string;
+  /** match_chunks_weighted: sum of matched-lexeme IDF (+ heading bonus); not bounded to 0..1. */
   rank: number;
+  /** Query lexemes (Postgres English stems) present in this chunk. */
+  matched_lexemes?: string[];
+  /** IDF weight of every query lexeme ({stem: idf}); unknown words get the maximum. */
+  query_weights?: Record<string, number>;
 }
 
 export interface SearchOptions {
@@ -131,7 +137,7 @@ export interface RpcClient {
 /** Full-text search over curriculum chunks. `client` must act as the user (RLS). */
 export async function searchChunks(client: RpcClient, keywords: string[], opts: SearchOptions): Promise<ChunkHit[]> {
   if (!keywords.length) return [];
-  const { data, error } = await client.database.rpc('match_chunks_keyword', {
+  const { data, error } = await client.database.rpc('match_chunks_weighted', {
     p_query: keywords.join(' '),
     p_board: opts.board,
     p_subject: opts.subject ?? null,
@@ -139,7 +145,7 @@ export async function searchChunks(client: RpcClient, keywords: string[], opts: 
     p_language: opts.language ?? 'en',
     p_match_count: opts.limit ?? 6,
   });
-  if (error) throw new Error(`match_chunks_keyword failed: ${JSON.stringify(error)}`);
+  if (error) throw new Error(`match_chunks_weighted failed: ${JSON.stringify(error)}`);
   return (data as ChunkHit[] | null) ?? [];
 }
 

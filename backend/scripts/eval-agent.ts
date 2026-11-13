@@ -4,17 +4,19 @@
 //   npm run eval:agent -- router --model gemma4               compare another model
 //   npm run eval:agent -- router --model sarvam-105b --reasoning none
 //   npm run eval:agent -- router --only r07,r31 --save
+//   npm run eval:agent -- retrieval --tune --save            calibrate 'not in the textbook'
 //
 // Results are saved with --save to data/eval/results/<agent>-<date>-<model>.json.
 import { mkdirSync, writeFileSync } from 'node:fs';
 import type { AgentContext } from '../src/agents/kit.ts';
 import { MODEL_ROUTES } from '../src/shared/models.ts';
+import { evalRetrieval } from './evals/retrieval.ts';
 import { evalRouter } from './evals/router.ts';
 
 const argv = process.argv.slice(2);
 const option = (name: string) => (argv.includes(name) ? argv[argv.indexOf(name) + 1] : undefined);
 const agent = argv[0];
-const EVALS = { router: evalRouter } as const;
+const EVALS = { router: evalRouter, retrieval: evalRetrieval } as const;
 
 if (!agent || !(agent in EVALS)) {
   console.error(`Usage: npm run eval:agent -- <${Object.keys(EVALS).join('|')}> [--model m] [--reasoning none|low] [--only ids] [--save]`);
@@ -24,7 +26,7 @@ const model = option('--model');
 const reasoning = option('--reasoning') as AgentContext['overrides'] extends infer O ? O extends { reasoningEffort?: infer R } ? R : never : never;
 const ctx: AgentContext = model ? { overrides: { model, reasoningEffort: reasoning ?? null } } : {};
 
-const result = await EVALS[agent as keyof typeof EVALS](ctx, { only: option('--only')?.split(',') });
+const result = await EVALS[agent as keyof typeof EVALS](ctx, { only: option('--only')?.split(','), tune: argv.includes('--tune') });
 
 if (argv.includes('--save')) {
   const used = model ?? MODEL_ROUTES[agent as keyof typeof MODEL_ROUTES]?.model ?? 'default';

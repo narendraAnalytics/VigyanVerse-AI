@@ -1,0 +1,5422 @@
+{
+  "agent": "retrieval",
+  "model": "default",
+  "reasoning": null,
+  "ranAt": "2026-11-13T03:19:48.456Z",
+  "routed": {
+    "metrics": {
+      "inBookNone": 0,
+      "inBookGrounded": 0.9533333333333334,
+      "inBookR5": 0.9533333333333334,
+      "outCaught": 0.1388888888888889,
+      "outGrounded": 0.1388888888888889
+    },
+    "bar": {
+      "inBookNone": true,
+      "outCaught": false,
+      "inBookR5": true
+    }
+  },
+  "screen": {
+    "metrics": {
+      "inBookNone": 0,
+      "inBookGrounded": 0.9533333333333334,
+      "inBookR5": 0.9533333333333334,
+      "outCaught": 0.16666666666666666,
+      "outGrounded": 0.1111111111111111
+    },
+    "bar": {
+      "inBookNone": true,
+      "outCaught": false,
+      "inBookR5": true
+    }
+  },
+  "tuned": [
+    {
+      "c": 0.7,
+      "s": 0.55,
+      "inNone": 0,
+      "outCaught": 0.3055555555555556
+    },
+    {
+      "c": 0.7,
+      "s": 0.575,
+      "inNone": 0,
+      "outCaught": 0.3055555555555556
+    },
+    {
+      "c": 0.7,
+      "s": 0.6,
+      "inNone": 0,
+      "outCaught": 0.3055555555555556
+    },
+    {
+      "c": 0.75,
+      "s": 0.55,
+      "inNone": 0,
+      "outCaught": 0.3055555555555556
+    },
+    {
+      "c": 0.75,
+      "s": 0.575,
+      "inNone": 0,
+      "outCaught": 0.3055555555555556
+    },
+    {
+      "c": 0.75,
+      "s": 0.6,
+      "inNone": 0,
+      "outCaught": 0.3055555555555556
+    },
+    {
+      "c": 0.8,
+      "s": 0.55,
+      "inNone": 0,
+      "outCaught": 0.3055555555555556
+    },
+    {
+      "c": 0.8,
+      "s": 0.575,
+      "inNone": 0,
+      "outCaught": 0.3055555555555556
+    }
+  ],
+  "rows": [
+    {
+      "id": "c01",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is a balanced chemical equation?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9404762,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9404762,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+      }
+    },
+    {
+      "id": "c02",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why should a chemical equation be balanced? What law is behind it?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.94186044,
+        "coverage": 0.8,
+        "missing": [
+          "behind"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.94186044,
+        "coverage": 0.8,
+        "missing": [
+          "behind"
+        ],
+        "rank": 1,
+        "top": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+      }
+    },
+    {
+      "id": "c03",
+      "inBook": true,
+      "lang": "en",
+      "question": "How do we write the physical states of reactants and products in an equation?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8979592,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8979592,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+      }
+    },
+    {
+      "id": "c04",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is a combination reaction? Give an example.",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.90384614,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.90384614,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+      }
+    },
+    {
+      "id": "c05",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why is respiration called an exothermic reaction?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8888889,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8888889,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+      }
+    },
+    {
+      "id": "c06",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is thermal decomposition? Example with calcium carbonate",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.90384614,
+        "coverage": 0,
+        "missing": [
+          "thermal",
+          "decomposition",
+          "calcium",
+          "carbonate"
+        ],
+        "rank": 5,
+        "retried": false,
+        "top": "4.2 Versatile Nature of Carbon"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.90384614,
+        "coverage": 0,
+        "missing": [
+          "thermal",
+          "decomposition",
+          "calcium",
+          "carbonate"
+        ],
+        "rank": 5,
+        "top": "4.2 Versatile Nature of Carbon"
+      }
+    },
+    {
+      "id": "c07",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why does silver chloride turn grey in sunlight?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8648649,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8648649,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction"
+      }
+    },
+    {
+      "id": "c08",
+      "inBook": true,
+      "lang": "en",
+      "question": "iron nail in copper sulphate solution colour change why",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.94505495,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.94505495,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction"
+      }
+    },
+    {
+      "id": "c09",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is a precipitation reaction?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.875,
+        "coverage": 1,
+        "missing": [],
+        "rank": 0,
+        "retried": false,
+        "top": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.875,
+        "coverage": 1,
+        "missing": [],
+        "rank": 0,
+        "top": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+      }
+    },
+    {
+      "id": "c10",
+      "inBook": true,
+      "lang": "en",
+      "question": "Define oxidation and reduction in terms of oxygen and hydrogen",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8888889,
+        "coverage": 0.8,
+        "missing": [
+          "term"
+        ],
+        "rank": 2,
+        "retried": false,
+        "top": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8888889,
+        "coverage": 0.8,
+        "missing": [
+          "term"
+        ],
+        "rank": 2,
+        "top": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+      }
+    },
+    {
+      "id": "c11",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why are chips packets filled with nitrogen gas?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.7368421,
+        "coverage": 0.6,
+        "missing": [
+          "chip",
+          "packet"
+        ],
+        "rank": 5,
+        "retried": false,
+        "top": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.2 How do Acids and Bases React with Metals?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.7368421,
+        "coverage": 0.6,
+        "missing": [
+          "chip",
+          "packet"
+        ],
+        "rank": 5,
+        "top": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.2 How do Acids and Bases React with Metals?"
+      }
+    },
+    {
+      "id": "c12",
+      "inBook": true,
+      "lang": "te",
+      "question": "రసాయన చర్యలో విఘటన చర్య అంటే ఏమిటి?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9122807,
+        "coverage": 0.875,
+        "missing": [
+          "electrolysis"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9122807,
+        "coverage": 0.875,
+        "missing": [
+          "electrolysis"
+        ],
+        "rank": 1,
+        "top": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction"
+      }
+    },
+    {
+      "id": "c13",
+      "inBook": true,
+      "lang": "te",
+      "question": "నూనె పదార్థాలు చాలా రోజులు ఉంటే వాసన ఎందుకు మారుతుంది?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8717949,
+        "coverage": 0.8,
+        "missing": [
+          "foul",
+          "preservativ"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "1.3 Have You Observed the Effects of Oxidation Reactions in Everyday Life? > 1.3.2 Rancidity"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8717949,
+        "coverage": 0.8,
+        "missing": [
+          "foul",
+          "preservativ"
+        ],
+        "rank": 1,
+        "top": "1.3 Have You Observed the Effects of Oxidation Reactions in Everyday Life? > 1.3.2 Rancidity"
+      }
+    },
+    {
+      "id": "c14",
+      "inBook": true,
+      "lang": "en",
+      "question": "How can we test whether a solution is acidic or basic using litmus and other indicators?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9411765,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.1 Acids and Bases in the Laboratory"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9411765,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.1 Acids and Bases in the Laboratory"
+      }
+    },
+    {
+      "id": "c15",
+      "inBook": true,
+      "lang": "en",
+      "question": "What are olfactory indicators?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.7058824,
+        "coverage": 1,
+        "missing": [],
+        "rank": 3,
+        "retried": false,
+        "top": "2.3 How Strong Are Acid or Base Solutions?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.7058824,
+        "coverage": 1,
+        "missing": [],
+        "rank": 3,
+        "top": "2.3 How Strong Are Acid or Base Solutions?"
+      }
+    },
+    {
+      "id": "c16",
+      "inBook": true,
+      "lang": "en",
+      "question": "Which gas is produced when an acid reacts with zinc and how do we test it?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.92537314,
+        "coverage": 1,
+        "missing": [],
+        "rank": 3,
+        "retried": false,
+        "top": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.92537314,
+        "coverage": 1,
+        "missing": [],
+        "rank": 3,
+        "top": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+      }
+    },
+    {
+      "id": "c17",
+      "inBook": true,
+      "lang": "en",
+      "question": "What happens when sodium carbonate reacts with hydrochloric acid? Lime water test",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9431818,
+        "coverage": 1,
+        "missing": [],
+        "rank": 0,
+        "retried": false,
+        "top": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9431818,
+        "coverage": 1,
+        "missing": [],
+        "rank": 0,
+        "top": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+      }
+    },
+    {
+      "id": "c18",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is a neutralisation reaction?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.85294116,
+        "coverage": 0.5,
+        "missing": [
+          "neutralis"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.85294116,
+        "coverage": 0.5,
+        "missing": [
+          "neutralis"
+        ],
+        "rank": 0,
+        "top": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+      }
+    },
+    {
+      "id": "c19",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why does copper oxide dissolve in dilute hydrochloric acid and give a blue-green solution?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.93421054,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.5 Reaction of Metallic Oxides with Acids"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.93421054,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.5 Reaction of Metallic Oxides with Acids"
+      }
+    },
+    {
+      "id": "c20",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why does dry HCl gas not change the colour of dry litmus paper?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9019608,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "2.2 What Do All Acids and All Bases Have in Common? > 2.2.1 What Happens to an Acid or a Base in a Water Solution?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9019608,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "2.2 What Do All Acids and All Bases Have in Common? > 2.2.1 What Happens to an Acid or a Base in a Water Solution?"
+      }
+    },
+    {
+      "id": "c21",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why should acid be added to water and not water to acid while diluting?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.93333334,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "retried": false,
+        "top": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.93333334,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "top": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+      }
+    },
+    {
+      "id": "c22",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is the pH scale and what does pH 7 mean?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8684211,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "2.3 How Strong Are Acid or Base Solutions? > 2.3.1 Importance of pH in Everyday Life"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8684211,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "2.3 How Strong Are Acid or Base Solutions? > 2.3.1 Importance of pH in Everyday Life"
+      }
+    },
+    {
+      "id": "c23",
+      "inBook": true,
+      "lang": "en",
+      "question": "How does toothpaste prevent tooth decay?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "2.3 How Strong Are Acid or Base Solutions? > 2.3.1 Importance of pH in Everyday Life"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "2.3 How Strong Are Acid or Base Solutions? > 2.3.1 Importance of pH in Everyday Life"
+      }
+    },
+    {
+      "id": "c24",
+      "inBook": true,
+      "lang": "en",
+      "question": "bee sting remedy baking soda why",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.7826087,
+        "coverage": 0.6,
+        "missing": [
+          "sting",
+          "remedy"
+        ],
+        "rank": 4,
+        "retried": false,
+        "top": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.7826087,
+        "coverage": 0.6,
+        "missing": [
+          "sting",
+          "remedy"
+        ],
+        "rank": 4,
+        "top": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+      }
+    },
+    {
+      "id": "c25",
+      "inBook": true,
+      "lang": "en",
+      "question": "How is bleaching powder made and what is it used for?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.89361703,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "made"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.89361703,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "made"
+        ],
+        "rank": 1,
+        "top": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+      }
+    },
+    {
+      "id": "c26",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is water of crystallisation? Example copper sulphate",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9350649,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9350649,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?"
+      }
+    },
+    {
+      "id": "c27",
+      "inBook": true,
+      "lang": "te",
+      "question": "pH విలువ 7 కంటే తక్కువ ఉంటే ఆ ద్రావణం ఆమ్లమా లేక క్షారమా?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.95652175,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "2.3 How Strong Are Acid or Base Solutions?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.95652175,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "2.3 How Strong Are Acid or Base Solutions?"
+      }
+    },
+    {
+      "id": "c28",
+      "inBook": true,
+      "lang": "te",
+      "question": "వంట సోడా (బేకింగ్ సోడా) ఎలా తయారు చేస్తారు, దాని ఉపయోగాలు ఏమిటి?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9411765,
+        "coverage": 0.8181818181818182,
+        "missing": [
+          "solvay",
+          "ammonia"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9411765,
+        "coverage": 0.8181818181818182,
+        "missing": [
+          "solvay",
+          "ammonia"
+        ],
+        "rank": 1,
+        "top": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+      }
+    },
+    {
+      "id": "c29",
+      "inBook": true,
+      "lang": "te-latn",
+      "question": "plaster of paris ela tayaru chestaru?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.7826087,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "tayaru"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.7826087,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "tayaru"
+        ],
+        "rank": 1,
+        "top": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?"
+      }
+    },
+    {
+      "id": "c30",
+      "inBook": true,
+      "lang": "en",
+      "question": "What do malleable and ductile mean for metals?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.91525424,
+        "coverage": 1,
+        "missing": [],
+        "rank": 4,
+        "retried": false,
+        "top": "What you have learnt"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.91525424,
+        "coverage": 1,
+        "missing": [],
+        "rank": 4,
+        "top": "What you have learnt"
+      }
+    },
+    {
+      "id": "c31",
+      "inBook": true,
+      "lang": "en",
+      "question": "Name a non-metal that conducts electricity and a metal that is liquid at room temperature",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9528302,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "3.1 Physical Properties > 3.1.2 Non-metals"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9528302,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "3.1 Physical Properties > 3.1.2 Non-metals"
+      }
+    },
+    {
+      "id": "c32",
+      "inBook": true,
+      "lang": "en",
+      "question": "What are amphoteric oxides? Give two examples",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8780488,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8780488,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+      }
+    },
+    {
+      "id": "c33",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why is sodium kept immersed in kerosene oil?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.8148148,
+        "coverage": 0.2,
+        "missing": [
+          "kept",
+          "immers",
+          "kerosene",
+          "oil"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.8148148,
+        "coverage": 0.2,
+        "missing": [
+          "kept",
+          "immers",
+          "kerosene",
+          "oil"
+        ],
+        "rank": 0,
+        "top": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+      }
+    },
+    {
+      "id": "c34",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why is hydrogen gas not evolved when a metal reacts with nitric acid?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9456522,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "retried": false,
+        "top": "3.2 Chemical Properties of Metals > 3.2.2 What happens when Metals react with Water?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9456522,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "top": "3.2 Chemical Properties of Metals > 3.2.2 What happens when Metals react with Water?"
+      }
+    },
+    {
+      "id": "c35",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is the reactivity series of metals?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.92753625,
+        "coverage": 1,
+        "missing": [],
+        "rank": 0,
+        "retried": false,
+        "top": "3.4 Occurrence of Metals > 3.4.1 Extraction of Metals"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.92753625,
+        "coverage": 1,
+        "missing": [],
+        "rank": 0,
+        "top": "3.4 Occurrence of Metals > 3.4.1 Extraction of Metals"
+      }
+    },
+    {
+      "id": "c36",
+      "inBook": true,
+      "lang": "en",
+      "question": "Show the formation of sodium chloride by transfer of electrons",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.91525424,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "3.3 How Do Metals and Non-metals React?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.91525424,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "3.3 How Do Metals and Non-metals React?"
+      }
+    },
+    {
+      "id": "c37",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why do ionic compounds have high melting points and conduct electricity in molten state?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9315069,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "3.3 How Do Metals and Non-metals React? > 3.3.1 Properties of Ionic Compounds"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9315069,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "3.3 How Do Metals and Non-metals React? > 3.3.1 Properties of Ionic Compounds"
+      }
+    },
+    {
+      "id": "c38",
+      "inBook": true,
+      "lang": "en",
+      "question": "Difference between roasting and calcination",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.7058824,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "3.4 Occurrence of Metals > 3.4.4 Extracting Metals in the Middle of the Activity Series"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.7058824,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "3.4 Occurrence of Metals > 3.4.4 Extracting Metals in the Middle of the Activity Series"
+      }
+    },
+    {
+      "id": "c39",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is the thermite reaction used for?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.85294116,
+        "coverage": 0.5,
+        "missing": [
+          "thermite"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.85294116,
+        "coverage": 0.5,
+        "missing": [
+          "thermite"
+        ],
+        "rank": 0,
+        "top": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+      }
+    },
+    {
+      "id": "c40",
+      "inBook": true,
+      "lang": "en",
+      "question": "How is copper purified by electrolytic refining?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9,
+        "coverage": 0.75,
+        "missing": [
+          "purifi"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "3.4 Occurrence of Metals > 3.4.6 Refining of Metals"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9,
+        "coverage": 0.75,
+        "missing": [
+          "purifi"
+        ],
+        "rank": 1,
+        "top": "3.4 Occurrence of Metals > 3.4.6 Refining of Metals"
+      }
+    },
+    {
+      "id": "c41",
+      "inBook": true,
+      "lang": "te",
+      "question": "ఇనుము తుప్పు పట్టకుండా ఎలా నివారించవచ్చు? గాల్వనైజేషన్ అంటే ఏమిటి?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9375,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "3.5 Corrosion > 3.5.1 Prevention of Corrosion"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9375,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "3.5 Corrosion > 3.5.1 Prevention of Corrosion"
+      }
+    },
+    {
+      "id": "c42",
+      "inBook": true,
+      "lang": "te",
+      "question": "ఖనిజం మరియు ధాతువు మధ్య తేడా ఏమిటి?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9264706,
+        "coverage": 0.7142857142857143,
+        "missing": [
+          "mineral",
+          "gangue"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "3.4 Occurrence of Metals > 3.4.1 Extraction of Metals"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9264706,
+        "coverage": 0.7142857142857143,
+        "missing": [
+          "mineral",
+          "gangue"
+        ],
+        "rank": 1,
+        "top": "3.4 Occurrence of Metals > 3.4.1 Extraction of Metals"
+      }
+    },
+    {
+      "id": "c43",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is a covalent bond? Explain with methane",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8863636,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "4.1 Bonding in Carbon – the Covalent Bond"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8863636,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "4.1 Bonding in Carbon – the Covalent Bond"
+      }
+    },
+    {
+      "id": "c44",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is catenation and tetravalency of carbon?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.91071427,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "4.2 Versatile Nature of Carbon"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.91071427,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "4.2 Versatile Nature of Carbon"
+      }
+    },
+    {
+      "id": "c45",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is a homologous series?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.83870965,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "4.2 Versatile Nature of Carbon > 4.2.4 Homologous Series"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.83870965,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "4.2 Versatile Nature of Carbon > 4.2.4 Homologous Series"
+      }
+    },
+    {
+      "id": "c46",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why do vegetable oils get converted to vanaspati ghee using nickel catalyst?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8484849,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "convert",
+          "vanaspati",
+          "ghee"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "4.3 Chemical Properties of Carbon Compounds > 4.3.3 Addition Reaction"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8484849,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "convert",
+          "vanaspati",
+          "ghee"
+        ],
+        "rank": 1,
+        "top": "4.3 Chemical Properties of Carbon Compounds > 4.3.3 Addition Reaction"
+      }
+    },
+    {
+      "id": "c47",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is esterification? Reaction of ethanoic acid with ethanol",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.95098037,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.95098037,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+      }
+    },
+    {
+      "id": "c48",
+      "inBook": true,
+      "lang": "te",
+      "question": "సబ్బు మురికిని ఎలా తొలగిస్తుంది? మిసెల్ అంటే ఏమిటి?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9074074,
+        "coverage": 0.875,
+        "missing": [
+          "cleans"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "4.5 Soaps and Detergents"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9074074,
+        "coverage": 0.875,
+        "missing": [
+          "cleans"
+        ],
+        "rank": 1,
+        "top": "4.5 Soaps and Detergents"
+      }
+    },
+    {
+      "id": "c49",
+      "inBook": true,
+      "lang": "te",
+      "question": "కఠిన జలంలో సబ్బు ఎందుకు నురగ రాదు?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.91525424,
+        "coverage": 0.75,
+        "missing": [
+          "lather",
+          "scum"
+        ],
+        "rank": 2,
+        "retried": false,
+        "top": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.91525424,
+        "coverage": 0.75,
+        "missing": [
+          "lather",
+          "scum"
+        ],
+        "rank": 2,
+        "top": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?"
+      }
+    },
+    {
+      "id": "c50",
+      "inBook": true,
+      "lang": "te",
+      "question": "సంతృప్త మరియు అసంతృప్త కార్బన్ సమ్మేళనాలు అంటే ఏమిటి?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.95535713,
+        "coverage": 0.8888888888888888,
+        "missing": [
+          "hydrocarbon"
+        ],
+        "rank": 2,
+        "retried": false,
+        "top": "4.2 Versatile Nature of Carbon"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.95535713,
+        "coverage": 0.8888888888888888,
+        "missing": [
+          "hydrocarbon"
+        ],
+        "rank": 2,
+        "top": "4.2 Versatile Nature of Carbon"
+      }
+    },
+    {
+      "id": "b01",
+      "inBook": true,
+      "lang": "en",
+      "question": "What are life processes?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.83870965,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "5.1 What Are Life Processes?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.83870965,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "5.1 What Are Life Processes?"
+      }
+    },
+    {
+      "id": "b02",
+      "inBook": true,
+      "lang": "en",
+      "question": "What are the raw materials and steps of photosynthesis?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8148148,
+        "coverage": 1,
+        "missing": [],
+        "rank": 3,
+        "retried": false,
+        "top": "5.4 Transportation > 5.4.2 Transportation in Plants"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8148148,
+        "coverage": 1,
+        "missing": [],
+        "rank": 3,
+        "top": "5.4 Transportation > 5.4.2 Transportation in Plants"
+      }
+    },
+    {
+      "id": "b03",
+      "inBook": true,
+      "lang": "en",
+      "question": "How do stomata open and close?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.7619048,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "retried": false,
+        "top": "5.3 Respiration"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.7619048,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "top": "5.3 Respiration"
+      }
+    },
+    {
+      "id": "b04",
+      "inBook": true,
+      "lang": "en",
+      "question": "How does amoeba take in food?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8076923,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "retried": false,
+        "top": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8076923,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "top": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+      }
+    },
+    {
+      "id": "b05",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is the role of bile juice and pancreatic juice in digestion?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8148148,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8148148,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
+      }
+    },
+    {
+      "id": "b06",
+      "inBook": true,
+      "lang": "en",
+      "question": "why do villi increase absorption in small intestine",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8717949,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8717949,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
+      }
+    },
+    {
+      "id": "b07",
+      "inBook": true,
+      "lang": "en",
+      "question": "Difference between aerobic and anaerobic respiration",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.7916667,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "5.3 Respiration"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.7916667,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "5.3 Respiration"
+      }
+    },
+    {
+      "id": "b08",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why do we get muscle cramps after running fast?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8484849,
+        "coverage": 0.8333333333333334,
+        "missing": [
+          "cramp"
+        ],
+        "rank": 5,
+        "retried": false,
+        "top": "6.1 Animals – Nervous System > 6.1.4 How does the Nervous Tissue cause Action?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8484849,
+        "coverage": 0.8333333333333334,
+        "missing": [
+          "cramp"
+        ],
+        "rank": 5,
+        "top": "6.1 Animals – Nervous System > 6.1.4 How does the Nervous Tissue cause Action?"
+      }
+    },
+    {
+      "id": "b09",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why is double circulation needed in the human heart?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.84375,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.84375,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+      }
+    },
+    {
+      "id": "b10",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is lymph and what does it do?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.7058824,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.7058824,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+      }
+    },
+    {
+      "id": "b11",
+      "inBook": true,
+      "lang": "en",
+      "question": "How does water move up in tall trees? Role of transpiration",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.85714287,
+        "coverage": 0.8333333333333334,
+        "missing": [
+          "tall"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "5.4 Transportation > 5.4.2 Transportation in Plants"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.85714287,
+        "coverage": 0.8333333333333334,
+        "missing": [
+          "tall"
+        ],
+        "rank": 1,
+        "top": "5.4 Transportation > 5.4.2 Transportation in Plants"
+      }
+    },
+    {
+      "id": "b12",
+      "inBook": true,
+      "lang": "te",
+      "question": "నెఫ్రాన్ నిర్మాణం మరియు పని గురించి చెప్పండి",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9122807,
+        "coverage": 0.875,
+        "missing": [
+          "reabsorption"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "5.5 Excretion > 5.5.1 Excretion in Human Beings"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9122807,
+        "coverage": 0.875,
+        "missing": [
+          "reabsorption"
+        ],
+        "rank": 1,
+        "top": "5.5 Excretion > 5.5.1 Excretion in Human Beings"
+      }
+    },
+    {
+      "id": "b13",
+      "inBook": true,
+      "lang": "te",
+      "question": "కృత్రిమ మూత్రపిండం (డయాలసిస్) ఎలా పని చేస్తుంది?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9425287,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "5.5 Excretion > 5.5.1 Excretion in Human Beings"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9425287,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "5.5 Excretion > 5.5.1 Excretion in Human Beings"
+      }
+    },
+    {
+      "id": "b14",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is a synapse?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.44444445,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "6.1 Animals – Nervous System"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.44444445,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "6.1 Animals – Nervous System"
+      }
+    },
+    {
+      "id": "b15",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is a reflex arc? Example of touching a hot object",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.875,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "6.1 Animals – Nervous System > 6.1.1 What happens in Reflex Actions?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.875,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "6.1 Animals – Nervous System > 6.1.1 What happens in Reflex Actions?"
+      }
+    },
+    {
+      "id": "b16",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is the function of the cerebellum and medulla?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.61538464,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "6.1 Animals – Nervous System > 6.1.2 Human Brain"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.61538464,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "6.1 Animals – Nervous System > 6.1.2 Human Brain"
+      }
+    },
+    {
+      "id": "b17",
+      "inBook": true,
+      "lang": "en",
+      "question": "How is the brain protected inside our body?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8863636,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "retried": false,
+        "top": "6.1 Animals – Nervous System > 6.1.2 Human Brain"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8863636,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "top": "6.1 Animals – Nervous System > 6.1.2 Human Brain"
+      }
+    },
+    {
+      "id": "b18",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why do the leaves of touch-me-not plant fold when touched?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.88095236,
+        "coverage": 0.6,
+        "missing": [
+          "touch-me-not",
+          "fold"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "6.2 Coordination in Plants > 6.2.1 Immediate Response to Stimulus"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.88095236,
+        "coverage": 0.6,
+        "missing": [
+          "touch-me-not",
+          "fold"
+        ],
+        "rank": 1,
+        "top": "6.2 Coordination in Plants > 6.2.1 Immediate Response to Stimulus"
+      }
+    },
+    {
+      "id": "b19",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is phototropism and geotropism?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.44444445,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "6.2 Coordination in Plants > 6.2.2 Movement Due to Growth"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.44444445,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "6.2 Coordination in Plants > 6.2.2 Movement Due to Growth"
+      }
+    },
+    {
+      "id": "b20",
+      "inBook": true,
+      "lang": "en",
+      "question": "Functions of auxin gibberellin cytokinin abscisic acid",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.7368421,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "6.2 Coordination in Plants > 6.2.2 Movement Due to Growth"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.7368421,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "6.2 Coordination in Plants > 6.2.2 Movement Due to Growth"
+      }
+    },
+    {
+      "id": "b21",
+      "inBook": true,
+      "lang": "te",
+      "question": "అయోడిన్ లోపం వల్ల గాయిటర్ ఎందుకు వస్తుంది?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8484849,
+        "coverage": 0.9,
+        "missing": [
+          "thyroxine"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "6.3 Hormones in Animals"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8484849,
+        "coverage": 0.9,
+        "missing": [
+          "thyroxine"
+        ],
+        "rank": 1,
+        "top": "6.3 Hormones in Animals"
+      }
+    },
+    {
+      "id": "b22",
+      "inBook": true,
+      "lang": "te",
+      "question": "అడ్రినలిన్ హార్మోన్ ఏమి చేస్తుంది?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8611111,
+        "coverage": 0.6,
+        "missing": [
+          "fight",
+          "flight",
+          "heart",
+          "emergency"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "6.3 Hormones in Animals"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8611111,
+        "coverage": 0.6,
+        "missing": [
+          "fight",
+          "flight",
+          "heart",
+          "emergency"
+        ],
+        "rank": 1,
+        "top": "6.3 Hormones in Animals"
+      }
+    },
+    {
+      "id": "b23",
+      "inBook": true,
+      "lang": "te-latn",
+      "question": "diabetes ki insulin ki sambandham enti?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.61538464,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "sambandham"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "6.3 Hormones in Animals"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.61538464,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "sambandham"
+        ],
+        "rank": 1,
+        "top": "6.3 Hormones in Animals"
+      }
+    },
+    {
+      "id": "b24",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why is variation important for a species to survive?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8648649,
+        "coverage": 0.75,
+        "missing": [
+          "specy"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "7.1 Do Organisms Create Exact Copies of Themselves? > 7.1.1 The Importance of Variation"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8648649,
+        "coverage": 0.75,
+        "missing": [
+          "specy"
+        ],
+        "rank": 1,
+        "top": "7.1 Do Organisms Create Exact Copies of Themselves? > 7.1.1 The Importance of Variation"
+      }
+    },
+    {
+      "id": "b25",
+      "inBook": true,
+      "lang": "en",
+      "question": "Difference between binary fission and multiple fission",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.84375,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.1 Fission"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.84375,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.1 Fission"
+      }
+    },
+    {
+      "id": "b26",
+      "inBook": true,
+      "lang": "en",
+      "question": "How does Planaria regenerate?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.77272725,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.3 Regeneration"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.77272725,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.3 Regeneration"
+      }
+    },
+    {
+      "id": "b27",
+      "inBook": true,
+      "lang": "en",
+      "question": "How does Hydra reproduce by budding?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.7916667,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.4 Budding"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.7916667,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.4 Budding"
+      }
+    },
+    {
+      "id": "b28",
+      "inBook": true,
+      "lang": "en",
+      "question": "Advantages of vegetative propagation in bananas and roses",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8648649,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.5 Vegetative Propagation"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8648649,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.5 Vegetative Propagation"
+      }
+    },
+    {
+      "id": "b29",
+      "inBook": true,
+      "lang": "en",
+      "question": "How does Rhizopus spread by spores?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8076923,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.6 Spore Formation"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8076923,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.6 Spore Formation"
+      }
+    },
+    {
+      "id": "b30",
+      "inBook": true,
+      "lang": "en",
+      "question": "What happens after pollination? How is a seed formed?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.88372093,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "retried": false,
+        "top": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.88372093,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "top": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+      }
+    },
+    {
+      "id": "b31",
+      "inBook": true,
+      "lang": "en",
+      "question": "What changes happen in the body at puberty?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.85714287,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.85714287,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
+      }
+    },
+    {
+      "id": "b32",
+      "inBook": true,
+      "lang": "en",
+      "question": "What are the methods of contraception?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.7058824,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.7058824,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
+      }
+    },
+    {
+      "id": "b33",
+      "inBook": true,
+      "lang": "te",
+      "question": "పరాగ సంపర్కం అంటే ఏమిటి? స్వపరాగ సంపర్కం, పరపరాగ సంపర్కం తేడా",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "7.3 Sexual Reproduction > 7.3.2 Sexual Reproduction in Flowering Plants"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "7.3 Sexual Reproduction > 7.3.2 Sexual Reproduction in Flowering Plants"
+      }
+    },
+    {
+      "id": "b34",
+      "inBook": true,
+      "lang": "te",
+      "question": "గర్భంలో పిండానికి ఆహారం మాయ (ప్లాసెంటా) ద్వారా ఎలా అందుతుంది?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.89361703,
+        "coverage": 0.5555555555555556,
+        "missing": [
+          "umbilical",
+          "cord",
+          "nutrient",
+          "diffusion"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.89361703,
+        "coverage": 0.5555555555555556,
+        "missing": [
+          "umbilical",
+          "cord",
+          "nutrient",
+          "diffusion"
+        ],
+        "rank": 1,
+        "top": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
+      }
+    },
+    {
+      "id": "b35",
+      "inBook": true,
+      "lang": "en",
+      "question": "What are dominant and recessive traits?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8611111,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8611111,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+      }
+    },
+    {
+      "id": "b36",
+      "inBook": true,
+      "lang": "en",
+      "question": "Mendel experiment with tall and short pea plants F1 F2 ratio",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.93421054,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.93421054,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+      }
+    },
+    {
+      "id": "b37",
+      "inBook": true,
+      "lang": "en",
+      "question": "How do genes control traits like plant height?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.90384614,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "8.2 Heredity > 8.2.3 How do these Traits get Expressed?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.90384614,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "8.2 Heredity > 8.2.3 How do these Traits get Expressed?"
+      }
+    },
+    {
+      "id": "b38",
+      "inBook": true,
+      "lang": "en",
+      "question": "How is the sex of a child determined in humans?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.89361703,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "8.2 Heredity > 8.2.4 Sex Determination"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.89361703,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "8.2 Heredity > 8.2.4 Sex Determination"
+      }
+    },
+    {
+      "id": "b39",
+      "inBook": true,
+      "lang": "en",
+      "question": "What are inherited traits? Example of earlobes",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8717949,
+        "coverage": 1,
+        "missing": [],
+        "rank": 4,
+        "retried": false,
+        "top": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8717949,
+        "coverage": 1,
+        "missing": [],
+        "rank": 4,
+        "top": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+      }
+    },
+    {
+      "id": "b40",
+      "inBook": true,
+      "lang": "te",
+      "question": "బిడ్డ ఆడ లేదా మగ అనేది తండ్రి నుండి వచ్చే క్రోమోజోమ్ మీద ఎలా ఆధారపడి ఉంటుంది?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9166667,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "8.2 Heredity > 8.2.4 Sex Determination"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9166667,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "8.2 Heredity > 8.2.4 Sex Determination"
+      }
+    },
+    {
+      "id": "b41",
+      "inBook": true,
+      "lang": "te-latn",
+      "question": "mendel batani mokkalatho chesina prayogam enti?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.7222222,
+        "coverage": 0.2,
+        "missing": [
+          "batani",
+          "mokkalatho",
+          "chesina",
+          "prayogam"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.7222222,
+        "coverage": 0.2,
+        "missing": [
+          "batani",
+          "mokkalatho",
+          "chesina",
+          "prayogam"
+        ],
+        "rank": 1,
+        "top": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+      }
+    },
+    {
+      "id": "b42",
+      "inBook": true,
+      "lang": "en",
+      "question": "What are biotic and abiotic components of an ecosystem?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8684211,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "13.1 Eco-system — What Are its Components?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8684211,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "13.1 Eco-system — What Are its Components?"
+      }
+    },
+    {
+      "id": "b43",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why are decomposers important in an ecosystem?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.7619048,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "13.1 Eco-system — What Are its Components?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.7619048,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "13.1 Eco-system — What Are its Components?"
+      }
+    },
+    {
+      "id": "b44",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is a trophic level and the 10 percent law of energy?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9056604,
+        "coverage": 0.6,
+        "missing": [
+          "percent",
+          "law"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9056604,
+        "coverage": 0.6,
+        "missing": [
+          "percent",
+          "law"
+        ],
+        "rank": 1,
+        "top": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+      }
+    },
+    {
+      "id": "b45",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is biological magnification?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.54545456,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "retried": false,
+        "top": "Exercises"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.54545456,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "top": "Exercises"
+      }
+    },
+    {
+      "id": "b46",
+      "inBook": true,
+      "lang": "en",
+      "question": "How is the ozone layer being depleted and why is it harmful?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.85294116,
+        "coverage": 0.8,
+        "missing": [
+          "harmful"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "13.2 How Do Our Activities Affect the Environment? > 13.2.1 Ozone Layer and How it is Getting Depleted"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.85294116,
+        "coverage": 0.8,
+        "missing": [
+          "harmful"
+        ],
+        "rank": 1,
+        "top": "13.2 How Do Our Activities Affect the Environment? > 13.2.1 Ozone Layer and How it is Getting Depleted"
+      }
+    },
+    {
+      "id": "b47",
+      "inBook": true,
+      "lang": "en",
+      "question": "Biodegradable vs non-biodegradable waste with examples",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.91803277,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "13.2 How Do Our Activities Affect the Environment? > 13.2.2 Managing the Garbage we Produce"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.91803277,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "13.2 How Do Our Activities Affect the Environment? > 13.2.2 Managing the Garbage we Produce"
+      }
+    },
+    {
+      "id": "b48",
+      "inBook": true,
+      "lang": "te",
+      "question": "ఆహార గొలుసు మరియు ఆహార జాలం అంటే ఏమిటి?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9537037,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9537037,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+      }
+    },
+    {
+      "id": "b49",
+      "inBook": true,
+      "lang": "te",
+      "question": "క్లోరోఫ్లోరోకార్బన్లు ఓజోన్ పొరకు ఎందుకు హానికరం?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9137931,
+        "coverage": 0.75,
+        "missing": [
+          "chlorine",
+          "aerosol",
+          "spray"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "13.2 How Do Our Activities Affect the Environment? > 13.2.1 Ozone Layer and How it is Getting Depleted"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9137931,
+        "coverage": 0.75,
+        "missing": [
+          "chlorine",
+          "aerosol",
+          "spray"
+        ],
+        "rank": 1,
+        "top": "13.2 How Do Our Activities Affect the Environment? > 13.2.1 Ozone Layer and How it is Getting Depleted"
+      }
+    },
+    {
+      "id": "b50",
+      "inBook": true,
+      "lang": "te",
+      "question": "మొక్కలలో పోషక పదార్థాల రవాణా (స్థానాంతరణ) ఫ్లోయమ్ ద్వారా ఎలా జరుగుతుంది?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.91525424,
+        "coverage": 0.9166666666666666,
+        "missing": [
+          "source"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "5.4 Transportation > 5.4.2 Transportation in Plants"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.91525424,
+        "coverage": 0.9166666666666666,
+        "missing": [
+          "source"
+        ],
+        "rank": 1,
+        "top": "5.4 Transportation > 5.4.2 Transportation in Plants"
+      }
+    },
+    {
+      "id": "p01",
+      "inBook": true,
+      "lang": "en",
+      "question": "State the laws of reflection of light",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8979592,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "retried": false,
+        "top": null
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8979592,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "top": null
+      }
+    },
+    {
+      "id": "p02",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is the relation between focal length and radius of curvature of a mirror?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.921875,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "9.2 Spherical Mirrors"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.921875,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "9.2 Spherical Mirrors"
+      }
+    },
+    {
+      "id": "p03",
+      "inBook": true,
+      "lang": "en",
+      "question": "Where should an object be placed in front of a concave mirror to get a real, enlarged image?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.93670887,
+        "coverage": 0.8,
+        "missing": [
+          "plac"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.93670887,
+        "coverage": 0.8,
+        "missing": [
+          "plac"
+        ],
+        "rank": 1,
+        "top": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+      }
+    },
+    {
+      "id": "p04",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why are convex mirrors used as rear-view mirrors in vehicles?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9456522,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9456522,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+      }
+    },
+    {
+      "id": "p05",
+      "inBook": true,
+      "lang": "en",
+      "question": "Uses of concave mirrors in torches and by dentists",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.94186044,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.94186044,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+      }
+    },
+    {
+      "id": "p06",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is the New Cartesian sign convention for mirrors?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.92537314,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "9.2 Spherical Mirrors > 9.2.3 Sign Convention for Reflection by Spherical Mirrors"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.92537314,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "9.2 Spherical Mirrors > 9.2.3 Sign Convention for Reflection by Spherical Mirrors"
+      }
+    },
+    {
+      "id": "p07",
+      "inBook": true,
+      "lang": "en",
+      "question": "mirror formula and magnification formula",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9122807,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9122807,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
+      }
+    },
+    {
+      "id": "p08",
+      "inBook": true,
+      "lang": "en",
+      "question": "An object is placed 20 cm in front of a concave mirror of focal length 15 cm. Find the image position.",
+      "routerIntent": "numerical",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.94505495,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "retried": false,
+        "top": "Exercises"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.94505495,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "top": "Exercises"
+      }
+    },
+    {
+      "id": "p09",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why does a pencil look bent when kept in a glass of water?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8888889,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "9.3 Refraction of Light"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8888889,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "9.3 Refraction of Light"
+      }
+    },
+    {
+      "id": "p10",
+      "inBook": true,
+      "lang": "en",
+      "question": "State Snell's law of refraction",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8717949,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "9.3 Refraction of Light > 9.3.1 Refraction through a Rectangular Glass Slab"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8717949,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "9.3 Refraction of Light > 9.3.1 Refraction through a Rectangular Glass Slab"
+      }
+    },
+    {
+      "id": "p11",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is refractive index? Which is optically denser, water or kerosene?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9519231,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9519231,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+      }
+    },
+    {
+      "id": "p12",
+      "inBook": true,
+      "lang": "en",
+      "question": "Lens formula and magnification for a convex lens",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9264706,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "9.3 Refraction of Light > 9.3.7 Lens Formula and Magnification"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9264706,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "9.3 Refraction of Light > 9.3.7 Lens Formula and Magnification"
+      }
+    },
+    {
+      "id": "p13",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is the power of a lens and its SI unit dioptre?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9382716,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "9.3 Refraction of Light > 9.3.8 Power of a Lens"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9382716,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "9.3 Refraction of Light > 9.3.8 Power of a Lens"
+      }
+    },
+    {
+      "id": "p14",
+      "inBook": true,
+      "lang": "te",
+      "question": "కుంభాకార కటకం మరియు పుటాకార కటకం మధ్య తేడా ఏమిటి?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.95412844,
+        "coverage": 1,
+        "missing": [],
+        "rank": 0,
+        "retried": false,
+        "top": "9.3 Refraction of Light > 9.3.8 Power of a Lens"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.95412844,
+        "coverage": 1,
+        "missing": [],
+        "rank": 0,
+        "top": "9.3 Refraction of Light > 9.3.8 Power of a Lens"
+      }
+    },
+    {
+      "id": "p15",
+      "inBook": true,
+      "lang": "te",
+      "question": "కాంతి వక్రీభవనం అంటే ఏమిటి?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.96644294,
+        "coverage": 0.9,
+        "missing": [
+          "snell"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.96644294,
+        "coverage": 0.9,
+        "missing": [
+          "snell"
+        ],
+        "rank": 1,
+        "top": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+      }
+    },
+    {
+      "id": "p16",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is the function of the iris and pupil in the eye?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.88095236,
+        "coverage": 0.75,
+        "missing": [
+          "function"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "10.1 The Human Eye > 10.1.1 Power of Accommodation"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.88095236,
+        "coverage": 0.75,
+        "missing": [
+          "function"
+        ],
+        "rank": 1,
+        "top": "10.1 The Human Eye > 10.1.1 Power of Accommodation"
+      }
+    },
+    {
+      "id": "p17",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is the power of accommodation of the eye? Near point 25 cm",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9358974,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "10.1 The Human Eye > 10.1.1 Power of Accommodation"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9358974,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "10.1 The Human Eye > 10.1.1 Power of Accommodation"
+      }
+    },
+    {
+      "id": "p18",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is myopia and how is it corrected?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8076923,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "10.2 Defects of Vision and Their Correction"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8076923,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "10.2 Defects of Vision and Their Correction"
+      }
+    },
+    {
+      "id": "p19",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is the angle of deviation in a glass prism?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.89361703,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "retried": false,
+        "top": "10.4 Dispersion of White Light by a Glass Prism"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.89361703,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "top": "10.4 Dispersion of White Light by a Glass Prism"
+      }
+    },
+    {
+      "id": "p20",
+      "inBook": true,
+      "lang": "en",
+      "question": "How is a rainbow formed?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.7058824,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "retried": false,
+        "top": "9.3 Refraction of Light > 9.3.4 Image Formation by Lenses"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.7058824,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "top": "9.3 Refraction of Light > 9.3.4 Image Formation by Lenses"
+      }
+    },
+    {
+      "id": "p21",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why do stars twinkle but planets do not?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "10.5 Atmospheric Refraction"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "10.5 Atmospheric Refraction"
+      }
+    },
+    {
+      "id": "p22",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is the Tyndall effect?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.7826087,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "10.6 Scattering of Light > 10.6.1 Tyndall Effect"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.7826087,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "10.6 Scattering of Light > 10.6.1 Tyndall Effect"
+      }
+    },
+    {
+      "id": "p23",
+      "inBook": true,
+      "lang": "te",
+      "question": "ఆకాశం నీలి రంగులో ఎందుకు కనిపిస్తుంది?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9468085,
+        "coverage": 0.8888888888888888,
+        "missing": [
+          "rayleigh"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "10.6 Scattering of Light > 10.6.2 Why is the colour of the clear Sky Blue?"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9468085,
+        "coverage": 0.8888888888888888,
+        "missing": [
+          "rayleigh"
+        ],
+        "rank": 1,
+        "top": "10.6 Scattering of Light > 10.6.2 Why is the colour of the clear Sky Blue?"
+      }
+    },
+    {
+      "id": "p24",
+      "inBook": true,
+      "lang": "te",
+      "question": "హ్రస్వదృష్టి (మయోపియా) ఉన్నవారికి ఏ కటకం వాడతారు?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.92424244,
+        "coverage": 0.875,
+        "missing": [
+          "short-sightedness"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "10.2 Defects of Vision and Their Correction"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.92424244,
+        "coverage": 0.875,
+        "missing": [
+          "short-sightedness"
+        ],
+        "rank": 1,
+        "top": "10.2 Defects of Vision and Their Correction"
+      }
+    },
+    {
+      "id": "p25",
+      "inBook": true,
+      "lang": "te-latn",
+      "question": "white light prism lo 7 rangulu ga enduku vidipotundi?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.9166667,
+        "coverage": 0.5,
+        "missing": [
+          "rangulu",
+          "enduku",
+          "vidipotundi"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "10.4 Dispersion of White Light by a Glass Prism"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.9166667,
+        "coverage": 0.5,
+        "missing": [
+          "rangulu",
+          "enduku",
+          "vidipotundi"
+        ],
+        "rank": 1,
+        "top": "10.4 Dispersion of White Light by a Glass Prism"
+      }
+    },
+    {
+      "id": "p26",
+      "inBook": true,
+      "lang": "en",
+      "question": "Define electric current and its SI unit ampere",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.93333334,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "11.1 Electric Current and Circuit"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.93333334,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "11.1 Electric Current and Circuit"
+      }
+    },
+    {
+      "id": "p27",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is potential difference? How is a voltmeter connected?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9166667,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "11.2 Electric Potential and Potential Difference"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9166667,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "11.2 Electric Potential and Potential Difference"
+      }
+    },
+    {
+      "id": "p28",
+      "inBook": true,
+      "lang": "en",
+      "question": "symbols used in circuit diagrams",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8780488,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "11.3 Circuit Diagram"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8780488,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "11.3 Circuit Diagram"
+      }
+    },
+    {
+      "id": "p29",
+      "inBook": true,
+      "lang": "en",
+      "question": "State Ohm's law",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.82758623,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "11.4 Ohm’s Law"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.82758623,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "11.4 Ohm’s Law"
+      }
+    },
+    {
+      "id": "p30",
+      "inBook": true,
+      "lang": "en",
+      "question": "On what factors does the resistance of a wire depend? What is resistivity?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9305556,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "11.5 Factors on Which the Resistance of a Conductor Depends"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9305556,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "11.5 Factors on Which the Resistance of a Conductor Depends"
+      }
+    },
+    {
+      "id": "p31",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why are alloys used in electric heaters instead of pure metals?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.91803277,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "instead",
+          "pure"
+        ],
+        "rank": 2,
+        "retried": false,
+        "top": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.91803277,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "instead",
+          "pure"
+        ],
+        "rank": 2,
+        "top": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+      }
+    },
+    {
+      "id": "p32",
+      "inBook": true,
+      "lang": "en",
+      "question": "Three resistors of 5, 10 and 30 ohm are connected in series to a 12 V battery. Find the current.",
+      "routerIntent": "numerical",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9166667,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9166667,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series"
+      }
+    },
+    {
+      "id": "p33",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why are household appliances connected in parallel and not in series?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.83870965,
+        "coverage": 0.8333333333333334,
+        "missing": [
+          "household"
+        ],
+        "rank": 2,
+        "retried": false,
+        "top": "11.7 Heating Effect of Electric Current"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.83870965,
+        "coverage": 0.8333333333333334,
+        "missing": [
+          "household"
+        ],
+        "rank": 2,
+        "top": "11.7 Heating Effect of Electric Current"
+      }
+    },
+    {
+      "id": "p34",
+      "inBook": true,
+      "lang": "en",
+      "question": "Joule's law of heating formula H = I2Rt",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8648649,
+        "coverage": 0.6,
+        "missing": [
+          "formula",
+          "i2rt"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8648649,
+        "coverage": 0.6,
+        "missing": [
+          "formula",
+          "i2rt"
+        ],
+        "rank": 1,
+        "top": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+      }
+    },
+    {
+      "id": "p35",
+      "inBook": true,
+      "lang": "en",
+      "question": "Why is tungsten used for the filament of electric bulbs?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.92957747,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.92957747,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+      }
+    },
+    {
+      "id": "p36",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is 1 kilowatt hour in joules? Electric power unit",
+      "routerIntent": "numerical",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9411765,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "11.8 Electric Power"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9411765,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "11.8 Electric Power"
+      }
+    },
+    {
+      "id": "p37",
+      "inBook": true,
+      "lang": "te",
+      "question": "ఓమ్ నియమం ఏమి చెబుతుంది?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9305556,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "retried": false,
+        "top": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9305556,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "top": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series"
+      }
+    },
+    {
+      "id": "p38",
+      "inBook": true,
+      "lang": "te",
+      "question": "విద్యుత్ ఫ్యూజ్ ఎలా పని చేస్తుంది?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9593496,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9593496,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+      }
+    },
+    {
+      "id": "p39",
+      "inBook": true,
+      "lang": "en",
+      "question": "Properties of magnetic field lines. Why do two field lines never cross?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.94949496,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "property",
+          "never"
+        ],
+        "rank": 2,
+        "retried": false,
+        "top": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.3 Magnetic Field due to a Current through a Circular Loop"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.94949496,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "property",
+          "never"
+        ],
+        "rank": 2,
+        "top": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.3 Magnetic Field due to a Current through a Circular Loop"
+      }
+    },
+    {
+      "id": "p40",
+      "inBook": true,
+      "lang": "en",
+      "question": "How does a compass needle get deflected near a current-carrying wire?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9382716,
+        "coverage": 0.7142857142857143,
+        "missing": [
+          "get",
+          "near"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.1 Magnetic Field due to a Current through a Straight Conductor"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9382716,
+        "coverage": 0.7142857142857143,
+        "missing": [
+          "get",
+          "near"
+        ],
+        "rank": 1,
+        "top": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.1 Magnetic Field due to a Current through a Straight Conductor"
+      }
+    },
+    {
+      "id": "p41",
+      "inBook": true,
+      "lang": "en",
+      "question": "Magnetic field pattern around a straight current-carrying conductor",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.96875,
+        "coverage": 1,
+        "missing": [],
+        "rank": 3,
+        "retried": false,
+        "top": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.3 Magnetic Field due to a Current through a Circular Loop"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.96875,
+        "coverage": 1,
+        "missing": [],
+        "rank": 3,
+        "top": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.3 Magnetic Field due to a Current through a Circular Loop"
+      }
+    },
+    {
+      "id": "p42",
+      "inBook": true,
+      "lang": "en",
+      "question": "State the right-hand thumb rule",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9285714,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.2 Right-Hand Thumb Rule"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9285714,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.2 Right-Hand Thumb Rule"
+      }
+    },
+    {
+      "id": "p43",
+      "inBook": true,
+      "lang": "en",
+      "question": "Magnetic field due to current through a circular loop",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9668874,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.3 Magnetic Field due to a Current through a Circular Loop"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9668874,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.3 Magnetic Field due to a Current through a Circular Loop"
+      }
+    },
+    {
+      "id": "p44",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is a solenoid and how is an electromagnet made?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.84375,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "made"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.4 Magnetic Field due to a Current in a Solenoid"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.84375,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "made"
+        ],
+        "rank": 1,
+        "top": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.4 Magnetic Field due to a Current in a Solenoid"
+      }
+    },
+    {
+      "id": "p45",
+      "inBook": true,
+      "lang": "en",
+      "question": "State Fleming's left-hand rule",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8484849,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "retried": false,
+        "top": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.2 Right-Hand Thumb Rule"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8484849,
+        "coverage": 1,
+        "missing": [],
+        "rank": 2,
+        "top": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.2 Right-Hand Thumb Rule"
+      }
+    },
+    {
+      "id": "p46",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is the use of the earth wire in domestic circuits?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9056604,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "12.4 Domestic Electric Circuits"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9056604,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "12.4 Domestic Electric Circuits"
+      }
+    },
+    {
+      "id": "p47",
+      "inBook": true,
+      "lang": "en",
+      "question": "What is short-circuiting and overloading?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.88095236,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "12.4 Domestic Electric Circuits"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.88095236,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "12.4 Domestic Electric Circuits"
+      }
+    },
+    {
+      "id": "p48",
+      "inBook": true,
+      "lang": "te",
+      "question": "అయస్కాంత క్షేత్ర రేఖలు అంటే ఏమిటి?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9655172,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "12.1 Magnetic Field and Field Lines"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9655172,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "12.1 Magnetic Field and Field Lines"
+      }
+    },
+    {
+      "id": "p49",
+      "inBook": true,
+      "lang": "te",
+      "question": "సోలినాయిడ్ లోపల అయస్కాంత క్షేత్రం ఎలా ఉంటుంది?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.9596774,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "retried": false,
+        "top": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.4 Magnetic Field due to a Current in a Solenoid"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.9596774,
+        "coverage": 1,
+        "missing": [],
+        "rank": 1,
+        "top": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.4 Magnetic Field due to a Current in a Solenoid"
+      }
+    },
+    {
+      "id": "p50",
+      "inBook": true,
+      "lang": "te",
+      "question": "విద్యుత్ ప్రవాహం వల్ల ఉష్ణం ఎందుకు ఉత్పత్తి అవుతుంది?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.95238096,
+        "coverage": 0.9,
+        "missing": [
+          "collision"
+        ],
+        "rank": 1,
+        "retried": false,
+        "top": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.95238096,
+        "coverage": 0.9,
+        "missing": [
+          "collision"
+        ],
+        "rank": 1,
+        "top": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+      }
+    },
+    {
+      "id": "o01",
+      "inBook": false,
+      "lang": "en",
+      "kind": "removed",
+      "question": "What is the modern periodic table and who made it?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.7619048,
+        "coverage": 0.5,
+        "missing": [
+          "modern",
+          "periodic"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": null
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.7619048,
+        "coverage": 0.5,
+        "missing": [
+          "modern",
+          "periodic"
+        ],
+        "rank": 0,
+        "top": null
+      }
+    },
+    {
+      "id": "o02",
+      "inBook": false,
+      "lang": "en",
+      "kind": "removed",
+      "question": "State Mendeleev's periodic law",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.7058824,
+        "coverage": 0.3333333333333333,
+        "missing": [
+          "mendeleev",
+          "periodic"
+        ],
+        "rank": 0,
+        "retried": true,
+        "top": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.7058824,
+        "coverage": 0,
+        "missing": [
+          "mendeleev",
+          "periodic",
+          "law"
+        ],
+        "rank": 0,
+        "top": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+      }
+    },
+    {
+      "id": "o03",
+      "inBook": false,
+      "lang": "en",
+      "kind": "removed",
+      "question": "How does atomic size change across a period?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.85714287,
+        "coverage": 0.2,
+        "missing": [
+          "size",
+          "change",
+          "across",
+          "period"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "4.1 Bonding in Carbon – the Covalent Bond"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.85714287,
+        "coverage": 0.2,
+        "missing": [
+          "size",
+          "change",
+          "across",
+          "period"
+        ],
+        "rank": 0,
+        "top": "4.1 Bonding in Carbon – the Covalent Bond"
+      }
+    },
+    {
+      "id": "o04",
+      "inBook": false,
+      "lang": "en",
+      "kind": "removed",
+      "question": "What are Dobereiner's triads?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "none",
+        "topScore": 0,
+        "coverage": 0,
+        "missing": [
+          "dobereiner",
+          "triad"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": null
+      },
+      "screen": {
+        "status": "none",
+        "topScore": 0,
+        "coverage": 0,
+        "missing": [
+          "dobereiner",
+          "triad"
+        ],
+        "rank": 0,
+        "top": null
+      }
+    },
+    {
+      "id": "o05",
+      "inBook": false,
+      "lang": "en",
+      "kind": "removed",
+      "question": "Explain Darwin's theory of evolution by natural selection",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.7058824,
+        "coverage": 0.4,
+        "missing": [
+          "darwin",
+          "evolution",
+          "selection"
+        ],
+        "rank": 0,
+        "retried": true,
+        "top": "9.3 Refraction of Light > 9.3.4 Image Formation by Lenses"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.44444445,
+        "coverage": 0.2,
+        "missing": [
+          "darwin",
+          "theory",
+          "evolution",
+          "selection"
+        ],
+        "rank": 0,
+        "top": "13.1 Eco-system — What Are its Components?"
+      }
+    },
+    {
+      "id": "o06",
+      "inBook": false,
+      "lang": "en",
+      "kind": "removed",
+      "question": "What are homologous and analogous organs?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.85714287,
+        "coverage": 0.3333333333333333,
+        "missing": [
+          "homologous",
+          "analogous"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "What you have learnt"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.85714287,
+        "coverage": 0.3333333333333333,
+        "missing": [
+          "homologous",
+          "analogous"
+        ],
+        "rank": 0,
+        "top": "What you have learnt"
+      }
+    },
+    {
+      "id": "o07",
+      "inBook": false,
+      "lang": "en",
+      "kind": "removed",
+      "question": "What is speciation?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "none",
+        "topScore": 0,
+        "coverage": 0,
+        "missing": [
+          "speci"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": null
+      },
+      "screen": {
+        "status": "none",
+        "topScore": 0,
+        "coverage": 0,
+        "missing": [
+          "speci"
+        ],
+        "rank": 0,
+        "top": null
+      }
+    },
+    {
+      "id": "o08",
+      "inBook": false,
+      "lang": "en",
+      "kind": "removed",
+      "question": "What is electromagnetic induction? State Faraday's law",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.7058824,
+        "coverage": 0.25,
+        "missing": [
+          "electromagnetic",
+          "induction",
+          "faraday"
+        ],
+        "rank": 0,
+        "retried": true,
+        "top": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.64285713,
+        "coverage": 0.25,
+        "missing": [
+          "electromagnetic",
+          "induction",
+          "faraday"
+        ],
+        "rank": 0,
+        "top": "11.4 Ohm’s Law"
+      }
+    },
+    {
+      "id": "o09",
+      "inBook": false,
+      "lang": "en",
+      "kind": "removed",
+      "question": "What are renewable and non-renewable sources of energy?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.8648649,
+        "coverage": 0.5,
+        "missing": [
+          "renewable",
+          "non-renewable"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "11.7 Heating Effect of Electric Current"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.8648649,
+        "coverage": 0.5,
+        "missing": [
+          "renewable",
+          "non-renewable"
+        ],
+        "rank": 0,
+        "top": "11.7 Heating Effect of Electric Current"
+      }
+    },
+    {
+      "id": "o10",
+      "inBook": false,
+      "lang": "en",
+      "kind": "removed",
+      "question": "How does a solar cooker work?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.54545456,
+        "coverage": 0,
+        "missing": [
+          "solar",
+          "cooker"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "11.2 Electric Potential and Potential Difference"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.54545456,
+        "coverage": 0,
+        "missing": [
+          "solar",
+          "cooker"
+        ],
+        "rank": 0,
+        "top": "11.2 Electric Potential and Potential Difference"
+      }
+    },
+    {
+      "id": "o11",
+      "inBook": false,
+      "lang": "en",
+      "kind": "removed",
+      "question": "How is biogas produced in a biogas plant?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.8717949,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "bioga"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.5 Vegetative Propagation"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.8717949,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "bioga"
+        ],
+        "rank": 0,
+        "top": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.5 Vegetative Propagation"
+      }
+    },
+    {
+      "id": "o12",
+      "inBook": false,
+      "lang": "en",
+      "kind": "removed",
+      "question": "What is nuclear fission and how does a nuclear power plant work?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.8611111,
+        "coverage": 0.5,
+        "missing": [
+          "nuclear",
+          "fission"
+        ],
+        "rank": 0,
+        "retried": true,
+        "top": "9.3 Refraction of Light > 9.3.8 Power of a Lens"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.8611111,
+        "coverage": 0.25,
+        "missing": [
+          "nuclear",
+          "fission",
+          "plant"
+        ],
+        "rank": 0,
+        "top": "9.3 Refraction of Light > 9.3.8 Power of a Lens"
+      }
+    },
+    {
+      "id": "o13",
+      "inBook": false,
+      "lang": "en",
+      "kind": "class9",
+      "question": "State Newton's second law of motion",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.6666667,
+        "coverage": 1,
+        "missing": [],
+        "rank": 0,
+        "retried": false,
+        "top": "10.4 Dispersion of White Light by a Glass Prism"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.6666667,
+        "coverage": 1,
+        "missing": [],
+        "rank": 0,
+        "top": "10.4 Dispersion of White Light by a Glass Prism"
+      }
+    },
+    {
+      "id": "o14",
+      "inBook": false,
+      "lang": "en",
+      "kind": "class9",
+      "question": "What is the speed of sound in air and what is an echo?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.85714287,
+        "coverage": 0.5,
+        "missing": [
+          "sound",
+          "echo"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.85714287,
+        "coverage": 0.5,
+        "missing": [
+          "sound",
+          "echo"
+        ],
+        "rank": 0,
+        "top": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+      }
+    },
+    {
+      "id": "o15",
+      "inBook": false,
+      "lang": "en",
+      "kind": "class9",
+      "question": "State the universal law of gravitation",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.7058824,
+        "coverage": 0.3333333333333333,
+        "missing": [
+          "universal",
+          "gravit"
+        ],
+        "rank": 0,
+        "retried": true,
+        "top": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.64285713,
+        "coverage": 0.3333333333333333,
+        "missing": [
+          "universal",
+          "gravit"
+        ],
+        "rank": 0,
+        "top": "11.4 Ohm’s Law"
+      }
+    },
+    {
+      "id": "o16",
+      "inBook": false,
+      "lang": "en",
+      "kind": "class9",
+      "question": "Explain Rutherford's model of an atom",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.85714287,
+        "coverage": 0.3333333333333333,
+        "missing": [
+          "rutherford",
+          "model"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "4.1 Bonding in Carbon – the Covalent Bond"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.85714287,
+        "coverage": 0.3333333333333333,
+        "missing": [
+          "rutherford",
+          "model"
+        ],
+        "rank": 0,
+        "top": "4.1 Bonding in Carbon – the Covalent Bond"
+      }
+    },
+    {
+      "id": "o17",
+      "inBook": false,
+      "lang": "en",
+      "kind": "class9",
+      "question": "What is mitosis?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "none",
+        "topScore": 0,
+        "coverage": 0,
+        "missing": [
+          "mitosis"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": null
+      },
+      "screen": {
+        "status": "none",
+        "topScore": 0,
+        "coverage": 0,
+        "missing": [
+          "mitosis"
+        ],
+        "rank": 0,
+        "top": null
+      }
+    },
+    {
+      "id": "o18",
+      "inBook": false,
+      "lang": "en",
+      "kind": "class9",
+      "question": "What is Archimedes' principle?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.2857143,
+        "coverage": 0.5,
+        "missing": [
+          "archimed"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "12.4 Domestic Electric Circuits"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.2857143,
+        "coverage": 0.5,
+        "missing": [
+          "archimed"
+        ],
+        "rank": 0,
+        "top": "12.4 Domestic Electric Circuits"
+      }
+    },
+    {
+      "id": "o19",
+      "inBook": false,
+      "lang": "en",
+      "kind": "class9",
+      "question": "Difference between speed and velocity",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.8648649,
+        "coverage": 0.5,
+        "missing": [
+          "velocity"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.8648649,
+        "coverage": 0.5,
+        "missing": [
+          "velocity"
+        ],
+        "rank": 0,
+        "top": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+      }
+    },
+    {
+      "id": "o20",
+      "inBook": false,
+      "lang": "en",
+      "kind": "class9",
+      "question": "What are the types of plant tissues? Meristematic and permanent tissue",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.8648649,
+        "coverage": 0.5,
+        "missing": [
+          "type",
+          "meristematic",
+          "permanent"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.5 Vegetative Propagation"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.8648649,
+        "coverage": 0.5,
+        "missing": [
+          "type",
+          "meristematic",
+          "permanent"
+        ],
+        "rank": 0,
+        "top": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.5 Vegetative Propagation"
+      }
+    },
+    {
+      "id": "o21",
+      "inBook": false,
+      "lang": "en",
+      "kind": "class9",
+      "question": "What is the mole concept and Avogadro's number?",
+      "routerIntent": "concept",
+      "routerSubject": "chemistry",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.7826087,
+        "coverage": 0.5,
+        "missing": [
+          "concept",
+          "avogadro"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.7826087,
+        "coverage": 0.5,
+        "missing": [
+          "concept",
+          "avogadro"
+        ],
+        "rank": 0,
+        "top": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+      }
+    },
+    {
+      "id": "o22",
+      "inBook": false,
+      "lang": "en",
+      "kind": "beyond",
+      "question": "What is a black hole?",
+      "routerIntent": "off_topic",
+      "routerSubject": null,
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.54545456,
+        "coverage": 1,
+        "missing": [],
+        "rank": 0,
+        "retried": false,
+        "top": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.2857143,
+        "coverage": 0.5,
+        "missing": [
+          "black"
+        ],
+        "rank": 0,
+        "top": "10.3 Refraction of Light Through a Prism"
+      }
+    },
+    {
+      "id": "o23",
+      "inBook": false,
+      "lang": "en",
+      "kind": "beyond",
+      "question": "How do vaccines work in our body?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.8,
+        "coverage": 0.5,
+        "missing": [
+          "vaccin"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "5.1 What Are Life Processes?"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.8,
+        "coverage": 0.5,
+        "missing": [
+          "vaccin"
+        ],
+        "rank": 0,
+        "top": "5.1 What Are Life Processes?"
+      }
+    },
+    {
+      "id": "o24",
+      "inBook": false,
+      "lang": "en",
+      "kind": "beyond",
+      "question": "Explain Einstein's theory of relativity",
+      "routerIntent": "off_topic",
+      "routerSubject": null,
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.6666667,
+        "coverage": 0,
+        "missing": [
+          "einstein",
+          "theory",
+          "relativity"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "9.3 Refraction of Light > 9.3.4 Image Formation by Lenses"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.6666667,
+        "coverage": 0,
+        "missing": [
+          "einstein",
+          "theory",
+          "relativity"
+        ],
+        "rank": 0,
+        "top": "9.3 Refraction of Light > 9.3.4 Image Formation by Lenses"
+      }
+    },
+    {
+      "id": "o25",
+      "inBook": false,
+      "lang": "en",
+      "kind": "beyond",
+      "question": "What is the Big Bang theory?",
+      "routerIntent": "off_topic",
+      "routerSubject": null,
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.44444445,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "bang"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": null
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.44444445,
+        "coverage": 0.6666666666666666,
+        "missing": [
+          "bang"
+        ],
+        "rank": 0,
+        "top": null
+      }
+    },
+    {
+      "id": "o26",
+      "inBook": false,
+      "lang": "en",
+      "kind": "beyond",
+      "question": "What is the greenhouse effect?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.7368421,
+        "coverage": 0.5,
+        "missing": [
+          "greenhouse"
+        ],
+        "rank": 0,
+        "retried": true,
+        "top": null
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.44444445,
+        "coverage": 0.5,
+        "missing": [
+          "greenhouse"
+        ],
+        "rank": 0,
+        "top": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
+      }
+    },
+    {
+      "id": "o27",
+      "inBook": false,
+      "lang": "en",
+      "kind": "beyond",
+      "question": "What is uranium used for?",
+      "routerIntent": "off_topic",
+      "routerSubject": null,
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.7619048,
+        "coverage": 0,
+        "missing": [
+          "uranium"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "5.3 Respiration"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.7368421,
+        "coverage": 0,
+        "missing": [
+          "uranium"
+        ],
+        "rank": 0,
+        "top": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+      }
+    },
+    {
+      "id": "o28",
+      "inBook": false,
+      "lang": "en",
+      "kind": "beyond",
+      "question": "How does a transistor work?",
+      "routerIntent": "off_topic",
+      "routerSubject": null,
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.54545456,
+        "coverage": 0,
+        "missing": [
+          "transistor"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "8.2 Heredity > 8.2.3 How do these Traits get Expressed?"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.54545456,
+        "coverage": 0,
+        "missing": [
+          "transistor"
+        ],
+        "rank": 0,
+        "top": "11.2 Electric Potential and Potential Difference"
+      }
+    },
+    {
+      "id": "o29",
+      "inBook": false,
+      "lang": "en",
+      "kind": "beyond",
+      "question": "What is coronavirus and how does it spread?",
+      "routerIntent": "off_topic",
+      "routerSubject": null,
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.2857143,
+        "coverage": 0.5,
+        "missing": [
+          "coronavirus"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.6 Spore Formation"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.2857143,
+        "coverage": 0.5,
+        "missing": [
+          "coronavirus"
+        ],
+        "rank": 0,
+        "top": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.6 Spore Formation"
+      }
+    },
+    {
+      "id": "o30",
+      "inBook": false,
+      "lang": "en",
+      "kind": "beyond",
+      "question": "How do satellites stay in orbit?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.2857143,
+        "coverage": 0.3333333333333333,
+        "missing": [
+          "satellit",
+          "orbit"
+        ],
+        "rank": 0,
+        "retried": true,
+        "top": "5.3 Respiration"
+      },
+      "screen": {
+        "status": "none",
+        "topScore": 0,
+        "coverage": 0,
+        "missing": [
+          "satellit",
+          "stay",
+          "orbit"
+        ],
+        "rank": 0,
+        "top": null
+      }
+    },
+    {
+      "id": "o31",
+      "inBook": false,
+      "lang": "te",
+      "kind": "class9",
+      "question": "న్యూటన్ రెండవ గమన నియమం ఏమిటి?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "grounded",
+        "topScore": 0.84375,
+        "coverage": 0.7,
+        "missing": [
+          "newton",
+          "law",
+          "acceler"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "12.3 Force on a Current-carrying Conductor in a Magnetic Field"
+      },
+      "screen": {
+        "status": "grounded",
+        "topScore": 0.84375,
+        "coverage": 0.7,
+        "missing": [
+          "newton",
+          "law",
+          "acceler"
+        ],
+        "rank": 0,
+        "top": "12.3 Force on a Current-carrying Conductor in a Magnetic Field"
+      }
+    },
+    {
+      "id": "o32",
+      "inBook": false,
+      "lang": "te",
+      "kind": "removed",
+      "question": "ఆధునిక ఆవర్తన పట్టిక అంటే ఏమిటి?",
+      "routerIntent": "off_topic",
+      "routerSubject": null,
+      "routerSource": "model",
+      "routed": {
+        "status": "none",
+        "topScore": 0,
+        "coverage": 0,
+        "missing": [],
+        "rank": 0,
+        "retried": false,
+        "top": null
+      },
+      "screen": {
+        "status": "none",
+        "topScore": 0,
+        "coverage": 0,
+        "missing": [],
+        "rank": 0,
+        "top": null
+      }
+    },
+    {
+      "id": "o33",
+      "inBook": false,
+      "lang": "te",
+      "kind": "removed",
+      "question": "డార్విన్ పరిణామ సిద్ధాంతం గురించి చెప్పండి",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.82758623,
+        "coverage": 0.25,
+        "missing": [
+          "darwin",
+          "evolution",
+          "natural",
+          "selection",
+          "specy",
+          "adapt"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "7.3 Sexual Reproduction > 7.3.1 Why the Sexual Mode of Reproduction?"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.82758623,
+        "coverage": 0.25,
+        "missing": [
+          "darwin",
+          "evolution",
+          "natural",
+          "selection",
+          "specy",
+          "adapt"
+        ],
+        "rank": 0,
+        "top": "7.3 Sexual Reproduction > 7.3.1 Why the Sexual Mode of Reproduction?"
+      }
+    },
+    {
+      "id": "o34",
+      "inBook": false,
+      "lang": "te",
+      "kind": "removed",
+      "question": "సౌర కుక్కర్ ఎలా పని చేస్తుంది?",
+      "routerIntent": "concept",
+      "routerSubject": "physics",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.8958333,
+        "coverage": 0.5,
+        "missing": [
+          "solar",
+          "cooker",
+          "black",
+          "absorption",
+          "greenhouse"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "9.1 Reflection of Light"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.8958333,
+        "coverage": 0.5,
+        "missing": [
+          "solar",
+          "cooker",
+          "black",
+          "absorption",
+          "greenhouse"
+        ],
+        "rank": 0,
+        "top": "9.1 Reflection of Light"
+      }
+    },
+    {
+      "id": "o35",
+      "inBook": false,
+      "lang": "te",
+      "kind": "beyond",
+      "question": "కృష్ణ బిలం (బ్లాక్ హోల్) అంటే ఏమిటి?",
+      "routerIntent": "off_topic",
+      "routerSubject": null,
+      "routerSource": "model",
+      "routed": {
+        "status": "none",
+        "topScore": 0,
+        "coverage": 0,
+        "missing": [],
+        "rank": 0,
+        "retried": false,
+        "top": null
+      },
+      "screen": {
+        "status": "none",
+        "topScore": 0,
+        "coverage": 0,
+        "missing": [],
+        "rank": 0,
+        "top": null
+      }
+    },
+    {
+      "id": "o36",
+      "inBook": false,
+      "lang": "te",
+      "kind": "beyond",
+      "question": "టీకాలు మన శరీరంలో ఎలా పని చేస్తాయి?",
+      "routerIntent": "concept",
+      "routerSubject": "biology",
+      "routerSource": "model",
+      "routed": {
+        "status": "weak",
+        "topScore": 0.88372093,
+        "coverage": 0.3,
+        "missing": [
+          "vaccin",
+          "immune",
+          "antibody",
+          "antigen",
+          "memory",
+          "immunity",
+          "white"
+        ],
+        "rank": 0,
+        "retried": false,
+        "top": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+      },
+      "screen": {
+        "status": "weak",
+        "topScore": 0.88372093,
+        "coverage": 0.3,
+        "missing": [
+          "vaccin",
+          "immune",
+          "antibody",
+          "antigen",
+          "memory",
+          "immunity",
+          "white"
+        ],
+        "rank": 0,
+        "top": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+      }
+    }
+  ]
+}

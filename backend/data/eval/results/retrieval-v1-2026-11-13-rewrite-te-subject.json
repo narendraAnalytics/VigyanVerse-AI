@@ -2,14 +2,14 @@
   "evalSet": "retrieval-v1",
   "mode": "rewrite-te-subject",
   "split": "all",
-  "ranAt": "2026-11-13T02:35:37.454Z",
+  "ranAt": "2026-11-13T03:29:06.744Z",
   "summary": {
     "n": 150,
-    "r1": 0.7466666666666667,
-    "r5": 0.96,
-    "mrr": 0.8365185185185186
+    "r1": 0.86,
+    "r5": 1,
+    "mrr": 0.9235555555555556
   },
-  "costInr": 0.16590599999999997,
+  "costInr": 0.172701,
   "rows": [
     {
       "id": "c01",
@@ -30,7 +30,7 @@
         "equation"
       ],
       "keywordSource": "direct",
-      "latencyMs": 379,
+      "latencyMs": 582,
       "costInr": 0,
       "top": [
         {
@@ -45,18 +45,18 @@
         },
         {
           "chapter": 1,
-          "pages": "3-3",
-          "section": "1.1 Chemical Equations > 1.1.1 Writing a Chemical Equation"
-        },
-        {
-          "chapter": 1,
           "pages": "5-5",
           "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
         },
         {
           "chapter": 1,
-          "pages": "14-15",
-          "section": "Exercises"
+          "pages": "3-3",
+          "section": "1.1 Chemical Equations > 1.1.1 Writing a Chemical Equation"
+        },
+        {
+          "chapter": 1,
+          "pages": "6-7",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
         }
       ]
     },
@@ -85,7 +85,7 @@
         "it"
       ],
       "keywordSource": "direct",
-      "latencyMs": 379,
+      "latencyMs": 297,
       "costInr": 0,
       "top": [
         {
@@ -100,18 +100,18 @@
         },
         {
           "chapter": 1,
-          "pages": "3-3",
-          "section": "1.1 Chemical Equations > 1.1.1 Writing a Chemical Equation"
-        },
-        {
-          "chapter": 1,
           "pages": "5-5",
           "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
         },
         {
           "chapter": 1,
-          "pages": "14-15",
-          "section": "Exercises"
+          "pages": "3-3",
+          "section": "1.1 Chemical Equations > 1.1.1 Writing a Chemical Equation"
+        },
+        {
+          "chapter": 1,
+          "pages": "6-7",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
         }
       ]
     },
@@ -141,18 +141,13 @@
         "in"
       ],
       "keywordSource": "direct",
-      "latencyMs": 392,
+      "latencyMs": 276,
       "costInr": 0,
       "top": [
         {
           "chapter": 1,
           "pages": "5-5",
           "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
-        },
-        {
-          "chapter": 1,
-          "pages": "2-2",
-          "section": "1.1 Chemical Equations"
         },
         {
           "chapter": 1,
@@ -165,9 +160,14 @@
           "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
         },
         {
+          "chapter": 3,
+          "pages": "40-40",
+          "section": "3.1 Physical Properties > 3.1.2 Non-metals"
+        },
+        {
           "chapter": 1,
-          "pages": "3-4",
-          "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
+          "pages": "2-2",
+          "section": "1.1 Chemical Equations"
         }
       ]
     },
@@ -192,7 +192,7 @@
         "example"
       ],
       "keywordSource": "direct",
-      "latencyMs": 383,
+      "latencyMs": 308,
       "costInr": 0,
       "top": [
         {
@@ -207,18 +207,18 @@
         },
         {
           "chapter": 1,
-          "pages": "14-14",
-          "section": "What you have learnt"
-        },
-        {
-          "chapter": 1,
-          "pages": "12-12",
-          "section": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
-        },
-        {
-          "chapter": 1,
           "pages": "15-16",
           "section": "Exercises"
+        },
+        {
+          "chapter": 1,
+          "pages": "14-15",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 1,
+          "pages": "8-8",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
         }
       ]
     },
@@ -243,7 +243,7 @@
         "reaction"
       ],
       "keywordSource": "direct",
-      "latencyMs": 86,
+      "latencyMs": 118,
       "costInr": 0,
       "top": [
         {
@@ -258,18 +258,18 @@
         },
         {
           "chapter": 1,
-          "pages": "12-12",
-          "section": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
-        },
-        {
-          "chapter": 1,
           "pages": "14-14",
           "section": "What you have learnt"
         },
         {
+          "chapter": 2,
+          "pages": "24-24",
+          "section": "2.2 What Do All Acids and All Bases Have in Common? > 2.2.1 What Happens to an Acid or a Base in a Water Solution?"
+        },
+        {
           "chapter": 1,
-          "pages": "6-7",
-          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+          "pages": "10-11",
+          "section": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction"
         }
       ]
     },
@@ -283,7 +283,7 @@
       "gold": [
         "1.2.2"
       ],
-      "rank": 5,
+      "rank": 1,
       "keywords": [
         "what",
         "is",
@@ -295,33 +295,33 @@
         "carbonate"
       ],
       "keywordSource": "direct",
-      "latencyMs": 91,
+      "latencyMs": 85,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 4,
-          "pages": "62-62",
-          "section": "4.2 Versatile Nature of Carbon"
-        },
-        {
-          "chapter": 4,
-          "pages": "63-64",
-          "section": "4.2 Versatile Nature of Carbon > 4.2.1 Saturated and Unsaturated Carbon Compounds"
-        },
-        {
-          "chapter": 4,
-          "pages": "64-65",
-          "section": "4.2 Versatile Nature of Carbon > 4.2.2 Chains, Branches and Rings"
-        },
-        {
-          "chapter": 4,
-          "pages": "67-67",
-          "section": "4.2 Versatile Nature of Carbon > 4.2.5 Nomenclature of Carbon Compounds"
-        },
         {
           "chapter": 1,
           "pages": "8-9",
           "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "7-8",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "14-15",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 1,
+          "pages": "9-10",
+          "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "15-16",
+          "section": "Exercises"
         }
       ]
     },
@@ -347,7 +347,7 @@
         "sunlight"
       ],
       "keywordSource": "direct",
-      "latencyMs": 97,
+      "latencyMs": 93,
       "costInr": 0,
       "top": [
         {
@@ -357,18 +357,18 @@
         },
         {
           "chapter": 1,
-          "pages": "14-15",
-          "section": "Exercises"
-        },
-        {
-          "chapter": 3,
-          "pages": "47-48",
-          "section": "3.3 How Do Metals and Non-metals React?"
+          "pages": "9-10",
+          "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction"
         },
         {
           "chapter": 1,
-          "pages": "6-7",
-          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+          "pages": "10-11",
+          "section": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "14-15",
+          "section": "Exercises"
         },
         {
           "chapter": 1,
@@ -387,7 +387,7 @@
       "gold": [
         "1.2.3"
       ],
-      "rank": 1,
+      "rank": 2,
       "keywords": [
         "iron",
         "nail",
@@ -400,9 +400,14 @@
         "why"
       ],
       "keywordSource": "direct",
-      "latencyMs": 99,
+      "latencyMs": 82,
       "costInr": 0,
       "top": [
+        {
+          "chapter": 1,
+          "pages": "12-13",
+          "section": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+        },
         {
           "chapter": 1,
           "pages": "10-11",
@@ -414,19 +419,14 @@
           "section": "3.2 Chemical Properties of Metals > 3.2.4 How do Metals react with Solutions of other Metal Salts?"
         },
         {
-          "chapter": 2,
-          "pages": "32-33",
-          "section": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?"
+          "chapter": 3,
+          "pages": "52-53",
+          "section": "3.4 Occurrence of Metals > 3.4.6 Refining of Metals"
         },
         {
-          "chapter": 2,
-          "pages": "18-19",
-          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.1 Acids and Bases in the Laboratory"
-        },
-        {
-          "chapter": 2,
-          "pages": "25-25",
-          "section": "2.3 How Strong Are Acid or Base Solutions?"
+          "chapter": 1,
+          "pages": "11-11",
+          "section": "1.2 Types of Chemical Reactions > 1.2.4 Double Displacement Reaction"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "gold": [
         "1.2.4"
       ],
-      "rank": 9,
+      "rank": 2,
       "keywords": [
         "what",
         "is",
@@ -448,7 +448,7 @@
         "reaction"
       ],
       "keywordSource": "direct",
-      "latencyMs": 119,
+      "latencyMs": 78,
       "costInr": 0,
       "top": [
         {
@@ -458,23 +458,23 @@
         },
         {
           "chapter": 1,
+          "pages": "11-11",
+          "section": "1.2 Types of Chemical Reactions > 1.2.4 Double Displacement Reaction"
+        },
+        {
+          "chapter": 1,
           "pages": "14-14",
           "section": "What you have learnt"
         },
         {
           "chapter": 1,
-          "pages": "6-7",
-          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+          "pages": "14-15",
+          "section": "Exercises"
         },
         {
-          "chapter": 1,
-          "pages": "10-11",
-          "section": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction"
-        },
-        {
-          "chapter": 1,
-          "pages": "7-8",
-          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+          "chapter": 2,
+          "pages": "19-20",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.2 How do Acids and Bases React with Metals?"
         }
       ]
     },
@@ -501,13 +501,13 @@
         "hydrogen"
       ],
       "keywordSource": "direct",
-      "latencyMs": 101,
+      "latencyMs": 105,
       "costInr": 0,
       "top": [
         {
           "chapter": 3,
-          "pages": "41-41",
-          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+          "pages": "52-53",
+          "section": "3.4 Occurrence of Metals > 3.4.6 Refining of Metals"
         },
         {
           "chapter": 1,
@@ -515,18 +515,18 @@
           "section": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
         },
         {
-          "chapter": 3,
-          "pages": "41-42",
-          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+          "chapter": 1,
+          "pages": "12-13",
+          "section": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
         },
         {
-          "chapter": 3,
-          "pages": "51-52",
-          "section": "3.4 Occurrence of Metals > 3.4.4 Extracting Metals in the Middle of the Activity Series"
+          "chapter": 1,
+          "pages": "16-16",
+          "section": "Exercises"
         },
         {
-          "chapter": 3,
-          "pages": "55-56",
+          "chapter": 1,
+          "pages": "14-14",
           "section": "What you have learnt"
         }
       ]
@@ -541,7 +541,7 @@
       "gold": [
         "1.3.2"
       ],
-      "rank": 5,
+      "rank": 1,
       "keywords": [
         "why",
         "are",
@@ -553,13 +553,13 @@
         "gas"
       ],
       "keywordSource": "direct",
-      "latencyMs": 90,
+      "latencyMs": 68,
       "costInr": 0,
       "top": [
         {
-          "chapter": 2,
-          "pages": "19-20",
-          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.2 How do Acids and Bases React with Metals?"
+          "chapter": 1,
+          "pages": "13-13",
+          "section": "1.3 Have You Observed the Effects of Oxidation Reactions in Everyday Life? > 1.3.2 Rancidity"
         },
         {
           "chapter": 1,
@@ -567,19 +567,19 @@
           "section": "Exercises"
         },
         {
-          "chapter": 2,
-          "pages": "23-24",
-          "section": "2.2 What Do All Acids and All Bases Have in Common? > 2.2.1 What Happens to an Acid or a Base in a Water Solution?"
-        },
-        {
           "chapter": 1,
           "pages": "9-10",
           "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction"
         },
         {
-          "chapter": 1,
-          "pages": "13-13",
-          "section": "1.3 Have You Observed the Effects of Oxidation Reactions in Everyday Life? > 1.3.2 Rancidity"
+          "chapter": 4,
+          "pages": "59-60",
+          "section": "4.1 Bonding in Carbon – the Covalent Bond"
+        },
+        {
+          "chapter": 4,
+          "pages": "77-77",
+          "section": "What you have learnt"
         }
       ]
     },
@@ -605,12 +605,12 @@
         "thermal",
         "electrolytic",
         "photolytic",
-        "types",
-        "of"
+        "caco3",
+        "feso4"
       ],
       "keywordSource": "model",
-      "latencyMs": 979,
-      "costInr": 0.005391,
+      "latencyMs": 1320,
+      "costInr": 0.007146,
       "top": [
         {
           "chapter": 1,
@@ -619,13 +619,13 @@
         },
         {
           "chapter": 1,
-          "pages": "6-7",
-          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+          "pages": "10-11",
+          "section": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction"
         },
         {
           "chapter": 1,
-          "pages": "10-11",
-          "section": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction"
+          "pages": "7-8",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
         },
         {
           "chapter": 1,
@@ -633,9 +633,9 @@
           "section": "What you have learnt"
         },
         {
-          "chapter": 1,
-          "pages": "7-8",
-          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+          "chapter": 3,
+          "pages": "56-57",
+          "section": "Exercises"
         }
       ]
     },
@@ -658,15 +658,15 @@
         "and",
         "oils",
         "fatty",
-        "food",
+        "foods",
+        "become",
         "rancid",
         "smell",
-        "prevention",
-        "antioxidants"
+        "prevention"
       ],
       "keywordSource": "model",
-      "latencyMs": 1000,
-      "costInr": 0.00666,
+      "latencyMs": 1191,
+      "costInr": 0.006615,
       "top": [
         {
           "chapter": 1,
@@ -674,24 +674,24 @@
           "section": "1.3 Have You Observed the Effects of Oxidation Reactions in Everyday Life? > 1.3.2 Rancidity"
         },
         {
+          "chapter": 1,
+          "pages": "16-16",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 4,
+          "pages": "71-71",
+          "section": "4.3 Chemical Properties of Carbon Compounds > 4.3.3 Addition Reaction"
+        },
+        {
           "chapter": 3,
-          "pages": "41-41",
-          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+          "pages": "54-54",
+          "section": "3.5 Corrosion > 3.5.1 Prevention of Corrosion"
         },
         {
           "chapter": 3,
           "pages": "41-42",
           "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
-        },
-        {
-          "chapter": 2,
-          "pages": "21-22",
-          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.5 Reaction of Metallic Oxides with Acids"
-        },
-        {
-          "chapter": 1,
-          "pages": "12-12",
-          "section": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
         }
       ]
     },
@@ -721,7 +721,7 @@
         "litmus"
       ],
       "keywordSource": "direct",
-      "latencyMs": 80,
+      "latencyMs": 100,
       "costInr": 0,
       "top": [
         {
@@ -730,9 +730,9 @@
           "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.1 Acids and Bases in the Laboratory"
         },
         {
-          "chapter": 4,
-          "pages": "73-73",
-          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+          "chapter": 2,
+          "pages": "17-17",
+          "section": null
         },
         {
           "chapter": 2,
@@ -740,14 +740,14 @@
           "section": "2.3 How Strong Are Acid or Base Solutions?"
         },
         {
-          "chapter": 2,
-          "pages": "17-17",
-          "section": null
+          "chapter": 3,
+          "pages": "40-40",
+          "section": "3.1 Physical Properties > 3.1.2 Non-metals"
         },
         {
           "chapter": 2,
-          "pages": "22-23",
-          "section": "2.2 What Do All Acids and All Bases Have in Common?"
+          "pages": "23-24",
+          "section": "2.2 What Do All Acids and All Bases Have in Common? > 2.2.1 What Happens to an Acid or a Base in a Water Solution?"
         }
       ]
     },
@@ -761,7 +761,7 @@
       "gold": [
         "2.1.1"
       ],
-      "rank": 3,
+      "rank": 1,
       "keywords": [
         "what",
         "are",
@@ -769,9 +769,19 @@
         "indicators"
       ],
       "keywordSource": "direct",
-      "latencyMs": 89,
+      "latencyMs": 64,
       "costInr": 0,
       "top": [
+        {
+          "chapter": 2,
+          "pages": "18-19",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.1 Acids and Bases in the Laboratory"
+        },
+        {
+          "chapter": 2,
+          "pages": "19-19",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.1 Acids and Bases in the Laboratory"
+        },
         {
           "chapter": 2,
           "pages": "25-25",
@@ -783,19 +793,9 @@
           "section": null
         },
         {
-          "chapter": 2,
-          "pages": "18-19",
-          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.1 Acids and Bases in the Laboratory"
-        },
-        {
           "chapter": 4,
           "pages": "73-73",
           "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
-        },
-        {
-          "chapter": 1,
-          "pages": "5-5",
-          "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations"
         }
       ]
     },
@@ -825,18 +825,18 @@
         "how"
       ],
       "keywordSource": "direct",
-      "latencyMs": 86,
+      "latencyMs": 82,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 4,
-          "pages": "73-73",
-          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
-        },
         {
           "chapter": 3,
           "pages": "43-44",
           "section": "3.2 Chemical Properties of Metals > 3.2.3 What happens when Metals react with Acids?"
+        },
+        {
+          "chapter": 3,
+          "pages": "46-47",
+          "section": "3.3 How Do Metals and Non-metals React?"
         },
         {
           "chapter": 2,
@@ -844,14 +844,14 @@
           "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.2 How do Acids and Bases React with Metals?"
         },
         {
-          "chapter": 4,
-          "pages": "73-74",
-          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+          "chapter": 1,
+          "pages": "14-15",
+          "section": "Exercises"
         },
         {
-          "chapter": 2,
-          "pages": "22-23",
-          "section": "2.2 What Do All Acids and All Bases Have in Common?"
+          "chapter": 3,
+          "pages": "41-42",
+          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
         }
       ]
     },
@@ -865,7 +865,7 @@
       "gold": [
         "2.1.3"
       ],
-      "rank": null,
+      "rank": 2,
       "keywords": [
         "what",
         "happens",
@@ -881,33 +881,33 @@
         "test"
       ],
       "keywordSource": "direct",
-      "latencyMs": 78,
+      "latencyMs": 102,
       "costInr": 0,
       "top": [
+        {
+          "chapter": 3,
+          "pages": "43-44",
+          "section": "3.2 Chemical Properties of Metals > 3.2.3 What happens when Metals react with Acids?"
+        },
+        {
+          "chapter": 2,
+          "pages": "20-20",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.3 How do Metal Carbonates and Metal Hydrogencarbonates React with Acids?"
+        },
         {
           "chapter": 4,
           "pages": "73-74",
           "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
         },
         {
+          "chapter": 2,
+          "pages": "22-22",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.6 Reaction of a Non-metallic Oxide with Base"
+        },
+        {
           "chapter": 4,
           "pages": "73-73",
           "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
-        },
-        {
-          "chapter": 3,
-          "pages": "42-43",
-          "section": "3.2 Chemical Properties of Metals > 3.2.2 What happens when Metals react with Water?"
-        },
-        {
-          "chapter": 2,
-          "pages": "24-24",
-          "section": "2.2 What Do All Acids and All Bases Have in Common? > 2.2.1 What Happens to an Acid or a Base in a Water Solution?"
-        },
-        {
-          "chapter": 3,
-          "pages": "43-44",
-          "section": "3.2 Chemical Properties of Metals > 3.2.3 What happens when Metals react with Acids?"
         }
       ]
     },
@@ -921,7 +921,7 @@
       "gold": [
         "2.1.4"
       ],
-      "rank": 10,
+      "rank": 1,
       "keywords": [
         "what",
         "is",
@@ -929,33 +929,33 @@
         "reaction"
       ],
       "keywordSource": "direct",
-      "latencyMs": 70,
+      "latencyMs": 64,
       "costInr": 0,
       "top": [
         {
-          "chapter": 1,
-          "pages": "12-12",
-          "section": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+          "chapter": 2,
+          "pages": "21-21",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.4 How do Acids and Bases React with each other?"
         },
         {
-          "chapter": 1,
-          "pages": "6-7",
-          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+          "chapter": 2,
+          "pages": "31-32",
+          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
         },
         {
-          "chapter": 1,
-          "pages": "10-11",
-          "section": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction"
+          "chapter": 2,
+          "pages": "34-35",
+          "section": "Exercises"
         },
         {
-          "chapter": 1,
-          "pages": "14-14",
-          "section": "What you have learnt"
+          "chapter": 2,
+          "pages": "35-36",
+          "section": "Exercises"
         },
         {
-          "chapter": 1,
-          "pages": "7-8",
-          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+          "chapter": 2,
+          "pages": "30-31",
+          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
         }
       ]
     },
@@ -985,7 +985,7 @@
         "blue-green"
       ],
       "keywordSource": "direct",
-      "latencyMs": 80,
+      "latencyMs": 76,
       "costInr": 0,
       "top": [
         {
@@ -994,24 +994,24 @@
           "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.5 Reaction of Metallic Oxides with Acids"
         },
         {
-          "chapter": 4,
-          "pages": "73-73",
-          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
-        },
-        {
-          "chapter": 3,
-          "pages": "41-41",
-          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
-        },
-        {
           "chapter": 3,
           "pages": "43-44",
           "section": "3.2 Chemical Properties of Metals > 3.2.3 What happens when Metals react with Acids?"
         },
         {
           "chapter": 2,
-          "pages": "24-24",
-          "section": "2.2 What Do All Acids and All Bases Have in Common? > 2.2.1 What Happens to an Acid or a Base in a Water Solution?"
+          "pages": "22-22",
+          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.6 Reaction of a Non-metallic Oxide with Base"
+        },
+        {
+          "chapter": 1,
+          "pages": "14-15",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 3,
+          "pages": "44-44",
+          "section": "3.2 Chemical Properties of Metals > 3.2.3 What happens when Metals react with Acids?"
         }
       ]
     },
@@ -1041,7 +1041,7 @@
         "paper"
       ],
       "keywordSource": "direct",
-      "latencyMs": 74,
+      "latencyMs": 98,
       "costInr": 0,
       "top": [
         {
@@ -1051,8 +1051,8 @@
         },
         {
           "chapter": 2,
-          "pages": "19-20",
-          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.2 How do Acids and Bases React with Metals?"
+          "pages": "25-25",
+          "section": "2.3 How Strong Are Acid or Base Solutions?"
         },
         {
           "chapter": 2,
@@ -1061,13 +1061,13 @@
         },
         {
           "chapter": 2,
-          "pages": "17-17",
-          "section": null
+          "pages": "34-35",
+          "section": "Exercises"
         },
         {
-          "chapter": 2,
-          "pages": "25-25",
-          "section": "2.3 How Strong Are Acid or Base Solutions?"
+          "chapter": 3,
+          "pages": "56-57",
+          "section": "Exercises"
         }
       ]
     },
@@ -1081,7 +1081,7 @@
       "gold": [
         "2.2.1"
       ],
-      "rank": 2,
+      "rank": 1,
       "keywords": [
         "why",
         "should",
@@ -1096,14 +1096,9 @@
         "diluting"
       ],
       "keywordSource": "direct",
-      "latencyMs": 68,
+      "latencyMs": 66,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 4,
-          "pages": "73-73",
-          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
-        },
         {
           "chapter": 2,
           "pages": "24-24",
@@ -1111,18 +1106,23 @@
         },
         {
           "chapter": 2,
-          "pages": "19-20",
-          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.2 How do Acids and Bases React with Metals?"
+          "pages": "25-26",
+          "section": "2.3 How Strong Are Acid or Base Solutions?"
         },
         {
-          "chapter": 2,
-          "pages": "23-24",
-          "section": "2.2 What Do All Acids and All Bases Have in Common? > 2.2.1 What Happens to an Acid or a Base in a Water Solution?"
+          "chapter": 1,
+          "pages": "14-15",
+          "section": "Exercises"
         },
         {
-          "chapter": 2,
-          "pages": "22-23",
-          "section": "2.2 What Do All Acids and All Bases Have in Common?"
+          "chapter": 3,
+          "pages": "46-47",
+          "section": "3.3 How Do Metals and Non-metals React?"
+        },
+        {
+          "chapter": 4,
+          "pages": "73-73",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
         }
       ]
     },
@@ -1148,14 +1148,9 @@
         "mean"
       ],
       "keywordSource": "direct",
-      "latencyMs": 94,
+      "latencyMs": 67,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 2,
-          "pages": "26-27",
-          "section": "2.3 How Strong Are Acid or Base Solutions? > 2.3.1 Importance of pH in Everyday Life"
-        },
         {
           "chapter": 2,
           "pages": "25-25",
@@ -1163,13 +1158,18 @@
         },
         {
           "chapter": 2,
-          "pages": "29-29",
-          "section": "2.4 More About Salts > 2.4.2 pH of Salts"
+          "pages": "33-34",
+          "section": "What you have learnt"
         },
         {
           "chapter": 2,
-          "pages": "33-34",
-          "section": "What you have learnt"
+          "pages": "26-27",
+          "section": "2.3 How Strong Are Acid or Base Solutions? > 2.3.1 Importance of pH in Everyday Life"
+        },
+        {
+          "chapter": 2,
+          "pages": "29-29",
+          "section": "2.4 More About Salts > 2.4.2 pH of Salts"
         },
         {
           "chapter": 2,
@@ -1198,7 +1198,7 @@
         "decay"
       ],
       "keywordSource": "direct",
-      "latencyMs": 87,
+      "latencyMs": 96,
       "costInr": 0,
       "top": [
         {
@@ -1217,14 +1217,14 @@
           "section": "3.5 Corrosion > 3.5.1 Prevention of Corrosion"
         },
         {
+          "chapter": 4,
+          "pages": "70-70",
+          "section": "4.3 Chemical Properties of Carbon Compounds > 4.3.1 Combustion"
+        },
+        {
           "chapter": 1,
           "pages": "13-13",
           "section": "1.3 Have You Observed the Effects of Oxidation Reactions in Everyday Life? > 1.3.2 Rancidity"
-        },
-        {
-          "chapter": 3,
-          "pages": "41-42",
-          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
         }
       ]
     },
@@ -1238,7 +1238,7 @@
       "gold": [
         "2.3.1"
       ],
-      "rank": 4,
+      "rank": 1,
       "keywords": [
         "bee",
         "sting",
@@ -1248,9 +1248,24 @@
         "why"
       ],
       "keywordSource": "direct",
-      "latencyMs": 61,
+      "latencyMs": 62,
       "costInr": 0,
       "top": [
+        {
+          "chapter": 2,
+          "pages": "27-27",
+          "section": "2.3 How Strong Are Acid or Base Solutions? > 2.3.1 Importance of pH in Everyday Life"
+        },
+        {
+          "chapter": 2,
+          "pages": "17-17",
+          "section": null
+        },
+        {
+          "chapter": 2,
+          "pages": "28-28",
+          "section": "2.4 More About Salts > 2.4.1 Family of Salts"
+        },
         {
           "chapter": 2,
           "pages": "30-31",
@@ -1260,21 +1275,6 @@
           "chapter": 2,
           "pages": "31-32",
           "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
-        },
-        {
-          "chapter": 2,
-          "pages": "35-36",
-          "section": "Exercises"
-        },
-        {
-          "chapter": 2,
-          "pages": "27-27",
-          "section": "2.3 How Strong Are Acid or Base Solutions? > 2.3.1 Importance of pH in Everyday Life"
-        },
-        {
-          "chapter": 2,
-          "pages": "28-28",
-          "section": "2.4 More About Salts > 2.4.1 Family of Salts"
         }
       ]
     },
@@ -1302,7 +1302,7 @@
         "for"
       ],
       "keywordSource": "direct",
-      "latencyMs": 71,
+      "latencyMs": 74,
       "costInr": 0,
       "top": [
         {
@@ -1317,18 +1317,18 @@
         },
         {
           "chapter": 2,
+          "pages": "33-33",
+          "section": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?"
+        },
+        {
+          "chapter": 1,
+          "pages": "13-13",
+          "section": "1.3 Have You Observed the Effects of Oxidation Reactions in Everyday Life? > 1.3.1 Corrosion"
+        },
+        {
+          "chapter": 2,
           "pages": "31-32",
           "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
-        },
-        {
-          "chapter": 4,
-          "pages": "58-58",
-          "section": null
-        },
-        {
-          "chapter": 3,
-          "pages": "52-53",
-          "section": "3.4 Occurrence of Metals > 3.4.6 Refining of Metals"
         }
       ]
     },
@@ -1354,7 +1354,7 @@
         "sulphate"
       ],
       "keywordSource": "direct",
-      "latencyMs": 76,
+      "latencyMs": 97,
       "costInr": 0,
       "top": [
         {
@@ -1363,24 +1363,24 @@
           "section": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?"
         },
         {
-          "chapter": 3,
-          "pages": "42-43",
-          "section": "3.2 Chemical Properties of Metals > 3.2.2 What happens when Metals react with Water?"
+          "chapter": 1,
+          "pages": "14-15",
+          "section": "Exercises"
         },
         {
           "chapter": 1,
-          "pages": "10-11",
+          "pages": "15-16",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 1,
+          "pages": "11-11",
           "section": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction"
         },
         {
           "chapter": 1,
-          "pages": "6-7",
-          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
-        },
-        {
-          "chapter": 4,
-          "pages": "74-75",
-          "section": "4.5 Soaps and Detergents"
+          "pages": "12-13",
+          "section": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
         }
       ]
     },
@@ -1405,11 +1405,12 @@
         "than",
         "acid",
         "base",
-        "neutral"
+        "neutral",
+        "value"
       ],
       "keywordSource": "model",
-      "latencyMs": 831,
-      "costInr": 0.0047745,
+      "latencyMs": 849,
+      "costInr": 0.0049545,
       "top": [
         {
           "chapter": 2,
@@ -1418,8 +1419,8 @@
         },
         {
           "chapter": 2,
-          "pages": "18-19",
-          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.1 Acids and Bases in the Laboratory"
+          "pages": "29-29",
+          "section": "2.4 More About Salts > 2.4.2 pH of Salts"
         },
         {
           "chapter": 2,
@@ -1428,13 +1429,13 @@
         },
         {
           "chapter": 2,
-          "pages": "24-24",
-          "section": "2.2 What Do All Acids and All Bases Have in Common? > 2.2.1 What Happens to an Acid or a Base in a Water Solution?"
+          "pages": "26-27",
+          "section": "2.3 How Strong Are Acid or Base Solutions? > 2.3.1 Importance of pH in Everyday Life"
         },
         {
-          "chapter": 4,
-          "pages": "73-73",
-          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+          "chapter": 2,
+          "pages": "25-26",
+          "section": "2.3 How Strong Are Acid or Base Solutions?"
         }
       ]
     },
@@ -1464,9 +1465,14 @@
         "mild"
       ],
       "keywordSource": "model",
-      "latencyMs": 1003,
-      "costInr": 0.0066555,
+      "latencyMs": 1164,
+      "costInr": 0.0070155,
       "top": [
+        {
+          "chapter": 2,
+          "pages": "30-31",
+          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+        },
         {
           "chapter": 2,
           "pages": "31-32",
@@ -1474,23 +1480,18 @@
         },
         {
           "chapter": 2,
-          "pages": "30-31",
+          "pages": "29-30",
           "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
         },
         {
-          "chapter": 4,
-          "pages": "63-64",
-          "section": "4.2 Versatile Nature of Carbon > 4.2.1 Saturated and Unsaturated Carbon Compounds"
+          "chapter": 2,
+          "pages": "27-27",
+          "section": "2.3 How Strong Are Acid or Base Solutions? > 2.3.1 Importance of pH in Everyday Life"
         },
         {
-          "chapter": 4,
-          "pages": "73-74",
-          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
-        },
-        {
-          "chapter": 4,
-          "pages": "62-62",
-          "section": "4.2 Versatile Nature of Carbon"
+          "chapter": 2,
+          "pages": "35-36",
+          "section": "Exercises"
         }
       ]
     },
@@ -1514,7 +1515,7 @@
         "chestaru"
       ],
       "keywordSource": "direct",
-      "latencyMs": 57,
+      "latencyMs": 67,
       "costInr": 0,
       "top": [
         {
@@ -1544,7 +1545,7 @@
       "gold": [
         "3.1.1"
       ],
-      "rank": 4,
+      "rank": 3,
       "keywords": [
         "what",
         "do",
@@ -1556,18 +1557,13 @@
         "metals"
       ],
       "keywordSource": "direct",
-      "latencyMs": 66,
+      "latencyMs": 96,
       "costInr": 0,
       "top": [
         {
           "chapter": 3,
-          "pages": "55-56",
-          "section": "What you have learnt"
-        },
-        {
-          "chapter": 3,
-          "pages": "42-43",
-          "section": "3.2 Chemical Properties of Metals > 3.2.2 What happens when Metals react with Water?"
+          "pages": "40-40",
+          "section": "3.1 Physical Properties > 3.1.2 Non-metals"
         },
         {
           "chapter": 3,
@@ -1581,8 +1577,13 @@
         },
         {
           "chapter": 3,
-          "pages": "41-41",
-          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+          "pages": "38-39",
+          "section": "3.1 Physical Properties > 3.1.1 Metals"
+        },
+        {
+          "chapter": 3,
+          "pages": "55-56",
+          "section": "What you have learnt"
         }
       ]
     },
@@ -1613,7 +1614,7 @@
         "temperature"
       ],
       "keywordSource": "direct",
-      "latencyMs": 64,
+      "latencyMs": 75,
       "costInr": 0,
       "top": [
         {
@@ -1628,13 +1629,13 @@
         },
         {
           "chapter": 3,
-          "pages": "42-43",
-          "section": "3.2 Chemical Properties of Metals > 3.2.2 What happens when Metals react with Water?"
+          "pages": "40-40",
+          "section": "3.1 Physical Properties > 3.1.2 Non-metals"
         },
         {
-          "chapter": 3,
-          "pages": "46-47",
-          "section": "3.3 How Do Metals and Non-metals React?"
+          "chapter": 4,
+          "pages": "72-72",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.1 Properties of Ethanol"
         },
         {
           "chapter": 3,
@@ -1653,7 +1654,7 @@
       "gold": [
         "3.2.1"
       ],
-      "rank": 1,
+      "rank": 2,
       "keywords": [
         "what",
         "are",
@@ -1664,9 +1665,14 @@
         "examples"
       ],
       "keywordSource": "direct",
-      "latencyMs": 71,
+      "latencyMs": 98,
       "costInr": 0,
       "top": [
+        {
+          "chapter": 3,
+          "pages": "56-57",
+          "section": "Exercises"
+        },
         {
           "chapter": 3,
           "pages": "41-41",
@@ -1674,22 +1680,17 @@
         },
         {
           "chapter": 3,
-          "pages": "41-42",
-          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+          "pages": "55-56",
+          "section": "What you have learnt"
         },
         {
-          "chapter": 4,
-          "pages": "60-60",
-          "section": "4.1 Bonding in Carbon – the Covalent Bond"
+          "chapter": 1,
+          "pages": "6-7",
+          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
         },
         {
-          "chapter": 2,
-          "pages": "21-22",
-          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.5 Reaction of Metallic Oxides with Acids"
-        },
-        {
-          "chapter": 3,
-          "pages": "56-57",
+          "chapter": 1,
+          "pages": "16-16",
           "section": "Exercises"
         }
       ]
@@ -1704,7 +1705,7 @@
       "gold": [
         "3.2.1"
       ],
-      "rank": 6,
+      "rank": 1,
       "keywords": [
         "why",
         "is",
@@ -1716,28 +1717,28 @@
         "oil"
       ],
       "keywordSource": "direct",
-      "latencyMs": 64,
+      "latencyMs": 69,
       "costInr": 0,
       "top": [
         {
-          "chapter": 2,
-          "pages": "31-32",
-          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+          "chapter": 3,
+          "pages": "41-42",
+          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
         },
         {
-          "chapter": 2,
-          "pages": "29-30",
-          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+          "chapter": 3,
+          "pages": "45-46",
+          "section": "3.2 Chemical Properties of Metals > 3.2.5 The Reactivity Series"
         },
         {
-          "chapter": 4,
-          "pages": "73-74",
-          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+          "chapter": 1,
+          "pages": "10-11",
+          "section": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction"
         },
         {
-          "chapter": 2,
-          "pages": "30-31",
-          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+          "chapter": 3,
+          "pages": "48-49",
+          "section": "3.3 How Do Metals and Non-metals React? > 3.3.1 Properties of Ionic Compounds"
         },
         {
           "chapter": 4,
@@ -1756,7 +1757,7 @@
       "gold": [
         "3.2.3"
       ],
-      "rank": 2,
+      "rank": 1,
       "keywords": [
         "why",
         "is",
@@ -1772,14 +1773,9 @@
         "acid"
       ],
       "keywordSource": "direct",
-      "latencyMs": 73,
+      "latencyMs": 99,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 3,
-          "pages": "42-43",
-          "section": "3.2 Chemical Properties of Metals > 3.2.2 What happens when Metals react with Water?"
-        },
         {
           "chapter": 3,
           "pages": "43-44",
@@ -1791,14 +1787,19 @@
           "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.2 How do Acids and Bases React with Metals?"
         },
         {
-          "chapter": 3,
-          "pages": "55-56",
-          "section": "What you have learnt"
+          "chapter": 4,
+          "pages": "72-72",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.1 Properties of Ethanol"
         },
         {
-          "chapter": 4,
-          "pages": "73-73",
-          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+          "chapter": 3,
+          "pages": "42-43",
+          "section": "3.2 Chemical Properties of Metals > 3.2.2 What happens when Metals react with Water?"
+        },
+        {
+          "chapter": 2,
+          "pages": "33-34",
+          "section": "What you have learnt"
         }
       ]
     },
@@ -1812,7 +1813,7 @@
       "gold": [
         "3.2.5"
       ],
-      "rank": 6,
+      "rank": 1,
       "keywords": [
         "what",
         "is",
@@ -1823,9 +1824,24 @@
         "metals"
       ],
       "keywordSource": "direct",
-      "latencyMs": 66,
+      "latencyMs": 68,
       "costInr": 0,
       "top": [
+        {
+          "chapter": 3,
+          "pages": "45-46",
+          "section": "3.2 Chemical Properties of Metals > 3.2.5 The Reactivity Series"
+        },
+        {
+          "chapter": 3,
+          "pages": "51-52",
+          "section": "3.4 Occurrence of Metals > 3.4.4 Extracting Metals in the Middle of the Activity Series"
+        },
+        {
+          "chapter": 3,
+          "pages": "52-52",
+          "section": "3.4 Occurrence of Metals > 3.4.5 Extracting Metals towards the Top of the Activity Series"
+        },
         {
           "chapter": 3,
           "pages": "49-50",
@@ -1835,21 +1851,6 @@
           "chapter": 3,
           "pages": "55-56",
           "section": "What you have learnt"
-        },
-        {
-          "chapter": 3,
-          "pages": "44-45",
-          "section": "3.2 Chemical Properties of Metals > 3.2.4 How do Metals react with Solutions of other Metal Salts?"
-        },
-        {
-          "chapter": 3,
-          "pages": "42-43",
-          "section": "3.2 Chemical Properties of Metals > 3.2.2 What happens when Metals react with Water?"
-        },
-        {
-          "chapter": 3,
-          "pages": "51-52",
-          "section": "3.4 Occurrence of Metals > 3.4.4 Extracting Metals in the Middle of the Activity Series"
         }
       ]
     },
@@ -1876,7 +1877,7 @@
         "electrons"
       ],
       "keywordSource": "direct",
-      "latencyMs": 68,
+      "latencyMs": 97,
       "costInr": 0,
       "top": [
         {
@@ -1885,24 +1886,24 @@
           "section": "3.3 How Do Metals and Non-metals React?"
         },
         {
-          "chapter": 4,
-          "pages": "59-60",
-          "section": "4.1 Bonding in Carbon – the Covalent Bond"
-        },
-        {
-          "chapter": 4,
-          "pages": "60-60",
-          "section": "4.1 Bonding in Carbon – the Covalent Bond"
-        },
-        {
-          "chapter": 2,
-          "pages": "29-30",
-          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+          "chapter": 3,
+          "pages": "49-49",
+          "section": "3.3 How Do Metals and Non-metals React? > 3.3.1 Properties of Ionic Compounds"
         },
         {
           "chapter": 1,
           "pages": "6-7",
           "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
+        },
+        {
+          "chapter": 1,
+          "pages": "11-11",
+          "section": "1.2 Types of Chemical Reactions > 1.2.4 Double Displacement Reaction"
+        },
+        {
+          "chapter": 2,
+          "pages": "29-30",
+          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
         }
       ]
     },
@@ -1932,17 +1933,17 @@
         "in"
       ],
       "keywordSource": "direct",
-      "latencyMs": 78,
+      "latencyMs": 73,
       "costInr": 0,
       "top": [
         {
           "chapter": 3,
-          "pages": "48-49",
+          "pages": "49-49",
           "section": "3.3 How Do Metals and Non-metals React? > 3.3.1 Properties of Ionic Compounds"
         },
         {
           "chapter": 3,
-          "pages": "49-49",
+          "pages": "48-49",
           "section": "3.3 How Do Metals and Non-metals React? > 3.3.1 Properties of Ionic Compounds"
         },
         {
@@ -1951,14 +1952,14 @@
           "section": "4.1 Bonding in Carbon – the Covalent Bond"
         },
         {
-          "chapter": 4,
-          "pages": "62-62",
-          "section": "4.2 Versatile Nature of Carbon"
-        },
-        {
           "chapter": 3,
           "pages": "39-40",
           "section": "3.1 Physical Properties > 3.1.2 Non-metals"
+        },
+        {
+          "chapter": 3,
+          "pages": "38-39",
+          "section": "3.1 Physical Properties > 3.1.1 Metals"
         }
       ]
     },
@@ -1981,7 +1982,7 @@
         "calcination"
       ],
       "keywordSource": "direct",
-      "latencyMs": 65,
+      "latencyMs": 98,
       "costInr": 0,
       "top": [
         {
@@ -2021,7 +2022,7 @@
       "gold": [
         "3.4.4"
       ],
-      "rank": null,
+      "rank": 1,
       "keywords": [
         "what",
         "is",
@@ -2036,9 +2037,14 @@
       "costInr": 0,
       "top": [
         {
-          "chapter": 1,
-          "pages": "12-12",
-          "section": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+          "chapter": 3,
+          "pages": "52-52",
+          "section": "3.4 Occurrence of Metals > 3.4.4 Extracting Metals in the Middle of the Activity Series"
+        },
+        {
+          "chapter": 3,
+          "pages": "52-53",
+          "section": "3.4 Occurrence of Metals > 3.4.6 Refining of Metals"
         },
         {
           "chapter": 1,
@@ -2047,18 +2053,13 @@
         },
         {
           "chapter": 1,
-          "pages": "6-7",
-          "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
-        },
-        {
-          "chapter": 1,
           "pages": "7-8",
           "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
         },
         {
-          "chapter": 3,
-          "pages": "46-47",
-          "section": "3.3 How Do Metals and Non-metals React?"
+          "chapter": 1,
+          "pages": "8-9",
+          "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction"
         }
       ]
     },
@@ -2083,7 +2084,7 @@
         "refining"
       ],
       "keywordSource": "direct",
-      "latencyMs": 67,
+      "latencyMs": 95,
       "costInr": 0,
       "top": [
         {
@@ -2092,24 +2093,24 @@
           "section": "3.4 Occurrence of Metals > 3.4.6 Refining of Metals"
         },
         {
-          "chapter": 1,
-          "pages": "10-11",
-          "section": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction"
-        },
-        {
-          "chapter": 1,
-          "pages": "12-12",
-          "section": "1.2 Types of Chemical Reactions > 1.2.5 Oxidation and Reduction"
+          "chapter": 3,
+          "pages": "56-57",
+          "section": "Exercises"
         },
         {
           "chapter": 3,
-          "pages": "53-54",
-          "section": "3.5 Corrosion"
+          "pages": "53-53",
+          "section": "3.4 Occurrence of Metals > 3.4.6 Refining of Metals"
         },
         {
-          "chapter": 2,
-          "pages": "32-33",
-          "section": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?"
+          "chapter": 1,
+          "pages": "15-16",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 3,
+          "pages": "52-52",
+          "section": "3.4 Occurrence of Metals > 3.4.5 Extracting Metals towards the Top of the Activity Series"
         }
       ]
     },
@@ -2139,8 +2140,8 @@
         "layer"
       ],
       "keywordSource": "model",
-      "latencyMs": 902,
-      "costInr": 0.0067455,
+      "latencyMs": 1015,
+      "costInr": 0.0067005,
       "top": [
         {
           "chapter": 3,
@@ -2159,13 +2160,13 @@
         },
         {
           "chapter": 3,
-          "pages": "41-41",
-          "section": "3.2 Chemical Properties of Metals > 3.2.1 What happens when Metals are burnt in Air?"
+          "pages": "56-57",
+          "section": "Exercises"
         },
         {
           "chapter": 3,
-          "pages": "54-55",
-          "section": "3.5 Corrosion > 3.5.1 Prevention of Corrosion"
+          "pages": "53-54",
+          "section": "3.5 Corrosion"
         }
       ]
     },
@@ -2179,7 +2180,7 @@
       "gold": [
         "3.4"
       ],
-      "rank": 2,
+      "rank": 1,
       "keywords": [
         "minerals",
         "ores",
@@ -2189,24 +2190,29 @@
         "metals",
         "extraction",
         "of",
-        "metallurgy",
-        "gangue",
-        "difference",
-        "between"
+        "ore",
+        "contains",
+        "metal",
+        "gangue"
       ],
       "keywordSource": "model",
-      "latencyMs": 1023,
-      "costInr": 0.006156,
+      "latencyMs": 1066,
+      "costInr": 0.006471,
       "top": [
         {
           "chapter": 3,
-          "pages": "55-56",
-          "section": "What you have learnt"
+          "pages": "49-49",
+          "section": "3.4 Occurrence of Metals"
         },
         {
           "chapter": 3,
-          "pages": "49-50",
-          "section": "3.4 Occurrence of Metals > 3.4.1 Extraction of Metals"
+          "pages": "52-53",
+          "section": "3.4 Occurrence of Metals > 3.4.6 Refining of Metals"
+        },
+        {
+          "chapter": 3,
+          "pages": "50-51",
+          "section": "3.4 Occurrence of Metals > 3.4.2 Enrichment of Ores"
         },
         {
           "chapter": 3,
@@ -2215,13 +2221,8 @@
         },
         {
           "chapter": 3,
-          "pages": "42-43",
-          "section": "3.2 Chemical Properties of Metals > 3.2.2 What happens when Metals react with Water?"
-        },
-        {
-          "chapter": 3,
-          "pages": "39-40",
-          "section": "3.1 Physical Properties > 3.1.2 Non-metals"
+          "pages": "49-50",
+          "section": "3.4 Occurrence of Metals > 3.4.1 Extraction of Metals"
         }
       ]
     },
@@ -2246,7 +2247,7 @@
         "methane"
       ],
       "keywordSource": "direct",
-      "latencyMs": 65,
+      "latencyMs": 72,
       "costInr": 0,
       "top": [
         {
@@ -2256,23 +2257,23 @@
         },
         {
           "chapter": 4,
-          "pages": "60-60",
+          "pages": "61-61",
           "section": "4.1 Bonding in Carbon – the Covalent Bond"
         },
         {
           "chapter": 4,
-          "pages": "77-78",
-          "section": "Exercises"
-        },
-        {
-          "chapter": 4,
-          "pages": "61-61",
+          "pages": "59-60",
           "section": "4.1 Bonding in Carbon – the Covalent Bond"
         },
         {
           "chapter": 4,
           "pages": "58-59",
           "section": "4.1 Bonding in Carbon – the Covalent Bond"
+        },
+        {
+          "chapter": 4,
+          "pages": "62-62",
+          "section": "4.2 Versatile Nature of Carbon"
         }
       ]
     },
@@ -2297,19 +2298,9 @@
         "carbon"
       ],
       "keywordSource": "direct",
-      "latencyMs": 71,
+      "latencyMs": 102,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 4,
-          "pages": "62-62",
-          "section": "4.2 Versatile Nature of Carbon"
-        },
-        {
-          "chapter": 4,
-          "pages": "63-64",
-          "section": "4.2 Versatile Nature of Carbon > 4.2.1 Saturated and Unsaturated Carbon Compounds"
-        },
         {
           "chapter": 4,
           "pages": "62-63",
@@ -2317,13 +2308,23 @@
         },
         {
           "chapter": 4,
-          "pages": "64-65",
-          "section": "4.2 Versatile Nature of Carbon > 4.2.2 Chains, Branches and Rings"
+          "pages": "77-77",
+          "section": "What you have learnt"
         },
         {
           "chapter": 4,
-          "pages": "67-67",
-          "section": "4.2 Versatile Nature of Carbon > 4.2.5 Nomenclature of Carbon Compounds"
+          "pages": "62-62",
+          "section": "4.2 Versatile Nature of Carbon"
+        },
+        {
+          "chapter": 4,
+          "pages": "60-61",
+          "section": "4.1 Bonding in Carbon – the Covalent Bond"
+        },
+        {
+          "chapter": 4,
+          "pages": "63-64",
+          "section": "4.2 Versatile Nature of Carbon > 4.2.1 Saturated and Unsaturated Carbon Compounds"
         }
       ]
     },
@@ -2345,7 +2346,7 @@
         "series"
       ],
       "keywordSource": "direct",
-      "latencyMs": 66,
+      "latencyMs": 71,
       "costInr": 0,
       "top": [
         {
@@ -2359,19 +2360,19 @@
           "section": "4.2 Versatile Nature of Carbon > 4.2.4 Homologous Series"
         },
         {
-          "chapter": 3,
-          "pages": "45-46",
-          "section": "3.2 Chemical Properties of Metals > 3.2.5 The Reactivity Series"
-        },
-        {
-          "chapter": 3,
-          "pages": "49-50",
-          "section": "3.4 Occurrence of Metals > 3.4.1 Extraction of Metals"
-        },
-        {
           "chapter": 4,
           "pages": "67-67",
           "section": "4.2 Versatile Nature of Carbon > 4.2.5 Nomenclature of Carbon Compounds"
+        },
+        {
+          "chapter": 4,
+          "pages": "77-77",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 4,
+          "pages": "77-78",
+          "section": "Exercises"
         }
       ]
     },
@@ -2401,7 +2402,7 @@
         "catalyst"
       ],
       "keywordSource": "direct",
-      "latencyMs": 80,
+      "latencyMs": 105,
       "costInr": 0,
       "top": [
         {
@@ -2410,24 +2411,24 @@
           "section": "4.3 Chemical Properties of Carbon Compounds > 4.3.3 Addition Reaction"
         },
         {
-          "chapter": 4,
-          "pages": "74-75",
-          "section": "4.5 Soaps and Detergents"
-        },
-        {
-          "chapter": 2,
-          "pages": "30-31",
-          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
-        },
-        {
-          "chapter": 2,
-          "pages": "31-32",
-          "section": "2.4 More About Salts > 2.4.3 Chemicals from Common Salt"
+          "chapter": 3,
+          "pages": "54-54",
+          "section": "3.5 Corrosion > 3.5.1 Prevention of Corrosion"
         },
         {
           "chapter": 3,
-          "pages": "51-52",
-          "section": "3.4 Occurrence of Metals > 3.4.4 Extracting Metals in the Middle of the Activity Series"
+          "pages": "52-53",
+          "section": "3.4 Occurrence of Metals > 3.4.6 Refining of Metals"
+        },
+        {
+          "chapter": 4,
+          "pages": "73-73",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
+        },
+        {
+          "chapter": 3,
+          "pages": "57-57",
+          "section": "Exercises"
         }
       ]
     },
@@ -2473,14 +2474,14 @@
           "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.1 Properties of Ethanol"
         },
         {
-          "chapter": 2,
-          "pages": "24-24",
-          "section": "2.2 What Do All Acids and All Bases Have in Common? > 2.2.1 What Happens to an Acid or a Base in a Water Solution?"
+          "chapter": 4,
+          "pages": "74-74",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.2 Properties of Ethanoic Acid"
         },
         {
-          "chapter": 2,
-          "pages": "21-22",
-          "section": "2.1 Understanding the Chemical Properties of Acids and Bases > 2.1.5 Reaction of Metallic Oxides with Acids"
+          "chapter": 4,
+          "pages": "72-72",
+          "section": "4.4 Some Important Carbon Compounds – Ethanol and Ethanoic Acid > 4.4.1 Properties of Ethanol"
         }
       ]
     },
@@ -2502,16 +2503,16 @@
         "soap",
         "micelle",
         "formation",
-        "hydrophilic",
-        "head",
         "hydrophobic",
         "tail",
+        "hydrophilic",
+        "head",
         "dirt",
         "removal"
       ],
       "keywordSource": "model",
-      "latencyMs": 759,
-      "costInr": 0.0060075,
+      "latencyMs": 786,
+      "costInr": 0.0053325,
       "top": [
         {
           "chapter": 4,
@@ -2525,6 +2526,11 @@
         },
         {
           "chapter": 4,
+          "pages": "77-77",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 4,
           "pages": "77-78",
           "section": "Exercises"
         },
@@ -2532,11 +2538,6 @@
           "chapter": 4,
           "pages": "76-76",
           "section": "4.5 Soaps and Detergents"
-        },
-        {
-          "chapter": 4,
-          "pages": "77-77",
-          "section": "What you have learnt"
         }
       ]
     },
@@ -2566,12 +2567,12 @@
         "insoluble"
       ],
       "keywordSource": "model",
-      "latencyMs": 904,
+      "latencyMs": 998,
       "costInr": 0.006579,
       "top": [
         {
           "chapter": 4,
-          "pages": "74-75",
+          "pages": "76-76",
           "section": "4.5 Soaps and Detergents"
         },
         {
@@ -2580,19 +2581,19 @@
           "section": "4.5 Soaps and Detergents"
         },
         {
+          "chapter": 4,
+          "pages": "77-78",
+          "section": "Exercises"
+        },
+        {
           "chapter": 1,
           "pages": "6-7",
           "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction"
         },
         {
-          "chapter": 4,
-          "pages": "76-76",
-          "section": "4.5 Soaps and Detergents"
-        },
-        {
           "chapter": 3,
-          "pages": "42-43",
-          "section": "3.2 Chemical Properties of Metals > 3.2.2 What happens when Metals react with Water?"
+          "pages": "48-49",
+          "section": "3.3 How Do Metals and Non-metals React? > 3.3.1 Properties of Ionic Compounds"
         }
       ]
     },
@@ -2609,9 +2610,9 @@
       "rank": 2,
       "keywords": [
         "saturated",
-        "carbon",
         "compounds",
         "unsaturated",
+        "carbon",
         "single",
         "bond",
         "double",
@@ -2622,13 +2623,18 @@
         "alkynes"
       ],
       "keywordSource": "model",
-      "latencyMs": 833,
-      "costInr": 0.00621,
+      "latencyMs": 893,
+      "costInr": 0.00603,
       "top": [
         {
           "chapter": 4,
-          "pages": "62-62",
-          "section": "4.2 Versatile Nature of Carbon"
+          "pages": "65-65",
+          "section": "4.2 Versatile Nature of Carbon > 4.2.2 Chains, Branches and Rings"
+        },
+        {
+          "chapter": 4,
+          "pages": "64-64",
+          "section": "4.2 Versatile Nature of Carbon > 4.2.1 Saturated and Unsaturated Carbon Compounds"
         },
         {
           "chapter": 4,
@@ -2637,12 +2643,7 @@
         },
         {
           "chapter": 4,
-          "pages": "58-59",
-          "section": "4.1 Bonding in Carbon – the Covalent Bond"
-        },
-        {
-          "chapter": 4,
-          "pages": "62-63",
+          "pages": "62-62",
           "section": "4.2 Versatile Nature of Carbon"
         },
         {
@@ -2670,18 +2671,13 @@
         "processes"
       ],
       "keywordSource": "direct",
-      "latencyMs": 312,
+      "latencyMs": 272,
       "costInr": 0,
       "top": [
         {
           "chapter": 5,
           "pages": "79-80",
           "section": "5.1 What Are Life Processes?"
-        },
-        {
-          "chapter": 5,
-          "pages": "87-88",
-          "section": "5.3 Respiration"
         },
         {
           "chapter": 5,
@@ -2697,6 +2693,11 @@
           "chapter": 5,
           "pages": "79-79",
           "section": null
+        },
+        {
+          "chapter": 7,
+          "pages": "113-113",
+          "section": null
         }
       ]
     },
@@ -2710,7 +2711,7 @@
       "gold": [
         "5.2.1"
       ],
-      "rank": 3,
+      "rank": 2,
       "keywords": [
         "what",
         "are",
@@ -2723,7 +2724,7 @@
         "photosynthesis"
       ],
       "keywordSource": "direct",
-      "latencyMs": 75,
+      "latencyMs": 99,
       "costInr": 0,
       "top": [
         {
@@ -2732,9 +2733,14 @@
           "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
         },
         {
-          "chapter": 13,
-          "pages": "213-213",
-          "section": "13.2 How Do Our Activities Affect the Environment? > 13.2.1 Ozone Layer and How it is Getting Depleted"
+          "chapter": 5,
+          "pages": "83-84",
+          "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition"
+        },
+        {
+          "chapter": 5,
+          "pages": "87-87",
+          "section": "5.3 Respiration"
         },
         {
           "chapter": 5,
@@ -2742,14 +2748,9 @@
           "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition"
         },
         {
-          "chapter": 13,
-          "pages": "213-214",
-          "section": "13.2 How Do Our Activities Affect the Environment? > 13.2.2 Managing the Garbage we Produce"
-        },
-        {
           "chapter": 5,
-          "pages": "83-84",
-          "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition"
+          "pages": "80-81",
+          "section": "5.1 What Are Life Processes?"
         }
       ]
     },
@@ -2773,9 +2774,19 @@
         "close"
       ],
       "keywordSource": "direct",
-      "latencyMs": 79,
+      "latencyMs": 67,
       "costInr": 0,
       "top": [
+        {
+          "chapter": 5,
+          "pages": "95-96",
+          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
+        },
+        {
+          "chapter": 5,
+          "pages": "82-83",
+          "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition"
+        },
         {
           "chapter": 5,
           "pages": "89-89",
@@ -2788,18 +2799,8 @@
         },
         {
           "chapter": 5,
-          "pages": "82-83",
-          "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition"
-        },
-        {
-          "chapter": 5,
-          "pages": "95-96",
+          "pages": "94-95",
           "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
-        },
-        {
-          "chapter": 6,
-          "pages": "107-108",
-          "section": "6.2 Coordination in Plants > 6.2.2 Movement Due to Growth"
         }
       ]
     },
@@ -2813,7 +2814,7 @@
       "gold": [
         "5.2.3"
       ],
-      "rank": 2,
+      "rank": 1,
       "keywords": [
         "how",
         "does",
@@ -2823,14 +2824,9 @@
         "food"
       ],
       "keywordSource": "direct",
-      "latencyMs": 71,
+      "latencyMs": 97,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 13,
-          "pages": "210-211",
-          "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
-        },
         {
           "chapter": 5,
           "pages": "84-84",
@@ -2842,13 +2838,18 @@
           "section": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
         },
         {
-          "chapter": 5,
-          "pages": "85-86",
-          "section": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
+          "chapter": 7,
+          "pages": "115-116",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.1 Fission"
+        },
+        {
+          "chapter": 7,
+          "pages": "127-127",
+          "section": "Exercises"
         },
         {
           "chapter": 13,
-          "pages": "211-212",
+          "pages": "210-210",
           "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
         }
       ]
@@ -2878,7 +2879,7 @@
         "digestion"
       ],
       "keywordSource": "direct",
-      "latencyMs": 77,
+      "latencyMs": 65,
       "costInr": 0,
       "top": [
         {
@@ -2888,13 +2889,13 @@
         },
         {
           "chapter": 5,
-          "pages": "85-86",
-          "section": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
+          "pages": "87-87",
+          "section": "5.3 Respiration"
         },
         {
           "chapter": 5,
-          "pages": "87-87",
-          "section": "5.3 Respiration"
+          "pages": "85-86",
+          "section": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
         },
         {
           "chapter": 5,
@@ -2930,13 +2931,18 @@
         "intestine"
       ],
       "keywordSource": "direct",
-      "latencyMs": 69,
+      "latencyMs": 104,
       "costInr": 0,
       "top": [
         {
           "chapter": 5,
           "pages": "86-86",
           "section": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
+        },
+        {
+          "chapter": 5,
+          "pages": "95-96",
+          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
         },
         {
           "chapter": 5,
@@ -2947,11 +2953,6 @@
           "chapter": 5,
           "pages": "98-98",
           "section": "What you have learnt"
-        },
-        {
-          "chapter": 5,
-          "pages": "94-94",
-          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
         },
         {
           "chapter": 5,
@@ -2980,17 +2981,12 @@
         "respiration"
       ],
       "keywordSource": "direct",
-      "latencyMs": 83,
+      "latencyMs": 73,
       "costInr": 0,
       "top": [
         {
           "chapter": 5,
           "pages": "87-88",
-          "section": "5.3 Respiration"
-        },
-        {
-          "chapter": 5,
-          "pages": "88-89",
           "section": "5.3 Respiration"
         },
         {
@@ -3005,8 +3001,13 @@
         },
         {
           "chapter": 5,
-          "pages": "91-91",
-          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+          "pages": "88-89",
+          "section": "5.3 Respiration"
+        },
+        {
+          "chapter": 5,
+          "pages": "89-89",
+          "section": "5.3 Respiration"
         }
       ]
     },
@@ -3020,7 +3021,7 @@
       "gold": [
         "5.3"
       ],
-      "rank": 5,
+      "rank": 2,
       "keywords": [
         "why",
         "do",
@@ -3033,18 +3034,18 @@
         "fast"
       ],
       "keywordSource": "direct",
-      "latencyMs": 75,
+      "latencyMs": 102,
       "costInr": 0,
       "top": [
         {
           "chapter": 6,
-          "pages": "105-105",
-          "section": "6.1 Animals – Nervous System > 6.1.4 How does the Nervous Tissue cause Action?"
-        },
-        {
-          "chapter": 6,
           "pages": "102-103",
           "section": "6.1 Animals – Nervous System > 6.1.1 What happens in Reflex Actions?"
+        },
+        {
+          "chapter": 5,
+          "pages": "87-88",
+          "section": "5.3 Respiration"
         },
         {
           "chapter": 6,
@@ -3052,14 +3053,14 @@
           "section": "6.3 Hormones in Animals"
         },
         {
-          "chapter": 13,
-          "pages": "212-213",
-          "section": "13.2 How Do Our Activities Affect the Environment? > 13.2.1 Ozone Layer and How it is Getting Depleted"
+          "chapter": 6,
+          "pages": "100-100",
+          "section": null
         },
         {
-          "chapter": 5,
-          "pages": "87-88",
-          "section": "5.3 Respiration"
+          "chapter": 7,
+          "pages": "124-124",
+          "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
         }
       ]
     },
@@ -3086,13 +3087,18 @@
         "heart"
       ],
       "keywordSource": "direct",
-      "latencyMs": 80,
+      "latencyMs": 68,
       "costInr": 0,
       "top": [
         {
           "chapter": 5,
           "pages": "92-93",
           "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+        },
+        {
+          "chapter": 5,
+          "pages": "99-99",
+          "section": "Exercises"
         },
         {
           "chapter": 5,
@@ -3106,13 +3112,8 @@
         },
         {
           "chapter": 5,
-          "pages": "91-91",
+          "pages": "93-94",
           "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
-        },
-        {
-          "chapter": 5,
-          "pages": "79-80",
-          "section": "5.1 What Are Life Processes?"
         }
       ]
     },
@@ -3137,7 +3138,7 @@
         "do"
       ],
       "keywordSource": "direct",
-      "latencyMs": 60,
+      "latencyMs": 87,
       "costInr": 0,
       "top": [
         {
@@ -3172,14 +3173,9 @@
         "transpiration"
       ],
       "keywordSource": "direct",
-      "latencyMs": 76,
+      "latencyMs": 74,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 5,
-          "pages": "94-95",
-          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
-        },
         {
           "chapter": 5,
           "pages": "95-96",
@@ -3187,18 +3183,23 @@
         },
         {
           "chapter": 5,
-          "pages": "87-87",
-          "section": "5.3 Respiration"
+          "pages": "94-94",
+          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
         },
         {
-          "chapter": 8,
-          "pages": "130-130",
-          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+          "chapter": 6,
+          "pages": "110-111",
+          "section": "6.3 Hormones in Animals"
         },
         {
-          "chapter": 8,
-          "pages": "130-131",
-          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+          "chapter": 5,
+          "pages": "98-98",
+          "section": "5.5 Excretion > 5.5.2 Excretion in Plants"
+        },
+        {
+          "chapter": 6,
+          "pages": "105-105",
+          "section": "6.1 Animals – Nervous System > 6.1.4 How does the Nervous Tissue cause Action?"
         }
       ]
     },
@@ -3228,7 +3229,7 @@
         "urine"
       ],
       "keywordSource": "model",
-      "latencyMs": 829,
+      "latencyMs": 1037,
       "costInr": 0.006201,
       "top": [
         {
@@ -3247,9 +3248,9 @@
           "section": "What you have learnt"
         },
         {
-          "chapter": 6,
-          "pages": "103-103",
-          "section": "6.1 Animals – Nervous System > 6.1.2 Human Brain"
+          "chapter": 5,
+          "pages": "99-99",
+          "section": "Exercises"
         },
         {
           "chapter": 7,
@@ -3275,17 +3276,17 @@
         "haemodialysis",
         "dialysis",
         "machine",
-        "cellophane",
-        "tube",
         "dialysing",
         "fluid",
         "nitrogenous",
         "wastes",
-        "blood"
+        "blood",
+        "filtration",
+        "semipermeable"
       ],
       "keywordSource": "model",
-      "latencyMs": 1179,
-      "costInr": 0.005895,
+      "latencyMs": 1084,
+      "costInr": 0.00612,
       "top": [
         {
           "chapter": 5,
@@ -3299,18 +3300,18 @@
         },
         {
           "chapter": 5,
-          "pages": "91-92",
+          "pages": "98-99",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 5,
+          "pages": "91-91",
           "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
         },
         {
           "chapter": 5,
-          "pages": "93-93",
+          "pages": "91-92",
           "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
-        },
-        {
-          "chapter": 13,
-          "pages": "214-215",
-          "section": "13.2 How Do Our Activities Affect the Environment? > 13.2.2 Managing the Garbage we Produce"
         }
       ]
     },
@@ -3331,7 +3332,7 @@
         "synapse"
       ],
       "keywordSource": "direct",
-      "latencyMs": 67,
+      "latencyMs": 58,
       "costInr": 0,
       "top": [
         {
@@ -3374,7 +3375,7 @@
         "object"
       ],
       "keywordSource": "direct",
-      "latencyMs": 68,
+      "latencyMs": 96,
       "costInr": 0,
       "top": [
         {
@@ -3384,13 +3385,13 @@
         },
         {
           "chapter": 6,
-          "pages": "106-107",
-          "section": "6.2 Coordination in Plants > 6.2.2 Movement Due to Growth"
+          "pages": "102-102",
+          "section": "6.1 Animals – Nervous System > 6.1.1 What happens in Reflex Actions?"
         },
         {
           "chapter": 6,
-          "pages": "102-102",
-          "section": "6.1 Animals – Nervous System > 6.1.1 What happens in Reflex Actions?"
+          "pages": "103-104",
+          "section": "6.1 Animals – Nervous System > 6.1.2 Human Brain"
         },
         {
           "chapter": 6,
@@ -3399,8 +3400,8 @@
         },
         {
           "chapter": 6,
-          "pages": "103-104",
-          "section": "6.1 Animals – Nervous System > 6.1.2 Human Brain"
+          "pages": "100-100",
+          "section": null
         }
       ]
     },
@@ -3426,7 +3427,7 @@
         "medulla"
       ],
       "keywordSource": "direct",
-      "latencyMs": 74,
+      "latencyMs": 62,
       "costInr": 0,
       "top": [
         {
@@ -3466,7 +3467,7 @@
       "gold": [
         "6.1.3"
       ],
-      "rank": 2,
+      "rank": 1,
       "keywords": [
         "how",
         "is",
@@ -3478,9 +3479,19 @@
         "body"
       ],
       "keywordSource": "direct",
-      "latencyMs": 75,
+      "latencyMs": 93,
       "costInr": 0,
       "top": [
+        {
+          "chapter": 6,
+          "pages": "105-105",
+          "section": "6.1 Animals – Nervous System > 6.1.3 How are these Tissues protected?"
+        },
+        {
+          "chapter": 7,
+          "pages": "126-127",
+          "section": "What you have learnt"
+        },
         {
           "chapter": 6,
           "pages": "103-103",
@@ -3488,23 +3499,13 @@
         },
         {
           "chapter": 6,
-          "pages": "105-105",
-          "section": "6.1 Animals – Nervous System > 6.1.3 How are these Tissues protected?"
-        },
-        {
-          "chapter": 5,
-          "pages": "80-80",
-          "section": "5.1 What Are Life Processes?"
-        },
-        {
-          "chapter": 6,
           "pages": "103-104",
           "section": "6.1 Animals – Nervous System > 6.1.2 Human Brain"
         },
         {
-          "chapter": 5,
-          "pages": "79-80",
-          "section": "5.1 What Are Life Processes?"
+          "chapter": 6,
+          "pages": "104-104",
+          "section": "6.1 Animals – Nervous System > 6.1.2 Human Brain"
         }
       ]
     },
@@ -3518,7 +3519,7 @@
       "gold": [
         "6.2.1"
       ],
-      "rank": 1,
+      "rank": 2,
       "keywords": [
         "why",
         "do",
@@ -3532,24 +3533,9 @@
         "touched"
       ],
       "keywordSource": "direct",
-      "latencyMs": 74,
+      "latencyMs": 72,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 6,
-          "pages": "106-106",
-          "section": "6.2 Coordination in Plants > 6.2.1 Immediate Response to Stimulus"
-        },
-        {
-          "chapter": 5,
-          "pages": "94-94",
-          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
-        },
-        {
-          "chapter": 7,
-          "pages": "117-118",
-          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.5 Vegetative Propagation"
-        },
         {
           "chapter": 6,
           "pages": "105-106",
@@ -3557,8 +3543,23 @@
         },
         {
           "chapter": 6,
+          "pages": "106-106",
+          "section": "6.2 Coordination in Plants > 6.2.1 Immediate Response to Stimulus"
+        },
+        {
+          "chapter": 6,
+          "pages": "107-108",
+          "section": "6.2 Coordination in Plants > 6.2.2 Movement Due to Growth"
+        },
+        {
+          "chapter": 6,
           "pages": "106-107",
           "section": "6.2 Coordination in Plants > 6.2.2 Movement Due to Growth"
+        },
+        {
+          "chapter": 7,
+          "pages": "120-121",
+          "section": "7.3 Sexual Reproduction > 7.3.2 Sexual Reproduction in Flowering Plants"
         }
       ]
     },
@@ -3581,7 +3582,7 @@
         "geotropism"
       ],
       "keywordSource": "direct",
-      "latencyMs": 59,
+      "latencyMs": 90,
       "costInr": 0,
       "top": [
         {
@@ -3622,9 +3623,19 @@
         "acid"
       ],
       "keywordSource": "direct",
-      "latencyMs": 77,
+      "latencyMs": 62,
       "costInr": 0,
       "top": [
+        {
+          "chapter": 6,
+          "pages": "108-108",
+          "section": "6.2 Coordination in Plants > 6.2.2 Movement Due to Growth"
+        },
+        {
+          "chapter": 6,
+          "pages": "112-112",
+          "section": "Exercises"
+        },
         {
           "chapter": 6,
           "pages": "108-108",
@@ -3639,16 +3650,6 @@
           "chapter": 5,
           "pages": "99-99",
           "section": "Exercises"
-        },
-        {
-          "chapter": 5,
-          "pages": "98-99",
-          "section": "What you have learnt"
-        },
-        {
-          "chapter": 5,
-          "pages": "86-86",
-          "section": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
         }
       ]
     },
@@ -3678,7 +3679,7 @@
         "swelling"
       ],
       "keywordSource": "model",
-      "latencyMs": 1108,
+      "latencyMs": 1043,
       "costInr": 0.00666,
       "top": [
         {
@@ -3697,14 +3698,14 @@
           "section": "What you have learnt"
         },
         {
-          "chapter": 6,
-          "pages": "111-111",
-          "section": "6.3 Hormones in Animals"
+          "chapter": 5,
+          "pages": "84-85",
+          "section": "5.2 Nutrition > 5.2.4 Nutrition in Human Beings"
         },
         {
-          "chapter": 6,
-          "pages": "109-109",
-          "section": "6.3 Hormones in Animals"
+          "chapter": 5,
+          "pages": "83-84",
+          "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition"
         }
       ]
     },
@@ -3718,7 +3719,7 @@
       "gold": [
         "6.3"
       ],
-      "rank": 4,
+      "rank": 1,
       "keywords": [
         "adrenaline",
         "hormone",
@@ -3734,33 +3735,33 @@
         "blood"
       ],
       "keywordSource": "model",
-      "latencyMs": 821,
-      "costInr": 0.004833,
+      "latencyMs": 789,
+      "costInr": 0.004878,
       "top": [
         {
-          "chapter": 5,
-          "pages": "91-92",
-          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
-        },
-        {
-          "chapter": 5,
-          "pages": "93-93",
-          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
-        },
-        {
-          "chapter": 5,
-          "pages": "92-93",
-          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
-        },
-        {
           "chapter": 6,
-          "pages": "110-111",
+          "pages": "109-109",
           "section": "6.3 Hormones in Animals"
         },
         {
           "chapter": 6,
           "pages": "111-111",
           "section": "What you have learnt"
+        },
+        {
+          "chapter": 6,
+          "pages": "109-110",
+          "section": "6.3 Hormones in Animals"
+        },
+        {
+          "chapter": 6,
+          "pages": "111-111",
+          "section": "6.3 Hormones in Animals"
+        },
+        {
+          "chapter": 6,
+          "pages": "110-111",
+          "section": "6.3 Hormones in Animals"
         }
       ]
     },
@@ -3783,7 +3784,7 @@
         "enti"
       ],
       "keywordSource": "direct",
-      "latencyMs": 67,
+      "latencyMs": 59,
       "costInr": 0,
       "top": [
         {
@@ -3830,7 +3831,7 @@
         "survive"
       ],
       "keywordSource": "direct",
-      "latencyMs": 67,
+      "latencyMs": 121,
       "costInr": 0,
       "top": [
         {
@@ -3839,14 +3840,14 @@
           "section": "7.1 Do Organisms Create Exact Copies of Themselves? > 7.1.1 The Importance of Variation"
         },
         {
-          "chapter": 7,
-          "pages": "119-120",
-          "section": "7.3 Sexual Reproduction > 7.3.1 Why the Sexual Mode of Reproduction?"
-        },
-        {
           "chapter": 8,
           "pages": "128-128",
           "section": "8.1 Accumulation of Variation During Reproduction"
+        },
+        {
+          "chapter": 7,
+          "pages": "119-120",
+          "section": "7.3 Sexual Reproduction > 7.3.1 Why the Sexual Mode of Reproduction?"
         },
         {
           "chapter": 8,
@@ -3854,9 +3855,9 @@
           "section": "8.2 Heredity > 8.2.1 Inherited Traits"
         },
         {
-          "chapter": 8,
-          "pages": "128-128",
-          "section": null
+          "chapter": 7,
+          "pages": "126-126",
+          "section": "What you have learnt"
         }
       ]
     },
@@ -3880,18 +3881,13 @@
         "multiple"
       ],
       "keywordSource": "direct",
-      "latencyMs": 73,
+      "latencyMs": 64,
       "costInr": 0,
       "top": [
         {
           "chapter": 7,
           "pages": "115-116",
           "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.1 Fission"
-        },
-        {
-          "chapter": 8,
-          "pages": "128-128",
-          "section": null
         },
         {
           "chapter": 7,
@@ -3904,9 +3900,14 @@
           "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.2 Fragmentation"
         },
         {
-          "chapter": 5,
-          "pages": "91-91",
-          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+          "chapter": 7,
+          "pages": "114-115",
+          "section": "7.1 Do Organisms Create Exact Copies of Themselves? > 7.1.1 The Importance of Variation"
+        },
+        {
+          "chapter": 7,
+          "pages": "126-126",
+          "section": "What you have learnt"
         }
       ]
     },
@@ -3928,7 +3929,7 @@
         "regenerate"
       ],
       "keywordSource": "direct",
-      "latencyMs": 60,
+      "latencyMs": 93,
       "costInr": 0,
       "top": [
         {
@@ -3968,7 +3969,7 @@
         "budding"
       ],
       "keywordSource": "direct",
-      "latencyMs": 72,
+      "latencyMs": 61,
       "costInr": 0,
       "top": [
         {
@@ -3978,13 +3979,8 @@
         },
         {
           "chapter": 7,
-          "pages": "113-113",
-          "section": null
-        },
-        {
-          "chapter": 7,
-          "pages": "118-119",
-          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.6 Spore Formation"
+          "pages": "126-126",
+          "section": "What you have learnt"
         },
         {
           "chapter": 7,
@@ -3993,8 +3989,13 @@
         },
         {
           "chapter": 7,
-          "pages": "114-115",
-          "section": "7.1 Do Organisms Create Exact Copies of Themselves? > 7.1.1 The Importance of Variation"
+          "pages": "118-119",
+          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.6 Spore Formation"
+        },
+        {
+          "chapter": 5,
+          "pages": "96-96",
+          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
         }
       ]
     },
@@ -4020,7 +4021,7 @@
         "roses"
       ],
       "keywordSource": "direct",
-      "latencyMs": 71,
+      "latencyMs": 95,
       "costInr": 0,
       "top": [
         {
@@ -4044,9 +4045,9 @@
           "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.6 Spore Formation"
         },
         {
-          "chapter": 8,
-          "pages": "129-130",
-          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+          "chapter": 13,
+          "pages": "208-209",
+          "section": "13.1 Eco-system — What Are its Components?"
         }
       ]
     },
@@ -4070,7 +4071,7 @@
         "spores"
       ],
       "keywordSource": "direct",
-      "latencyMs": 66,
+      "latencyMs": 58,
       "costInr": 0,
       "top": [
         {
@@ -4100,7 +4101,7 @@
       "gold": [
         "7.3.2"
       ],
-      "rank": 2,
+      "rank": 5,
       "keywords": [
         "what",
         "happens",
@@ -4112,7 +4113,7 @@
         "formed"
       ],
       "keywordSource": "direct",
-      "latencyMs": 71,
+      "latencyMs": 97,
       "costInr": 0,
       "top": [
         {
@@ -4121,24 +4122,24 @@
           "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
         },
         {
+          "chapter": 6,
+          "pages": "100-100",
+          "section": null
+        },
+        {
+          "chapter": 6,
+          "pages": "105-106",
+          "section": "6.2 Coordination in Plants"
+        },
+        {
+          "chapter": 6,
+          "pages": "107-108",
+          "section": "6.2 Coordination in Plants > 6.2.2 Movement Due to Growth"
+        },
+        {
           "chapter": 7,
           "pages": "121-121",
           "section": "7.3 Sexual Reproduction > 7.3.2 Sexual Reproduction in Flowering Plants"
-        },
-        {
-          "chapter": 5,
-          "pages": "81-82",
-          "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition"
-        },
-        {
-          "chapter": 13,
-          "pages": "210-210",
-          "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
-        },
-        {
-          "chapter": 7,
-          "pages": "122-122",
-          "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
         }
       ]
     },
@@ -4164,33 +4165,33 @@
         "puberty"
       ],
       "keywordSource": "direct",
-      "latencyMs": 74,
+      "latencyMs": 67,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 7,
-          "pages": "121-122",
-          "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
-        },
-        {
-          "chapter": 7,
-          "pages": "122-122",
-          "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
-        },
         {
           "chapter": 7,
           "pages": "122-123",
           "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
         },
         {
-          "chapter": 5,
-          "pages": "80-80",
-          "section": "5.1 What Are Life Processes?"
+          "chapter": 6,
+          "pages": "110-111",
+          "section": "6.3 Hormones in Animals"
         },
         {
-          "chapter": 6,
-          "pages": "109-110",
-          "section": "6.3 Hormones in Animals"
+          "chapter": 7,
+          "pages": "123-124",
+          "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
+        },
+        {
+          "chapter": 7,
+          "pages": "126-126",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 7,
+          "pages": "126-127",
+          "section": "What you have learnt"
         }
       ]
     },
@@ -4214,7 +4215,7 @@
         "contraception"
       ],
       "keywordSource": "direct",
-      "latencyMs": 71,
+      "latencyMs": 91,
       "costInr": 0,
       "top": [
         {
@@ -4261,17 +4262,17 @@
         "cross-pollination",
         "difference",
         "between",
+        "self",
         "and",
+        "cross",
         "transfer",
         "of",
         "pollen",
-        "grains",
-        "anther",
-        "to"
+        "grains"
       ],
       "keywordSource": "model",
-      "latencyMs": 827,
-      "costInr": 0.006462,
+      "latencyMs": 981,
+      "costInr": 0.006282,
       "top": [
         {
           "chapter": 7,
@@ -4285,18 +4286,18 @@
         },
         {
           "chapter": 8,
-          "pages": "128-128",
-          "section": null
+          "pages": "130-131",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 8,
+          "pages": "130-130",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
         },
         {
           "chapter": 7,
           "pages": "127-127",
           "section": "Exercises"
-        },
-        {
-          "chapter": 5,
-          "pages": "91-91",
-          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
         }
       ]
     },
@@ -4314,20 +4315,20 @@
       "keywords": [
         "placenta",
         "foetus",
-        "embryo",
         "umbilical",
         "cord",
         "nutrition",
+        "embryo",
+        "uterus",
+        "diffusion",
         "mother",
         "blood",
-        "uterus",
         "reproductive",
-        "health",
-        "human"
+        "health"
       ],
       "keywordSource": "model",
-      "latencyMs": 918,
-      "costInr": 0.006192,
+      "latencyMs": 1072,
+      "costInr": 0.006237,
       "top": [
         {
           "chapter": 7,
@@ -4335,24 +4336,24 @@
           "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
         },
         {
-          "chapter": 5,
-          "pages": "91-92",
-          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
-        },
-        {
           "chapter": 7,
-          "pages": "122-123",
+          "pages": "124-125",
           "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
         },
         {
-          "chapter": 5,
-          "pages": "93-93",
-          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+          "chapter": 7,
+          "pages": "125-125",
+          "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
         },
         {
           "chapter": 7,
           "pages": "123-124",
           "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
+        },
+        {
+          "chapter": 5,
+          "pages": "91-91",
+          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
         }
       ]
     },
@@ -4376,7 +4377,7 @@
         "traits"
       ],
       "keywordSource": "direct",
-      "latencyMs": 69,
+      "latencyMs": 64,
       "costInr": 0,
       "top": [
         {
@@ -4386,23 +4387,23 @@
         },
         {
           "chapter": 8,
-          "pages": "130-130",
-          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
-        },
-        {
-          "chapter": 8,
           "pages": "133-133",
           "section": "What you have learnt"
         },
         {
           "chapter": 8,
-          "pages": "129-130",
-          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+          "pages": "132-133",
+          "section": "8.2 Heredity > 8.2.4 Sex Determination"
         },
         {
           "chapter": 8,
-          "pages": "132-133",
-          "section": "8.2 Heredity > 8.2.4 Sex Determination"
+          "pages": "133-133",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 8,
+          "pages": "130-130",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
         }
       ]
     },
@@ -4431,17 +4432,17 @@
         "ratio"
       ],
       "keywordSource": "direct",
-      "latencyMs": 69,
+      "latencyMs": 102,
       "costInr": 0,
       "top": [
         {
           "chapter": 8,
-          "pages": "130-131",
+          "pages": "130-130",
           "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
         },
         {
           "chapter": 8,
-          "pages": "130-130",
+          "pages": "130-131",
           "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
         },
         {
@@ -4450,14 +4451,14 @@
           "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
         },
         {
-          "chapter": 5,
-          "pages": "94-94",
-          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
-        },
-        {
           "chapter": 8,
           "pages": "131-131",
           "section": "8.2 Heredity > 8.2.3 How do these Traits get Expressed?"
+        },
+        {
+          "chapter": 8,
+          "pages": "133-133",
+          "section": "Exercises"
         }
       ]
     },
@@ -4483,7 +4484,7 @@
         "height"
       ],
       "keywordSource": "direct",
-      "latencyMs": 75,
+      "latencyMs": 69,
       "costInr": 0,
       "top": [
         {
@@ -4493,23 +4494,23 @@
         },
         {
           "chapter": 8,
+          "pages": "130-130",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
+        },
+        {
+          "chapter": 8,
           "pages": "130-131",
           "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
         },
         {
           "chapter": 8,
-          "pages": "130-130",
+          "pages": "129-130",
           "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
         },
         {
-          "chapter": 7,
-          "pages": "117-118",
-          "section": "7.2 Modes of Reproduction Used by Single Organisms > 7.2.5 Vegetative Propagation"
-        },
-        {
-          "chapter": 5,
-          "pages": "94-94",
-          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
+          "chapter": 8,
+          "pages": "131-132",
+          "section": "8.2 Heredity > 8.2.3 How do these Traits get Expressed?"
         }
       ]
     },
@@ -4536,14 +4537,9 @@
         "humans"
       ],
       "keywordSource": "direct",
-      "latencyMs": 64,
+      "latencyMs": 98,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 8,
-          "pages": "132-132",
-          "section": "8.2 Heredity > 8.2.4 Sex Determination"
-        },
         {
           "chapter": 8,
           "pages": "132-133",
@@ -4555,9 +4551,14 @@
           "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
         },
         {
-          "chapter": 5,
-          "pages": "91-91",
-          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
+          "chapter": 8,
+          "pages": "133-133",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 8,
+          "pages": "132-132",
+          "section": "8.2 Heredity > 8.2.4 Sex Determination"
         },
         {
           "chapter": 7,
@@ -4576,7 +4577,7 @@
       "gold": [
         "8.2.1"
       ],
-      "rank": 4,
+      "rank": 2,
       "keywords": [
         "what",
         "are",
@@ -4587,14 +4588,9 @@
         "earlobes"
       ],
       "keywordSource": "direct",
-      "latencyMs": 71,
+      "latencyMs": 70,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 8,
-          "pages": "130-130",
-          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
-        },
         {
           "chapter": 8,
           "pages": "129-130",
@@ -4602,13 +4598,18 @@
         },
         {
           "chapter": 8,
-          "pages": "130-131",
+          "pages": "129-129",
+          "section": "8.2 Heredity > 8.2.1 Inherited Traits"
+        },
+        {
+          "chapter": 8,
+          "pages": "130-130",
           "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
         },
         {
           "chapter": 8,
-          "pages": "129-129",
-          "section": "8.2 Heredity > 8.2.1 Inherited Traits"
+          "pages": "130-131",
+          "section": "8.2 Heredity > 8.2.2 Rules for the Inheritance of Traits – Mendel’s Contributions"
         },
         {
           "chapter": 8,
@@ -4635,41 +4636,38 @@
         "father",
         "sperm",
         "zygote",
-        "xx",
-        "female",
-        "xy",
-        "male",
+        "chromosomes",
         "human",
         "reproduction"
       ],
       "keywordSource": "model",
-      "latencyMs": 668,
-      "costInr": 0.005571,
+      "latencyMs": 782,
+      "costInr": 0.005391,
       "top": [
+        {
+          "chapter": 8,
+          "pages": "132-133",
+          "section": "8.2 Heredity > 8.2.4 Sex Determination"
+        },
         {
           "chapter": 8,
           "pages": "132-132",
           "section": "8.2 Heredity > 8.2.4 Sex Determination"
         },
         {
+          "chapter": 8,
+          "pages": "133-133",
+          "section": "What you have learnt"
+        },
+        {
           "chapter": 7,
-          "pages": "123-124",
+          "pages": "124-124",
           "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
         },
         {
           "chapter": 7,
           "pages": "125-125",
           "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
-        },
-        {
-          "chapter": 7,
-          "pages": "122-123",
-          "section": "7.3 Sexual Reproduction > 7.3.3 Reproduction in Human Beings"
-        },
-        {
-          "chapter": 7,
-          "pages": "126-126",
-          "section": "What you have learnt"
         }
       ]
     },
@@ -4693,7 +4691,7 @@
         "enti"
       ],
       "keywordSource": "direct",
-      "latencyMs": 72,
+      "latencyMs": 59,
       "costInr": 0,
       "top": [
         {
@@ -4746,7 +4744,7 @@
         "ecosystem"
       ],
       "keywordSource": "direct",
-      "latencyMs": 68,
+      "latencyMs": 91,
       "costInr": 0,
       "top": [
         {
@@ -4797,19 +4795,9 @@
         "ecosystem"
       ],
       "keywordSource": "direct",
-      "latencyMs": 72,
+      "latencyMs": 63,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 13,
-          "pages": "208-209",
-          "section": "13.1 Eco-system — What Are its Components?"
-        },
-        {
-          "chapter": 7,
-          "pages": "114-115",
-          "section": "7.1 Do Organisms Create Exact Copies of Themselves? > 7.1.1 The Importance of Variation"
-        },
         {
           "chapter": 13,
           "pages": "209-209",
@@ -4822,8 +4810,18 @@
         },
         {
           "chapter": 13,
-          "pages": "216-217",
-          "section": "Exercises"
+          "pages": "210-210",
+          "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+        },
+        {
+          "chapter": 7,
+          "pages": "114-115",
+          "section": "7.1 Do Organisms Create Exact Copies of Themselves? > 7.1.1 The Importance of Variation"
+        },
+        {
+          "chapter": 13,
+          "pages": "208-209",
+          "section": "13.1 Eco-system — What Are its Components?"
         }
       ]
     },
@@ -4852,7 +4850,7 @@
         "energy"
       ],
       "keywordSource": "direct",
-      "latencyMs": 84,
+      "latencyMs": 93,
       "costInr": 0,
       "top": [
         {
@@ -4867,18 +4865,18 @@
         },
         {
           "chapter": 13,
-          "pages": "216-217",
-          "section": "Exercises"
-        },
-        {
-          "chapter": 13,
           "pages": "211-212",
           "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
         },
         {
-          "chapter": 5,
-          "pages": "94-94",
-          "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
+          "chapter": 13,
+          "pages": "216-216",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 13,
+          "pages": "216-217",
+          "section": "Exercises"
         }
       ]
     },
@@ -4901,7 +4899,7 @@
         "magnification"
       ],
       "keywordSource": "direct",
-      "latencyMs": 84,
+      "latencyMs": 58,
       "costInr": 0,
       "top": [
         {
@@ -4956,7 +4954,7 @@
         "harmful"
       ],
       "keywordSource": "direct",
-      "latencyMs": 74,
+      "latencyMs": 92,
       "costInr": 0,
       "top": [
         {
@@ -4971,13 +4969,13 @@
         },
         {
           "chapter": 13,
-          "pages": "216-216",
-          "section": "What you have learnt"
+          "pages": "212-212",
+          "section": "13.2 How Do Our Activities Affect the Environment?"
         },
         {
           "chapter": 13,
-          "pages": "212-212",
-          "section": "13.2 How Do Our Activities Affect the Environment?"
+          "pages": "216-216",
+          "section": "What you have learnt"
         },
         {
           "chapter": 13,
@@ -5006,7 +5004,7 @@
         "examples"
       ],
       "keywordSource": "direct",
-      "latencyMs": 69,
+      "latencyMs": 64,
       "costInr": 0,
       "top": [
         {
@@ -5025,14 +5023,14 @@
           "section": "Exercises"
         },
         {
-          "chapter": 5,
-          "pages": "98-98",
-          "section": "5.5 Excretion > 5.5.2 Excretion in Plants"
-        },
-        {
           "chapter": 13,
           "pages": "216-216",
           "section": "What you have learnt"
+        },
+        {
+          "chapter": 7,
+          "pages": "113-113",
+          "section": null
         }
       ]
     },
@@ -5053,25 +5051,25 @@
         "web",
         "producers",
         "consumers",
+        "decomposers",
         "trophic",
         "levels",
-        "energy",
-        "flow",
         "ecosystem",
-        "decomposers"
+        "energy",
+        "flow"
       ],
       "keywordSource": "model",
-      "latencyMs": 889,
-      "costInr": 0.005247,
+      "latencyMs": 862,
+      "costInr": 0.004707,
       "top": [
         {
           "chapter": 13,
-          "pages": "210-211",
+          "pages": "210-210",
           "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
         },
         {
           "chapter": 13,
-          "pages": "210-210",
+          "pages": "210-211",
           "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
         },
         {
@@ -5081,13 +5079,13 @@
         },
         {
           "chapter": 13,
-          "pages": "209-209",
-          "section": "13.1 Eco-system — What Are its Components?"
+          "pages": "216-216",
+          "section": "What you have learnt"
         },
         {
           "chapter": 13,
-          "pages": "216-217",
-          "section": "Exercises"
+          "pages": "209-209",
+          "section": "13.1 Eco-system — What Are its Components?"
         }
       ]
     },
@@ -5108,17 +5106,17 @@
         "ozone",
         "layer",
         "depletion",
-        "molecule",
-        "o3",
         "chlorine",
         "atoms",
+        "molecule",
+        "o3",
+        "stratosphere",
         "ultraviolet",
-        "radiation",
-        "stratosphere"
+        "radiation"
       ],
       "keywordSource": "model",
-      "latencyMs": 826,
-      "costInr": 0.007326,
+      "latencyMs": 995,
+      "costInr": 0.007371,
       "top": [
         {
           "chapter": 13,
@@ -5127,23 +5125,23 @@
         },
         {
           "chapter": 13,
+          "pages": "216-216",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 13,
           "pages": "213-213",
           "section": "13.2 How Do Our Activities Affect the Environment? > 13.2.1 Ozone Layer and How it is Getting Depleted"
         },
         {
           "chapter": 13,
-          "pages": "216-216",
-          "section": "What you have learnt"
-        },
-        {
-          "chapter": 5,
-          "pages": "87-88",
-          "section": "5.3 Respiration"
+          "pages": "212-212",
+          "section": "13.2 How Do Our Activities Affect the Environment?"
         },
         {
           "chapter": 13,
-          "pages": "212-212",
-          "section": "13.2 How Do Our Activities Affect the Environment?"
+          "pages": "216-217",
+          "section": "Exercises"
         }
       ]
     },
@@ -5173,18 +5171,13 @@
         "pressure"
       ],
       "keywordSource": "model",
-      "latencyMs": 922,
+      "latencyMs": 962,
       "costInr": 0.006822,
       "top": [
         {
           "chapter": 5,
           "pages": "95-96",
           "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
-        },
-        {
-          "chapter": 5,
-          "pages": "93-93",
-          "section": "5.4 Transportation > 5.4.1 Transportation in Human Beings"
         },
         {
           "chapter": 5,
@@ -5197,9 +5190,14 @@
           "section": "5.4 Transportation > 5.4.2 Transportation in Plants"
         },
         {
-          "chapter": 13,
-          "pages": "210-211",
-          "section": "13.1 Eco-system — What Are its Components? > 13.1.1 Food Chains and Webs"
+          "chapter": 5,
+          "pages": "99-99",
+          "section": "Exercises"
+        },
+        {
+          "chapter": 5,
+          "pages": "98-99",
+          "section": "What you have learnt"
         }
       ]
     },
@@ -5213,7 +5211,7 @@
       "gold": [
         "9.1"
       ],
-      "rank": 2,
+      "rank": 1,
       "keywords": [
         "state",
         "the",
@@ -5223,14 +5221,9 @@
         "light"
       ],
       "keywordSource": "direct",
-      "latencyMs": 69,
+      "latencyMs": 62,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 9,
-          "pages": "134-134",
-          "section": null
-        },
         {
           "chapter": 9,
           "pages": "134-135",
@@ -5238,13 +5231,18 @@
         },
         {
           "chapter": 9,
-          "pages": "148-148",
-          "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+          "pages": "139-140",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
         },
         {
           "chapter": 9,
-          "pages": "146-147",
-          "section": "9.3 Refraction of Light > 9.3.1 Refraction through a Rectangular Glass Slab"
+          "pages": "158-159",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 9,
+          "pages": "142-143",
+          "section": "9.2 Spherical Mirrors > 9.2.3 Sign Convention for Reflection by Spherical Mirrors"
         },
         {
           "chapter": 10,
@@ -5279,9 +5277,14 @@
         "mirror"
       ],
       "keywordSource": "direct",
-      "latencyMs": 67,
+      "latencyMs": 98,
       "costInr": 0,
       "top": [
+        {
+          "chapter": 9,
+          "pages": "136-136",
+          "section": "9.2 Spherical Mirrors"
+        },
         {
           "chapter": 9,
           "pages": "136-137",
@@ -5289,23 +5292,18 @@
         },
         {
           "chapter": 9,
-          "pages": "135-136",
-          "section": "9.2 Spherical Mirrors"
+          "pages": "143-145",
+          "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
         },
         {
           "chapter": 9,
-          "pages": "141-142",
+          "pages": "142-142",
           "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
         },
         {
           "chapter": 9,
-          "pages": "159-160",
-          "section": "Exercises"
-        },
-        {
-          "chapter": 9,
-          "pages": "137-137",
-          "section": "9.2 Spherical Mirrors > 9.2.1 Image Formation by Spherical Mirrors"
+          "pages": "145-145",
+          "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
         }
       ]
     },
@@ -5336,33 +5334,33 @@
         "to"
       ],
       "keywordSource": "direct",
-      "latencyMs": 77,
+      "latencyMs": 64,
       "costInr": 0,
       "top": [
         {
           "chapter": 9,
-          "pages": "140-141",
+          "pages": "138-139",
           "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
         },
         {
           "chapter": 9,
-          "pages": "135-136",
-          "section": "9.2 Spherical Mirrors"
+          "pages": "143-145",
+          "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
         },
         {
           "chapter": 9,
-          "pages": "141-142",
-          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+          "pages": "137-138",
+          "section": "9.2 Spherical Mirrors > 9.2.1 Image Formation by Spherical Mirrors"
+        },
+        {
+          "chapter": 9,
+          "pages": "145-145",
+          "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
         },
         {
           "chapter": 9,
           "pages": "159-160",
           "section": "Exercises"
-        },
-        {
-          "chapter": 9,
-          "pages": "138-139",
-          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
         }
       ]
     },
@@ -5389,7 +5387,7 @@
         "vehicles"
       ],
       "keywordSource": "direct",
-      "latencyMs": 71,
+      "latencyMs": 98,
       "costInr": 0,
       "top": [
         {
@@ -5399,23 +5397,23 @@
         },
         {
           "chapter": 9,
-          "pages": "140-141",
+          "pages": "142-142",
           "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
-        },
-        {
-          "chapter": 9,
-          "pages": "135-136",
-          "section": "9.2 Spherical Mirrors"
-        },
-        {
-          "chapter": 9,
-          "pages": "159-160",
-          "section": "Exercises"
         },
         {
           "chapter": 9,
           "pages": "143-145",
           "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
+        },
+        {
+          "chapter": 9,
+          "pages": "140-141",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        },
+        {
+          "chapter": 9,
+          "pages": "160-160",
+          "section": "Exercises"
         }
       ]
     },
@@ -5442,18 +5440,13 @@
         "dentists"
       ],
       "keywordSource": "direct",
-      "latencyMs": 74,
+      "latencyMs": 67,
       "costInr": 0,
       "top": [
         {
           "chapter": 9,
           "pages": "140-141",
           "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
-        },
-        {
-          "chapter": 9,
-          "pages": "135-136",
-          "section": "9.2 Spherical Mirrors"
         },
         {
           "chapter": 9,
@@ -5467,8 +5460,13 @@
         },
         {
           "chapter": 9,
-          "pages": "159-160",
-          "section": "Exercises"
+          "pages": "138-139",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
+        },
+        {
+          "chapter": 9,
+          "pages": "142-142",
+          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
         }
       ]
     },
@@ -5495,7 +5493,7 @@
         "mirrors"
       ],
       "keywordSource": "direct",
-      "latencyMs": 66,
+      "latencyMs": 97,
       "costInr": 0,
       "top": [
         {
@@ -5505,23 +5503,23 @@
         },
         {
           "chapter": 9,
-          "pages": "140-141",
-          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
-        },
-        {
-          "chapter": 9,
-          "pages": "135-136",
-          "section": "9.2 Spherical Mirrors"
-        },
-        {
-          "chapter": 9,
-          "pages": "141-142",
-          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
-        },
-        {
-          "chapter": 9,
           "pages": "143-145",
           "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
+        },
+        {
+          "chapter": 9,
+          "pages": "143-143",
+          "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
+        },
+        {
+          "chapter": 9,
+          "pages": "158-159",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 9,
+          "pages": "155-155",
+          "section": "9.3 Refraction of Light > 9.3.6 Sign Convention for Spherical Lenses"
         }
       ]
     },
@@ -5543,7 +5541,7 @@
         "magnification"
       ],
       "keywordSource": "direct",
-      "latencyMs": 69,
+      "latencyMs": 65,
       "costInr": 0,
       "top": [
         {
@@ -5553,23 +5551,23 @@
         },
         {
           "chapter": 9,
-          "pages": "140-141",
-          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
-        },
-        {
-          "chapter": 9,
-          "pages": "135-136",
-          "section": "9.2 Spherical Mirrors"
-        },
-        {
-          "chapter": 9,
-          "pages": "141-142",
-          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
-        },
-        {
-          "chapter": 9,
           "pages": "143-145",
           "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
+        },
+        {
+          "chapter": 9,
+          "pages": "145-145",
+          "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
+        },
+        {
+          "chapter": 9,
+          "pages": "155-156",
+          "section": "9.3 Refraction of Light > 9.3.7 Lens Formula and Magnification"
+        },
+        {
+          "chapter": 9,
+          "pages": "156-157",
+          "section": "9.3 Refraction of Light > 9.3.7 Lens Formula and Magnification"
         }
       ]
     },
@@ -5599,7 +5597,7 @@
         "focal"
       ],
       "keywordSource": "direct",
-      "latencyMs": 69,
+      "latencyMs": 98,
       "costInr": 0,
       "top": [
         {
@@ -5614,18 +5612,18 @@
         },
         {
           "chapter": 9,
+          "pages": "145-145",
+          "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
+        },
+        {
+          "chapter": 9,
           "pages": "159-160",
           "section": "Exercises"
         },
         {
           "chapter": 9,
-          "pages": "140-141",
+          "pages": "142-142",
           "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
-        },
-        {
-          "chapter": 9,
-          "pages": "137-137",
-          "section": "9.2 Spherical Mirrors > 9.2.1 Image Formation by Spherical Mirrors"
         }
       ]
     },
@@ -5654,7 +5652,7 @@
         "water"
       ],
       "keywordSource": "direct",
-      "latencyMs": 75,
+      "latencyMs": 69,
       "costInr": 0,
       "top": [
         {
@@ -5664,22 +5662,22 @@
         },
         {
           "chapter": 9,
+          "pages": "147-148",
+          "section": "9.3 Refraction of Light > 9.3.1 Refraction through a Rectangular Glass Slab"
+        },
+        {
+          "chapter": 9,
           "pages": "146-146",
           "section": "9.3 Refraction of Light"
         },
         {
+          "chapter": 10,
+          "pages": "165-166",
+          "section": "10.3 Refraction of Light Through a Prism"
+        },
+        {
           "chapter": 9,
           "pages": "146-147",
-          "section": "9.3 Refraction of Light > 9.3.1 Refraction through a Rectangular Glass Slab"
-        },
-        {
-          "chapter": 10,
-          "pages": "167-168",
-          "section": "10.4 Dispersion of White Light by a Glass Prism"
-        },
-        {
-          "chapter": 9,
-          "pages": "147-148",
           "section": "9.3 Refraction of Light > 9.3.1 Refraction through a Rectangular Glass Slab"
         }
       ]
@@ -5703,7 +5701,7 @@
         "refraction"
       ],
       "keywordSource": "direct",
-      "latencyMs": 69,
+      "latencyMs": 101,
       "costInr": 0,
       "top": [
         {
@@ -5713,23 +5711,23 @@
         },
         {
           "chapter": 9,
-          "pages": "148-149",
-          "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
-        },
-        {
-          "chapter": 9,
           "pages": "146-147",
           "section": "9.3 Refraction of Light > 9.3.1 Refraction through a Rectangular Glass Slab"
         },
         {
           "chapter": 9,
-          "pages": "148-148",
-          "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+          "pages": "158-159",
+          "section": "What you have learnt"
         },
         {
-          "chapter": 10,
-          "pages": "168-168",
-          "section": "10.5 Atmospheric Refraction"
+          "chapter": 11,
+          "pages": "175-176",
+          "section": "11.4 Ohm’s Law"
+        },
+        {
+          "chapter": 11,
+          "pages": "176-176",
+          "section": "11.4 Ohm’s Law"
         }
       ]
     },
@@ -5757,13 +5755,23 @@
         "kerosene"
       ],
       "keywordSource": "direct",
-      "latencyMs": 77,
+      "latencyMs": 66,
       "costInr": 0,
       "top": [
         {
           "chapter": 9,
           "pages": "148-149",
           "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+        },
+        {
+          "chapter": 9,
+          "pages": "150-151",
+          "section": "9.3 Refraction of Light > 9.3.3 Refraction by Spherical Lenses"
+        },
+        {
+          "chapter": 9,
+          "pages": "158-159",
+          "section": "What you have learnt"
         },
         {
           "chapter": 9,
@@ -5774,16 +5782,6 @@
           "chapter": 9,
           "pages": "149-149",
           "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
-        },
-        {
-          "chapter": 9,
-          "pages": "150-151",
-          "section": "9.3 Refraction of Light > 9.3.3 Refraction by Spherical Lenses"
-        },
-        {
-          "chapter": 9,
-          "pages": "147-148",
-          "section": "9.3 Refraction of Light > 9.3.1 Refraction through a Rectangular Glass Slab"
         }
       ]
     },
@@ -5807,9 +5805,14 @@
         "convex"
       ],
       "keywordSource": "direct",
-      "latencyMs": 71,
+      "latencyMs": 97,
       "costInr": 0,
       "top": [
+        {
+          "chapter": 9,
+          "pages": "156-157",
+          "section": "9.3 Refraction of Light > 9.3.7 Lens Formula and Magnification"
+        },
         {
           "chapter": 9,
           "pages": "155-156",
@@ -5817,23 +5820,18 @@
         },
         {
           "chapter": 9,
-          "pages": "150-150",
-          "section": "9.3 Refraction of Light > 9.3.3 Refraction by Spherical Lenses"
+          "pages": "143-145",
+          "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
+        },
+        {
+          "chapter": 9,
+          "pages": "145-145",
+          "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification"
         },
         {
           "chapter": 9,
           "pages": "157-158",
           "section": "9.3 Refraction of Light > 9.3.8 Power of a Lens"
-        },
-        {
-          "chapter": 9,
-          "pages": "159-160",
-          "section": "Exercises"
-        },
-        {
-          "chapter": 9,
-          "pages": "152-153",
-          "section": "9.3 Refraction of Light > 9.3.4 Image Formation by Lenses"
         }
       ]
     },
@@ -5862,13 +5860,18 @@
         "dioptre"
       ],
       "keywordSource": "direct",
-      "latencyMs": 82,
+      "latencyMs": 68,
       "costInr": 0,
       "top": [
         {
           "chapter": 9,
           "pages": "157-158",
           "section": "9.3 Refraction of Light > 9.3.8 Power of a Lens"
+        },
+        {
+          "chapter": 9,
+          "pages": "158-159",
+          "section": "What you have learnt"
         },
         {
           "chapter": 9,
@@ -5881,14 +5884,9 @@
           "section": "11.8 Electric Power"
         },
         {
-          "chapter": 9,
-          "pages": "150-150",
-          "section": "9.3 Refraction of Light > 9.3.3 Refraction by Spherical Lenses"
-        },
-        {
-          "chapter": 9,
-          "pages": "155-156",
-          "section": "9.3 Refraction of Light > 9.3.7 Lens Formula and Magnification"
+          "chapter": 10,
+          "pages": "170-170",
+          "section": "Exercises"
         }
       ]
     },
@@ -5902,7 +5900,7 @@
       "gold": [
         "9.3.3"
       ],
-      "rank": 4,
+      "rank": 2,
       "keywords": [
         "convex",
         "lens",
@@ -5915,26 +5913,16 @@
         "light",
         "focal",
         "length",
-        "image"
+        "thick"
       ],
       "keywordSource": "model",
-      "latencyMs": 909,
-      "costInr": 0.006075,
+      "latencyMs": 959,
+      "costInr": 0.005895,
       "top": [
         {
           "chapter": 9,
           "pages": "157-158",
           "section": "9.3 Refraction of Light > 9.3.8 Power of a Lens"
-        },
-        {
-          "chapter": 9,
-          "pages": "159-160",
-          "section": "Exercises"
-        },
-        {
-          "chapter": 9,
-          "pages": "152-153",
-          "section": "9.3 Refraction of Light > 9.3.4 Image Formation by Lenses"
         },
         {
           "chapter": 9,
@@ -5945,6 +5933,16 @@
           "chapter": 9,
           "pages": "151-151",
           "section": "9.3 Refraction of Light > 9.3.3 Refraction by Spherical Lenses"
+        },
+        {
+          "chapter": 9,
+          "pages": "150-151",
+          "section": "9.3 Refraction of Light > 9.3.3 Refraction by Spherical Lenses"
+        },
+        {
+          "chapter": 9,
+          "pages": "158-158",
+          "section": "9.3 Refraction of Light > 9.3.8 Power of a Lens"
         }
       ]
     },
@@ -5963,23 +5961,28 @@
         "refraction",
         "of",
         "light",
-        "refracted",
-        "ray",
+        "definition",
         "change",
         "in",
         "direction",
-        "optical",
-        "density",
-        "refractive",
-        "index"
+        "passing",
+        "from",
+        "one",
+        "medium",
+        "to"
       ],
       "keywordSource": "model",
-      "latencyMs": 795,
-      "costInr": 0.005499,
+      "latencyMs": 1216,
+      "costInr": 0.007614,
       "top": [
         {
           "chapter": 9,
           "pages": "148-149",
+          "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+        },
+        {
+          "chapter": 9,
+          "pages": "148-148",
           "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
         },
         {
@@ -5989,18 +5992,13 @@
         },
         {
           "chapter": 9,
-          "pages": "148-148",
-          "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+          "pages": "146-146",
+          "section": "9.3 Refraction of Light"
         },
         {
           "chapter": 9,
-          "pages": "150-151",
-          "section": "9.3 Refraction of Light > 9.3.3 Refraction by Spherical Lenses"
-        },
-        {
-          "chapter": 9,
-          "pages": "153-154",
-          "section": "9.3 Refraction of Light > 9.3.5 Image Formation in Lenses Using Ray Diagrams"
+          "pages": "145-146",
+          "section": "9.3 Refraction of Light"
         }
       ]
     },
@@ -6028,14 +6026,9 @@
         "eye"
       ],
       "keywordSource": "direct",
-      "latencyMs": 79,
+      "latencyMs": 65,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 10,
-          "pages": "162-162",
-          "section": "10.1 The Human Eye > 10.1.1 Power of Accommodation"
-        },
         {
           "chapter": 10,
           "pages": "161-162",
@@ -6048,13 +6041,18 @@
         },
         {
           "chapter": 10,
-          "pages": "163-164",
-          "section": "10.2 Defects of Vision and Their Correction"
+          "pages": "161-161",
+          "section": null
         },
         {
           "chapter": 10,
-          "pages": "165-165",
-          "section": "10.3 Refraction of Light Through a Prism"
+          "pages": "162-162",
+          "section": "10.1 The Human Eye > 10.1.1 Power of Accommodation"
+        },
+        {
+          "chapter": 10,
+          "pages": "162-162",
+          "section": "10.1 The Human Eye > 10.1.1 Power of Accommodation"
         }
       ]
     },
@@ -6083,7 +6081,7 @@
         "cm"
       ],
       "keywordSource": "direct",
-      "latencyMs": 74,
+      "latencyMs": 102,
       "costInr": 0,
       "top": [
         {
@@ -6098,18 +6096,18 @@
         },
         {
           "chapter": 10,
-          "pages": "163-164",
-          "section": "10.2 Defects of Vision and Their Correction"
-        },
-        {
-          "chapter": 10,
           "pages": "162-163",
           "section": "10.2 Defects of Vision and Their Correction"
         },
         {
-          "chapter": 9,
-          "pages": "160-160",
-          "section": "Exercises"
+          "chapter": 10,
+          "pages": "170-170",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 10,
+          "pages": "163-164",
+          "section": "10.2 Defects of Vision and Their Correction"
         }
       ]
     },
@@ -6134,7 +6132,7 @@
         "corrected"
       ],
       "keywordSource": "direct",
-      "latencyMs": 74,
+      "latencyMs": 64,
       "costInr": 0,
       "top": [
         {
@@ -6155,12 +6153,12 @@
         {
           "chapter": 10,
           "pages": "170-170",
-          "section": "Exercises"
+          "section": "What you have learnt"
         },
         {
           "chapter": 10,
           "pages": "170-170",
-          "section": "What you have learnt"
+          "section": "Exercises"
         }
       ]
     },
@@ -6187,7 +6185,7 @@
         "prism"
       ],
       "keywordSource": "direct",
-      "latencyMs": 74,
+      "latencyMs": 94,
       "costInr": 0,
       "top": [
         {
@@ -6197,17 +6195,17 @@
         },
         {
           "chapter": 10,
+          "pages": "166-166",
+          "section": "10.3 Refraction of Light Through a Prism"
+        },
+        {
+          "chapter": 10,
           "pages": "165-166",
           "section": "10.3 Refraction of Light Through a Prism"
         },
         {
           "chapter": 10,
           "pages": "165-165",
-          "section": "10.3 Refraction of Light Through a Prism"
-        },
-        {
-          "chapter": 10,
-          "pages": "166-166",
           "section": "10.3 Refraction of Light Through a Prism"
         },
         {
@@ -6227,7 +6225,7 @@
       "gold": [
         "10.4"
       ],
-      "rank": 2,
+      "rank": 1,
       "keywords": [
         "how",
         "is",
@@ -6235,32 +6233,32 @@
         "formed"
       ],
       "keywordSource": "direct",
-      "latencyMs": 74,
+      "latencyMs": 64,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 9,
-          "pages": "152-153",
-          "section": "9.3 Refraction of Light > 9.3.4 Image Formation by Lenses"
-        },
         {
           "chapter": 10,
           "pages": "167-168",
           "section": "10.4 Dispersion of White Light by a Glass Prism"
         },
         {
+          "chapter": 10,
+          "pages": "161-161",
+          "section": null
+        },
+        {
+          "chapter": 10,
+          "pages": "166-167",
+          "section": "10.4 Dispersion of White Light by a Glass Prism"
+        },
+        {
+          "chapter": 9,
+          "pages": "134-134",
+          "section": null
+        },
+        {
           "chapter": 9,
           "pages": "140-141",
-          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
-        },
-        {
-          "chapter": 9,
-          "pages": "141-142",
-          "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
-        },
-        {
-          "chapter": 9,
-          "pages": "139-140",
           "section": "9.2 Spherical Mirrors > 9.2.2 Representation of Images Formed by Spherical Mirrors Using Ray Diagrams"
         }
       ]
@@ -6286,7 +6284,7 @@
         "not"
       ],
       "keywordSource": "direct",
-      "latencyMs": 63,
+      "latencyMs": 92,
       "costInr": 0,
       "top": [
         {
@@ -6296,13 +6294,13 @@
         },
         {
           "chapter": 10,
-          "pages": "168-168",
-          "section": "10.5 Atmospheric Refraction"
+          "pages": "170-170",
+          "section": "Exercises"
         },
         {
           "chapter": 10,
-          "pages": "170-170",
-          "section": "Exercises"
+          "pages": "168-168",
+          "section": "10.5 Atmospheric Refraction"
         },
         {
           "chapter": 9,
@@ -6330,18 +6328,13 @@
         "effect"
       ],
       "keywordSource": "direct",
-      "latencyMs": 73,
+      "latencyMs": 62,
       "costInr": 0,
       "top": [
         {
           "chapter": 10,
           "pages": "169-169",
           "section": "10.6 Scattering of Light > 10.6.1 Tyndall Effect"
-        },
-        {
-          "chapter": 12,
-          "pages": "195-195",
-          "section": null
         },
         {
           "chapter": 11,
@@ -6356,6 +6349,11 @@
         {
           "chapter": 11,
           "pages": "188-188",
+          "section": "11.7 Heating Effect of Electric Current"
+        },
+        {
+          "chapter": 11,
+          "pages": "189-189",
           "section": "11.7 Heating Effect of Electric Current"
         }
       ]
@@ -6382,12 +6380,12 @@
         "blue",
         "rayleigh",
         "colour",
-        "wavelength",
-        "atmosphere"
+        "sunlight",
+        "by"
       ],
       "keywordSource": "model",
-      "latencyMs": 892,
-      "costInr": 0.004734,
+      "latencyMs": 783,
+      "costInr": 0.004869,
       "top": [
         {
           "chapter": 10,
@@ -6396,8 +6394,8 @@
         },
         {
           "chapter": 10,
-          "pages": "166-167",
-          "section": "10.4 Dispersion of White Light by a Glass Prism"
+          "pages": "169-169",
+          "section": "10.6 Scattering of Light"
         },
         {
           "chapter": 10,
@@ -6406,13 +6404,13 @@
         },
         {
           "chapter": 10,
-          "pages": "167-168",
-          "section": "10.4 Dispersion of White Light by a Glass Prism"
+          "pages": "170-170",
+          "section": "What you have learnt"
         },
         {
-          "chapter": 9,
-          "pages": "134-134",
-          "section": null
+          "chapter": 10,
+          "pages": "167-168",
+          "section": "10.4 Dispersion of White Light by a Glass Prism"
         }
       ]
     },
@@ -6426,29 +6424,34 @@
       "gold": [
         "10.2"
       ],
-      "rank": 2,
+      "rank": 1,
       "keywords": [
         "myopia",
         "concave",
         "lens",
         "correction",
         "of",
+        "human",
+        "eye",
         "defects",
         "vision",
-        "near",
-        "sightedness",
+        "nearsightedness",
         "focal",
-        "length",
-        "diverging"
+        "length"
       ],
       "keywordSource": "model",
-      "latencyMs": 871,
-      "costInr": 0.005517,
+      "latencyMs": 980,
+      "costInr": 0.007002,
       "top": [
         {
-          "chapter": 9,
-          "pages": "157-158",
-          "section": "9.3 Refraction of Light > 9.3.8 Power of a Lens"
+          "chapter": 10,
+          "pages": "163-164",
+          "section": "10.2 Defects of Vision and Their Correction"
+        },
+        {
+          "chapter": 10,
+          "pages": "164-164",
+          "section": "10.2 Defects of Vision and Their Correction"
         },
         {
           "chapter": 10,
@@ -6456,19 +6459,14 @@
           "section": "10.2 Defects of Vision and Their Correction"
         },
         {
-          "chapter": 9,
-          "pages": "159-160",
-          "section": "Exercises"
+          "chapter": 10,
+          "pages": "170-170",
+          "section": "What you have learnt"
         },
         {
           "chapter": 10,
           "pages": "170-170",
           "section": "Exercises"
-        },
-        {
-          "chapter": 10,
-          "pages": "164-164",
-          "section": "10.2 Defects of Vision and Their Correction"
         }
       ]
     },
@@ -6494,7 +6492,7 @@
         "vidipotundi"
       ],
       "keywordSource": "direct",
-      "latencyMs": 83,
+      "latencyMs": 65,
       "costInr": 0,
       "top": [
         {
@@ -6513,14 +6511,14 @@
           "section": "10.3 Refraction of Light Through a Prism"
         },
         {
-          "chapter": 9,
-          "pages": "134-134",
-          "section": null
+          "chapter": 10,
+          "pages": "165-165",
+          "section": "10.3 Refraction of Light Through a Prism"
         },
         {
-          "chapter": 9,
-          "pages": "148-148",
-          "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index"
+          "chapter": 10,
+          "pages": "166-166",
+          "section": "10.3 Refraction of Light Through a Prism"
         }
       ]
     },
@@ -6546,14 +6544,9 @@
         "ampere"
       ],
       "keywordSource": "direct",
-      "latencyMs": 69,
+      "latencyMs": 104,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 11,
-          "pages": "171-172",
-          "section": "11.1 Electric Current and Circuit"
-        },
         {
           "chapter": 11,
           "pages": "172-172",
@@ -6561,18 +6554,23 @@
         },
         {
           "chapter": 11,
-          "pages": "190-190",
-          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
-        },
-        {
-          "chapter": 11,
           "pages": "191-192",
           "section": "11.8 Electric Power"
         },
         {
-          "chapter": 12,
-          "pages": "195-195",
-          "section": null
+          "chapter": 11,
+          "pages": "173-173",
+          "section": "11.2 Electric Potential and Potential Difference"
+        },
+        {
+          "chapter": 11,
+          "pages": "192-192",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 11,
+          "pages": "176-176",
+          "section": "11.4 Ohm’s Law"
         }
       ]
     },
@@ -6597,23 +6595,18 @@
         "connected"
       ],
       "keywordSource": "direct",
-      "latencyMs": 79,
+      "latencyMs": 65,
       "costInr": 0,
       "top": [
         {
           "chapter": 11,
-          "pages": "173-173",
+          "pages": "173-174",
           "section": "11.2 Electric Potential and Potential Difference"
         },
         {
           "chapter": 11,
           "pages": "182-183",
           "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series"
-        },
-        {
-          "chapter": 11,
-          "pages": "173-174",
-          "section": "11.2 Electric Potential and Potential Difference"
         },
         {
           "chapter": 11,
@@ -6624,6 +6617,11 @@
           "chapter": 11,
           "pages": "193-193",
           "section": "Exercises"
+        },
+        {
+          "chapter": 11,
+          "pages": "185-186",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.2 Resistors in Parallel"
         }
       ]
     },
@@ -6646,7 +6644,7 @@
         "diagrams"
       ],
       "keywordSource": "direct",
-      "latencyMs": 75,
+      "latencyMs": 99,
       "costInr": 0,
       "top": [
         {
@@ -6656,7 +6654,7 @@
         },
         {
           "chapter": 12,
-          "pages": "205-205",
+          "pages": "204-205",
           "section": "12.4 Domestic Electric Circuits"
         },
         {
@@ -6665,9 +6663,9 @@
           "section": "11.1 Electric Current and Circuit"
         },
         {
-          "chapter": 12,
-          "pages": "204-205",
-          "section": "12.4 Domestic Electric Circuits"
+          "chapter": 11,
+          "pages": "186-187",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.2 Resistors in Parallel"
         },
         {
           "chapter": 9,
@@ -6693,7 +6691,7 @@
         "law"
       ],
       "keywordSource": "direct",
-      "latencyMs": 76,
+      "latencyMs": 63,
       "costInr": 0,
       "top": [
         {
@@ -6708,13 +6706,13 @@
         },
         {
           "chapter": 11,
-          "pages": "183-185",
-          "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series"
+          "pages": "176-177",
+          "section": "11.4 Ohm’s Law"
         },
         {
           "chapter": 11,
-          "pages": "176-177",
-          "section": "11.4 Ohm’s Law"
+          "pages": "183-185",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series"
         },
         {
           "chapter": 11,
@@ -6748,7 +6746,7 @@
         "resistivity"
       ],
       "keywordSource": "direct",
-      "latencyMs": 70,
+      "latencyMs": 100,
       "costInr": 0,
       "top": [
         {
@@ -6768,12 +6766,12 @@
         },
         {
           "chapter": 11,
-          "pages": "183-185",
-          "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series"
+          "pages": "179-180",
+          "section": "11.5 Factors on Which the Resistance of a Conductor Depends"
         },
         {
           "chapter": 11,
-          "pages": "179-180",
+          "pages": "181-181",
           "section": "11.5 Factors on Which the Resistance of a Conductor Depends"
         }
       ]
@@ -6788,7 +6786,7 @@
       "gold": [
         "11.5"
       ],
-      "rank": 2,
+      "rank": 3,
       "keywords": [
         "why",
         "are",
@@ -6803,9 +6801,14 @@
         "metals"
       ],
       "keywordSource": "direct",
-      "latencyMs": 76,
+      "latencyMs": 74,
       "costInr": 0,
       "top": [
+        {
+          "chapter": 11,
+          "pages": "193-194",
+          "section": "Exercises"
+        },
         {
           "chapter": 11,
           "pages": "190-190",
@@ -6813,23 +6816,18 @@
         },
         {
           "chapter": 11,
-          "pages": "179-180",
+          "pages": "181-181",
           "section": "11.5 Factors on Which the Resistance of a Conductor Depends"
         },
         {
           "chapter": 11,
-          "pages": "171-172",
-          "section": "11.1 Electric Current and Circuit"
+          "pages": "178-179",
+          "section": "11.5 Factors on Which the Resistance of a Conductor Depends"
         },
         {
           "chapter": 11,
-          "pages": "191-192",
-          "section": "11.8 Electric Power"
-        },
-        {
-          "chapter": 11,
-          "pages": "193-194",
-          "section": "Exercises"
+          "pages": "188-188",
+          "section": "11.7 Heating Effect of Electric Current"
         }
       ]
     },
@@ -6843,7 +6841,7 @@
       "gold": [
         "11.6.1"
       ],
-      "rank": 1,
+      "rank": 2,
       "keywords": [
         "three",
         "resistors",
@@ -6859,13 +6857,13 @@
         "to"
       ],
       "keywordSource": "direct",
-      "latencyMs": 67,
+      "latencyMs": 102,
       "costInr": 0,
       "top": [
         {
           "chapter": 11,
-          "pages": "182-183",
-          "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series"
+          "pages": "186-187",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.2 Resistors in Parallel"
         },
         {
           "chapter": 11,
@@ -6874,18 +6872,18 @@
         },
         {
           "chapter": 11,
-          "pages": "186-187",
-          "section": "11.6 Resistance of a System of Resistors > 11.6.2 Resistors in Parallel"
+          "pages": "176-176",
+          "section": "11.4 Ohm’s Law"
+        },
+        {
+          "chapter": 11,
+          "pages": "175-176",
+          "section": "11.4 Ohm’s Law"
         },
         {
           "chapter": 11,
           "pages": "181-182",
           "section": "11.6 Resistance of a System of Resistors"
-        },
-        {
-          "chapter": 11,
-          "pages": "185-186",
-          "section": "11.6 Resistance of a System of Resistors > 11.6.2 Resistors in Parallel"
         }
       ]
     },
@@ -6899,7 +6897,7 @@
       "gold": [
         "11.6.2"
       ],
-      "rank": 2,
+      "rank": 3,
       "keywords": [
         "why",
         "are",
@@ -6913,7 +6911,7 @@
         "series"
       ],
       "keywordSource": "direct",
-      "latencyMs": 73,
+      "latencyMs": 67,
       "costInr": 0,
       "top": [
         {
@@ -6922,24 +6920,24 @@
           "section": "11.7 Heating Effect of Electric Current"
         },
         {
+          "chapter": 12,
+          "pages": "204-205",
+          "section": "12.4 Domestic Electric Circuits"
+        },
+        {
           "chapter": 11,
           "pages": "185-186",
           "section": "11.6 Resistance of a System of Resistors > 11.6.2 Resistors in Parallel"
         },
         {
           "chapter": 11,
-          "pages": "193-194",
-          "section": "Exercises"
-        },
-        {
-          "chapter": 11,
-          "pages": "193-193",
-          "section": "Exercises"
-        },
-        {
-          "chapter": 11,
           "pages": "187-187",
           "section": "11.6 Resistance of a System of Resistors > 11.6.2 Resistors in Parallel"
+        },
+        {
+          "chapter": 11,
+          "pages": "182-183",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series"
         }
       ]
     },
@@ -6963,14 +6961,9 @@
         "i2rt"
       ],
       "keywordSource": "direct",
-      "latencyMs": 81,
+      "latencyMs": 97,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 11,
-          "pages": "190-190",
-          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
-        },
         {
           "chapter": 11,
           "pages": "188-189",
@@ -6982,14 +6975,19 @@
           "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
         },
         {
+          "chapter": 12,
+          "pages": "205-205",
+          "section": "12.4 Domestic Electric Circuits"
+        },
+        {
           "chapter": 9,
-          "pages": "155-156",
-          "section": "9.3 Refraction of Light > 9.3.7 Lens Formula and Magnification"
+          "pages": "158-159",
+          "section": "What you have learnt"
         },
         {
           "chapter": 11,
-          "pages": "189-189",
-          "section": "11.7 Heating Effect of Electric Current"
+          "pages": "175-176",
+          "section": "11.4 Ohm’s Law"
         }
       ]
     },
@@ -7017,7 +7015,7 @@
         "bulbs"
       ],
       "keywordSource": "direct",
-      "latencyMs": 113,
+      "latencyMs": 69,
       "costInr": 0,
       "top": [
         {
@@ -7027,23 +7025,23 @@
         },
         {
           "chapter": 11,
-          "pages": "191-192",
-          "section": "11.8 Electric Power"
-        },
-        {
-          "chapter": 11,
           "pages": "179-180",
           "section": "11.5 Factors on Which the Resistance of a Conductor Depends"
         },
         {
           "chapter": 11,
-          "pages": "171-172",
-          "section": "11.1 Electric Current and Circuit"
+          "pages": "193-194",
+          "section": "Exercises"
         },
         {
           "chapter": 11,
           "pages": "172-172",
           "section": "11.1 Electric Current and Circuit"
+        },
+        {
+          "chapter": 11,
+          "pages": "191-192",
+          "section": "11.8 Electric Power"
         }
       ]
     },
@@ -7070,7 +7068,7 @@
         "unit"
       ],
       "keywordSource": "direct",
-      "latencyMs": 70,
+      "latencyMs": 98,
       "costInr": 0,
       "top": [
         {
@@ -7080,23 +7078,23 @@
         },
         {
           "chapter": 11,
+          "pages": "192-192",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 11,
+          "pages": "173-173",
+          "section": "11.2 Electric Potential and Potential Difference"
+        },
+        {
+          "chapter": 11,
           "pages": "190-190",
           "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
         },
         {
-          "chapter": 11,
-          "pages": "171-172",
-          "section": "11.1 Electric Current and Circuit"
-        },
-        {
-          "chapter": 9,
-          "pages": "157-158",
-          "section": "9.3 Refraction of Light > 9.3.8 Power of a Lens"
-        },
-        {
-          "chapter": 11,
-          "pages": "172-172",
-          "section": "11.1 Electric Current and Circuit"
+          "chapter": 12,
+          "pages": "205-205",
+          "section": "12.4 Domestic Electric Circuits"
         }
       ]
     },
@@ -7110,7 +7108,7 @@
       "gold": [
         "11.4"
       ],
-      "rank": 4,
+      "rank": 1,
       "keywords": [
         "ohm",
         "law",
@@ -7125,23 +7123,18 @@
         "circuit"
       ],
       "keywordSource": "model",
-      "latencyMs": 669,
+      "latencyMs": 761,
       "costInr": 0.004158,
       "top": [
         {
           "chapter": 11,
-          "pages": "183-185",
-          "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series"
+          "pages": "176-176",
+          "section": "11.4 Ohm’s Law"
         },
         {
           "chapter": 11,
-          "pages": "173-173",
-          "section": "11.2 Electric Potential and Potential Difference"
-        },
-        {
-          "chapter": 11,
-          "pages": "171-172",
-          "section": "11.1 Electric Current and Circuit"
+          "pages": "180-181",
+          "section": "11.5 Factors on Which the Resistance of a Conductor Depends"
         },
         {
           "chapter": 11,
@@ -7150,8 +7143,13 @@
         },
         {
           "chapter": 11,
-          "pages": "176-176",
-          "section": "11.4 Ohm’s Law"
+          "pages": "192-192",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 11,
+          "pages": "183-185",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series"
         }
       ]
     },
@@ -7170,45 +7168,45 @@
       "keywords": [
         "electric",
         "fuse",
-        "wire",
-        "melting",
-        "point",
-        "overloading",
-        "short",
-        "circuit",
         "heating",
         "effect",
         "of",
-        "current"
+        "current",
+        "melting",
+        "point",
+        "wire",
+        "overloading",
+        "short",
+        "circuit"
       ],
       "keywordSource": "model",
-      "latencyMs": 796,
-      "costInr": 0.004941,
+      "latencyMs": 966,
+      "costInr": 0.006381,
       "top": [
-        {
-          "chapter": 11,
-          "pages": "190-190",
-          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
-        },
-        {
-          "chapter": 11,
-          "pages": "171-172",
-          "section": "11.1 Electric Current and Circuit"
-        },
         {
           "chapter": 12,
           "pages": "205-205",
           "section": "12.4 Domestic Electric Circuits"
         },
         {
-          "chapter": 12,
-          "pages": "195-195",
-          "section": null
+          "chapter": 11,
+          "pages": "190-190",
+          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
         },
         {
           "chapter": 11,
           "pages": "190-190",
           "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+        },
+        {
+          "chapter": 12,
+          "pages": "206-206",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 12,
+          "pages": "195-195",
+          "section": null
         }
       ]
     },
@@ -7222,7 +7220,7 @@
       "gold": [
         "12.1"
       ],
-      "rank": 2,
+      "rank": 1,
       "keywords": [
         "properties",
         "of",
@@ -7236,14 +7234,9 @@
         "cross"
       ],
       "keywordSource": "direct",
-      "latencyMs": 75,
+      "latencyMs": 68,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 12,
-          "pages": "200-201",
-          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.3 Magnetic Field due to a Current through a Circular Loop"
-        },
         {
           "chapter": 12,
           "pages": "196-197",
@@ -7251,8 +7244,13 @@
         },
         {
           "chapter": 12,
-          "pages": "201-201",
-          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.4 Magnetic Field due to a Current in a Solenoid"
+          "pages": "200-201",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.3 Magnetic Field due to a Current through a Circular Loop"
+        },
+        {
+          "chapter": 12,
+          "pages": "197-197",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor"
         },
         {
           "chapter": 12,
@@ -7261,8 +7259,8 @@
         },
         {
           "chapter": 12,
-          "pages": "206-206",
-          "section": "What you have learnt"
+          "pages": "201-201",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.4 Magnetic Field due to a Current in a Solenoid"
         }
       ]
     },
@@ -7289,7 +7287,7 @@
         "wire"
       ],
       "keywordSource": "direct",
-      "latencyMs": 82,
+      "latencyMs": 99,
       "costInr": 0,
       "top": [
         {
@@ -7299,13 +7297,13 @@
         },
         {
           "chapter": 12,
-          "pages": "200-201",
-          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.3 Magnetic Field due to a Current through a Circular Loop"
+          "pages": "198-198",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.1 Magnetic Field due to a Current through a Straight Conductor"
         },
         {
           "chapter": 12,
-          "pages": "198-198",
-          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.1 Magnetic Field due to a Current through a Straight Conductor"
+          "pages": "197-197",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor"
         },
         {
           "chapter": 12,
@@ -7329,7 +7327,7 @@
       "gold": [
         "12.2.1"
       ],
-      "rank": 3,
+      "rank": 1,
       "keywords": [
         "magnetic",
         "field",
@@ -7340,9 +7338,14 @@
         "conductor"
       ],
       "keywordSource": "direct",
-      "latencyMs": 79,
+      "latencyMs": 67,
       "costInr": 0,
       "top": [
+        {
+          "chapter": 12,
+          "pages": "198-198",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.1 Magnetic Field due to a Current through a Straight Conductor"
+        },
         {
           "chapter": 12,
           "pages": "200-201",
@@ -7355,18 +7358,13 @@
         },
         {
           "chapter": 12,
-          "pages": "198-198",
-          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.1 Magnetic Field due to a Current through a Straight Conductor"
-        },
-        {
-          "chapter": 12,
-          "pages": "202-202",
-          "section": "12.3 Force on a Current-carrying Conductor in a Magnetic Field"
-        },
-        {
-          "chapter": 12,
           "pages": "199-199",
           "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.2 Right-Hand Thumb Rule"
+        },
+        {
+          "chapter": 12,
+          "pages": "198-199",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.1 Magnetic Field due to a Current through a Straight Conductor"
         }
       ]
     },
@@ -7389,7 +7387,7 @@
         "rule"
       ],
       "keywordSource": "direct",
-      "latencyMs": 64,
+      "latencyMs": 99,
       "costInr": 0,
       "top": [
         {
@@ -7409,13 +7407,13 @@
         },
         {
           "chapter": 12,
-          "pages": "203-203",
-          "section": "12.3 Force on a Current-carrying Conductor in a Magnetic Field"
+          "pages": "206-206",
+          "section": "What you have learnt"
         },
         {
           "chapter": 12,
-          "pages": "206-206",
-          "section": "What you have learnt"
+          "pages": "201-201",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.4 Magnetic Field due to a Current in a Solenoid"
         }
       ]
     },
@@ -7441,12 +7439,17 @@
         "loop"
       ],
       "keywordSource": "direct",
-      "latencyMs": 70,
+      "latencyMs": 65,
       "costInr": 0,
       "top": [
         {
           "chapter": 12,
           "pages": "200-201",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.3 Magnetic Field due to a Current through a Circular Loop"
+        },
+        {
+          "chapter": 12,
+          "pages": "201-201",
           "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.3 Magnetic Field due to a Current through a Circular Loop"
         },
         {
@@ -7463,11 +7466,6 @@
           "chapter": 12,
           "pages": "198-198",
           "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.1 Magnetic Field due to a Current through a Straight Conductor"
-        },
-        {
-          "chapter": 12,
-          "pages": "206-206",
-          "section": "What you have learnt"
         }
       ]
     },
@@ -7493,7 +7491,7 @@
         "made"
       ],
       "keywordSource": "direct",
-      "latencyMs": 61,
+      "latencyMs": 96,
       "costInr": 0,
       "top": [
         {
@@ -7503,13 +7501,13 @@
         },
         {
           "chapter": 12,
-          "pages": "195-195",
-          "section": null
+          "pages": "206-206",
+          "section": "What you have learnt"
         },
         {
           "chapter": 12,
-          "pages": "206-206",
-          "section": "What you have learnt"
+          "pages": "195-195",
+          "section": null
         },
         {
           "chapter": 12,
@@ -7533,7 +7531,7 @@
       "gold": [
         "12.3"
       ],
-      "rank": 2,
+      "rank": 1,
       "keywords": [
         "state",
         "fleming",
@@ -7541,14 +7539,9 @@
         "rule"
       ],
       "keywordSource": "direct",
-      "latencyMs": 72,
+      "latencyMs": 70,
       "costInr": 0,
       "top": [
-        {
-          "chapter": 12,
-          "pages": "199-200",
-          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.2 Right-Hand Thumb Rule"
-        },
         {
           "chapter": 12,
           "pages": "203-203",
@@ -7568,6 +7561,11 @@
           "chapter": 9,
           "pages": "142-143",
           "section": "9.2 Spherical Mirrors > 9.2.3 Sign Convention for Reflection by Spherical Mirrors"
+        },
+        {
+          "chapter": 12,
+          "pages": "199-200",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.2 Right-Hand Thumb Rule"
         }
       ]
     },
@@ -7595,7 +7593,7 @@
         "circuits"
       ],
       "keywordSource": "direct",
-      "latencyMs": 68,
+      "latencyMs": 98,
       "costInr": 0,
       "top": [
         {
@@ -7605,23 +7603,23 @@
         },
         {
           "chapter": 12,
+          "pages": "204-205",
+          "section": "12.4 Domestic Electric Circuits"
+        },
+        {
+          "chapter": 12,
           "pages": "205-205",
           "section": "12.4 Domestic Electric Circuits"
         },
         {
           "chapter": 11,
-          "pages": "175-176",
-          "section": "11.4 Ohm’s Law"
-        },
-        {
-          "chapter": 12,
-          "pages": "204-205",
-          "section": "12.4 Domestic Electric Circuits"
+          "pages": "190-190",
+          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
         },
         {
           "chapter": 11,
-          "pages": "178-179",
-          "section": "11.5 Factors on Which the Resistance of a Conductor Depends"
+          "pages": "194-194",
+          "section": "Exercises"
         }
       ]
     },
@@ -7644,7 +7642,7 @@
         "overloading"
       ],
       "keywordSource": "direct",
-      "latencyMs": 74,
+      "latencyMs": 64,
       "costInr": 0,
       "top": [
         {
@@ -7653,19 +7651,19 @@
           "section": "12.4 Domestic Electric Circuits"
         },
         {
+          "chapter": 12,
+          "pages": "206-206",
+          "section": "What you have learnt"
+        },
+        {
+          "chapter": 12,
+          "pages": "207-207",
+          "section": "Exercises"
+        },
+        {
           "chapter": 11,
           "pages": "172-172",
           "section": "11.1 Electric Current and Circuit"
-        },
-        {
-          "chapter": 11,
-          "pages": "175-176",
-          "section": "11.4 Ohm’s Law"
-        },
-        {
-          "chapter": 11,
-          "pages": "187-187",
-          "section": "11.6 Resistance of a System of Resistors > 11.6.2 Resistors in Parallel"
         },
         {
           "chapter": 11,
@@ -7689,16 +7687,17 @@
         "magnetic",
         "field",
         "lines",
-        "bar",
         "magnet",
         "properties",
         "compass",
         "needle",
-        "magnetism"
+        "flux",
+        "bar",
+        "pattern"
       ],
       "keywordSource": "model",
-      "latencyMs": 809,
-      "costInr": 0.004716,
+      "latencyMs": 793,
+      "costInr": 0.005346,
       "top": [
         {
           "chapter": 12,
@@ -7707,23 +7706,23 @@
         },
         {
           "chapter": 12,
+          "pages": "197-197",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor"
+        },
+        {
+          "chapter": 12,
           "pages": "196-197",
           "section": "12.1 Magnetic Field and Field Lines"
         },
         {
           "chapter": 12,
-          "pages": "200-201",
-          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.3 Magnetic Field due to a Current through a Circular Loop"
+          "pages": "206-206",
+          "section": "What you have learnt"
         },
         {
           "chapter": 12,
-          "pages": "201-201",
-          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.4 Magnetic Field due to a Current in a Solenoid"
-        },
-        {
-          "chapter": 12,
-          "pages": "197-197",
-          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor"
+          "pages": "199-199",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.2 Right-Hand Thumb Rule"
         }
       ]
     },
@@ -7753,8 +7752,8 @@
         "electric"
       ],
       "keywordSource": "model",
-      "latencyMs": 916,
-      "costInr": 0.006858,
+      "latencyMs": 981,
+      "costInr": 0.006813,
       "top": [
         {
           "chapter": 12,
@@ -7763,13 +7762,8 @@
         },
         {
           "chapter": 12,
-          "pages": "200-201",
-          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.3 Magnetic Field due to a Current through a Circular Loop"
-        },
-        {
-          "chapter": 12,
-          "pages": "196-197",
-          "section": "12.1 Magnetic Field and Field Lines"
+          "pages": "202-202",
+          "section": "12.3 Force on a Current-carrying Conductor in a Magnetic Field"
         },
         {
           "chapter": 12,
@@ -7778,8 +7772,13 @@
         },
         {
           "chapter": 12,
-          "pages": "195-195",
-          "section": null
+          "pages": "199-199",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor > 12.2.2 Right-Hand Thumb Rule"
+        },
+        {
+          "chapter": 12,
+          "pages": "197-197",
+          "section": "12.2 Magnetic Field Due to a Current-carrying Conductor"
         }
       ]
     },
@@ -7809,18 +7808,18 @@
         "to"
       ],
       "keywordSource": "model",
-      "latencyMs": 924,
-      "costInr": 0.00702,
+      "latencyMs": 1088,
+      "costInr": 0.00711,
       "top": [
-        {
-          "chapter": 11,
-          "pages": "190-190",
-          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
-        },
         {
           "chapter": 11,
           "pages": "188-189",
           "section": "11.7 Heating Effect of Electric Current"
+        },
+        {
+          "chapter": 11,
+          "pages": "190-190",
+          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
         },
         {
           "chapter": 11,
@@ -7829,13 +7828,13 @@
         },
         {
           "chapter": 11,
-          "pages": "171-172",
-          "section": "11.1 Electric Current and Circuit"
+          "pages": "190-190",
+          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
         },
         {
           "chapter": 11,
-          "pages": "190-190",
-          "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current"
+          "pages": "189-189",
+          "section": "11.7 Heating Effect of Electric Current"
         }
       ]
     }

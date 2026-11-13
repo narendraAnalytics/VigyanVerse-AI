@@ -1,5 +1,5 @@
 // Retrieval eval: runs every question in data/eval/retrieval-v1.json through the same
-// retrieve() the tutor uses (Sarvam query rewrite for Telugu script -> match_chunks_keyword)
+// retrieve() the tutor uses (Sarvam query rewrite for Telugu script -> match_chunks_weighted)
 // and scores the ranked chunks against gold section numbers.
 //
 //   npm run eval:retrieval                     production setting: rewrite only Telugu script

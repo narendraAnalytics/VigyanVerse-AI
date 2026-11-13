@@ -89,7 +89,7 @@ describe('searchChunks', () => {
     const { client, calls } = fakeClient({ data: [], error: null });
     await searchChunks(client, ['rust', 'iron'], { board: 'CBSE' });
     expect(calls).toEqual([{
-      fn: 'match_chunks_keyword',
+      fn: 'match_chunks_weighted',
       params: { p_query: 'rust iron', p_board: 'CBSE', p_subject: null, p_chapter: null, p_language: 'en', p_match_count: 6 },
     }]);
   });
@@ -102,6 +102,6 @@ describe('searchChunks', () => {
 
   it('throws on RPC errors', async () => {
     const { client } = fakeClient({ data: null, error: { message: 'boom' } });
-    await expect(searchChunks(client, ['rust'], { board: 'CBSE' })).rejects.toThrow('match_chunks_keyword failed');
+    await expect(searchChunks(client, ['rust'], { board: 'CBSE' })).rejects.toThrow('match_chunks_weighted failed');
   });
 });

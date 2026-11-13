@@ -138,3 +138,10 @@ for (const ch of manifest.chapters) {
   console.log(`  uploaded ${storageKey}; source ${sourceId}; ${stored.length}/${rows.length} chunks stored`);
   if (stored.length !== rows.length) throw new Error('Chunk count mismatch after insert');
 }
+
+// Word statistics for match_chunks_weighted (IDF ranking + "not in the textbook" detection)
+// must match the chunks we just wrote.
+if (!dryRun && admin) {
+  const lexemes = check('refresh lexeme stats', await admin.database.rpc('refresh_corpus_lexeme_stats', {}));
+  console.log(`\nrefreshed corpus_lexeme_stats: ${lexemes} lexemes`);
+}
