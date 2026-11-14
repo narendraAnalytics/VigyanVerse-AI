@@ -1,0 +1,269 @@
+{
+  "agent": "quizflow",
+  "model": "default",
+  "reasoning": null,
+  "ranAt": "2026-11-14T06:58:40.039Z",
+  "metrics": {
+    "ok": true,
+    "returnedOfRequested": 1,
+    "structureOk": true,
+    "noLeak": true,
+    "language": 1,
+    "slowestMs": 12595,
+    "costInr": 0.266046
+  },
+  "bar": {
+    "ok": true,
+    "returned": true,
+    "structure": true,
+    "noLeak": true,
+    "language": true,
+    "slowest": true
+  },
+  "rows": [
+    {
+      "id": "f1",
+      "chapter": "Electricity",
+      "latencyMs": 9237,
+      "ok": true,
+      "questions": [
+        {
+          "id": "0f7cae7c-cf62-4adb-9351-3607a23a62b6",
+          "position": 1,
+          "marks": 1,
+          "type": "mcq",
+          "difficulty": 2,
+          "stem": "In Activity 11.3, the ammeter reading decreases to one-half when the length of the nichrome wire is doubled. What does this show about the resistance of a conductor?",
+          "options": [
+            "Resistance depends on the nature of the material",
+            "Resistance depends on the area of cross-section",
+            "Resistance depends on the length of the conductor",
+            "Resistance does not depend on any property of the wire"
+          ],
+          "citations": [
+            {
+              "chunkId": "9f0c78a8-2017-420b-8491-06a25d17c583",
+              "chapterNumber": 11,
+              "chapterTitle": "Electricity",
+              "section": "11.5 Factors on Which the Resistance of a Conductor Depends",
+              "pageStart": 177,
+              "pageEnd": 178
+            }
+          ]
+        },
+        {
+          "id": "2c0a4f20-3edc-4344-b963-57e15481d5ae",
+          "position": 2,
+          "marks": 1,
+          "type": "mcq",
+          "difficulty": 2,
+          "stem": "A thicker wire of the same material and the same length is used in the circuit in place of a thin wire. What happens to the ammeter reading?",
+          "options": [
+            "It increases",
+            "It decreases",
+            "It stays exactly the same",
+            "It becomes zero"
+          ],
+          "citations": [
+            {
+              "chunkId": "9f0c78a8-2017-420b-8491-06a25d17c583",
+              "chapterNumber": 11,
+              "chapterTitle": "Electricity",
+              "section": "11.5 Factors on Which the Resistance of a Conductor Depends",
+              "pageStart": 177,
+              "pageEnd": 178
+            }
+          ]
+        },
+        {
+          "id": "46b408c4-9542-42b0-a182-72141eff7f69",
+          "position": 3,
+          "marks": 1,
+          "type": "mcq",
+          "difficulty": 2,
+          "stem": "In a parallel combination of three resistors, the voltmeter reading across the whole combination is V. What is the potential difference across each individual resistor?",
+          "options": [
+            "V",
+            "Zero",
+            "V/3",
+            "3V"
+          ],
+          "citations": [
+            {
+              "chunkId": "6628b13f-4405-4e10-946c-314f5bcf439b",
+              "chapterNumber": 11,
+              "chapterTitle": "Electricity",
+              "section": "11.6 Resistance of a System of Resistors > 11.6.2 Resistors in Parallel",
+              "pageStart": 185,
+              "pageEnd": 186
+            }
+          ]
+        },
+        {
+          "id": "fae65f5b-c837-4fbd-a7eb-71190f680ca0",
+          "position": 4,
+          "marks": 1,
+          "type": "numeric",
+          "difficulty": 2,
+          "stem": "A series combination of an electric lamp and a conductor is connected to a battery. The potential difference across the battery terminals is 6 V and the current in the circuit is 0.25 A. Find the resistance of the equivalent resistor that can replace this series combination.",
+          "options": null,
+          "citations": [
+            {
+              "chunkId": "25f77738-0218-4045-a534-92dcf52d7531",
+              "chapterNumber": 11,
+              "chapterTitle": "Electricity",
+              "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series",
+              "pageStart": 185,
+              "pageEnd": 185
+            }
+          ]
+        },
+        {
+          "id": "3df223b3-b52d-4ed6-83f8-63b34d948fcf",
+          "position": 5,
+          "marks": 1,
+          "type": "numeric",
+          "difficulty": 2,
+          "stem": "An electric iron works on a voltage of 220 V. When heating is at the maximum rate, the power input is 840 W. Find the current in the electric iron.",
+          "options": null,
+          "citations": [
+            {
+              "chunkId": "18bfd2cd-a320-44bc-9e0b-408ec8977fc6",
+              "chapterNumber": 11,
+              "chapterTitle": "Electricity",
+              "section": "11.7 Heating Effect of Electric Current",
+              "pageStart": 189,
+              "pageEnd": 189
+            }
+          ]
+        }
+      ],
+      "dropped": [],
+      "usage": [
+        {
+          "agent": "quiz",
+          "model": "deepseekv4.1-flash-1017",
+          "inputTokens": 1784,
+          "outputTokens": 829,
+          "reasoningTokens": 0,
+          "costInr": 0.070571,
+          "latencyMs": 3940,
+          "usedFallback": false
+        },
+        {
+          "agent": "validator",
+          "model": "sarvam-105b",
+          "inputTokens": 2196,
+          "outputTokens": 393,
+          "reasoningTokens": 0,
+          "costInr": 0.05652,
+          "latencyMs": 5236,
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "id": "f2",
+      "chapter": "Chemical Reactions and Equations",
+      "latencyMs": 12595,
+      "ok": true,
+      "questions": [
+        {
+          "id": "f508d49a-fb36-4970-a4e1-d3d4cdb13e2b",
+          "position": 1,
+          "marks": 1,
+          "type": "mcq",
+          "difficulty": 2,
+          "stem": "సమతుల్య రసాయన సమీకరణం (balanced chemical equation) గురించి కింది వాక్యాలలో ఏది సరైనది?",
+          "options": [
+            "ఇది ఎప్పుడూ అవక్షేపాన్ని (precipitate) ఏర్పరుస్తుంది.",
+            "ఇది ఎప్పుడూ ఉష్ణాన్ని విడుదల చేస్తుంది.",
+            "ఇది ఎప్పుడూ వాయువును విడుదల చేస్తుంది.",
+            "ఇది ద్రవ్య నిత్యత్వ నియమాన్ని (law of conservation of mass) పాటిస్తుంది."
+          ],
+          "citations": [
+            {
+              "chunkId": "68c42e5c-2d04-4634-91c7-ef7fdc9736f8",
+              "chapterNumber": 1,
+              "chapterTitle": "Chemical Reactions and Equations",
+              "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations",
+              "pageStart": 3,
+              "pageEnd": 4
+            }
+          ]
+        },
+        {
+          "id": "fb0ed6ec-fc33-454f-9305-ceb573b741c0",
+          "position": 2,
+          "marks": 1,
+          "type": "mcq",
+          "difficulty": 2,
+          "stem": "జింక్ (Zn) గ్రాన్యూల్స్కు డైల్యూట్ హైడ్రోక్లోరిక్ ఆమ్లాన్ని (dilute hydrochloric acid) కలిపినప్పుడు ఏమి ఏర్పడుతుంది?",
+          "options": [
+            "జింక్ సల్ఫేట్ మరియు ఆక్సిజన్ వాయువు",
+            "జింక్ హైడ్రాక్సైడ్ మరియు క్లోరిన్ వాయువు",
+            "జింక్ క్లోరైడ్ మరియు హైడ్రోజన్ వాయువు",
+            "జింక్ ఆక్సైడ్ మరియు నీరు"
+          ],
+          "citations": [
+            {
+              "chunkId": "2d9e3d15-3af1-47be-9de9-8e6b8733c2b4",
+              "chapterNumber": 1,
+              "chapterTitle": "Chemical Reactions and Equations",
+              "section": null,
+              "pageStart": 2,
+              "pageEnd": 2
+            }
+          ]
+        },
+        {
+          "id": "423c102f-204e-498e-b486-4bf65d8357a7",
+          "position": 3,
+          "marks": 1,
+          "type": "mcq",
+          "difficulty": 2,
+          "stem": "Fe + H2O → Fe3O4 + H2 అనే సమీకరణాన్ని సమతుల్యం చేయడానికి ముందు, ఇది ఏ రకమైన సమీకరణం?",
+          "options": [
+            "ఇది అసమతుల్య సమీకరణం (unbalanced equation).",
+            "ఇది సమతుల్య సమీకరణం (balanced equation).",
+            "ఇది ఒక థర్మోకెమికల్ సమీకరణం (thermochemical equation).",
+            "ఇది ఒక వర్డ్ ఈక్వేషన్ (word equation)."
+          ],
+          "citations": [
+            {
+              "chunkId": "68c42e5c-2d04-4634-91c7-ef7fdc9736f8",
+              "chapterNumber": 1,
+              "chapterTitle": "Chemical Reactions and Equations",
+              "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations",
+              "pageStart": 3,
+              "pageEnd": 4
+            }
+          ]
+        }
+      ],
+      "dropped": [],
+      "usage": [
+        {
+          "agent": "quiz",
+          "model": "deepseekv4.1-flash-1017",
+          "inputTokens": 1660,
+          "outputTokens": 1217,
+          "reasoningTokens": 0,
+          "costInr": 0.090175,
+          "latencyMs": 7400,
+          "usedFallback": false
+        },
+        {
+          "agent": "validator",
+          "model": "sarvam-105b",
+          "inputTokens": 1756,
+          "outputTokens": 374,
+          "reasoningTokens": 0,
+          "costInr": 0.04878,
+          "latencyMs": 5185,
+          "usedFallback": false
+        }
+      ]
+    }
+  ]
+}

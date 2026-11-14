@@ -36,10 +36,10 @@ describe('quiz prompt', () => {
     expect(calls[0].overrides?.maxTokens).toBe(300 + 280 * 4);
   });
 
-  it('caps a request at 5 questions', async () => {
+  it('caps a request at MAX_WRITTEN (6) questions', async () => {
     const { chat, calls } = mockChat(reply([good]));
     await runQuiz({ ...base, count: 50 }, { chat });
-    expect(String(calls[0].messages[0].content)).toContain('Write exactly 5 questions');
+    expect(String(calls[0].messages[0].content)).toContain('Write exactly 6 questions');
   });
 });
 

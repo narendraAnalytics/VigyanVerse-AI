@@ -22,7 +22,7 @@ export type QuestionType = 'mcq' | 'numeric';
 
 export interface QuizInput {
   passages: ChunkHit[];
-  /** 1..5 questions per call (fits the 30 s Edge Function limit). */
+  /** 1..MAX_WRITTEN questions per call (fits the 30 s Edge Function limit). */
   count: number;
   language: Language;
   /** From the chapter / topic row. */
@@ -56,7 +56,10 @@ export interface QuizOutput {
   refused: string | null;
 }
 
+/** Most questions a student can ask for. */
 export const MAX_QUESTIONS = 5;
+/** Most the writer is asked for in one call: one spare for the question the validator may drop. */
+export const MAX_WRITTEN = MAX_QUESTIONS + 1;
 
 const ModelQuestion = z.object({
   type: z.preprocess((v) => (typeof v === 'string' ? v.trim().toLowerCase() : v), z.enum(['mcq', 'numeric'])),
@@ -178,5 +181,5 @@ export async function runQuiz(input: QuizInput, ctx?: AgentContext): Promise<Age
     return { output: { questions: [], rejected: [], refused: 'This chapter is formative only: no exam-style quiz (CBSE 2026-27).' }, source: 'model' };
   }
   if (!input.passages.length) return { output: { questions: [], rejected: [], refused: 'No textbook passages for this topic.' }, source: 'model' };
-  return runJsonAgent(quizSpec, { ...input, count: Math.max(1, Math.min(MAX_QUESTIONS, Math.round(input.count))) }, ctx);
+  return runJsonAgent(quizSpec, { ...input, count: Math.max(1, Math.min(MAX_WRITTEN, Math.round(input.count))) }, ctx);
 }
