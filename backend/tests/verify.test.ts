@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { balanceEquation, checkBalanced, parseFormula } from '../src/verify/chemistry.ts';
-import { compareNumericAnswer, computeAnswer, evaluateExpression } from '../src/verify/numeric.ts';
+import { assertSafeExpression, compareNumericAnswer, computeAnswer, evaluateExpression } from '../src/verify/numeric.ts';
 
 describe('chemistry', () => {
   it('parses nested groups and hydrates', () => {
@@ -50,6 +50,18 @@ describe('numeric', () => {
     expect(computeAnswer('I * t', { I: '0.5 A', t: '10 min' }, 'C').value).toBe('300 C');
     expect(computeAnswer('P * t', { P: '2 kW', t: '5 h' }, 'kWh').value).toBe('10 kWh');
     expect(computeAnswer('I^2 * R * t', { I: '5 A', R: '20 Ω', t: '30 s' }, 'J').value).toBe('15000 J');
+  });
+
+  it('allows only numbers, given symbols, units, pi, + - * / ^, brackets and sqrt', () => {
+    for (const ok of ['V / R', '1 / (1/f - 1/u)', 'R * pi * (d/2)^2 / l', 'sqrt(P * R)', '-(v / u)']) {
+      expect(() => assertSafeExpression(ok, ['V', 'R', 'f', 'u', 'd', 'l', 'P', 'v'])).not.toThrow();
+    }
+    expect(() => assertSafeExpression('1.84e-6 ohm m')).not.toThrow(); // units are fine
+    for (const bad of ['zeros(10000, 10000)', 'factorial(1000000)', 'x = 5', '[1, 2, 3]', 'f(x) = x', '"text"', 'V > 2 ? 1 : 0', 'V.foo', 'V[1]', '1:100000000', 'secret / 2', 'x'.repeat(201)]) {
+      expect(() => assertSafeExpression(bad, ['V']), bad).toThrow();
+    }
+    expect(compareNumericAnswer('zeros(1000,1000)', '2 A').reason).toBe('parse_error');
+    expect(() => computeAnswer('factorial(n)', { n: '1000000' })).toThrow();
   });
 
   it('refuses expressions that try to change mathjs', () => {

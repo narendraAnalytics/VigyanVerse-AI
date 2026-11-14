@@ -8,6 +8,7 @@ import { create, all, type Unit, type MathType } from 'mathjs';
 // we keep a private reference to evaluate.
 const math = create(all, {});
 const evaluate = math.evaluate;
+const parse = math.parse;
 const disabled = (name: string) => () => {
   throw new Error(`Function ${name} is disabled`);
 };
@@ -19,6 +20,50 @@ math.import(
 
 function isUnit(value: MathType): value is Unit {
   return math.typeOf(value) === 'Unit';
+}
+
+const MAX_EXPRESSION = 200;
+const OPERATORS = new Set(['+', '-', '*', '/', '^']);
+const FUNCTIONS = new Set(['sqrt']);
+
+/**
+ * Allowlist (security review 2026-11-14): disabling functions stops code injection, but
+ * expressions like zeros(10000, 10000) or factorial(1e6) could still use up the 30 s Edge
+ * Function. Only numbers, the given symbols, units, pi, + - * / ^, brackets and sqrt pass.
+ */
+export function assertSafeExpression(text: string, symbols: Iterable<string> = []): void {
+  if (text.length > MAX_EXPRESSION) throw new Error('Expression too long');
+  const allowed = new Set([...symbols, 'pi']);
+  parse(text).traverse((node, path, parent) => {
+    const n = node as unknown as { type: string; value?: unknown; name?: string; op?: string; fn?: { name?: string } };
+    switch (n.type) {
+      case 'ConstantNode':
+        if (typeof n.value !== 'number') throw new Error('Only numbers are allowed');
+        return;
+      case 'ParenthesisNode':
+        return;
+      case 'OperatorNode':
+        if (!OPERATORS.has(n.op ?? '')) throw new Error(`Operator ${n.op} is not allowed`);
+        return;
+      case 'FunctionNode':
+        if (!FUNCTIONS.has(n.fn?.name ?? '')) throw new Error(`Function ${n.fn?.name} is not allowed`);
+        return;
+      case 'SymbolNode': {
+        const name = n.name ?? '';
+        const isFunctionName = (parent as unknown as { type?: string } | null)?.type === 'FunctionNode' && path === 'fn';
+        if (isFunctionName || allowed.has(name) || math.Unit.isValuelessUnit(name)) return;
+        throw new Error(`Unknown symbol ${name}`);
+      }
+      default:
+        throw new Error(`${n.type} is not allowed`);
+    }
+  });
+}
+
+/** Evaluate a checked quantity or expression. */
+function safeEvaluate(text: string, scope: Record<string, MathType> = {}): MathType {
+  assertSafeExpression(text, Object.keys(scope));
+  return evaluate(text, scope);
 }
 
 /** Textbook spellings mathjs does not know: Ω -> ohm, "10 min" (minutes; "min" is a function). */
@@ -37,9 +82,9 @@ export function normalizeUnits(text: string): string {
 export function evaluateExpression(expr: string, scope: Record<string, number | string> = {}): MathType {
   const parsedScope: Record<string, MathType> = {};
   for (const [key, val] of Object.entries(scope)) {
-    parsedScope[key] = typeof val === 'number' ? val : evaluate(normalizeUnits(val));
+    parsedScope[key] = typeof val === 'number' ? val : safeEvaluate(normalizeUnits(val));
   }
-  return evaluate(normalizeUnits(expr), parsedScope);
+  return safeEvaluate(normalizeUnits(expr), parsedScope);
 }
 
 /** "3.8181 A" -> "3.82 A", "15000 J", "1.84e-6 ohm m": 3 significant figures, as in NCERT answers. */
@@ -60,7 +105,7 @@ export interface Computed {
  */
 export function computeAnswer(expression: string, given: Record<string, string>, unit?: string): Computed {
   let result = evaluateExpression(expression, given);
-  if (unit && isUnit(result)) result = result.to(normalizeUnits(unit));
+  if (unit && unit.length <= 40 && isUnit(result)) result = result.to(normalizeUnits(unit));
   if (typeof result !== 'number' && !isUnit(result)) throw new Error('The expression did not give a number');
   const n = isUnit(result) ? result.toNumber() : result;
   if (!Number.isFinite(n)) throw new Error('The expression did not give a finite number');
@@ -85,8 +130,8 @@ export function compareNumericAnswer(student: string, expected: string, relTol =
   let s: MathType;
   let e: MathType;
   try {
-    s = evaluate(normalizeUnits(student));
-    e = evaluate(normalizeUnits(expected));
+    s = safeEvaluate(normalizeUnits(student));
+    e = safeEvaluate(normalizeUnits(expected));
   } catch {
     return { match: false, reason: 'parse_error' };
   }

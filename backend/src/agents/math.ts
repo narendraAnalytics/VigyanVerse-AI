@@ -48,15 +48,17 @@ export interface MathOutput {
 
 const ModelOutput = z.object({
   type: z.preprocess((v) => (typeof v === 'string' ? v.trim().toLowerCase() : v), z.enum(['numeric', 'balance', 'explain'])),
-  given: z.record(z.string(), z.union([z.string(), z.number()]).transform(String)).default({}),
-  find: z.string().default(''),
-  formula: z.string().default(''),
-  expression: z.string().default(''),
-  unit: z.string().default(''),
-  steps: z.array(z.string()).max(10).default([]),
-  answer: z.string().default(''),
-  equation: z.string().default(''),
-  balanced: z.string().default(''),
+  // Length limits (security review 2026-11-14): model text goes to the calculator.
+  given: z.record(z.string().max(20), z.union([z.string().max(60), z.number()]).transform(String))
+    .refine((g) => Object.keys(g).length <= 12, 'too many givens').default({}),
+  find: z.string().max(20).default(''),
+  formula: z.string().max(200).default(''),
+  expression: z.string().max(200).default(''),
+  unit: z.string().max(30).default(''),
+  steps: z.array(z.string().max(300)).max(10).default([]),
+  answer: z.string().max(120).default(''),
+  equation: z.string().max(300).default(''),
+  balanced: z.string().max(300).default(''),
   explanation: z.string().max(1500).default(''),
   sources: z.array(z.number().int()).max(5).default([]),
 });
