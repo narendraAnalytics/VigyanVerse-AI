@@ -1,0 +1,296 @@
+{
+  "agent": "validator",
+  "model": "sarvam-105b",
+  "reasoning": null,
+  "ranAt": "2026-11-14T06:40:34.758Z",
+  "metrics": {
+    "valid": true,
+    "genuineKept": 0.8571428571428571,
+    "wrongKeyRejected": 1,
+    "offPassageRejected": 1,
+    "p95Ms": 5603,
+    "costInr": 0.13221,
+    "tokens": 6300
+  },
+  "bar": {
+    "valid": true,
+    "genuineKept": true,
+    "wrongKeyRejected": true,
+    "offPassageRejected": true,
+    "p95Ms": true
+  },
+  "genuine": [
+    {
+      "stem": "In a series combination of resistors, what can you say about the current?",
+      "explanation": "In a series combination the ammeter reading is the same wherever it is placed, so the same current flows through each resistor.",
+      "difficulty": 2,
+      "sourceChunkIds": [
+        "c40d209c-c8ff-48ba-8cf8-cdf750633773"
+      ],
+      "citations": [
+        {
+          "chunkId": "c40d209c-c8ff-48ba-8cf8-cdf750633773",
+          "chapterNumber": 11,
+          "chapterTitle": "Electricity",
+          "section": "11.6 Resistance of a System of Resistors",
+          "pageStart": 181,
+          "pageEnd": 182
+        }
+      ],
+      "type": "mcq",
+      "options": [
+        "The current is different in each resistor",
+        "The current is the same in every part of the circuit",
+        "The current is largest in the biggest resistor",
+        "The current becomes zero after the first resistor"
+      ],
+      "answerIndex": 1,
+      "answer": "The current is the same in every part of the circuit",
+      "verifiedNumeric": false,
+      "work": null
+    },
+    {
+      "stem": "Three resistors are joined in parallel and the potential difference across the combination is V. What is the potential difference across each resistor?",
+      "explanation": "In a parallel combination the potential difference across each resistor is the same and equals V, the potential difference across the combination.",
+      "difficulty": 2,
+      "sourceChunkIds": [
+        "6628b13f-4405-4e10-946c-314f5bcf439b"
+      ],
+      "citations": [
+        {
+          "chunkId": "6628b13f-4405-4e10-946c-314f5bcf439b",
+          "chapterNumber": 11,
+          "chapterTitle": "Electricity",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.2 Resistors in Parallel",
+          "pageStart": 185,
+          "pageEnd": 186
+        }
+      ],
+      "type": "mcq",
+      "options": [
+        "V",
+        "V/3",
+        "3V",
+        "It is different for each resistor"
+      ],
+      "answerIndex": 0,
+      "answer": "V",
+      "verifiedNumeric": false,
+      "work": null
+    },
+    {
+      "stem": "An electric lamp of resistance 20 ohm and a conductor of resistance 4 ohm are connected in series to a 6 V battery. Find the total resistance of the circuit.",
+      "explanation": "In series the total resistance is the sum of the individual resistances, so Rs = 20 + 4 = 24 ohm.",
+      "difficulty": 2,
+      "sourceChunkIds": [
+        "850a1b94-f49b-4701-aec0-448eee8487dd"
+      ],
+      "citations": [
+        {
+          "chunkId": "850a1b94-f49b-4701-aec0-448eee8487dd",
+          "chapterNumber": 11,
+          "chapterTitle": "Electricity",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series",
+          "pageStart": 183,
+          "pageEnd": 185
+        }
+      ],
+      "type": "numeric",
+      "options": null,
+      "answerIndex": null,
+      "answer": "24 Ω",
+      "verifiedNumeric": true,
+      "work": {
+        "given": {
+          "R1": "20 ohm",
+          "R2": "4 ohm"
+        },
+        "expression": "R1 + R2",
+        "unit": "ohm"
+      }
+    },
+    {
+      "stem": "An electric lamp of resistance 20 ohm and a conductor of resistance 4 ohm are connected in series to a 6 V battery. Find the current through the circuit.",
+      "explanation": "The total resistance is 24 ohm, and by Ohm's law I = V/Rs = 6/24 = 0.25 A.",
+      "difficulty": 2,
+      "sourceChunkIds": [
+        "850a1b94-f49b-4701-aec0-448eee8487dd"
+      ],
+      "citations": [
+        {
+          "chunkId": "850a1b94-f49b-4701-aec0-448eee8487dd",
+          "chapterNumber": 11,
+          "chapterTitle": "Electricity",
+          "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series",
+          "pageStart": 183,
+          "pageEnd": 185
+        }
+      ],
+      "type": "numeric",
+      "options": null,
+      "answerIndex": null,
+      "answer": "0.25 A",
+      "verifiedNumeric": true,
+      "work": {
+        "given": {
+          "V": "6 V",
+          "R1": "20 ohm",
+          "R2": "4 ohm"
+        },
+        "expression": "V / (R1 + R2)",
+        "unit": "A"
+      }
+    },
+    {
+      "stem": "Which of these is needed for autotrophic nutrition?",
+      "explanation": "Autotrophs take in carbon dioxide and water and convert them into carbohydrates using sunlight and chlorophyll.",
+      "difficulty": 2,
+      "sourceChunkIds": [
+        "c23faa8a-34d7-4e29-a227-de4528fd28b3",
+        "2f3fae42-b7f0-4245-bf59-805eefe5f414"
+      ],
+      "citations": [
+        {
+          "chunkId": "c23faa8a-34d7-4e29-a227-de4528fd28b3",
+          "chapterNumber": 5,
+          "chapterTitle": "Life Processes",
+          "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition",
+          "pageStart": 81,
+          "pageEnd": 82
+        },
+        {
+          "chunkId": "2f3fae42-b7f0-4245-bf59-805eefe5f414",
+          "chapterNumber": 5,
+          "chapterTitle": "Life Processes",
+          "section": "Exercises",
+          "pageStart": 99,
+          "pageEnd": 99
+        }
+      ],
+      "type": "mcq",
+      "options": [
+        "Only carbon dioxide",
+        "Carbon dioxide and water",
+        "Only chlorophyll",
+        "Only sunlight"
+      ],
+      "answerIndex": 1,
+      "answer": "Carbon dioxide and water",
+      "verifiedNumeric": false,
+      "work": null
+    },
+    {
+      "stem": "In the starch test, why is the variegated leaf dipped in alcohol after boiling it in water?",
+      "explanation": "The leaf is immersed in alcohol so that the green colour (chlorophyll) is removed, which helps to see the starch test result clearly.",
+      "difficulty": 2,
+      "sourceChunkIds": [
+        "c23faa8a-34d7-4e29-a227-de4528fd28b3"
+      ],
+      "citations": [
+        {
+          "chunkId": "c23faa8a-34d7-4e29-a227-de4528fd28b3",
+          "chapterNumber": 5,
+          "chapterTitle": "Life Processes",
+          "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition",
+          "pageStart": 81,
+          "pageEnd": 82
+        }
+      ],
+      "type": "mcq",
+      "options": [
+        "To absorb carbon dioxide",
+        "To remove the green colour of the leaf",
+        "To add starch to the leaf",
+        "To open the stomatal pores"
+      ],
+      "answerIndex": 1,
+      "answer": "To remove the green colour of the leaf",
+      "verifiedNumeric": false,
+      "work": null
+    },
+    {
+      "stem": "The opening and closing of the stomatal pore is controlled by the guard cells. When does the pore open?",
+      "explanation": "The guard cells swell when water flows into them, and this makes the stomatal pore open.",
+      "difficulty": 2,
+      "sourceChunkIds": [
+        "c15b8d02-ab00-43fc-86ef-50b2b9c37d02"
+      ],
+      "citations": [
+        {
+          "chunkId": "c15b8d02-ab00-43fc-86ef-50b2b9c37d02",
+          "chapterNumber": 5,
+          "chapterTitle": "Life Processes",
+          "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition",
+          "pageStart": 83,
+          "pageEnd": 84
+        }
+      ],
+      "type": "mcq",
+      "options": [
+        "When the leaf is kept in a dark room",
+        "When the guard cells shrink",
+        "When the guard cells swell with water",
+        "When potassium hydroxide absorbs carbon dioxide"
+      ],
+      "answerIndex": 2,
+      "answer": "When the guard cells swell with water",
+      "verifiedNumeric": false,
+      "work": null
+    }
+  ],
+  "genuineRejected": [
+    {
+      "stem": "Which of these is needed for autotrophic nutrition?",
+      "reason": "validator picked option D, key is B"
+    }
+  ],
+  "corrupted": {
+    "wrong": 4,
+    "off": 2,
+    "accepted": [],
+    "rejected": [
+      {
+        "stem": "In a series combination of resistors, what can you say about the current?",
+        "reason": "validator picked option B, key is C"
+      },
+      {
+        "stem": "Three resistors are joined in parallel and the potential difference across the combination is V. What is the potential difference across each resistor?",
+        "reason": "validator picked option A, key is B"
+      },
+      {
+        "stem": "An electric lamp of resistance 20 ohm and a conductor of resistance 4 ohm are connected in series to a 6 V battery. Find the total resistance of the circuit.",
+        "reason": "validator got 24 Ω, key is 48 Ω"
+      },
+      {
+        "stem": "An electric lamp of resistance 20 ohm and a conductor of resistance 4 ohm are connected in series to a 6 V battery. Find the current through the circuit.",
+        "reason": "validator got 0.25 A, key is 0.5 A"
+      },
+      {
+        "stem": "In a series combination of resistors, what can you say about the current?",
+        "reason": "no supporting quote from the cited passages"
+      },
+      {
+        "stem": "Three resistors are joined in parallel and the potential difference across the combination is V. What is the potential difference across each resistor?",
+        "reason": "no supporting quote from the cited passages"
+      }
+    ]
+  },
+  "usage": {
+    "a": {
+      "model": "sarvam-105b",
+      "inputTokens": 3114,
+      "outputTokens": 466,
+      "reasoningTokens": 0,
+      "costInr": 0.07467,
+      "latencyMs": 5581
+    },
+    "b": {
+      "model": "sarvam-105b",
+      "inputTokens": 2348,
+      "outputTokens": 372,
+      "reasoningTokens": 0,
+      "costInr": 0.05754,
+      "latencyMs": 4743
+    }
+  }
+}
