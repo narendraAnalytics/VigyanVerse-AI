@@ -18,13 +18,17 @@ const FUNCTION_SLUG = 'tutor-chat';
 /** Edge Functions stop at 30 s: the AI part gets 26 s, the rest is auth and saving. */
 const TURN_BUDGET_MS = 26_000;
 /**
- * Limits count append-only "turn" rows in model_usage, written BEFORE any AI work (fail
- * closed; security review 2026-11-14). ~Rs 0.04 per turn -> about Rs 4 per student per day at
- * the daily limit. Owner to confirm the numbers.
+ * Limits (security reviews 2026-11-14): reserve_turn() checks them and writes an append-only
+ * "turn" row in ONE locked step, BEFORE any AI work (fail closed, no race between parallel
+ * requests). ~Rs 0.04 per turn -> about Rs 4 per student per day at the turn limit; the rupee
+ * cap stops unusually expensive turns. Owner to confirm the numbers.
  */
 const MAX_TURNS_PER_DAY = 100;
 const MAX_TURNS_PER_MINUTE = 6;
+const MAX_COST_INR_PER_DAY = 10;
 const HISTORY_MESSAGES = 8;
+/** Each earlier message is cut to this before it reaches a model (agents cut further). */
+const HISTORY_CHARS = 600;
 
 const Body = z.object({
   message: z.string().trim().min(1).max(1500),
@@ -57,12 +61,14 @@ export default async function (req: Request): Promise<Response> {
   if (consent.error) return json({ error: 'consent_check_failed' }, 500);
   if (consent.data !== true) return json({ error: 'consent_required' }, 403);
 
-  // 2. Rate limit and daily budget.
-  const usage = await db.rpc('ai_usage_status', {});
-  if (usage.error) return json({ error: 'usage_check_failed' }, 500);
-  const status = (Array.isArray(usage.data) ? usage.data[0] : usage.data) as { turns_last_minute: number; turns_today: number } | undefined;
-  if ((status?.turns_last_minute ?? 0) >= MAX_TURNS_PER_MINUTE) return json({ error: 'slow_down' }, 429);
-  if ((status?.turns_today ?? 0) >= MAX_TURNS_PER_DAY) return json({ error: 'daily_limit' }, 429);
+  // 2. Limits: check and count this turn in one locked step, before any AI work (fail closed).
+  const reserved = await db.rpc('reserve_turn', {
+    p_conversation: body.conversationId ?? null, p_max_per_minute: MAX_TURNS_PER_MINUTE,
+    p_max_per_day: MAX_TURNS_PER_DAY, p_max_cost_inr: MAX_COST_INR_PER_DAY,
+  });
+  if (reserved.error) return json({ error: 'usage_failed' }, 500);
+  if (reserved.data === 'slow_down' || reserved.data === 'daily_limit') return json({ error: reserved.data }, 429);
+  if (reserved.data !== 'ok') return json({ error: 'usage_failed' }, 500);
 
   // 3. The conversation (RLS: only the student's own) and its recent turns.
   let conversation: ConversationRow;
@@ -87,11 +93,7 @@ export default async function (req: Request): Promise<Response> {
   const recent = await db.from('messages').select('role, content').eq('conversation_id', conversation.id)
     .order('id', { ascending: false }).limit(HISTORY_MESSAGES);
   const history: Turn[] = ((recent.data as { role: Turn['role']; content: string }[] | null) ?? [])
-    .reverse().map((m) => ({ role: m.role, text: m.content }));
-
-  // Count the turn BEFORE any AI work: no turn row, no AI (fail closed).
-  const reserved = await db.from('model_usage').insert([{ function_slug: FUNCTION_SLUG, agent: 'turn', conversation_id: conversation.id }]);
-  if (reserved.error) return json({ error: 'usage_failed' }, 500);
+    .reverse().map((m) => ({ role: m.role, text: m.content.slice(0, HISTORY_CHARS) }));
 
   // 4. The turn (LangGraph): router -> fixed reply | retrieval -> tutor | socratic | math.
   let turn: Awaited<ReturnType<typeof runTurn>>;
