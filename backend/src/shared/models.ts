@@ -58,7 +58,9 @@ export const MODEL_ROUTES: Record<ModelTask, ModelRoute> = {
   // ~120 tokens and the slowest normal call was ~1.6 s, but 4/43 calls hung in run 7 and the
   // 9 s wait + GLM put p95 at 10.3 s.
   socratic: { model: 'sarvam-105b', api: 'v2', maxTokens: 600, temperature: 0.2, json: true, reasoningEffort: 'none', fallback: 'glm5.3-flash', timeoutMs: 6_000 },
-  quiz: { model: 'deepseekv4.1-flash-1017', api: 'v2', maxTokens: 2500, temperature: 0.5, json: true, fallback: 'sarvam-105b' },
+  // Phase 4a (agents/quiz.ts): max_tokens set per call (300 + 280 per question, <= 5). No
+  // fallback: a second generation cannot fit the 30 s limit; the function asks to try again.
+  quiz: { model: 'deepseekv4.1-flash-1017', api: 'v2', maxTokens: 1800, temperature: 0.5, json: true, reasoningEffort: 'none' },
   // Correctness matters more than speed here, but reasoning at ~75 tokens/s cannot fit
   // the 30 s limit with a useful budget. Benchmark 'low' + 2000 tokens in Phase 4.
   validator: { model: 'sarvam-105b', api: 'v2', maxTokens: 800, temperature: 0, json: true, reasoningEffort: 'none' },
