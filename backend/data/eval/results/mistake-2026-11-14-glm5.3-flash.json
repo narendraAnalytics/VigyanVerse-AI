@@ -1,0 +1,139 @@
+{
+  "agent": "mistake",
+  "model": "glm5.3-flash",
+  "reasoning": null,
+  "ranAt": "2026-11-14T07:08:21.747Z",
+  "metrics": {
+    "valid": true,
+    "typeAllowed": 1,
+    "feedbackOk": 1,
+    "language": 1,
+    "neverSaysRight": 1,
+    "typeAccepted": 0.75,
+    "gradesUnchanged": 1,
+    "p95Ms": 4384,
+    "costInr": 0.0763515
+  },
+  "bar": {
+    "valid": true,
+    "typeAllowed": true,
+    "feedbackOk": true,
+    "language": true,
+    "neverSaysRight": true,
+    "typeAccepted": true,
+    "gradesUnchanged": true,
+    "p95Ms": true
+  },
+  "rows": [
+    {
+      "id": "e1",
+      "lang": "en",
+      "accept": [
+        "conceptual",
+        "terminology"
+      ],
+      "errorType": "conceptual",
+      "feedback": "You thought a longer wire has less resistance, but it is the opposite. Resistance is directly proportional to length, so doubling the length doubles the resistance.",
+      "isCorrect": false
+    },
+    {
+      "id": "e2",
+      "lang": "en",
+      "accept": [
+        "formula_selection"
+      ],
+      "errorType": "calculation",
+      "feedback": "You multiplied 60 and 220 instead of dividing them. Since I = P / V, the current is 60 / 220 = 0.27 A.",
+      "isCorrect": false
+    },
+    {
+      "id": "e3",
+      "lang": "en",
+      "accept": [
+        "calculation"
+      ],
+      "errorType": "calculation",
+      "feedback": "Your method of using I = V / R is correct, but the division went wrong. 12 / 4 = 3, so the current is 3 A.",
+      "isCorrect": false
+    },
+    {
+      "id": "e4",
+      "lang": "en",
+      "accept": [
+        "conceptual",
+        "terminology"
+      ],
+      "errorType": "terminology",
+      "feedback": "You mixed up respiration with photosynthesis. Making food using sunlight is photosynthesis, while respiration is a different process.",
+      "isCorrect": false
+    },
+    {
+      "id": "e5",
+      "lang": "en",
+      "accept": [
+        "interpretation"
+      ],
+      "errorType": "conceptual",
+      "feedback": "Copper is actually a very good conductor of electricity. Rubber does not conduct electricity, so it is the one that is NOT a good conductor.",
+      "isCorrect": false
+    },
+    {
+      "id": "t1",
+      "lang": "te",
+      "accept": [
+        "conceptual",
+        "terminology"
+      ],
+      "errorType": "conceptual",
+      "feedback": "మొక్కలు కిరణజన్య సంయోగక్రియ (photosynthesis) లో ఆక్సిజన్ తీసుకుంటాయని మీరు అనుకున్నారు, కాదు. మొక్కలు కార్బన్ డయాక్సైడ్ మరియు నీటిని ఉపయోగించి ఆహారాన్ని తయారు చేస్తాయి.",
+      "isCorrect": false
+    },
+    {
+      "id": "t2",
+      "lang": "te",
+      "accept": [
+        "formula_selection"
+      ],
+      "errorType": "formula_selection",
+      "feedback": "మీరు 6 × 2 = 12 లెక్కించారు, కానీ ఓమ్ నియమం (Ohm's law) ప్రకారం భాగహారం చేయాలి. I = V / R = 6 / 2 = 3 A.",
+      "isCorrect": false
+    },
+    {
+      "id": "t3",
+      "lang": "te",
+      "accept": [
+        "interpretation",
+        "conceptual"
+      ],
+      "errorType": "conceptual",
+      "feedback": "నిమ్మరసం ఆమ్లం (acid) అని మరచిపోయారు. సబ్బు నీరు క్షార స్వభావం (basic) కలిగి ఉంటుంది, కాబట్టి దానికి ఆమ్ల స్వభావం లేదు.",
+      "isCorrect": false
+    }
+  ],
+  "usage": [
+    [
+      {
+        "agent": "mistake",
+        "model": "glm5.3-flash",
+        "inputTokens": 660,
+        "outputTokens": 355,
+        "reasoningTokens": 102,
+        "costInr": 0.024885,
+        "latencyMs": 2707,
+        "usedFallback": false
+      }
+    ],
+    [
+      {
+        "agent": "mistake",
+        "model": "glm5.3-flash",
+        "inputTokens": 1319,
+        "outputTokens": 748,
+        "reasoningTokens": 107,
+        "costInr": 0.0514665,
+        "latencyMs": 4382,
+        "usedFallback": false
+      }
+    ]
+  ]
+}
