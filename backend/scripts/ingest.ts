@@ -1,6 +1,7 @@
 // Ingest textbook chapter PDFs into document_chunks (keyword search; no embeddings yet).
 //
 //   npm run ingest -- --dry-run              parse + chunk only, print a report, write nothing
+//   npm run ingest -- --dry-run --show-formulas [--chapter 9]   also print each rebuilt formula
 //   npm run ingest -- [--chapter 5]          upload PDF to the private 'curriculum' bucket,
 //                                            upsert curriculum_sources, replace its chunks
 //
@@ -13,22 +14,32 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { extractText, getDocumentProxy } from 'unpdf';
 import { createAdminClient } from '@insforge/sdk';
+import { rebuildFormulaLines, type TextItem } from '../src/ingest/layout.ts';
 import { chunkTextbook, relocateFooterHeadings, type Chunk, type PageLine } from '../src/ingest/textbook.ts';
 
 type PdfDoc = Awaited<ReturnType<typeof getDocumentProxy>>;
 
-/** Page text exactly as unpdf's extractText builds it, split into lines with the y of each line's first glyph. */
-async function extractLines(pdf: PdfDoc): Promise<PageLine[][]> {
-  const pages: PageLine[][] = [];
+type ExtractedLine = PageLine & { items: TextItem[] };
+
+/**
+ * Page text exactly as unpdf's extractText builds it, split into lines with the y of each
+ * line's first glyph and every item's position and size (for rebuildFormulaLines).
+ */
+async function extractLines(pdf: PdfDoc): Promise<ExtractedLine[][]> {
+  const pages: ExtractedLine[][] = [];
   for (let n = 1; n <= pdf.numPages; n++) {
     const { items } = await (await pdf.getPage(n)).getTextContent();
-    const lines: PageLine[] = [{ text: '', y: null }];
-    for (const item of items as { str?: string; hasEOL?: boolean; transform?: number[] }[]) {
+    const lines: ExtractedLine[] = [{ text: '', y: null, items: [] }];
+    for (const item of items as { str?: string; hasEOL?: boolean; transform?: number[]; width?: number }[]) {
       if (item.str == null) continue;
       const line = lines[lines.length - 1];
       if (line.y === null && item.str.trim() && item.transform) line.y = item.transform[5];
       line.text += item.str;
-      if (item.hasEOL) lines.push({ text: '', y: null });
+      if (item.transform) {
+        const [, b, , d, x, y] = item.transform;
+        line.items.push({ str: item.str, x, y, w: item.width ?? 0, size: Math.hypot(b, d) });
+      }
+      if (item.hasEOL) lines.push({ text: '', y: null, items: [] });
     }
     pages.push(lines);
   }
@@ -44,6 +55,7 @@ interface Manifest {
 
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
+const showFormulas = args.includes('--show-formulas');
 const onlyChapter = args.includes('--chapter') ? Number(args[args.indexOf('--chapter') + 1]) : null;
 const manifestPath = new URL('../data/ncert-cbse-10-science-2026-27.json', import.meta.url);
 const textbooksDir = new URL('../../textbooks/', import.meta.url);
@@ -93,7 +105,17 @@ for (const ch of manifest.chapters) {
   pageLines.forEach((lines, i) => { // same text as unpdf, plus positions
     if (lines.map((l) => l.text).join('\n') !== plainPages[i]) throw new Error(`${ch.file} p${i + 1}: positional text differs from extractText`);
   });
-  const pages = relocateFooterHeadings(pageLines, ch.number, warn);
+  // Stacked fractions and subscripts come out of the text layer in paint order: rebuild them
+  // from glyph positions (src/ingest/layout.ts) before headings and chunking.
+  let formulas = 0;
+  const rebuiltPages = pageLines.map((lines, i) => {
+    const { lines: out, rebuilt } = rebuildFormulaLines(lines);
+    formulas += rebuilt.length;
+    if (showFormulas) for (const r of rebuilt) console.log(`  p${i + 1}: ${r.before.slice(0, 150)}\n     -> ${r.after.slice(0, 150)}`);
+    return out;
+  });
+  console.log(`  ${formulas} formula lines rebuilt from glyph positions`);
+  const pages = relocateFooterHeadings(rebuiltPages, ch.number, warn);
   const chunks = chunkTextbook(pages, ch.number, { onWarning: warn });
   report(ch.file, chunks);
   if (dryRun || !admin) continue;
