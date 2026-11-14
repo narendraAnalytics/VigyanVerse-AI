@@ -44,7 +44,8 @@ export const MODEL_ROUTES: Record<ModelTask, ModelRoute> = {
   // deepseek (reasoning off) p50 547 ms ₹0.0110/call; glm5.3-flash p50 926 ms ₹0.0113 (24
   // hidden reasoning tokens, cannot be turned off); gemma4 p50 271 ms but ₹0.0246;
   // sarvam-105b failed (empty Telugu keywords, invalid JSON). See backendplan.txt 3b.
-  router: { model: 'deepseekv4.1-flash-1017', api: 'v2', maxTokens: 300, temperature: 0, json: true, reasoningEffort: 'none', fallback: 'glm5.3-flash' },
+  // 5 s primary timeout (p50 0.55 s) so a hung router call leaves the turn time for the answer.
+  router: { model: 'deepseekv4.1-flash-1017', api: 'v2', maxTokens: 300, temperature: 0, json: true, reasoningEffort: 'none', fallback: 'glm5.3-flash', timeoutMs: 5_000 },
   // Question (EN/TE) -> English textbook keywords for full-text retrieval. No model
   // fallback: on failure retrieval falls back to the question's own words (retrieval.ts).
   query_rewrite: { model: 'glm5.3-flash', api: 'v2', maxTokens: 200, temperature: 0, json: true },

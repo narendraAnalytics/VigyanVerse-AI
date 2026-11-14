@@ -15,12 +15,13 @@ import { evalMath } from './evals/math.ts';
 import { evalRetrieval } from './evals/retrieval.ts';
 import { evalRouter } from './evals/router.ts';
 import { evalSocratic } from './evals/socratic.ts';
+import { evalTurn } from './evals/turn.ts';
 import { evalTutor } from './evals/tutor.ts';
 
 const argv = process.argv.slice(2);
 const option = (name: string) => (argv.includes(name) ? argv[argv.indexOf(name) + 1] : undefined);
 const agent = argv[0];
-const EVALS = { router: evalRouter, retrieval: evalRetrieval, tutor: evalTutor, socratic: evalSocratic, math: evalMath } as const;
+const EVALS = { router: evalRouter, retrieval: evalRetrieval, tutor: evalTutor, socratic: evalSocratic, math: evalMath, turn: evalTurn } as const;
 
 if (!agent || !(agent in EVALS)) {
   console.error(`Usage: npm run eval:agent -- <${Object.keys(EVALS).join('|')}> [--model m] [--reasoning none|low] [--only ids] [--save]`);

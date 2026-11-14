@@ -45,6 +45,8 @@ export interface ChatOverrides {
   model?: string;
   /** Evals only: reasoning effort for the overridden model ('none' for sarvam-105b/deepseek). */
   reasoningEffort?: 'none' | 'low' | 'medium' | 'high' | null;
+  /** Time left for the whole student turn (ms): this call and its fallback must fit in it. */
+  budgetMs?: number;
 }
 
 export async function chat(
@@ -58,13 +60,15 @@ export async function chat(
     : baseRoute;
   const candidates = route.fallback ? [route.model, route.fallback] : [route.model];
   const started = Date.now();
+  const total = Math.min(REQUEST_TIMEOUT_MS, overrides.budgetMs ?? REQUEST_TIMEOUT_MS);
+  if (total < 1_000) throw new Error('No time left for a model call in this turn');
   let lastError: unknown;
 
   for (const [i, model] of candidates.entries()) {
     try {
       // The primary model gets the route's own timeout (if any) so a hung call still leaves
       // time for the fallback model; the fallback gets whatever is left of the total budget.
-      const remaining = REQUEST_TIMEOUT_MS - (Date.now() - started);
+      const remaining = total - (Date.now() - started);
       const timeout = i === 0 && route.fallback && route.timeoutMs ? Math.min(route.timeoutMs, remaining) : remaining;
       const response = await sarvamClient(route.api).chat.completions.create({
         model,
@@ -96,7 +100,7 @@ export async function chat(
     } catch (error) {
       lastError = error;
       // Not enough time left for a second full call inside the 30s function limit.
-      if (Date.now() - started > REQUEST_TIMEOUT_MS - MIN_FALLBACK_MS) break;
+      if (Date.now() - started > total - MIN_FALLBACK_MS) break;
     }
   }
   throw lastError;
