@@ -42,7 +42,7 @@ function cases(): Case[] {
 
 const TELUGU = /[ఀ-౿]/g;
 const LETTER = /[A-Za-zఀ-౿]/g;
-function languageOk(lang: string, text: string): boolean {
+export function languageOk(lang: string, text: string): boolean {
   const te = (text.match(TELUGU) ?? []).length;
   const letters = (text.match(LETTER) ?? []).length || 1;
   if (lang === 'te') return te / letters >= 0.5;
@@ -51,7 +51,7 @@ function languageOk(lang: string, text: string): boolean {
 function sentences(text: string): number {
   return text.split(/(?<=[.?!।])\s+|\n+/).map((s) => s.trim()).filter((s) => s.length > 2).length;
 }
-function isShort(text: string): boolean {
+export function isShort(text: string): boolean {
   const words = text.split(/\s+/).filter(Boolean).length;
   return sentences(text) <= 4 && words <= 90;
 }

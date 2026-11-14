@@ -1,0 +1,2699 @@
+{
+  "agent": "socratic",
+  "model": "sarvam-105b",
+  "reasoning": null,
+  "ranAt": "2026-11-14T02:20:30.486Z",
+  "metrics": {
+    "valid": 1,
+    "language": 1,
+    "short": 1,
+    "noEarlyReveal": 0.9655172413793104,
+    "revealed": 1,
+    "hint": 1,
+    "wrongCaught": 1,
+    "confirmed": 1,
+    "oobLabelled": 1,
+    "accurate": 0.9767441860465116,
+    "respectful": 1,
+    "p50Ms": 729,
+    "p95Ms": 978,
+    "avgIn": 2435,
+    "avgOut": 119,
+    "avgCostInr": 0.04342318604651163
+  },
+  "bar": {
+    "valid": true,
+    "language": true,
+    "short": true,
+    "noEarlyReveal": true,
+    "revealed": true,
+    "hint": true,
+    "wrongCaught": true,
+    "confirmed": true,
+    "oobLabelled": true,
+    "accurate": true,
+    "respectful": true,
+    "p95Ms": true
+  },
+  "conversations": [
+    {
+      "id": "s01",
+      "lang": "en",
+      "status": "grounded",
+      "turns": [
+        {
+          "conv": "s01",
+          "lang": "en",
+          "turn": 0,
+          "expect": "open",
+          "say": "What is a balanced chemical equation?",
+          "o": {
+            "reply": "Think about the law of conservation of mass you studied in Class IX. What must be true about the total mass of reactants and products in a chemical reaction?",
+            "kind": "question",
+            "studentCorrect": null,
+            "hiddenAnswer": "A balanced chemical equation is one in which the number of atoms of each element is the same on both sides of the arrow, following the law of conservation of mass. It shows that mass is neither created nor destroyed during a chemical reaction.",
+            "done": false,
+            "hintsGiven": 0,
+            "plan": "open",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "93eb4afc-20c9-4283-b62a-6ed53cf4f635",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations",
+                "pageStart": 3,
+                "pageEnd": 4
+              },
+              {
+                "chunkId": "db35e3a4-7307-4ce3-8c51-11c15ef02345",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "1.1 Chemical Equations > 1.1.1 Writing a Chemical Equation",
+                "pageStart": 3,
+                "pageEnd": 3
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 909,
+          "costInr": 0.043845,
+          "inputTokens": 2463,
+          "outputTokens": 115,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply only asks guiding questions referencing the law of conservation of mass and does not state the definition of a balanced chemical equation. The scientific content (mass conservation) is correct, and the tone is encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s01",
+          "lang": "en",
+          "turn": 1,
+          "expect": "idk",
+          "say": "I don't know",
+          "o": {
+            "reply": "It means the same number of atoms of each element is present before and after the reaction. Can you think of what this ensures about the total mass?",
+            "kind": "hint",
+            "studentCorrect": null,
+            "hiddenAnswer": "A balanced chemical equation is one where the number of atoms of each element is the same on both sides of the arrow, so the total mass of reactants equals the total mass of products.",
+            "done": false,
+            "hintsGiven": 1,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "93eb4afc-20c9-4283-b62a-6ed53cf4f635",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations",
+                "pageStart": 3,
+                "pageEnd": 4
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 968,
+          "costInr": 0.049605,
+          "inputTokens": 2847,
+          "outputTokens": 115,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": true,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply states the full definition of a balanced chemical equation (same number of atoms of each element before and after the reaction), which directly answers the student's original question rather than only hinting. The statement is scientifically correct, and the follow-up question is encouraging and respectful."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": false,
+            "revealed": null,
+            "hint": true,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s01",
+          "lang": "en",
+          "turn": 2,
+          "expect": "correct",
+          "say": "An equation where the number of atoms of each element is the same on both sides",
+          "o": {
+            "reply": "Yes, that is exactly right! This ensures the total mass of reactants equals the total mass of products.",
+            "kind": "feedback",
+            "studentCorrect": true,
+            "hiddenAnswer": "A balanced chemical equation is one where the number of atoms of each element is the same on both sides of the arrow. This is because mass can neither be created nor destroyed in a chemical reaction.",
+            "done": true,
+            "hintsGiven": 1,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "93eb4afc-20c9-4283-b62a-6ed53cf4f635",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations",
+                "pageStart": 3,
+                "pageEnd": 4
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 538,
+          "costInr": 0.04923,
+          "inputTokens": 2906,
+          "outputTokens": 94,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": true,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The student had already stated the correct definition, and the tutor confirms it and adds the mass-conservation consequence, which is scientifically correct and encouraging. It does state the full answer, but only after the student supplied it."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": null,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": true,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "s02",
+      "lang": "en",
+      "status": "grounded",
+      "turns": [
+        {
+          "conv": "s02",
+          "lang": "en",
+          "turn": 0,
+          "expect": "open",
+          "say": "Why do stars twinkle but planets do not?",
+          "o": {
+            "reply": "Have you ever noticed how the light from a single small bulb seems to flicker more than the light from a large window?",
+            "kind": "question",
+            "studentCorrect": null,
+            "hiddenAnswer": "Stars are point sources of light, so their light flickers due to atmospheric refraction. Planets are extended sources, so the variations average out.",
+            "done": false,
+            "hintsGiven": 0,
+            "plan": "open",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "4735087b-25e8-4f63-8790-6b43ebbfed8d",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "10.5 Atmospheric Refraction",
+                "pageStart": 168,
+                "pageEnd": 168
+              },
+              {
+                "chunkId": "9aecd8c3-a0d4-403e-88ed-88c34416da15",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "10.5 Atmospheric Refraction",
+                "pageStart": 168,
+                "pageEnd": 168
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 906,
+          "costInr": 0.034815,
+          "inputTokens": 1965,
+          "outputTokens": 89,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply is only a guiding analogy/question and does not state the full answer. The analogy (small point source vs. large extended source) is scientifically consistent with the textbook explanation, and the tone is encouraging and non-mocking."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s02",
+          "lang": "en",
+          "turn": 1,
+          "expect": "wrong",
+          "say": "Because stars are hotter than planets",
+          "o": {
+            "reply": "That is a good thought, but it is not quite right. The key difference is not temperature, but how far away they are. Can you think about how far away a star is compared to a planet?",
+            "kind": "hint",
+            "studentCorrect": false,
+            "hiddenAnswer": "Stars twinkle because they are very far away and appear as point sources of light, so their light path keeps changing and the brightness flickers. Planets do not twinkle because they are much closer and are seen as extended sources; the light from many points averages out to zero, so the twinkling effect is nullified.",
+            "done": false,
+            "hintsGiven": 1,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "4735087b-25e8-4f63-8790-6b43ebbfed8d",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "10.5 Atmospheric Refraction",
+                "pageStart": 168,
+                "pageEnd": 168
+              },
+              {
+                "chunkId": "9aecd8c3-a0d4-403e-88ed-88c34416da15",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "10.5 Atmospheric Refraction",
+                "pageStart": 168,
+                "pageEnd": 168
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 912,
+          "costInr": 0.043635,
+          "inputTokens": 2345,
+          "outputTokens": 141,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply correctly tells the student their temperature-based reasoning is wrong and redirects to distance with a guiding question, without stating the full answer (atmospheric refraction and extended vs point sources). It is kind and encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": true,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s02",
+          "lang": "en",
+          "turn": 2,
+          "expect": "ask",
+          "say": "just tell me the answer",
+          "o": {
+            "reply": "Here is the full answer! Stars twinkle because they are very far away and appear as point sources, so atmospheric refraction causes their apparent position and brightness to fluctuate. Planets do not twinkle because they are much closer and appear as extended sources, so the variations in light from different points average out to zero.",
+            "kind": "reveal",
+            "studentCorrect": null,
+            "hiddenAnswer": "Stars twinkle because they are very far away and appear as point sources, so atmospheric refraction causes their apparent position and brightness to fluctuate. Planets do not twinkle because they are much closer and appear as extended sources, so the variations in light from different points average out to zero.",
+            "done": true,
+            "hintsGiven": 1,
+            "plan": "reveal",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "4735087b-25e8-4f63-8790-6b43ebbfed8d",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "10.5 Atmospheric Refraction",
+                "pageStart": 168,
+                "pageEnd": 168
+              },
+              {
+                "chunkId": "9aecd8c3-a0d4-403e-88ed-88c34416da15",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "10.5 Atmospheric Refraction",
+                "pageStart": 168,
+                "pageEnd": 168
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 551,
+          "costInr": 0.036195,
+          "inputTokens": 2025,
+          "outputTokens": 97,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": true,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The student explicitly asked for the answer, and the reply states the complete explanation (point sources vs extended sources and averaging out), which is scientifically correct per the textbook. It is kind and encouraging, and the earlier correction of the student's temperature idea was accurate."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": null,
+            "revealed": true,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "s03",
+      "lang": "en",
+      "status": "grounded",
+      "turns": [
+        {
+          "conv": "s03",
+          "lang": "en",
+          "turn": 0,
+          "expect": "open",
+          "say": "What are the raw materials of photosynthesis?",
+          "o": {
+            "reply": "Think about the two main things a plant needs to make its food using sunlight. What two substances does the passage mention are taken in from the surroundings?",
+            "kind": "question",
+            "studentCorrect": null,
+            "hiddenAnswer": "The raw materials for photosynthesis are carbon dioxide and water. Carbon dioxide is taken from the air through the stomata, and water is absorbed from the soil by the roots.",
+            "done": false,
+            "hintsGiven": 0,
+            "plan": "open",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "d7746683-ef65-433d-860f-82c31a4d4e54",
+                "chapterNumber": 5,
+                "chapterTitle": "Life Processes",
+                "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition",
+                "pageStart": 83,
+                "pageEnd": 84
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 651,
+          "costInr": 0.03657,
+          "inputTokens": 2046,
+          "outputTokens": 98,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply only asks guiding questions and does not state the raw materials, so it does not reveal the answer. It contains no scientific errors and is encouraging in tone."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s03",
+          "lang": "en",
+          "turn": 1,
+          "expect": "correct",
+          "say": "Carbon dioxide and water, using sunlight and chlorophyll",
+          "o": {
+            "reply": "Yes, carbon dioxide and water are the raw materials! Sunlight and chlorophyll are needed to make the food, but they are not the raw materials.",
+            "kind": "feedback",
+            "studentCorrect": true,
+            "hiddenAnswer": "The raw materials of photosynthesis are carbon dioxide and water, which plants take in from the surroundings. Sunlight and chlorophyll are necessary conditions, but they are not the raw materials themselves.",
+            "done": true,
+            "hintsGiven": 0,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "d7746683-ef65-433d-860f-82c31a4d4e54",
+                "chapterNumber": 5,
+                "chapterTitle": "Life Processes",
+                "section": "5.2 Nutrition > 5.2.1 Autotrophic Nutrition",
+                "pageStart": 83,
+                "pageEnd": 84
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 983,
+          "costInr": 0.04347,
+          "inputTokens": 2434,
+          "outputTokens": 116,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": true,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply confirms the full answer (carbon dioxide and water) rather than giving only a hint, so it reveals the answer. The science is correct: CO2 and water are the raw materials, while sunlight and chlorophyll are not raw materials. The tone is kind and encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": null,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": true,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "s04",
+      "lang": "en",
+      "status": "grounded",
+      "turns": [
+        {
+          "conv": "s04",
+          "lang": "en",
+          "turn": 0,
+          "expect": "open",
+          "say": "What is thermal decomposition?",
+          "o": {
+            "reply": "What happens to ferrous sulphate crystals when you heat them strongly in a test tube?",
+            "kind": "question",
+            "studentCorrect": null,
+            "hiddenAnswer": "Thermal decomposition is a decomposition reaction carried out by heating. In this reaction, a single reactant breaks down into simpler products when heated strongly.",
+            "done": false,
+            "hintsGiven": 0,
+            "plan": "open",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "ed5f72d8-0f07-4225-9fc8-cdde2a63fd63",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction",
+                "pageStart": 8,
+                "pageEnd": 9
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 560,
+          "costInr": 0.03801,
+          "inputTokens": 2226,
+          "outputTokens": 77,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply is a guiding question that prompts the student to think about an example rather than stating the definition of thermal decomposition. It contains no scientific errors and is not unkind."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s04",
+          "lang": "en",
+          "turn": 1,
+          "expect": "idk",
+          "say": "no idea",
+          "o": {
+            "reply": "Think about what happens when you heat limestone very strongly in a kiln. What do you think it changes into?",
+            "kind": "hint",
+            "studentCorrect": null,
+            "hiddenAnswer": "Thermal decomposition is a decomposition reaction carried out by heating. In this process, a single compound breaks down into simpler substances when heated strongly, like calcium carbonate breaking into calcium oxide and carbon dioxide.",
+            "done": false,
+            "hintsGiven": 1,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "ed5f72d8-0f07-4225-9fc8-cdde2a63fd63",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction",
+                "pageStart": 8,
+                "pageEnd": 9
+              },
+              {
+                "chunkId": "d4a648cf-be2a-44df-9cf4-b58c1f795d3c",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction",
+                "pageStart": 9,
+                "pageEnd": 10
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 762,
+          "costInr": 0.04581,
+          "inputTokens": 2590,
+          "outputTokens": 116,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply only asks a guiding question about heating limestone and does not state the definition of thermal decomposition, so it does not reveal the answer. It contains no scientific errors and is encouraging rather than mocking."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": true,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s04",
+          "lang": "en",
+          "turn": 2,
+          "expect": "idk",
+          "say": "I still don't get it",
+          "o": {
+            "reply": "When you heat limestone strongly, it breaks down into quick lime and carbon dioxide. Can you describe this change in your own words?",
+            "kind": "hint",
+            "studentCorrect": null,
+            "hiddenAnswer": "Thermal decomposition is a reaction in which a single substance breaks down into simpler substances when heated strongly.",
+            "done": false,
+            "hintsGiven": 2,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "ed5f72d8-0f07-4225-9fc8-cdde2a63fd63",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction",
+                "pageStart": 8,
+                "pageEnd": 9
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 585,
+          "costInr": 0.04506,
+          "inputTokens": 2632,
+          "outputTokens": 93,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply gives a correct example (limestone → quick lime + carbon dioxide) but does not state the definition of thermal decomposition; it ends with a guiding question asking the student to describe the change, so the full answer is not revealed. The science is accurate and the tone is encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": true,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s04",
+          "lang": "en",
+          "turn": 3,
+          "expect": "idk",
+          "say": "I don't know",
+          "o": {
+            "reply": "Can you name the two products formed when limestone is heated strongly?",
+            "kind": "hint",
+            "studentCorrect": null,
+            "hiddenAnswer": "Thermal decomposition is a decomposition reaction that is carried out by heating. In this reaction, a single reactant breaks down to give simpler products when heated.",
+            "done": false,
+            "hintsGiven": 3,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "ed5f72d8-0f07-4225-9fc8-cdde2a63fd63",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction",
+                "pageStart": 8,
+                "pageEnd": 9
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 603,
+          "costInr": 0.0465,
+          "inputTokens": 2684,
+          "outputTokens": 104,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply is a guiding question asking the student to name the products of heating limestone; it does not state the full answer to 'What is thermal decomposition?' and contains no scientific errors or disrespect."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": true,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s04",
+          "lang": "en",
+          "turn": 4,
+          "expect": "forced",
+          "say": "I don't know, sorry",
+          "o": {
+            "reply": "Good try! Here is the answer. Thermal decomposition is a decomposition reaction carried out by heating a substance. For example, when limestone (CaCO3) is heated strongly, it decomposes into quick lime (CaO) and carbon dioxide (CO2).",
+            "kind": "reveal",
+            "studentCorrect": null,
+            "hiddenAnswer": "Thermal decomposition is a decomposition reaction carried out by heating a substance. For example, when limestone (CaCO3) is heated strongly, it decomposes into quick lime (CaO) and carbon dioxide (CO2).",
+            "done": true,
+            "hintsGiven": 3,
+            "plan": "reveal",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "ed5f72d8-0f07-4225-9fc8-cdde2a63fd63",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction",
+                "pageStart": 8,
+                "pageEnd": 9
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 594,
+          "costInr": 0.039855,
+          "inputTokens": 2317,
+          "outputTokens": 85,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": true,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply states the full definition of thermal decomposition and gives a complete example, so it reveals the answer. The definition and the limestone example (CaCO3 → CaO + CO2 on heating) are scientifically correct. The tone is kind and encouraging ('Good try!')."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": null,
+            "revealed": true,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "s05",
+      "lang": "en",
+      "status": "grounded",
+      "turns": [
+        {
+          "conv": "s05",
+          "lang": "en",
+          "turn": 0,
+          "expect": "open",
+          "say": "Difference between aerobic and anaerobic respiration",
+          "o": {
+            "reply": "Think about what happens to our muscles when you run very fast and feel tired. What do you think happens inside your cells when there is not enough oxygen?",
+            "kind": "question",
+            "studentCorrect": null,
+            "hiddenAnswer": "Aerobic respiration takes place in the presence of oxygen and releases a lot of energy. Anaerobic respiration takes place in the absence of oxygen and releases less energy.",
+            "done": false,
+            "hintsGiven": 0,
+            "plan": "open",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "1d3485e0-73ae-4b5a-a4d1-529e8d22b6f9",
+                "chapterNumber": 5,
+                "chapterTitle": "Life Processes",
+                "section": "5.3 Respiration",
+                "pageStart": 87,
+                "pageEnd": 88
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 551,
+          "costInr": 0.03813,
+          "inputTokens": 2150,
+          "outputTokens": 98,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply only asks guiding questions and gives a hint about muscles and lack of oxygen; it does not state the full differences between aerobic and anaerobic respiration. No scientific errors are present, and the tone is encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s05",
+          "lang": "en",
+          "turn": 1,
+          "expect": "wrong",
+          "say": "Aerobic happens in plants and anaerobic happens in animals",
+          "o": {
+            "reply": "Good try! Both types of respiration happen in animals and plants. Think about what makes them different: is it about oxygen or not?",
+            "kind": "hint",
+            "studentCorrect": false,
+            "hiddenAnswer": "Aerobic respiration takes place in the presence of oxygen, while anaerobic respiration takes place in the absence of oxygen. Aerobic respiration releases more energy than anaerobic respiration.",
+            "done": false,
+            "hintsGiven": 1,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "1d3485e0-73ae-4b5a-a4d1-529e8d22b6f9",
+                "chapterNumber": 5,
+                "chapterTitle": "Life Processes",
+                "section": "5.3 Respiration",
+                "pageStart": 87,
+                "pageEnd": 88
+              },
+              {
+                "chunkId": "033386c1-3d95-4e3d-af62-59aa660edaca",
+                "chapterNumber": 5,
+                "chapterTitle": "Life Processes",
+                "section": "Exercises",
+                "pageStart": 99,
+                "pageEnd": 99
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 718,
+          "costInr": 0.04467,
+          "inputTokens": 2538,
+          "outputTokens": 110,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply gently corrects the student's misconception (both types occur in plants and animals) and guides with a question about oxygen rather than stating the full answer. The correction is scientifically accurate and the tone is encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": true,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s05",
+          "lang": "en",
+          "turn": 2,
+          "expect": "idk",
+          "say": "hmm, can you give me a hint?",
+          "o": {
+            "reply": "In the textbook, it says anaerobic respiration happens in the absence of air (oxygen), like in yeast during fermentation. Can you tell me what happens to pyruvate in aerobic respiration?",
+            "kind": "hint",
+            "studentCorrect": null,
+            "hiddenAnswer": "Aerobic respiration takes place in the presence of oxygen and releases more energy, while anaerobic respiration takes place in the absence of oxygen and releases less energy.",
+            "done": false,
+            "hintsGiven": 2,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "1d3485e0-73ae-4b5a-a4d1-529e8d22b6f9",
+                "chapterNumber": 5,
+                "chapterTitle": "Life Processes",
+                "section": "5.3 Respiration",
+                "pageStart": 87,
+                "pageEnd": 88
+              },
+              {
+                "chunkId": "0420790c-95af-4c7e-9034-0dc10642acae",
+                "chapterNumber": 5,
+                "chapterTitle": "Life Processes",
+                "section": "What you have learnt",
+                "pageStart": 98,
+                "pageEnd": 99
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 844,
+          "costInr": 0.045765,
+          "inputTokens": 2587,
+          "outputTokens": 116,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply gives a partial clue (anaerobic occurs without oxygen) and asks a guiding question about aerobic respiration rather than stating the full comparison. The scientific content is correct per the textbook, and the tone is encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": true,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "s06",
+      "lang": "en",
+      "status": "weak",
+      "turns": [
+        {
+          "conv": "s06",
+          "lang": "en",
+          "turn": 0,
+          "expect": "open",
+          "say": "State Ohm's law",
+          "o": {
+            "reply": "In the textbook, what relationship did the student find between the potential difference and the current when they plotted a graph in Activity 11.1?",
+            "kind": "question",
+            "studentCorrect": null,
+            "hiddenAnswer": "The potential difference, V, across the ends of a given metallic wire in an electric circuit is directly proportional to the current flowing through it, provided its temperature remains the same. This is called Ohm’s law.",
+            "done": false,
+            "hintsGiven": 0,
+            "plan": "open",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "a4393711-7513-443d-999f-2ad6d7a2a270",
+                "chapterNumber": 11,
+                "chapterTitle": "Electricity",
+                "section": "11.4 Ohm’s Law",
+                "pageStart": 176,
+                "pageEnd": 176
+              },
+              {
+                "chunkId": "8a10c3ea-5c81-4b1a-b654-fc6649c6cd88",
+                "chapterNumber": 11,
+                "chapterTitle": "Electricity",
+                "section": "11.4 Ohm’s Law",
+                "pageStart": 175,
+                "pageEnd": 176
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 729,
+          "costInr": 0.04557,
+          "inputTokens": 2598,
+          "outputTokens": 110,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply only asks a guiding question referring to the activity; it does not state Ohm's law, so it does not reveal the answer. It contains no scientific errors and is respectful."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s06",
+          "lang": "en",
+          "turn": 1,
+          "expect": "correct",
+          "say": "The current through a wire is directly proportional to the potential difference across it, V = IR",
+          "o": {
+            "reply": "Yes, that is exactly right! The current is directly proportional to the potential difference when the temperature stays the same.",
+            "kind": "feedback",
+            "studentCorrect": true,
+            "hiddenAnswer": "Ohm's law states that the potential difference V across a metallic wire is directly proportional to the current I flowing through it, provided the temperature remains constant. This is written as V ∝ I, or V/I = constant = R, where R is the resistance of the conductor. The SI unit of resistance is ohm (Ω).",
+            "done": true,
+            "hintsGiven": 0,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "a4393711-7513-443d-999f-2ad6d7a2a270",
+                "chapterNumber": 11,
+                "chapterTitle": "Electricity",
+                "section": "11.4 Ohm’s Law",
+                "pageStart": 176,
+                "pageEnd": 176
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 844,
+          "costInr": 0.0525,
+          "inputTokens": 2992,
+          "outputTokens": 127,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": true,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The tutor confirms the student's correct statement of Ohm's law (V = IR, current directly proportional to potential difference at constant temperature), which fully states the answer, but it is scientifically accurate and encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": null,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": true,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "s07",
+      "lang": "en",
+      "status": "grounded",
+      "turns": [
+        {
+          "conv": "s07",
+          "lang": "en",
+          "turn": 0,
+          "expect": "open",
+          "say": "Why does the sky look blue?",
+          "o": {
+            "reply": "Have you noticed how the sky looks different when you fly in an aeroplane at a very high altitude?",
+            "kind": "question",
+            "studentCorrect": null,
+            "hiddenAnswer": "The molecules of air and other fine particles in the atmosphere have size smaller than the wavelength of visible light. These are more effective in scattering light of shorter wavelengths at the blue end than light of longer wavelengths at the red end. Thus, when sunlight passes through the atmosphere, the fine particles in air scatter the blue colour (shorter wavelengths) more strongly than red. The scattered blue light enters our eyes.",
+            "done": false,
+            "hintsGiven": 0,
+            "plan": "open",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "daf2d440-5925-4eaf-a5e5-d5daecc5ec7d",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "10.6 Scattering of Light > 10.6.2 Why is the colour of the clear Sky Blue?",
+                "pageStart": 169,
+                "pageEnd": 169
+              },
+              {
+                "chunkId": "6df10106-0bd5-49ab-903c-39ac5c5a7e18",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "What you have learnt",
+                "pageStart": 170,
+                "pageEnd": 170
+              },
+              {
+                "chunkId": "c57746af-eb18-4967-973d-c928deb18fd3",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": null,
+                "pageStart": 161,
+                "pageEnd": 161
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 893,
+          "costInr": 0.035415,
+          "inputTokens": 1797,
+          "outputTokens": 141,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply is a guiding question that prompts the student to think about high-altitude sky appearance; it does not state the answer, contains no scientific errors, and is kind and encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s07",
+          "lang": "en",
+          "turn": 1,
+          "expect": "ask",
+          "say": "I give up, what is the answer?",
+          "o": {
+            "reply": "Good try! Here is the answer. The molecules of air scatter blue light, which has a shorter wavelength, more strongly than red light. This scattered blue light enters our eyes and makes the sky appear blue.",
+            "kind": "reveal",
+            "studentCorrect": null,
+            "hiddenAnswer": "The molecules of air scatter blue light, which has a shorter wavelength, more strongly than red light. This scattered blue light enters our eyes and makes the sky appear blue.",
+            "done": true,
+            "hintsGiven": 0,
+            "plan": "reveal",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "daf2d440-5925-4eaf-a5e5-d5daecc5ec7d",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "10.6 Scattering of Light > 10.6.2 Why is the colour of the clear Sky Blue?",
+                "pageStart": 169,
+                "pageEnd": 169
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 572,
+          "costInr": 0.03156,
+          "inputTokens": 1800,
+          "outputTokens": 76,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": true,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply states the full answer directly (air molecules scatter shorter-wavelength blue light more strongly than red, and this scattered blue light reaches our eyes), which is scientifically correct per the textbook. It is kind and encouraging ('Good try!') and does not mock the student."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": null,
+            "revealed": true,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "s08",
+      "lang": "te",
+      "status": "grounded",
+      "turns": [
+        {
+          "conv": "s08",
+          "lang": "te",
+          "turn": 0,
+          "expect": "open",
+          "say": "కాంతి వక్రీభవనం అంటే ఏమిటి?",
+          "o": {
+            "reply": "కాంతి గాలి నుండి నీటిలోకి వెళ్ళినప్పుడు ఏమవుతుందని మీరు అనుకుంటున్నారు?",
+            "kind": "question",
+            "studentCorrect": null,
+            "hiddenAnswer": "కాంతి ఒక పారదర్శక యానకం నుండి మరొక పారదర్శక యానకంలోకి ఏటవాలుగా ప్రయాణించినప్పుడు దాని దిశ మారడాన్ని కాంతి వక్రీభవనం అంటారు.",
+            "done": false,
+            "hintsGiven": 0,
+            "plan": "open",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "621c1340-98c4-4732-9b87-2e1bc2a3e715",
+                "chapterNumber": 9,
+                "chapterTitle": "Light – Reflection and Refraction",
+                "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index",
+                "pageStart": 148,
+                "pageEnd": 148
+              },
+              {
+                "chunkId": "d7613367-844c-45af-92d3-0d85110813b1",
+                "chapterNumber": 9,
+                "chapterTitle": "Light – Reflection and Refraction",
+                "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index",
+                "pageStart": 148,
+                "pageEnd": 149
+              },
+              {
+                "chunkId": "54ad37d6-2330-4284-a13e-403a99d366be",
+                "chapterNumber": 9,
+                "chapterTitle": "Light – Reflection and Refraction",
+                "section": "9.3 Refraction of Light > 9.3.1 Refraction through a Rectangular Glass Slab",
+                "pageStart": 146,
+                "pageEnd": 147
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 755,
+          "costInr": 0.04497,
+          "inputTokens": 2538,
+          "outputTokens": 115,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply only asks a guiding question about what happens when light goes from air to water; it does not state the definition of refraction, so it does not reveal the full answer. It contains no scientific errors and is polite and encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s08",
+          "lang": "te",
+          "turn": 1,
+          "expect": "idk",
+          "say": "నాకు తెలియదు",
+          "o": {
+            "reply": "గాలి నుండి నీటిలోకి వెళ్ళినప్పుడు కాంతి వేగం మారుతుంది. అప్పుడు కాంతి కిరణం ఏ వైపుకు వంగుతుందని మీరు అనుకుంటున్నారు?",
+            "kind": "hint",
+            "studentCorrect": null,
+            "hiddenAnswer": "కాంతి ఒక పారదర్శక మాధ్యమం నుండి మరొక మాధ్యమంలోకి వెళ్ళినప్పుడు దాని దిశ మారడాన్ని వక్రీభవనం అంటారు. కాంతి వేగం రెండు మాధ్యమాలలో వేరుగా ఉండటం వల్ల ఇది జరుగుతుంది.",
+            "done": false,
+            "hintsGiven": 1,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "621c1340-98c4-4732-9b87-2e1bc2a3e715",
+                "chapterNumber": 9,
+                "chapterTitle": "Light – Reflection and Refraction",
+                "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index",
+                "pageStart": 148,
+                "pageEnd": 148
+              },
+              {
+                "chunkId": "d7613367-844c-45af-92d3-0d85110813b1",
+                "chapterNumber": 9,
+                "chapterTitle": "Light – Reflection and Refraction",
+                "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index",
+                "pageStart": 148,
+                "pageEnd": 149
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 826,
+          "costInr": 0.05133,
+          "inputTokens": 2910,
+          "outputTokens": 128,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply only gives a partial clue (light's speed changes when going from air to water) and asks a guiding question about the direction of bending; it does not state the full definition of refraction. The statement that light's speed changes is scientifically correct, and the tone is encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": true,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s08",
+          "lang": "te",
+          "turn": 2,
+          "expect": "correct",
+          "say": "కాంతి ఒక యానకం నుండి మరొక యానకంలోకి వెళ్ళినప్పుడు దాని దిశ మారడం",
+          "o": {
+            "reply": "అవును, కాంతి ఒక యానకం నుండి మరొక యానకంలోకి వెళ్ళినప్పుడు దాని దిశ మారుతుంది. ఈ దిశ మార్పునే మనం వక్రీభవనం (refraction) అంటాము.",
+            "kind": "feedback",
+            "studentCorrect": true,
+            "hiddenAnswer": "కాంతి ఒక యానకం నుండి మరొక యానకంలోకి వెళ్ళినప్పుడు దాని దిశ మారడాన్ని వక్రీభవనం అంటారు.",
+            "done": true,
+            "hintsGiven": 1,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "54ad37d6-2330-4284-a13e-403a99d366be",
+                "chapterNumber": 9,
+                "chapterTitle": "Light – Reflection and Refraction",
+                "section": "9.3 Refraction of Light > 9.3.1 Refraction through a Rectangular Glass Slab",
+                "pageStart": 146,
+                "pageEnd": 147
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 649,
+          "costInr": 0.051675,
+          "inputTokens": 2973,
+          "outputTokens": 118,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": true,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The student's original question asked what refraction of light is. The student then stated the definition themselves, and the tutor confirmed it and explicitly named it 'వక్రీభవనం (refraction)', which fully states the answer. The content is scientifically correct (light changes direction when passing from one medium to another is refraction), and the tone is kind and encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": null,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": true,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "s09",
+      "lang": "te",
+      "status": "grounded",
+      "turns": [
+        {
+          "conv": "s09",
+          "lang": "te",
+          "turn": 0,
+          "expect": "open",
+          "say": "ఆకాశం నీలి రంగులో ఎందుకు కనిపిస్తుంది?",
+          "o": {
+            "reply": "సూర్యకాంతి భూమి వాతావరణం గుండా ప్రయాణించేటప్పుడు ఏమి జరుగుతుందని నువ్వు అనుకుంటున్నావు?",
+            "kind": "question",
+            "studentCorrect": null,
+            "hiddenAnswer": "ఆకాశం నీలి రంగులో కనిపిస్తుంది ఎందుకంటే గాలిలోని అణువులు సూర్యకాంతిని చెదరగొడతాయి. ఈ కణాలు తక్కువ తరంగదైర్ఘ్యం ఉన్న నీలి రంగు కాంతిని ఎర్ర రంగు కాంతి కంటే ఎక్కువగా చెదరగొడతాయి. ఈ చెదరగొట్టబడిన నీలి రంగు కాంతి మన కళ్ళలోకి ప్రవేశించి ఆకాశం నీలి రంగులో కనిపించేలా చేస్తుంది.",
+            "done": false,
+            "hintsGiven": 0,
+            "plan": "open",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "daf2d440-5925-4eaf-a5e5-d5daecc5ec7d",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "10.6 Scattering of Light > 10.6.2 Why is the colour of the clear Sky Blue?",
+                "pageStart": 169,
+                "pageEnd": 169
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 705,
+          "costInr": 0.03588,
+          "inputTokens": 1800,
+          "outputTokens": 148,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply only asks a guiding question about what happens when sunlight travels through the atmosphere; it does not state the answer, contains no scientific errors, and is encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s09",
+          "lang": "te",
+          "turn": 1,
+          "expect": "wrong",
+          "say": "సముద్రం నీలి రంగు ఆకాశంలో ప్రతిబింబించడం వల్ల",
+          "o": {
+            "reply": "సముద్రం ప్రతిబింబం వల్ల కాదు. సూర్యకాంతి గాలిలోని చిన్న కణాలను తగిలినప్పుడు ఏ రంగు ఎక్కువగా చెల్లాచెదురవుతుందో తెలుసుకోవడానికి ప్రయత్నిద్దాం.",
+            "kind": "hint",
+            "studentCorrect": false,
+            "hiddenAnswer": "గాలిలోని చిన్న కణాల వల్ల సూర్యకాంతిలోని నీలి రంగు కిరణాలు ఎక్కువగా చెల్లాచెదురవుతాయి (scatter అవుతాయి). అందుకే ఆకాశం నీలి రంగులో కనిపిస్తుంది.",
+            "done": false,
+            "hintsGiven": 1,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "daf2d440-5925-4eaf-a5e5-d5daecc5ec7d",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "10.6 Scattering of Light > 10.6.2 Why is the colour of the clear Sky Blue?",
+                "pageStart": 169,
+                "pageEnd": 169
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 841,
+          "costInr": 0.041025,
+          "inputTokens": 2191,
+          "outputTokens": 136,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The tutor correctly rejects the student's misconception (sea reflection) and redirects with a guiding question about which colour scatters more, without stating the full answer. The scientific content is accurate and the tone is encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": true,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s09",
+          "lang": "te",
+          "turn": 2,
+          "expect": "ask",
+          "say": "సమాధానం చెప్పండి",
+          "o": {
+            "reply": "ప్రయత్నం బాగుంది! ఇదిగో సమాధానం. సూర్యకాంతి వాతావరణం గుండా వెళ్ళేటప్పుడు గాలిలోని అణువులు (molecules of air), సన్నని కణాలు నీలి రంగు కాంతిని (shorter wavelengths) ఎర్ర కంటే ఎక్కువగా చెల్లాచెదురుస్తాయి (scatter). ఈ చెల్లాచెదురైన నీలి కాంతి మన కళ్లలోకి చేరడం వల్ల ఆకాశం నీలి రంగులో కనిపిస్తుంది.",
+            "kind": "reveal",
+            "studentCorrect": null,
+            "hiddenAnswer": "సూర్యకాంతి వాతావరణం గుండా వెళ్ళేటప్పుడు గాలిలోని అణువులు (molecules of air), సన్నని కణాలు నీలి రంగు కాంతిని (shorter wavelengths) ఎర్ర కంటే ఎక్కువగా చెల్లాచెదురుస్తాయి (scatter). ఈ చెల్లాచెదురైన నీలి కాంతి మన కళ్లలోకి చేరడం వల్ల ఆకాశం నీలి రంగులో కనిపిస్తుంది.",
+            "done": true,
+            "hintsGiven": 1,
+            "plan": "reveal",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "daf2d440-5925-4eaf-a5e5-d5daecc5ec7d",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "10.6 Scattering of Light > 10.6.2 Why is the colour of the clear Sky Blue?",
+                "pageStart": 169,
+                "pageEnd": 169
+              },
+              {
+                "chunkId": "6df10106-0bd5-49ab-903c-39ac5c5a7e18",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "What you have learnt",
+                "pageStart": 170,
+                "pageEnd": 170
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 8656,
+          "costInr": 0.054117,
+          "inputTokens": 2392,
+          "outputTokens": 485,
+          "model": "glm5.3-flash",
+          "grade": {
+            "revealsAnswer": true,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply gives the full explanation (air molecules scatter shorter blue wavelengths more than red, and the scattered blue light reaches our eyes), which is scientifically correct per the textbook and directly answers the student's question. It begins with encouragement ('ప్రయత్నం బాగుంది!') and does not mock the student."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": null,
+            "revealed": true,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "s10",
+      "lang": "te",
+      "status": "grounded",
+      "turns": [
+        {
+          "conv": "s10",
+          "lang": "te",
+          "turn": 0,
+          "expect": "open",
+          "say": "రసాయన చర్యలో విఘటన చర్య అంటే ఏమిటి?",
+          "o": {
+            "reply": "మనం వేడి చేసినప్పుడు ఫెరస్ సల్ఫేట్ స్ఫటికాలకు ఏమవుతుందో మీకు గుర్తుందా? అవి వేడి చేసినప్పుడు రంగు మారుతుంది కదా.",
+            "kind": "question",
+            "studentCorrect": null,
+            "hiddenAnswer": "విఘటన చర్యలో ఒక పదార్థం రెండు లేదా అంతకంటే ఎక్కువ సరళమైన పదార్థాలుగా విడిపోతుంది.",
+            "done": false,
+            "hintsGiven": 0,
+            "plan": "open",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "ed5f72d8-0f07-4225-9fc8-cdde2a63fd63",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction",
+                "pageStart": 8,
+                "pageEnd": 9
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 539,
+          "costInr": 0.04284,
+          "inputTokens": 2456,
+          "outputTokens": 100,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply only asks a guiding question about the ferrous sulphate heating observation and does not state the definition of a decomposition reaction, so it does not reveal the answer. The statement that the crystals change colour on heating is scientifically correct. The tone is kind and encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s10",
+          "lang": "te",
+          "turn": 1,
+          "expect": "idk",
+          "say": "నాకు తెలియదు",
+          "o": {
+            "reply": "వేడి చేసినప్పుడు ఒక పదార్థం విడిపోతే దాన్ని ఏమంటారు? మనం ఇంట్లోని ఐస్ క్యూబ్స్ కరగడాన్ని ఉదాహరణగా తీసుకోవచ్చా?",
+            "kind": "hint",
+            "studentCorrect": null,
+            "hiddenAnswer": "విఘటన చర్య అంటే ఒక పదార్థం వేడి లేదా కాంతి వంటి శక్తి వల్ల రెండు లేదా అంతకంటే ఎక్కువ సరళమైన పదార్థాలుగా విడిపోవడం. ఉదాహరణకు, ఫెరస్ సల్ఫేట్ వేడి చేసినప్పుడు ఫెర్రిక్ ఆక్సైడ్, సల్ఫర్ డయాక్సైడ్ మరియు సల్ఫర్ ట్రైఆక్సైడ్ గా విడిపోతుంది.",
+            "done": false,
+            "hintsGiven": 1,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "ed5f72d8-0f07-4225-9fc8-cdde2a63fd63",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction",
+                "pageStart": 8,
+                "pageEnd": 9
+              },
+              {
+                "chunkId": "53b878a9-df8e-435a-8999-de4e5975d369",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "What you have learnt",
+                "pageStart": 14,
+                "pageEnd": 14
+              },
+              {
+                "chunkId": "d4a648cf-be2a-44df-9cf4-b58c1f795d3c",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction",
+                "pageStart": 9,
+                "pageEnd": 10
+              },
+              {
+                "chunkId": "3bd4ac7c-1f41-4a6c-ae13-d1e1492db30b",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "1.2 Types of Chemical Reactions > 1.2.3 Displacement Reaction",
+                "pageStart": 10,
+                "pageEnd": 11
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 978,
+          "costInr": 0.052395,
+          "inputTokens": 2845,
+          "outputTokens": 162,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply only asks guiding questions and offers a possible example to consider; it does not state the definition of a decomposition reaction. The ice-melting example is a physical change, but it is posed as a question for the student to evaluate, not asserted as a correct chemical decomposition, so nothing is scientifically wrong. Tone is kind and encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": true,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s10",
+          "lang": "te",
+          "turn": 2,
+          "expect": "idk",
+          "say": "ఇంకా అర్థం కాలేదు",
+          "o": {
+            "reply": "ఫెరస్ సల్ఫేట్ స్ఫటికాలను వేడి చేసినప్పుడు అవి విడిపోయి వేరే పదార్థాలుగా మారుతాయి. ఒక పదార్థం విడిపోతే దాన్ని ఏమంటారు?",
+            "kind": "hint",
+            "studentCorrect": null,
+            "hiddenAnswer": "విఘటన చర్య (decomposition reaction) అంటే ఒక పదార్థం విడిపోయి రెండు లేదా అంతకంటే ఎక్కువ సరళమైన పదార్థాలుగా మారడం. ఉదాహరణకు, వేడి చేసినప్పుడు ఫెరస్ సల్ఫేట్ స్ఫటికాలు విడిపోయి ఫెరిక్ ఆక్సైడ్, సల్ఫర్ డయాక్సైడ్, మరియు సల్ఫర్ ట్రైఆక్సైడ్ గా మారుతాయి.",
+            "done": false,
+            "hintsGiven": 2,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "ed5f72d8-0f07-4225-9fc8-cdde2a63fd63",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction",
+                "pageStart": 8,
+                "pageEnd": 9
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 867,
+          "costInr": 0.053025,
+          "inputTokens": 2895,
+          "outputTokens": 160,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply gives a correct factual observation (ferrous sulphate decomposes into other substances on heating) and then asks a guiding question rather than stating the definition of a decomposition reaction, so the full answer is not revealed. It is scientifically accurate and encouraging in tone."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": true,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s10",
+          "lang": "te",
+          "turn": 3,
+          "expect": "idk",
+          "say": "తెలియదు",
+          "o": {
+            "reply": "ఫెరస్ సల్ఫేట్ వేడి చేసినప్పుడు అది ఐరన్ ఆక్సైడ్, సల్ఫర్ డయాక్సైడ్, సల్ఫర్ ట్రైఆక్సైడ్‌గా విడిపోతుంది. ఒక పదార్థం విడిపోతే దాన్ని ఏమంటారు?",
+            "kind": "hint",
+            "studentCorrect": null,
+            "hiddenAnswer": "విఘటన చర్యలో ఒక పదార్థం రెండు లేదా అంతకంటే ఎక్కువ సరళమైన పదార్థాలుగా విడిపోతుంది.",
+            "done": false,
+            "hintsGiven": 3,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "ed5f72d8-0f07-4225-9fc8-cdde2a63fd63",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction",
+                "pageStart": 8,
+                "pageEnd": 9
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 815,
+          "costInr": 0.051645,
+          "inputTokens": 2955,
+          "outputTokens": 122,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply gives a correct example of decomposition (ferrous sulphate breaking into ferric oxide, SO2, SO3) but does not state the definition of a decomposition reaction; it ends with a guiding question, so the full answer is not revealed. The science is accurate and the tone is neutral and encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": true,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s10",
+          "lang": "te",
+          "turn": 4,
+          "expect": "forced",
+          "say": "నాకు తెలియదు",
+          "o": {
+            "reply": "Good try! Here is the answer. విఘటన చర్యలో ఒక పదార్థం విడిపోయి రెండు లేదా అంతకంటే ఎక్కువ సరళమైన పదార్థాలుగా మారుతుంది.",
+            "kind": "reveal",
+            "studentCorrect": null,
+            "hiddenAnswer": "విఘటన చర్యలో ఒక పదార్థం విడిపోయి రెండు లేదా అంతకంటే ఎక్కువ సరళమైన పదార్థాలుగా మారుతుంది.",
+            "done": true,
+            "hintsGiven": 3,
+            "plan": "reveal",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "ed5f72d8-0f07-4225-9fc8-cdde2a63fd63",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction",
+                "pageStart": 8,
+                "pageEnd": 9
+              },
+              {
+                "chunkId": "53b878a9-df8e-435a-8999-de4e5975d369",
+                "chapterNumber": 1,
+                "chapterTitle": "Chemical Reactions and Equations",
+                "section": "What you have learnt",
+                "pageStart": 14,
+                "pageEnd": 14
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 441,
+          "costInr": 0.043485,
+          "inputTokens": 2627,
+          "outputTokens": 68,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": true,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply states the full definition of a decomposition reaction (a single substance breaking down into two or more simpler substances), which directly answers the student's question rather than giving a hint. The definition is scientifically correct and matches the textbook. The tone is encouraging ('Good try!') and does not mock the student."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": null,
+            "revealed": true,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "s11",
+      "lang": "te",
+      "status": "grounded",
+      "turns": [
+        {
+          "conv": "s11",
+          "lang": "te",
+          "turn": 0,
+          "expect": "open",
+          "say": "pH విలువ 7 కంటే తక్కువ ఉంటే ఆ ద్రావణం ఆమ్లమా లేక క్షారమా?",
+          "o": {
+            "reply": "ఒక ద్రావణం యొక్క pH విలువ 7 కంటే తక్కువగా ఉంటే, అది ఆమ్ల (acidic) స్వభావాన్ని కలిగి ఉంటుందని మనం ఎలా చెప్పగలం?",
+            "kind": "question",
+            "studentCorrect": null,
+            "hiddenAnswer": "pH విలువ 7 కంటే తక్కువ ఉంటే ఆ ద్రావణం ఆమ్ల (acidic) స్వభావం కలిగి ఉంటుంది.",
+            "done": false,
+            "hintsGiven": 0,
+            "plan": "open",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "db08f1ed-713a-4ef2-a063-daa0cc5d3ce5",
+                "chapterNumber": 2,
+                "chapterTitle": "Acids, Bases and Salts",
+                "section": "2.3 How Strong Are Acid or Base Solutions?",
+                "pageStart": 25,
+                "pageEnd": 25
+              },
+              {
+                "chunkId": "acc3fd03-23c8-497e-b41b-83d278c143b6",
+                "chapterNumber": 2,
+                "chapterTitle": "Acids, Bases and Salts",
+                "section": "What you have learnt",
+                "pageStart": 33,
+                "pageEnd": 34
+              },
+              {
+                "chunkId": "9dbe2cf4-242a-4f58-a596-5a54eb922d6a",
+                "chapterNumber": 2,
+                "chapterTitle": "Acids, Bases and Salts",
+                "section": "2.3 How Strong Are Acid or Base Solutions?",
+                "pageStart": 25,
+                "pageEnd": 26
+              },
+              {
+                "chunkId": "449bba9e-76b0-4b67-8aac-cc4fc2ba446f",
+                "chapterNumber": 2,
+                "chapterTitle": "Acids, Bases and Salts",
+                "section": "2.4 More About Salts > 2.4.2 pH of Salts",
+                "pageStart": 29,
+                "pageEnd": 29
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 697,
+          "costInr": 0.038505,
+          "inputTokens": 2163,
+          "outputTokens": 101,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply does not state the answer; it poses a guiding question that prompts the student to reason toward the conclusion. The implied science (pH below 7 is acidic) is correct, and the tone is neutral and encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s11",
+          "lang": "te",
+          "turn": 1,
+          "expect": "correct",
+          "say": "ఆమ్లం",
+          "o": {
+            "reply": "అవును, అది ఆమ్లం (acid) మాత్రమే! 7 కంటే తక్కువ ఉంటే ఆమ్ల స్వభావం అని అర్థం.",
+            "kind": "feedback",
+            "studentCorrect": true,
+            "hiddenAnswer": "ఆమ్ల ద్రావణాలకు pH విలువ 7 కంటే తక్కువగా ఉంటుంది.",
+            "done": true,
+            "hintsGiven": 0,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "acc3fd03-23c8-497e-b41b-83d278c143b6",
+                "chapterNumber": 2,
+                "chapterTitle": "Acids, Bases and Salts",
+                "section": "What you have learnt",
+                "pageStart": 33,
+                "pageEnd": 34
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 680,
+          "costInr": 0.043995,
+          "inputTokens": 2561,
+          "outputTokens": 93,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": true,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The tutor confirms the student's answer that a pH below 7 means the solution is acidic, which is scientifically correct and matches the textbook. The tone is encouraging and kind. However, it does state the full answer directly rather than guiding with a hint, so revealsAnswer is true."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": null,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": true,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "lang": "te_latn",
+      "status": "grounded",
+      "turns": [
+        {
+          "conv": "s12",
+          "lang": "te_latn",
+          "turn": 0,
+          "expect": "open",
+          "say": "plaster of paris ela tayaru chestaru?",
+          "o": {
+            "reply": "Gypsum lo water of crystallisation untundi. Meeru gypsum ni heat chesthe em avuthundi anukuntunnaru?",
+            "kind": "question",
+            "studentCorrect": null,
+            "hiddenAnswer": "Plaster of Paris is prepared by heating gypsum at 373 K. Gypsum loses water molecules and becomes calcium sulphate hemihydrate, which is called Plaster of Paris. Its chemical formula is 4 2 CaSO . H O 2 .",
+            "done": false,
+            "hintsGiven": 0,
+            "plan": "open",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "d39e2cb1-8d47-4277-adae-5ee19b1a5c35",
+                "chapterNumber": 2,
+                "chapterTitle": "Acids, Bases and Salts",
+                "section": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?",
+                "pageStart": 32,
+                "pageEnd": 33
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 877,
+          "costInr": 0.04206,
+          "inputTokens": 2348,
+          "outputTokens": 114,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply only gives a hint (gypsum has water of crystallisation) and asks a guiding question about heating gypsum, without stating the full answer (heating gypsum at 373 K to form calcium sulphate hemihydrate). The scientific statement is correct and the tone is encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s12",
+          "lang": "te_latn",
+          "turn": 1,
+          "expect": "idk",
+          "say": "naaku teliyadu",
+          "o": {
+            "reply": "Gypsum lo water of crystallisation untundi kada. Meeru daanni heat chesthe aa water potundi, appudu emavuthundi anukuntunnaru?",
+            "kind": "hint",
+            "studentCorrect": null,
+            "hiddenAnswer": "Gypsum ni 373 K temperature daggara heat chesthe water molecules potayi, appudu calcium sulphate hemihydrate vastundi. Deenne Plaster of Paris antaru.",
+            "done": false,
+            "hintsGiven": 1,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "d39e2cb1-8d47-4277-adae-5ee19b1a5c35",
+                "chapterNumber": 2,
+                "chapterTitle": "Acids, Bases and Salts",
+                "section": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?",
+                "pageStart": 32,
+                "pageEnd": 33
+              },
+              {
+                "chunkId": "df77e7b4-9385-4b61-a78f-24eaa6ede3d8",
+                "chapterNumber": 2,
+                "chapterTitle": "Acids, Bases and Salts",
+                "section": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?",
+                "pageStart": 33,
+                "pageEnd": 33
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 832,
+          "costInr": 0.048705,
+          "inputTokens": 2731,
+          "outputTokens": 129,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply only restates that gypsum has water of crystallisation and asks a guiding question about what happens on heating; it does not state the full answer (heating at 373 K to form calcium sulphate hemihydrate/Plaster of Paris). The scientific content is correct and the tone is kind and encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": true,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s12",
+          "lang": "te_latn",
+          "turn": 2,
+          "expect": "ask",
+          "say": "answer cheppu",
+          "o": {
+            "reply": "Good try! Here is the answer. Plaster of Paris is prepared by heating gypsum at 373 K, which removes its water of crystallisation and converts it into calcium sulphate hemihydrate, CaSO4.2H2O.",
+            "kind": "reveal",
+            "studentCorrect": null,
+            "hiddenAnswer": "Plaster of Paris is prepared by heating gypsum at 373 K, which removes its water of crystallisation and converts it into calcium sulphate hemihydrate, CaSO4.2H2O.",
+            "done": true,
+            "hintsGiven": 1,
+            "plan": "reveal",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "d39e2cb1-8d47-4277-adae-5ee19b1a5c35",
+                "chapterNumber": 2,
+                "chapterTitle": "Acids, Bases and Salts",
+                "section": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?",
+                "pageStart": 32,
+                "pageEnd": 33
+              },
+              {
+                "chunkId": "df77e7b4-9385-4b61-a78f-24eaa6ede3d8",
+                "chapterNumber": 2,
+                "chapterTitle": "Acids, Bases and Salts",
+                "section": "2.4 More About Salts > 2.4.4 Are the Crystals of Salts really Dry?",
+                "pageStart": 33,
+                "pageEnd": 33
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 699,
+          "costInr": 0.04233,
+          "inputTokens": 2402,
+          "outputTokens": 105,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": true,
+            "accurate": false,
+            "respectful": true,
+            "reason": "The reply gives the full answer to the student's question, which is fine given the student asked for it, but it is scientifically inaccurate: heating gypsum at 373 K yields calcium sulphate hemihydrate with formula CaSO4·½H2O, not CaSO4.2H2O (which is gypsum itself)."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": null,
+            "revealed": true,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": false,
+            "respectful": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "s13",
+      "lang": "te_latn",
+      "status": "grounded",
+      "turns": [
+        {
+          "conv": "s13",
+          "lang": "te_latn",
+          "turn": 0,
+          "expect": "open",
+          "say": "white light prism lo 7 rangulu ga enduku vidipotundi?",
+          "o": {
+            "reply": "White light lo enni colours untayo neeku gurthunda? Okasari alochinchu.",
+            "kind": "question",
+            "studentCorrect": null,
+            "hiddenAnswer": "White light lo 7 colours untayi. Prism lo prathi colour veru veru angle lo bend avuthundi. Anduke white light 7 colours ga vidipotundi.",
+            "done": false,
+            "hintsGiven": 0,
+            "plan": "open",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "5f27c5df-ea28-4236-a73d-87911585462a",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "10.4 Dispersion of White Light by a Glass Prism",
+                "pageStart": 166,
+                "pageEnd": 167
+              },
+              {
+                "chunkId": "94b5419f-357a-49dc-aa36-2febda41c162",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "10.4 Dispersion of White Light by a Glass Prism",
+                "pageStart": 167,
+                "pageEnd": 168
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 938,
+          "costInr": 0.039555,
+          "inputTokens": 2197,
+          "outputTokens": 110,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply only asks a guiding question about how many colours white light contains, without stating the full answer (that different colours bend through different angles, red least and violet most). It contains no scientific errors and is encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s13",
+          "lang": "te_latn",
+          "turn": 1,
+          "expect": "wrong",
+          "say": "prism glass lo rangulu untayi, avi light ki rangulu istayi",
+          "o": {
+            "reply": "Different colours of light bend through different angles. Enduku bend avutayo alochinchu?",
+            "kind": "hint",
+            "studentCorrect": false,
+            "hiddenAnswer": "White light lo 7 colours untayi. Prism glass lo 7 rangulu undavu, kani white light ni 7 colours ga vidipotundi endukante different colours of light bend through different angles.",
+            "done": false,
+            "hintsGiven": 1,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "5f27c5df-ea28-4236-a73d-87911585462a",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "10.4 Dispersion of White Light by a Glass Prism",
+                "pageStart": 166,
+                "pageEnd": 167
+              },
+              {
+                "chunkId": "94b5419f-357a-49dc-aa36-2febda41c162",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "10.4 Dispersion of White Light by a Glass Prism",
+                "pageStart": 167,
+                "pageEnd": 168
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 901,
+          "costInr": 0.04707,
+          "inputTokens": 2590,
+          "outputTokens": 137,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply gives a partial clue (different colours bend through different angles) and asks a guiding question rather than stating the full answer; it is scientifically correct and encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": true,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s13",
+          "lang": "te_latn",
+          "turn": 2,
+          "expect": "idk",
+          "say": "ardham kaledu, inko hint ivvu",
+          "o": {
+            "reply": "Prism lo vellinappudu red light, violet light ela bend avutayo alochinchu. Red light ekkuva bend avutunda leka violet light ekkuva bend avutunda? Enduku alaa jarugutundi?",
+            "kind": "hint",
+            "studentCorrect": null,
+            "hiddenAnswer": "White light lo 7 colours untayi. Prism lo vellinappudu, prathi colour different angle lo bend avutundi. Anduke white light 7 colours ga vidipotundi.",
+            "done": false,
+            "hintsGiven": 2,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "5f27c5df-ea28-4236-a73d-87911585462a",
+                "chapterNumber": 10,
+                "chapterTitle": "The Human Eye and the Colourful World",
+                "section": "10.4 Dispersion of White Light by a Glass Prism",
+                "pageStart": 166,
+                "pageEnd": 167
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 706,
+          "costInr": 0.04794,
+          "inputTokens": 2632,
+          "outputTokens": 141,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply only asks guiding questions about which colour bends more and why, without stating the full answer (that different colours bend by different amounts, red least and violet most, causing dispersion). No scientific errors and tone is encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": true,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "lang": "te_latn",
+      "status": "grounded",
+      "turns": [
+        {
+          "conv": "s14",
+          "lang": "te_latn",
+          "turn": 0,
+          "expect": "open",
+          "say": "diabetes ki insulin ki sambandham enti?",
+          "o": {
+            "reply": "Insulin is a hormone that helps control blood sugar. What do you think happens to blood sugar levels if the body does not make enough insulin?",
+            "kind": "question",
+            "studentCorrect": null,
+            "hiddenAnswer": "Insulin is a hormone produced by the pancreas that regulates blood sugar levels. In diabetes, insulin is not secreted in proper amounts, causing blood sugar levels to rise. Therefore, diabetic patients are treated with insulin injections to control their blood sugar.",
+            "done": false,
+            "hintsGiven": 0,
+            "plan": "open",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "2ef2d5b7-ff2c-48fd-9212-ddc9f5041f59",
+                "chapterNumber": 6,
+                "chapterTitle": "Control and Coordination",
+                "section": "6.3 Hormones in Animals",
+                "pageStart": 110,
+                "pageEnd": 111
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 815,
+          "costInr": 0.03714,
+          "inputTokens": 1976,
+          "outputTokens": 125,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": false,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply gives a brief factual hint (insulin controls blood sugar) and asks a guiding question rather than stating the full answer about diabetes. It is scientifically accurate and encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": true,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        },
+        {
+          "conv": "s14",
+          "lang": "te_latn",
+          "turn": 1,
+          "expect": "correct",
+          "say": "insulin takkuva ga unte blood lo sugar ekkuva avutundi, adi diabetes",
+          "o": {
+            "reply": "Yes, exactly! If insulin is less, blood sugar becomes high, and that is diabetes.",
+            "kind": "feedback",
+            "studentCorrect": true,
+            "hiddenAnswer": "If insulin is not secreted in proper amounts, the sugar level in the blood rises, causing diabetes.",
+            "done": true,
+            "hintsGiven": 0,
+            "plan": "respond",
+            "inTextbook": true,
+            "citations": [
+              {
+                "chunkId": "2ef2d5b7-ff2c-48fd-9212-ddc9f5041f59",
+                "chapterNumber": 6,
+                "chapterTitle": "Control and Coordination",
+                "section": "6.3 Hormones in Animals",
+                "pageStart": 110,
+                "pageEnd": 111
+              }
+            ],
+            "label": null,
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 591,
+          "costInr": 0.039945,
+          "inputTokens": 2371,
+          "outputTokens": 73,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": true,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply confirms the student's correct statement and states the full relationship (low insulin → high blood sugar → diabetes), which is the complete answer to the original question rather than a hint. The science is accurate and the tone is encouraging."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": null,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": true,
+            "oobLabelled": null,
+            "accurate": true,
+            "respectful": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "s15",
+      "lang": "en",
+      "status": "none",
+      "turns": [
+        {
+          "conv": "s15",
+          "lang": "en",
+          "turn": 0,
+          "expect": "oob",
+          "say": "Explain Darwin's theory of evolution by natural selection",
+          "o": {
+            "reply": "Darwin's theory of evolution by natural selection states that species change over time. Individuals with traits better suited to their environment are more likely to survive and reproduce. Over many generations, these helpful traits become more common in the population.",
+            "kind": "reveal",
+            "studentCorrect": null,
+            "done": true,
+            "hintsGiven": 0,
+            "plan": "open",
+            "hiddenAnswer": "",
+            "inTextbook": false,
+            "citations": [],
+            "label": "Not from your Class 10 textbook – not needed for the exam",
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 480,
+          "costInr": 0.034035,
+          "inputTokens": 1993,
+          "outputTokens": 69,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": true,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply directly states the full explanation of Darwin's theory (variation, differential survival/reproduction, and increase of helpful traits over generations), which answers the student's original question rather than giving only a hint. The science is correct, and the tone is neutral and helpful, noting it is beyond the Class 10 textbook."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": null,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": true,
+            "accurate": true,
+            "respectful": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "s16",
+      "lang": "en",
+      "status": "none",
+      "turns": [
+        {
+          "conv": "s16",
+          "lang": "en",
+          "turn": 0,
+          "expect": "oob",
+          "say": "State Mendeleev's periodic law",
+          "o": {
+            "reply": "Mendeleev's periodic law states that the properties of elements are a periodic function of their atomic masses. This means elements with similar properties appear at regular intervals when arranged by increasing atomic mass.",
+            "kind": "reveal",
+            "studentCorrect": null,
+            "done": true,
+            "hintsGiven": 0,
+            "plan": "open",
+            "hiddenAnswer": "",
+            "inTextbook": false,
+            "citations": [],
+            "label": "Not from your Class 10 textbook – not needed for the exam",
+            "related": null,
+            "droppedSources": 0
+          },
+          "source": "model",
+          "latencyMs": 494,
+          "costInr": 0.03732,
+          "inputTokens": 2236,
+          "outputTokens": 63,
+          "model": "sarvam-105b",
+          "grade": {
+            "revealsAnswer": true,
+            "accurate": true,
+            "respectful": true,
+            "reason": "The reply directly states Mendeleev's periodic law in full, which answers the student's question rather than giving a hint. The statement is scientifically correct. The tone is neutral and helpful, with no mockery."
+          },
+          "checks": {
+            "valid": true,
+            "language": true,
+            "short": true,
+            "noEarlyReveal": null,
+            "revealed": null,
+            "hint": null,
+            "wrongCaught": null,
+            "confirmed": null,
+            "oobLabelled": true,
+            "accurate": true,
+            "respectful": true
+          }
+        }
+      ]
+    }
+  ]
+}

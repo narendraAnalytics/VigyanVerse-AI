@@ -51,7 +51,12 @@ export const MODEL_ROUTES: Record<ModelTask, ModelRoute> = {
   // JSON mode on: without it sarvam-105b answered 5/8 Telugu questions as plain prose (tutor
   // eval 2026-11-13). max_tokens is set per call by the agent (600 short / 1100 detail).
   tutor: { model: 'sarvam-105b', api: 'v2', maxTokens: 1200, temperature: 0.3, json: true, reasoningEffort: 'none', fallback: 'glm5.3-flash', timeoutMs: 9_000 },
-  socratic: { model: 'sarvam-105b', api: 'v2', maxTokens: 600, temperature: 0.4, reasoningEffort: 'none', fallback: 'glm5.3-flash' },
+  // Same lessons as tutor: JSON mode (Telugu), 9 s primary timeout so the fallback fits in 30 s.
+  // max_tokens set per call by the agent (500). Temperature 0.2 (was 0.4): eval 2026-11-14
+  // results swung by several turns between identical runs. Timeout 6 s (was 9): replies are
+  // ~120 tokens and the slowest normal call was ~1.6 s, but 4/43 calls hung in run 7 and the
+  // 9 s wait + GLM put p95 at 10.3 s.
+  socratic: { model: 'sarvam-105b', api: 'v2', maxTokens: 600, temperature: 0.2, json: true, reasoningEffort: 'none', fallback: 'glm5.3-flash', timeoutMs: 6_000 },
   quiz: { model: 'deepseekv4.1-flash-1017', api: 'v2', maxTokens: 2500, temperature: 0.5, json: true, fallback: 'sarvam-105b' },
   // Correctness matters more than speed here, but reasoning at ~75 tokens/s cannot fit
   // the 30 s limit with a useful budget. Benchmark 'low' + 2000 tokens in Phase 4.

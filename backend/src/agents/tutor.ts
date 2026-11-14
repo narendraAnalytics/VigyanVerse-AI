@@ -28,13 +28,13 @@ export interface TutorInput {
   history?: Turn[];
 }
 
-const ModelOutput = z.object({
+export const ModelOutput = z.object({
   answer: z.string().min(1).max(4000),
   inTextbook: z.boolean(),
   sources: z.array(z.number().int()).max(5).default([]),
   relatedPassage: z.number().int().nullable().default(null),
 });
-type ModelOutput = z.infer<typeof ModelOutput>;
+export type ModelOutput = z.infer<typeof ModelOutput>;
 
 export interface Citation {
   chunkId: string;
@@ -63,7 +63,7 @@ export const NOT_IN_TEXTBOOK_LABEL: Record<Language, string> = {
   te_latn: 'Idi mee Class 10 textbook lo ledu – exam ki avasaram ledu',
 };
 
-const LANGUAGE_RULE: Record<Language, string> = {
+export const LANGUAGE_RULE: Record<Language, string> = {
   en: 'Write the answer in simple English.',
   te: 'Write the answer in simple Telugu (Telugu script). Keep science terms and formulas in English in brackets where it helps, e.g. కిరణజన్య సంయోగక్రియ (photosynthesis).',
   te_latn: 'The student writes Telugu in English letters. Answer the same way: simple Telugu written in English letters, with science terms in English.',
@@ -79,7 +79,7 @@ export function citationOf(h: ChunkHit): Citation {
   };
 }
 
-function formatPassages(passages: readonly ChunkHit[]): string {
+export function formatPassages(passages: readonly ChunkHit[]): string {
   if (!passages.length) return '(no passages found)';
   return passages.map((h, i) =>
     `[${i + 1}] Ch ${h.chapter_number ?? '?'} ${h.chapter_title_en} > ${h.section_path ?? 'introduction'} (p. ${h.page_start}${h.page_end !== h.page_start ? `-${h.page_end}` : ''})\n` +
@@ -134,14 +134,14 @@ export function extractiveAnswer(h: ChunkHit): string {
   return (best.length ? best.map((x) => x.s) : sentences.slice(0, 2)).join(' ').slice(0, 400);
 }
 
-const FALLBACK_TEXT: Record<Language, { quote: string; none: string }> = {
+export const FALLBACK_TEXT: Record<Language, { quote: string; none: string }> = {
   en: { quote: 'Here is what your textbook says:', none: 'Sorry, I cannot answer right now. Please try again in a minute.' },
   te: { quote: 'మీ పాఠ్యపుస్తకం ఇలా చెబుతోంది:', none: 'క్షమించండి, ఇప్పుడు సమాధానం ఇవ్వలేకపోతున్నాను. ఒక నిమిషం తర్వాత మళ్లీ ప్రయత్నించండి.' },
   te_latn: { quote: 'Mee textbook ila chebutondi:', none: 'Sorry, ippudu answer ivvalekapotunnanu. Okka nimisham tarvata malli try cheyandi.' },
 };
 
 /** Deterministic post-processing: citations from our passages only, label, related topic. */
-export function finalize(out: ModelOutput, input: TutorInput): TutorOutput {
+export function finalize(out: ModelOutput, input: Pick<TutorInput, 'passages' | 'language'>): TutorOutput {
   const valid = (n: number) => Number.isInteger(n) && n >= 1 && n <= input.passages.length;
   const sources = [...new Set(out.sources)];
   const kept = sources.filter(valid);
