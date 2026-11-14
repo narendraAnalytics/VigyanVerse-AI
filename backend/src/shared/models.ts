@@ -61,7 +61,9 @@ export const MODEL_ROUTES: Record<ModelTask, ModelRoute> = {
   // Correctness matters more than speed here, but reasoning at ~75 tokens/s cannot fit
   // the 30 s limit with a useful budget. Benchmark 'low' + 2000 tokens in Phase 4.
   validator: { model: 'sarvam-105b', api: 'v2', maxTokens: 800, temperature: 0, json: true, reasoningEffort: 'none' },
-  math: { model: 'deepseekv4.1-flash-1017', api: 'v2', maxTokens: 1500, temperature: 0, fallback: 'sarvam-105b' },
+  // Program-aided (agents/math.ts): the model writes givens + a mathjs expression, code computes.
+  // JSON mode; reasoning set by the 3f eval; 9 s then Sarvam so the fallback fits in 30 s.
+  math: { model: 'deepseekv4.1-flash-1017', api: 'v2', maxTokens: 1000, temperature: 0, json: true, reasoningEffort: 'none', fallback: 'sarvam-105b', timeoutMs: 9_000 },
   mistake: { model: 'glm5.3-flash', api: 'v2', maxTokens: 400, temperature: 0, json: true },
   vision: { model: 'gemma4', api: 'v2', maxTokens: 1500, temperature: 0 },
   voice_dialogue: { model: 'sarvam-105b-conversations', api: 'v2', maxTokens: 400, temperature: 0.4 },

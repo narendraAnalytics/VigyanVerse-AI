@@ -1,0 +1,1894 @@
+{
+  "agent": "math",
+  "model": "deepseekv4.1-flash-1017",
+  "reasoning": null,
+  "ranAt": "2026-11-14T03:18:14.753Z",
+  "metrics": {
+    "valid": 1,
+    "correct": 1,
+    "wrongShownAsChecked": 0,
+    "verified": 1,
+    "corrected": 0,
+    "unchecked": 0,
+    "language": 1,
+    "short": 1,
+    "routedNumerical": 1,
+    "p50Ms": 1107,
+    "p95Ms": 1792,
+    "avgIn": 1801,
+    "avgOut": 191,
+    "avgCostInr": 0.035697999999999994
+  },
+  "bar": {
+    "valid": true,
+    "correct": true,
+    "wrongShownAsChecked": true,
+    "verified": true,
+    "language": true,
+    "short": true,
+    "p95Ms": true
+  },
+  "rows": [
+    {
+      "id": "m01",
+      "lang": "en",
+      "question": "A current of 0.5 A is drawn by a filament of an electric bulb for 10 minutes. Find the amount of electric charge that flows through the circuit.",
+      "gold": "300 C",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "The charge flowing through a conductor equals the current multiplied by the time for which it flows, since one ampere means one coulomb per second.",
+        "steps": [
+          "Q = I × t",
+          "Q = 0.5 × 600",
+          "Q = 300 C"
+        ],
+        "answer": "300 C",
+        "answerValue": "300 C",
+        "check": "verified",
+        "modelAnswer": "300 C",
+        "work": {
+          "given": {
+            "I": "0.5 A",
+            "t": "10 minute"
+          },
+          "formula": "Q = I * t",
+          "expression": "I * t",
+          "unit": "C"
+        },
+        "reply": "The charge flowing through a conductor equals the current multiplied by the time for which it flows, since one ampere means one coulomb per second.\n\nQ = I × t\nQ = 0.5 × 600\nQ = 300 C\n\nAnswer: 300 C",
+        "citations": [
+          {
+            "chunkId": "c0c01b23-d9a7-42cd-bfb8-23aa5c90ea63",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.1 Electric Current and Circuit",
+            "pageStart": 172,
+            "pageEnd": 172
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1943,
+        "outputTokens": 141,
+        "reasoningTokens": 0,
+        "costInr": 0.034957,
+        "latencyMs": 1006
+      },
+      "latencyMs": 1033
+    },
+    {
+      "id": "m02",
+      "lang": "en",
+      "question": "How much work is done in moving a charge of 2 C across two points having a potential difference 12 V?",
+      "gold": "24 J",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "The work done in moving a charge between two points equals the potential difference multiplied by the charge, since potential difference is work per unit charge.",
+        "steps": [
+          "W = V * Q",
+          "W = 12 * 2",
+          "W = 24 J"
+        ],
+        "answer": "24 J",
+        "answerValue": "24 J",
+        "check": "verified",
+        "modelAnswer": "24 J",
+        "work": {
+          "given": {
+            "Q": "2 C",
+            "V": "12 V"
+          },
+          "formula": "W = V * Q",
+          "expression": "V * Q",
+          "unit": "J"
+        },
+        "reply": "The work done in moving a charge between two points equals the potential difference multiplied by the charge, since potential difference is work per unit charge.\n\nW = V * Q\nW = 12 * 2\nW = 24 J\n\nAnswer: 24 J",
+        "citations": [
+          {
+            "chunkId": "23f4a093-c472-4672-900d-2e31cd57bdb5",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.2 Electric Potential and Potential Difference",
+            "pageStart": 173,
+            "pageEnd": 174
+          },
+          {
+            "chunkId": "a3f99bbd-2a9b-4e2f-a10f-8aaa48c0ca11",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.2 Electric Potential and Potential Difference",
+            "pageStart": 173,
+            "pageEnd": 173
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1467,
+        "outputTokens": 139,
+        "reasoningTokens": 0,
+        "costInr": 0.028183,
+        "latencyMs": 1091
+      },
+      "latencyMs": 1095
+    },
+    {
+      "id": "m03",
+      "lang": "en",
+      "question": "An electric lamp of resistance 20 Ω and a conductor of resistance 4 Ω are connected in series to a 6 V battery. Calculate the current through the circuit.",
+      "gold": "0.25 A",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "In a series circuit the total resistance is the sum of the individual resistances, and Ohm's law gives the current as voltage divided by this total resistance.",
+        "steps": [
+          "Rs = R1 + R2 = 20 + 4 = 24 Ω",
+          "I = V / Rs",
+          "I = 6 / 24 = 0.25 A"
+        ],
+        "answer": "0.25 A",
+        "answerValue": "0.25 A",
+        "check": "verified",
+        "modelAnswer": "0.25 A",
+        "work": {
+          "given": {
+            "R1": "20 ohm",
+            "R2": "4 ohm",
+            "V": "6 V"
+          },
+          "formula": "I = V / Rs, Rs = R1 + R2",
+          "expression": "V / (R1 + R2)",
+          "unit": "A"
+        },
+        "reply": "In a series circuit the total resistance is the sum of the individual resistances, and Ohm's law gives the current as voltage divided by this total resistance.\n\nRs = R1 + R2 = 20 + 4 = 24 Ω\nI = V / Rs\nI = 6 / 24 = 0.25 A\n\nAnswer: 0.25 A",
+        "citations": [
+          {
+            "chunkId": "850a1b94-f49b-4701-aec0-448eee8487dd",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series",
+            "pageStart": 183,
+            "pageEnd": 185
+          },
+          {
+            "chunkId": "25f77738-0218-4045-a534-92dcf52d7531",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series",
+            "pageStart": 185,
+            "pageEnd": 185
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1747,
+        "outputTokens": 187,
+        "reasoningTokens": 0,
+        "costInr": 0.034743,
+        "latencyMs": 1177
+      },
+      "latencyMs": 1186
+    },
+    {
+      "id": "m04",
+      "lang": "en",
+      "question": "An electric iron consumes energy at a rate of 840 W when heating is at the maximum rate and the voltage is 220 V. What is the current?",
+      "gold": "3.82 A",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "The electric power is the product of voltage and current, so the current is the power divided by the voltage.",
+        "steps": [
+          "P = V I",
+          "I = P / V",
+          "I = 840 / 220",
+          "I = 3.82 A"
+        ],
+        "answer": "3.82 A",
+        "answerValue": "3.82 A",
+        "check": "verified",
+        "modelAnswer": "3.82 A",
+        "work": {
+          "given": {
+            "P": "840 W",
+            "V": "220 V"
+          },
+          "formula": "P = V I",
+          "expression": "P / V",
+          "unit": "A"
+        },
+        "reply": "The electric power is the product of voltage and current, so the current is the power divided by the voltage.\n\nP = V I\nI = P / V\nI = 840 / 220\nI = 3.82 A\n\nAnswer: 3.82 A",
+        "citations": [
+          {
+            "chunkId": "18bfd2cd-a320-44bc-9e0b-408ec8977fc6",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.7 Heating Effect of Electric Current",
+            "pageStart": 189,
+            "pageEnd": 189
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1584,
+        "outputTokens": 139,
+        "reasoningTokens": 0,
+        "costInr": 0.029821,
+        "latencyMs": 787
+      },
+      "latencyMs": 795
+    },
+    {
+      "id": "m05",
+      "lang": "en",
+      "question": "The current through a heater is 4 A when the potential difference is 60 V. What is the resistance of the heater?",
+      "gold": "15 ohm",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "Ohm's law says the resistance equals the potential difference divided by the current through the conductor.",
+        "steps": [
+          "Ohm's law: R = V / I",
+          "R = 60 / 4",
+          "R = 15 Ω"
+        ],
+        "answer": "15 Ω",
+        "answerValue": "15 ohm",
+        "check": "verified",
+        "modelAnswer": "15 ohm",
+        "work": {
+          "given": {
+            "I": "4 A",
+            "V": "60 V"
+          },
+          "formula": "R = V / I",
+          "expression": "V / I",
+          "unit": "ohm"
+        },
+        "reply": "Ohm's law says the resistance equals the potential difference divided by the current through the conductor.\n\nOhm's law: R = V / I\nR = 60 / 4\nR = 15 Ω\n\nAnswer: 15 Ω",
+        "citations": [
+          {
+            "chunkId": "6bc037c1-2e82-449d-81e8-2cb10748eb94",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.5 Factors on Which the Resistance of a Conductor Depends",
+            "pageStart": 180,
+            "pageEnd": 181
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 2184,
+        "outputTokens": 134,
+        "reasoningTokens": 0,
+        "costInr": 0.037946,
+        "latencyMs": 654
+      },
+      "latencyMs": 658
+    },
+    {
+      "id": "m06",
+      "lang": "en",
+      "question": "Resistors of 5 Ω, 10 Ω and 30 Ω are connected in parallel. Find the equivalent resistance.",
+      "gold": "3 ohm",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "For resistors in parallel the reciprocals of the individual resistances add up to give the reciprocal of the equivalent resistance, so the equivalent resistance is smaller than the smallest resistor.",
+        "steps": [
+          "1/Rp = 1/5 + 1/10 + 1/30",
+          "1/Rp = 6/30 + 3/30 + 1/30 = 10/30",
+          "Rp = 30/10 = 3 Ω"
+        ],
+        "answer": "3 Ω",
+        "answerValue": "3 ohm",
+        "check": "verified",
+        "modelAnswer": "3 ohm",
+        "work": {
+          "given": {
+            "R1": "5 ohm",
+            "R2": "10 ohm",
+            "R3": "30 ohm"
+          },
+          "formula": "1/Rp = 1/R1 + 1/R2 + 1/R3",
+          "expression": "1 / (1/R1 + 1/R2 + 1/R3)",
+          "unit": "ohm"
+        },
+        "reply": "For resistors in parallel the reciprocals of the individual resistances add up to give the reciprocal of the equivalent resistance, so the equivalent resistance is smaller than the smallest resistor.\n\n1/Rp = 1/5 + 1/10 + 1/30\n1/Rp = 6/30 + 3/30 + 1/30 = 10/30\nRp = 30/10 = 3 Ω\n\nAnswer: 3 Ω",
+        "citations": [
+          {
+            "chunkId": "a6ced4f4-7f8f-4b51-98e5-25361bb63333",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.6 Resistance of a System of Resistors > 11.6.2 Resistors in Parallel",
+            "pageStart": 186,
+            "pageEnd": 187
+          },
+          {
+            "chunkId": "fd439c80-6abd-4242-be13-1f096d43c732",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "What you have learnt",
+            "pageStart": 192,
+            "pageEnd": 192
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 2008,
+        "outputTokens": 220,
+        "reasoningTokens": 0,
+        "costInr": 0.040212,
+        "latencyMs": 952
+      },
+      "latencyMs": 958
+    },
+    {
+      "id": "m07",
+      "lang": "en",
+      "question": "How much electrical energy in kWh does a 1 kW heater use in 3 hours?",
+      "gold": "3 kWh",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "Electrical energy used equals power multiplied by time; the commercial unit kilowatt hour is power in kW times time in hours.",
+        "steps": [
+          "Energy = power × time",
+          "E = 1 kW × 3 h",
+          "E = 3 kWh"
+        ],
+        "answer": "3 kWh",
+        "answerValue": "3 kWh",
+        "check": "verified",
+        "modelAnswer": "3 kWh",
+        "work": {
+          "given": {
+            "P": "1 kW",
+            "t": "3 hour"
+          },
+          "formula": "E = P * t",
+          "expression": "P * t",
+          "unit": "kWh"
+        },
+        "reply": "Electrical energy used equals power multiplied by time; the commercial unit kilowatt hour is power in kW times time in hours.\n\nEnergy = power × time\nE = 1 kW × 3 h\nE = 3 kWh\n\nAnswer: 3 kWh",
+        "citations": [
+          {
+            "chunkId": "fd439c80-6abd-4242-be13-1f096d43c732",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "What you have learnt",
+            "pageStart": 192,
+            "pageEnd": 192
+          },
+          {
+            "chunkId": "6d9d4c08-ad29-43e9-a3a6-c6e9cd65b2b6",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.8 Electric Power",
+            "pageStart": 191,
+            "pageEnd": 192
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1631,
+        "outputTokens": 138,
+        "reasoningTokens": 0,
+        "costInr": 0.030424,
+        "latencyMs": 1188
+      },
+      "latencyMs": 1192
+    },
+    {
+      "id": "m08",
+      "lang": "en",
+      "question": "The resistance of a metal wire of length 1 m is 26 Ω at 20°C. If the diameter of the wire is 0.3 mm, what will be the resistivity of the metal?",
+      "gold": "1.84e-6 ohm m",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "The resistivity is found from R = rho*l/A, so rho = R*A/l, with the cross-section area of the wire taken as a circle, A = pi*d^2/4.",
+        "steps": [
+          "A = pi*d^2/4",
+          "rho = R*A/l = R*pi*d^2/(4l)",
+          "rho = 26*pi*(0.3e-3)^2/(4*1)",
+          "rho = 1.84e-6 Ω m"
+        ],
+        "answer": "1.84e-6 Ω m",
+        "answerValue": "1.84e-6 ohm m",
+        "check": "verified",
+        "modelAnswer": "1.84e-6 ohm m",
+        "work": {
+          "given": {
+            "R": "26 ohm",
+            "l": "1 m",
+            "d": "0.3 mm"
+          },
+          "formula": "rho = R*A/l, A = pi*d^2/4",
+          "expression": "R * pi * d^2 / (4 * l)",
+          "unit": "ohm m"
+        },
+        "reply": "The resistivity is found from R = rho*l/A, so rho = R*A/l, with the cross-section area of the wire taken as a circle, A = pi*d^2/4.\n\nA = pi*d^2/4\nrho = R*A/l = R*pi*d^2/(4l)\nrho = 26*pi*(0.3e-3)^2/(4*1)\nrho = 1.84e-6 Ω m\n\nAnswer: 1.84e-6 Ω m",
+        "citations": [
+          {
+            "chunkId": "6bc037c1-2e82-449d-81e8-2cb10748eb94",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.5 Factors on Which the Resistance of a Conductor Depends",
+            "pageStart": 180,
+            "pageEnd": 181
+          },
+          {
+            "chunkId": "6b489e4e-0a5a-4484-8605-7a44e4706c44",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.5 Factors on Which the Resistance of a Conductor Depends",
+            "pageStart": 178,
+            "pageEnd": 179
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1993,
+        "outputTokens": 228,
+        "reasoningTokens": 0,
+        "costInr": 0.040442,
+        "latencyMs": 1095
+      },
+      "latencyMs": 1107
+    },
+    {
+      "id": "m09",
+      "lang": "en",
+      "question": "A 4 Ω resistor and a 6 Ω resistor are connected in series to a 12 V battery. What is the current?",
+      "gold": "1.2 A",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "In a series circuit the resistances add up, and Ohm's law gives the current as voltage divided by total resistance.",
+        "steps": [
+          "R = R1 + R2 = 4 + 6 = 10 Ω",
+          "I = V / R = 12 / 10",
+          "I = 1.2 A"
+        ],
+        "answer": "1.2 A",
+        "answerValue": "1.2 A",
+        "check": "verified",
+        "modelAnswer": "1.2 A",
+        "work": {
+          "given": {
+            "R1": "4 ohm",
+            "R2": "6 ohm",
+            "V": "12 V"
+          },
+          "formula": "I = V / (R1 + R2)",
+          "expression": "V / (R1 + R2)",
+          "unit": "A"
+        },
+        "reply": "In a series circuit the resistances add up, and Ohm's law gives the current as voltage divided by total resistance.\n\nR = R1 + R2 = 4 + 6 = 10 Ω\nI = V / R = 12 / 10\nI = 1.2 A\n\nAnswer: 1.2 A",
+        "citations": [
+          {
+            "chunkId": "25f77738-0218-4045-a534-92dcf52d7531",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.6 Resistance of a System of Resistors > 11.6.1 Resistors in Series",
+            "pageStart": 185,
+            "pageEnd": 185
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1747,
+        "outputTokens": 174,
+        "reasoningTokens": 0,
+        "costInr": 0.034028,
+        "latencyMs": 868
+      },
+      "latencyMs": 872
+    },
+    {
+      "id": "m10",
+      "lang": "en",
+      "question": "An electric iron of resistance 20 Ω takes a current of 5 A. Calculate the heat developed in 30 s.",
+      "gold": "15000 J",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "Joule's law of heating says the heat produced in a resistor is proportional to the square of the current, the resistance and the time, so we use H = I^2 R t.",
+        "steps": [
+          "Use Joule's law of heating: H = I^2 R t",
+          "Substitute: H = 5^2 * 20 * 30",
+          "H = 25 * 20 * 30 = 15000 J"
+        ],
+        "answer": "15000 J",
+        "answerValue": "15000 J",
+        "check": "verified",
+        "modelAnswer": "15000 J",
+        "work": {
+          "given": {
+            "R": "20 ohm",
+            "I": "5 A",
+            "t": "30 s"
+          },
+          "formula": "H = I^2 * R * t",
+          "expression": "I^2 * R * t",
+          "unit": "J"
+        },
+        "reply": "Joule's law of heating says the heat produced in a resistor is proportional to the square of the current, the resistance and the time, so we use H = I^2 R t.\n\nUse Joule's law of heating: H = I^2 R t\nSubstitute: H = 5^2 * 20 * 30\nH = 25 * 20 * 30 = 15000 J\n\nAnswer: 15000 J",
+        "citations": [
+          {
+            "chunkId": "b82f9239-7f66-406f-b9cd-d30fd3a3bd99",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.7 Heating Effect of Electric Current > 11.7.1 Practical Applications of Heating Effect of Electric Current",
+            "pageStart": 190,
+            "pageEnd": 190
+          },
+          {
+            "chunkId": "cdae19dd-0157-46d0-a3ee-42120846bff4",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.7 Heating Effect of Electric Current",
+            "pageStart": 188,
+            "pageEnd": 189
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1679,
+        "outputTokens": 194,
+        "reasoningTokens": 0,
+        "costInr": 0.034176,
+        "latencyMs": 1022
+      },
+      "latencyMs": 1027
+    },
+    {
+      "id": "m11",
+      "lang": "en",
+      "question": "What is the resistance of a 1100 W heater that works on 220 V?",
+      "gold": "44 ohm",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "The power of a device is related to voltage and resistance by P = V^2 / R, so the resistance is found from the voltage and power rating.",
+        "steps": [
+          "P = V^2 / R, so R = V^2 / P",
+          "R = (220)^2 / 1100",
+          "R = 48400 / 1100 = 44"
+        ],
+        "answer": "44 Ω",
+        "answerValue": "44 ohm",
+        "check": "verified",
+        "modelAnswer": "44 ohm",
+        "work": {
+          "given": {
+            "P": "1100 W",
+            "V": "220 V"
+          },
+          "formula": "P = V^2 / R",
+          "expression": "V^2 / P",
+          "unit": "ohm"
+        },
+        "reply": "The power of a device is related to voltage and resistance by P = V^2 / R, so the resistance is found from the voltage and power rating.\n\nP = V^2 / R, so R = V^2 / P\nR = (220)^2 / 1100\nR = 48400 / 1100 = 44\n\nAnswer: 44 Ω",
+        "citations": [
+          {
+            "chunkId": "a06c87b8-0336-40bf-89e9-1cab4ea407ce",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.5 Factors on Which the Resistance of a Conductor Depends",
+            "pageStart": 179,
+            "pageEnd": 180
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1786,
+        "outputTokens": 167,
+        "reasoningTokens": 0,
+        "costInr": 0.034189,
+        "latencyMs": 974
+      },
+      "latencyMs": 976
+    },
+    {
+      "id": "m12",
+      "lang": "en",
+      "question": "What is the potential difference across a 5 Ω resistor when a current of 2 A flows through it?",
+      "gold": "10 V",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "Ohm's law says the potential difference across a resistor equals the current through it multiplied by its resistance.",
+        "steps": [
+          "Ohm's law: V = I * R",
+          "V = 2 * 5",
+          "V = 10 V"
+        ],
+        "answer": "10 V",
+        "answerValue": "10 V",
+        "check": "verified",
+        "modelAnswer": "10 V",
+        "work": {
+          "given": {
+            "I": "2 A",
+            "R": "5 ohm"
+          },
+          "formula": "V = I * R",
+          "expression": "I * R",
+          "unit": "V"
+        },
+        "reply": "Ohm's law says the potential difference across a resistor equals the current through it multiplied by its resistance.\n\nOhm's law: V = I * R\nV = 2 * 5\nV = 10 V\n\nAnswer: 10 V",
+        "citations": [
+          {
+            "chunkId": "fd439c80-6abd-4242-be13-1f096d43c732",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "What you have learnt",
+            "pageStart": 192,
+            "pageEnd": 192
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1877,
+        "outputTokens": 135,
+        "reasoningTokens": 0,
+        "costInr": 0.033703,
+        "latencyMs": 693
+      },
+      "latencyMs": 696
+    },
+    {
+      "id": "m13",
+      "lang": "en",
+      "question": "Find the power of a concave lens of focal length 2 m.",
+      "gold": "-0.5 m^-1",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "The power of a lens is the reciprocal of its focal length in metres. A concave lens has a negative focal length, so its power is negative.",
+        "steps": [
+          "P = 1 / f",
+          "P = 1 / (-2)",
+          "P = -0.5 D"
+        ],
+        "answer": "-0.5 D",
+        "answerValue": "-0.5 m^-1",
+        "check": "verified",
+        "modelAnswer": "-0.5 D",
+        "work": {
+          "given": {
+            "f": "-2 m"
+          },
+          "formula": "P = 1 / f",
+          "expression": "1 / f",
+          "unit": "D"
+        },
+        "reply": "The power of a lens is the reciprocal of its focal length in metres. A concave lens has a negative focal length, so its power is negative.\n\nP = 1 / f\nP = 1 / (-2)\nP = -0.5 D\n\nAnswer: -0.5 D",
+        "citations": [
+          {
+            "chunkId": "b7a00d19-0343-4aec-9c4e-b575eca280af",
+            "chapterNumber": 9,
+            "chapterTitle": "Light – Reflection and Refraction",
+            "section": "9.3 Refraction of Light > 9.3.8 Power of a Lens",
+            "pageStart": 157,
+            "pageEnd": 158
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1670,
+        "outputTokens": 137,
+        "reasoningTokens": 0,
+        "costInr": 0.030915,
+        "latencyMs": 655
+      },
+      "latencyMs": 657
+    },
+    {
+      "id": "m14",
+      "lang": "en",
+      "question": "An object 4.0 cm in size is placed at 25.0 cm in front of a concave mirror of focal length 15.0 cm. At what distance from the mirror is the image formed?",
+      "gold": "-37.5 cm",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "The mirror formula relates object distance, image distance and focal length; for a concave mirror the focal length and object distance are negative, so the image forms in front of the mirror.",
+        "steps": [
+          "1/v = 1/f - 1/u",
+          "1/v = 1/(-15) - 1/(-25) = -1/15 + 1/25",
+          "1/v = (-5 + 3)/75 = -2/75",
+          "v = -75/2 = -37.5 cm"
+        ],
+        "answer": "-37.5 cm",
+        "answerValue": "-37.5 cm",
+        "check": "verified",
+        "modelAnswer": "-37.5 cm",
+        "work": {
+          "given": {
+            "h": "4.0 cm",
+            "u": "-25.0 cm",
+            "f": "-15.0 cm"
+          },
+          "formula": "1/v + 1/u = 1/f",
+          "expression": "1 / (1/f - 1/u)",
+          "unit": "cm"
+        },
+        "reply": "The mirror formula relates object distance, image distance and focal length; for a concave mirror the focal length and object distance are negative, so the image forms in front of the mirror.\n\n1/v = 1/f - 1/u\n1/v = 1/(-15) - 1/(-25) = -1/15 + 1/25\n1/v = (-5 + 3)/75 = -2/75\nv = -75/2 = -37.5 cm\n\nAnswer: -37.5 cm",
+        "citations": [
+          {
+            "chunkId": "d7d11969-f55e-44ce-ba63-2a066900825e",
+            "chapterNumber": 9,
+            "chapterTitle": "Light – Reflection and Refraction",
+            "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification",
+            "pageStart": 143,
+            "pageEnd": 145
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 2011,
+        "outputTokens": 216,
+        "reasoningTokens": 0,
+        "costInr": 0.040034,
+        "latencyMs": 1475
+      },
+      "latencyMs": 1478
+    },
+    {
+      "id": "m15",
+      "lang": "en",
+      "question": "A convex mirror used for rear-view on an automobile has a radius of curvature of 3.00 m. If a bus is located at 5.00 m from this mirror, find the position of the image.",
+      "gold": "1.15 m",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "For a convex mirror the focal length is positive (R/2) and the object distance is negative by the sign convention. The mirror formula 1/v + 1/u = 1/f gives a positive image distance, so the image forms behind the mirror and is virtual and erect.",
+        "steps": [
+          "f = R/2 = 3.00/2 = +1.50 m (convex mirror, focus behind mirror)",
+          "1/v = 1/f - 1/u = 1/1.50 - 1/(-5.00)",
+          "1/v = 1/1.50 + 1/5.00 = 0.667 + 0.200 = 0.867",
+          "v = 1/0.867 = +1.15 m"
+        ],
+        "answer": "1.15 m",
+        "answerValue": "1.15 m",
+        "check": "verified",
+        "modelAnswer": "1.15 m",
+        "work": {
+          "given": {
+            "R": "3.00 m",
+            "u": "-5.00 m"
+          },
+          "formula": "1/v + 1/u = 1/f, f = R/2",
+          "expression": "1 / (2 / R - 1 / u)",
+          "unit": "m"
+        },
+        "reply": "For a convex mirror the focal length is positive (R/2) and the object distance is negative by the sign convention. The mirror formula 1/v + 1/u = 1/f gives a positive image distance, so the image forms behind the mirror and is virtual and erect.\n\nf = R/2 = 3.00/2 = +1.50 m (convex mirror, focus behind mirror)\n1/v = 1/f - 1/u = 1/1.50 - 1/(-5.00)\n1/v = 1/1.50 + 1/5.00 = 0.667 + 0.200 = 0.867\nv = 1/0.867 = +1.15 m\n\nAnswer: 1.15 m",
+        "citations": [
+          {
+            "chunkId": "d7d11969-f55e-44ce-ba63-2a066900825e",
+            "chapterNumber": 9,
+            "chapterTitle": "Light – Reflection and Refraction",
+            "section": "9.2 Spherical Mirrors > 9.2.4 Mirror Formula and Magnification",
+            "pageStart": 143,
+            "pageEnd": 145
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1725,
+        "outputTokens": 271,
+        "reasoningTokens": 0,
+        "costInr": 0.039055,
+        "latencyMs": 1407
+      },
+      "latencyMs": 1411
+    },
+    {
+      "id": "m16",
+      "lang": "en",
+      "question": "A concave lens has focal length of 15 cm. At what distance should the object from the lens be placed so that it forms an image at 10 cm from the lens?",
+      "gold": "-30 cm",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "The lens formula relates object distance, image distance and focal length with proper signs. A concave lens has negative focal length and forms a virtual image on the same side as the object, so both v and u are negative.",
+        "steps": [
+          "1/u = 1/v - 1/f",
+          "1/u = 1/(-10) - 1/(-15) = -1/10 + 1/15",
+          "1/u = -1/30",
+          "u = -30 cm"
+        ],
+        "answer": "-30 cm",
+        "answerValue": "-30 cm",
+        "check": "verified",
+        "modelAnswer": "-30 cm",
+        "work": {
+          "given": {
+            "f": "-15 cm",
+            "v": "-10 cm"
+          },
+          "formula": "1/v - 1/u = 1/f",
+          "expression": "1 / (1/v - 1/f)",
+          "unit": "cm"
+        },
+        "reply": "The lens formula relates object distance, image distance and focal length with proper signs. A concave lens has negative focal length and forms a virtual image on the same side as the object, so both v and u are negative.\n\n1/u = 1/v - 1/f\n1/u = 1/(-10) - 1/(-15) = -1/10 + 1/15\n1/u = -1/30\nu = -30 cm\n\nAnswer: -30 cm",
+        "citations": [
+          {
+            "chunkId": "863a29c1-1c3e-4a14-a057-68b4ae0e4456",
+            "chapterNumber": 9,
+            "chapterTitle": "Light – Reflection and Refraction",
+            "section": "9.3 Refraction of Light > 9.3.7 Lens Formula and Magnification",
+            "pageStart": 155,
+            "pageEnd": 156
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1848,
+        "outputTokens": 194,
+        "reasoningTokens": 0,
+        "costInr": 0.036542,
+        "latencyMs": 1157
+      },
+      "latencyMs": 1160
+    },
+    {
+      "id": "m17",
+      "lang": "en",
+      "question": "A 2.0 cm tall object is placed perpendicular to the principal axis of a convex lens of focal length 10 cm. The distance of the object from the lens is 15 cm. Find the position of the image.",
+      "gold": "30 cm",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "The lens formula relates object distance, image distance and focal length; a positive image distance means the image forms on the other side of the lens, so it is real.",
+        "steps": [
+          "1/v = 1/u + 1/f",
+          "1/v = 1/(-15) + 1/10 = -1/15 + 1/10",
+          "1/v = (-2 + 3)/30 = 1/30",
+          "v = +30 cm"
+        ],
+        "answer": "30 cm",
+        "answerValue": "30 cm",
+        "check": "verified",
+        "modelAnswer": "30 cm",
+        "work": {
+          "given": {
+            "f": "10 cm",
+            "u": "-15 cm",
+            "h": "2.0 cm"
+          },
+          "formula": "1/v - 1/u = 1/f",
+          "expression": "1 / (1/f + 1/u)",
+          "unit": "cm"
+        },
+        "reply": "The lens formula relates object distance, image distance and focal length; a positive image distance means the image forms on the other side of the lens, so it is real.\n\n1/v = 1/u + 1/f\n1/v = 1/(-15) + 1/10 = -1/15 + 1/10\n1/v = (-2 + 3)/30 = 1/30\nv = +30 cm\n\nAnswer: 30 cm",
+        "citations": [
+          {
+            "chunkId": "38d494e4-7b2c-4876-a11d-3ed18512bcc8",
+            "chapterNumber": 9,
+            "chapterTitle": "Light – Reflection and Refraction",
+            "section": "9.3 Refraction of Light > 9.3.7 Lens Formula and Magnification",
+            "pageStart": 156,
+            "pageEnd": 157
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1749,
+        "outputTokens": 200,
+        "reasoningTokens": 0,
+        "costInr": 0.035486,
+        "latencyMs": 858
+      },
+      "latencyMs": 862
+    },
+    {
+      "id": "m18",
+      "lang": "en",
+      "question": "A 2.0 cm tall object is placed 15 cm from a convex lens of focal length 10 cm. Find the height of the image.",
+      "gold": "-4 cm",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "The lens formula gives the image distance, and magnification m = v/u relates image height to object height. The negative sign shows the image is real and inverted.",
+        "steps": [
+          "1/v = 1/u + 1/f = 1/(-15) + 1/10 = 1/30",
+          "v = +30 cm",
+          "m = v/u = 30/(-15) = -2",
+          "h' = h * m = 2.0 * (-2) = -4.0 cm"
+        ],
+        "answer": "-4 cm",
+        "answerValue": "-4 cm",
+        "check": "verified",
+        "modelAnswer": "-4.0 cm",
+        "work": {
+          "given": {
+            "h": "2.0 cm",
+            "u": "-15 cm",
+            "f": "10 cm"
+          },
+          "formula": "1/v - 1/u = 1/f; m = h'/h = v/u",
+          "expression": "h * (1 / (1/f + 1/u)) / u",
+          "unit": "cm"
+        },
+        "reply": "The lens formula gives the image distance, and magnification m = v/u relates image height to object height. The negative sign shows the image is real and inverted.\n\n1/v = 1/u + 1/f = 1/(-15) + 1/10 = 1/30\nv = +30 cm\nm = v/u = 30/(-15) = -2\nh' = h * m = 2.0 * (-2) = -4.0 cm\n\nAnswer: -4 cm",
+        "citations": [
+          {
+            "chunkId": "38d494e4-7b2c-4876-a11d-3ed18512bcc8",
+            "chapterNumber": 9,
+            "chapterTitle": "Light – Reflection and Refraction",
+            "section": "9.3 Refraction of Light > 9.3.7 Lens Formula and Magnification",
+            "pageStart": 156,
+            "pageEnd": 157
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1873,
+        "outputTokens": 228,
+        "reasoningTokens": 0,
+        "costInr": 0.038762,
+        "latencyMs": 1041
+      },
+      "latencyMs": 1043
+    },
+    {
+      "id": "m19",
+      "lang": "en",
+      "question": "The refractive index of glass is 1.5. Find the speed of light in glass. The speed of light in vacuum is 3 × 10^8 m/s.",
+      "gold": "2e8 m/s",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "The refractive index of a medium is the ratio of the speed of light in vacuum to the speed of light in that medium, so dividing the vacuum speed by the refractive index gives the speed in glass.",
+        "steps": [
+          "n = c / v",
+          "v = c / n",
+          "v = 3e8 / 1.5",
+          "v = 2e8 m/s"
+        ],
+        "answer": "2e+8 m / s",
+        "answerValue": "2e+8 m / s",
+        "check": "verified",
+        "modelAnswer": "2e8 m/s",
+        "work": {
+          "given": {
+            "n": "1.5",
+            "c": "3e8 m/s"
+          },
+          "formula": "n = c / v",
+          "expression": "c / n",
+          "unit": "m/s"
+        },
+        "reply": "The refractive index of a medium is the ratio of the speed of light in vacuum to the speed of light in that medium, so dividing the vacuum speed by the refractive index gives the speed in glass.\n\nn = c / v\nv = c / n\nv = 3e8 / 1.5\nv = 2e8 m/s\n\nAnswer: 2e+8 m / s",
+        "citations": [
+          {
+            "chunkId": "604f5c71-e88f-4a8c-91dc-cf4e680e0188",
+            "chapterNumber": 9,
+            "chapterTitle": "Light – Reflection and Refraction",
+            "section": "9.3 Refraction of Light > 9.3.2 The Refractive Index",
+            "pageStart": 148,
+            "pageEnd": 148
+          },
+          {
+            "chunkId": "c42aa5c2-6093-487e-966d-fb18efd801f2",
+            "chapterNumber": 9,
+            "chapterTitle": "Light – Reflection and Refraction",
+            "section": "What you have learnt",
+            "pageStart": 158,
+            "pageEnd": 159
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1779,
+        "outputTokens": 173,
+        "reasoningTokens": 0,
+        "costInr": 0.034421,
+        "latencyMs": 1010
+      },
+      "latencyMs": 1013
+    },
+    {
+      "id": "m20",
+      "lang": "en",
+      "question": "Find the focal length of a convex mirror whose radius of curvature is 32 cm.",
+      "gold": "16 cm",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "The radius of curvature of a spherical mirror is twice its focal length, so the focal length is half of the radius of curvature. For a convex mirror the focus is behind the mirror, so the focal length is positive.",
+        "steps": [
+          "For a spherical mirror, R = 2f",
+          "f = R / 2",
+          "f = 32 / 2 = 16 cm"
+        ],
+        "answer": "16 cm",
+        "answerValue": "16 cm",
+        "check": "verified",
+        "modelAnswer": "16 cm",
+        "work": {
+          "given": {
+            "R": "32 cm"
+          },
+          "formula": "R = 2f",
+          "expression": "R / 2",
+          "unit": "cm"
+        },
+        "reply": "The radius of curvature of a spherical mirror is twice its focal length, so the focal length is half of the radius of curvature. For a convex mirror the focus is behind the mirror, so the focal length is positive.\n\nFor a spherical mirror, R = 2f\nf = R / 2\nf = 32 / 2 = 16 cm\n\nAnswer: 16 cm",
+        "citations": [
+          {
+            "chunkId": "cfeccbee-c393-4346-a12d-52f74594b334",
+            "chapterNumber": 9,
+            "chapterTitle": "Light – Reflection and Refraction",
+            "section": "9.2 Spherical Mirrors",
+            "pageStart": 136,
+            "pageEnd": 137
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1660,
+        "outputTokens": 156,
+        "reasoningTokens": 0,
+        "costInr": 0.03182,
+        "latencyMs": 824
+      },
+      "latencyMs": 826
+    },
+    {
+      "id": "m21",
+      "lang": "en",
+      "question": "Balance the equation: Fe + H2O → Fe3O4 + H2",
+      "gold": [
+        3,
+        4,
+        1,
+        4
+      ],
+      "intent": "numerical",
+      "output": {
+        "type": "balance",
+        "explanation": "By the law of conservation of mass, the number of atoms of each element must be equal on both sides, so coefficients are chosen to balance oxygen, then hydrogen, then iron.",
+        "steps": [
+          "Count atoms: Fe 1 vs 3, O 1 vs 4, H 2 vs 2.",
+          "Balance O by putting 4 before H2O: Fe + 4H2O -> Fe3O4 + H2.",
+          "Balance H by putting 4 before H2: Fe + 4H2O -> Fe3O4 + 4H2.",
+          "Balance Fe by putting 3 before Fe: 3Fe + 4H2O -> Fe3O4 + 4H2."
+        ],
+        "answer": "3Fe + 4H2O → Fe3O4 + 4H2",
+        "answerValue": null,
+        "check": "verified",
+        "modelAnswer": "3Fe + 4H2O -> Fe3O4 + 4H2",
+        "work": {
+          "given": {},
+          "formula": "",
+          "expression": "",
+          "unit": ""
+        },
+        "reply": "By the law of conservation of mass, the number of atoms of each element must be equal on both sides, so coefficients are chosen to balance oxygen, then hydrogen, then iron.\n\nCount atoms: Fe 1 vs 3, O 1 vs 4, H 2 vs 2.\nBalance O by putting 4 before H2O: Fe + 4H2O -> Fe3O4 + H2.\nBalance H by putting 4 before H2: Fe + 4H2O -> Fe3O4 + 4H2.\nBalance Fe by putting 3 before Fe: 3Fe + 4H2O -> Fe3O4 + 4H2.\n\nAnswer: 3Fe + 4H2O → Fe3O4 + 4H2",
+        "citations": [
+          {
+            "chunkId": "aafc16c4-b369-444c-bcdd-cdedeaf2815b",
+            "chapterNumber": 1,
+            "chapterTitle": "Chemical Reactions and Equations",
+            "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations",
+            "pageStart": 4,
+            "pageEnd": 5
+          },
+          {
+            "chunkId": "68c42e5c-2d04-4634-91c7-ef7fdc9736f8",
+            "chapterNumber": 1,
+            "chapterTitle": "Chemical Reactions and Equations",
+            "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations",
+            "pageStart": 3,
+            "pageEnd": 4
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1943,
+        "outputTokens": 240,
+        "reasoningTokens": 0,
+        "costInr": 0.040402,
+        "latencyMs": 1145
+      },
+      "latencyMs": 1160
+    },
+    {
+      "id": "m22",
+      "lang": "en",
+      "question": "Balance: H2 + Cl2 → HCl",
+      "gold": [
+        1,
+        1,
+        2
+      ],
+      "intent": "numerical",
+      "output": {
+        "type": "balance",
+        "explanation": "Atoms of each element must be equal on both sides, so a coefficient 2 is placed before HCl to balance hydrogen and chlorine.",
+        "steps": [
+          "Count H: 2 on left, 1 on right",
+          "Count Cl: 2 on left, 1 on right",
+          "Put coefficient 2 before HCl: H2 + Cl2 -> 2HCl",
+          "Check: H 2=2, Cl 2=2"
+        ],
+        "answer": "H2 + Cl2 → 2HCl",
+        "answerValue": null,
+        "check": "verified",
+        "modelAnswer": "H2 + Cl2 -> 2HCl",
+        "work": {
+          "given": {},
+          "formula": "",
+          "expression": "",
+          "unit": ""
+        },
+        "reply": "Atoms of each element must be equal on both sides, so a coefficient 2 is placed before HCl to balance hydrogen and chlorine.\n\nCount H: 2 on left, 1 on right\nCount Cl: 2 on left, 1 on right\nPut coefficient 2 before HCl: H2 + Cl2 -> 2HCl\nCheck: H 2=2, Cl 2=2\n\nAnswer: H2 + Cl2 → 2HCl",
+        "citations": [
+          {
+            "chunkId": "aafc16c4-b369-444c-bcdd-cdedeaf2815b",
+            "chapterNumber": 1,
+            "chapterTitle": "Chemical Reactions and Equations",
+            "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations",
+            "pageStart": 4,
+            "pageEnd": 5
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1768,
+        "outputTokens": 161,
+        "reasoningTokens": 0,
+        "costInr": 0.033607,
+        "latencyMs": 905
+      },
+      "latencyMs": 906
+    },
+    {
+      "id": "m23",
+      "lang": "en",
+      "question": "Balance: BaCl2 + Al2(SO4)3 → BaSO4 + AlCl3",
+      "gold": [
+        3,
+        1,
+        3,
+        2
+      ],
+      "intent": "numerical",
+      "output": {
+        "type": "balance",
+        "explanation": "Atoms of each element must be equal on both sides, so the coefficients are adjusted to balance barium, chlorine, aluminium and sulphate groups.",
+        "steps": [
+          "Write the unbalanced equation with all formulas.",
+          "Balance sulphate groups: 3 BaSO4 needs 3 BaCl2.",
+          "Balance chlorine: 3 BaCl2 gives 6 Cl, so 2 AlCl3.",
+          "Check Al and S: 2 Al and 3 SO4 on both sides."
+        ],
+        "answer": "3BaCl2 + Al2(SO4)3 → 3BaSO4 + 2AlCl3",
+        "answerValue": null,
+        "check": "verified",
+        "modelAnswer": "3BaCl2 + Al2(SO4)3 -> 3BaSO4 + 2AlCl3",
+        "work": {
+          "given": {},
+          "formula": "",
+          "expression": "",
+          "unit": ""
+        },
+        "reply": "Atoms of each element must be equal on both sides, so the coefficients are adjusted to balance barium, chlorine, aluminium and sulphate groups.\n\nWrite the unbalanced equation with all formulas.\nBalance sulphate groups: 3 BaSO4 needs 3 BaCl2.\nBalance chlorine: 3 BaCl2 gives 6 Cl, so 2 AlCl3.\nCheck Al and S: 2 Al and 3 SO4 on both sides.\n\nAnswer: 3BaCl2 + Al2(SO4)3 → 3BaSO4 + 2AlCl3",
+        "citations": [
+          {
+            "chunkId": "07310f04-2021-4f43-98fb-a12dadc137ee",
+            "chapterNumber": 1,
+            "chapterTitle": "Chemical Reactions and Equations",
+            "section": "Exercises",
+            "pageStart": 14,
+            "pageEnd": 15
+          },
+          {
+            "chunkId": "d59acac3-9b3e-4fcf-8898-52d8b51b95a4",
+            "chapterNumber": 1,
+            "chapterTitle": "Chemical Reactions and Equations",
+            "section": "1.2 Types of Chemical Reactions > 1.2.4 Double Displacement Reaction",
+            "pageStart": 11,
+            "pageEnd": 11
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1707,
+        "outputTokens": 197,
+        "reasoningTokens": 0,
+        "costInr": 0.034733,
+        "latencyMs": 1411
+      },
+      "latencyMs": 1415
+    },
+    {
+      "id": "m24",
+      "lang": "en",
+      "question": "Balance the chemical equation for sodium reacting with water: Na + H2O → NaOH + H2",
+      "gold": [
+        2,
+        2,
+        2,
+        1
+      ],
+      "intent": "numerical",
+      "output": {
+        "type": "balance",
+        "explanation": "A chemical equation is balanced by making the number of atoms of each element equal on both sides, using the smallest whole-number coefficients. Here sodium displaces hydrogen from water, giving sodium hydroxide and hydrogen gas.",
+        "steps": [
+          "Count atoms: Na 1→1, H 2→3, O 1→1; hydrogen is unbalanced.",
+          "Put 2 before Na and 2 before NaOH: 2Na + H2O → 2NaOH + H2.",
+          "Now H: 2→4, so put 2 before H2O: 2Na + 2H2O → 2NaOH + H2.",
+          "Check: Na 2=2, H 4=4, O 2=2; balanced."
+        ],
+        "answer": "2Na + 2H2O → 2NaOH + H2",
+        "answerValue": null,
+        "check": "verified",
+        "modelAnswer": "2Na + 2H2O -> 2NaOH + H2",
+        "work": {
+          "given": {},
+          "formula": "",
+          "expression": "",
+          "unit": ""
+        },
+        "reply": "A chemical equation is balanced by making the number of atoms of each element equal on both sides, using the smallest whole-number coefficients. Here sodium displaces hydrogen from water, giving sodium hydroxide and hydrogen gas.\n\nCount atoms: Na 1→1, H 2→3, O 1→1; hydrogen is unbalanced.\nPut 2 before Na and 2 before NaOH: 2Na + H2O → 2NaOH + H2.\nNow H: 2→4, so put 2 before H2O: 2Na + 2H2O → 2NaOH + H2.\nCheck: Na 2=2, H 4=4, O 2=2; balanced.\n\nAnswer: 2Na + 2H2O → 2NaOH + H2",
+        "citations": [
+          {
+            "chunkId": "63d7f6e6-547a-4b9c-a7e3-b6edee8ff077",
+            "chapterNumber": 1,
+            "chapterTitle": "Chemical Reactions and Equations",
+            "section": "1.2 Types of Chemical Reactions > 1.2.1 Combination Reaction",
+            "pageStart": 6,
+            "pageEnd": 7
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1821,
+        "outputTokens": 235,
+        "reasoningTokens": 0,
+        "costInr": 0.038419,
+        "latencyMs": 1700
+      },
+      "latencyMs": 1701
+    },
+    {
+      "id": "m25",
+      "lang": "en",
+      "question": "Balance: Pb(NO3)2 → PbO + NO2 + O2",
+      "gold": [
+        2,
+        2,
+        4,
+        1
+      ],
+      "intent": "numerical",
+      "output": {
+        "type": "balance",
+        "explanation": "This is a decomposition reaction caused by heat, so lead nitrate breaks into lead oxide, nitrogen dioxide and oxygen. Balancing means making the number of each kind of atom equal on both sides.",
+        "steps": [
+          "Count Pb: 1 on each side, so Pb(NO3)2 keeps coefficient 1.",
+          "Count N: 2 on left, so put 2 before NO2.",
+          "Count O: left 6; right 1 (PbO) + 4 (2NO2) + 2 (O2) = 7, so use 2Pb(NO3)2 giving 12 O on left.",
+          "With 2Pb(NO3)2: 2PbO + 4NO2 + 1O2 gives 2+8+2 = 12 O and 4 N on right."
+        ],
+        "answer": "2Pb(NO3)2 → 2PbO + 4NO2 + O2",
+        "answerValue": null,
+        "check": "verified",
+        "modelAnswer": "2Pb(NO3)2 -> 2PbO + 4NO2 + O2",
+        "work": {
+          "given": {},
+          "formula": "",
+          "expression": "",
+          "unit": ""
+        },
+        "reply": "This is a decomposition reaction caused by heat, so lead nitrate breaks into lead oxide, nitrogen dioxide and oxygen. Balancing means making the number of each kind of atom equal on both sides.\n\nCount Pb: 1 on each side, so Pb(NO3)2 keeps coefficient 1.\nCount N: 2 on left, so put 2 before NO2.\nCount O: left 6; right 1 (PbO) + 4 (2NO2) + 2 (O2) = 7, so use 2Pb(NO3)2 giving 12 O on left.\nWith 2Pb(NO3)2: 2PbO + 4NO2 + 1O2 gives 2+8+2 = 12 O and 4 N on right.\n\nAnswer: 2Pb(NO3)2 → 2PbO + 4NO2 + O2",
+        "citations": [
+          {
+            "chunkId": "47a48700-b795-4962-a45d-8ff46e25793b",
+            "chapterNumber": 1,
+            "chapterTitle": "Chemical Reactions and Equations",
+            "section": "1.2 Types of Chemical Reactions > 1.2.2 Decomposition Reaction",
+            "pageStart": 9,
+            "pageEnd": 10
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1866,
+        "outputTokens": 258,
+        "reasoningTokens": 0,
+        "costInr": 0.040314,
+        "latencyMs": 1258
+      },
+      "latencyMs": 1259
+    },
+    {
+      "id": "m26",
+      "lang": "en",
+      "question": "Write the balanced equation: CH4 + O2 → CO2 + H2O",
+      "gold": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "intent": "numerical",
+      "output": {
+        "type": "balance",
+        "explanation": "In combustion, methane reacts with oxygen to give carbon dioxide and water; atoms of each element must be equal on both sides, so coefficients are adjusted to balance them.",
+        "steps": [
+          "Count atoms: C 1, H 4, O 2 on left; C 1, H 2, O 3 on right.",
+          "Balance H: put 2 before H2O, giving 4 H on right.",
+          "Now O on right = 2 + 2 = 4, so put 2 before O2.",
+          "Check: C 1=1, H 4=4, O 4=4."
+        ],
+        "answer": "CH4 + 2O2 → CO2 + 2H2O",
+        "answerValue": null,
+        "check": "verified",
+        "modelAnswer": "CH4 + 2O2 -> CO2 + 2H2O",
+        "work": {
+          "given": {},
+          "formula": "",
+          "expression": "",
+          "unit": ""
+        },
+        "reply": "In combustion, methane reacts with oxygen to give carbon dioxide and water; atoms of each element must be equal on both sides, so coefficients are adjusted to balance them.\n\nCount atoms: C 1, H 4, O 2 on left; C 1, H 2, O 3 on right.\nBalance H: put 2 before H2O, giving 4 H on right.\nNow O on right = 2 + 2 = 4, so put 2 before O2.\nCheck: C 1=1, H 4=4, O 4=4.\n\nAnswer: CH4 + 2O2 → CO2 + 2H2O",
+        "citations": [
+          {
+            "chunkId": "0fe8da6f-62be-421d-afe9-20110188aa07",
+            "chapterNumber": 4,
+            "chapterTitle": "Carbon and its Compounds",
+            "section": "4.3 Chemical Properties of Carbon Compounds > 4.3.1 Combustion",
+            "pageStart": 69,
+            "pageEnd": 70
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1827,
+        "outputTokens": 214,
+        "reasoningTokens": 0,
+        "costInr": 0.037348,
+        "latencyMs": 1171
+      },
+      "latencyMs": 1172
+    },
+    {
+      "id": "m27",
+      "lang": "te",
+      "question": "4 Ω నిరోధం గుండా 3 A విద్యుత్ ప్రవహిస్తే పొటెన్షియల్ తేడా ఎంత?",
+      "gold": "12 V",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "ఓమ్ నియమం (Ohm's law) ప్రకారం నిరోధం (resistance) గుండా ప్రవహించే విద్యుత్ (current) మరియు పొటెన్షియల్ తేడా (potential difference) నేరుగా అనులోమానుపాతంలో ఉంటాయి, అంటే V = IR.",
+        "steps": [
+          "ఓమ్ నియమం (Ohm's law): V = I * R",
+          "V = 3 * 4",
+          "V = 12 V"
+        ],
+        "answer": "12 V",
+        "answerValue": "12 V",
+        "check": "verified",
+        "modelAnswer": "12 V",
+        "work": {
+          "given": {
+            "R": "4 ohm",
+            "I": "3 A"
+          },
+          "formula": "V = I * R",
+          "expression": "I * R",
+          "unit": "V"
+        },
+        "reply": "ఓమ్ నియమం (Ohm's law) ప్రకారం నిరోధం (resistance) గుండా ప్రవహించే విద్యుత్ (current) మరియు పొటెన్షియల్ తేడా (potential difference) నేరుగా అనులోమానుపాతంలో ఉంటాయి, అంటే V = IR.\n\nఓమ్ నియమం (Ohm's law): V = I * R\nV = 3 * 4\nV = 12 V\n\nజవాబు: 12 V",
+        "citations": [
+          {
+            "chunkId": "bfe7d5fd-36aa-4b56-b673-6ff7ca6d1caf",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.4 Ohm’s Law",
+            "pageStart": 176,
+            "pageEnd": 176
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1855,
+        "outputTokens": 225,
+        "reasoningTokens": 0,
+        "costInr": 0.038345,
+        "latencyMs": 1788
+      },
+      "latencyMs": 1792
+    },
+    {
+      "id": "m28",
+      "lang": "te",
+      "question": "ఈ సమీకరణాన్ని తుల్యం చేయండి: Mg + O2 → MgO",
+      "gold": [
+        2,
+        1,
+        2
+      ],
+      "intent": "numerical",
+      "output": {
+        "type": "balance",
+        "explanation": "రసాయన సమీకరణంలో రెండు వైపులా ప్రతి మూలకం పరమాణువుల సంఖ్య సమానంగా ఉండాలి (law of conservation of mass). అందుకే గుణకాలు (coefficients) సరిచేసి సమీకరణాన్ని తుల్యం చేస్తాము.",
+        "steps": [
+          "Mg మరియు O పరమాణువుల సంఖ్యను రెండు వైపులా లెక్కించండి",
+          "RHS లో O ఒకటి, LHS లో O2 లో రెండు ఉన్నాయి",
+          "MgO కి 2 గుణకం పెట్టండి: Mg + O2 → 2MgO",
+          "ఇప్పుడు Mg ను సరిచేయండి: 2Mg + O2 → 2MgO"
+        ],
+        "answer": "2Mg + O2 → 2MgO",
+        "answerValue": null,
+        "check": "verified",
+        "modelAnswer": "2Mg + O2 -> 2MgO",
+        "work": {
+          "given": {},
+          "formula": "",
+          "expression": "",
+          "unit": ""
+        },
+        "reply": "రసాయన సమీకరణంలో రెండు వైపులా ప్రతి మూలకం పరమాణువుల సంఖ్య సమానంగా ఉండాలి (law of conservation of mass). అందుకే గుణకాలు (coefficients) సరిచేసి సమీకరణాన్ని తుల్యం చేస్తాము.\n\nMg మరియు O పరమాణువుల సంఖ్యను రెండు వైపులా లెక్కించండి\nRHS లో O ఒకటి, LHS లో O2 లో రెండు ఉన్నాయి\nMgO కి 2 గుణకం పెట్టండి: Mg + O2 → 2MgO\nఇప్పుడు Mg ను సరిచేయండి: 2Mg + O2 → 2MgO\n\nజవాబు: 2Mg + O2 → 2MgO",
+        "citations": [
+          {
+            "chunkId": "aafc16c4-b369-444c-bcdd-cdedeaf2815b",
+            "chapterNumber": 1,
+            "chapterTitle": "Chemical Reactions and Equations",
+            "section": "1.1 Chemical Equations > 1.1.2 Balanced Chemical Equations",
+            "pageStart": 4,
+            "pageEnd": 5
+          },
+          {
+            "chunkId": "5425cdb8-8431-4ff6-af38-6c9c8f11a747",
+            "chapterNumber": 1,
+            "chapterTitle": "Chemical Reactions and Equations",
+            "section": "1.1 Chemical Equations > 1.1.1 Writing a Chemical Equation",
+            "pageStart": 3,
+            "pageEnd": 3
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1734,
+        "outputTokens": 312,
+        "reasoningTokens": 0,
+        "costInr": 0.041436,
+        "latencyMs": 1888
+      },
+      "latencyMs": 1890
+    },
+    {
+      "id": "m29",
+      "lang": "te_latn",
+      "question": "12 V battery ki 6 ohm resistor connect chesthe current entha?",
+      "gold": "2 A",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "Ohm's law prakaram, potential difference V current I ki directly proportional, V = IR. Kabatti current ni V ni R tho divide chesi kanugontam.",
+        "steps": [
+          "Ohm's law: I = V / R",
+          "I = 12 / 6",
+          "I = 2 A"
+        ],
+        "answer": "2 A",
+        "answerValue": "2 A",
+        "check": "verified",
+        "modelAnswer": "2 A",
+        "work": {
+          "given": {
+            "V": "12 V",
+            "R": "6 ohm"
+          },
+          "formula": "I = V / R",
+          "expression": "V / R",
+          "unit": "A"
+        },
+        "reply": "Ohm's law prakaram, potential difference V current I ki directly proportional, V = IR. Kabatti current ni V ni R tho divide chesi kanugontam.\n\nOhm's law: I = V / R\nI = 12 / 6\nI = 2 A\n\nAnswer: 2 A",
+        "citations": [
+          {
+            "chunkId": "bfe7d5fd-36aa-4b56-b673-6ff7ca6d1caf",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.4 Ohm’s Law",
+            "pageStart": 176,
+            "pageEnd": 176
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1803,
+        "outputTokens": 151,
+        "reasoningTokens": 0,
+        "costInr": 0.033547,
+        "latencyMs": 1217
+      },
+      "latencyMs": 1219
+    },
+    {
+      "id": "m30",
+      "lang": "te_latn",
+      "question": "2 kW heater 5 gantalu vadithe entha energy kharchu avutundi? kWh lo cheppandi",
+      "gold": "10 kWh",
+      "intent": "numerical",
+      "output": {
+        "type": "numeric",
+        "explanation": "Energy anedi power mariyu time la product. kWh anedi commercial unit, so power ni kW lo, time ni hours lo teesukunte energy direct ga kWh lo vastundi.",
+        "steps": [
+          "E = P × t",
+          "E = 2 kW × 5 h",
+          "E = 10 kWh"
+        ],
+        "answer": "10 kWh",
+        "answerValue": "10 kWh",
+        "check": "verified",
+        "modelAnswer": "10 kWh",
+        "work": {
+          "given": {
+            "P": "2 kW",
+            "t": "5 hour"
+          },
+          "formula": "E = P * t",
+          "expression": "P * t",
+          "unit": "kWh"
+        },
+        "reply": "Energy anedi power mariyu time la product. kWh anedi commercial unit, so power ni kW lo, time ni hours lo teesukunte energy direct ga kWh lo vastundi.\n\nE = P × t\nE = 2 kW × 5 h\nE = 10 kWh\n\nAnswer: 10 kWh",
+        "citations": [
+          {
+            "chunkId": "6d9d4c08-ad29-43e9-a3a6-c6e9cd65b2b6",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "11.8 Electric Power",
+            "pageStart": 191,
+            "pageEnd": 192
+          },
+          {
+            "chunkId": "fd439c80-6abd-4242-be13-1f096d43c732",
+            "chapterNumber": 11,
+            "chapterTitle": "Electricity",
+            "section": "What you have learnt",
+            "pageStart": 192,
+            "pageEnd": 192
+          }
+        ]
+      },
+      "source": "model",
+      "checks": {
+        "valid": true,
+        "correct": true,
+        "wrongShownAsChecked": false,
+        "verified": true,
+        "language": true,
+        "short": true
+      },
+      "usage": {
+        "model": "deepseekv4.1-flash-1017",
+        "inputTokens": 1755,
+        "outputTokens": 152,
+        "reasoningTokens": 0,
+        "costInr": 0.03293,
+        "latencyMs": 1238
+      },
+      "latencyMs": 1242
+    }
+  ]
+}
