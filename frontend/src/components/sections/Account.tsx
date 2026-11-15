@@ -17,7 +17,7 @@ const ROLE_KEY = 'vv-signup-role';
 export function AccountArt({ kind }: { kind: 'sign-in' | 'sign-up' | 'reset' }) {
   const line = {
     'sign-in': 'Welcome back. Your chats, notes and progress are waiting.',
-    'sign-up': 'Students and parents each have their own account. A parent links to a student with a code.',
+    'sign-up': 'One account is all you need. Your chats, notes and progress stay private to you.',
     reset: 'It happens. We will email you a 6-digit code.',
   }[kind];
   return (
@@ -29,7 +29,7 @@ export function AccountArt({ kind }: { kind: 'sign-in' | 'sign-up' | 'reset' }) 
         <Bindu size={70} />
         <Speech className="mb-5 max-w-[32ch]">{line}</Speech>
       </div>
-      <p className="mt-3 text-sm text-ink-faint">Your account keeps your progress private. Parents can see progress only after linking, and never see your uploaded photos.</p>
+      <p className="mt-3 text-sm text-ink-faint">Your account keeps your chats, notes and uploaded photos private to you.</p>
     </div>
   );
 }
@@ -112,7 +112,10 @@ export function SignInForm() {
     try {
       await authPost('sign-in', { email, password });
       await refresh();
-      router.push('/learning');
+      // A new account has no bookplate yet: go there first, otherwise to the book.
+      const { data } = await insforge().database.from('students').select('onboarding_completed_at').limit(1);
+      const done = (data as { onboarding_completed_at: string | null }[] | null)?.[0]?.onboarding_completed_at;
+      router.push(done ? '/learning' : '/onboarding');
     } catch (err) {
       const e2 = err as Error & { code?: string };
       if (e2.code === 'EMAIL_NOT_VERIFIED') setNeedsCode(true);
@@ -148,17 +151,13 @@ export function SignInForm() {
 export function SignUpForm() {
   const router = useRouter();
   const { refresh } = useAuth();
-  const [role, setRole] = useState<'student' | 'parent'>('student');
+  const role = 'student' as const;
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [stage, setStage] = useState<'form' | 'code'>('form');
-
-  useEffect(() => {
-    if (new URLSearchParams(window.location.search).get('role') === 'parent') setRole('parent');
-  }, []);
 
   const passwordOk = password.length >= 8 && /\d/.test(password);
 
@@ -170,7 +169,7 @@ export function SignUpForm() {
     }
     try { sessionStorage.removeItem(ROLE_KEY); } catch { /* ignore */ }
     await refresh();
-    router.push(role === 'parent' ? '/parent' : '/onboarding');
+    router.push('/onboarding');
   };
 
   const submit = async (e: React.FormEvent) => {
@@ -193,18 +192,7 @@ export function SignUpForm() {
   return (
     <Card title="Create an account">
       <form onSubmit={submit} noValidate>
-        <fieldset className="mb-6">
-          <legend className="text-sm font-semibold text-ink-soft">I am a</legend>
-          <div className="mt-2 grid grid-cols-2 gap-3">
-            {(['student', 'parent'] as const).map((r) => (
-              <label key={r} className={`cursor-pointer rounded-md border-[1.5px] px-3 py-2 text-center font-display text-lg transition ${role === r ? 'border-emerald bg-emerald/10 text-emerald' : 'border-ink/25 hover:border-gold-deep'}`}>
-                <input type="radio" name="role" className="sr-only" checked={role === r} onChange={() => setRole(r)} />
-                {r === 'student' ? 'Student' : 'Parent'}
-              </label>
-            ))}
-          </div>
-        </fieldset>
-        <Field label={role === 'student' ? 'Your first name' : 'Your name'} hint={role === 'student' ? 'Only your first name. We do not ask for your full name, phone or address.' : undefined} autoComplete="given-name" maxLength={60} value={name} onChange={(e) => setName(e.target.value)} />
+        <Field label="Your first name" hint="Only your first name. We do not ask for your full name, phone or address." autoComplete="given-name" maxLength={60} value={name} onChange={(e) => setName(e.target.value)} />
         <Field label="Email" type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <Field label="Password" type="password" autoComplete="new-password" hint="At least 8 characters, including a number." value={password} onChange={(e) => setPassword(e.target.value)} />
         <ErrorText>{error}</ErrorText>

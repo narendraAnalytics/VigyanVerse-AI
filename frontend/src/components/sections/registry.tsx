@@ -70,7 +70,7 @@ const SPREADS: Record<SectionId, Spread> = {
   onboarding: {
     left: () => <BookplateLeft />, right: () => <BookplateRight />,
     leftFrame: { runningHead: head('Ex libris', 'Bookplate') },
-    rightFrame: { runningHead: head('Parent permission', 'Invite a parent'), ruled: true, margin: true },
+    rightFrame: { runningHead: head('Getting started', 'Your account'), ruled: true, margin: true },
   },
   parent: {
     left: () => <ParentLeft />, right: () => <ParentRight />,

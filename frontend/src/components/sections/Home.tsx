@@ -37,7 +37,7 @@ const PROMISES = [
   'A question from outside the textbook gets a short answer that says so.',
   'Numbers are worked out by code, not guessed by the AI.',
   'Quiz questions are checked twice before you see them, and marking is done by code.',
-  'AI features switch on only after a parent gives permission.',
+  'Your photos stay private to you, and voice recordings are never stored.',
 ];
 
 export function HomeRight() {
