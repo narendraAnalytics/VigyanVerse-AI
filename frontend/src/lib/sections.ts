@@ -1,0 +1,42 @@
+// The book's sections, in reading order. The order decides which way a page turns.
+// Main sections appear in the navbar (bookmark ribbons); the others are front-matter pages
+// (account, bookplate, parent permission slip) reached by links.
+
+export type SectionId =
+  | 'home' | 'physics' | 'chemistry' | 'biology' | 'tutor' | 'learning'
+  | 'sign-in' | 'sign-up' | 'reset-password' | 'onboarding' | 'parent';
+
+export interface Section {
+  id: SectionId;
+  path: string;
+  label: string;
+  /** Position in the book: front matter is negative, so turning to it goes backwards. */
+  order: number;
+  color: string;
+  main: boolean;
+}
+
+export const SECTIONS: Section[] = [
+  { id: 'sign-in', path: '/sign-in', label: 'Sign in', order: -5, color: 'var(--emerald)', main: false },
+  { id: 'sign-up', path: '/sign-up', label: 'Create account', order: -4, color: 'var(--emerald)', main: false },
+  { id: 'reset-password', path: '/reset-password', label: 'Reset password', order: -3, color: 'var(--emerald)', main: false },
+  { id: 'onboarding', path: '/onboarding', label: 'Your bookplate', order: -2, color: 'var(--gold-deep)', main: false },
+  { id: 'parent', path: '/parent', label: 'Parent permission', order: -1, color: 'var(--gold-deep)', main: false },
+  { id: 'home', path: '/', label: 'Home', order: 0, color: 'var(--emerald)', main: true },
+  { id: 'physics', path: '/physics', label: 'Physics', order: 1, color: 'var(--physics)', main: true },
+  { id: 'chemistry', path: '/chemistry', label: 'Chemistry', order: 2, color: 'var(--chemistry)', main: true },
+  { id: 'biology', path: '/biology', label: 'Biology', order: 3, color: 'var(--biology)', main: true },
+  { id: 'tutor', path: '/tutor', label: 'AI Tutor', order: 4, color: 'var(--tutor)', main: true },
+  { id: 'learning', path: '/learning', label: 'My Learning', order: 5, color: 'var(--learning)', main: true },
+];
+
+export const MAIN_SECTIONS = SECTIONS.filter((s) => s.main);
+
+export function sectionForPath(pathname: string): Section {
+  const clean = pathname.replace(/\/+$/, '') || '/';
+  return SECTIONS.find((s) => s.path === clean) ?? SECTIONS.find((s) => s.id === 'home')!;
+}
+
+export function sectionById(id: SectionId): Section {
+  return SECTIONS.find((s) => s.id === id)!;
+}
