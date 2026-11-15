@@ -72,7 +72,8 @@ export const MODEL_ROUTES: Record<ModelTask, ModelRoute> = {
   // Phase 5d (agents/advice.ts): GLM only WORDS the next-activity result in 1-2 sentences; code picks the
   // chapter and checks the words, and a fixed template is the fallback. No model fallback.
   advice: { model: 'glm5.3-flash', api: 'v2', maxTokens: 400, temperature: 0.3, json: true },
-  vision: { model: 'gemma4', api: 'v2', maxTokens: 1500, temperature: 0 },
+  // Phase 6b (agents/document.ts): one image per call, JSON mode.
+  vision: { model: 'gemma4', api: 'v2', maxTokens: 1500, temperature: 0, json: true },
   voice_dialogue: { model: 'sarvam-105b-conversations', api: 'v2', maxTokens: 400, temperature: 0.4 },
 };
 
