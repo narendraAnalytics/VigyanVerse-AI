@@ -205,7 +205,8 @@ function ChatPanel() {
     if (preview) return;
     const intent = tutorIntent.get();
     if (intent.subject || intent.draft) {
-      chat.set({ subject: intent.subject, draft: intent.draft ?? '', notesDocId: null });
+      // The chapter's suggested question goes in as a placeholder, so the box starts empty.
+      chat.set({ subject: intent.subject, hint: intent.draft ?? '', draft: '', notesDocId: null });
       tutorIntent.reset();
     }
   }, [preview]);
@@ -406,7 +407,7 @@ function Composer() {
           value={s.draft}
           onChange={(e) => chat.set({ draft: e.target.value })}
           onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(); } }}
-          placeholder={s.notesDocId ? 'Ask about your photo…' : language === 'te' ? 'మీ ప్రశ్న ఇక్కడ రాయండి…' : 'Type your question…'}
+          placeholder={s.notesDocId ? 'Ask about your photo…' : s.hint || (language === 'te' ? 'మీ ప్రశ్న ఇక్కడ రాయండి…' : 'Type your question…')}
           className={clsx('field font-hand min-h-[2.75rem] flex-1 resize-none text-[1.15rem] leading-snug', /[ఀ-౿]/.test(s.draft) && 'te')}
         />
         <button type="submit" disabled={!s.draft.trim() || s.sending} className="ink-button h-11 !px-4" aria-label="Send">

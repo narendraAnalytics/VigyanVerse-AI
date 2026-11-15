@@ -13,7 +13,7 @@ is built for CBSE and Andhra Pradesh SSC students.
 
 ## Status
 
-**The backend is complete and deployed on InsForge. The frontend has not been started.**
+**The backend is complete and deployed on InsForge. The frontend (Next.js, in `frontend/`) is built and runs against it; logged-in testing is under way.**
 
 | Area | State |
 |---|---|
@@ -24,9 +24,9 @@ is built for CBSE and Andhra Pradesh SSC students.
 | Learning intelligence: mastery, spaced revision, next activity, advice | ✅ Live-evaluated |
 | Document reading (Gemma 4) and questions about an upload | ✅ Live-evaluated |
 | Voice: Telugu / English speech in (Saaras v4) and out (Bulbul v4 Flash) | ✅ Round trip checked |
-| Identity, roles, parent linking, parental consent, RLS | ✅ Applied and security-checked |
-| Frontend (Next.js) | ⏳ Next |
-| Logged-in end-to-end tests, real student photos and voices | ⏳ Need the frontend and real accounts |
+| Identity, roles, RLS; parent linking and consent tables | ✅ Applied and security-checked. Students now use their own account: `has_consent()` is true for a student's own account (migration 20) |
+| Frontend: 3D open-textbook site (Home, Physics, Chemistry, Biology, AI Tutor, My Learning, sign-in, bookplate) | ✅ Built, pushed, production build passes |
+| Logged-in end-to-end tests (tutor, quiz, upload, voice), real student photos and voices | ⏳ Started: first account and bookplate created; the rest to test |
 | AP SSC curriculum, Telugu chapter titles | ⏳ Waiting for official sources |
 | NCERT usage permission | ⏳ Launch blocker |
 
@@ -43,9 +43,10 @@ security) and [`backendplan.txt`](backendplan.txt) (decisions and work log).
   labelled "Not from your Class 10 textbook – not needed for the exam".
 - **Simple and short.** Every agent answers in plain Class 10 language; detail only on request.
 - **No web search.** Answers come from the textbook and the student's own uploads.
-- **Child-safe by design.** Every table has row-level security. Parents link with a one-time invite
-  code, consent is an append-only record per purpose, and AI features switch off without an active
-  parent's consent. Answer keys are unreadable to clients. Audio is never stored.
+- **Private by design.** Every table has row-level security, so a student only sees their own chats,
+  notes and progress. Uploaded photos are visible only to the student. Answer keys are unreadable to
+  clients. Audio is never stored. (Parent linking and consent records still exist in the database but
+  are not required: owner decision 2026-11-15, one account per student.)
 - **Cost-aware.** Each task uses the cheapest model that does it well, with a fallback. Cost and
   latency are logged per call in ₹, and each student has a daily cap (₹10) plus per-minute limits.
 - **Small and fast.** Runs on InsForge Nano; every request finishes inside the 30 s Edge Function limit.
@@ -92,7 +93,7 @@ security) and [`backendplan.txt`](backendplan.txt) (decisions and work log).
 | Agents | LangGraph.js StateGraph, TypeScript |
 | Validation & verification | zod, mathjs, custom chemical equation balancer |
 | Testing | vitest (251 unit tests), live per-agent evals with pass bars set before the run, rolled-back SQL checks |
-| Frontend (next) | Next.js, TypeScript, Tailwind CSS |
+| Frontend | Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, React Three Fiber, GSAP, Motion |
 
 ## Repository structure
 
@@ -102,6 +103,7 @@ vigyanverseai/
 ├── backenddescription.txt     detailed backend description (agents, workflows, database)
 ├── backendplan.txt            backend decisions and work log
 ├── projectOverview.txt        product vision (some parts outdated; backendplan.txt wins)
+├── frontend/                  Next.js web app (see below)
 └── backend/
     ├── migrations/            SQL migrations (schema, RLS, seed data)
     ├── src/
@@ -150,6 +152,19 @@ Optional secrets `TTS_SPEAKER_EN` and `TTS_SPEAKER_TE` change the spoken voice w
 | `npm run db:up` | Apply pending migrations |
 | `npm run advisor` | InsForge security / performance advisor findings |
 
+## Running the frontend
+
+A step-by-step guide is in [`frontend/README.md`](frontend/README.md) (kept local). In short:
+
+```bash
+cd frontend
+npm install
+# create .env.local: NEXT_PUBLIC_INSFORGE_URL, NEXT_PUBLIC_INSFORGE_ANON_KEY, NEXT_PUBLIC_APP_URL
+npm run dev          # http://localhost:3000
+```n
+The site is one illustrated textbook: each section is a two-page spread and moving between sections
+turns the page. AI Tutor and My Learning appear in the navbar only after sign-in.
+
 ## Curriculum scope
 
 **CBSE Class 10 Science, 2026-27:** 13 assessed chapters across Chemistry (1–4), Biology (5–8, 13)
@@ -170,17 +185,22 @@ database). Mastery is tracked per chapter for now; topic-level tracking needs an
 4. ✅ **Assessment:** quiz generation → independent validation → code grading → mistake feedback
 5. ✅ **Learning intelligence:** per-chapter mastery, spaced repetition, next activity, advice
 6. ✅ **Documents & voice:** reading uploaded images, Telugu / English speech in and out
-7. ⏳ **Frontend:** landing page, signup, onboarding, parent invite and consent, tutor chat, quiz,
-   dashboard, document upload, voice
+7. ✅ **Frontend:** full-screen 3D open-textbook site with page-turn navigation, landing page, sign-up and
+   sign-in (email code, Google, GitHub), student bookplate, tutor chat (explain and hint modes), quiz,
+   progress page, photo upload, voice
 8. ⏳ **Real-user testing:** logged-in end-to-end tests, real handwriting photos and voices, Telugu review
-9. ⏳ **Production:** benchmarks, security review, consent workflow review, pilot study
+9. ⏳ **Production:** benchmarks, security review, legal review of student consent (see Privacy), pilot study
 
 Learning-outcome claims will come only from a consented pre-test / post-test pilot, never from
 assumptions.
 
 ## Privacy
 
-Users are minors. The platform collects minimal personal data (display name, board, grade and
-birth year only), needs verifiable parental consent before AI features, and isolates every
-student's data at the database level. Uploaded documents are visible only to the student, and voice
-recordings are never stored. A legal review under India's DPDP Act is required before public launch.
+Users are minors. The platform collects minimal personal data (first name, board, class and birth
+year only) and isolates every student's data at the database level. Uploaded documents are visible
+only to the student, and voice recordings are never stored.
+
+**Open item:** since 2026-11-15 a student does not need a parent's permission to use the AI features
+(owner decision). India's DPDP Act requires verifiable parental consent for under-18s, so a legal
+review is required before public launch. The parent tables and the old rule can be restored with one
+migration.

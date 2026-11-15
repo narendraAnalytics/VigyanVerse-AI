@@ -28,6 +28,8 @@ export const chat = createStore({
   /** When set, questions go to this uploaded document instead of the tutor. */
   notesDocId: null as string | null,
   draft: '',
+  /** A suggested question shown faintly in the empty box (a placeholder), never as typed text. */
+  hint: '',
 });
 
 let seq = 0;
@@ -58,7 +60,7 @@ export async function send(text: string, language: Lang, opts: { newTopic?: bool
   const message = text.trim();
   if (!message || s.sending) return;
   const mine: ChatMessage = { id: localId(), role: 'student', text: message };
-  chat.set({ messages: [...s.messages, mine], sending: true, draft: '' });
+  chat.set({ messages: [...s.messages, mine], sending: true, draft: '', hint: '' });
 
   try {
     if (s.notesDocId) {
