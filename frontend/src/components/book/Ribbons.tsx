@@ -6,17 +6,20 @@
 import Link from 'next/link';
 import { clsx } from 'clsx';
 import { Atom, BookOpen, FlaskConical, Leaf, MessageCircleQuestion, NotebookPen } from 'lucide-react';
-import { MAIN_SECTIONS, type SectionId } from '@/lib/sections';
+import { visibleSections, type SectionId } from '@/lib/sections';
+import { useAuth } from '@/lib/auth';
 
 const ICONS: Record<string, typeof Atom> = {
   home: BookOpen, physics: Atom, chemistry: FlaskConical, biology: Leaf, tutor: MessageCircleQuestion, learning: NotebookPen,
 };
 
 export function Ribbons({ current, className }: { current: SectionId; className?: string }) {
+  const { user } = useAuth();
+  const sections = visibleSections(!!user);
   return (
     <nav aria-label="Sections" className={clsx('relative', className)}>
       <ul className="flex items-center gap-5 overflow-x-auto px-1 [scrollbar-width:none] sm:gap-7 lg:justify-center lg:gap-8">
-        {MAIN_SECTIONS.map((s) => {
+        {sections.map((s) => {
           const active = s.id === current;
           const Icon = ICONS[s.id];
           return (

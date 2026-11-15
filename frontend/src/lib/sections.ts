@@ -32,6 +32,13 @@ export const SECTIONS: Section[] = [
 
 export const MAIN_SECTIONS = SECTIONS.filter((s) => s.main);
 
+/** Sections that only appear in the navbar (and arrow-key / swipe order) once signed in. */
+export const SIGNED_IN_ONLY: SectionId[] = ['tutor', 'learning'];
+
+export function visibleSections(signedIn: boolean): Section[] {
+  return signedIn ? MAIN_SECTIONS : MAIN_SECTIONS.filter((s) => !SIGNED_IN_ONLY.includes(s.id));
+}
+
 export function sectionForPath(pathname: string): Section {
   const clean = pathname.replace(/\/+$/, '') || '/';
   return SECTIONS.find((s) => s.path === clean) ?? SECTIONS.find((s) => s.id === 'home')!;

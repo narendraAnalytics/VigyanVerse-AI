@@ -12,7 +12,6 @@ const kalam = Kalam({ variable: '--font-kalam', subsets: ['latin'], weight: ['40
 export const metadata: Metadata = {
   title: { default: 'VigyanVerse AI', template: '%s | VigyanVerse AI' },
   description: 'Class 10 Science (Physics, Chemistry, Biology) with an AI tutor that answers from the NCERT textbook, in English and Telugu.',
-  icons: { icon: '/logo.png' },
 };
 
 export const viewport: Viewport = {

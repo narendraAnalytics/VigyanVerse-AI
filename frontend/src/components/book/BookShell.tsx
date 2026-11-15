@@ -7,7 +7,8 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import { usePathname, useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import { clsx } from 'clsx';
-import { MAIN_SECTIONS, sectionForPath, sectionById, type SectionId } from '@/lib/sections';
+import { MAIN_SECTIONS, visibleSections, sectionForPath, sectionById, type SectionId } from '@/lib/sections';
+import { useAuth } from '@/lib/auth';
 import { useLowPower, useReducedMotion, useSpread } from '@/lib/device';
 import { Leaf } from './Leaf';
 import { Cover } from './Cover';
@@ -47,6 +48,8 @@ export function BookShell() {
   const pathname = usePathname();
   const router = useRouter();
   const target = sectionForPath(pathname).id;
+  const { user } = useAuth();
+  const navSections = visibleSections(!!user);
 
   const spread = useSpread();
   const reduced = useReducedMotion();
@@ -125,13 +128,13 @@ export function BookShell() {
     const onKey = (e: KeyboardEvent) => {
       if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || isTyping(e.target)) return;
       if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
-      const idx = MAIN_SECTIONS.findIndex((s) => s.id === target);
-      const next = idx < 0 ? MAIN_SECTIONS[0] : MAIN_SECTIONS[idx + (e.key === 'ArrowRight' ? 1 : -1)];
+      const idx = navSections.findIndex((s) => s.id === target);
+      const next = idx < 0 ? navSections[0] : navSections[idx + (e.key === 'ArrowRight' ? 1 : -1)];
       if (next) { e.preventDefault(); router.push(next.path); }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [target, router]);
+  }, [target, router, navSections.length]);
 
   // Touch: a horizontal swipe on the page turns it.
   const swipe = useRef<{ x: number; y: number; t: number } | null>(null);
@@ -146,8 +149,8 @@ export function BookShell() {
     const dx = e.clientX - s.x;
     const dy = e.clientY - s.y;
     if (Math.abs(dx) < 70 || Math.abs(dx) < Math.abs(dy) * 1.6 || Date.now() - s.t > 700) return;
-    const idx = MAIN_SECTIONS.findIndex((x) => x.id === target);
-    const next = idx < 0 ? MAIN_SECTIONS[0] : MAIN_SECTIONS[idx + (dx < 0 ? 1 : -1)];
+    const idx = navSections.findIndex((x) => x.id === target);
+    const next = idx < 0 ? navSections[0] : navSections[idx + (dx < 0 ? 1 : -1)];
     if (next) router.push(next.path);
   };
 
