@@ -64,6 +64,11 @@ export function BookplateLeft() {
 
   const save = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!name.trim()) {
+      setError('Write your first name on the line above, then save.');
+      document.getElementById(nameId)?.focus();
+      return;
+    }
     setBusy(true); setError(null); setSaved(false);
     const db = insforge().database;
     try {
@@ -103,7 +108,7 @@ export function BookplateLeft() {
         <p className="font-display text-sm italic text-gold-deep">Ex libris</p>
         <p className="mt-1 font-display text-3xl">This book belongs to</p>
         <label htmlFor={nameId} className="sr-only">First name</label>
-        <input id={nameId} className="field font-hand mt-4 text-center text-3xl" placeholder="your first name" maxLength={60} required value={name} onChange={(e) => setName(e.target.value)} />
+        <input id={nameId} className="field font-hand mt-4 text-center text-3xl" placeholder="your first name" maxLength={60} value={name} onChange={(e) => { setName(e.target.value); setError(null); }} />
         {!isParent && (
           <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 text-left text-sm">
             <div>
@@ -136,7 +141,7 @@ export function BookplateLeft() {
         )}
         {!isParent && <p className="mt-4 text-left text-xs text-ink-faint">Andhra Pradesh SSC chapters will be added from the official syllabus. Until then the book follows CBSE.</p>}
         {error && <p role="alert" className="mt-3 text-sm text-pencil">{error}</p>}
-        <button className="ink-button mt-5" disabled={busy || !name.trim()}>
+        <button className="ink-button mt-5" disabled={busy}>
           {busy ? <Loader2 aria-hidden className="h-4 w-4 animate-spin" /> : saved ? <Check aria-hidden className="h-4 w-4" /> : null}
           {saved ? 'Saved' : 'Save my bookplate'}
         </button>
