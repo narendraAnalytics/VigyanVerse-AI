@@ -1,0 +1,50 @@
+{
+  "agent": "advice",
+  "model": "glm5.3-flash",
+  "reasoning": null,
+  "ranAt": "2026-11-15T02:58:52.138Z",
+  "metrics": {
+    "modelAccepted": 6,
+    "finalOk": 1,
+    "p95Ms": 1999,
+    "costInr": 0.051741
+  },
+  "bar": {
+    "modelAccepted": true,
+    "finalOk": true,
+    "p95Ms": true,
+    "cost": false
+  },
+  "rows": [
+    {
+      "id": "a1",
+      "source": "model",
+      "message": "Time to revise the chapter 'Electricity'! Try a short revision quiz on it. Take care with calculation slips — work slowly and check each step."
+    },
+    {
+      "id": "a2",
+      "source": "model",
+      "message": "You are developing well in 'Acids, Bases and Salts'. Try a short practice quiz on it, focusing on science terms and names. Keep going!"
+    },
+    {
+      "id": "a3",
+      "source": "model",
+      "message": "Great news — a new chapter is waiting for you! Start 'Life Processes' with a short quiz and take your first step today."
+    },
+    {
+      "id": "a4",
+      "source": "model",
+      "message": "Great work! You are doing well in 'Magnetic Effects of Electric Current'. Try one more quiz on this chapter to stay sharp and keep up the good habit!"
+    },
+    {
+      "id": "t1",
+      "source": "model",
+      "message": "చాలా బాగుంది! \"Light - Reflection and Refraction\" అధ్యాయాన్ని ఇప్పుడు రివిజన్ చేద్దాం. కాంతి పరావర్తనం, వక్రీభవన భావనలపై చిన్న క్విజ్ చేసి అర్థం మెరుగుపరుచుకోండి."
+    },
+    {
+      "id": "t2",
+      "source": "model",
+      "message": "చిన్న ప్రాక్టీస్ క్విజ్ చేయడం మంచి అలవాటు! \"Chemical Reactions and Equations\" లో సరైన ఫార్ములా ఎంచుకోవడం మీద శ్రద్ధ పెట్టండి. కొంచెం కొంచెంగా నేర్చుకుంటారు!"
+    }
+  ]
+}

@@ -11,6 +11,7 @@ export type ModelTask =
   | 'validator'
   | 'math'
   | 'mistake'
+  | 'advice'
   | 'vision'
   | 'voice_dialogue';
 
@@ -68,6 +69,9 @@ export const MODEL_ROUTES: Record<ModelTask, ModelRoute> = {
   // JSON mode; reasoning set by the 3f eval; 9 s then Sarvam so the fallback fits in 30 s.
   math: { model: 'deepseekv4.1-flash-1017', api: 'v2', maxTokens: 1000, temperature: 0, json: true, reasoningEffort: 'none', fallback: 'sarvam-105b', timeoutMs: 9_000 },
   mistake: { model: 'glm5.3-flash', api: 'v2', maxTokens: 400, temperature: 0, json: true },
+  // Phase 5d (agents/advice.ts): GLM only WORDS the next-activity result in 1-2 sentences; code picks the
+  // chapter and checks the words, and a fixed template is the fallback. No model fallback.
+  advice: { model: 'glm5.3-flash', api: 'v2', maxTokens: 400, temperature: 0.3, json: true },
   vision: { model: 'gemma4', api: 'v2', maxTokens: 1500, temperature: 0 },
   voice_dialogue: { model: 'sarvam-105b-conversations', api: 'v2', maxTokens: 400, temperature: 0.4 },
 };
