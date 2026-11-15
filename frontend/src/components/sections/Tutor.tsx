@@ -233,7 +233,7 @@ function ChatPanel() {
         {s.sending && (
           <div className="flex items-center gap-3 text-ink-faint">
             <Bindu size={40} mood="thinking" />
-            <span className="font-hand text-lg">{s.notesDocId ? 'Reading your notes…' : s.mode === 'socratic' ? 'Thinking of a good hint…' : 'Looking it up in your textbook…'}</span>
+            <span className="font-hand text-lg">{s.notesDocId ? 'Reading your notes…' : s.mode === 'socratic' ? 'Thinking of a good hint…' : 'Searching our textbook database…'}</span>
           </div>
         )}
       </div>
