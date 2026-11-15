@@ -228,8 +228,33 @@ function ChatPanel() {
         </div>
       )}
       <div ref={listRef} role="log" aria-live="polite" aria-label="Conversation" className="page-scroll min-h-0 flex-1 space-y-5 pr-1">
-        {s.messages.length === 0 && <EmptyChat notes={!!notesDoc} />}
-        {s.messages.map((m) => <Bubble key={m.id} m={m} language={language} />)}
+        {s.loadingConv && (
+          <div className="flex items-center gap-3 text-ink-faint" role="status">
+            <Bindu size={40} mood="thinking" />
+            <span className="font-hand text-lg">Opening your conversation…</span>
+          </div>
+        )}
+        {!s.loadingConv && s.convError && s.messages.length === 0 && (
+          <div role="alert" className="text-pencil">
+            <p>{s.convError}</p>
+            {s.openingId && s.conversations.find((x) => x.id === s.openingId) && s.convError.startsWith('Could not') && (
+              <button type="button" className="ghost-button mt-3" onClick={() => void openConversation(s.conversations.find((x) => x.id === s.openingId)!)}>Try again</button>
+            )}
+          </div>
+        )}
+        {!s.loadingConv && !s.convError && s.messages.length === 0 && <EmptyChat notes={!!notesDoc} />}
+        {s.reading && s.messages.length > 0 && (
+          <div className="border-b-[1.5px] border-ink/15 pb-3">
+            <p className="text-xs italic text-ink-faint">Saved conversation, {new Date(s.reading.updated_at).toLocaleDateString()}</p>
+            <h2 className="font-display text-xl leading-tight">{s.reading.title ?? 'Conversation'}</h2>
+          </div>
+        )}
+        {s.messages.map((m) => (
+          <div key={m.id}>
+            {s.reading && <p className="mb-1 text-xs font-semibold text-ink-faint">{m.role === 'student' ? 'Your question' : 'Tutor’s answer'}</p>}
+            <Bubble m={m} language={language} />
+          </div>
+        ))}
         {s.sending && (
           <div className="flex items-center gap-3 text-ink-faint">
             <Bindu size={40} mood="thinking" />
@@ -245,7 +270,14 @@ function ChatPanel() {
           <button type="button" disabled={s.sending} onClick={() => chat.set({ socraticOpen: false })} className="ghost-button !px-3 !py-1 text-sm">Ask something new</button>
         </div>
       )}
-      <Composer />
+      {s.reading ? (
+        <div className="mt-3 flex flex-wrap items-center gap-3 border-t-[1.5px] border-ink/15 pt-3">
+          <button type="button" className="ink-button" onClick={() => chat.set({ reading: null })}>Continue this chat</button>
+          <button type="button" className="ghost-button" onClick={newConversation}>Close</button>
+        </div>
+      ) : (
+        <Composer />
+      )}
     </div>
   );
 }

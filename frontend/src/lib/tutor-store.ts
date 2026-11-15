@@ -30,6 +30,12 @@ export const chat = createStore({
   draft: '',
   /** A suggested question shown faintly in the empty box (a placeholder), never as typed text. */
   hint: '',
+  /** Opening a saved conversation: show progress, and an error with a retry instead of an empty chat. */
+  loadingConv: false,
+  convError: null as string | null,
+  openingId: null as string | null,
+  /** Read-only history view of a saved conversation (questions and answers), before continuing it. */
+  reading: null as Conversation | null,
 });
 
 let seq = 0;
@@ -42,17 +48,25 @@ export async function loadConversations() {
 }
 
 export async function openConversation(c: Conversation) {
-  chat.set({ conversationId: c.id, mode: c.mode, messages: [], notesDocId: null });
-  const { data } = await insforge().database.from('messages')
+  chat.set({ conversationId: c.id, mode: c.mode, messages: [], notesDocId: null, loadingConv: true, convError: null, openingId: c.id, socraticOpen: false, reading: c });
+  const { data, error } = await insforge().database.from('messages')
     .select('id, role, content, citations, meta, agent').eq('conversation_id', c.id).order('id', { ascending: true }).limit(100);
-  const rows = (data as { id: number; role: 'student' | 'tutor'; content: string; citations: Citation[] | null; meta: { label?: string | null } | null; agent: string | null }[] | null) ?? [];
+  // The student may have opened another conversation while this one was loading.
+  if (chat.get().openingId !== c.id) return;
+  if (error) {
+    console.error('[tutor] could not load conversation', error);
+    chat.set({ loadingConv: false, convError: 'Could not open this conversation. Check your connection and try again.' });
+    return;
+  }
+  const rows = (data as { id: number | string; role: 'student' | 'tutor'; content: string; citations: Citation[] | null; meta: { label?: string | null } | null; agent: string | null }[] | null) ?? [];
   chat.set({
-    messages: rows.map((r) => ({ id: String(r.id), role: r.role, text: r.content, citations: r.citations ?? [], label: r.meta?.label ?? null, agent: r.agent ?? undefined, source: 'tutor' })),
+    loadingConv: false,
+    convError: rows.length === 0 ? 'This conversation has no saved messages.' : null,
+    messages: rows.map((r) => ({ id: String(r.id), role: r.role, text: r.content, citations: r.citations ?? [], label: r.meta?.label ?? null, agent: r.agent ?? undefined, source: 'tutor' as const })),
   });
 }
-
 export function newConversation() {
-  chat.set({ conversationId: null, messages: [], socraticOpen: false, notesDocId: null });
+  chat.set({ conversationId: null, messages: [], socraticOpen: false, notesDocId: null, loadingConv: false, convError: null, openingId: null, reading: null });
 }
 
 export async function send(text: string, language: Lang, opts: { newTopic?: boolean } = {}) {
@@ -60,7 +74,7 @@ export async function send(text: string, language: Lang, opts: { newTopic?: bool
   const message = text.trim();
   if (!message || s.sending) return;
   const mine: ChatMessage = { id: localId(), role: 'student', text: message };
-  chat.set({ messages: [...s.messages, mine], sending: true, draft: '', hint: '' });
+  chat.set({ messages: [...s.messages, mine], sending: true, draft: '', hint: '', reading: null });
 
   try {
     if (s.notesDocId) {

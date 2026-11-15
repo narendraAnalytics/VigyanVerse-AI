@@ -17,7 +17,7 @@ is built for CBSE and Andhra Pradesh SSC students.
 
 | Area | State |
 |---|---|
-| InsForge backend project (Nano compute) | ✅ Deployed: 19 migrations, 9 Edge Functions |
+| InsForge backend project (Nano compute) | ✅ Deployed: 21 migrations, 9 Edge Functions |
 | Knowledge base (13 NCERT chapters, 360 chunks, keyword search) | ✅ Recall@5 100%, MRR 0.92 |
 | Tutor, Socratic mode, maths reasoning (LangGraph.js) | ✅ Live-evaluated |
 | Quizzes: generate → validate → grade → mistake feedback | ✅ Live-evaluated |
