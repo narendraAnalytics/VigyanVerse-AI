@@ -116,7 +116,7 @@ export default async function (req: Request): Promise<Response> {
   }));
   const writes = await Promise.all([
     db.from('messages').insert([
-      { conversation_id: conversation.id, role: 'student', content: body.message },
+      { conversation_id: conversation.id, role: 'student', content: body.message, citations: [], meta: {} },
       { conversation_id: conversation.id, role: 'tutor', content: turn.reply.slice(0, 6000), agent: turn.agent, citations: turn.citations, meta: { ...turn.meta, label: turn.label, related: turn.related } },
     ]),
     db.from('conversations').update({ mode, language: turn.language, socratic_topic: turn.socratic.topic, socratic_hints: turn.socratic.hints }).eq('id', conversation.id),
