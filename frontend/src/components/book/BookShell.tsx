@@ -14,7 +14,6 @@ import { Cover } from './Cover';
 import { LayoutProvider, PreviewProvider } from './page-context';
 import { SectionPage } from '@/components/sections/registry';
 import { Header } from './Header';
-import { Ribbons } from './Ribbons';
 
 interface Turn {
   from: SectionId;
@@ -72,12 +71,22 @@ export function BookShell() {
   const bookRef = useRef<HTMLDivElement>(null);
   const shadowRef = useRef<HTMLDivElement>(null);
   const leftPageRef = useRef<HTMLDivElement>(null);
+  // The header only exists once the book is measured, so measure it through a callback ref.
+  const [headEl, setHeadEl] = useState<HTMLDivElement | null>(null);
+  const [headH, setHeadH] = useState(0);
+  useLayoutEffect(() => {
+    if (!headEl) return;
+    const measure = () => setHeadH(headEl.offsetHeight);
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(headEl);
+    return () => ro.disconnect();
+  }, [headEl]);
 
-  // Book size: as large as the desk allows, but never wider than a comfortable reading spread.
-  // Pages stay portrait-ish (at most 0.9 as wide as tall), and room is left for the page edges.
-  const edgeRoom = spread ? 2 * (3 + (MAIN_SECTIONS.length - 1) * 1.5) + 8 : 0;
-  const bookH = Math.max(0, Math.min(area.h, spread ? 920 : 4000));
-  const bookW = Math.max(0, Math.min(area.w - edgeRoom, spread ? Math.min(1380, bookH * 1.8) : 720));
+  // The book fills the desk: only a thin strip is left for the page edges and the shadow.
+  const edgeRoom = spread ? 2 * (3 + (MAIN_SECTIONS.length - 1) * 1.5) + 4 : 0;
+  const bookH = Math.max(0, area.h);
+  const bookW = Math.max(0, area.w - edgeRoom);
   const pageW = spread ? bookW / 2 : bookW;
 
   // Route changed -> start a turn (or finish the one in progress first).
@@ -193,18 +202,26 @@ export function BookShell() {
     <LayoutProvider value={layout}>
       <div className="desk grain relative flex h-dvh w-full flex-col overflow-hidden">
         <DeskProps />
-        <Header />
-        <div className="relative z-10 flex min-h-0 flex-1 flex-col items-center px-2 pb-3 sm:px-6 sm:pb-6">
-          <Ribbons current={turn?.to ?? current} width={bookW} />
+        <div className="relative z-10 flex min-h-0 flex-1 flex-col items-center">
           <div ref={areaRef} className="book-stage relative flex min-h-0 w-full flex-1 items-start justify-center">
             {bookW > 0 && (
               <div
                 ref={bookRef}
                 className="relative"
-                style={{ width: bookW, height: bookH }}
+                style={{ width: bookW, height: bookH, ['--head-h' as string]: `${headH}px` }}
                 onPointerDown={onPointerDown}
                 onPointerUp={onPointerUp}
               >
+                {/* the navbar, printed across the top of the book (stays put while pages turn) */}
+                <div
+                  ref={setHeadEl}
+                  className="absolute inset-x-0 top-0 z-50 transition-opacity duration-500"
+                  style={{ opacity: intro === 'done' ? 1 : 0, pointerEvents: intro === 'done' ? undefined : 'none' }}
+                >
+                  <Header current={turn?.to ?? current} />
+                  <div aria-hidden className="mx-[var(--page-pad)] h-[5px] border-y border-gold/60" />
+                </div>
+
                 {/* page edges: the stack grows on the left as you read further */}
                 {spread && (
                   <>

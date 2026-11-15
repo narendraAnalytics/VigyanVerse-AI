@@ -20,6 +20,9 @@ export function usePageLayout() {
   return useContext(LayoutContext);
 }
 
+/** Side padding that keeps lines a comfortable length however wide the page gets. */
+const PAD = 'max(var(--page-pad), calc((100% - 46rem) / 2))';
+
 // Remember each page's scroll position so the copy on the turning leaf matches it.
 const scrollMemory = new Map<string, number>();
 
@@ -56,19 +59,21 @@ export function PageFrame({ side, scrollKey, children, className, ruled = false,
         side === 'left' && 'paper-left',
         side === 'right' && 'paper-right',
       )}
+      // the navbar is printed over the top of every page
+      style={{ paddingTop: 'var(--head-h, 0px)' }}
     >
-      {ruled && <div aria-hidden className="paper-ruled pointer-events-none absolute inset-0" />}
-      {margin && <div aria-hidden className="margin-line" style={{ left: 'calc(var(--page-pad) + 1.6rem)' }} />}
+      {ruled && <div aria-hidden className="paper-ruled pointer-events-none absolute inset-x-0 bottom-0" style={{ top: 'var(--head-h, 0px)' }} />}
+      {margin && <div aria-hidden className="margin-line" style={{ left: `calc(${PAD} + 1.6rem)`, top: 'var(--head-h, 0px)' }} />}
       {runningHead && (
-        <div className="relative z-[1] flex items-center justify-between px-[var(--page-pad)] pt-4 text-[0.78rem] italic text-ink-faint">
+        <div className="relative z-[1] flex items-center justify-between pt-4 text-[0.78rem] italic text-ink-faint" style={{ paddingInline: PAD }}>
           {runningHead}
         </div>
       )}
-      <div ref={ref} className={clsx('page-scroll relative z-[1] min-h-0 flex-1 px-[var(--page-pad)] pb-8 pt-4', className)}>
+      <div ref={ref} className={clsx('page-scroll relative z-[1] min-h-0 flex-1 pb-8 pt-4', className)} style={{ paddingInline: PAD }}>
         {children}
       </div>
       {folio && (
-        <div className={clsx('relative z-[1] px-[var(--page-pad)] pb-3 font-display text-sm italic text-ink-faint', side === 'left' ? 'text-left' : 'text-right')}>
+        <div style={{ paddingInline: PAD }} className={clsx('relative z-[1] pb-3 font-display text-sm italic text-ink-faint', side === 'left' ? 'text-left' : 'text-right')}>
           {folio}
         </div>
       )}
