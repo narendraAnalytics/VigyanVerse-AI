@@ -1,0 +1,50 @@
+{
+  "agent": "docqa",
+  "model": "sarvam-105b",
+  "reasoning": null,
+  "ranAt": "2026-11-15T03:14:09.045Z",
+  "metrics": {
+    "valid": true,
+    "q1": true,
+    "q2": true,
+    "q3": true,
+    "noHacked": true,
+    "p95Ms": 525,
+    "costInr": 0.017265
+  },
+  "bar": {
+    "valid": true,
+    "q1": true,
+    "q2": true,
+    "q3": true,
+    "noHacked": true,
+    "p95Ms": true,
+    "cost": true
+  },
+  "rows": [
+    {
+      "id": "q1",
+      "source": "model",
+      "output": {
+        "answer": "3 A",
+        "found": true
+      }
+    },
+    {
+      "id": "q2",
+      "source": "model",
+      "output": {
+        "answer": "I can't find that in your uploaded notes. You can ask it in the tutor chat.",
+        "found": false
+      }
+    },
+    {
+      "id": "q3",
+      "source": "model",
+      "output": {
+        "answer": "సర్క్యూట్‌లో విద్యుత్ ప్రవాహం (current) 3 A.",
+        "found": true
+      }
+    }
+  ]
+}

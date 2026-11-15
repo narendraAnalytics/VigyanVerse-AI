@@ -12,6 +12,7 @@ export type ModelTask =
   | 'math'
   | 'mistake'
   | 'advice'
+  | 'docqa'
   | 'vision'
   | 'voice_dialogue';
 
@@ -72,6 +73,9 @@ export const MODEL_ROUTES: Record<ModelTask, ModelRoute> = {
   // Phase 5d (agents/advice.ts): GLM only WORDS the next-activity result in 1-2 sentences; code picks the
   // chapter and checks the words, and a fixed template is the fallback. No model fallback.
   advice: { model: 'glm5.3-flash', api: 'v2', maxTokens: 400, temperature: 0.3, json: true },
+  // Phase 6c (agents/docqa.ts): answer ONLY from the student's uploaded text. Same lessons as tutor/socratic:
+  // JSON mode, reasoning off, short primary timeout so the GLM fallback fits in 30 s.
+  docqa: { model: 'sarvam-105b', api: 'v2', maxTokens: 500, temperature: 0.2, json: true, reasoningEffort: 'none', fallback: 'glm5.3-flash', timeoutMs: 8_000 },
   // Phase 6b (agents/document.ts): one image per call, JSON mode.
   vision: { model: 'gemma4', api: 'v2', maxTokens: 1500, temperature: 0, json: true },
   voice_dialogue: { model: 'sarvam-105b-conversations', api: 'v2', maxTokens: 400, temperature: 0.4 },
