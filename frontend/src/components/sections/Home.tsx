@@ -45,6 +45,15 @@ export function HomeRight() {
   const step = auth.loading ? null : nextSetupStep(auth);
   return (
     <div className="pl-10">
+      {!auth.loading && auth.user && (
+        <div className="mb-6 border-l-2 border-emerald bg-emerald/5 px-4 py-3" role="status">
+          <p className="font-hand text-2xl leading-tight text-emerald">Welcome, {auth.profile?.display_name ?? auth.user.name ?? auth.user.email.split('@')[0]}!</p>
+          <p className="mt-0.5 text-sm text-ink-soft">
+            You are signed in.
+            {step ? ' One more step to finish setting up.' : ' Pick a chapter, or ask the tutor.'}
+          </p>
+        </div>
+      )}
       <h2 className="font-display text-3xl">Contents</h2>
       <ol className="mt-5 space-y-4">
         {CONTENTS.map((c) => (
@@ -77,8 +86,7 @@ export function HomeRight() {
       <div className="relative mt-9 flex flex-wrap items-center gap-3">
         {auth.loading ? null : !auth.user ? (
           <>
-            <Link href="/sign-up" className="ink-button">Create a student account</Link>
-            <Link href="/sign-up?role=parent" className="ghost-button">I’m a parent</Link>
+            <Link href="/sign-in" className="ink-button">Sign in</Link>
             <span aria-hidden className="font-hand absolute -top-7 right-2 -rotate-6 text-lg text-pencil sm:right-10">start here</span>
           </>
         ) : step && step !== '/sign-in' ? (

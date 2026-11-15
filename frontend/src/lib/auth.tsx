@@ -42,6 +42,44 @@ export async function authPost<T = Record<string, unknown>>(action: string, body
   return data as T;
 }
 
+interface SessionUser { id: string; email: string; name?: string }
+
+function cookieValue(name: string): string | null {
+  const m = document.cookie.split('; ').find((c) => c.startsWith(`${name}=`));
+  return m ? decodeURIComponent(m.slice(name.length + 1)) : null;
+}
+
+function jwtUser(token: string | null): SessionUser | null {
+  if (!token) return null;
+  try {
+    const part = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+    const p = JSON.parse(decodeURIComponent(escape(atob(part)))) as { sub?: string; email?: string; exp?: number; profile?: { name?: string } };
+    if (!p.sub || (p.exp && p.exp * 1000 < Date.now() + 15_000)) return null;
+    return { id: p.sub, email: p.email ?? '', name: p.profile?.name };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * The signed-in user. The SDK's browser client does not read its own login cookie in
+ * getCurrentUser(), so read the short-lived access-token cookie directly and, if it is missing
+ * or about to expire, renew it through the app's refresh route (which holds the httpOnly cookie).
+ */
+async function readSession(): Promise<SessionUser | null> {
+  const fromCookie = jwtUser(cookieValue('insforge_access_token'));
+  if (fromCookie) return fromCookie;
+  try {
+    const res = await fetch('/api/auth/refresh', { method: 'POST', credentials: 'include', headers: { Accept: 'application/json' } });
+    if (!res.ok) return null;
+    const body = (await res.json()) as { user?: { id: string; email: string; profile?: { name?: string } } };
+    if (!body.user) return null;
+    return { id: body.user.id, email: body.user.email, name: body.user.profile?.name };
+  } catch {
+    return null;
+  }
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<AuthState['user']>(null);
@@ -51,13 +89,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const refresh = useCallback(async () => {
     const client = insforge();
-    const { data } = await client.auth.getCurrentUser();
-    const u = data?.user ?? null;
+    const u = await readSession();
     if (!u) {
       setUser(null); setProfile(null); setStudent(null); setLoading(false);
       return;
     }
-    const name = (u as { profile?: { name?: string } }).profile?.name;
+    const name = u.name;
+    // The client was built before this login: hand it the fresh token from the cookie.
+    const fresh = cookieValue('insforge_access_token');
+    if (fresh) client.setAccessToken(fresh);
     setUser({ id: u.id, email: u.email, name });
     const [p, s] = await Promise.all([
       client.database.from('profiles').select('id, role, display_name, preferred_language').eq('id', u.id).limit(1),
