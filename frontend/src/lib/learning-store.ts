@@ -70,10 +70,17 @@ export const quiz = createStore({
   error: null as string | null,
 });
 
-/** Open the setup card for a chapter. */
-export function openQuizSetup(chapterId: string) {
+/**
+ * Open the setup card. "Practise" opens a whole-chapter quiz for one chapter;
+ * "Quiz me on a topic" opens topic mode, where the student picks the chapter
+ * (chapterId may be null until they do).
+ */
+export function openQuizSetup(chapterId: string | null, mode: 'chapter' | 'topic' = 'chapter') {
   generation++;
-  quiz.set({ phase: 'setup', chapterId, quiz: null, answers: {}, graded: null, error: null, partial: null, deadline: null, limitSeconds: null, review: null });
+  quiz.set((p) => ({
+    phase: 'setup', chapterId, setup: { ...p.setup, mode }, quiz: null, answers: {}, graded: null, error: null,
+    partial: null, deadline: null, limitSeconds: null, review: null,
+  }));
 }
 
 /** Expected time limit for questions of these types (the server decides the real one). */
@@ -86,10 +93,13 @@ let generation = 0;
 export async function startQuiz(language: Lang) {
   const s = quiz.get();
   const chapterId = s.chapterId;
-  if (!chapterId) return;
+  if (!chapterId) {
+    quiz.set({ error: 'Choose the chapter your topic is in.' });
+    return;
+  }
   const topic = s.setup.mode === 'topic' ? s.setup.topic.trim().slice(0, 80) : '';
   if (s.setup.mode === 'topic' && topic.length < 2) {
-    quiz.set({ error: 'Type a topic from this chapter, or choose the whole chapter.' });
+    quiz.set({ error: 'Type a topic from this chapter.' });
     return;
   }
   const planned = s.setup.size;

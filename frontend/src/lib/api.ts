@@ -168,7 +168,7 @@ const MESSAGES: Record<string, string> = {
   conversation_failed: 'Only student accounts can chat with the tutor.',
   assessment_failed: 'Only student accounts can take quizzes.',
   formative_only: 'This chapter is formative only, so there are no exam-style quizzes for it.',
-  topic_not_found: 'That topic is not in this chapter of your textbook. Try another topic, or leave it empty for a whole-chapter quiz.',
+  topic_not_found: 'That topic is not in this chapter of your textbook. Try another topic or chapter, or use Practise for a whole-chapter quiz.',
   assessment_closed: 'This quiz has already started or finished. Start a new one.',
   already_submitted: 'This quiz was already submitted.',
   no_speech: 'No speech was heard. Hold the button and speak a little closer.',

@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from 'react';
 import { clsx } from 'clsx';
-import { CalendarClock, Check, ClipboardList, Loader2, PencilLine, Timer, X } from 'lucide-react';
+import { CalendarClock, Check, ClipboardList, Loader2, PencilLine, Target, Timer, X } from 'lucide-react';
 import { useStore } from '@/lib/store';
 import { useAuth } from '@/lib/auth';
 import { useChapters } from '@/lib/chapters';
@@ -148,8 +148,13 @@ function MasteryTable() {
   const summative = chapters.filter((c) => c.assessment_scope === 'summative');
   return (
     <section aria-labelledby="mastery-h">
-      <h2 id="mastery-h" className="font-display text-3xl">Chapter mastery</h2>
-      <p className="mt-1 text-sm text-ink-faint">Mastered needs a score of 85 or more over at least 10 answers.</p>
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <h2 id="mastery-h" className="font-display text-3xl">Chapter mastery</h2>
+        <button type="button" onClick={() => openQuizSetup(null, 'topic')} className="ink-button !py-1.5 text-sm">
+          <Target aria-hidden className="h-4 w-4" /> Quiz me on a topic
+        </button>
+      </div>
+      <p className="mt-1 text-sm text-ink-faint">Mastered needs a score of 85 or more over at least 10 answers. Practise gives a quiz on the whole chapter.</p>
       <ul className="mt-5 space-y-3">
         {summative.map((c) => <MasteryRowView key={c.id} c={c} m={byChapter.get(c.id)} onPractise={() => openQuizSetup(c.id)} />)}
       </ul>
@@ -231,7 +236,9 @@ function QuizPaper() {
         <h2 className="font-display text-3xl">{title}</h2>
         <p role="alert" className="mt-3 text-pencil">{q.error}</p>
         <div className="mt-4 flex gap-3">
-          {q.chapterId && <button type="button" className="ink-button" onClick={() => openQuizSetup(q.chapterId!)}>Try again</button>}
+          <button type="button" className="ink-button" onClick={() => openQuizSetup(q.chapterId, q.setup.mode)}>
+            {q.setup.mode === 'topic' ? 'Change the topic' : 'Try again'}
+          </button>
           <button type="button" className="ghost-button" onClick={closeQuiz}>Back to chapters</button>
         </div>
       </div>
@@ -343,7 +350,8 @@ function Question({ n, stem, type, options, value, disabled, onChange, result }:
 }
 
 // ---------------------------------------------------------------------------
-// Quiz setup: whole chapter or a topic, 5 / 10 / 15 questions, timed or not
+// Quiz setup. Practise = whole chapter; "Quiz me on a topic" = pick a chapter + type a topic.
+// Both then choose 5 / 10 / 15 questions, timed or not.
 // ---------------------------------------------------------------------------
 function QuizSetup() {
   const q = useStore(quiz);
@@ -351,42 +359,37 @@ function QuizSetup() {
   const { chapters } = useChapters();
   const chapter = chapters.find((c) => c.id === q.chapterId);
   const s = q.setup;
+  const topicMode = s.mode === 'topic';
   const set = (patch: Partial<typeof s>) => quiz.set((p) => ({ setup: { ...p.setup, ...patch }, error: null }));
   const topicId = useId();
+  const chapterSelectId = useId();
   const numeric = chapter?.subject_code === 'physics';
+  const summative = chapters.filter((c) => c.assessment_scope === 'summative');
   return (
     <form className="py-2" onSubmit={(e) => { e.preventDefault(); void startQuiz(language); }}>
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm italic text-ink-faint">New practice quiz</p>
-          <h2 className="font-display text-3xl leading-tight">{chapter?.title_en ?? 'Practice quiz'}</h2>
+          <p className="text-sm italic text-ink-faint">{topicMode ? 'New topic quiz' : 'New practice quiz · whole chapter'}</p>
+          <h2 className="font-display text-3xl leading-tight">{topicMode ? 'Quiz me on a topic' : chapter?.title_en ?? 'Practice quiz'}</h2>
         </div>
         <button type="button" onClick={closeQuiz} className="ghost-button !px-3 !py-1 text-sm">Close</button>
       </div>
 
-      <fieldset className="mt-6">
-        <legend className="font-display text-lg">What should it cover?</legend>
-        <div className="mt-2 grid grid-cols-2 gap-3">
-          {([
-            { id: 'chapter', title: 'Whole chapter', body: 'Questions from across the chapter.' },
-            { id: 'topic', title: 'A topic I choose', body: 'Every question on one topic.' },
-          ] as const).map((m) => (
-            <button key={m.id} type="button" aria-pressed={s.mode === m.id} onClick={() => set({ mode: m.id })}
-              className={clsx('rounded-md border-[1.5px] p-3 text-left transition', s.mode === m.id ? 'border-emerald bg-emerald/10' : 'border-ink/20 hover:border-gold-deep')}>
-              <span className="block font-display text-lg">{m.title}</span>
-              <span className="block text-sm text-ink-soft">{m.body}</span>
-            </button>
-          ))}
-        </div>
-        {s.mode === 'topic' && (
-          <div className="mt-3">
-            <label htmlFor={topicId} className="text-sm text-ink-soft">Topic from this chapter</label>
-            <input id={topicId} className="field mt-1" maxLength={80} autoFocus value={s.topic} onChange={(e) => set({ topic: e.target.value })}
-              placeholder={numeric ? 'For example: Ohm’s law' : 'For example: balancing equations'} />
-            <p className="mt-1 text-xs text-ink-faint">It must be in this chapter of your textbook. The questions come only from it.</p>
-          </div>
-        )}
-      </fieldset>
+      {topicMode && (
+        <fieldset className="mt-6">
+          <legend className="font-display text-lg">Which topic?</legend>
+          <label htmlFor={chapterSelectId} className="mt-2 block text-sm text-ink-soft">Chapter</label>
+          <select id={chapterSelectId} className="field mt-1" value={q.chapterId ?? ''}
+            onChange={(e) => quiz.set({ chapterId: e.target.value || null, error: null })}>
+            <option value="">Choose a chapter…</option>
+            {summative.map((c) => <option key={c.id} value={c.id}>{c.number}. {c.title_en}</option>)}
+          </select>
+          <label htmlFor={topicId} className="mt-3 block text-sm text-ink-soft">Topic from this chapter</label>
+          <input id={topicId} className="field mt-1" maxLength={80} value={s.topic} onChange={(e) => set({ topic: e.target.value })}
+            placeholder={numeric ? 'For example: Ohm’s law' : 'For example: balancing equations'} />
+          <p className="mt-1 text-xs text-ink-faint">It must be in that chapter of your textbook. The questions come only from it.</p>
+        </fieldset>
+      )}
 
       <fieldset className="mt-6">
         <legend className="font-display text-lg">How many questions?</legend>
