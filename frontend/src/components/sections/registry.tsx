@@ -5,13 +5,13 @@ import type { SectionId } from '@/lib/sections';
 import { PageFrame } from '@/components/book/page-context';
 import { HomeLeft, HomeRight } from './Home';
 import { SubjectLeft, SubjectRight } from './Subject';
-import { TutorLeft, TutorRight } from './Tutor';
+import { ImageBackdrop, TutorLeft, TutorRight, TutorRightHead } from './Tutor';
 import { LearningLeft, LearningRight } from './Learning';
 import { AccountArt, SignInForm, SignUpForm, ResetForm } from './Account';
 import { BookplateLeft, BookplateRight } from './Onboarding';
 import { ParentLeft, ParentRight } from './Parent';
 
-interface FrameOpts { ruled?: boolean; margin?: boolean; runningHead?: ReactNode; folio?: ReactNode; className?: string }
+interface FrameOpts { ruled?: boolean; margin?: boolean; runningHead?: ReactNode; folio?: ReactNode; className?: string; backdrop?: ReactNode }
 interface Spread {
   left: () => ReactNode;
   right: () => ReactNode;
@@ -47,7 +47,7 @@ const SPREADS: Record<SectionId, Spread> = {
   tutor: {
     left: () => <TutorLeft />, right: () => <TutorRight />,
     leftFrame: { runningHead: head('Part IV', 'The tutor’s desk') },
-    rightFrame: { runningHead: head('AI Tutor', 'Answers from your textbook'), className: 'flex flex-col !pb-3' },
+    rightFrame: { runningHead: <TutorRightHead />, backdrop: <ImageBackdrop />, className: 'flex flex-col !pb-3' },
     rightFirst: true,
   },
   learning: {

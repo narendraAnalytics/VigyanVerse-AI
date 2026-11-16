@@ -1,13 +1,16 @@
 // Edge Function: ask a question about one uploaded document (Phase 6c).
-// POST { documentId, question, language?: 'en' | 'te' | 'te_latn', wantsDetail? }
+// POST { documentId, question, language?: 'en' | 'te' | 'te_latn', wantsDetail?, title? }
 //
 //   authenticate -> zod -> consent (ai_tutoring) -> the student's own READY document (RLS)
 //   -> limit (reserve_ai_call) -> Document Q&A agent (Sarvam 105B) answers ONLY from the
 //   document text. If the document does not answer it, the app says so; it never answers from
 //   general knowledge here (that is the tutor chat). Answers are labelled "from your notes".
+//   The question and answer are saved into the image's conversation (created on first use, titled
+//   "Image: <title>"), so the image keeps its history; tutor-chat "solve it" turns go there too.
 import { z } from 'zod';
 import { runDocQa } from '../../agents/docqa.ts';
 import { authenticate, json, preflight } from '../../shared/http.ts';
+import { findOrCreateImageConversation } from '../../shared/image-conversation.ts';
 
 const FUNCTION_SLUG = 'document-ask';
 const MAX_PER_MINUTE = 4;
@@ -19,6 +22,8 @@ const Body = z.object({
   question: z.string().trim().min(2).max(500),
   language: z.enum(['en', 'te', 'te_latn']).default('en'),
   wantsDetail: z.boolean().default(false),
+  /** Title for the image's conversation if this is its first saved question. */
+  title: z.string().trim().min(1).max(80).optional(),
 });
 
 interface DocRow { id: string; status: string; extracted_text: string | null; needs_review: boolean }
@@ -67,12 +72,32 @@ export default async function (req: Request): Promise<Response> {
   // A model failure is not "not in your notes": ask the student to try again.
   if (run.source === 'fallback') return json({ error: 'try_again' }, 503);
 
+  // Save the turn into the image's conversation. The student still gets the answer if this fails.
+  const label = run.output.found ? 'From your uploaded notes' : null;
+  let conversationId: string | null = null;
+  let saved = false;
+  const conversation = await findOrCreateImageConversation(db, doc.id, body.title);
+  if (conversation) {
+    conversationId = conversation.id;
+    const write = await db.from('messages').insert([
+      { conversation_id: conversation.id, role: 'student', content: body.question, agent: null, citations: [], meta: {} },
+      { conversation_id: conversation.id, role: 'tutor', content: run.output.answer.slice(0, 6000), agent: 'docqa', citations: [], meta: { label, found: run.output.found } },
+    ]);
+    saved = !write.error;
+    if (!saved) console.error(`${FUNCTION_SLUG}: message save failed for conversation ${conversation.id}`);
+    else await db.from('conversations').update({ language: body.language }).eq('id', conversation.id);
+  } else {
+    console.error(`${FUNCTION_SLUG}: no conversation for document ${doc.id}`);
+  }
+
   return json({
     documentId: doc.id,
+    conversationId,
+    saved,
     answer: run.output.answer,
     found: run.output.found,
     // The reading may have been uncertain: the app can show a "check the text" hint.
     needsReview: doc.needs_review,
-    label: run.output.found ? 'From your uploaded notes' : null,
+    label,
   });
 }

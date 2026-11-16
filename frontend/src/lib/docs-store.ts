@@ -12,6 +12,7 @@ export interface UploadedDoc {
   needs_review: boolean;
   created_at: string;
   extracted_text?: string | null;
+  storage_key?: string;
 }
 
 export const KIND_LABEL: Record<DocKind, string> = {
@@ -25,7 +26,7 @@ export const docs = createStore({ list: [] as UploadedDoc[], busy: null as strin
 
 export async function loadDocs() {
   const { data } = await insforge().database.from('uploaded_documents')
-    .select('id, kind, status, needs_review, created_at').order('created_at', { ascending: false }).limit(20);
+    .select('id, kind, status, needs_review, created_at, extracted_text, storage_key').order('created_at', { ascending: false }).limit(20);
   docs.set({ list: (data as UploadedDoc[] | null) ?? [] });
 }
 
@@ -55,6 +56,21 @@ export async function uploadAndRead(file: File, kind: DocKind, userId: string): 
   } finally {
     docs.set({ busy: null });
   }
+}
+
+const photoUrls = new Map<string, Promise<string | null>>();
+
+/** A private, in-browser link to the student's own photo (downloaded once per page load, never shared). */
+export function photoUrl(doc: UploadedDoc): Promise<string | null> {
+  if (!doc.storage_key) return Promise.resolve(null);
+  let p = photoUrls.get(doc.id);
+  if (!p) {
+    p = insforge().storage.from('student-uploads').download(doc.storage_key)
+      .then(({ data }) => (data ? URL.createObjectURL(data) : null))
+      .catch(() => null);
+    photoUrls.set(doc.id, p);
+  }
+  return p;
 }
 
 /** Delete the photo and its reading (a student can always remove their own data). */

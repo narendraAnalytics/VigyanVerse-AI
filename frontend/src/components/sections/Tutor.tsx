@@ -5,12 +5,12 @@ import { useDropzone } from 'react-dropzone';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { clsx } from 'clsx';
-import { BookMarked, FileImage, Lightbulb, Loader2, Mic, Plus, SendHorizontal, Square, Trash2, Volume2, X } from 'lucide-react';
+import { BookMarked, FileImage, ImageIcon, Lightbulb, Loader2, Mic, Plus, SendHorizontal, Square, Trash2, Volume2, X } from 'lucide-react';
 import { useStore } from '@/lib/store';
 import { useAuth } from '@/lib/auth';
 import { useConsent } from '@/lib/consent';
-import { chat, loadConversations, newConversation, openConversation, send, type ChatMessage } from '@/lib/tutor-store';
-import { docs, KIND_LABEL, loadDocs, removeDoc, uploadAndRead, type DocKind } from '@/lib/docs-store';
+import { chat, displayTitle, IMAGE_TITLE_PREFIX, isImageTitle, loadConversations, newConversation, openConversation, openImage, send, splitImageQuestion, type ChatMessage } from '@/lib/tutor-store';
+import { docs, KIND_LABEL, loadDocs, photoUrl, removeDoc, uploadAndRead, type DocKind, type UploadedDoc } from '@/lib/docs-store';
 import { tutorIntent } from '@/lib/intents';
 import { ApiError, type Subject } from '@/lib/api';
 import { speakText, startRecording, stopSpeaking, type Recording } from '@/lib/voice';
@@ -74,10 +74,14 @@ function ModePicker() {
 
 function History() {
   const s = useStore(chat);
+  const d = useStore(docs);
+  const open = (c: (typeof s.conversations)[number]) =>
+    c.document_id && d.list.some((x) => x.id === c.document_id) ? void openImage(c.document_id) : void openConversation(c);
   const preview = usePreview();
   useEffect(() => { if (!preview) void loadConversations(); }, [preview]);
   return (
-    <section aria-labelledby="hist-h" className="mt-7">
+    // Faded while an image is open, so it is clear the right page is not one of these chats.
+    <section aria-labelledby="hist-h" className={clsx('mt-7 transition-opacity', s.notesDocId && 'opacity-50 hover:opacity-100')}>
       <div className="flex items-center justify-between">
         <h2 id="hist-h" className="font-display text-xl">Your conversations</h2>
         <button type="button" onClick={newConversation} className="ghost-button !px-3 !py-1 text-sm"><Plus aria-hidden className="h-4 w-4" /> New</button>
@@ -88,8 +92,9 @@ function History() {
         <ul className="mt-2 divide-y divide-ink/10">
           {s.conversations.slice(0, 6).map((c) => (
             <li key={c.id}>
-              <button type="button" onClick={() => openConversation(c)} className={clsx('flex w-full items-baseline gap-2 py-2 text-left hover:text-emerald', c.id === s.conversationId && 'text-emerald')}>
-                <span className="min-w-0 flex-1 truncate">{c.title ?? 'Untitled'}</span>
+              <button type="button" onClick={() => open(c)} className={clsx('flex w-full items-baseline gap-2 py-2 text-left hover:text-emerald', c.id === s.conversationId && 'text-emerald')}>
+                {(c.document_id || isImageTitle(c.title)) && <ImageIcon aria-label="Solved from an image" className="h-4 w-4 shrink-0 self-center text-image" />}
+                <span className="min-w-0 flex-1 truncate">{isImageTitle(c.title) ? c.title!.slice(IMAGE_TITLE_PREFIX.length) : c.title ?? 'Untitled'}</span>
                 <span className="shrink-0 text-xs italic text-ink-faint">{c.mode === 'socratic' ? 'hints' : ''} {new Date(c.updated_at).toLocaleDateString()}</span>
               </button>
             </li>
@@ -116,13 +121,13 @@ function Notes() {
     onDrop: async (files) => {
       if (!files[0] || !user) return;
       const id = await uploadAndRead(files[0], kind, user.id);
-      if (id) chat.set({ notesDocId: id, messages: [] });
+      if (id) void openImage(id);
     },
   });
 
   return (
-    <section aria-labelledby="notes-h" className="mt-7">
-      <h2 id="notes-h" className="font-display text-xl">Ask about your notes</h2>
+    <section aria-labelledby="notes-h" className="paper-graph mt-7 rounded-lg border-[1.5px] border-image/25 p-4">
+      <h2 id="notes-h" className="flex items-center gap-2 font-display text-xl text-image"><ImageIcon aria-hidden className="h-5 w-5" /> Ask about an image</h2>
       <p className="mt-1 text-sm text-ink-soft">Upload a photo of your notes, a textbook page, a diagram or a question paper. The answers then come only from that photo.</p>
       {!consent.document_upload ? (
         <p className="font-hand mt-2 text-pencil">A parent needs to allow photo uploads first.</p>
@@ -137,7 +142,7 @@ function Notes() {
           <div
             {...getRootProps()}
             className={clsx('mt-3 flex cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed px-4 py-5 text-center text-sm transition',
-              isDragActive ? 'border-emerald bg-emerald/10' : 'border-ink/30 hover:border-gold-deep')}
+              isDragActive ? 'border-image bg-image/10' : 'border-image/35 bg-white/40 hover:border-image')}
           >
             <input {...getInputProps()} aria-label="Upload a photo" />
             {d.busy ? (
@@ -160,14 +165,14 @@ function Notes() {
               <button
                 type="button"
                 disabled={doc.status !== 'ready'}
-                onClick={() => chat.set({ notesDocId: doc.id, messages: [] })}
-                className={clsx('min-w-0 flex-1 truncate text-left', doc.id === s.notesDocId ? 'font-semibold text-emerald' : 'hover:text-emerald', doc.status !== 'ready' && 'opacity-60')}
+                onClick={() => void openImage(doc.id)}
+                className={clsx('min-w-0 flex-1 truncate text-left', doc.id === s.notesDocId ? 'font-semibold text-image' : 'hover:text-image', doc.status !== 'ready' && 'opacity-60')}
               >
                 {KIND_LABEL[doc.kind]}, {new Date(doc.created_at).toLocaleDateString()}
                 {doc.status !== 'ready' && <span className="italic text-ink-faint"> ({doc.status === 'failed' ? 'could not be read' : 'reading'})</span>}
                 {doc.needs_review && doc.status === 'ready' && <span className="font-hand text-pencil"> hard to read in places</span>}
               </button>
-              <button type="button" aria-label="Delete this photo" onClick={() => { if (s.notesDocId === doc.id) chat.set({ notesDocId: null }); void removeDoc(doc.id); }} className="rounded p-1 text-ink-faint hover:text-pencil">
+              <button type="button" aria-label="Delete this image and its chat" title="Delete this image and its chat" onClick={() => { if (s.notesDocId === doc.id) newConversation(); void removeDoc(doc.id).then(loadConversations); }} className="rounded p-1 text-ink-faint hover:text-pencil">
                 <Trash2 aria-hidden className="h-4 w-4" />
               </button>
             </li>
@@ -199,6 +204,7 @@ function ChatPanel() {
   const preview = usePreview();
   const listRef = useRef<HTMLDivElement>(null);
   const notesDoc = s.notesDocId ? d.list.find((x) => x.id === s.notesDocId) : null;
+  const imageChat = useImageMode();
 
   // A chapter page may have sent a question here.
   useEffect(() => {
@@ -218,20 +224,15 @@ function ChatPanel() {
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      {notesDoc && (
-        <div className="mb-2 flex items-center gap-2 rounded-md bg-gold/15 px-3 py-1.5 text-sm">
-          <FileImage aria-hidden className="h-4 w-4 text-gold-deep" />
-          <span className="flex-1">Asking about: {KIND_LABEL[notesDoc.kind]}, {new Date(notesDoc.created_at).toLocaleDateString()}</span>
-          <button type="button" onClick={() => chat.set({ notesDocId: null, messages: [] })} className="flex items-center gap-1 text-ink-soft hover:text-pencil">
-            <X aria-hidden className="h-4 w-4" /> Back to the tutor
-          </button>
-        </div>
+      {notesDoc && <ImageLabel doc={notesDoc} />}
+      {!notesDoc && imageChat && (
+        <p className="mb-2 flex items-center gap-2 text-sm text-image"><ImageIcon aria-hidden className="h-4 w-4" /> A question you solved from an image</p>
       )}
       <div ref={listRef} role="log" aria-live="polite" aria-label="Conversation" className="page-scroll min-h-0 flex-1 space-y-5 pr-1">
         {s.loadingConv && (
           <div className="flex items-center gap-3 text-ink-faint" role="status">
             <Bindu size={40} mood="thinking" />
-            <span className="font-hand text-lg">Opening your conversation…</span>
+            <span className="font-hand text-lg">{s.notesDocId ? 'Opening your earlier answers…' : 'Opening your conversation…'}</span>
           </div>
         )}
         {!s.loadingConv && s.convError && s.messages.length === 0 && (
@@ -242,23 +243,24 @@ function ChatPanel() {
             )}
           </div>
         )}
-        {!s.loadingConv && !s.convError && s.messages.length === 0 && <EmptyChat notes={!!notesDoc} />}
+        {notesDoc && <PhotoThread doc={notesDoc} started={s.messages.length > 0} />}
+        {!notesDoc && !s.loadingConv && !s.convError && s.messages.length === 0 && <EmptyChat />}
         {s.reading && s.messages.length > 0 && (
           <div className="border-b-[1.5px] border-ink/15 pb-3">
             <p className="text-xs italic text-ink-faint">Saved conversation, {new Date(s.reading.updated_at).toLocaleDateString()}</p>
-            <h2 className="font-display text-xl leading-tight">{s.reading.title ?? 'Conversation'}</h2>
+            <h2 className="font-display text-xl leading-tight">{displayTitle(s.reading.title) ?? 'Conversation'}</h2>
           </div>
         )}
         {s.messages.map((m) => (
           <div key={m.id}>
             {s.reading && <p className="mb-1 text-xs font-semibold text-ink-faint">{m.role === 'student' ? 'Your question' : 'Tutor’s answer'}</p>}
-            <Bubble m={m} language={language} />
+            <Bubble m={m} language={language} image={imageChat} />
           </div>
         ))}
         {s.sending && (
           <div className="flex items-center gap-3 text-ink-faint">
             <Bindu size={40} mood="thinking" />
-            <span className="font-hand text-lg">{s.notesDocId ? 'Reading your notes…' : s.mode === 'socratic' ? 'Thinking of a good hint…' : 'Searching our textbook database…'}</span>
+            <span className="font-hand text-lg">{s.notesDocId ? 'Reading your image…' : s.mode === 'socratic' ? 'Thinking of a good hint…' : 'Searching our textbook database…'}</span>
           </div>
         )}
       </div>
@@ -282,18 +284,16 @@ function ChatPanel() {
   );
 }
 
-function EmptyChat({ notes }: { notes: boolean }) {
+function EmptyChat() {
   const { language } = useAuth();
-  const examples = notes
-    ? ['What is this page about?', 'List the main points in my notes.']
-    : language === 'te'
+  const examples = language === 'te'
       ? ['కిరణజన్య సంయోగక్రియ అంటే ఏమిటి?', 'What is the SI unit of electric current?']
       : ['Why does a pencil look bent in water?', 'A bulb draws 0.5 A at 220 V. What is its power?', 'What is the difference between an acid and a base?'];
   return (
     <div className="flex flex-col items-start gap-4 pt-2">
       <div className="flex items-end gap-3">
         <Bindu size={64} />
-        <Speech className="mb-4 max-w-[32ch]">{notes ? 'Ask me anything about your photo.' : 'What would you like to understand today?'}</Speech>
+        <Speech className="mb-4 max-w-[32ch]">What would you like to understand today?</Speech>
       </div>
       <ul className="space-y-2">
         {examples.map((q) => (
@@ -308,7 +308,72 @@ function EmptyChat({ notes }: { notes: boolean }) {
   );
 }
 
-function Bubble({ m, language }: { m: ChatMessage; language: 'en' | 'te' }) {
+/** Photo mode opens like a chat: your photo as the first message, then Bindu's reply with quick asks. */
+function PhotoThread({ doc, started }: { doc: UploadedDoc; started: boolean }) {
+  const { language } = useAuth();
+  const s = useStore(chat);
+  const src = usePhotoSrc(doc);
+  const text = doc.extracted_text?.trim() ?? '';
+  const quick = ['Solve this question step by step.', 'Give me a simple summary.', 'What is this question asking?'];
+  return (
+    <>
+      <div className="flex justify-end">
+        <figure className="max-w-[70%] -rotate-1 rounded-sm bg-white p-1.5 pb-1 shadow-[0_2px_8px_rgba(40,30,10,0.18)]">
+          {src ? (
+            // A local blob URL of the student's own photo: next/image cannot optimise it.
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={src} alt={`Your uploaded ${KIND_LABEL[doc.kind].toLowerCase()}`} className="max-h-48 w-auto rounded-[2px] object-contain" />
+          ) : (
+            <div className="flex h-24 w-40 items-center justify-center bg-image/10"><ImageIcon aria-hidden className="h-7 w-7 text-image/60" /></div>
+          )}
+          <figcaption className="font-hand px-1 pt-1 text-right text-sm text-ink-soft">{KIND_LABEL[doc.kind]}, {new Date(doc.created_at).toLocaleDateString()}</figcaption>
+        </figure>
+      </div>
+      <TutorTurn tone="image">
+        <p className="font-hand text-lg leading-snug">I have read your image! Ask me anything about it, or tap one below.</p>
+        {!started && (
+          <div className="mt-2 flex flex-wrap gap-2">
+            {quick.map((q) => (
+              <button key={q} type="button" disabled={s.sending} onClick={() => void send(q, language)} className="ghost-button !border-image/40 !px-3 !py-1 text-sm !text-image hover:!bg-image/10">{q}</button>
+            ))}
+          </div>
+        )}
+        {text && (
+          <details className="mt-2 text-sm">
+            <summary className="cursor-pointer font-semibold text-ink-soft">What I read in your image</summary>
+            <p className="mt-1 whitespace-pre-line text-ink-soft">{text.slice(0, 700)}{text.length > 700 ? '…' : ''}</p>
+          </details>
+        )}
+        {doc.needs_review && <p className="font-hand mt-2 text-pencil">Parts of this image were hard to read. A clearer image gives better answers.</p>}
+      </TutorTurn>
+    </>
+  );
+}
+
+/** One tutor turn in the chat: Bindu's small face beside a paper card. */
+function TutorTurn({ children, tone = 'emerald' }: { children: React.ReactNode; tone?: 'emerald' | 'orange' | 'pencil' | 'image' }) {
+  return (
+    <div className="flex items-start gap-2">
+      <Bindu size={34} className="mt-0.5 shrink-0" />
+      <div className={clsx('min-w-0 flex-1 rounded-lg rounded-tl-sm border-[1.5px] px-3.5 py-2.5',
+        tone === 'image' ? 'border-image/35 bg-white/80' : 'bg-white/55',
+        tone === 'pencil' ? 'border-pencil/50' : tone === 'orange' ? 'border-orange/50' : tone === 'emerald' && 'border-emerald/35')}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Models put each working step on its own line with a single newline, which Markdown joins into
+ * one paragraph ("1/v = 1/f - 1/u 1/v = ..."). Turn a lone newline into a hard break; blank lines,
+ * lists and tables are unaffected.
+ */
+function keepLineBreaks(text: string): string {
+  return text.replace(/([^\n])\n(?!\n)/g, '$1  \n');
+}
+
+function Bubble({ m, language, image = false }: { m: ChatMessage; language: 'en' | 'te'; image?: boolean }) {
   const [speaking, setSpeaking] = useState<'idle' | 'loading' | 'playing'>('idle');
   const [speakError, setSpeakError] = useState<string | null>(null);
   const telugu = /[ఀ-౿]/.test(m.text);
@@ -327,26 +392,35 @@ function Bubble({ m, language }: { m: ChatMessage; language: 'en' | 'te' }) {
   };
 
   if (m.role === 'student') {
+    // An image solve saves the image's text after the question: show the question, and a note.
+    const [question, fromImage] = splitImageQuestion(m.text);
     return (
-      <div className="flex justify-end">
-        <p className={clsx('font-hand max-w-[85%] text-right text-[1.15rem] leading-snug text-[#24467a]', telugu && 'te')}>{m.text}</p>
+      <div className="flex flex-col items-end">
+        <p className={clsx('font-hand max-w-[85%] rounded-lg rounded-tr-sm px-3.5 py-2 text-right text-[1.15rem] leading-snug',
+          image ? 'bg-image/12 text-image' : 'bg-[#24467a]/8 text-[#24467a]', telugu && 'te')}>{question}</p>
+        {fromImage && <p className="mt-1 flex items-center gap-1 text-xs text-image"><ImageIcon aria-hidden className="h-3.5 w-3.5" /> with the question from your image</p>}
       </div>
     );
   }
   return (
-    <div className={clsx('relative border-l-[3px] pl-4', m.error ? 'border-pencil' : m.label ? 'border-orange' : 'border-emerald')}>
-      {m.label && <p className="mb-1 inline-block rounded-sm bg-orange/15 px-2 py-0.5 text-xs font-semibold text-[#8a4512]">{m.label}</p>}
+    <TutorTurn tone={m.error ? 'pencil' : image ? 'image' : m.label ? 'orange' : 'emerald'}>
+      {m.label && <p className={clsx('mb-1 inline-block rounded-sm px-2 py-0.5 text-xs font-semibold', image ? 'bg-image/12 text-image' : 'bg-orange/15 text-[#8a4512]')}>{m.label}</p>}
       <div className={clsx('prose-sm max-w-none text-[0.98rem] leading-relaxed [&_li]:ml-5 [&_ol]:list-decimal [&_p+p]:mt-2 [&_strong]:text-ink [&_ul]:list-disc', telugu && 'te', m.error && 'text-pencil')}>
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{m.text}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{keepLineBreaks(m.text)}</ReactMarkdown>
       </div>
       {m.citations && m.citations.length > 0 && (
-        <p className="mt-2 flex flex-wrap gap-1.5 text-xs">
+        <p className="mt-2 flex flex-wrap items-center gap-1.5 text-xs">
+          {/* In image mode the question came from the image; these pages are where the method is taught. */}
+          {image && <span className="text-ink-soft">Method from your textbook:</span>}
           {m.citations.slice(0, 3).map((c) => (
             <span key={c.chunkId} className="rounded-full border border-gold-deep/50 px-2 py-0.5 text-ink-soft">
               {c.chapterNumber ? `Chapter ${c.chapterNumber}, ` : ''}{c.pageStart === c.pageEnd ? `page ${c.pageStart}` : `pages ${c.pageStart}–${c.pageEnd}`}
             </span>
           ))}
         </p>
+      )}
+      {m.askTutor && (
+        <button type="button" onClick={() => void send(m.askTutor!, language, { viaTutor: true })} className="ghost-button mt-2 !border-image/40 !px-3 !py-1 text-sm !text-image hover:!bg-image/10">Ask the tutor to solve it from my image</button>
       )}
       {!m.error && (
         <div className="mt-1.5 flex items-center gap-2">
@@ -357,7 +431,7 @@ function Bubble({ m, language }: { m: ChatMessage; language: 'en' | 'te' }) {
           {speakError && <span className="text-xs text-pencil">{speakError}</span>}
         </div>
       )}
-    </div>
+    </TutorTurn>
   );
 }
 
@@ -439,7 +513,7 @@ function Composer() {
           value={s.draft}
           onChange={(e) => chat.set({ draft: e.target.value })}
           onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(); } }}
-          placeholder={s.notesDocId ? 'Ask about your photo…' : s.hint || (language === 'te' ? 'మీ ప్రశ్న ఇక్కడ రాయండి…' : 'Type your question…')}
+          placeholder={s.notesDocId ? 'Ask about your image…' : s.hint || (language === 'te' ? 'మీ ప్రశ్న ఇక్కడ రాయండి…' : 'Type your question…')}
           className={clsx('field font-hand min-h-[2.75rem] flex-1 resize-none text-[1.15rem] leading-snug', /[ఀ-౿]/.test(s.draft) && 'te')}
         />
         <button type="submit" disabled={!s.draft.trim() || s.sending} className="ink-button h-11 !px-4" aria-label="Send">
@@ -454,4 +528,64 @@ function Composer() {
       </p>
     </form>
   );
+}
+
+// ---------------------------------------------------------------------------
+// Image mode: blue graph paper, indigo ink, its own running head
+// ---------------------------------------------------------------------------
+/** True while an uploaded image is open, or a saved image solve is shown. */
+function useImageMode(): boolean {
+  const s = useStore(chat);
+  if (s.notesDocId) return true;
+  const c = s.reading ?? s.conversations.find((x) => x.id === s.conversationId);
+  return !!c?.document_id || isImageTitle(c?.title);
+}
+
+/** The student's own image as a private in-browser link (none in previews). */
+function usePhotoSrc(doc: UploadedDoc): string | null {
+  const preview = usePreview();
+  const [src, setSrc] = useState<string | null>(null);
+  useEffect(() => {
+    if (preview) return;
+    let live = true;
+    void photoUrl(doc).then((u) => { if (live) setSrc(u); });
+    return () => { live = false; };
+  }, [doc, preview]);
+  return src;
+}
+
+/** A sticky-note label at the top of the image chat: thumbnail, what it is, and the way back. */
+function ImageLabel({ doc }: { doc: UploadedDoc }) {
+  const src = usePhotoSrc(doc);
+  return (
+    <div className="mb-3 flex items-center gap-3 rounded-sm border-l-4 border-image bg-white/75 px-3 py-2 shadow-[0_1px_4px_rgba(30,40,80,0.15)]">
+      {src ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={src} alt="" className="h-10 w-10 shrink-0 rounded-[2px] object-cover" />
+      ) : (
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[2px] bg-image/10"><ImageIcon aria-hidden className="h-5 w-5 text-image" /></span>
+      )}
+      <div className="min-w-0 flex-1 leading-tight">
+        <p className="font-display text-lg text-image">Image questions</p>
+        <p className="truncate text-xs text-ink-soft">{KIND_LABEL[doc.kind]}, {new Date(doc.created_at).toLocaleDateString()}</p>
+      </div>
+      <button type="button" onClick={newConversation} className="flex shrink-0 items-center gap-1 text-sm text-ink-soft hover:text-pencil">
+        <X aria-hidden className="h-4 w-4" /> Back to the tutor
+      </button>
+    </div>
+  );
+}
+
+/** Right-page running head: changes with the mode so the student always knows where answers come from. */
+export function TutorRightHead() {
+  const image = useImageMode();
+  return image
+    ? <><span className="text-image">Your image</span><span className="text-image">Answers from what you uploaded</span></>
+    : <><span>AI Tutor</span><span>Answers from your textbook</span></>;
+}
+
+/** Full-page graph paper behind the right page in image mode. */
+export function ImageBackdrop() {
+  const image = useImageMode();
+  return <div aria-hidden className={clsx('paper-graph paper-graph-page pointer-events-none absolute inset-0 transition-opacity duration-300', image ? 'opacity-100' : 'opacity-0')} />;
 }

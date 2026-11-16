@@ -25,6 +25,10 @@
   --biology: #3d7a45;
   --tutor: #1f5f5b;
   --learning: #9b3a2a;
+  /* "Ask about an image" mode: indigo ink on blue graph paper, so it never looks like a tutor chat */
+  --image: #3a4a8f;
+  --image-paper: #e6ebf2;
+  --image-grid: rgba(58, 74, 143, 0.11);
 
   --desk: #102b29;
   --desk-light: #1d4440;
@@ -50,6 +54,8 @@
   --color-biology: var(--biology);
   --color-tutor: var(--tutor);
   --color-learning: var(--learning);
+  --color-image: var(--image);
+  --color-image-paper: var(--image-paper);
   --color-desk: var(--desk);
 
   --font-display: var(--font-bodoni), "Bodoni Moda", Georgia, serif;
@@ -128,6 +134,23 @@ body {
   background-image:
     repeating-linear-gradient(180deg, transparent 0 31px, var(--ruling) 31px 32px);
   background-position: 0 14px;
+}
+
+/* graph paper for the image-question page (a maths workbook sheet) */
+.paper-graph {
+  background-color: var(--image-paper);
+  background-image:
+    linear-gradient(var(--image-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--image-grid) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+/* as a whole right-hand page: keep the curve into the spine */
+.paper-graph-page {
+  background-image:
+    linear-gradient(270deg, transparent 86%, rgba(30, 40, 80, 0.16) 100%),
+    linear-gradient(var(--image-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--image-grid) 1px, transparent 1px);
+  background-size: 100% 100%, 22px 22px, 22px 22px;
 }
 
 /* the curve of the page into the spine */

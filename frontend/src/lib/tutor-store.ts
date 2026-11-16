@@ -3,6 +3,39 @@
 import { createStore } from './store';
 import { api, ApiError, type Citation, type Lang, type Subject } from './api';
 import { insforge } from './insforge';
+import { docs } from './docs-store';
+
+/** Solving needs working, which a photo does not contain: these go to the tutor (and its maths agent) with the photo's text. */
+const SOLVE_INTENT = /\b(solve|solution|solutions|work it out|calculate|find the answer|answer (this|the|these) questions?|step by step)\b/i;
+
+/** Saved conversations solved from an image are titled "Image: <first line of the question>". */
+export const IMAGE_TITLE_PREFIX = 'Image: ';
+export const isImageTitle = (title: string | null | undefined): boolean => !!title?.startsWith(IMAGE_TITLE_PREFIX);
+export const displayTitle = (title: string | null | undefined): string | null =>
+  title && isImageTitle(title) ? title.slice(IMAGE_TITLE_PREFIX.length) : title ?? null;
+
+const IMAGE_MARK = '\n\nThe question from my photo:\n';
+/** A saved image-solve question is "<question><mark><image text>": return the question and whether the mark was there. */
+export function splitImageQuestion(text: string): [string, boolean] {
+  const i = text.indexOf(IMAGE_MARK);
+  return i < 0 ? [text, false] : [text.slice(0, i), true];
+}
+
+function imageTitle(docId: string): string {
+  // Skip short header lines ("CBSE Class 10 – Physics", "Q.3") and use the first real sentence.
+  const lines = (docs.get().list.find((x) => x.id === docId)?.extracted_text ?? '')
+    .split(/\n/).map((l) => l.replace(/^[\s#>*\-\d.()]+/, '').trim()).filter(Boolean);
+  const first = lines.find((l) => l.split(/\s+/).length >= 5) ?? lines[0] ?? 'Question';
+  const room = 80 - IMAGE_TITLE_PREFIX.length;
+  return IMAGE_TITLE_PREFIX + (first.length > room ? first.slice(0, room - 1) + '…' : first);
+}
+
+function withPhotoText(question: string, docId: string): string | null {
+  const text = docs.get().list.find((x) => x.id === docId)?.extracted_text?.trim();
+  if (!text) return null;
+  const head = question + IMAGE_MARK;
+  return head + text.slice(0, 1500 - head.length);
+}
 
 export interface ChatMessage {
   id: string;
@@ -13,9 +46,11 @@ export interface ChatMessage {
   agent?: string;
   source?: 'tutor' | 'notes';
   error?: boolean;
+  /** The photo did not contain the answer: offer to send this question, with the photo's text, to the tutor. */
+  askTutor?: string;
 }
 
-export interface Conversation { id: string; title: string | null; mode: 'tutor' | 'socratic'; updated_at: string }
+export interface Conversation { id: string; title: string | null; mode: 'tutor' | 'socratic'; updated_at: string; document_id: string | null }
 
 export const chat = createStore({
   conversationId: null as string | null,
@@ -43,7 +78,7 @@ const localId = () => `local-${Date.now()}-${seq++}`;
 
 export async function loadConversations() {
   const { data } = await insforge().database.from('conversations')
-    .select('id, title, mode, updated_at').order('updated_at', { ascending: false }).limit(20);
+    .select('id, title, mode, updated_at, document_id').order('updated_at', { ascending: false }).limit(20);
   chat.set({ conversations: (data as Conversation[] | null) ?? [] });
 }
 
@@ -58,18 +93,47 @@ export async function openConversation(c: Conversation) {
     chat.set({ loadingConv: false, convError: 'Could not open this conversation. Check your connection and try again.' });
     return;
   }
-  const rows = (data as { id: number | string; role: 'student' | 'tutor'; content: string; citations: Citation[] | null; meta: { label?: string | null } | null; agent: string | null }[] | null) ?? [];
+  const rows = (data as MessageRow[] | null) ?? [];
   chat.set({
     loadingConv: false,
     convError: rows.length === 0 ? 'This conversation has no saved messages.' : null,
-    messages: rows.map((r) => ({ id: String(r.id), role: r.role, text: r.content, citations: r.citations ?? [], label: r.meta?.label ?? null, agent: r.agent ?? undefined, source: 'tutor' as const })),
+    messages: rows.map(toMessage),
+  });
+}
+
+type MessageRow = { id: number | string; role: 'student' | 'tutor'; content: string; citations: Citation[] | null; meta: { label?: string | null } | null; agent: string | null };
+const toMessage = (r: MessageRow): ChatMessage => ({
+  id: String(r.id), role: r.role, text: r.content, citations: r.citations ?? [], label: r.meta?.label ?? null,
+  agent: r.agent ?? undefined, source: r.agent === 'docqa' ? 'notes' : 'tutor',
+});
+
+/**
+ * Open an uploaded image and its saved chat (if it has one): earlier answers show under the image,
+ * and new questions continue that same conversation.
+ */
+export async function openImage(docId: string) {
+  chat.set({ notesDocId: docId, conversationId: null, messages: [], reading: null, socraticOpen: false, draft: '', convError: null, loadingConv: true, openingId: docId });
+  const db = insforge().database;
+  const conv = await db.from('conversations').select('id').eq('document_id', docId).limit(1);
+  const id = (conv.data as { id: string }[] | null)?.[0]?.id;
+  if (chat.get().openingId !== docId) return;
+  if (conv.error) { chat.set({ loadingConv: false, convError: 'Could not load the earlier answers for this image. You can still ask new questions.' }); return; }
+  if (!id) { chat.set({ loadingConv: false }); return; }
+  const { data, error } = await db.from('messages')
+    .select('id, role, content, citations, meta, agent').eq('conversation_id', id).order('id', { ascending: true }).limit(100);
+  if (chat.get().openingId !== docId) return;
+  chat.set({
+    conversationId: id,
+    loadingConv: false,
+    convError: error ? 'Could not load the earlier answers for this image. You can still ask new questions.' : null,
+    messages: ((data as MessageRow[] | null) ?? []).map(toMessage),
   });
 }
 export function newConversation() {
   chat.set({ conversationId: null, messages: [], socraticOpen: false, notesDocId: null, loadingConv: false, convError: null, openingId: null, reading: null });
 }
 
-export async function send(text: string, language: Lang, opts: { newTopic?: boolean } = {}) {
+export async function send(text: string, language: Lang, opts: { newTopic?: boolean; viaTutor?: boolean } = {}) {
   const s = chat.get();
   const message = text.trim();
   if (!message || s.sending) return;
@@ -77,19 +141,29 @@ export async function send(text: string, language: Lang, opts: { newTopic?: bool
   chat.set({ messages: [...s.messages, mine], sending: true, draft: '', hint: '', reading: null });
 
   try {
-    if (s.notesDocId) {
-      const r = await api.documentAsk({ documentId: s.notesDocId, question: message, language });
+    const tutorMessage = s.notesDocId && (opts.viaTutor || SOLVE_INTENT.test(message)) ? withPhotoText(message, s.notesDocId) : null;
+    if (s.notesDocId && !tutorMessage) {
+      const r = await api.documentAsk({ documentId: s.notesDocId, question: message, language, title: imageTitle(s.notesDocId) });
       const label = r.found ? r.label : null;
-      const note = r.needsReview && r.found ? ' (The photo was hard to read in places, so check this against your notes.)' : '';
-      chat.set((p) => ({ messages: [...p.messages, { id: localId(), role: 'tutor', text: r.answer + note, label, source: 'notes' }] }));
+      const note = r.needsReview && r.found ? ' (The image was hard to read in places, so check this against it.)' : '';
+      chat.set((p) => ({ messages: [...p.messages, { id: localId(), role: 'tutor', text: r.answer + note, label, source: 'notes', askTutor: r.found ? undefined : message }], conversationId: r.conversationId ?? p.conversationId }));
+      void loadConversations();
     } else {
       const r = await api.tutorChat({
-        message, mode: s.mode, conversationId: s.conversationId ?? undefined, subject: s.subject ?? undefined, newTopic: opts.newTopic,
+        message: tutorMessage ?? message,
+        // Solving from an image always explains (hints need an open socratic topic).
+        mode: tutorMessage ? 'tutor' : s.mode,
+        conversationId: s.conversationId ?? undefined,
+        subject: s.subject ?? undefined,
+        newTopic: opts.newTopic,
+        title: tutorMessage && !s.conversationId && s.notesDocId ? imageTitle(s.notesDocId) : undefined,
+        // Saved into the image's own conversation (found or created by the backend).
+        documentId: tutorMessage && s.notesDocId ? s.notesDocId : undefined,
       });
       chat.set((p) => ({
         conversationId: r.conversationId,
         socraticOpen: r.socraticOpen,
-        messages: [...p.messages, { id: localId(), role: 'tutor', text: r.reply, citations: r.citations, label: r.label, agent: r.agent, source: 'tutor' }],
+        messages: [...p.messages, { id: localId(), role: 'tutor', text: r.reply, citations: r.citations, label: r.label ?? (tutorMessage ? 'Solved by the tutor, using the question in your image' : null), agent: r.agent, source: 'tutor' }],
       }));
       if (!s.conversationId) void loadConversations();
     }

@@ -87,6 +87,9 @@ export interface DocAnswer {
   found: boolean;
   needsReview: boolean;
   label: string | null;
+  /** The image's saved conversation (null if saving failed; the answer is still shown). */
+  conversationId: string | null;
+  saved: boolean;
 }
 
 /** An error with a plain-language message the student can act on. */
@@ -132,7 +135,7 @@ async function call<T>(slug: string, body: unknown): Promise<T> {
 }
 
 export const api = {
-  tutorChat: (body: { message: string; conversationId?: string; mode?: 'tutor' | 'socratic'; subject?: Subject; newTopic?: boolean }) =>
+  tutorChat: (body: { message: string; conversationId?: string; mode?: 'tutor' | 'socratic'; subject?: Subject; newTopic?: boolean; title?: string; documentId?: string }) =>
     call<TutorReply>('tutor-chat', body),
   quizGenerate: (body: { chapterId: string; count?: number; language?: Lang; difficulty?: 1 | 2 | 3 }) =>
     call<Quiz>('quiz-generate', body),
@@ -141,7 +144,7 @@ export const api = {
   learningAdvice: (language: Lang) => call<Advice>('learning-advice', { language }),
   documentProcess: (documentId: string) =>
     call<{ documentId: string; status: 'ready'; text: string; confidence: number; needsReview: boolean; uncertain: string[] }>('document-process', { documentId }),
-  documentAsk: (body: { documentId: string; question: string; language: Lang; wantsDetail?: boolean }) =>
+  documentAsk: (body: { documentId: string; question: string; language: Lang; wantsDetail?: boolean; title?: string }) =>
     call<DocAnswer>('document-ask', body),
   voiceTranscribe: (body: { audioBase64: string; mime: string; seconds: number; language: Lang | 'auto' }) =>
     call<{ transcript: string; languageCode: string | null }>('voice-transcribe', body),

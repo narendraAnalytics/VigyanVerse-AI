@@ -36,9 +36,11 @@ interface PageFrameProps {
   /** A small running head at the top of the page, like a printed textbook. */
   runningHead?: ReactNode;
   folio?: ReactNode;
+  /** A full-page layer behind the content (e.g. the image page's graph paper). */
+  backdrop?: ReactNode;
 }
 
-export function PageFrame({ side, scrollKey, children, className, ruled = false, margin = false, runningHead, folio }: PageFrameProps) {
+export function PageFrame({ side, scrollKey, children, className, ruled = false, margin = false, runningHead, folio, backdrop }: PageFrameProps) {
   const preview = usePreview();
   const ref = useRef<HTMLDivElement>(null);
 
@@ -62,6 +64,7 @@ export function PageFrame({ side, scrollKey, children, className, ruled = false,
       // the navbar is printed over the top of every page
       style={{ paddingTop: 'var(--head-h, 0px)' }}
     >
+      {backdrop}
       {ruled && <div aria-hidden className="paper-ruled pointer-events-none absolute inset-x-0 bottom-0" style={{ top: 'var(--head-h, 0px)' }} />}
       {margin && <div aria-hidden className="margin-line" style={{ left: `calc(${PAD} + 1.6rem)`, top: 'var(--head-h, 0px)' }} />}
       {runningHead && (

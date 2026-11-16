@@ -1,5 +1,6 @@
 // Edge Function: one student chat turn (Phase 3g).
-// POST { message, conversationId?, mode?: 'tutor' | 'socratic', subject?, newTopic? }
+// POST { message, conversationId?, mode?: 'tutor' | 'socratic', subject?, newTopic?, title?, documentId? }
+// documentId: a question solved from an uploaded image is saved into that image's conversation.
 //
 //   authenticate -> zod -> consent (ai_tutoring) -> rate limit + daily budget
 //   -> load / create conversation + recent turns -> LangGraph turn (src/agents/graph.ts)
@@ -13,6 +14,7 @@ import { retrieveContext } from '../../agents/retrieval.ts';
 import { SUBJECTS } from '../../agents/router.ts';
 import type { Turn } from '../../agents/tutor.ts';
 import { authenticate, json, preflight } from '../../shared/http.ts';
+import { CONVERSATION_COLUMNS, findOrCreateImageConversation, type ConversationRow } from '../../shared/image-conversation.ts';
 
 const FUNCTION_SLUG = 'tutor-chat';
 /** Edge Functions stop at 30 s: the AI part gets 26 s, the rest is auth and saving. */
@@ -37,10 +39,12 @@ const Body = z.object({
   subject: z.enum(SUBJECTS).optional(),
   /** Socratic mode: drop the open question and start a new one. */
   newTopic: z.boolean().optional(),
+  /** Title for a NEW conversation (e.g. 'Image: ...' for a question solved from an uploaded image). Default: the message. */
+  title: z.string().trim().min(1).max(80).optional(),
+  /** The uploaded image this question was solved from (its conversation is used, or created). */
+  documentId: z.string().uuid().optional(),
 });
 
-interface ConversationRow { id: string; mode: 'tutor' | 'socratic'; subject_code: string | null; socratic_topic: string | null; socratic_hints: number }
-const CONVERSATION_COLUMNS = 'id, mode, subject_code, socratic_topic, socratic_hints';
 
 export default async function (req: Request): Promise<Response> {
   const started = Date.now();
@@ -77,9 +81,14 @@ export default async function (req: Request): Promise<Response> {
     if (error) return json({ error: 'conversation_failed' }, 500);
     if (!(data as ConversationRow[] | null)?.length) return json({ error: 'conversation_not_found' }, 404);
     conversation = (data as ConversationRow[])[0];
+  } else if (body.documentId) {
+    // RLS: only the student's own image can have (or get) a conversation.
+    const found = await findOrCreateImageConversation(db, body.documentId, body.title);
+    if (!found) return json({ error: 'conversation_failed' }, 403);
+    conversation = found;
   } else {
     const { data, error } = await db.from('conversations')
-      .insert([{ mode: body.mode ?? 'tutor', subject_code: body.subject ?? null, title: body.message.slice(0, 80) }])
+      .insert([{ mode: body.mode ?? 'tutor', subject_code: body.subject ?? null, title: body.title ?? body.message.slice(0, 80) }])
       .select(CONVERSATION_COLUMNS);
     // Fails for accounts without a students row (only students chat).
     if (error || !(data as ConversationRow[] | null)?.length) return json({ error: 'conversation_failed' }, 403);
