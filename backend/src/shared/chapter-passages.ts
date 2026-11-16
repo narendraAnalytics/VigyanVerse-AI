@@ -1,6 +1,7 @@
 // Sample textbook passages from one chapter for the quiz writer (Phase 4c). Shared by the
 // quiz-generate function (user-scoped client, RLS) and the live eval (admin client).
-import type { ChunkHit } from './retrieval.ts';
+import { retrieve, type ChunkHit, type RewriteResult, type RpcClient } from './retrieval.ts';
+import { assessContext } from '../agents/retrieval.ts';
 
 export const PASSAGES = 4;
 /** Skip heading-only and very short chunks. (token_count is not filled by ingestion: use the text length.) */
@@ -41,4 +42,35 @@ export async function samplePassages(client: ChunkDb, chapter: ChapterInfo, n = 
       content: c.content, rank: 0,
     })),
   };
+}
+
+// ---------------------------------------------------------------------------
+// Topic quizzes (owner 2026-11-16): the student types a topic inside the chapter.
+// ---------------------------------------------------------------------------
+export type TopicPassagesResult =
+  | { ok: true; passages: ChunkHit[]; rewrite?: RewriteResult }
+  | { ok: false; error: 'topic_not_found' | 'passages_failed'; rewrite?: RewriteResult };
+
+/** Passages for batch `batch` (0, 1, 2): batches start at different hits so they ask about different parts. */
+export function rotatePassages(hits: ChunkHit[], batch: number, n = PASSAGES): ChunkHit[] {
+  if (hits.length <= n) return hits;
+  const start = (batch * 2) % hits.length;
+  return Array.from({ length: n }, (_, i) => hits[(start + i) % hits.length]);
+}
+
+/**
+ * The chapter's passages about a topic, searched like the tutor does (Telugu script is first
+ * rewritten to English keywords). A topic the chapter does not cover is refused, never guessed.
+ */
+export async function topicPassages(client: RpcClient, chapter: ChapterInfo & { board_code?: string }, topic: string, batch = 0): Promise<TopicPassagesResult> {
+  let found: Awaited<ReturnType<typeof retrieve>>;
+  try {
+    found = await retrieve(client, topic, { board: chapter.board_code ?? 'CBSE', chapterId: chapter.id, limit: 10 });
+  } catch {
+    return { ok: false, error: 'passages_failed' };
+  }
+  const rewrite = found.rewrite.source === 'model' || found.rewrite.usage ? found.rewrite : undefined;
+  if (!found.hits.length || assessContext(found.hits).status === 'none') return { ok: false, error: 'topic_not_found', rewrite };
+  const usable = found.hits.filter((h) => h.content.length >= MIN_CHUNK_CHARS / 2);
+  return { ok: true, passages: rotatePassages(usable.length ? usable : found.hits, batch), rewrite };
 }

@@ -140,3 +140,20 @@ describe('failures', () => {
     expect(out.usage.map((u) => [u.agent, u.usedFallback, u.error?.includes('402')])).toEqual([['router', true, true], ['tutor', true, true]]);
   });
 });
+
+describe('diagrams (code adds them to tutor / maths turns)', () => {
+  const tutorReply = { answer: 'The image is at C.', inTextbook: true, sources: [1], relatedPassage: null };
+  it('a ray-diagram request gets an exact ray diagram in meta', async () => {
+    const { chat } = fakeModels({ router: routed('concept'), tutor: tutorReply });
+    const out = await runTurn(input('Draw a ray diagram for an object at C of a concave mirror of focal length 15 cm'), deps(chat).d);
+    expect(out.meta.diagram).toMatchObject({ kind: 'ray', element: 'mirror', type: 'concave', v: -30, m: -1, assumed: true });
+  });
+  it('no diagram without a drawing request, and none in Socratic turns', async () => {
+    const a = fakeModels({ router: routed('concept'), tutor: tutorReply });
+    expect((await runTurn(input('Where is the image for an object at C of a concave mirror?'), deps(a.chat).d)).meta.diagram).toBeUndefined();
+    const b = fakeModels({ router: routed('concept'), socratic: { reply: 'Where do the rays meet?', kind: 'hint', hiddenAnswer: 'At C', studentCorrect: false } });
+    const out = await runTurn(input('Draw a ray diagram for an object at C of a concave mirror', { mode: 'socratic' }), deps(b.chat).d);
+    expect(out.agent).toBe('socratic');
+    expect(out.meta.diagram).toBeUndefined();
+  });
+});

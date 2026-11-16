@@ -16,6 +16,9 @@ export interface QuizRequest {
   assessmentScope: 'summative' | 'formative_only';
   difficulty?: 1 | 2 | 3;
   types?: QuestionType[];
+  /** A topic inside the chapter (data) and, for batched quizzes, this batch's focus. */
+  topic?: string;
+  angle?: string;
 }
 
 export interface QuizUsage extends Partial<AgentUsage> { agent: 'quiz' | 'validator'; usedFallback: boolean; error?: string }

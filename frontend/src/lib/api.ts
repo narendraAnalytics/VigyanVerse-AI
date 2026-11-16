@@ -16,6 +16,29 @@ export interface Citation {
   pageEnd: number;
 }
 
+/** Added by the backend's code-only Diagram agent when the student asks to draw something. */
+export type Diagram =
+  | {
+      kind: 'ray';
+      element: 'mirror' | 'lens';
+      type: 'concave' | 'convex';
+      focalLength: number;
+      objectDistance: number;
+      /** Signed, NCERT sign convention (cm). v is ±Infinity (null after JSON) for an object at F. */
+      f: number;
+      u: number | null;
+      v: number | null;
+      m: number | null;
+      nature: 'real' | 'virtual';
+      orientation: 'inverted' | 'erect';
+      size: 'point-sized' | 'highly magnified' | 'magnified' | 'same size' | 'diminished';
+      position: 'infinity' | 'beyond_2f' | 'at_2f' | 'between_f_2f' | 'at_f' | 'inside_f' | 'finite';
+      /** The question gave no numbers: a representative drawing. */
+      assumed: boolean;
+    }
+  | { kind: 'ask'; element: 'mirror' | 'lens'; type: 'concave' | 'convex' }
+  | { kind: 'figure'; figure: string; caption: string | null; chapterNumber: number | null; chapterTitle: string; pageStart: number; pageEnd: number };
+
 export interface TutorReply {
   conversationId: string;
   reply: string;
@@ -46,6 +69,8 @@ export interface Quiz {
   chapter: { id: string; number: number | null; title: string; subject: Subject };
   language: Lang;
   requested: number;
+  /** Which batch of 5 this call filled (quizzes of 10 / 15 are made in parallel batches). */
+  batch?: number;
   questions: QuizQuestion[];
   dropped: number;
 }
@@ -66,7 +91,41 @@ export interface Graded {
   assessmentId: string;
   score: number;
   maxScore: number;
+  /** Timed quizzes only: seconds from the timer start, and whether it was handed in late. */
+  timeTakenSeconds: number | null;
+  overtime: boolean | null;
   results: GradeResult[];
+}
+
+/** One past quiz, for the "Your quizzes" list. */
+export interface QuizHistoryRow {
+  id: string;
+  chapter_id: string | null;
+  topic: string | null;
+  submitted_at: string;
+  score: number;
+  max_score: number;
+  timed: boolean;
+  overtime: boolean | null;
+}
+
+/** quiz_review(): a submitted quiz read back question by question. */
+export interface QuizReview {
+  assessment_id: string;
+  chapter_id: string | null;
+  topic: string | null;
+  submitted_at: string;
+  score: number;
+  max_score: number;
+  timed: boolean;
+  time_limit_seconds: number | null;
+  time_taken_seconds: number | null;
+  overtime: boolean | null;
+  questions: {
+    position: number; marks: number; type: 'mcq' | 'numeric'; stem: string; options: string[] | null;
+    selected_index: number | null; answer_text: string | null; answered: boolean; is_correct: boolean; marks_awarded: number;
+    feedback: string | null; error_type: string | null; correct_answer: string | null; correct_index: number | null; explanation: string | null;
+  }[];
 }
 
 export interface Advice {
@@ -109,6 +168,8 @@ const MESSAGES: Record<string, string> = {
   conversation_failed: 'Only student accounts can chat with the tutor.',
   assessment_failed: 'Only student accounts can take quizzes.',
   formative_only: 'This chapter is formative only, so there are no exam-style quizzes for it.',
+  topic_not_found: 'That topic is not in this chapter of your textbook. Try another topic, or leave it empty for a whole-chapter quiz.',
+  assessment_closed: 'This quiz has already started or finished. Start a new one.',
   already_submitted: 'This quiz was already submitted.',
   no_speech: 'No speech was heard. Hold the button and speak a little closer.',
   audio_too_large: 'That recording is too long. Keep it under 30 seconds.',
@@ -137,7 +198,7 @@ async function call<T>(slug: string, body: unknown): Promise<T> {
 export const api = {
   tutorChat: (body: { message: string; conversationId?: string; mode?: 'tutor' | 'socratic'; subject?: Subject; newTopic?: boolean; title?: string; documentId?: string }) =>
     call<TutorReply>('tutor-chat', body),
-  quizGenerate: (body: { chapterId: string; count?: number; language?: Lang; difficulty?: 1 | 2 | 3 }) =>
+  quizGenerate: (body: { chapterId: string; count?: number; language?: Lang; difficulty?: 1 | 2 | 3; assessmentId?: string; batch?: number }) =>
     call<Quiz>('quiz-generate', body),
   answerEvaluate: (body: { assessmentId: string; answers: { questionId: string; selectedIndex?: number; answerText?: string }[] }) =>
     call<Graded>('answer-evaluate', body),
@@ -194,6 +255,30 @@ export async function fetchRevisions(): Promise<{ chapter_id: string; due_at: st
     .select('chapter_id, due_at, interval_days').order('due_at', { ascending: true }).limit(60);
   if (error) throw toApiError(error);
   return (data as { chapter_id: string; due_at: string; interval_days: number }[] | null) ?? [];
+}
+
+/** Create the quiz row first (RLS "create own"); quiz-generate then fills it batch by batch. */
+export async function createQuiz(input: { chapterId: string; language: Lang; topic: string | null; planned: number; timed: boolean }): Promise<string> {
+  const { data, error } = await insforge().database.from('assessments')
+    .insert([{ kind: 'practice', chapter_id: input.chapterId, language: input.language, topic: input.topic, planned_questions: input.planned, timed: input.timed }])
+    .select('id');
+  if (error) throw toApiError(error);
+  const id = (data as { id: string }[] | null)?.[0]?.id;
+  if (!id) throw new ApiError('assessment_failed', friendly('assessment_failed'), 0);
+  return id;
+}
+
+/** Remove a quiz that could not be made (no questions); a student may delete their own. */
+export async function deleteQuiz(id: string): Promise<void> {
+  await insforge().database.from('assessments').delete().eq('id', id);
+}
+
+export async function fetchQuizHistory(): Promise<QuizHistoryRow[]> {
+  const { data, error } = await insforge().database.from('assessments')
+    .select('id, chapter_id, topic, submitted_at, score, max_score, timed, overtime')
+    .not('submitted_at', 'is', null).order('submitted_at', { ascending: false }).limit(20);
+  if (error) throw toApiError(error);
+  return ((data as QuizHistoryRow[] | null) ?? []).map((r) => ({ ...r, score: Number(r.score), max_score: Number(r.max_score) }));
 }
 
 export async function rpc<T>(name: string, args: Record<string, unknown> = {}): Promise<T> {

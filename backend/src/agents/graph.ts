@@ -11,6 +11,7 @@
 import { Annotation, END, START, StateGraph, type LangGraphRunnableConfig } from '@langchain/langgraph';
 import type { RetrievalInput, RetrievalOutput } from './retrieval.ts';
 import type { AgentContext, AgentRun, AgentUsage, ChatFn } from './kit.ts';
+import { buildDiagram } from './diagram.ts';
 import { runMath, type MathOutput } from './math.ts';
 import { routeMessage, type RouterOutput, type Subject } from './router.ts';
 import { runSocratic, type SocraticOutput } from './socratic.ts';
@@ -234,5 +235,12 @@ export const turnGraph = new StateGraph(State, Context)
 export async function runTurn(input: TurnInput, deps: TurnDeps): Promise<TurnResult & { usage: UsageRow[]; intent: string }> {
   // The graph has no cycles (at most 3 steps): a low recursion limit is a cheap guard.
   const out = await turnGraph.invoke({ input }, { context: { deps }, recursionLimit: 10 });
-  return { ...out.result, usage: out.usage, intent: out.routed.intent };
+  const result = out.result;
+  // "Draw a diagram": code adds a ray diagram (mirror / lens) or the textbook figure to point to.
+  // Not for Socratic turns (a diagram would give the answer away) or fixed replies.
+  if (result.agent === 'tutor' || result.agent === 'math') {
+    const diagram = buildDiagram({ message: input.message, previous: lastQuestion(input.history), hits: out.retrieval?.hits ?? [] });
+    if (diagram) return { ...result, meta: { ...result.meta, diagram }, usage: out.usage, intent: out.routed.intent };
+  }
+  return { ...result, usage: out.usage, intent: out.routed.intent };
 }

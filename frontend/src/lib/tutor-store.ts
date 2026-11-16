@@ -1,7 +1,7 @@
 'use client';
 
 import { createStore } from './store';
-import { api, ApiError, type Citation, type Lang, type Subject } from './api';
+import { api, ApiError, type Citation, type Diagram, type Lang, type Subject } from './api';
 import { insforge } from './insforge';
 import { docName, docs } from './docs-store';
 
@@ -43,6 +43,8 @@ export interface ChatMessage {
   agent?: string;
   source?: 'tutor' | 'notes';
   error?: boolean;
+  /** A ray diagram to draw, or the textbook figure to look at. */
+  diagram?: Diagram;
   /** The photo did not contain the answer: offer to send this question, with the photo's text, to the tutor. */
   askTutor?: string;
 }
@@ -98,9 +100,9 @@ export async function openConversation(c: Conversation) {
   });
 }
 
-type MessageRow = { id: number | string; role: 'student' | 'tutor'; content: string; citations: Citation[] | null; meta: { label?: string | null } | null; agent: string | null };
+type MessageRow = { id: number | string; role: 'student' | 'tutor'; content: string; citations: Citation[] | null; meta: { label?: string | null; diagram?: Diagram } | null; agent: string | null };
 const toMessage = (r: MessageRow): ChatMessage => ({
-  id: String(r.id), role: r.role, text: r.content, citations: r.citations ?? [], label: r.meta?.label ?? null,
+  id: String(r.id), role: r.role, text: r.content, citations: r.citations ?? [], label: r.meta?.label ?? null, diagram: r.meta?.diagram,
   agent: r.agent ?? undefined, source: r.agent === 'docqa' ? 'notes' : 'tutor',
 });
 
@@ -160,7 +162,7 @@ export async function send(text: string, language: Lang, opts: { newTopic?: bool
       chat.set((p) => ({
         conversationId: r.conversationId,
         socraticOpen: r.socraticOpen,
-        messages: [...p.messages, { id: localId(), role: 'tutor', text: r.reply, citations: r.citations, label: r.label ?? (tutorMessage ? 'Solved by the tutor, using the question in your image' : null), agent: r.agent, source: 'tutor' }],
+        messages: [...p.messages, { id: localId(), role: 'tutor', text: r.reply, citations: r.citations, label: r.label ?? (tutorMessage ? 'Solved by the tutor, using the question in your image' : null), agent: r.agent, source: 'tutor', diagram: r.meta?.diagram as Diagram | undefined }],
       }));
       if (!s.conversationId) void loadConversations();
     }

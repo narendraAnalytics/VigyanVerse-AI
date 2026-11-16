@@ -17,6 +17,7 @@ import { speakText, startRecording, stopSpeaking, type Recording } from '@/lib/v
 import { usePageLayout, usePreview } from '@/components/book/page-context';
 import { Bindu, Speech } from '@/components/mascot/Bindu';
 import { StudentGate } from './Gate';
+import { DiagramBlock } from '@/components/diagrams/Diagram';
 
 const SUBJECT_CHOICES: { id: Subject | null; label: string }[] = [
   { id: null, label: 'Any subject' }, { id: 'physics', label: 'Physics' }, { id: 'chemistry', label: 'Chemistry' }, { id: 'biology', label: 'Biology' },
@@ -409,6 +410,7 @@ function Bubble({ m, language, image = false }: { m: ChatMessage; language: 'en'
       <div className={clsx('prose-sm max-w-none text-[0.98rem] leading-relaxed [&_li]:ml-5 [&_ol]:list-decimal [&_p+p]:mt-2 [&_strong]:text-ink [&_ul]:list-disc', telugu && 'te', m.error && 'text-pencil')}>
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{keepLineBreaks(m.text)}</ReactMarkdown>
       </div>
+      {m.diagram && !m.error && <DiagramBlock diagram={m.diagram} />}
       {m.citations && m.citations.length > 0 && (
         <p className="mt-2 flex flex-wrap items-center gap-1.5 text-xs">
           {/* In image mode the question came from the image; these pages are where the method is taught. */}

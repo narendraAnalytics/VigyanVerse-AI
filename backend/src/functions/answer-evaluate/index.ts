@@ -14,6 +14,7 @@ import { z } from 'zod';
 import { evaluateSubmission, MAX_ANSWERS, answerProblem, type EvalQuestion } from '../../agents/evaluate.ts';
 import { authenticate, json, preflight } from '../../shared/http.ts';
 import { requireEnv } from '../../shared/env.ts';
+import { timing } from '../../shared/quiz-timer.ts';
 
 const FUNCTION_SLUG = 'answer-evaluate';
 /** Edge Functions stop at 30 s: grading + one GLM call gets 25 s, saving the rest. */
@@ -52,9 +53,9 @@ export default async function (req: Request): Promise<Response> {
   if (consent.data !== true) return json({ error: 'consent_required' }, 403);
 
   // 2. The student's own assessment (RLS) must still be open.
-  const assessmentRes = await db.from('assessments').select('id, language, submitted_at').eq('id', body.assessmentId).limit(1);
+  const assessmentRes = await db.from('assessments').select('id, language, submitted_at, timer_started_at, time_limit_seconds').eq('id', body.assessmentId).limit(1);
   if (assessmentRes.error) return json({ error: 'assessment_failed' }, 500);
-  const assessment = (assessmentRes.data as { id: string; language: 'en' | 'te'; submitted_at: string | null }[] | null)?.[0];
+  const assessment = (assessmentRes.data as { id: string; language: 'en' | 'te'; submitted_at: string | null; timer_started_at: string | null; time_limit_seconds: number | null }[] | null)?.[0];
   if (!assessment) return json({ error: 'assessment_not_found' }, 404);
   if (assessment.submitted_at) return json({ error: 'already_submitted' }, 409);
 
@@ -118,6 +119,13 @@ export default async function (req: Request): Promise<Response> {
     return json({ error: 'save_failed' }, 500);
   }
 
+  // Timed quiz: was it handed in after the limit (+ grace)? Recorded; marks are not changed.
+  const timed = timing(assessment);
+  if (timed) {
+    const flag = await admin.database.from('assessments').update({ overtime: timed.overtime }).eq('id', assessment.id);
+    if (flag.error) console.error(`${FUNCTION_SLUG}: overtime save failed for assessment ${assessment.id}`);
+  }
+
   // Cost / latency / errors per model call (counts only, no student text).
   if (evaluation.usage.length) {
     const usage = await db.from('model_usage').insert(evaluation.usage.map((u) => ({
@@ -132,6 +140,8 @@ export default async function (req: Request): Promise<Response> {
     assessmentId: assessment.id,
     score: evaluation.score,
     maxScore: evaluation.maxScore,
+    timeTakenSeconds: timed?.timeTakenSeconds ?? null,
+    overtime: timed?.overtime ?? null,
     results: evaluation.results.map((r) => ({
       questionId: r.questionId, position: r.position, answered: r.answered, isCorrect: r.isCorrect, marks: r.marksAwarded,
       errorType: r.errorType, feedback: r.isCorrect ? null : r.feedback, correctAnswer: r.correctAnswer, explanation: r.explanation,

@@ -1,5 +1,11 @@
 // Edge Function: make a practice quiz for one chapter (Phase 4c).
-// POST { chapterId, count?: 1-5, language?: 'en' | 'te', difficulty?: 1-3, types?: ['mcq','numeric'] }
+// POST { chapterId, count?: 1-5, language?: 'en' | 'te', difficulty?: 1-3, types?: ['mcq','numeric'],
+//        assessmentId?, batch?: 0-2 }
+//
+// Quizzes of 10 / 15 questions (owner 2026-11-16): the app first creates the assessment itself
+// (topic, planned_questions 1-15, timed; RLS "create own"), then calls this once per batch of 5,
+// in parallel, with { assessmentId, batch }. Each batch fills positions batch*5+1.. so parallel
+// batches never collide; its size, topic and language come from the assessment row, not the body.
 //
 //   authenticate -> zod -> consent (ai_tutoring) -> quiz limit (reserve_quiz)
 //   -> chapter + sampled textbook passages -> quiz agent (DeepSeek) -> validation agent
@@ -12,8 +18,8 @@
 import { createAdminClient } from '@insforge/sdk';
 import { z } from 'zod';
 import { generateValidatedQuiz, publicQuestion, toQuestionRows } from '../../agents/quiz-pipeline.ts';
-import { MAX_QUESTIONS } from '../../agents/quiz.ts';
-import { samplePassages } from '../../shared/chapter-passages.ts';
+import { BATCH_ANGLES, MAX_QUESTIONS } from '../../agents/quiz.ts';
+import { samplePassages, topicPassages } from '../../shared/chapter-passages.ts';
 import { authenticate, json, preflight } from '../../shared/http.ts';
 import { requireEnv } from '../../shared/env.ts';
 
@@ -21,8 +27,9 @@ const FUNCTION_SLUG = 'quiz-generate';
 /** Edge Functions stop at 30 s: generating + validating gets 25 s, saving the rest. */
 const BUDGET_MS = 25_000;
 /** ~Rs 0.1 per quiz (4b + 4a evals). Owner to confirm the numbers. */
-const MAX_QUIZZES_PER_MINUTE = 3;
-const MAX_QUIZZES_PER_DAY = 20;
+// Counted per call: a 15-question quiz is 3 calls (batches).
+const MAX_QUIZZES_PER_MINUTE = 6;
+const MAX_QUIZZES_PER_DAY = 30;
 const MAX_COST_INR_PER_DAY = 10;
 
 const Body = z.object({
@@ -31,7 +38,15 @@ const Body = z.object({
   language: z.enum(['en', 'te']).default('en'),
   difficulty: z.union([z.literal(1), z.literal(2), z.literal(3)]).optional(),
   types: z.array(z.enum(['mcq', 'numeric'])).min(1).max(2).optional(),
+  /** Fill one batch of an assessment the app created (see the header). */
+  assessmentId: z.string().uuid().optional(),
+  batch: z.number().int().min(0).max(2).default(0),
 });
+
+interface AssessmentRow {
+  id: string; chapter_id: string | null; language: 'en' | 'te'; submitted_at: string | null;
+  topic: string | null; planned_questions: number | null; timer_started_at: string | null;
+}
 
 interface ChapterRow {
   id: string; board_code: string; subject_code: string; number: number | null; title_en: string;
@@ -74,16 +89,50 @@ export default async function (req: Request): Promise<Response> {
     return json({ error: 'formative_only', message: 'This chapter is formative only: no exam-style quiz (CBSE 2026-27).' }, 422);
   }
 
-  const picked = await samplePassages(user.client, chapter);
-  if (!picked.ok) return json({ error: picked.error }, picked.error === 'no_passages' ? 422 : 500);
-  const passages = picked.passages;
+  // A batch of an assessment the app created: it must be the student's own (RLS), still open,
+  // not yet timed, for this chapter; it decides the batch size, topic and language.
+  let target: AssessmentRow | null = null;
+  let count = body.count;
+  let language = body.language;
+  if (body.assessmentId) {
+    const res = await db.from('assessments').select('id, chapter_id, language, submitted_at, topic, planned_questions, timer_started_at').eq('id', body.assessmentId).limit(1);
+    if (res.error) return json({ error: 'assessment_failed' }, 500);
+    target = (res.data as AssessmentRow[] | null)?.[0] ?? null;
+    if (!target) return json({ error: 'assessment_not_found' }, 404);
+    if (target.submitted_at || target.timer_started_at || target.chapter_id !== chapter.id) return json({ error: 'assessment_closed' }, 409);
+    count = Math.min(MAX_QUESTIONS, (target.planned_questions ?? MAX_QUESTIONS) - body.batch * MAX_QUESTIONS);
+    if (count < 1) return json({ error: 'bad_batch' }, 400);
+    language = target.language;
+  }
+  const topic = target?.topic ?? undefined;
+
+  // Passages: about the student's topic (refused if the chapter does not cover it), or a sample.
+  let passages;
+  if (topic) {
+    const picked = await topicPassages(user.client, chapter, topic, body.batch);
+    if (picked.rewrite?.usage) {
+      const u = picked.rewrite.usage;
+      await db.from('model_usage').insert([{ function_slug: FUNCTION_SLUG, agent: 'query_rewrite', model: u.model ?? null, input_tokens: u.inputTokens ?? 0, output_tokens: u.outputTokens ?? 0, reasoning_tokens: null, cost_inr: Number((u.costInr ?? 0).toFixed(5)), latency_ms: Math.round(u.latencyMs ?? 0), used_fallback: false, error: picked.rewrite.error?.slice(0, 200) ?? null }]);
+    }
+    if (!picked.ok) {
+      return json(picked.error === 'topic_not_found'
+        ? { error: 'topic_not_found', message: `"${topic}" is not in this chapter of your textbook. Try another topic, or leave it empty.` }
+        : { error: picked.error }, picked.error === 'topic_not_found' ? 422 : 500);
+    }
+    passages = picked.passages;
+  } else {
+    const picked = await samplePassages(user.client, chapter);
+    if (!picked.ok) return json({ error: picked.error }, picked.error === 'no_passages' ? 422 : 500);
+    passages = picked.passages;
+  }
+  const planned = target?.planned_questions ?? count;
 
   // 4. Write -> validate (fails closed: only validated questions come back).
   const types = body.types ?? (chapter.subject_code === 'physics' ? ['mcq' as const, 'numeric' as const] : ['mcq' as const]);
   let result: Awaited<ReturnType<typeof generateValidatedQuiz>>;
   try {
     result = await generateValidatedQuiz(
-      { passages, count: body.count, language: body.language, assessmentScope: chapter.assessment_scope, difficulty: body.difficulty, types },
+      { passages, count, language, assessmentScope: chapter.assessment_scope, difficulty: body.difficulty, types, topic, angle: planned > MAX_QUESTIONS ? BATCH_ANGLES[body.batch] : undefined },
       { timeLeft: () => BUDGET_MS - (Date.now() - started) },
     );
   } catch (e) {
@@ -108,7 +157,7 @@ export default async function (req: Request): Promise<Response> {
 
   // 5. Save the bank rows (admin client) and the student's assessment (the student, under RLS).
   const rows = toQuestionRows(result.questions, {
-    chapterId: chapter.id, language: body.language, generatedBy: result.models.generated, validatedBy: result.models.validated,
+    chapterId: chapter.id, language, generatedBy: result.models.generated, validatedBy: result.models.validated,
     newId: () => crypto.randomUUID(),
   });
   const admin = createAdminClient({ baseUrl: requireEnv('INSFORGE_BASE_URL'), apiKey: requireEnv('API_KEY') });
@@ -121,24 +170,31 @@ export default async function (req: Request): Promise<Response> {
     return json({ error: 'save_failed' }, 500);
   }
 
-  const assessment = await db.from('assessments').insert([{ kind: 'practice', chapter_id: chapter.id, language: body.language }]).select('id');
-  const assessmentId = (assessment.data as { id: string }[] | null)?.[0]?.id;
-  // Fails for accounts without a students row (only students take quizzes).
-  if (assessment.error || !assessmentId) return json({ error: 'assessment_failed' }, 403);
-  const links = await db.from('assessment_questions').insert(rows.map((r, i) => ({ assessment_id: assessmentId, question_id: r.question.id, position: i + 1, marks: 1 })));
+  let assessmentId = target?.id;
+  if (!assessmentId) {
+    const assessment = await db.from('assessments').insert([{ kind: 'practice', chapter_id: chapter.id, language }]).select('id');
+    assessmentId = (assessment.data as { id: string }[] | null)?.[0]?.id;
+    // Fails for accounts without a students row (only students take quizzes).
+    if (assessment.error || !assessmentId) return json({ error: 'assessment_failed' }, 403);
+  }
+  // Batch b fills positions b*5+1 .. b*5+5: parallel batches never collide.
+  const offset = body.batch * MAX_QUESTIONS;
+  const links = await db.from('assessment_questions').insert(rows.map((r, i) => ({ assessment_id: assessmentId, question_id: r.question.id, position: offset + i + 1, marks: 1 })));
   if (links.error) {
     console.error(`${FUNCTION_SLUG}: assessment questions save failed`);
-    await db.from('assessments').delete().eq('id', assessmentId);
+    // Only delete an assessment this call created; a shared one keeps its other batches.
+    if (!target) await db.from('assessments').delete().eq('id', assessmentId);
     return json({ error: 'assessment_failed' }, 500);
   }
 
   return json({
     assessmentId,
     chapter: { id: chapter.id, number: chapter.number, title: chapter.title_en, subject: chapter.subject_code },
-    language: body.language,
-    requested: body.count,
+    language,
+    batch: body.batch,
+    requested: count,
     // Fewer than requested is normal: questions that fail a check are dropped, never served.
-    questions: rows.map((r, i) => publicQuestion(r.question, i + 1, 1)),
+    questions: rows.map((r, i) => publicQuestion(r.question, offset + i + 1, 1)),
     dropped: result.dropped.length,
   });
 }
