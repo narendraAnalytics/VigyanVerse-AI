@@ -54,7 +54,7 @@ export function Cover({ onOpen }: { onOpen?: () => void }) {
         <span className="block italic text-gold" style={{ fontSize: '0.5em', marginTop: '0.25em' }}>AI</span>
       </h1>
       <p className="mx-auto max-w-[24ch] leading-snug text-paper/85" style={{ fontSize: 'clamp(0.8rem, 3.2cqmin, 0.98rem)', marginTop: '3cqh' }}>
-        Physics, Chemistry and Biology, explained in English and Telugu
+        Physics, Chemistry and Biology, explained simply
       </p>
       {onOpen && (
         <button type="button" onClick={onOpen} className="rounded-full border border-gold px-5 py-1.5 font-display italic text-gold transition hover:bg-gold hover:text-emerald-deep" style={{ marginTop: '4cqh' }}>

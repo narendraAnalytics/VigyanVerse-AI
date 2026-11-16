@@ -30,7 +30,7 @@ export function TutorLeft() {
   return (
     <div>
       <h1 data-page-heading tabIndex={-1} className="font-display text-4xl leading-tight outline-none">The tutor’s desk</h1>
-      <p className="mt-2 max-w-[46ch] text-ink-soft">Ask in English or Telugu. Type, or press the microphone and speak. Answers come from your textbook and show the pages they used.</p>
+      <p className="mt-2 max-w-[46ch] text-ink-soft">Type your question, or press the microphone and speak. Answers come from your textbook and show the pages they used.</p>
       <StudentGate what="the tutor" quiet={usePageLayout() === 'single'}>
         <ModePicker />
         <History />

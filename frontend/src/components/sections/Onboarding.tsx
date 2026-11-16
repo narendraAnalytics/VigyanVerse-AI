@@ -29,7 +29,8 @@ export function BookplateLeft() {
   const role = 'student' as const;
   const [name, setName] = useState('');
   const [birthYear, setBirthYear] = useState<number | ''>('');
-  const [lang, setLang] = useState<'en' | 'te'>('en');
+  // English only for now (owner 2026-11-16); Telugu comes back later.
+  const lang = 'en' as const;
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
@@ -38,7 +39,7 @@ export function BookplateLeft() {
 
   useEffect(() => {
     if (auth.profile) {
-      setName(auth.profile.display_name); setLang(auth.profile.preferred_language);
+      setName(auth.profile.display_name);
     } else {
       try {
         const stored = JSON.parse(sessionStorage.getItem('vv-signup-role') ?? 'null') as { name?: string } | null;
@@ -61,6 +62,11 @@ export function BookplateLeft() {
   }
 
   const isParent = auth.profile?.role === 'parent';
+  // A bookplate already saved: the button is "Saved" (disabled) until the name or year changes, then "Update".
+  const exists = isParent ? !!auth.profile : !!auth.student?.onboarding_completed_at;
+  const changed = !exists
+    || name.trim() !== (auth.profile?.display_name ?? '')
+    || (!isParent && (birthYear || null) !== (auth.student?.birth_year ?? null));
 
   const save = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -126,25 +132,19 @@ export function BookplateLeft() {
                 {BIRTH_YEARS.map((y) => <option key={y} value={y}>{y}</option>)}
               </select>
             </div>
-            <fieldset>
-              <legend className="text-ink-faint">Answers in</legend>
-              <div className="mt-1 flex gap-2">
-                {(['en', 'te'] as const).map((l) => (
-                  <label key={l} className={`cursor-pointer rounded-full border px-2.5 py-0.5 ${lang === l ? 'border-emerald bg-emerald text-paper' : 'border-ink/30'}`}>
-                    <input type="radio" className="sr-only" name="bp-lang" checked={lang === l} onChange={() => setLang(l)} />
-                    {l === 'en' ? 'English' : <span lang="te">తెలుగు</span>}
-                  </label>
-                ))}
-              </div>
-            </fieldset>
+            <div>
+              <span className="text-ink-faint">Answers in</span>
+              <p className="font-hand text-xl">English</p>
+            </div>
           </div>
         )}
         {!isParent && <p className="mt-4 text-left text-xs text-ink-faint">Andhra Pradesh SSC chapters will be added from the official syllabus. Until then the book follows CBSE.</p>}
         {error && <p role="alert" className="mt-3 text-sm text-pencil">{error}</p>}
-        <button className="ink-button mt-5" disabled={busy}>
-          {busy ? <Loader2 aria-hidden className="h-4 w-4 animate-spin" /> : saved ? <Check aria-hidden className="h-4 w-4" /> : null}
-          {saved ? 'Saved' : 'Save my bookplate'}
+        <button className="ink-button mt-5" disabled={busy || !changed}>
+          {busy ? <Loader2 aria-hidden className="h-4 w-4 animate-spin" /> : !changed ? <Check aria-hidden className="h-4 w-4" /> : null}
+          {busy ? 'Saving…' : !changed ? 'Saved' : exists ? 'Update my bookplate' : 'Save my bookplate'}
         </button>
+        {saved && !changed && <p role="status" className="mt-2 text-sm text-emerald">Your bookplate is saved.</p>}
       </form>
     </div>
   );
@@ -166,7 +166,7 @@ export function BookplateRight() {
       </p>
       <ul className="mt-5 space-y-2 text-[0.95rem] text-ink-soft">
         {[
-          'Ask the AI Tutor in English or Telugu, by typing or speaking.',
+          'Ask the AI Tutor by typing or speaking.',
           'Upload a photo of your notes and ask questions about it.',
           'Take a practice quiz on any chapter and see your mastery grow.',
         ].map((t) => (
