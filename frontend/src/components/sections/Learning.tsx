@@ -85,6 +85,16 @@ function NextStep() {
   );
 }
 
+/** "today" / "tomorrow" / "in 6 days" by calendar day; a date for anything 2 weeks or more away. */
+function whenLabel(due: Date, now: number): string {
+  const day = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
+  const days = Math.round((day(due) - day(new Date(now))) / 86_400_000);
+  if (days <= 0) return 'today';
+  if (days === 1) return 'tomorrow';
+  if (days < 14) return `in ${days} days`;
+  return due.toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
+}
+
 function DueList() {
   const s = useLearningData();
   const { chapters } = useChapters();
@@ -93,10 +103,11 @@ function DueList() {
   const items = s.revisions.slice(0, 6);
   return (
     <section aria-labelledby="due-h" className="mt-8">
-      <h2 id="due-h" className="flex items-center gap-2 font-display text-xl"><CalendarClock aria-hidden className="h-5 w-5 text-gold-deep" /> Revision timetable</h2>
+      <h2 id="due-h" className="flex items-center gap-2 font-display text-xl"><CalendarClock aria-hidden className="h-5 w-5 text-gold-deep" /> Revise next</h2>
       {!s.loaded ? <p className="mt-2 text-sm text-ink-faint">Loading…</p> : items.length === 0 ? (
-        <p className="mt-2 text-sm text-ink-faint">Take a quiz on any chapter and it will appear here with a revision date.</p>
-      ) : (
+        <p className="mt-2 text-sm text-ink-faint">Take a quiz on any chapter and it will appear here with the day to revise it.</p>
+      ) : (<>
+        <p className="mt-1 text-sm text-ink-faint">When to practise each chapter again, so you do not forget it. The gap grows each time you do well.</p>
         <ul className="mt-2 space-y-1.5">
           {items.map((r) => {
             const due = new Date(r.due_at);
@@ -105,14 +116,15 @@ function DueList() {
               <li key={r.chapter_id} className="flex items-baseline text-[0.95rem]">
                 <span className="min-w-0 truncate">{byId.get(r.chapter_id)?.title_en ?? 'Chapter'}</span>
                 <span aria-hidden className="leader" />
-                <span className={clsx('shrink-0', overdue ? 'font-hand text-lg text-pencil' : 'text-ink-soft')}>
-                  {overdue ? 'due now' : due.toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}
+                <span className={clsx('shrink-0', overdue ? 'font-hand text-lg text-pencil' : 'text-ink-soft')}
+                  title={due.toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long' })}>
+                  {overdue ? 'due now' : whenLabel(due, now)}
                 </span>
               </li>
             );
           })}
         </ul>
-      )}
+      </>)}
     </section>
   );
 }
