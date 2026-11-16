@@ -14,7 +14,7 @@ export function HomeLeft() {
         Class 10 Science, explained the way you ask it
       </h1>
       <p className="mt-2 max-w-[46ch] text-ink-soft">
-        Answers from your NCERT textbook in English or Telugu, hints when you want to work it out yourself, and practice
+        Answers from your NCERT textbook, hints when you want to work it out yourself, and practice
         questions with checked answers.
       </p>
       <div className={layout === 'single' ? 'relative mt-3 h-[300px]' : 'relative mt-1 min-h-[210px] flex-1'}>

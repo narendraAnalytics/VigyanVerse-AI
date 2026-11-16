@@ -10,7 +10,7 @@ import type { SectionId } from '@/lib/sections';
 import { Ribbons } from './Ribbons';
 
 export function Header({ current }: { current: SectionId }) {
-  const { user, profile, loading, signOut, language, setLanguage } = useAuth();
+  const { user, profile, loading, signOut } = useAuth();
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -40,20 +40,7 @@ export function Header({ current }: { current: SectionId }) {
       <Ribbons current={current} className="order-last w-full pb-1 lg:order-none lg:w-auto lg:min-w-0 lg:flex-1 lg:pb-0" />
 
       <div className="flex shrink-0 items-center gap-2 py-2 sm:gap-3">
-        <div role="group" aria-label="Answer language" className="flex rounded-full border border-ink/25 p-0.5 text-sm text-ink-soft">
-          {(['en', 'te'] as const).map((l) => (
-            <button
-              key={l}
-              type="button"
-              aria-pressed={language === l}
-              onClick={() => setLanguage(l)}
-              className={`rounded-full px-2.5 py-0.5 transition ${language === l ? 'bg-emerald text-paper' : 'hover:bg-gold/15'}`}
-            >
-              {l === 'en' ? <><span className="sm:hidden">EN</span><span className="hidden sm:inline">English</span></> : <span lang="te"><span className="sm:hidden">తె</span><span className="hidden sm:inline">తెలుగు</span></span>}
-            </button>
-          ))}
-        </div>
-
+        {/* English / Telugu switch removed for now (owner 2026-11-16): English only; Telugu comes back later. */}
         {loading ? (
           <span className="h-8 w-20 animate-pulse rounded-full bg-ink/10" />
         ) : user ? (
