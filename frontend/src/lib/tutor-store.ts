@@ -3,7 +3,7 @@
 import { createStore } from './store';
 import { api, ApiError, type Citation, type Lang, type Subject } from './api';
 import { insforge } from './insforge';
-import { docs } from './docs-store';
+import { docName, docs } from './docs-store';
 
 /** Solving needs working, which a photo does not contain: these go to the tutor (and its maths agent) with the photo's text. */
 const SOLVE_INTENT = /\b(solve|solution|solutions|work it out|calculate|find the answer|answer (this|the|these) questions?|step by step)\b/i;
@@ -22,12 +22,9 @@ export function splitImageQuestion(text: string): [string, boolean] {
 }
 
 function imageTitle(docId: string): string {
-  // Skip short header lines ("CBSE Class 10 – Physics", "Q.3") and use the first real sentence.
-  const lines = (docs.get().list.find((x) => x.id === docId)?.extracted_text ?? '')
-    .split(/\n/).map((l) => l.replace(/^[\s#>*\-\d.()]+/, '').trim()).filter(Boolean);
-  const first = lines.find((l) => l.split(/\s+/).length >= 5) ?? lines[0] ?? 'Question';
-  const room = 80 - IMAGE_TITLE_PREFIX.length;
-  return IMAGE_TITLE_PREFIX + (first.length > room ? first.slice(0, room - 1) + '…' : first);
+  // The same name the image has in the list (first real sentence of what was read).
+  const doc = docs.get().list.find((x) => x.id === docId);
+  return IMAGE_TITLE_PREFIX + ((doc && docName(doc, 80 - IMAGE_TITLE_PREFIX.length)) ?? 'Question');
 }
 
 function withPhotoText(question: string, docId: string): string | null {

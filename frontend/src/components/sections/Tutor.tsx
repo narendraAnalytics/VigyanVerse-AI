@@ -10,7 +10,7 @@ import { useStore } from '@/lib/store';
 import { useAuth } from '@/lib/auth';
 import { useConsent } from '@/lib/consent';
 import { chat, displayTitle, IMAGE_TITLE_PREFIX, isImageTitle, loadConversations, newConversation, openConversation, openImage, send, splitImageQuestion, type ChatMessage } from '@/lib/tutor-store';
-import { docs, KIND_LABEL, loadDocs, photoUrl, removeDoc, uploadAndRead, type DocKind, type UploadedDoc } from '@/lib/docs-store';
+import { docName, docs, KIND_LABEL, loadDocs, photoUrl, removeDoc, uploadAndRead, type DocKind, type UploadedDoc } from '@/lib/docs-store';
 import { tutorIntent } from '@/lib/intents';
 import { ApiError, type Subject } from '@/lib/api';
 import { speakText, startRecording, stopSpeaking, type Recording } from '@/lib/voice';
@@ -168,7 +168,8 @@ function Notes() {
                 onClick={() => void openImage(doc.id)}
                 className={clsx('min-w-0 flex-1 truncate text-left', doc.id === s.notesDocId ? 'font-semibold text-image' : 'hover:text-image', doc.status !== 'ready' && 'opacity-60')}
               >
-                {KIND_LABEL[doc.kind]}, {new Date(doc.created_at).toLocaleDateString()}
+                <span className="block truncate">{docName(doc) ?? KIND_LABEL[doc.kind]}</span>
+                <span className="block text-xs font-normal text-ink-faint">{KIND_LABEL[doc.kind]} · {new Date(doc.created_at).toLocaleDateString()}</span>
                 {doc.status !== 'ready' && <span className="italic text-ink-faint"> ({doc.status === 'failed' ? 'could not be read' : 'reading'})</span>}
                 {doc.needs_review && doc.status === 'ready' && <span className="font-hand text-pencil"> hard to read in places</span>}
               </button>
@@ -326,7 +327,7 @@ function PhotoThread({ doc, started }: { doc: UploadedDoc; started: boolean }) {
           ) : (
             <div className="flex h-24 w-40 items-center justify-center bg-image/10"><ImageIcon aria-hidden className="h-7 w-7 text-image/60" /></div>
           )}
-          <figcaption className="font-hand px-1 pt-1 text-right text-sm text-ink-soft">{KIND_LABEL[doc.kind]}, {new Date(doc.created_at).toLocaleDateString()}</figcaption>
+          <figcaption className="font-hand max-w-[28ch] px-1 pt-1 text-right text-sm leading-snug text-ink-soft">{docName(doc, 48) ?? KIND_LABEL[doc.kind]}</figcaption>
         </figure>
       </div>
       <TutorTurn tone="image">
@@ -566,8 +567,8 @@ function ImageLabel({ doc }: { doc: UploadedDoc }) {
         <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[2px] bg-image/10"><ImageIcon aria-hidden className="h-5 w-5 text-image" /></span>
       )}
       <div className="min-w-0 flex-1 leading-tight">
-        <p className="font-display text-lg text-image">Image questions</p>
-        <p className="truncate text-xs text-ink-soft">{KIND_LABEL[doc.kind]}, {new Date(doc.created_at).toLocaleDateString()}</p>
+        <p className="truncate font-display text-lg text-image">{docName(doc) ?? 'Image questions'}</p>
+        <p className="truncate text-xs text-ink-soft">Image questions · {KIND_LABEL[doc.kind]}, {new Date(doc.created_at).toLocaleDateString()}</p>
       </div>
       <button type="button" onClick={newConversation} className="flex shrink-0 items-center gap-1 text-sm text-ink-soft hover:text-pencil">
         <X aria-hidden className="h-4 w-4" /> Back to the tutor

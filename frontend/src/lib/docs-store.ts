@@ -19,6 +19,27 @@ export const KIND_LABEL: Record<DocKind, string> = {
   notes: 'My notes', textbook_page: 'Textbook page', diagram: 'Diagram', question_paper: 'Question paper', other: 'Other',
 };
 
+/**
+ * A short name for an image, made from the text the vision model already read (no extra AI call):
+ * the first real sentence, skipping short header lines like "CBSE Class 10 – Physics" or "Q.3".
+ * Null while the image is not read yet (show the kind instead).
+ */
+export function docName(doc: Pick<UploadedDoc, 'extracted_text'>, max = 60): string | null {
+  const lines = (doc.extracted_text ?? '').split(/\n/)
+    .map((l) => l.replace(/[*_#>`|]/g, '').replace(/^[\s\-\d.()]+/, '').replace(/\s+/g, ' ').trim())
+    .filter(Boolean);
+  // Count only real words ("CBSE Class 10 – Physics" has 3), so short headers are skipped.
+  const words = (l: string) => l.split(' ').filter((w) => /\p{L}{2,}/u.test(w)).length;
+  let name = lines.find((l) => words(l) >= 5) ?? lines[0];
+  if (!name) return null;
+  // Stop at the end of the first sentence if that leaves a real name.
+  const end = name.search(/[.?!](\s|$)/);
+  if (end > 0 && name.slice(0, end).split(' ').length >= 4) name = name.slice(0, end + 1);
+  if (name.length <= max) return name;
+  const cut = name.slice(0, max - 1);
+  return cut.slice(0, cut.lastIndexOf(' ') > max / 2 ? cut.lastIndexOf(' ') : cut.length) + '…';
+}
+
 export const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
 const EXT: Record<string, string> = { 'image/png': 'png', 'image/jpeg': 'jpg', 'image/webp': 'webp' };
 
