@@ -168,7 +168,7 @@ const MESSAGES: Record<string, string> = {
   conversation_failed: 'Only student accounts can chat with the tutor.',
   assessment_failed: 'Only student accounts can take quizzes.',
   formative_only: 'This chapter is formative only, so there are no exam-style quizzes for it.',
-  topic_not_found: 'That topic is not in this chapter of your textbook. Try another topic or chapter, or use Practise for a whole-chapter quiz.',
+  topic_not_found: 'That topic is not in your Class 10 science textbook. Try other words, or use Practise for a whole-chapter quiz.',
   assessment_closed: 'This quiz has already started or finished. Start a new one.',
   already_submitted: 'This quiz was already submitted.',
   no_speech: 'No speech was heard. Hold the button and speak a little closer.',
@@ -279,6 +279,28 @@ export async function fetchQuizHistory(): Promise<QuizHistoryRow[]> {
     .not('submitted_at', 'is', null).order('submitted_at', { ascending: false }).limit(20);
   if (error) throw toApiError(error);
   return ((data as QuizHistoryRow[] | null) ?? []).map((r) => ({ ...r, score: Number(r.score), max_score: Number(r.max_score) }));
+}
+
+export interface TopicHit {
+  chapter_id: string;
+  rank: number;
+  content: string;
+  matched_lexemes: string[] | null;
+  query_weights: Record<string, number> | null;
+}
+
+/**
+ * Keyword search of the whole textbook for a quiz topic (the tutor's own search,
+ * `match_chunks_weighted`; no AI call). English words only, like the backend's sanitizer.
+ */
+export async function searchTopic(topic: string): Promise<TopicHit[]> {
+  const words = [...new Set(topic.toLowerCase().split(/[^a-z0-9-]+/).map((w) => w.replace(/^-+|-+$/g, '')).filter((w) => w.length >= 2 && w.length <= 40))].slice(0, 10);
+  if (!words.length) return [];
+  const { data, error } = await insforge().database.rpc('match_chunks_weighted', {
+    p_query: words.join(' '), p_board: 'CBSE', p_subject: null, p_chapter: null, p_language: 'en', p_match_count: 10,
+  });
+  if (error) throw toApiError(error);
+  return (data as TopicHit[] | null) ?? [];
 }
 
 export async function rpc<T>(name: string, args: Record<string, unknown> = {}): Promise<T> {

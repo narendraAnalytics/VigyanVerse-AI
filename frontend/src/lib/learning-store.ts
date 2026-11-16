@@ -2,8 +2,8 @@
 
 import { createStore } from './store';
 import {
-  api, ApiError, createQuiz, deleteQuiz, fetchMastery, fetchQuizHistory, fetchRevisions, rpc,
-  type Advice, type Graded, type Lang, type MasteryRow, type Quiz, type QuizHistoryRow, type QuizReview,
+  api, ApiError, createQuiz, deleteQuiz, fetchMastery, fetchQuizHistory, fetchRevisions, rpc, searchTopic,
+  type Advice, type Chapter, type Graded, type Lang, type MasteryRow, type Quiz, type QuizHistoryRow, type QuizReview,
 } from './api';
 
 export const learning = createStore({
@@ -67,21 +67,89 @@ export const quiz = createStore({
   deadline: null as number | null,
   limitSeconds: null as number | null,
   review: null as QuizReview | null,
+  /** The topic this quiz is on (null = whole chapter), for the paper's heading. */
+  topicUsed: null as string | null,
+  /** Topic mode: looking the topic up in the textbook. */
+  checking: false,
   error: null as string | null,
 });
 
 /**
  * Open the setup card. "Practise" opens a whole-chapter quiz for one chapter;
- * "Quiz me on a topic" opens topic mode, where the student picks the chapter
- * (chapterId may be null until they do).
+ * "Quiz me on a topic" opens topic mode: the student only types a topic and
+ * `findTopicChapter` finds its chapter.
  */
 export function openQuizSetup(chapterId: string | null, mode: 'chapter' | 'topic' = 'chapter') {
   generation++;
   quiz.set((p) => ({
     phase: 'setup', chapterId, setup: { ...p.setup, mode }, quiz: null, answers: {}, graded: null, error: null,
-    partial: null, deadline: null, limitSeconds: null, review: null,
+    partial: null, deadline: null, limitSeconds: null, review: null, topicUsed: null, checking: false,
   }));
 }
+
+const norm = (s: string) => s.toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, ' ').trim();
+/** Same rule as the backend's assessContext: the best of the top 3 hits must hold half the query's weight. */
+const NONE_COVERAGE = 0.5;
+
+export type TopicMatch =
+  | { ok: true; chapter: Chapter; wholeChapter: boolean }
+  | { ok: false; error: string };
+
+/**
+ * Find the chapter for a typed topic, without any AI call:
+ * a chapter's own name -> that whole chapter; otherwise the textbook keyword search, and the
+ * chapter whose passages match best. quiz-generate checks the topic again inside that chapter.
+ */
+export async function findTopicChapter(topic: string, chapters: Chapter[]): Promise<TopicMatch> {
+  const byTitle = chapters.find((c) => norm(c.title_en) === norm(topic));
+  if (byTitle) {
+    return byTitle.assessment_scope === 'summative'
+      ? { ok: true, chapter: byTitle, wholeChapter: true }
+      : { ok: false, error: `“${byTitle.title_en}” has no exam-style quizzes this year (it is for classwork only).` };
+  }
+  if (/[ఀ-౿]/.test(topic)) return { ok: false, error: 'Type the topic in English words, for example: reflex action.' };
+  const hits = await searchTopic(topic);
+  const weights = hits[0]?.query_weights ?? {};
+  const total = Object.values(weights).reduce((s, w) => s + w, 0);
+  const coverage = Math.max(0, ...hits.slice(0, 3).map((h) => {
+    const m = new Set(h.matched_lexemes ?? []);
+    return total ? Object.entries(weights).filter(([k]) => m.has(k)).reduce((s, [, w]) => s + w, 0) / total : 0;
+  }));
+  // A many-word topic must appear as a phrase-ish (its words close together), so "black holes"
+  // does not match a passage with "black" in one place and "holes" in another.
+  const close = hits.filter((h) => wordsClose(topic, h.content));
+  if (!close.length || coverage < NONE_COVERAGE) return { ok: false, error: friendlyNotFound(topic) };
+  // The chapter with the most matching weight among those passages.
+  const score = new Map<string, number>();
+  for (const h of close) score.set(h.chapter_id, (score.get(h.chapter_id) ?? 0) + h.rank);
+  const bestId = [...score.entries()].sort((a, b) => b[1] - a[1])[0][0];
+  const chapter = chapters.find((c) => c.id === bestId);
+  if (!chapter) return { ok: false, error: friendlyNotFound(topic) };
+  if (chapter.assessment_scope !== 'summative') {
+    return { ok: false, error: `“${topic}” is in “${chapter.title_en}”, which has no exam-style quizzes this year (it is for classwork only).` };
+  }
+  return { ok: true, chapter, wholeChapter: false };
+}
+
+const STOP_WORDS = new Set(['and', 'the', 'of', 'in', 'on', 'to', 'an', 'for', 'its', 'is', 'how', 'do', 'what', 'with']);
+/** Loose stem: "holes" ~ "hole", "experiments" ~ "experiment". */
+const stemOf = (w: string) => (w.length > 5 ? w.slice(0, -2) : w.replace(/s$/, ''));
+const NEAR_WINDOW = 4;
+
+/** True when all the topic's words occur within a few words of each other in the passage. */
+export function wordsClose(topic: string, content: string): boolean {
+  const stems = [...new Set(topic.toLowerCase().split(/[^a-z0-9]+/).filter((w) => w.length >= 2 && !STOP_WORDS.has(w)))].map(stemOf);
+  if (stems.length <= 1) return true;
+  const toks = content.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+  for (let i = 0; i < toks.length; i++) {
+    if (!toks[i].startsWith(stems[0])) continue;
+    const win = toks.slice(Math.max(0, i - NEAR_WINDOW), i + NEAR_WINDOW + 1);
+    if (stems.every((s) => win.some((t) => t.startsWith(s)))) return true;
+  }
+  return false;
+}
+
+const friendlyNotFound = (topic: string) => `“${topic}” is not in your Class 10 science textbook. Try other words, or use Practise for a whole-chapter quiz.`;
 
 /** Expected time limit for questions of these types (the server decides the real one). */
 export function limitFor(questions: { type: 'mcq' | 'numeric' }[]): number {
@@ -90,21 +158,38 @@ export function limitFor(questions: { type: 'mcq' | 'numeric' }[]): number {
 
 let generation = 0;
 
-export async function startQuiz(language: Lang) {
+export async function startQuiz(language: Lang, chapters: Chapter[]) {
   const s = quiz.get();
-  const chapterId = s.chapterId;
-  if (!chapterId) {
-    quiz.set({ error: 'Choose the chapter your topic is in.' });
-    return;
+  if (s.checking) return;
+  let chapterId = s.chapterId;
+  let topic = '';
+  if (s.setup.mode === 'topic') {
+    const typed = s.setup.topic.trim().slice(0, 80);
+    if (typed.length < 2) {
+      quiz.set({ error: 'Type a topic, for example: reflex action.' });
+      return;
+    }
+    const run = ++generation;
+    quiz.set({ checking: true, error: null });
+    let found: TopicMatch;
+    try {
+      found = await findTopicChapter(typed, chapters);
+    } catch (e) {
+      found = { ok: false, error: e instanceof ApiError ? e.message : 'Could not look up the topic. Try again.' };
+    }
+    if (generation !== run) return;
+    if (!found.ok) {
+      quiz.set({ checking: false, error: found.error });
+      return;
+    }
+    chapterId = found.chapter.id;
+    topic = found.wholeChapter ? '' : typed;
+    quiz.set({ chapterId, checking: false });
   }
-  const topic = s.setup.mode === 'topic' ? s.setup.topic.trim().slice(0, 80) : '';
-  if (s.setup.mode === 'topic' && topic.length < 2) {
-    quiz.set({ error: 'Type a topic from this chapter.' });
-    return;
-  }
+  if (!chapterId) return;
   const planned = s.setup.size;
   const run = ++generation;
-  quiz.set({ phase: 'generating', quiz: null, answers: {}, graded: null, error: null, partial: null, deadline: null, limitSeconds: null, progress: { ready: 0, planned } });
+  quiz.set({ phase: 'generating', quiz: null, answers: {}, graded: null, error: null, partial: null, deadline: null, limitSeconds: null, topicUsed: topic || null, progress: { ready: 0, planned } });
 
   let assessmentId: string;
   try {

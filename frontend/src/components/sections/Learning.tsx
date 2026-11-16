@@ -196,7 +196,7 @@ function QuizPaper() {
         <div className="flex items-end gap-3">
           <Bindu size={70} mood="thinking" />
           <Speech className="mb-5 max-w-[36ch]">
-            Writing {planned} questions{q.setup.mode === 'topic' && q.setup.topic.trim() ? ` on “${q.setup.topic.trim()}”` : ''}, then checking each answer twice. This takes about 20–30 seconds.
+            Writing {planned} questions{q.topicUsed ? ` on “${q.topicUsed}”` : ''}, then checking each answer twice. This takes about 20–30 seconds.
           </Speech>
         </div>
         <div className="w-full max-w-sm" role="progressbar" aria-valuemin={0} aria-valuemax={planned} aria-valuenow={ready} aria-label="Questions ready">
@@ -236,7 +236,7 @@ function QuizPaper() {
         <h2 className="font-display text-3xl">{title}</h2>
         <p role="alert" className="mt-3 text-pencil">{q.error}</p>
         <div className="mt-4 flex gap-3">
-          <button type="button" className="ink-button" onClick={() => openQuizSetup(q.chapterId, q.setup.mode)}>
+          <button type="button" className="ink-button" onClick={() => openQuizSetup(q.setup.mode === 'topic' ? null : q.chapterId, q.setup.mode)}>
             {q.setup.mode === 'topic' ? 'Change the topic' : 'Try again'}
           </button>
           <button type="button" className="ghost-button" onClick={closeQuiz}>Back to chapters</button>
@@ -253,7 +253,7 @@ function QuizPaper() {
     <form onSubmit={(e) => { e.preventDefault(); void submitQuiz(language); }}>
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm italic text-ink-faint">Practice paper{q.setup.mode === 'topic' && q.setup.topic.trim() ? ` · ${q.setup.topic.trim()}` : ''}</p>
+          <p className="text-sm italic text-ink-faint">Practice paper{q.topicUsed ? ` · ${q.topicUsed}` : ''}</p>
           <h2 className="font-display text-3xl leading-tight">{title}</h2>
         </div>
         <div className="flex shrink-0 items-center gap-2">
@@ -362,11 +362,9 @@ function QuizSetup() {
   const topicMode = s.mode === 'topic';
   const set = (patch: Partial<typeof s>) => quiz.set((p) => ({ setup: { ...p.setup, ...patch }, error: null }));
   const topicId = useId();
-  const chapterSelectId = useId();
-  const numeric = chapter?.subject_code === 'physics';
-  const summative = chapters.filter((c) => c.assessment_scope === 'summative');
+  const numeric = !topicMode && chapter?.subject_code === 'physics';
   return (
-    <form className="py-2" onSubmit={(e) => { e.preventDefault(); void startQuiz(language); }}>
+    <form className="py-2" onSubmit={(e) => { e.preventDefault(); void startQuiz(language, chapters); }}>
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-sm italic text-ink-faint">{topicMode ? 'New topic quiz' : 'New practice quiz · whole chapter'}</p>
@@ -378,16 +376,10 @@ function QuizSetup() {
       {topicMode && (
         <fieldset className="mt-6">
           <legend className="font-display text-lg">Which topic?</legend>
-          <label htmlFor={chapterSelectId} className="mt-2 block text-sm text-ink-soft">Chapter</label>
-          <select id={chapterSelectId} className="field mt-1" value={q.chapterId ?? ''}
-            onChange={(e) => quiz.set({ chapterId: e.target.value || null, error: null })}>
-            <option value="">Choose a chapter…</option>
-            {summative.map((c) => <option key={c.id} value={c.id}>{c.number}. {c.title_en}</option>)}
-          </select>
-          <label htmlFor={topicId} className="mt-3 block text-sm text-ink-soft">Topic from this chapter</label>
-          <input id={topicId} className="field mt-1" maxLength={80} value={s.topic} onChange={(e) => set({ topic: e.target.value })}
-            placeholder={numeric ? 'For example: Ohm’s law' : 'For example: balancing equations'} />
-          <p className="mt-1 text-xs text-ink-faint">It must be in that chapter of your textbook. The questions come only from it.</p>
+          <label htmlFor={topicId} className="mt-2 block text-sm text-ink-soft">Type a topic or a chapter name</label>
+          <input id={topicId} className="field mt-1" maxLength={80} autoFocus value={s.topic} onChange={(e) => set({ topic: e.target.value })}
+            placeholder="For example: Control and Coordination, or Ohm’s law" />
+          <p className="mt-1 text-xs text-ink-faint">We find it in your Class 10 science textbook. The questions come only from the textbook.</p>
         </fieldset>
       )}
 
@@ -416,7 +408,10 @@ function QuizSetup() {
 
       {q.error && <p role="alert" className="mt-4 text-pencil">{q.error}</p>}
       <div className="mt-7 flex items-center gap-3">
-        <button type="submit" className="ink-button"><PencilLine aria-hidden className="h-4 w-4" /> Make my quiz</button>
+        <button type="submit" className="ink-button" disabled={q.checking}>
+          {q.checking ? <Loader2 aria-hidden className="h-4 w-4 animate-spin" /> : <PencilLine aria-hidden className="h-4 w-4" />}
+          {q.checking ? 'Finding your topic…' : 'Make my quiz'}
+        </button>
         <span className="text-sm text-ink-faint">Takes about 20–30 seconds to write and check.</span>
       </div>
     </form>
