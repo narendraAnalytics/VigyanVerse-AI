@@ -15,10 +15,11 @@ is built for CBSE and Andhra Pradesh SSC students.
 
 ## Status
 
-**Deployed.** The backend runs on InsForge and the frontend (Next.js, in `frontend/`) on Vercel at
+**In production.** The backend runs on InsForge and the frontend (Next.js, in `frontend/`) on Vercel at
 [https://vigyanverseai.vercel.app](https://vigyanverseai.vercel.app). Students pay per AI task from a rupee
-credits wallet topped up through Razorpay (test mode). The student-facing app is English only for now;
-Telugu support stays in the backend and returns later.
+credits wallet topped up through Razorpay (test mode). The owner tested every logged-in flow on the live
+site on 2026-11-17 (top-up, tutor, quiz, photo questions, voice). The student-facing app is English only
+for now; Telugu support stays in the backend and returns later.
 
 | Area | State |
 |---|---|
@@ -32,7 +33,8 @@ Telugu support stays in the backend and returns later.
 | Identity, roles, RLS; parent linking and consent tables | ✅ Applied and security-checked. Students now use their own account: `has_consent()` is true for a student's own account (migration 20) |
 | Frontend: 3D open-textbook site (Home, Physics, Chemistry, Biology, AI Tutor, My Learning, Wallet, sign-in, bookplate) | ✅ Deployed on Vercel: [vigyanverseai.vercel.app](https://vigyanverseai.vercel.app) |
 | Credits wallet + Razorpay top-ups (₹1 = 1 credit, pay per AI task, refunds on failure) | ✅ Built and security-checked; test mode |
-| Logged-in end-to-end tests (tutor, quiz, upload, voice, top-up), real student photos and voices | ⏳ Owner testing from a fresh account |
+| Logged-in end-to-end tests on the live site (top-up, tutor, quiz, photo upload, voice) | ✅ Passed, owner tested from a fresh account 2026-11-17 |
+| Credit checks before every paid action (locks, low-credit notes, top-up prompt) | ✅ Tested live 2026-11-17 |
 | Razorpay live mode | ⏳ After the DPDP legal review (minors now pay) |
 | AP SSC curriculum, Telugu chapter titles | ⏳ Waiting for official sources |
 | NCERT usage permission | ⏳ Launch blocker |
@@ -119,6 +121,12 @@ payment, only if the paid amount equals the pack price and the payment environme
 The header shows the balance as a pill (green from ₹50, amber ₹10–₹49, red "Low" under ₹10, red at
 ₹0); clicking it opens the top-up window, and a hand-written note on hover says roughly how many
 questions it pays for.
+
+Every paid action checks the balance **before** any AI call. When the balance is known to be short, the
+control shows a lock (photo upload, question box, send, mic, Listen, Practise, quiz sizes) and a friendly
+"Top up now? Yes / Not now" note appears instead of an error. The quiz setup shows the price of each size
+(5 / 10 / 15 questions) and says how far the balance goes; the photo upload warns when the balance would
+read the photo but leave nothing to ask about it. The server still checks and charges every call.
 
 ## Tech stack
 
@@ -253,8 +261,11 @@ database). Mastery is tracked per chapter for now; topic-level tracking needs an
    sign-in (email code, Google, GitHub), student bookplate, tutor chat (explain and hint modes), quiz,
    progress page, photo upload, voice; deployed on Vercel
 8. ✅ **Credits & payments:** rupee wallet, Razorpay top-ups (test mode), pay per AI task with refunds
-9. ⏳ **Real-user testing:** logged-in end-to-end tests, real handwriting photos and voices, Telugu review
-10. ⏳ **Production:** Razorpay live mode, benchmarks, security review, legal review of student consent and payments by minors (see Privacy), pilot study
+9. ✅ **Real-user testing:** logged-in end-to-end tests on the live site (top-up, tutor, quiz, photo, voice),
+   credit checks and low-credit messages (2026-11-17)
+10. ✅ **Production:** frontend on Vercel, backend on InsForge, payments wired end to end (Razorpay test mode)
+11. ⏳ **Public launch:** Razorpay live mode, NCERT usage permission, legal review of student consent and
+    payments by minors (see Privacy), native Telugu review, AP SSC chapters, pilot study
 
 Learning-outcome claims will come only from a consented pre-test / post-test pilot, never from
 assumptions.
