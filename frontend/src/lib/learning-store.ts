@@ -194,7 +194,7 @@ export async function startQuiz(language: Lang, chapters: Chapter[]) {
   if (!canAfford(cost)) {
     const have = wallet.get().balancePaise ?? 0;
     openAddMoney({ pricePaise: cost, balancePaise: have });
-    quiz.set({ error: `A ${planned}-question quiz costs ${rupees(cost)} and your wallet has ${rupees(have)}. Add money, or pick fewer questions.` });
+    quiz.set({ error: `A ${planned}-question quiz costs ${rupees(cost)} and you have ${rupees(have)} in credits. Top up, or pick fewer questions.` });
     return;
   }
   const run = ++generation;

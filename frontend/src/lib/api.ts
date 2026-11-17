@@ -178,7 +178,7 @@ const MESSAGES: Record<string, string> = {
   in_progress: 'This document is still being read.',
   REQUEST_TIMEOUT: 'This took too long. Try again.',
   NETWORK_ERROR: 'You seem to be offline. Check your connection.',
-  no_credits: 'Your wallet is empty. Add money to keep learning.',
+  no_credits: 'You have no credits left. Top up to keep learning.',
   wallet_failed: 'Could not check your wallet. Try again in a moment.',
 };
 
@@ -194,8 +194,8 @@ function toApiError(error: unknown): ApiError {
   if (code === 'no_credits' && typeof e.pricePaise === 'number' && typeof e.balancePaise === 'number') {
     openAddMoney({ pricePaise: e.pricePaise, balancePaise: e.balancePaise });
     const msg = e.balancePaise > 0
-      ? `This needs ${rupees(e.pricePaise)} and your wallet has ${rupees(e.balancePaise)}. Add money to keep learning.`
-      : `This costs ${rupees(e.pricePaise)} and your wallet is empty. Add money to keep learning.`;
+      ? `This needs ${rupees(e.pricePaise)} and you have ${rupees(e.balancePaise)} in credits. Top up to keep learning.`
+      : `This costs ${rupees(e.pricePaise)} and you have no credits left. Top up to keep learning.`;
     return new ApiError(code, msg, 402);
   }
   return new ApiError(code, friendly(code, e?.message && e.message.length < 140 ? e.message : undefined), e?.statusCode ?? 0);

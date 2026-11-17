@@ -21,7 +21,7 @@ const TONE: Record<Tone, { pill: string; dot: string; text: string; word: string
   good:  { pill: 'border-emerald/45 bg-emerald/10 text-emerald-deep', dot: 'bg-emerald', text: 'text-emerald', word: 'Plenty' },
   mid:   { pill: 'border-[#b7791f]/50 bg-[#f6c453]/20 text-[#7a4f0d]', dot: 'bg-[#d4920f]', text: 'text-[#9a6410]', word: 'Okay' },
   low:   { pill: 'border-pencil/50 bg-pencil/10 text-pencil', dot: 'bg-pencil', text: 'text-pencil', word: 'Low' },
-  empty: { pill: 'border-ink/25 bg-ink/5 text-ink-soft', dot: 'bg-ink-faint', text: 'text-ink-faint', word: 'Empty' },
+  empty: { pill: 'border-pencil/60 bg-pencil/[.14] text-pencil', dot: 'bg-pencil', text: 'text-pencil', word: 'Empty' },
 };
 
 /** How many tutor questions a balance pays for (from the live price). */
@@ -50,30 +50,29 @@ export function BalancePill() {
   if (!user || profile?.role === 'parent') return null;
   if (w.balancePaise === null) return <span className="h-8 w-20 animate-pulse rounded-full bg-ink/10" aria-hidden />;
 
+  // One control in every state: the balance itself is the top-up button (no separate "Add" text).
   const tone = toneOf(w.balancePaise);
   const t = TONE[tone];
-  if (tone === 'empty') {
-    return (
-      <button type="button" onClick={() => openAddMoney()} className="flex items-center gap-1.5 whitespace-nowrap rounded-full border border-dashed border-ink/35 px-3 py-1.5 text-sm font-semibold text-ink-soft transition hover:border-emerald hover:bg-emerald/10 hover:text-emerald">
-        <Plus aria-hidden className="h-4 w-4" /> Add money
-      </button>
-    );
-  }
   return (
     <button
       type="button"
       onClick={() => openAddMoney()}
-      title={`Wallet balance: ${rupees(w.balancePaise)}. Click to add money.`}
-      aria-label={`Wallet balance ${rupees(w.balancePaise)}, ${t.word.toLowerCase()}. Add money`}
-      className={clsx('group flex items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-1.5 text-sm font-semibold tabular-nums shadow-[inset_0_1px_0_rgba(255,255,255,.35)] transition hover:brightness-95', t.pill)}
+      title={`Your credits: ${rupees(w.balancePaise)}. Click to top up.`}
+      aria-label={`Credits ${rupees(w.balancePaise)}, ${t.word.toLowerCase()}. Top up`}
+      className={clsx('group flex items-center gap-1.5 whitespace-nowrap rounded-full border py-1 pl-2.5 pr-1 text-sm font-semibold tabular-nums shadow-[inset_0_1px_0_rgba(255,255,255,.35)] transition hover:brightness-95', t.pill)}
     >
       <span className="relative flex h-4 w-4 items-center justify-center">
         <WalletIcon aria-hidden className="h-4 w-4" />
-        <span aria-hidden className={clsx('absolute -right-0.5 -top-0.5 h-1.5 w-1.5 rounded-full ring-1 ring-paper', t.dot, tone === 'low' && 'animate-pulse')} />
+        <span aria-hidden className={clsx('absolute -right-0.5 -top-0.5 h-1.5 w-1.5 rounded-full ring-1 ring-paper', t.dot, (tone === 'low' || tone === 'empty') && 'animate-pulse')} />
       </span>
-      {rupees(w.balancePaise)}
+      <span>
+        {rupees(w.balancePaise)}
+        <span className="ml-1 hidden font-normal opacity-80 sm:inline">credits</span>
+      </span>
       {tone === 'low' && <span className="rounded-full bg-pencil px-1.5 py-px text-[0.65rem] font-bold uppercase tracking-wide text-paper">Low</span>}
-      <Plus aria-hidden className="hidden h-3.5 w-3.5 opacity-60 group-hover:opacity-100 sm:block" />
+      <span aria-hidden className={clsx('flex h-6 w-6 items-center justify-center rounded-full transition group-hover:scale-110', tone === 'empty' ? 'bg-pencil text-paper' : 'bg-white/60')}>
+        <Plus className="h-3.5 w-3.5" />
+      </span>
     </button>
   );
 }
@@ -178,24 +177,24 @@ export function AddMoneySheet() {
             <h2 id="add-money-h" className="mt-4 font-display text-3xl">{w.phase === 'done' ? `${rupees(w.lastCreditPaise)} added!` : 'Payment received'}</h2>
             <p className="mt-2 text-ink-soft">
               {w.phase === 'done'
-                ? <>Your wallet now has <b className={TONE[toneOf(balance)].text}>{rupees(balance)}</b>. Happy learning!</>
-                : <>Your bank is still confirming it. {rupees(w.lastCreditPaise)} will show in your wallet within a few minutes.</>}
+                ? <>You now have <b className={TONE[toneOf(balance)].text}>{rupees(balance)}</b> in credits. Happy learning!</>
+                : <>Your bank is still confirming it. {rupees(w.lastCreditPaise)} will show in your credits within a few minutes.</>}
             </p>
             <button type="button" onClick={closeAddMoney} className="ink-button mt-6">Back to learning</button>
           </div>
         ) : (
           <>
             <p className="font-hand text-lg text-gold-deep">Your wallet</p>
-            <h2 id="add-money-h" className="font-display text-3xl leading-tight">Add money</h2>
+            <h2 id="add-money-h" className="font-display text-3xl leading-tight">Top up credits</h2>
             <p className="mt-1 text-sm text-ink-soft">
-              Balance now: <b className={clsx('tabular-nums', TONE[toneOf(balance)].text)}>{rupees(balance)}</b>
+              Your credits: <b className={clsx('tabular-nums', TONE[toneOf(balance)].text)}>{rupees(balance)}</b>
               <span className="text-ink-faint"> · 1 credit = ₹1</span>
             </p>
 
             {w.need && (
               <p className="mt-3 flex items-start gap-2 rounded-md border border-pencil/30 bg-pencil/[.07] px-3 py-2 text-sm text-pencil" role="status">
                 <CircleAlert aria-hidden className="mt-0.5 h-4 w-4 shrink-0" />
-                <span>That needs <b>{rupees(w.need.pricePaise)}</b> and your wallet has <b>{rupees(w.need.balancePaise)}</b>. Add a little money and try again.</span>
+                <span>That needs <b>{rupees(w.need.pricePaise)}</b> and you have <b>{rupees(w.need.balancePaise)}</b>. Top up a little and try again.</span>
               </p>
             )}
 
@@ -207,7 +206,7 @@ export function AddMoneySheet() {
 
             <div className="mt-4 min-h-[1.5rem] text-sm" aria-live="polite">
               {w.phase === 'paying' && <span className="text-ink-soft">Finish the payment in the Razorpay window…</span>}
-              {w.phase === 'confirming' && <span className="flex items-center gap-2 text-emerald"><Loader2 aria-hidden className="h-4 w-4 animate-spin" /> Payment received. Adding {pack ? rupees(pack.credit_paise) : 'it'} to your wallet…</span>}
+              {w.phase === 'confirming' && <span className="flex items-center gap-2 text-emerald"><Loader2 aria-hidden className="h-4 w-4 animate-spin" /> Payment received. Adding {pack ? rupees(pack.credit_paise) : 'it'} to your credits…</span>}
               {w.phase === 'cancelled' && <span className="text-ink-soft">Payment not completed. No money was taken. You can try again.</span>}
               {w.phase === 'failed' && <span className="text-pencil">{w.payError}</span>}
             </div>
@@ -242,8 +241,8 @@ function tagline(paise: number): string {
   switch (toneOf(paise)) {
     case 'good': return `You're all set: enough for about ${n} tutor questions.`;
     case 'mid': return `Enough for about ${n} tutor questions. Top up before a big revision day.`;
-    case 'low': return `Running low: about ${n} question${n === 1 ? '' : 's'} left. Add money to keep going.`;
-    default: return 'Add money to ask the tutor, take quizzes and read photos of your notes.';
+    case 'low': return `Running low: about ${n} question${n === 1 ? '' : 's'} left. Top up to keep going.`;
+    default: return 'Top up your credits to ask the tutor, take quizzes and read photos of your notes.';
   }
 }
 
@@ -266,14 +265,14 @@ export function WalletLeft() {
         <div className="relative mt-5 overflow-hidden rounded-xl bg-gradient-to-br from-[#16403c] via-emerald to-[#2a7a72] p-5 text-paper shadow-[0_14px_30px_-12px_rgba(18,60,57,.7)]">
           <span aria-hidden className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full border-[14px] border-gold/25" />
           <span aria-hidden className="pointer-events-none absolute -bottom-14 right-16 h-28 w-28 rounded-full bg-gold/15" />
-          <p className="flex items-center gap-2 text-sm text-paper/80"><WalletIcon aria-hidden className="h-4 w-4" /> Balance</p>
+          <p className="flex items-center gap-2 text-sm text-paper/80"><WalletIcon aria-hidden className="h-4 w-4" /> Your credits</p>
           <p className="mt-1 font-display text-5xl tabular-nums">{rupees(w.balancePaise)}</p>
           <p className="mt-1 flex items-center gap-2 text-sm">
             <span className={clsx('h-2 w-2 rounded-full', TONE[toneOf(w.balancePaise)].dot, toneOf(w.balancePaise) === 'good' && '!bg-[#7ee0c3]')} />
             <span className="text-paper/90">{tagline(w.balancePaise)}</span>
           </p>
           <button type="button" onClick={() => openAddMoney()} className="mt-4 inline-flex items-center gap-2 rounded-full bg-gold px-4 py-2 text-sm font-bold text-ink shadow hover:bg-[#d8b45c]">
-            <Plus aria-hidden className="h-4 w-4" /> Add money
+            <Plus aria-hidden className="h-4 w-4" /> Top up
           </button>
         </div>
       )}
