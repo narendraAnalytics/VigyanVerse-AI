@@ -5,7 +5,7 @@ import { useDropzone } from 'react-dropzone';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { clsx } from 'clsx';
-import { BookMarked, FileImage, ImageIcon, Lightbulb, Loader2, Lock, Mic, Plus, SendHorizontal, Square, Trash2, Volume2, X } from 'lucide-react';
+import { BookMarked, Check, FileImage, ImageIcon, Lightbulb, Loader2, Lock, Mic, Plus, SendHorizontal, Square, Trash2, Volume2, X } from 'lucide-react';
 import { useStore } from '@/lib/store';
 import { useAuth } from '@/lib/auth';
 import { useConsent } from '@/lib/consent';
@@ -17,7 +17,7 @@ import { speakText, startRecording, stopSpeaking, type Recording } from '@/lib/v
 import { usePageLayout, usePreview } from '@/components/book/page-context';
 import { Bindu, Speech } from '@/components/mascot/Bindu';
 import { StudentGate } from './Gate';
-import { hasCredits, isLocked, priceOf, rupees, wallet } from '@/lib/wallet-store';
+import { askTopUp, hasCredits, isLocked, priceOf, rupees, wallet } from '@/lib/wallet-store';
 import { DiagramBlock } from '@/components/diagrams/Diagram';
 
 const SUBJECT_CHOICES: { id: Subject | null; label: string }[] = [
@@ -107,6 +107,50 @@ function History() {
   );
 }
 
+/** Questions left after a photo read before this note goes quiet. */
+const PHOTO_BUDGET_NOTE_BELOW = 5;
+
+/**
+ * Low balance, before the upload: a photo is only useful if the student can still ask about it.
+ * Covers the read but no question -> pencil note + Top up; covers a few questions -> green note.
+ * Unknown balance or plenty of credits -> nothing.
+ */
+function PhotoBudget() {
+  const balance = useStore(wallet).balancePaise;
+  if (balance === null) return null;
+  const read = priceOf('photo_read');
+  const ask = priceOf('photo_question');
+  if (balance < read || ask <= 0) return null;
+  const questions = Math.floor((balance - read) / ask);
+  if (questions >= PHOTO_BUDGET_NOTE_BELOW) return null;
+  if (questions === 0) {
+    return (
+      <div role="status" className="font-hand mt-2 rounded-md border border-pencil/30 bg-pencil/5 px-3 py-2 text-[1.05rem] leading-snug text-pencil">
+        <p className="flex items-start gap-1.5">
+          <Lock aria-hidden className="mt-1 h-4 w-4 shrink-0" />
+          <span>
+            Heads up! Your {rupees(balance)} can read this photo ({rupees(read)}), but then nothing is left to ask about it
+            ({rupees(ask)} a question).
+          </span>
+        </p>
+        <button type="button" onClick={() => askTopUp('read a photo and ask about it', read + ask, balance)}
+          className="mt-1 font-sans text-sm font-semibold text-pencil underline underline-offset-2 hover:text-ink">
+          Top up first
+        </button>
+      </div>
+    );
+  }
+  return (
+    <p role="status" className="font-hand mt-2 flex items-start gap-1.5 text-[1.05rem] leading-snug text-emerald">
+      <Check aria-hidden className="mt-1 h-4 w-4 shrink-0" />
+      <span>
+        Your {rupees(balance)} covers reading this photo ({rupees(read)}) and {questions} question{questions === 1 ? '' : 's'} about it
+        ({rupees(ask)} each).
+      </span>
+    </p>
+  );
+}
+
 function Notes() {
   const d = useStore(docs);
   const s = useStore(chat);
@@ -171,6 +215,7 @@ function Notes() {
             )}
           </div>
           )}
+          {!locked && !d.busy && <PhotoBudget />}
         </>
       )}
       {d.error && <p role="alert" className="mt-2 text-sm text-pencil">{d.error}</p>}
