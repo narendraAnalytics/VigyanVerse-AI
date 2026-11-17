@@ -175,7 +175,10 @@ export async function buyPack(user: { id: string; email?: string | null; name?: 
   try {
     const client = insforge();
     const started = await client.database.rpc('start_topup', { p_pack: pack.code });
-    if (started.error || !started.data) throw new Error((started.error as { message?: string } | null)?.message?.includes('too_many') ? 'too_many' : 'start');
+    if (started.error || !started.data) {
+      const msg = (started.error as { message?: string } | null)?.message ?? '';
+      throw new Error(msg.includes('too_many') ? 'too_many' : msg.includes('students only') ? 'bookplate' : 'start');
+    }
     const t = started.data as { topup_id: string; amount_paise: number; credit_paise: number; environment: 'test' | 'live' };
 
     const order = await client.payments.razorpay.createOrder(t.environment, {
@@ -228,6 +231,7 @@ export async function buyPack(user: { id: string; email?: string | null; name?: 
     wallet.set({
       phase: 'failed',
       payError: code === 'too_many' ? 'Too many unfinished payments. Wait a little and try again.'
+        : code === 'bookplate' ? 'Fill in your bookplate first (name, board and class), then top up.'
         : code.startsWith('checkout') ? 'The payment window could not load. Check your connection (or ad blocker) and try again.'
         : 'Could not start the payment. Try again in a moment.',
     });

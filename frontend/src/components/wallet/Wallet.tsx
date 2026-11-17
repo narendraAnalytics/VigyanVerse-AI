@@ -160,7 +160,7 @@ function PriceList({ compact = false }: { compact?: boolean }) {
 // ---------------------------------------------------------------------------
 export function AddMoneySheet() {
   useWalletSync();
-  const { user, profile } = useAuth();
+  const { user, profile, student, loading } = useAuth();
   const w = useStore(wallet);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -176,6 +176,8 @@ export function AddMoneySheet() {
   const pack = w.packs.find((p) => p.code === w.selected);
   const busy = w.phase === 'starting' || w.phase === 'paying' || w.phase === 'confirming';
   const balance = w.balancePaise ?? 0;
+  // Credits belong to a student account: the bookplate (profiles + students rows) must exist first.
+  const needsBookplate = !loading && !student;
   const pay = () => void buyPack({ id: user.id, email: user.email, name: profile?.display_name ?? user.name ?? null });
 
   return (
@@ -227,6 +229,16 @@ export function AddMoneySheet() {
                 : Array.from({ length: 4 }, (_, i) => <span key={i} className="h-28 animate-pulse rounded-lg bg-ink/10" />)}
             </div>
 
+            {needsBookplate && (
+              <div className="pencil-note mt-5 !rotate-0 px-4 py-3" role="status">
+                <p className="text-lg">One quick step first!</p>
+                <p>Fill in your bookplate (your name, board and class). Then you can top up your credits.</p>
+                <Link href="/onboarding" onClick={() => wallet.set({ sheetOpen: false })} className="mt-2 inline-flex items-center gap-1.5 font-bold text-[#9c5a1f] underline decoration-wavy underline-offset-4">
+                  <PencilLine aria-hidden className="h-4 w-4" /> Fill in my bookplate
+                </Link>
+              </div>
+            )}
+
             <div className="mt-4 min-h-[1.5rem] text-sm" aria-live="polite">
               {w.phase === 'paying' && <span className="text-ink-soft">Finish the payment in the Razorpay window…</span>}
               {w.phase === 'confirming' && <span className="flex items-center gap-2 text-emerald"><Loader2 aria-hidden className="h-4 w-4 animate-spin" /> Payment received. Adding {pack ? rupees(pack.credit_paise) : 'it'} to your credits…</span>}
@@ -234,7 +246,7 @@ export function AddMoneySheet() {
               {w.phase === 'failed' && <span className="text-pencil">{w.payError}</span>}
             </div>
 
-            <button type="button" onClick={pay} disabled={!pack || busy} className="ink-button mt-2 w-full justify-center !py-3 text-base">
+            <button type="button" onClick={pay} disabled={!pack || busy || needsBookplate} className="ink-button mt-2 w-full justify-center !py-3 text-base">
               {w.phase === 'starting' ? <><Loader2 aria-hidden className="h-4 w-4 animate-spin" /> Opening secure payment…</>
                 : w.phase === 'paying' || w.phase === 'confirming' ? <><Loader2 aria-hidden className="h-4 w-4 animate-spin" /> Waiting for payment…</>
                 : w.phase === 'cancelled' || w.phase === 'failed' ? <><RotateCcw aria-hidden className="h-4 w-4" /> Try again: pay {pack ? rupees(pack.price_paise) : ''}</>
