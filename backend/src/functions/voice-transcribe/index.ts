@@ -8,6 +8,7 @@
 // can read the answer aloud with voice-speak.
 import { z } from 'zod';
 import { authenticate, json, preflight } from '../../shared/http.ts';
+import { chargeFailed, chargeTask, refundCharge } from '../../shared/wallet.ts';
 import { AUDIO_TYPES, decodeBase64, MAX_AUDIO_BYTES, MAX_AUDIO_SECONDS, STT_MODEL, transcribe } from '../../shared/speech.ts';
 
 const FUNCTION_SLUG = 'voice-transcribe';
@@ -52,12 +53,16 @@ export default async function (req: Request): Promise<Response> {
   if (reserved.data === 'slow_down' || reserved.data === 'daily_limit') return json({ error: reserved.data }, 429);
   if (reserved.data !== 'ok') return json({ error: 'usage_failed' }, 500);
 
+  // Pay (Rs 0.50) before the speech model; refunded if nothing usable comes back.
+  const charge = await chargeTask(db, 'voice_input');
+  if (!charge.ok) return chargeFailed(charge);
+
   let result: Awaited<ReturnType<typeof transcribe>>;
   try {
     result = await transcribe(audio, body.mime, body.language, body.seconds);
   } catch (e) {
     console.error(`${FUNCTION_SLUG}: ${e instanceof Error ? e.message : 'failed'}`);
-    return json({ error: 'try_again' }, 503);
+    return json({ error: 'try_again', balancePaise: await refundCharge(charge) }, 503);
   }
 
   // Cost / latency only: never the audio or the transcript.
@@ -67,6 +72,6 @@ export default async function (req: Request): Promise<Response> {
   }]);
   if (usage.error) console.error(`${FUNCTION_SLUG}: usage save failed`);
 
-  if (!result.transcript) return json({ error: 'no_speech' }, 422);
-  return json({ transcript: result.transcript, languageCode: result.languageCode });
+  if (!result.transcript) return json({ error: 'no_speech', balancePaise: await refundCharge(charge) }, 422);
+  return json({ transcript: result.transcript, languageCode: result.languageCode, balancePaise: charge.balancePaise });
 }

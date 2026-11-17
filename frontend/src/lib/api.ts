@@ -3,6 +3,7 @@
 // Typed calls to the nine deployed Edge Functions and the database. The backend decides
 // identity from the session token, consent, limits and grading; the app only displays results.
 import { insforge, publicClient } from './insforge';
+import { noteBalance, openAddMoney, rupees } from './wallet-store';
 
 export type Lang = 'en' | 'te';
 export type Subject = 'physics' | 'chemistry' | 'biology';
@@ -177,6 +178,8 @@ const MESSAGES: Record<string, string> = {
   in_progress: 'This document is still being read.',
   REQUEST_TIMEOUT: 'This took too long. Try again.',
   NETWORK_ERROR: 'You seem to be offline. Check your connection.',
+  no_credits: 'Your wallet is empty. Add money to keep learning.',
+  wallet_failed: 'Could not check your wallet. Try again in a moment.',
 };
 
 export function friendly(code: string, fallback = 'Something went wrong. Try again.'): string {
@@ -184,14 +187,24 @@ export function friendly(code: string, fallback = 'Something went wrong. Try aga
 }
 
 function toApiError(error: unknown): ApiError {
-  const e = error as { error?: string; code?: string; message?: string; statusCode?: number };
+  const e = error as { error?: string; code?: string; message?: string; statusCode?: number; balancePaise?: number; pricePaise?: number };
   const code = e?.error ?? e?.code ?? 'unknown';
+  // Paid functions send the balance after a refund, and the numbers when the wallet is short.
+  noteBalance(e?.balancePaise);
+  if (code === 'no_credits' && typeof e.pricePaise === 'number' && typeof e.balancePaise === 'number') {
+    openAddMoney({ pricePaise: e.pricePaise, balancePaise: e.balancePaise });
+    const msg = e.balancePaise > 0
+      ? `This needs ${rupees(e.pricePaise)} and your wallet has ${rupees(e.balancePaise)}. Add money to keep learning.`
+      : `This costs ${rupees(e.pricePaise)} and your wallet is empty. Add money to keep learning.`;
+    return new ApiError(code, msg, 402);
+  }
   return new ApiError(code, friendly(code, e?.message && e.message.length < 140 ? e.message : undefined), e?.statusCode ?? 0);
 }
 
 async function call<T>(slug: string, body: unknown): Promise<T> {
   const { data, error } = await insforge().functions.invoke<T>(slug, { body });
   if (error) throw toApiError(error);
+  noteBalance((data as { balancePaise?: unknown } | null)?.balancePaise);
   return data as T;
 }
 

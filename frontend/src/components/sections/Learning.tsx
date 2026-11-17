@@ -12,6 +12,7 @@ import type { Chapter, MasteryRow } from '@/lib/api';
 import { usePageLayout, usePreview } from '@/components/book/page-context';
 import { Bindu, Speech } from '@/components/mascot/Bindu';
 import { StudentGate } from './Gate';
+import { priceOf, rupees } from '@/lib/wallet-store';
 
 const STATE_LABEL: Record<MasteryRow['state'], string> = {
   not_started: 'Not started', learning: 'Learning', developing: 'Developing', proficient: 'Proficient', mastered: 'Mastered',
@@ -424,7 +425,7 @@ function QuizSetup() {
           {q.checking ? <Loader2 aria-hidden className="h-4 w-4 animate-spin" /> : <PencilLine aria-hidden className="h-4 w-4" />}
           {q.checking ? 'Finding your topic…' : 'Make my quiz'}
         </button>
-        <span className="text-sm text-ink-faint">Takes about 20–30 seconds to write and check.</span>
+        <span className="text-sm text-ink-faint"><b className="font-semibold text-ink-soft">Costs {rupees(priceOf('quiz_batch') * Math.ceil(s.size / 5))}</b>, checking included. Takes about 20–30 seconds to write and check.</span>
       </div>
     </form>
   );

@@ -22,6 +22,7 @@ import { BATCH_ANGLES, MAX_QUESTIONS } from '../../agents/quiz.ts';
 import { samplePassages, topicPassages } from '../../shared/chapter-passages.ts';
 import { authenticate, json, preflight } from '../../shared/http.ts';
 import { requireEnv } from '../../shared/env.ts';
+import { chargeFailed, chargeTask, refundCharge } from '../../shared/wallet.ts';
 
 const FUNCTION_SLUG = 'quiz-generate';
 /** Edge Functions stop at 30 s: generating + validating gets 25 s, saving the rest. */
@@ -106,6 +107,13 @@ export default async function (req: Request): Promise<Response> {
   }
   const topic = target?.topic ?? undefined;
 
+  // Pay for this batch (Rs 2 per 5 questions, task_prices) before any AI work. Every failure below
+  // gives it back; a batch that returns fewer questions gives back the unserved share.
+  const charge = await chargeTask(db, 'quiz_batch', target ? `${target.id}:${body.batch}` : chapter.id);
+  if (!charge.ok) return chargeFailed(charge);
+  const refund = async (payload: Record<string, unknown>, status: number) => json({ ...payload, balancePaise: await refundCharge(charge) }, status);
+
+
   // Passages: about the student's topic (refused if the chapter does not cover it), or a sample.
   let passages;
   if (topic) {
@@ -115,14 +123,14 @@ export default async function (req: Request): Promise<Response> {
       await db.from('model_usage').insert([{ function_slug: FUNCTION_SLUG, agent: 'query_rewrite', model: u.model ?? null, input_tokens: u.inputTokens ?? 0, output_tokens: u.outputTokens ?? 0, reasoning_tokens: null, cost_inr: Number((u.costInr ?? 0).toFixed(5)), latency_ms: Math.round(u.latencyMs ?? 0), used_fallback: false, error: picked.rewrite.error?.slice(0, 200) ?? null }]);
     }
     if (!picked.ok) {
-      return json(picked.error === 'topic_not_found'
+      return refund(picked.error === 'topic_not_found'
         ? { error: 'topic_not_found', message: `"${topic}" is not in this chapter of your textbook. Try another topic, or leave it empty.` }
         : { error: picked.error }, picked.error === 'topic_not_found' ? 422 : 500);
     }
     passages = picked.passages;
   } else {
     const picked = await samplePassages(user.client, chapter);
-    if (!picked.ok) return json({ error: picked.error }, picked.error === 'no_passages' ? 422 : 500);
+    if (!picked.ok) return refund({ error: picked.error }, picked.error === 'no_passages' ? 422 : 500);
     passages = picked.passages;
   }
   const planned = target?.planned_questions ?? count;
@@ -137,7 +145,7 @@ export default async function (req: Request): Promise<Response> {
     );
   } catch (e) {
     console.error(`${FUNCTION_SLUG}: pipeline failed: ${e instanceof Error ? e.message.slice(0, 200) : 'unknown'}`);
-    return json({ error: 'quiz_failed' }, 500);
+    return refund({ error: 'quiz_failed' }, 500);
   }
 
   // Usage rows are saved whatever happened (cost and errors are tracked per call).
@@ -150,9 +158,9 @@ export default async function (req: Request): Promise<Response> {
   if (saveUsage.error) console.error(`${FUNCTION_SLUG}: usage save failed`);
 
   if (!result.ok) {
-    if (result.reason === 'refused') return json({ error: 'formative_only', message: result.message }, 422);
+    if (result.reason === 'refused') return refund({ error: 'formative_only', message: result.message }, 422);
     // Nothing unchecked is ever served: the student can simply try again.
-    return json({ error: result.reason, message: result.message }, result.reason === 'no_time' ? 503 : 502);
+    return refund({ error: result.reason, message: result.message }, result.reason === 'no_time' ? 503 : 502);
   }
 
   // 5. Save the bank rows (admin client) and the student's assessment (the student, under RLS).
@@ -162,12 +170,12 @@ export default async function (req: Request): Promise<Response> {
   });
   const admin = createAdminClient({ baseUrl: requireEnv('INSFORGE_BASE_URL'), apiKey: requireEnv('API_KEY') });
   const savedQuestions = await admin.database.from('questions').insert(rows.map((r) => r.question));
-  if (savedQuestions.error) { console.error(`${FUNCTION_SLUG}: questions save failed`); return json({ error: 'save_failed' }, 500); }
+  if (savedQuestions.error) { console.error(`${FUNCTION_SLUG}: questions save failed`); return refund({ error: 'save_failed' }, 500); }
   const savedKeys = await admin.database.from('question_keys').insert(rows.map((r) => r.key));
   if (savedKeys.error) {
     console.error(`${FUNCTION_SLUG}: keys save failed`);
     await admin.database.from('questions').delete().in('id', rows.map((r) => r.question.id as string)); // keys cascade
-    return json({ error: 'save_failed' }, 500);
+    return refund({ error: 'save_failed' }, 500);
   }
 
   let assessmentId = target?.id;
@@ -175,7 +183,7 @@ export default async function (req: Request): Promise<Response> {
     const assessment = await db.from('assessments').insert([{ kind: 'practice', chapter_id: chapter.id, language }]).select('id');
     assessmentId = (assessment.data as { id: string }[] | null)?.[0]?.id;
     // Fails for accounts without a students row (only students take quizzes).
-    if (assessment.error || !assessmentId) return json({ error: 'assessment_failed' }, 403);
+    if (assessment.error || !assessmentId) return refund({ error: 'assessment_failed' }, 403);
   }
   // Batch b fills positions b*5+1 .. b*5+5: parallel batches never collide.
   const offset = body.batch * MAX_QUESTIONS;
@@ -184,7 +192,13 @@ export default async function (req: Request): Promise<Response> {
     console.error(`${FUNCTION_SLUG}: assessment questions save failed`);
     // Only delete an assessment this call created; a shared one keeps its other batches.
     if (!target) await db.from('assessments').delete().eq('id', assessmentId);
-    return json({ error: 'assessment_failed' }, 500);
+    return refund({ error: 'assessment_failed' }, 500);
+  }
+
+  // Fewer questions than asked for (some failed a check): give back the unserved share.
+  let balancePaise = charge.balancePaise;
+  if (rows.length < count) {
+    balancePaise = await refundCharge(charge, Math.floor((charge.pricePaise * (count - rows.length)) / count));
   }
 
   return json({
@@ -196,5 +210,6 @@ export default async function (req: Request): Promise<Response> {
     // Fewer than requested is normal: questions that fail a check are dropped, never served.
     questions: rows.map((r, i) => publicQuestion(r.question, offset + i + 1, 1)),
     dropped: result.dropped.length,
+    balancePaise,
   });
 }

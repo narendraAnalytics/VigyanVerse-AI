@@ -10,6 +10,7 @@ import { LearningLeft, LearningRight } from './Learning';
 import { AccountArt, SignInForm, SignUpForm, ResetForm } from './Account';
 import { BookplateLeft, BookplateRight } from './Onboarding';
 import { ParentLeft, ParentRight } from './Parent';
+import { WalletLeft, WalletRight } from '@/components/wallet/Wallet';
 
 interface FrameOpts { ruled?: boolean; margin?: boolean; runningHead?: ReactNode; folio?: ReactNode; className?: string; backdrop?: ReactNode }
 interface Spread {
@@ -71,6 +72,11 @@ const SPREADS: Record<SectionId, Spread> = {
     left: () => <BookplateLeft />, right: () => <BookplateRight />,
     leftFrame: { runningHead: head('Ex libris', 'Bookplate') },
     rightFrame: { runningHead: head('Getting started', 'Your account'), ruled: true, margin: true },
+  },
+  wallet: {
+    left: () => <WalletLeft />, right: () => <WalletRight />,
+    leftFrame: { runningHead: head('Back matter', 'Your wallet'), ruled: true },
+    rightFrame: { runningHead: head('Your wallet', 'Top up'), ruled: true, margin: true },
   },
   parent: {
     left: () => <ParentLeft />, right: () => <ParentRight />,

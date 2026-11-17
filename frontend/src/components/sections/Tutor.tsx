@@ -17,6 +17,7 @@ import { speakText, startRecording, stopSpeaking, type Recording } from '@/lib/v
 import { usePageLayout, usePreview } from '@/components/book/page-context';
 import { Bindu, Speech } from '@/components/mascot/Bindu';
 import { StudentGate } from './Gate';
+import { priceOf, rupees } from '@/lib/wallet-store';
 import { DiagramBlock } from '@/components/diagrams/Diagram';
 
 const SUBJECT_CHOICES: { id: Subject | null; label: string }[] = [
@@ -152,7 +153,7 @@ function Notes() {
               <>
                 <FileImage aria-hidden className="h-6 w-6 text-ink-faint" />
                 <span className="mt-1">Drop a photo here or <span className="underline">choose one</span></span>
-                <span className="text-xs text-ink-faint">PNG, JPEG or WebP, up to 4 MB</span>
+                <span className="text-xs text-ink-faint">PNG, JPEG or WebP, up to 4 MB · reading it costs {rupees(priceOf('photo_read'))}</span>
               </>
             )}
           </div>
@@ -429,7 +430,7 @@ function Bubble({ m, language, image = false }: { m: ChatMessage; language: 'en'
         <div className="mt-1.5 flex items-center gap-2">
           <button type="button" onClick={listen} className="flex items-center gap-1 text-xs text-ink-faint hover:text-emerald" aria-label={speaking === 'playing' ? 'Stop reading aloud' : 'Read this answer aloud'}>
             {speaking === 'loading' ? <Loader2 aria-hidden className="h-3.5 w-3.5 animate-spin" /> : speaking === 'playing' ? <Square aria-hidden className="h-3.5 w-3.5" /> : <Volume2 aria-hidden className="h-3.5 w-3.5" />}
-            {speaking === 'playing' ? 'Stop' : 'Listen'}
+            {speaking === 'playing' ? 'Stop' : <>Listen <span className="opacity-70">({rupees(priceOf('voice_read'))})</span></>}
           </button>
           {speakError && <span className="text-xs text-pencil">{speakError}</span>}
         </div>
@@ -527,7 +528,7 @@ function Composer() {
         {voiceState === 'recording' ? <span className="text-pencil">Listening… {seconds}s of 30. Press the square to stop.</span>
           : voiceState === 'transcribing' ? <span className="text-ink-faint">Turning your voice into text…</span>
             : voiceError ? <span className="text-pencil">{voiceError}</span>
-              : <span className="text-ink-faint">Enter to send, Shift and Enter for a new line. Voice recordings are not stored.</span>}
+              : <span className="text-ink-faint"><b className="font-semibold text-ink-soft">{rupees(priceOf(s.notesDocId ? 'photo_question' : 'tutor_turn'))} per question</b> · Enter to send, Shift and Enter for a new line. Voice recordings are not stored.</span>}
       </p>
     </form>
   );

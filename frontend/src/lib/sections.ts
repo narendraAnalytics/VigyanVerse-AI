@@ -4,7 +4,7 @@
 
 export type SectionId =
   | 'home' | 'physics' | 'chemistry' | 'biology' | 'tutor' | 'learning'
-  | 'sign-in' | 'sign-up' | 'reset-password' | 'onboarding' | 'parent';
+  | 'sign-in' | 'sign-up' | 'reset-password' | 'onboarding' | 'parent' | 'wallet';
 
 export interface Section {
   id: SectionId;
@@ -28,6 +28,8 @@ export const SECTIONS: Section[] = [
   { id: 'biology', path: '/biology', label: 'Biology', order: 3, color: 'var(--biology)', main: true },
   { id: 'tutor', path: '/tutor', label: 'AI Tutor', order: 4, color: 'var(--tutor)', main: true },
   { id: 'learning', path: '/learning', label: 'My Learning', order: 5, color: 'var(--learning)', main: true },
+  // Back matter: reached from the balance pill and the account menu (signed in).
+  { id: 'wallet', path: '/wallet', label: 'Wallet', order: 6, color: 'var(--emerald)', main: false },
 ];
 
 export const MAIN_SECTIONS = SECTIONS.filter((s) => s.main);

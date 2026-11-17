@@ -14,6 +14,7 @@ import { retrieveContext } from '../../agents/retrieval.ts';
 import { SUBJECTS } from '../../agents/router.ts';
 import type { Turn } from '../../agents/tutor.ts';
 import { authenticate, json, preflight } from '../../shared/http.ts';
+import { chargeFailed, chargeTask, refundCharge } from '../../shared/wallet.ts';
 import { CONVERSATION_COLUMNS, findOrCreateImageConversation, type ConversationRow } from '../../shared/image-conversation.ts';
 
 const FUNCTION_SLUG = 'tutor-chat';
@@ -104,7 +105,11 @@ export default async function (req: Request): Promise<Response> {
   const history: Turn[] = ((recent.data as { role: Turn['role']; content: string }[] | null) ?? [])
     .reverse().map((m) => ({ role: m.role, text: m.content.slice(0, HISTORY_CHARS) }));
 
-  // 4. The turn (LangGraph): router -> fixed reply | retrieval -> tutor | socratic | math.
+  // 4. Pay for the turn (Rs 0.50, task_prices) before any model call; refunded if the turn fails.
+  const charge = await chargeTask(db, 'tutor_turn', conversation.id);
+  if (!charge.ok) return chargeFailed(charge);
+
+  // 5. The turn (LangGraph): router -> fixed reply | retrieval -> tutor | socratic | math.
   let turn: Awaited<ReturnType<typeof runTurn>>;
   try {
     turn = await runTurn(
@@ -113,10 +118,11 @@ export default async function (req: Request): Promise<Response> {
     );
   } catch (e) {
     console.error(`${FUNCTION_SLUG}: turn failed: ${e instanceof Error ? e.message.slice(0, 200) : 'unknown'}`);
-    return json({ error: 'tutor_failed' }, 500);
+    const balancePaise = await refundCharge(charge);
+    return json({ error: 'tutor_failed', balancePaise }, 500);
   }
 
-  // 5. Save. The student still gets the answer if saving fails (logged, flagged in the reply).
+  // 6. Save. The student still gets the answer if saving fails (logged, flagged in the reply).
   const usageRows = turn.usage.map((u: UsageRow) => ({
     conversation_id: conversation.id, function_slug: FUNCTION_SLUG, agent: u.agent, model: u.model ?? null,
     input_tokens: u.inputTokens ?? 0, output_tokens: u.outputTokens ?? 0, reasoning_tokens: u.reasoningTokens ?? null,
@@ -147,5 +153,6 @@ export default async function (req: Request): Promise<Response> {
     mode,
     socraticOpen: turn.socratic.topic !== null,
     saved: saveErrors === 0,
+    balancePaise: charge.balancePaise,
   });
 }

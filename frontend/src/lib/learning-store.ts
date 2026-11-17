@@ -1,6 +1,7 @@
 'use client';
 
 import { createStore } from './store';
+import { canAfford, openAddMoney, priceOf, rupees, wallet } from './wallet-store';
 import {
   api, ApiError, createQuiz, deleteQuiz, fetchMastery, fetchQuizHistory, fetchRevisions, rpc, searchTopic,
   type Advice, type Chapter, type Graded, type Lang, type MasteryRow, type Quiz, type QuizHistoryRow, type QuizReview,
@@ -188,6 +189,14 @@ export async function startQuiz(language: Lang, chapters: Chapter[]) {
   }
   if (!chapterId) return;
   const planned = s.setup.size;
+  // Each batch of 5 is paid separately: check the whole quiz is affordable before making any.
+  const cost = priceOf('quiz_batch') * Math.ceil(planned / BATCH);
+  if (!canAfford(cost)) {
+    const have = wallet.get().balancePaise ?? 0;
+    openAddMoney({ pricePaise: cost, balancePaise: have });
+    quiz.set({ error: `A ${planned}-question quiz costs ${rupees(cost)} and your wallet has ${rupees(have)}. Add money, or pick fewer questions.` });
+    return;
+  }
   const run = ++generation;
   quiz.set({ phase: 'generating', quiz: null, answers: {}, graded: null, error: null, partial: null, deadline: null, limitSeconds: null, topicUsed: topic || null, progress: { ready: 0, planned } });
 

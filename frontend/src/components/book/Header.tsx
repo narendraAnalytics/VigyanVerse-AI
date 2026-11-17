@@ -4,7 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ChevronDown, LogOut, ScrollText, UserRound } from 'lucide-react';
+import { ChevronDown, LogOut, ScrollText, UserRound, Wallet } from 'lucide-react';
+import { BalancePill } from '@/components/wallet/Wallet';
 import { useAuth } from '@/lib/auth';
 import type { SectionId } from '@/lib/sections';
 import { Ribbons } from './Ribbons';
@@ -44,6 +45,8 @@ export function Header({ current }: { current: SectionId }) {
         {loading ? (
           <span className="h-8 w-20 animate-pulse rounded-full bg-ink/10" />
         ) : user ? (
+          <>
+          <BalancePill />
           <div ref={menuRef} className="relative">
             <button
               type="button"
@@ -60,9 +63,14 @@ export function Header({ current }: { current: SectionId }) {
               <div role="menu" className="paper absolute right-0 z-50 mt-2 w-56 overflow-hidden rounded-md text-sm shadow-xl ring-1 ring-gold/50">
                 <p className="border-b border-ink/10 px-4 py-2.5 text-ink-faint">{user.email}</p>
                 {profile?.role !== 'parent' && (
+                  <>
                   <Link role="menuitem" href="/onboarding" onClick={() => setOpen(false)} className="flex items-center gap-2 px-4 py-2.5 hover:bg-gold/15">
                     <ScrollText aria-hidden className="h-4 w-4" /> Your bookplate
                   </Link>
+                  <Link role="menuitem" href="/wallet" onClick={() => setOpen(false)} className="flex items-center gap-2 px-4 py-2.5 hover:bg-gold/15">
+                    <Wallet aria-hidden className="h-4 w-4" /> Wallet and payments
+                  </Link>
+                  </>
                 )}
                 {profile?.role === 'parent' && (
                   <Link role="menuitem" href="/parent" onClick={() => setOpen(false)} className="flex items-center gap-2 px-4 py-2.5 hover:bg-gold/15">
@@ -80,6 +88,7 @@ export function Header({ current }: { current: SectionId }) {
               </div>
             )}
           </div>
+          </>
         ) : (
           <Link href="/sign-in" className="whitespace-nowrap rounded-full bg-emerald px-3 py-1.5 text-sm font-semibold text-paper hover:bg-emerald-deep sm:px-4">
             Sign in

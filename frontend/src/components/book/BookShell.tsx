@@ -15,6 +15,7 @@ import { Cover } from './Cover';
 import { LayoutProvider, PreviewProvider } from './page-context';
 import { SectionPage } from '@/components/sections/registry';
 import { Header } from './Header';
+import { AddMoneySheet } from '@/components/wallet/Wallet';
 
 interface Turn {
   from: SectionId;
@@ -297,6 +298,8 @@ export function BookShell() {
         </div>
         <p className="sr-only" aria-live="polite">{announce}</p>
       </div>
+      {/* Add-money sheet (Razorpay), opened from the balance pill or a "not enough money" reply */}
+      <AddMoneySheet />
     </LayoutProvider>
   );
 }

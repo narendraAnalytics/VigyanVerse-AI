@@ -10,6 +10,7 @@
 import { z } from 'zod';
 import { runDocQa } from '../../agents/docqa.ts';
 import { authenticate, json, preflight } from '../../shared/http.ts';
+import { chargeFailed, chargeTask, refundCharge } from '../../shared/wallet.ts';
 import { findOrCreateImageConversation } from '../../shared/image-conversation.ts';
 
 const FUNCTION_SLUG = 'document-ask';
@@ -59,6 +60,10 @@ export default async function (req: Request): Promise<Response> {
   if (reserved.data === 'slow_down' || reserved.data === 'daily_limit') return json({ error: reserved.data }, 429);
   if (reserved.data !== 'ok') return json({ error: 'usage_failed' }, 500);
 
+  // Pay (Rs 0.50) before the model call; refunded if the model fails.
+  const charge = await chargeTask(db, 'photo_question', doc.id);
+  if (!charge.ok) return chargeFailed(charge);
+
   const run = await runDocQa({ question: body.question, language: body.language, documentText: doc.extracted_text, wantsDetail: body.wantsDetail });
   if (run.usage) {
     const usage = await db.from('model_usage').insert([{
@@ -70,7 +75,7 @@ export default async function (req: Request): Promise<Response> {
     if (usage.error) console.error(`${FUNCTION_SLUG}: usage save failed`);
   }
   // A model failure is not "not in your notes": ask the student to try again.
-  if (run.source === 'fallback') return json({ error: 'try_again' }, 503);
+  if (run.source === 'fallback') return json({ error: 'try_again', balancePaise: await refundCharge(charge) }, 503);
 
   // Save the turn into the image's conversation. The student still gets the answer if this fails.
   const label = run.output.found ? 'From your uploaded notes' : null;
@@ -99,5 +104,6 @@ export default async function (req: Request): Promise<Response> {
     // The reading may have been uncertain: the app can show a "check the text" hint.
     needsReview: doc.needs_review,
     label,
+    balancePaise: charge.balancePaise,
   });
 }

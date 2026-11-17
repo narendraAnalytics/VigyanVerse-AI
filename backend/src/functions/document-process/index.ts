@@ -13,6 +13,7 @@ import { createAdminClient } from '@insforge/sdk';
 import { z } from 'zod';
 import { runDocumentReader } from '../../agents/document.ts';
 import { authenticate, json, preflight } from '../../shared/http.ts';
+import { chargeFailed, chargeTask, refundCharge } from '../../shared/wallet.ts';
 import { requireEnv } from '../../shared/env.ts';
 import { signatureMatches, toBase64 } from '../../shared/image.ts';
 
@@ -73,18 +74,22 @@ export default async function (req: Request): Promise<Response> {
   if (reserved.data === 'slow_down' || reserved.data === 'daily_limit') return json({ error: reserved.data }, 429);
   if (reserved.data !== 'ok') return json({ error: 'usage_failed' }, 500);
 
+  // Pay for the reading (Rs 1.50) before any AI work; every failure below refunds it.
+  const charge = await chargeTask(db, 'photo_read', doc.id);
+  if (!charge.ok) return chargeFailed(charge);
+
   // 4. Claim it (one reader at a time). Only this function can change status/text (admin client).
   const admin = createAdminClient({ baseUrl: requireEnv('INSFORGE_BASE_URL'), apiKey: requireEnv('API_KEY') });
   // Compare-and-set on (status, processed_at): of two parallel calls only one can match.
   const base = admin.database.from('uploaded_documents').update({ status: 'processing', processed_at: new Date().toISOString() })
     .eq('id', doc.id).eq('owner_id', user.userId).eq('status', doc.status);
   const claim = await (doc.processed_at ? base.eq('processed_at', doc.processed_at) : base.is('processed_at', null)).select('id');
-  if (claim.error) return json({ error: 'document_failed' }, 500);
-  if (!(claim.data as unknown[] | null)?.length) return json({ error: 'in_progress' }, 409);
+  if (claim.error) return json({ error: 'document_failed', balancePaise: await refundCharge(charge) }, 500);
+  if (!(claim.data as unknown[] | null)?.length) return json({ error: 'in_progress', balancePaise: await refundCharge(charge) }, 409);
 
   const fail = async (code: string, status = 422) => {
     await admin.database.from('uploaded_documents').update({ status: 'failed', error: code, processed_at: new Date().toISOString() }).eq('id', doc.id);
-    return json({ error: code }, status);
+    return json({ error: code, balancePaise: await refundCharge(charge) }, status);
   };
 
   // 5. Download as the student (storage RLS), then check size and signature.
@@ -117,5 +122,5 @@ export default async function (req: Request): Promise<Response> {
     return fail('save_failed', 500);
   }
 
-  return json({ documentId: doc.id, status: 'ready', text: r.extractedText, confidence: r.confidence, needsReview: r.needsReview, uncertain: r.uncertain });
+  return json({ documentId: doc.id, status: 'ready', text: r.extractedText, confidence: r.confidence, needsReview: r.needsReview, uncertain: r.uncertain, balancePaise: charge.balancePaise });
 }

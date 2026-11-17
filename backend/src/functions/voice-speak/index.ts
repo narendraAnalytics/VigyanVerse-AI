@@ -7,6 +7,7 @@
 // markdown or citation marks) and capped; the app speaks the answer, never the citations.
 import { z } from 'zod';
 import { authenticate, json, preflight } from '../../shared/http.ts';
+import { chargeFailed, chargeTask, refundCharge } from '../../shared/wallet.ts';
 import { MAX_SPEAK_CHARS, speak, speakableText, TTS_MODEL } from '../../shared/speech.ts';
 
 const FUNCTION_SLUG = 'voice-speak';
@@ -47,12 +48,16 @@ export default async function (req: Request): Promise<Response> {
   if (reserved.data === 'slow_down' || reserved.data === 'daily_limit') return json({ error: reserved.data }, 429);
   if (reserved.data !== 'ok') return json({ error: 'usage_failed' }, 500);
 
+  // Pay (Rs 0.50) before the speech model; refunded if it fails.
+  const charge = await chargeTask(db, 'voice_read');
+  if (!charge.ok) return chargeFailed(charge);
+
   let result: Awaited<ReturnType<typeof speak>>;
   try {
     result = await speak(text, body.language);
   } catch (e) {
     console.error(`${FUNCTION_SLUG}: ${e instanceof Error ? e.message : 'failed'}`);
-    return json({ error: 'try_again' }, 503);
+    return json({ error: 'try_again', balancePaise: await refundCharge(charge) }, 503);
   }
 
   const usage = await db.from('model_usage').insert([{
@@ -61,5 +66,5 @@ export default async function (req: Request): Promise<Response> {
   }]);
   if (usage.error) console.error(`${FUNCTION_SLUG}: usage save failed`);
 
-  return json({ audioBase64: result.audioBase64, mime: result.mime, chars: result.chars, spokenText: text });
+  return json({ audioBase64: result.audioBase64, mime: result.mime, chars: result.chars, spokenText: text, balancePaise: charge.balancePaise });
 }
