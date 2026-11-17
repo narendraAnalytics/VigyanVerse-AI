@@ -12,10 +12,11 @@ import { useAuth } from '@/lib/auth';
 import { useStore } from '@/lib/store';
 import { usePreview } from '@/components/book/page-context';
 import {
-  buyPack, closeAddMoney, loadActivity, loadCatalogue, openAddMoney, priceOf, rupees, syncWallet, TASK_LABEL, toneOf, wallet,
+  acceptTopUp, buyPack, closeAddMoney, dismissTopUp, loadActivity, loadCatalogue, openAddMoney, priceOf, rupees, syncWallet, TASK_LABEL, toneOf, wallet,
   type Pack, type Tone,
 } from '@/lib/wallet-store';
 import { StudentGate } from '@/components/sections/Gate';
+import { Bindu } from '@/components/mascot/Bindu';
 
 const TONE: Record<Tone, { pill: string; dot: string; text: string; word: string }> = {
   good:  { pill: 'border-emerald/45 bg-emerald/10 text-emerald-deep', dot: 'bg-emerald', text: 'text-emerald', word: 'Plenty' },
@@ -365,5 +366,50 @@ export function WalletRight() {
       </ul>
       <p className="mt-6 text-sm"><Link href="/learning" className="underline decoration-gold underline-offset-4 hover:text-emerald">Back to My Learning</Link></p>
     </StudentGate>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// "Not enough credits" prompt: a hand-written note with Yes, top up / Not now (mounted once)
+// ---------------------------------------------------------------------------
+export function TopUpPrompt() {
+  const { prompt, packs } = useStore(wallet);
+  const yesRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!prompt) return;
+    yesRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') dismissTopUp(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [prompt]);
+
+  if (!prompt) return null;
+  const empty = prompt.balancePaise <= 0;
+  return (
+    <div className="fixed inset-0 z-[110] flex items-center justify-center bg-desk/60 px-4 backdrop-blur-[2px]" onMouseDown={(e) => { if (e.target === e.currentTarget) dismissTopUp(); }}>
+      <div role="alertdialog" aria-modal="true" aria-labelledby="topup-prompt-h" aria-describedby="topup-prompt-d" className="pencil-note w-full max-w-sm px-6 pb-5 pt-6">
+        <div className="flex items-start gap-3">
+          <Bindu size={64} mood="thinking" className="-mt-1 shrink-0" />
+          <div>
+            <h2 id="topup-prompt-h" className="text-2xl font-bold leading-tight">{empty ? 'Oops, no credits yet!' : 'Just a little short!'}</h2>
+            <p id="topup-prompt-d" className="mt-1 text-[1.05rem] leading-snug">
+              To {prompt.what} you need <b className="text-pencil">{rupees(prompt.pricePaise)}</b>
+              {empty ? <>, and your credits are at <b className="text-pencil">₹0</b>.</> : <>. You have <b className="text-[#9a6410]">{rupees(prompt.balancePaise)}</b>.</>}
+            </p>
+          </div>
+        </div>
+        <p className="mt-3 text-center text-xl">Top up now?</p>
+        <div className="mt-3 flex justify-center gap-3">
+          <button ref={yesRef} type="button" onClick={acceptTopUp} className="ink-button !px-5 font-body">
+            <Plus aria-hidden className="h-4 w-4" /> Yes, top up
+          </button>
+          <button type="button" onClick={dismissTopUp} className="rounded-full border-[1.5px] border-[#9c5a1f]/50 px-5 py-2 font-semibold text-[#7a4a1a] transition hover:bg-[#9c5a1f]/10">
+            Not now
+          </button>
+        </div>
+        {packs[0] && <p className="mt-3 text-center text-sm text-[#9c5a1f]">Packs start at {rupees(packs[0].price_paise)} · about {questionsFor(packs[0].credit_paise)} questions</p>}
+      </div>
+    </div>
   );
 }

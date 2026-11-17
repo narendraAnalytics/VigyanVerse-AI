@@ -1,7 +1,7 @@
 'use client';
 
 import { createStore } from './store';
-import { canAfford, openAddMoney, priceOf, rupees, wallet } from './wallet-store';
+import { askTopUp, canAfford, priceOf, rupees, wallet } from './wallet-store';
 import {
   api, ApiError, createQuiz, deleteQuiz, fetchMastery, fetchQuizHistory, fetchRevisions, rpc, searchTopic,
   type Advice, type Chapter, type Graded, type Lang, type MasteryRow, type Quiz, type QuizHistoryRow, type QuizReview,
@@ -193,7 +193,7 @@ export async function startQuiz(language: Lang, chapters: Chapter[]) {
   const cost = priceOf('quiz_batch') * Math.ceil(planned / BATCH);
   if (!canAfford(cost)) {
     const have = wallet.get().balancePaise ?? 0;
-    openAddMoney({ pricePaise: cost, balancePaise: have });
+    askTopUp(`take a ${planned}-question quiz`, cost, have);
     quiz.set({ error: `A ${planned}-question quiz costs ${rupees(cost)} and you have ${rupees(have)} in credits. Top up, or pick fewer questions.` });
     return;
   }

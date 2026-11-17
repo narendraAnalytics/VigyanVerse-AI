@@ -17,7 +17,7 @@ import { speakText, startRecording, stopSpeaking, type Recording } from '@/lib/v
 import { usePageLayout, usePreview } from '@/components/book/page-context';
 import { Bindu, Speech } from '@/components/mascot/Bindu';
 import { StudentGate } from './Gate';
-import { priceOf, rupees } from '@/lib/wallet-store';
+import { hasCredits, priceOf, rupees } from '@/lib/wallet-store';
 import { DiagramBlock } from '@/components/diagrams/Diagram';
 
 const SUBJECT_CHOICES: { id: Subject | null; label: string }[] = [
@@ -383,6 +383,7 @@ function Bubble({ m, language, image = false }: { m: ChatMessage; language: 'en'
 
   const listen = async () => {
     if (speaking === 'playing') { stopSpeaking(); setSpeaking('idle'); return; }
+    if (!hasCredits('voice_read', 'hear this answer read aloud')) return;
     setSpeaking('loading'); setSpeakError(null);
     try {
       const audio = await speakText(m.text, telugu ? 'te' : language);
@@ -481,6 +482,8 @@ function Composer() {
     setVoiceError(null);
     if (voiceState === 'recording') return stop();
     if (!consent.voice_recording) { setVoiceError('A parent needs to allow voice questions first.'); return; }
+    // A spoken question is transcribed (voice_input) and then answered (tutor_turn): check both.
+    if (!hasCredits(['voice_input', 'tutor_turn'], 'ask by voice')) return;
     try {
       const r = await startRecording(language, () => void stop());
       setRec(r);

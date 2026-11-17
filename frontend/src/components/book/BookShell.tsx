@@ -15,7 +15,7 @@ import { Cover } from './Cover';
 import { LayoutProvider, PreviewProvider } from './page-context';
 import { SectionPage } from '@/components/sections/registry';
 import { Header } from './Header';
-import { AddMoneySheet } from '@/components/wallet/Wallet';
+import { AddMoneySheet, TopUpPrompt } from '@/components/wallet/Wallet';
 
 interface Turn {
   from: SectionId;
@@ -300,6 +300,7 @@ export function BookShell() {
       </div>
       {/* Add-money sheet (Razorpay), opened from the balance pill or a "not enough money" reply */}
       <AddMoneySheet />
+      <TopUpPrompt />
     </LayoutProvider>
   );
 }

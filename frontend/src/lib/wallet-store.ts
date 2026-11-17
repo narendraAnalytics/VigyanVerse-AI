@@ -27,6 +27,8 @@ export const wallet = createStore({
   phase: 'idle' as PayPhase,
   payError: null as string | null,
   lastCreditPaise: 0,
+  /** The friendly "Top up now? Yes / Not now" prompt shown when a task is not affordable. */
+  prompt: null as { what: string; pricePaise: number; balancePaise: number } | null,
 });
 
 // ---------------------------------------------------------------------------
@@ -120,6 +122,34 @@ export function closeAddMoney() {
   const p = wallet.get().phase;
   if (p === 'starting' || p === 'confirming') return; // let the payment finish first
   wallet.set({ sheetOpen: false, need: null, phase: 'idle', payError: null });
+}
+
+// ---------------------------------------------------------------------------
+// "Not enough credits" prompt (Yes, top up / Not now)
+// ---------------------------------------------------------------------------
+/** Ask the student whether to top up. `what` completes "To ... you need". */
+export function askTopUp(what: string, pricePaise: number, balancePaise?: number) {
+  void loadCatalogue();
+  wallet.set({ prompt: { what, pricePaise, balancePaise: balancePaise ?? wallet.get().balancePaise ?? 0 } });
+}
+
+/** Check before a paid task: true = go ahead; false = the prompt is shown (no AI call made). */
+export function hasCredits(task: string | string[], what: string, times = 1): boolean {
+  const price = (Array.isArray(task) ? task : [task]).reduce((sum, t) => sum + priceOf(t), 0) * times;
+  const b = wallet.get().balancePaise;
+  if (b === null || b >= price) return true; // unknown balance: the server decides
+  askTopUp(what, price, b);
+  return false;
+}
+
+export function acceptTopUp() {
+  const p = wallet.get().prompt;
+  wallet.set({ prompt: null });
+  openAddMoney(p ? { pricePaise: p.pricePaise, balancePaise: p.balancePaise } : undefined);
+}
+
+export function dismissTopUp() {
+  wallet.set({ prompt: null });
 }
 
 /** Can the student afford `paise` right now? Unknown balance -> let the server decide. */

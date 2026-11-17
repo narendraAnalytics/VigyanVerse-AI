@@ -3,6 +3,7 @@
 import { createStore } from './store';
 import { api, ApiError } from './api';
 import { insforge } from './insforge';
+import { hasCredits } from './wallet-store';
 
 export type DocKind = 'notes' | 'textbook_page' | 'diagram' | 'question_paper' | 'other';
 export interface UploadedDoc {
@@ -55,6 +56,7 @@ export async function loadDocs() {
 export async function uploadAndRead(file: File, kind: DocKind, userId: string): Promise<string | null> {
   if (!EXT[file.type]) { docs.set({ error: 'Use a PNG, JPEG or WebP photo.' }); return null; }
   if (file.size > MAX_UPLOAD_BYTES) { docs.set({ error: 'That photo is over 4 MB. Try a smaller one.' }); return null; }
+  if (!hasCredits('photo_read', 'read a photo of your notes')) return null;
   docs.set({ busy: 'Uploading your photo…', error: null });
   const client = insforge();
   try {

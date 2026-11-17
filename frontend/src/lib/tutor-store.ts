@@ -4,6 +4,7 @@ import { createStore } from './store';
 import { api, ApiError, type Citation, type Diagram, type Lang, type Subject } from './api';
 import { insforge } from './insforge';
 import { docName, docs } from './docs-store';
+import { hasCredits } from './wallet-store';
 
 /** Solving needs working, which a photo does not contain: these go to the tutor (and its maths agent) with the photo's text. */
 const SOLVE_INTENT = /\b(solve|solution|solutions|work it out|calculate|find the answer|answer (this|the|these) questions?|step by step)\b/i;
@@ -136,6 +137,9 @@ export async function send(text: string, language: Lang, opts: { newTopic?: bool
   const s = chat.get();
   const message = text.trim();
   if (!message || s.sending) return;
+  // Not enough credits: a friendly Yes / Not now prompt, no AI call, the draft stays.
+  const askingPhoto = !!s.notesDocId && !(opts.viaTutor || SOLVE_INTENT.test(message));
+  if (!hasCredits(askingPhoto ? 'photo_question' : 'tutor_turn', askingPhoto ? 'ask about your photo' : 'ask the tutor a question')) return;
   const mine: ChatMessage = { id: localId(), role: 'student', text: message };
   chat.set({ messages: [...s.messages, mine], sending: true, draft: '', hint: '', reading: null });
 

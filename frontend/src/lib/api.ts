@@ -3,7 +3,7 @@
 // Typed calls to the nine deployed Edge Functions and the database. The backend decides
 // identity from the session token, consent, limits and grading; the app only displays results.
 import { insforge, publicClient } from './insforge';
-import { noteBalance, openAddMoney, rupees } from './wallet-store';
+import { askTopUp, noteBalance, rupees } from './wallet-store';
 
 export type Lang = 'en' | 'te';
 export type Subject = 'physics' | 'chemistry' | 'biology';
@@ -192,7 +192,7 @@ function toApiError(error: unknown): ApiError {
   // Paid functions send the balance after a refund, and the numbers when the wallet is short.
   noteBalance(e?.balancePaise);
   if (code === 'no_credits' && typeof e.pricePaise === 'number' && typeof e.balancePaise === 'number') {
-    openAddMoney({ pricePaise: e.pricePaise, balancePaise: e.balancePaise });
+    askTopUp('do this', e.pricePaise, e.balancePaise);
     const msg = e.balancePaise > 0
       ? `This needs ${rupees(e.pricePaise)} and you have ${rupees(e.balancePaise)} in credits. Top up to keep learning.`
       : `This costs ${rupees(e.pricePaise)} and you have no credits left. Top up to keep learning.`;
