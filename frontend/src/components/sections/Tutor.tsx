@@ -5,7 +5,7 @@ import { useDropzone } from 'react-dropzone';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { clsx } from 'clsx';
-import { BookMarked, FileImage, ImageIcon, Lightbulb, Loader2, Mic, Plus, SendHorizontal, Square, Trash2, Volume2, X } from 'lucide-react';
+import { BookMarked, FileImage, ImageIcon, Lightbulb, Loader2, Lock, Mic, Plus, SendHorizontal, Square, Trash2, Volume2, X } from 'lucide-react';
 import { useStore } from '@/lib/store';
 import { useAuth } from '@/lib/auth';
 import { useConsent } from '@/lib/consent';
@@ -17,7 +17,7 @@ import { speakText, startRecording, stopSpeaking, type Recording } from '@/lib/v
 import { usePageLayout, usePreview } from '@/components/book/page-context';
 import { Bindu, Speech } from '@/components/mascot/Bindu';
 import { StudentGate } from './Gate';
-import { hasCredits, priceOf, rupees } from '@/lib/wallet-store';
+import { hasCredits, isLocked, priceOf, rupees, wallet } from '@/lib/wallet-store';
 import { DiagramBlock } from '@/components/diagrams/Diagram';
 
 const SUBJECT_CHOICES: { id: Subject | null; label: string }[] = [
@@ -115,11 +115,13 @@ function Notes() {
   const preview = usePreview();
   const [kind, setKind] = useState<DocKind>('notes');
   useEffect(() => { if (!preview) void loadDocs(); }, [preview]);
+  // No credits for a photo read: lock the drop area before any file is picked or uploaded.
+  const locked = isLocked(useStore(wallet), 'photo_read');
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: { 'image/png': [], 'image/jpeg': [], 'image/webp': [] },
     multiple: false,
-    disabled: !!d.busy || !consent.document_upload,
+    disabled: !!d.busy || !consent.document_upload || locked,
     onDrop: async (files) => {
       if (!files[0] || !user) return;
       const id = await uploadAndRead(files[0], kind, user.id);
@@ -141,6 +143,17 @@ function Notes() {
               {Object.entries(KIND_LABEL).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
             </select>
           </label>
+          {locked ? (
+            <button
+              type="button"
+              onClick={() => hasCredits('photo_read', 'read a photo of your notes')}
+              className="mt-3 flex w-full flex-col items-center justify-center rounded-md border-2 border-dashed border-pencil/40 bg-white/30 px-4 py-5 text-center text-sm transition hover:border-pencil"
+            >
+              <Lock aria-hidden className="h-6 w-6 text-pencil" />
+              <span className="mt-1 font-semibold text-pencil">Locked: no credits</span>
+              <span className="text-xs text-ink-faint">Top up to upload a photo · reading it costs {rupees(priceOf('photo_read'))}</span>
+            </button>
+          ) : (
           <div
             {...getRootProps()}
             className={clsx('mt-3 flex cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed px-4 py-5 text-center text-sm transition',
@@ -157,6 +170,7 @@ function Notes() {
               </>
             )}
           </div>
+          )}
         </>
       )}
       {d.error && <p role="alert" className="mt-2 text-sm text-pencil">{d.error}</p>}
@@ -380,6 +394,7 @@ function Bubble({ m, language, image = false }: { m: ChatMessage; language: 'en'
   const [speaking, setSpeaking] = useState<'idle' | 'loading' | 'playing'>('idle');
   const [speakError, setSpeakError] = useState<string | null>(null);
   const telugu = /[ఀ-౿]/.test(m.text);
+  const listenLocked = isLocked(useStore(wallet), 'voice_read') && speaking === 'idle';
 
   const listen = async () => {
     if (speaking === 'playing') { stopSpeaking(); setSpeaking('idle'); return; }
@@ -429,8 +444,8 @@ function Bubble({ m, language, image = false }: { m: ChatMessage; language: 'en'
       )}
       {!m.error && (
         <div className="mt-1.5 flex items-center gap-2">
-          <button type="button" onClick={listen} className="flex items-center gap-1 text-xs text-ink-faint hover:text-emerald" aria-label={speaking === 'playing' ? 'Stop reading aloud' : 'Read this answer aloud'}>
-            {speaking === 'loading' ? <Loader2 aria-hidden className="h-3.5 w-3.5 animate-spin" /> : speaking === 'playing' ? <Square aria-hidden className="h-3.5 w-3.5" /> : <Volume2 aria-hidden className="h-3.5 w-3.5" />}
+          <button type="button" onClick={listen} className="flex items-center gap-1 text-xs text-ink-faint hover:text-emerald" aria-label={speaking === 'playing' ? 'Stop reading aloud' : listenLocked ? 'Read this answer aloud (locked: no credits)' : 'Read this answer aloud'}>
+            {speaking === 'loading' ? <Loader2 aria-hidden className="h-3.5 w-3.5 animate-spin" /> : speaking === 'playing' ? <Square aria-hidden className="h-3.5 w-3.5" /> : listenLocked ? <Lock aria-hidden className="h-3.5 w-3.5 text-pencil" /> : <Volume2 aria-hidden className="h-3.5 w-3.5" />}
             {speaking === 'playing' ? 'Stop' : <>Listen <span className="opacity-70">({rupees(priceOf('voice_read'))})</span></>}
           </button>
           {speakError && <span className="text-xs text-pencil">{speakError}</span>}
@@ -493,8 +508,16 @@ function Composer() {
     }
   };
 
+  // No credits for a question: lock the box before anything is typed (Yes / Not now on click).
+  const w = useStore(wallet);
+  const askTask = s.notesDocId ? 'photo_question' : 'tutor_turn';
+  const locked = isLocked(w, askTask);
+  const micLocked = isLocked(w, ['voice_input', 'tutor_turn']);
+  const promptTopUp = () => hasCredits(askTask, s.notesDocId ? 'ask about your photo' : 'ask the tutor a question');
+
   const submit = (e?: React.FormEvent) => {
     e?.preventDefault();
+    if (locked) { promptTopUp(); return; }
     if (s.draft.trim() && !s.sending) void send(s.draft, language, { newTopic: s.mode === 'socratic' && !s.socraticOpen && !!s.conversationId });
   };
 
@@ -505,32 +528,54 @@ function Composer() {
           type="button"
           onClick={toggleMic}
           disabled={voiceState === 'transcribing' || s.sending}
-          aria-label={voiceState === 'recording' ? 'Stop recording' : 'Ask by voice'}
-          className={clsx('flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-[1.5px] transition',
-            voiceState === 'recording' ? 'animate-pulse border-pencil bg-pencil text-paper' : 'border-ink/30 text-ink-soft hover:border-emerald hover:text-emerald')}
+          aria-label={voiceState === 'recording' ? 'Stop recording' : micLocked ? 'Ask by voice (locked: no credits)' : 'Ask by voice'}
+          title={micLocked && voiceState === 'idle' ? 'Locked: top up to ask by voice' : undefined}
+          className={clsx('relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-[1.5px] transition',
+            voiceState === 'recording' ? 'animate-pulse border-pencil bg-pencil text-paper'
+              : micLocked ? 'border-pencil/40 text-ink-faint hover:border-pencil'
+                : 'border-ink/30 text-ink-soft hover:border-emerald hover:text-emerald')}
         >
           {voiceState === 'transcribing' ? <Loader2 aria-hidden className="h-5 w-5 animate-spin" /> : voiceState === 'recording' ? <Square aria-hidden className="h-4 w-4" /> : <Mic aria-hidden className="h-5 w-5" />}
+          {micLocked && voiceState === 'idle' && (
+            <span aria-hidden className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-pencil text-paper"><Lock className="h-3 w-3" /></span>
+          )}
         </button>
         <label htmlFor="ask" className="sr-only">Your question</label>
-        <textarea
-          id="ask"
-          ref={inputRef}
-          rows={2}
-          maxLength={1500}
-          value={s.draft}
-          onChange={(e) => chat.set({ draft: e.target.value })}
-          onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(); } }}
-          placeholder={s.notesDocId ? 'Ask about your image…' : s.hint || (language === 'te' ? 'మీ ప్రశ్న ఇక్కడ రాయండి…' : 'Type your question…')}
-          className={clsx('field font-hand min-h-[2.75rem] flex-1 resize-none text-[1.15rem] leading-snug', /[ఀ-౿]/.test(s.draft) && 'te')}
-        />
-        <button type="submit" disabled={!s.draft.trim() || s.sending} className="ink-button h-11 !px-4" aria-label="Send">
-          <SendHorizontal aria-hidden className="h-5 w-5" />
+        <div className="relative flex-1">
+          <textarea
+            id="ask"
+            ref={inputRef}
+            rows={2}
+            maxLength={1500}
+            value={s.draft}
+            readOnly={locked}
+            aria-describedby={locked ? 'ask-locked' : undefined}
+            onChange={(e) => { if (!locked) chat.set({ draft: e.target.value }); }}
+            // Locked: a click or any key (except Tab) asks "Top up now?" instead of typing.
+            onClick={locked ? promptTopUp : undefined}
+            onKeyDown={(e) => {
+              if (locked) { if (e.key !== 'Tab' && e.key !== 'Escape') { e.preventDefault(); promptTopUp(); } return; }
+              if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(); }
+            }}
+            placeholder={locked ? 'Locked: top up to ask a question' : s.notesDocId ? 'Ask about your image…' : s.hint || (language === 'te' ? 'మీ ప్రశ్న ఇక్కడ రాయండి…' : 'Type your question…')}
+            className={clsx('field font-hand min-h-[2.75rem] w-full resize-none text-[1.15rem] leading-snug', locked && 'cursor-pointer !pl-9 opacity-80', /[ఀ-౿]/.test(s.draft) && 'te')}
+          />
+          {locked && <Lock aria-hidden className="pointer-events-none absolute left-3 top-3 h-4 w-4 text-pencil" />}
+        </div>
+        <button
+          type="submit"
+          disabled={!locked && (!s.draft.trim() || s.sending)}
+          className={clsx('ink-button h-11 !px-4', locked && 'opacity-60')}
+          aria-label={locked ? 'Locked: top up to ask' : 'Send'}
+        >
+          {locked ? <Lock aria-hidden className="h-5 w-5" /> : <SendHorizontal aria-hidden className="h-5 w-5" />}
         </button>
       </div>
       <p className="mt-1.5 min-h-[1.25rem] text-xs" aria-live="polite">
         {voiceState === 'recording' ? <span className="text-pencil">Listening… {seconds}s of 30. Press the square to stop.</span>
           : voiceState === 'transcribing' ? <span className="text-ink-faint">Turning your voice into text…</span>
             : voiceError ? <span className="text-pencil">{voiceError}</span>
+              : locked ? <span id="ask-locked" className="text-pencil"><b className="font-semibold">Locked: no credits.</b> Top up to ask ({rupees(priceOf(askTask))} per question). Tap the box or the ₹ pill.</span>
               : <span className="text-ink-faint"><b className="font-semibold text-ink-soft">{rupees(priceOf(s.notesDocId ? 'photo_question' : 'tutor_turn'))} per question</b> · Enter to send, Shift and Enter for a new line. Voice recordings are not stored.</span>}
       </p>
     </form>

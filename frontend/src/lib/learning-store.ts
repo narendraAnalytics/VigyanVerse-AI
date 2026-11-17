@@ -1,7 +1,7 @@
 'use client';
 
 import { createStore } from './store';
-import { askTopUp, canAfford, priceOf, rupees, wallet } from './wallet-store';
+import { askTopUp, canAfford, hasCredits, isLocked, priceOf, rupees, wallet } from './wallet-store';
 import {
   api, ApiError, createQuiz, deleteQuiz, fetchMastery, fetchQuizHistory, fetchRevisions, rpc, searchTopic,
   type Advice, type Chapter, type Graded, type Lang, type MasteryRow, type Quiz, type QuizHistoryRow, type QuizReview,
@@ -49,6 +49,15 @@ export interface AnswerDraft { selectedIndex?: number; answerText?: string }
 export const QUIZ_SIZES = [5, 10, 15] as const;
 export type QuizSize = (typeof QUIZ_SIZES)[number];
 const BATCH = 5;
+
+/** A quiz is paid per batch of 5 questions (quiz_batch each). */
+export function quizCost(size: number): number {
+  return priceOf('quiz_batch') * Math.ceil(size / BATCH);
+}
+/** Unknown balance counts as affordable (the server decides). */
+export function quizAffordable(size: number, balancePaise = wallet.get().balancePaise): boolean {
+  return balancePaise === null || balancePaise >= quizCost(size);
+}
 /** The server sets the real limit (begin_quiz_timer); these are for the preview. */
 export const SECONDS_PER_MCQ = 60;
 export const SECONDS_PER_NUMERIC = 120;
@@ -81,9 +90,14 @@ export const quiz = createStore({
  * `findTopicChapter` finds its chapter.
  */
 export function openQuizSetup(chapterId: string | null, mode: 'chapter' | 'topic' = 'chapter') {
+  // Not enough even for the smallest quiz (5 questions = one batch): ask "Top up now?" instead
+  // of opening the setup card. The full cost is still checked in startQuiz.
+  if (isLocked(wallet.get(), 'quiz_batch')) { hasCredits('quiz_batch', 'take a quiz'); return; }
   generation++;
+  // Start on a size the balance covers (the biggest one at or below the last choice).
+  const fits = QUIZ_SIZES.filter((n) => quizAffordable(n));
   quiz.set((p) => ({
-    phase: 'setup', chapterId, setup: { ...p.setup, mode }, quiz: null, answers: {}, graded: null, error: null,
+    phase: 'setup', chapterId, setup: { ...p.setup, mode, size: quizAffordable(p.setup.size) ? p.setup.size : (fits[fits.length - 1] ?? p.setup.size) }, quiz: null, answers: {}, graded: null, error: null,
     partial: null, deadline: null, limitSeconds: null, review: null, topicUsed: null, checking: false,
   }));
 }
@@ -190,7 +204,7 @@ export async function startQuiz(language: Lang, chapters: Chapter[]) {
   if (!chapterId) return;
   const planned = s.setup.size;
   // Each batch of 5 is paid separately: check the whole quiz is affordable before making any.
-  const cost = priceOf('quiz_batch') * Math.ceil(planned / BATCH);
+  const cost = quizCost(planned);
   if (!canAfford(cost)) {
     const have = wallet.get().balancePaise ?? 0;
     askTopUp(`take a ${planned}-question quiz`, cost, have);

@@ -2,17 +2,22 @@
 
 import { useEffect, useId, useRef, useState } from 'react';
 import { clsx } from 'clsx';
-import { CalendarClock, Check, ClipboardList, Loader2, PencilLine, Target, Timer, X } from 'lucide-react';
+import { CalendarClock, Check, ClipboardList, Loader2, Lock, PencilLine, Target, Timer, X } from 'lucide-react';
 import { useStore } from '@/lib/store';
 import { useAuth } from '@/lib/auth';
 import { useChapters } from '@/lib/chapters';
 import { learningIntent } from '@/lib/intents';
-import { beginTimer, closeQuiz, learning, limitFor, loadLearning, openQuizSetup, openReview, quiz, QUIZ_SIZES, startQuiz, submitQuiz } from '@/lib/learning-store';
+import { beginTimer, closeQuiz, learning, limitFor, loadLearning, openQuizSetup, openReview, quiz, quizAffordable, quizCost, QUIZ_SIZES, startQuiz, submitQuiz, type QuizSize } from '@/lib/learning-store';
 import type { Chapter, MasteryRow } from '@/lib/api';
 import { usePageLayout, usePreview } from '@/components/book/page-context';
 import { Bindu, Speech } from '@/components/mascot/Bindu';
 import { StudentGate } from './Gate';
-import { priceOf, rupees } from '@/lib/wallet-store';
+import { askTopUp, isLocked, priceOf, rupees, wallet } from '@/lib/wallet-store';
+
+/** True when the balance is known and below the smallest quiz (5 questions). */
+function useQuizLocked(): boolean {
+  return isLocked(useStore(wallet), 'quiz_batch');
+}
 
 const STATE_LABEL: Record<MasteryRow['state'], string> = {
   not_started: 'Not started', learning: 'Learning', developing: 'Developing', proficient: 'Proficient', mastered: 'Mastered',
@@ -56,6 +61,7 @@ function NextStep() {
   const s = useLearningData();
   const { language } = useAuth();
   const a = s.advice;
+  const locked = useQuizLocked();
   return (
     <section aria-labelledby="next-h" className="mt-6">
       <h2 id="next-h" className="font-display text-xl">Your next step</h2>
@@ -66,8 +72,8 @@ function NextStep() {
         </Speech>
       </div>
       {a?.chapter && (
-        <button type="button" onClick={() => openQuizSetup(a.chapter!.id)} className="ink-button mt-3">
-          <PencilLine aria-hidden className="h-4 w-4" /> Practise {a.chapter.title}
+        <button type="button" onClick={() => openQuizSetup(a.chapter!.id)} className={clsx('ink-button mt-3', locked && 'opacity-60')} title={locked ? 'Locked: top up to take a quiz' : undefined}>
+          {locked ? <Lock aria-label="Locked" className="h-4 w-4" /> : <PencilLine aria-hidden className="h-4 w-4" />} Practise {a.chapter.title}
         </button>
       )}
       {a && a.topErrors.length > 0 && (
@@ -159,23 +165,29 @@ function MasteryTable() {
   const { language } = useAuth();
   const byChapter = new Map(s.mastery.map((m) => [m.chapter_id, m]));
   const summative = chapters.filter((c) => c.assessment_scope === 'summative');
+  const locked = useQuizLocked();
   return (
     <section aria-labelledby="mastery-h">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <h2 id="mastery-h" className="font-display text-3xl">Chapter mastery</h2>
-        <button type="button" onClick={() => openQuizSetup(null, 'topic')} className="ink-button !py-1.5 text-sm">
-          <Target aria-hidden className="h-4 w-4" /> Quiz me on a topic
+        <button type="button" onClick={() => openQuizSetup(null, 'topic')} className={clsx('ink-button !py-1.5 text-sm', locked && 'opacity-60')} title={locked ? 'Locked: top up to take a quiz' : undefined}>
+          {locked ? <Lock aria-label="Locked" className="h-4 w-4" /> : <Target aria-hidden className="h-4 w-4" />} Quiz me on a topic
         </button>
       </div>
       <p className="mt-1 text-sm text-ink-faint">Mastered needs a score of 85 or more over at least 10 answers. Practise gives a quiz on the whole chapter.</p>
+      {locked && (
+        <p className="mt-1 flex items-center gap-1.5 text-sm text-pencil">
+          <Lock aria-hidden className="h-3.5 w-3.5" /> <span><b className="font-semibold">Quizzes are locked: no credits.</b> Top up to practise ({rupees(priceOf('quiz_batch'))} per 5 questions).</span>
+        </p>
+      )}
       <ul className="mt-5 space-y-3">
-        {summative.map((c) => <MasteryRowView key={c.id} c={c} m={byChapter.get(c.id)} onPractise={() => openQuizSetup(c.id)} />)}
+        {summative.map((c) => <MasteryRowView key={c.id} c={c} m={byChapter.get(c.id)} locked={locked} onPractise={() => openQuizSetup(c.id)} />)}
       </ul>
     </section>
   );
 }
 
-function MasteryRowView({ c, m, onPractise }: { c: Chapter; m?: MasteryRow; onPractise: () => void }) {
+function MasteryRowView({ c, m, locked, onPractise }: { c: Chapter; m?: MasteryRow; locked: boolean; onPractise: () => void }) {
   const state = m?.state ?? 'not_started';
   const score = m ? Math.round(m.score) : 0;
   return (
@@ -190,7 +202,9 @@ function MasteryRowView({ c, m, onPractise }: { c: Chapter; m?: MasteryRow; onPr
           <span className="w-24 text-xs text-ink-soft">{STATE_LABEL[state]}{m ? `, ${score}` : ''}</span>
         </div>
       </div>
-      <button type="button" onClick={onPractise} className="ghost-button !px-3 !py-1 text-sm">Practise</button>
+      <button type="button" onClick={onPractise} className={clsx('ghost-button !px-3 !py-1 text-sm', locked && 'opacity-60')} aria-label={locked ? `Practise ${c.title_en} (locked: no credits)` : undefined}>
+        {locked && <Lock aria-hidden className="h-3.5 w-3.5" />} Practise
+      </button>
     </li>
   );
 }
@@ -376,6 +390,15 @@ function QuizSetup() {
   const set = (patch: Partial<typeof s>) => quiz.set((p) => ({ setup: { ...p.setup, ...patch }, error: null }));
   const topicId = useId();
   const numeric = !topicMode && chapter?.subject_code === 'physics';
+  // Sizes the balance cannot cover are locked; picking one asks "Top up now?" (Yes / Not now).
+  const balance = useStore(wallet).balancePaise;
+  const fits = (n: number) => quizAffordable(n, balance);
+  const maxFit = [...QUIZ_SIZES].reverse().find(fits);
+  const pick = (n: QuizSize) => {
+    if (fits(n)) { set({ size: n }); return; }
+    askTopUp(`take a ${n}-question quiz`, quizCost(n), balance ?? 0);
+  };
+  const sizeLocked = !fits(s.size);
   return (
     <form className="py-2" onSubmit={(e) => { e.preventDefault(); void startQuiz(language, chapters); }}>
       <div className="flex items-start justify-between gap-3">
@@ -399,13 +422,31 @@ function QuizSetup() {
       <fieldset className="mt-6">
         <legend className="font-display text-lg">How many questions?</legend>
         <div className="mt-2 flex gap-2">
-          {QUIZ_SIZES.map((n) => (
-            <button key={n} type="button" aria-pressed={s.size === n} onClick={() => set({ size: n })}
-              className={clsx('min-w-14 rounded-md border-[1.5px] px-4 py-2 font-display text-xl transition', s.size === n ? 'border-emerald bg-emerald/10' : 'border-ink/20 hover:border-gold-deep')}>
-              {n}
-            </button>
-          ))}
+          {QUIZ_SIZES.map((n) => {
+            const lockedSize = !fits(n);
+            return (
+              <button key={n} type="button" aria-pressed={s.size === n} onClick={() => pick(n)}
+                aria-label={lockedSize ? `${n} questions, locked: needs ${rupees(quizCost(n))}` : `${n} questions`}
+                title={lockedSize ? `Needs ${rupees(quizCost(n))}. Top up to unlock.` : undefined}
+                className={clsx('relative min-w-14 rounded-md border-[1.5px] px-4 py-2 font-display text-xl transition',
+                  lockedSize ? 'border-dashed border-pencil/40 text-ink-faint hover:border-pencil'
+                    : s.size === n ? 'border-emerald bg-emerald/10' : 'border-ink/20 hover:border-gold-deep')}>
+                {n}
+                {lockedSize && (
+                  <span aria-hidden className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-pencil text-paper"><Lock className="h-3 w-3" /></span>
+                )}
+              </button>
+            );
+          })}
         </div>
+        {balance !== null && maxFit !== QUIZ_SIZES[QUIZ_SIZES.length - 1] && (
+          <p className="font-hand mt-2 flex items-center gap-1.5 text-[1.05rem] text-pencil">
+            <Lock aria-hidden className="h-4 w-4 shrink-0" />
+            {maxFit
+              ? <span>Your {rupees(balance)} covers up to {maxFit} questions ({rupees(priceOf('quiz_batch'))} for every 5). Top up to unlock more.</span>
+              : <span>Your credits are at {rupees(balance)}. A quiz needs {rupees(quizCost(5))} for 5 questions.</span>}
+          </p>
+        )}
       </fieldset>
 
       <fieldset className="mt-6">
@@ -421,11 +462,11 @@ function QuizSetup() {
 
       {q.error && <p role="alert" className="mt-4 text-pencil">{q.error}</p>}
       <div className="mt-7 flex items-center gap-3">
-        <button type="submit" className="ink-button" disabled={q.checking}>
-          {q.checking ? <Loader2 aria-hidden className="h-4 w-4 animate-spin" /> : <PencilLine aria-hidden className="h-4 w-4" />}
+        <button type="submit" className={clsx('ink-button', sizeLocked && 'opacity-60')} disabled={q.checking}>
+          {q.checking ? <Loader2 aria-hidden className="h-4 w-4 animate-spin" /> : sizeLocked ? <Lock aria-label="Locked" className="h-4 w-4" /> : <PencilLine aria-hidden className="h-4 w-4" />}
           {q.checking ? 'Finding your topic…' : 'Make my quiz'}
         </button>
-        <span className="text-sm text-ink-faint"><b className="font-semibold text-ink-soft">Costs {rupees(priceOf('quiz_batch') * Math.ceil(s.size / 5))}</b>, checking included. Takes about 20–30 seconds to write and check.</span>
+        <span className="text-sm text-ink-faint"><b className="font-semibold text-ink-soft">Costs {rupees(quizCost(s.size))}</b>, checking included. Takes about 20–30 seconds to write and check.</span>
       </div>
     </form>
   );

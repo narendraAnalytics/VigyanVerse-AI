@@ -142,6 +142,14 @@ export function hasCredits(task: string | string[], what: string, times = 1): bo
   return false;
 }
 
+/** Locked = the balance is KNOWN and below the price (unknown balance never locks; the server decides).
+ *  Pass the wallet state so components re-render when the balance or prices change. */
+export function isLocked(s: { balancePaise: number | null }, task: string | string[]): boolean {
+  if (s.balancePaise === null) return false;
+  const price = (Array.isArray(task) ? task : [task]).reduce((sum, t) => sum + priceOf(t), 0);
+  return s.balancePaise < price;
+}
+
 export function acceptTopUp() {
   const p = wallet.get().prompt;
   wallet.set({ prompt: null });
