@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import {
-  ArrowDownLeft, ArrowUpRight, Check, CircleAlert, Clock, Loader2, Lock, Plus, RotateCcw, ShieldCheck, Sparkles, Wallet as WalletIcon, X,
+  ArrowDownLeft, ArrowUpRight, Check, CircleAlert, Clock, Loader2, Lock, PencilLine, Plus, RotateCcw, ShieldCheck, Sparkles, Wallet as WalletIcon, X,
 } from 'lucide-react';
 import { useAuth } from '@/lib/auth';
 import { useStore } from '@/lib/store';
@@ -53,11 +53,17 @@ export function BalancePill() {
   // One control in every state: the balance itself is the top-up button (no separate "Add" text).
   const tone = toneOf(w.balancePaise);
   const t = TONE[tone];
+  const n = questionsFor(w.balancePaise);
+  const note = tone === 'empty' ? 'No credits yet. Top up to start asking!'
+    : tone === 'low' ? `Running low: about ${n} question${n === 1 ? '' : 's'} left.`
+    : tone === 'mid' ? `Enough for about ${n} questions.`
+    : `Plenty! About ${n} questions.`;
   return (
+    <div className="group/pill relative">
     <button
       type="button"
       onClick={() => openAddMoney()}
-      title={`Your credits: ${rupees(w.balancePaise)}. Click to top up.`}
+      aria-describedby="credits-note"
       aria-label={`Credits ${rupees(w.balancePaise)}, ${t.word.toLowerCase()}. Top up`}
       className={clsx('group flex items-center gap-1.5 whitespace-nowrap rounded-full border py-1 pl-2.5 pr-1 text-sm font-semibold tabular-nums shadow-[inset_0_1px_0_rgba(255,255,255,.35)] transition hover:brightness-95', t.pill)}
     >
@@ -74,6 +80,23 @@ export function BalancePill() {
         <Plus className="h-3.5 w-3.5" />
       </span>
     </button>
+    {/* hand-written sticky note on hover / keyboard focus (replaces the browser's plain tooltip) */}
+    <div
+      id="credits-note"
+      role="tooltip"
+      className="pointer-events-none invisible absolute right-0 top-full z-50 mt-4 w-56 translate-y-1 opacity-0 transition duration-200 group-focus-within/pill:visible group-focus-within/pill:translate-y-0 group-focus-within/pill:opacity-100 group-hover/pill:visible group-hover/pill:translate-y-0 group-hover/pill:opacity-100"
+    >
+      <div className="pencil-note px-4 pb-2.5 pt-3 leading-snug">
+        <p className="text-[0.95rem]">
+          You have <span className={clsx('text-xl font-bold', t.text)}>{rupees(w.balancePaise)}</span> in credits
+        </p>
+        <p className="text-[0.95rem]">{note}</p>
+        <p className="mt-1 flex items-center gap-1.5 text-sm text-[#9c5a1f]">
+          <PencilLine aria-hidden className="h-3.5 w-3.5" /> Tap to top up
+        </p>
+      </div>
+    </div>
+    </div>
   );
 }
 

@@ -103,6 +103,35 @@ body {
 /* Component classes live in the components layer so Tailwind utilities can override them. */
 @layer components {
 /* ---------------------------------------------------------------------------
+   Pencil note: a hand-written sticky-note tooltip (credits pill)
+   --------------------------------------------------------------------------- */
+.pencil-note {
+  position: relative;
+  font-family: var(--font-hand);
+  color: #5a3412; /* sepia ink */
+  background:
+    repeating-linear-gradient(180deg, transparent 0 21px, rgba(156, 122, 44, 0.16) 21px 22px),
+    linear-gradient(160deg, #fff4c7 0%, #fde9a8 100%);
+  /* a wobbly, hand-drawn pencil outline */
+  border: 1.5px solid rgba(110, 84, 52, 0.55);
+  border-radius: 14px 4px 12px 5px / 5px 12px 4px 14px;
+  box-shadow: 2px 3px 0 rgba(110, 84, 52, 0.18), 0 12px 24px -10px rgba(16, 43, 41, 0.45);
+  transform: rotate(-1.2deg);
+}
+.pencil-note::before { /* washi tape holding the note */
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 54px;
+  height: 16px;
+  transform: translateX(-50%) rotate(3deg);
+  background: rgba(217, 120, 45, 0.45);
+  border-left: 2px dotted rgba(255, 255, 255, 0.5);
+  border-right: 2px dotted rgba(255, 255, 255, 0.5);
+}
+
+/* ---------------------------------------------------------------------------
    Desk
    --------------------------------------------------------------------------- */
 .desk {
