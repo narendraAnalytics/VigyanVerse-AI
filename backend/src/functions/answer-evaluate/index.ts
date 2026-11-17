@@ -12,7 +12,7 @@
 import { createAdminClient } from '@insforge/sdk';
 import { z } from 'zod';
 import { evaluateSubmission, MAX_ANSWERS, answerProblem, type EvalQuestion } from '../../agents/evaluate.ts';
-import { authenticate, json, preflight } from '../../shared/http.ts';
+import { authenticate, json, preflight, withCors } from '../../shared/http.ts';
 import { requireEnv } from '../../shared/env.ts';
 import { timing } from '../../shared/quiz-timer.ts';
 
@@ -33,7 +33,7 @@ interface QuestionRow { id: string; type: 'mcq' | 'numeric'; stem: string; optio
 interface LinkRow { question_id: string; position: number; marks: number }
 interface KeyRow { question_id: string; answer_index: number | null; answer: string; explanation: string; work: { expression?: string } | null }
 
-export default async function (req: Request): Promise<Response> {
+export default withCors(async function (req: Request): Promise<Response> {
   const started = Date.now();
   const early = preflight(req);
   if (early) return early;
@@ -147,4 +147,4 @@ export default async function (req: Request): Promise<Response> {
       errorType: r.errorType, feedback: r.isCorrect ? null : r.feedback, correctAnswer: r.correctAnswer, explanation: r.explanation,
     })),
   });
-}
+});

@@ -12,7 +12,7 @@
 import { createAdminClient } from '@insforge/sdk';
 import { z } from 'zod';
 import { runDocumentReader } from '../../agents/document.ts';
-import { authenticate, json, preflight } from '../../shared/http.ts';
+import { authenticate, json, preflight, withCors } from '../../shared/http.ts';
 import { chargeFailed, chargeTask, refundCharge } from '../../shared/wallet.ts';
 import { requireEnv } from '../../shared/env.ts';
 import { signatureMatches, toBase64 } from '../../shared/image.ts';
@@ -32,7 +32,7 @@ interface DocRow {
   processed_at: string | null;
 }
 
-export default async function (req: Request): Promise<Response> {
+export default withCors(async function (req: Request): Promise<Response> {
   const early = preflight(req);
   if (early) return early;
   if (req.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
@@ -123,4 +123,4 @@ export default async function (req: Request): Promise<Response> {
   }
 
   return json({ documentId: doc.id, status: 'ready', text: r.extractedText, confidence: r.confidence, needsReview: r.needsReview, uncertain: r.uncertain, balancePaise: charge.balancePaise });
-}
+});

@@ -7,7 +7,7 @@
 // the transcript to tutor-chat like typed text (same router, retrieval, consent and limits), and
 // can read the answer aloud with voice-speak.
 import { z } from 'zod';
-import { authenticate, json, preflight } from '../../shared/http.ts';
+import { authenticate, json, preflight, withCors } from '../../shared/http.ts';
 import { chargeFailed, chargeTask, refundCharge } from '../../shared/wallet.ts';
 import { AUDIO_TYPES, decodeBase64, MAX_AUDIO_BYTES, MAX_AUDIO_SECONDS, STT_MODEL, transcribe } from '../../shared/speech.ts';
 
@@ -24,7 +24,7 @@ const Body = z.object({
   language: z.enum(['en', 'te', 'auto']).default('auto'),
 });
 
-export default async function (req: Request): Promise<Response> {
+export default withCors(async function (req: Request): Promise<Response> {
   const early = preflight(req);
   if (early) return early;
   if (req.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
@@ -74,4 +74,4 @@ export default async function (req: Request): Promise<Response> {
 
   if (!result.transcript) return json({ error: 'no_speech', balancePaise: await refundCharge(charge) }, 422);
   return json({ transcript: result.transcript, languageCode: result.languageCode, balancePaise: charge.balancePaise });
-}
+});

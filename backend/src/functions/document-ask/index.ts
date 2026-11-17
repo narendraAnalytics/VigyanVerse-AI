@@ -9,7 +9,7 @@
 //   "Image: <title>"), so the image keeps its history; tutor-chat "solve it" turns go there too.
 import { z } from 'zod';
 import { runDocQa } from '../../agents/docqa.ts';
-import { authenticate, json, preflight } from '../../shared/http.ts';
+import { authenticate, json, preflight, withCors } from '../../shared/http.ts';
 import { chargeFailed, chargeTask, refundCharge } from '../../shared/wallet.ts';
 import { findOrCreateImageConversation } from '../../shared/image-conversation.ts';
 
@@ -29,7 +29,7 @@ const Body = z.object({
 
 interface DocRow { id: string; status: string; extracted_text: string | null; needs_review: boolean }
 
-export default async function (req: Request): Promise<Response> {
+export default withCors(async function (req: Request): Promise<Response> {
   const early = preflight(req);
   if (early) return early;
   if (req.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
@@ -106,4 +106,4 @@ export default async function (req: Request): Promise<Response> {
     label,
     balancePaise: charge.balancePaise,
   });
-}
+});

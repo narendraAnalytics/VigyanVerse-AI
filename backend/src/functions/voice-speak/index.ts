@@ -6,7 +6,7 @@
 // Nothing is stored. Cost is about Rs 1 per 1,000 characters, so the text is cleaned (no
 // markdown or citation marks) and capped; the app speaks the answer, never the citations.
 import { z } from 'zod';
-import { authenticate, json, preflight } from '../../shared/http.ts';
+import { authenticate, json, preflight, withCors } from '../../shared/http.ts';
 import { chargeFailed, chargeTask, refundCharge } from '../../shared/wallet.ts';
 import { MAX_SPEAK_CHARS, speak, speakableText, TTS_MODEL } from '../../shared/speech.ts';
 
@@ -20,7 +20,7 @@ const Body = z.object({
   language: z.enum(['en', 'te']),
 });
 
-export default async function (req: Request): Promise<Response> {
+export default withCors(async function (req: Request): Promise<Response> {
   const early = preflight(req);
   if (early) return early;
   if (req.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
@@ -67,4 +67,4 @@ export default async function (req: Request): Promise<Response> {
   if (usage.error) console.error(`${FUNCTION_SLUG}: usage save failed`);
 
   return json({ audioBase64: result.audioBase64, mime: result.mime, chars: result.chars, spokenText: text, balancePaise: charge.balancePaise });
-}
+});

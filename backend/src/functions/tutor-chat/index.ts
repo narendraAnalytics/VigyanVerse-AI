@@ -13,7 +13,7 @@ import { runTurn, type UsageRow } from '../../agents/graph.ts';
 import { retrieveContext } from '../../agents/retrieval.ts';
 import { SUBJECTS } from '../../agents/router.ts';
 import type { Turn } from '../../agents/tutor.ts';
-import { authenticate, json, preflight } from '../../shared/http.ts';
+import { authenticate, json, preflight, withCors } from '../../shared/http.ts';
 import { chargeFailed, chargeTask, refundCharge } from '../../shared/wallet.ts';
 import { CONVERSATION_COLUMNS, findOrCreateImageConversation, type ConversationRow } from '../../shared/image-conversation.ts';
 
@@ -47,7 +47,7 @@ const Body = z.object({
 });
 
 
-export default async function (req: Request): Promise<Response> {
+export default withCors(async function (req: Request): Promise<Response> {
   const started = Date.now();
   const early = preflight(req);
   if (early) return early;
@@ -155,4 +155,4 @@ export default async function (req: Request): Promise<Response> {
     saved: saveErrors === 0,
     balancePaise: charge.balancePaise,
   });
-}
+});

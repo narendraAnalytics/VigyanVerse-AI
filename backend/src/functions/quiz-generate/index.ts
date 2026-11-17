@@ -20,7 +20,7 @@ import { z } from 'zod';
 import { generateValidatedQuiz, publicQuestion, toQuestionRows } from '../../agents/quiz-pipeline.ts';
 import { BATCH_ANGLES, MAX_QUESTIONS } from '../../agents/quiz.ts';
 import { samplePassages, topicPassages } from '../../shared/chapter-passages.ts';
-import { authenticate, json, preflight } from '../../shared/http.ts';
+import { authenticate, json, preflight, withCors } from '../../shared/http.ts';
 import { requireEnv } from '../../shared/env.ts';
 import { chargeFailed, chargeTask, refundCharge } from '../../shared/wallet.ts';
 
@@ -54,7 +54,7 @@ interface ChapterRow {
   assessment_scope: 'summative' | 'formative_only';
 }
 
-export default async function (req: Request): Promise<Response> {
+export default withCors(async function (req: Request): Promise<Response> {
   const started = Date.now();
   const early = preflight(req);
   if (early) return early;
@@ -212,4 +212,4 @@ export default async function (req: Request): Promise<Response> {
     dropped: result.dropped.length,
     balancePaise,
   });
-}
+});

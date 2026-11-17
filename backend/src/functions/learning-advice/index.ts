@@ -11,7 +11,7 @@
 // chapter title, level, score and mistake-type names.
 import { z } from 'zod';
 import { NextActivity, runAdvice, templateMessage } from '../../agents/advice.ts';
-import { authenticate, json, preflight } from '../../shared/http.ts';
+import { authenticate, json, preflight, withCors } from '../../shared/http.ts';
 
 const FUNCTION_SLUG = 'learning-advice';
 const MAX_PER_MINUTE = 3;
@@ -19,7 +19,7 @@ const MAX_COST_INR_PER_DAY = 10;
 
 const Body = z.object({ language: z.enum(['en', 'te']).default('en') });
 
-export default async function (req: Request): Promise<Response> {
+export default withCors(async function (req: Request): Promise<Response> {
   const early = preflight(req);
   if (early) return early;
   if (req.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
@@ -74,7 +74,7 @@ export default async function (req: Request): Promise<Response> {
     if (usage.error) console.error(`${FUNCTION_SLUG}: usage save failed`);
   }
   return json(result(a, run.output.message, run.source === 'model' ? 'model' : 'template'));
-}
+});
 
 function result(a: NextActivity, message: string, messageSource: 'model' | 'template') {
   return {
