@@ -2,6 +2,8 @@
 
 **A multilingual AI learning platform for Class 10 Science, in English and Telugu.**
 
+**Live:** [vigyanverseai.vercel.app](https://vigyanverseai.vercel.app) (frontend on Vercel, backend on InsForge; payments in Razorpay test mode)
+
 VigyanVerse AI helps Class 10 students understand Physics, Chemistry and Biology, not just memorise
 answers. It combines a textbook-grounded AI tutor, Socratic questioning, quizzes with verified
 answer keys, mistake classification, per-chapter mastery tracking, document reading and voice. It
@@ -13,11 +15,14 @@ is built for CBSE and Andhra Pradesh SSC students.
 
 ## Status
 
-**The backend is complete and deployed on InsForge. The frontend (Next.js, in `frontend/`) is built and runs against it; logged-in testing is under way.**
+**Deployed.** The backend runs on InsForge and the frontend (Next.js, in `frontend/`) on Vercel at
+[https://vigyanverseai.vercel.app](https://vigyanverseai.vercel.app). Students pay per AI task from a rupee
+credits wallet topped up through Razorpay (test mode). The student-facing app is English only for now;
+Telugu support stays in the backend and returns later.
 
 | Area | State |
 |---|---|
-| InsForge backend project (Nano compute) | ✅ Deployed: 21 migrations, 9 Edge Functions |
+| InsForge backend project (Nano compute) | ✅ Deployed: 26 migrations, 9 Edge Functions |
 | Knowledge base (13 NCERT chapters, 360 chunks, keyword search) | ✅ Recall@5 100%, MRR 0.92 |
 | Tutor, Socratic mode, maths reasoning (LangGraph.js) | ✅ Live-evaluated |
 | Quizzes: generate → validate → grade → mistake feedback | ✅ Live-evaluated |
@@ -25,13 +30,15 @@ is built for CBSE and Andhra Pradesh SSC students.
 | Document reading (Gemma 4) and questions about an upload | ✅ Live-evaluated |
 | Voice: Telugu / English speech in (Saaras v4) and out (Bulbul v4 Flash) | ✅ Round trip checked |
 | Identity, roles, RLS; parent linking and consent tables | ✅ Applied and security-checked. Students now use their own account: `has_consent()` is true for a student's own account (migration 20) |
-| Frontend: 3D open-textbook site (Home, Physics, Chemistry, Biology, AI Tutor, My Learning, sign-in, bookplate) | ✅ Built, pushed, production build passes |
-| Logged-in end-to-end tests (tutor, quiz, upload, voice), real student photos and voices | ⏳ Started: first account and bookplate created; the rest to test |
+| Frontend: 3D open-textbook site (Home, Physics, Chemistry, Biology, AI Tutor, My Learning, Wallet, sign-in, bookplate) | ✅ Deployed on Vercel: [vigyanverseai.vercel.app](https://vigyanverseai.vercel.app) |
+| Credits wallet + Razorpay top-ups (₹1 = 1 credit, pay per AI task, refunds on failure) | ✅ Built and security-checked; test mode |
+| Logged-in end-to-end tests (tutor, quiz, upload, voice, top-up), real student photos and voices | ⏳ Owner testing from a fresh account |
+| Razorpay live mode | ⏳ After the DPDP legal review (minors now pay) |
 | AP SSC curriculum, Telugu chapter titles | ⏳ Waiting for official sources |
 | NCERT usage permission | ⏳ Launch blocker |
 
-Full details: [`backenddescription.txt`](backenddescription.txt) (agents, workflows, database,
-security) and [`backendplan.txt`](backendplan.txt) (decisions and work log).
+Full details are in `backenddescription.txt` (agents, workflows, database, security), kept on the
+owner's machine and not in this repository.
 
 ## Key ideas
 
@@ -49,6 +56,9 @@ security) and [`backendplan.txt`](backendplan.txt) (decisions and work log).
   are not required: owner decision 2026-11-15, one account per student.)
 - **Cost-aware.** Each task uses the cheapest model that does it well, with a fallback. Cost and
   latency are logged per call in ₹, and each student has a daily cap (₹10) plus per-minute limits.
+- **Pay per task, never for a failure.** Each AI task takes a small price from the student's credits
+  *before* the model runs and gives it back if the AI fails. Credits are added only when Razorpay's
+  verified webhook confirms the exact pack price; the browser can never add money.
 - **Small and fast.** Runs on InsForge Nano; every request finishes inside the 30 s Edge Function limit.
 
 ## The agents
@@ -82,6 +92,34 @@ security) and [`backendplan.txt`](backendplan.txt) (decisions and work log).
 | `voice-speak` | Text to speech |
 | `verify-science` | Deterministic unit conversion, calculation and equation-balance checks |
 
+Paid functions (`tutor-chat`, `quiz-generate`, `document-process`, `document-ask`, `voice-transcribe`,
+`voice-speak`) charge the student's credits first and return the new balance.
+
+## Credits and payments
+
+1 credit = ₹1, stored in paise. No free credits. Prices and packs live in database tables
+(`task_prices`, `topup_packs`), so they change without a deploy.
+
+| Task | Price |
+|---|---|
+| Tutor, Socratic or maths question | ₹0.50 |
+| Question about a photo | ₹0.50 |
+| Read a photo of notes | ₹1.50 |
+| Speak a question / hear an answer read aloud | ₹0.50 each |
+| Quiz (per 5 questions, checking included) | ₹2 |
+| Answer checking, progress, revision, learning advice | free |
+
+Top-up packs: ₹10, ₹50, ₹100 (you get ₹110), ₹200 (you get ₹230).
+
+Flow: `start_topup` (amount from the pack table) → InsForge creates the Razorpay order → Razorpay
+Checkout in the app → Razorpay webhook to InsForge → a database trigger credits the wallet once per
+payment, only if the paid amount equals the pack price and the payment environment is the current one
+(`wallet_settings`). Students can read but never write their wallet, history or top-ups.
+
+The header shows the balance as a pill (green from ₹50, amber ₹10–₹49, red "Low" under ₹10, red at
+₹0); clicking it opens the top-up window, and a hand-written note on hover says roughly how many
+questions it pays for.
+
 ## Tech stack
 
 | Layer | Technology |
@@ -92,17 +130,18 @@ security) and [`backendplan.txt`](backendplan.txt) (decisions and work log).
 | AI | [Sarvam](https://docs.sarvam.ai): Token Factory chat models, Saaras (speech-to-text), Bulbul (text-to-speech). One API key covers all |
 | Agents | LangGraph.js StateGraph, TypeScript |
 | Validation & verification | zod, mathjs, custom chemical equation balancer |
-| Testing | vitest (251 unit tests), live per-agent evals with pass bars set before the run, rolled-back SQL checks |
+| Testing | vitest (316 unit tests), live per-agent evals with pass bars set before the run, rolled-back SQL checks |
 | Frontend | Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, React Three Fiber, GSAP, Motion |
+| Hosting | Vercel (frontend), InsForge (backend) |
+| Payments | Razorpay (Orders + Checkout.js) through InsForge's built-in payments module |
 
 ## Repository structure
 
 ```
 vigyanverseai/
 ├── README.md
-├── backenddescription.txt     detailed backend description (agents, workflows, database)
-├── backendplan.txt            backend decisions and work log
-├── projectOverview.txt        product vision (some parts outdated; backendplan.txt wins)
+├── backenddescription.txt     detailed backend description (kept locally, not in git)
+├── projectOverview.txt        product vision (kept locally; some parts outdated)
 ├── frontend/                  Next.js web app (see below)
 └── backend/
     ├── migrations/            SQL migrations (schema, RLS, seed data)
@@ -161,9 +200,34 @@ cd frontend
 npm install
 # create .env.local: NEXT_PUBLIC_INSFORGE_URL, NEXT_PUBLIC_INSFORGE_ANON_KEY, NEXT_PUBLIC_APP_URL
 npm run dev          # http://localhost:3000
-```n
+```
+
 The site is one illustrated textbook: each section is a two-page spread and moving between sections
 turns the page. AI Tutor and My Learning appear in the navbar only after sign-in.
+
+## Deployment
+
+| Part | Where | Notes |
+|---|---|---|
+| Frontend | Vercel: [vigyanverseai.vercel.app](https://vigyanverseai.vercel.app) | Root directory `frontend`, framework Next.js, deployed manually |
+| Backend | InsForge (`https://r2f4a6w6.ap-southeast.insforge.app`) | Migrations with `npm run db:up`, functions with `npm run fn:deploy -- <slug>` |
+| Payments | Razorpay test mode via InsForge | Webhook: `https://r2f4a6w6.ap-southeast.insforge.app/api/webhooks/razorpay/test` (events `payment.captured`, `payment.failed`, `order.paid`) |
+
+**Vercel environment variables (only these three):**
+
+| Name | Value |
+|---|---|
+| `NEXT_PUBLIC_INSFORGE_URL` | the InsForge API URL |
+| `NEXT_PUBLIC_INSFORGE_ANON_KEY` | the InsForge anon key |
+| `NEXT_PUBLIC_APP_URL` | `https://vigyanverseai.vercel.app` (used for sign-up, reset and OAuth redirects) |
+
+Razorpay keys, the Sarvam key and the InsForge API key live only in InsForge, never in Vercel.
+`NEXT_PUBLIC_` values are fixed at build time: redeploy after changing them.
+
+**Backend settings that name the site:** the function secret `ALLOWED_ORIGIN` is a comma-separated
+list (`http://localhost:3000,https://vigyanverseai.vercel.app`), and `backend/insforge.toml`
+`allowed_redirect_urls` lists `/api/auth/callback`, `/sign-in` and `/reset-password` for both sites
+(apply with `npx -y @insforge/cli config apply`). A new domain needs both updated.
 
 ## Curriculum scope
 
@@ -187,9 +251,10 @@ database). Mastery is tracked per chapter for now; topic-level tracking needs an
 6. ✅ **Documents & voice:** reading uploaded images, Telugu / English speech in and out
 7. ✅ **Frontend:** full-screen 3D open-textbook site with page-turn navigation, landing page, sign-up and
    sign-in (email code, Google, GitHub), student bookplate, tutor chat (explain and hint modes), quiz,
-   progress page, photo upload, voice
-8. ⏳ **Real-user testing:** logged-in end-to-end tests, real handwriting photos and voices, Telugu review
-9. ⏳ **Production:** benchmarks, security review, legal review of student consent (see Privacy), pilot study
+   progress page, photo upload, voice; deployed on Vercel
+8. ✅ **Credits & payments:** rupee wallet, Razorpay top-ups (test mode), pay per AI task with refunds
+9. ⏳ **Real-user testing:** logged-in end-to-end tests, real handwriting photos and voices, Telugu review
+10. ⏳ **Production:** Razorpay live mode, benchmarks, security review, legal review of student consent and payments by minors (see Privacy), pilot study
 
 Learning-outcome claims will come only from a consented pre-test / post-test pilot, never from
 assumptions.
@@ -198,9 +263,11 @@ assumptions.
 
 Users are minors. The platform collects minimal personal data (first name, board, class and birth
 year only) and isolates every student's data at the database level. Uploaded documents are visible
-only to the student, and voice recordings are never stored.
+only to the student, and voice recordings are never stored. Payments go through Razorpay: the app never
+sees card numbers or UPI PINs, and stores only the order / payment ids and the credit history.
 
 **Open item:** since 2026-11-15 a student does not need a parent's permission to use the AI features
 (owner decision). India's DPDP Act requires verifiable parental consent for under-18s, so a legal
 review is required before public launch. The parent tables and the old rule can be restored with one
-migration.
+migration. Students now also pay for AI tasks (test mode only so far), so the same review must cover
+payments by minors before Razorpay live mode is switched on.
