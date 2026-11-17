@@ -428,10 +428,11 @@ function QuizSetup() {
               <button key={n} type="button" aria-pressed={s.size === n} onClick={() => pick(n)}
                 aria-label={lockedSize ? `${n} questions, locked: needs ${rupees(quizCost(n))}` : `${n} questions`}
                 title={lockedSize ? `Needs ${rupees(quizCost(n))}. Top up to unlock.` : undefined}
-                className={clsx('relative min-w-14 rounded-md border-[1.5px] px-4 py-2 font-display text-xl transition',
+                className={clsx('relative flex min-w-16 flex-col items-center rounded-md border-[1.5px] px-4 pb-1 pt-2 transition',
                   lockedSize ? 'border-dashed border-pencil/40 text-ink-faint hover:border-pencil'
                     : s.size === n ? 'border-emerald bg-emerald/10' : 'border-ink/20 hover:border-gold-deep')}>
-                {n}
+                <span className="font-display text-xl leading-none">{n}</span>
+                <span className={clsx('mt-1 text-xs', lockedSize ? 'text-pencil' : 'text-ink-faint')}>{rupees(quizCost(n))}</span>
                 {lockedSize && (
                   <span aria-hidden className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-pencil text-paper"><Lock className="h-3 w-3" /></span>
                 )}
@@ -439,6 +440,15 @@ function QuizSetup() {
             );
           })}
         </div>
+        {balance !== null && maxFit === QUIZ_SIZES[QUIZ_SIZES.length - 1] && (
+          <p className="font-hand mt-2 flex items-start gap-1.5 text-[1.05rem] text-emerald">
+            <Check aria-hidden className="mt-1 h-4 w-4 shrink-0" />
+            <span>
+              Good news! Your {rupees(balance)} covers any size, even {maxFit} questions.
+              {' '}This {s.size}-question quiz uses {rupees(quizCost(s.size))}, leaving {rupees(balance - quizCost(s.size))}.
+            </span>
+          </p>
+        )}
         {balance !== null && maxFit !== QUIZ_SIZES[QUIZ_SIZES.length - 1] && (
           <p className="font-hand mt-2 flex items-center gap-1.5 text-[1.05rem] text-pencil">
             <Lock aria-hidden className="h-4 w-4 shrink-0" />
@@ -462,7 +472,7 @@ function QuizSetup() {
 
       {q.error && <p role="alert" className="mt-4 text-pencil">{q.error}</p>}
       <div className="mt-7 flex items-center gap-3">
-        <button type="submit" className={clsx('ink-button', sizeLocked && 'opacity-60')} disabled={q.checking}>
+        <button type="submit" className={clsx('ink-button shrink-0 whitespace-nowrap', sizeLocked && 'opacity-60')} disabled={q.checking}>
           {q.checking ? <Loader2 aria-hidden className="h-4 w-4 animate-spin" /> : sizeLocked ? <Lock aria-label="Locked" className="h-4 w-4" /> : <PencilLine aria-hidden className="h-4 w-4" />}
           {q.checking ? 'Finding your topic…' : 'Make my quiz'}
         </button>
