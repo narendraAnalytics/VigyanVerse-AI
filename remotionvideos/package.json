@@ -1,0 +1,40 @@
+{
+  "name": "template-empty",
+  "version": "1.0.0",
+  "description": "My Remotion video",
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion bundle",
+    "upgrade": "remotion upgrade",
+    "lint": "eslint src && tsc",
+    "render:web": "remotion render OhmsLaw out/ohms-law-720p.mp4 --scale=0.6666666666666666 --crf=26",
+    "render:hd": "remotion render OhmsLaw out/ohms-law-1080p.mp4",
+    "stills": "node scripts/stills.mjs out/stills 16 75 195 395 570 885",
+    "voice": "node scripts/voice.mjs"
+  },
+  "repository": {},
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "@remotion/google-fonts": "^4.0.544",
+    "@remotion/media": "^4.0.544",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "^4.0.0",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "^4.0.0",
+    "@types/react": "19.3.0",
+    "@types/three": "^0.187.0",
+    "@types/web": "0.0.166",
+    "eslint": "10.12.0",
+    "msedge-tts": "^2.1.0",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24"
+  },
+  "private": true
+}

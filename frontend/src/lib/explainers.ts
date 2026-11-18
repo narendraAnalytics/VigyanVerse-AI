@@ -1,0 +1,29 @@
+// Short narrated explainer videos (made in ../remotionvideos with Remotion, Soft Clay style).
+// Files live in the PUBLIC InsForge bucket `explainers`. The public link answers with a tiny redirect and
+// the bytes come from InsForge's CDN (range requests work, so students can seek), so the Nano server
+// does not carry the video traffic. Videos load only when the student presses play (5 GB/month free bandwidth).
+import type { Subject } from './api';
+import { publicClient } from './insforge';
+
+export interface Explainer {
+  title: string;
+  chapter: string;
+  seconds: number;
+  video: string;   // object key in the bucket
+  poster: string;  // object key of the still shown before play
+}
+
+export const EXPLAINERS: Partial<Record<Subject, Explainer>> = {
+  physics: {
+    title: 'Ohm’s law',
+    chapter: 'Chapter 11, Electricity',
+    seconds: 44,
+    video: 'physics/ohms-law-720p.mp4',
+    poster: 'physics/ohms-law-poster.jpg',
+  },
+};
+
+export function explainerUrl(key: string): string {
+  // pure string construction in the SDK (no network call); data is never null here
+  return publicClient().storage.from('explainers').getPublicUrl(key).data?.publicUrl ?? '';
+}

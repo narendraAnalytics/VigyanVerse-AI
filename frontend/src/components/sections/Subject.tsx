@@ -2,11 +2,14 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { MessageCircleQuestion, PencilLine } from 'lucide-react';
+import { useState } from 'react';
+import { Clapperboard, FlaskConical, MessageCircleQuestion, PencilLine } from 'lucide-react';
 import type { Subject } from '@/lib/api';
 import { useChapters } from '@/lib/chapters';
+import { EXPLAINERS } from '@/lib/explainers';
 import { learningIntent, tutorIntent } from '@/lib/intents';
 import { OhmLab, PeaLab, PhLab } from '@/components/labs/Labs';
+import { ExplainerVideo } from '@/components/labs/ExplainerVideo';
 
 const SUBJECTS: Record<Subject, { numeral: string; title: string; color: string; intro: string; Lab: () => React.JSX.Element; labTitle: string }> = {
   physics: {
@@ -36,11 +39,46 @@ export function SubjectLeft({ subject }: { subject: Subject }) {
       </div>
       <div aria-hidden className="deco-rule mt-4" style={{ borderColor: s.color }} />
       <p className="mt-4 max-w-[48ch] text-ink-soft">{s.intro}</p>
-      <section aria-label={s.labTitle} className="deco-frame relative mt-6 bg-[#f7efdc] p-4 sm:p-5">
-        <h2 className="font-display text-xl italic" style={{ color: s.color }}>{s.labTitle}</h2>
-        <div className="mt-2"><s.Lab /></div>
-      </section>
+      <PlatePanel subject={subject} />
     </div>
+  );
+}
+
+// The plate on the left page: the subject's explainer video (if there is one) and its hands-on lab, as two tabs.
+function PlatePanel({ subject }: { subject: Subject }) {
+  const s = SUBJECTS[subject];
+  const explainer = EXPLAINERS[subject];
+  const [tab, setTab] = useState<'watch' | 'try'>(explainer ? 'watch' : 'try');
+  const tabs = explainer ? ([['watch', `Watch: ${explainer.title}`, Clapperboard], ['try', s.labTitle, FlaskConical]] as const) : null;
+
+  return (
+    <section aria-label={tab === 'watch' && explainer ? `${explainer.title} video` : s.labTitle} className="deco-frame relative mt-6 bg-[#f7efdc] p-4 sm:p-5">
+      {tabs ? (
+        <div role="tablist" aria-label="Watch or try" className="flex flex-wrap gap-2">
+          {tabs.map(([id, label, Icon]) => {
+            const on = tab === id;
+            return (
+              <button
+                key={id}
+                type="button"
+                role="tab"
+                aria-selected={on}
+                onClick={() => setTab(id)}
+                className="flex items-center gap-1.5 rounded-full px-3 py-1 font-display text-[0.98rem] italic transition-colors"
+                style={on ? { background: s.color, color: 'var(--paper)' } : { color: s.color, boxShadow: `inset 0 0 0 1px ${s.color}` }}
+              >
+                <Icon aria-hidden className="h-4 w-4" /> {label}
+              </button>
+            );
+          })}
+        </div>
+      ) : (
+        <h2 className="font-display text-xl italic" style={{ color: s.color }}>{s.labTitle}</h2>
+      )}
+      <div className="mt-3" role={tabs ? 'tabpanel' : undefined}>
+        {tab === 'watch' && explainer ? <ExplainerVideo explainer={explainer} color={s.color} /> : <s.Lab />}
+      </div>
+    </section>
   );
 }
 

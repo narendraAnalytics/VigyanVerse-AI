@@ -1,0 +1,36 @@
+{
+  "voice": "en-IN-NeerjaNeural",
+  "rate": 0.95,
+  "lines": [
+    {
+      "file": "voiceover/ohms-law/01-hook.mp3",
+      "at": 0.4,
+      "seconds": 6.816,
+      "text": "What makes a simple light bulb glow? The answer is something you cannot even see!"
+    },
+    {
+      "file": "voiceover/ohms-law/02-current.mp3",
+      "at": 5.4,
+      "seconds": 9.48,
+      "text": "Electric current is the flow of electric charge through a conductor. A potential difference drives the current through the circuit."
+    },
+    {
+      "file": "voiceover/ohms-law/03-resistance.mp3",
+      "at": 12.4,
+      "seconds": 8.976,
+      "text": "But resistance opposes the flow of current. More resistance means less current when voltage remains constant."
+    },
+    {
+      "file": "voiceover/ohms-law/04-law.mp3",
+      "at": 18.2,
+      "seconds": 7.896,
+      "text": "This relationship is explained by Ohm's Law: Voltage equals Current multiplied by Resistance."
+    },
+    {
+      "file": "voiceover/ohms-law/05-end.mp3",
+      "at": 25,
+      "seconds": 6.408,
+      "text": "Now you know the science behind the light. Ready to test your understanding?"
+    }
+  ]
+}
