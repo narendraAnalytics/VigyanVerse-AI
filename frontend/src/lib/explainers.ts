@@ -11,6 +11,7 @@ export interface Explainer {
   seconds: number;
   video: string;   // object key in the bucket
   poster: string;  // object key of the still shown before play
+  tab?: string;    // short name for the Watch tab (defaults to the title)
 }
 
 export const EXPLAINERS: Partial<Record<Subject, Explainer>> = {
@@ -20,6 +21,14 @@ export const EXPLAINERS: Partial<Record<Subject, Explainer>> = {
     seconds: 44,
     video: 'physics/ohms-law-720p.mp4',
     poster: 'physics/ohms-law-poster.jpg',
+  },
+  chemistry: {
+    title: 'The hidden chemistry around us',
+    tab: 'Chemistry around us',
+    chapter: 'Chapters 1 to 4',
+    seconds: 54,
+    video: 'chemistry/chemistry-720p.mp4',
+    poster: 'chemistry/chemistry-poster.jpg',
   },
 };
 

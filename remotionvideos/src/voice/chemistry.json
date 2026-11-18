@@ -1,0 +1,36 @@
+{
+  "voice": "en-IN-NeerjaNeural",
+  "rate": 0.95,
+  "lines": [
+    {
+      "file": "voiceover/chemistry/01-reactions.mp3",
+      "at": 0.5,
+      "seconds": 12.84,
+      "text": "What happens when substances react? Their atoms rearrange, creating entirely new substances. This is the fascinating world of chemical reactions!"
+    },
+    {
+      "file": "voiceover/chemistry/02-acids.mp3",
+      "at": 7,
+      "seconds": 11.16,
+      "text": "Why are some substances acidic and others basic? Their ions determine how they behave, something we can explore using the pH scale."
+    },
+    {
+      "file": "voiceover/chemistry/03-metals.mp3",
+      "at": 13,
+      "seconds": 10.32,
+      "text": "Metals can lose electrons, while non-metals can gain them. But metals can also react with their environment and undergo corrosion."
+    },
+    {
+      "file": "voiceover/chemistry/04-carbon.mp3",
+      "at": 20,
+      "seconds": 9.336,
+      "text": "And carbon? Its ability to form strong bonds and long chains creates an extraordinary variety of compounds."
+    },
+    {
+      "file": "voiceover/chemistry/05-end.mp3",
+      "at": 27,
+      "seconds": 6.216,
+      "text": "Chemistry is everywhere. Discover the science behind everything!"
+    }
+  ]
+}

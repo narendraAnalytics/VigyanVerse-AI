@@ -49,7 +49,7 @@ function PlatePanel({ subject }: { subject: Subject }) {
   const s = SUBJECTS[subject];
   const explainer = EXPLAINERS[subject];
   const [tab, setTab] = useState<'watch' | 'try'>(explainer ? 'watch' : 'try');
-  const tabs = explainer ? ([['watch', `Watch: ${explainer.title}`, Clapperboard], ['try', s.labTitle, FlaskConical]] as const) : null;
+  const tabs = explainer ? ([['watch', `Watch: ${explainer.tab ?? explainer.title}`, Clapperboard], ['try', s.labTitle, FlaskConical]] as const) : null;
 
   // no video for this subject: the lab in its framed plate, as before
   if (!tabs || !explainer) {

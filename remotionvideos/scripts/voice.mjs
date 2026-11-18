@@ -23,6 +23,13 @@ const VIDEOS = {
     { id: '04-deviation', at: 22.0, text: 'Different colours bend by different amounts. Violet deviates the most, while red deviates the least.' },
     { id: '05-end', at: 29.0, text: 'And that is how a simple beam of white light reveals the colourful science hidden within it. Welcome to the world of physics!' },
   ],
+  chemistry: [
+    { id: '01-reactions', at: 0.5, text: 'What happens when substances react? Their atoms rearrange, creating entirely new substances. This is the fascinating world of chemical reactions!' },
+    { id: '02-acids', at: 7.0, text: 'Why are some substances acidic and others basic? Their ions determine how they behave, something we can explore using the pH scale.' },
+    { id: '03-metals', at: 13.0, text: 'Metals can lose electrons, while non-metals can gain them. But metals can also react with their environment and undergo corrosion.' },
+    { id: '04-carbon', at: 20.0, text: 'And carbon? Its ability to form strong bonds and long chains creates an extraordinary variety of compounds.' },
+    { id: '05-end', at: 27.0, text: 'Chemistry is everywhere. Discover the science behind everything!' },
+  ],
 };
 const VIDEO = process.argv[2] || 'ohms-law';
 const LINES = VIDEOS[VIDEO];
