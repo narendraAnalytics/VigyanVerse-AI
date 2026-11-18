@@ -51,32 +51,43 @@ function PlatePanel({ subject }: { subject: Subject }) {
   const [tab, setTab] = useState<'watch' | 'try'>(explainer ? 'watch' : 'try');
   const tabs = explainer ? ([['watch', `Watch: ${explainer.title}`, Clapperboard], ['try', s.labTitle, FlaskConical]] as const) : null;
 
-  return (
-    <section aria-label={tab === 'watch' && explainer ? `${explainer.title} video` : s.labTitle} className="deco-frame relative mt-6 bg-[#f7efdc] p-4 sm:p-5">
-      {tabs ? (
-        <div role="tablist" aria-label="Watch or try" className="flex flex-wrap gap-2">
-          {tabs.map(([id, label, Icon]) => {
-            const on = tab === id;
-            return (
-              <button
-                key={id}
-                type="button"
-                role="tab"
-                aria-selected={on}
-                onClick={() => setTab(id)}
-                className="flex items-center gap-1.5 rounded-full px-3 py-1 font-display text-[0.98rem] italic transition-colors"
-                style={on ? { background: s.color, color: 'var(--paper)' } : { color: s.color, boxShadow: `inset 0 0 0 1px ${s.color}` }}
-              >
-                <Icon aria-hidden className="h-4 w-4" /> {label}
-              </button>
-            );
-          })}
-        </div>
-      ) : (
+  // no video for this subject: the lab in its framed plate, as before
+  if (!tabs || !explainer) {
+    return (
+      <section aria-label={s.labTitle} className="deco-frame relative mt-6 bg-[#f7efdc] p-4 sm:p-5">
         <h2 className="font-display text-xl italic" style={{ color: s.color }}>{s.labTitle}</h2>
-      )}
-      <div className="mt-3" role={tabs ? 'tabpanel' : undefined}>
-        {tab === 'watch' && explainer ? <ExplainerVideo explainer={explainer} color={s.color} /> : <s.Lab />}
+        <div className="mt-2"><s.Lab /></div>
+      </section>
+    );
+  }
+
+  // with a video: the tabs sit on the page; the video has no frame (like the Home page), the lab keeps its plate
+  return (
+    <section aria-label={tab === 'watch' ? `${explainer.title} video` : s.labTitle} className="relative mt-6">
+      <div role="tablist" aria-label="Watch or try" className="flex flex-wrap gap-2">
+        {tabs.map(([id, label, Icon]) => {
+          const on = tab === id;
+          return (
+            <button
+              key={id}
+              type="button"
+              role="tab"
+              aria-selected={on}
+              onClick={() => setTab(id)}
+              className="flex items-center gap-1.5 rounded-full px-3 py-1 font-display text-[0.98rem] italic transition-colors"
+              style={on ? { background: s.color, color: 'var(--paper)' } : { color: s.color, boxShadow: `inset 0 0 0 1px ${s.color}` }}
+            >
+              <Icon aria-hidden className="h-4 w-4" /> {label}
+            </button>
+          );
+        })}
+      </div>
+      <div role="tabpanel" className="mt-4">
+        {tab === 'watch' ? (
+          <ExplainerVideo explainer={explainer} color={s.color} />
+        ) : (
+          <div className="deco-frame relative bg-[#f7efdc] p-4 sm:p-5"><s.Lab /></div>
+        )}
       </div>
     </section>
   );
