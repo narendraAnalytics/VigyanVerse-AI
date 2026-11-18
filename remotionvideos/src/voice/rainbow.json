@@ -1,0 +1,36 @@
+{
+  "voice": "en-IN-NeerjaNeural",
+  "rate": 0.95,
+  "lines": [
+    {
+      "file": "voiceover/rainbow/01-mystery.mp3",
+      "at": 0.6,
+      "seconds": 7.032,
+      "text": "Have you ever wondered how a single beam of white light can transform into seven beautiful colours?"
+    },
+    {
+      "file": "voiceover/rainbow/02-refraction.mp3",
+      "at": 6,
+      "seconds": 5.688,
+      "text": "When white light passes through a glass prism, it bends due to refraction."
+    },
+    {
+      "file": "voiceover/rainbow/03-dispersion.mp3",
+      "at": 13,
+      "seconds": 11.544,
+      "text": "But something extraordinary happens. The white light separates into seven different colours. This phenomenon is called dispersion of light."
+    },
+    {
+      "file": "voiceover/rainbow/04-deviation.mp3",
+      "at": 22,
+      "seconds": 8.616,
+      "text": "Different colours bend by different amounts. Violet deviates the most, while red deviates the least."
+    },
+    {
+      "file": "voiceover/rainbow/05-end.mp3",
+      "at": 29,
+      "seconds": 9.456,
+      "text": "And that is how a simple beam of white light reveals the colourful science hidden within it. Welcome to the world of physics!"
+    }
+  ]
+}

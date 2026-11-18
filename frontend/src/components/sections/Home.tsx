@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Hero } from '@/components/three/Hero';
+import { ExplainerVideo } from '@/components/labs/ExplainerVideo';
+import { HOME_EXPLAINER } from '@/lib/explainers';
 import { Bindu, Speech } from '@/components/mascot/Bindu';
 import { useAuth, nextSetupStep } from '@/lib/auth';
 import { usePageLayout } from '@/components/book/page-context';
@@ -17,8 +18,9 @@ export function HomeLeft() {
         Answers from your NCERT textbook, hints when you want to work it out yourself, and practice
         questions with checked answers.
       </p>
-      <div className={layout === 'single' ? 'relative mt-3 h-[300px]' : 'relative mt-1 min-h-[210px] flex-1'}>
-        <Hero />
+      {/* the welcome video (was the 3D hero): plays only when the student presses play */}
+      <div className={layout === 'single' ? 'relative mt-4' : 'relative mt-4 flex-1'}>
+        <ExplainerVideo explainer={HOME_EXPLAINER} color="var(--emerald)" />
       </div>
     </div>
   );

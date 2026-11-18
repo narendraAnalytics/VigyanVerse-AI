@@ -5,9 +5,11 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AbsoluteFill, cancelRender, continueRender, delayRender, getRemotionEnvironment, useCurrentFrame, useVideoConfig } from 'remotion';
 import { loadFont } from '@remotion/google-fonts/Fredoka';
+import { loadFont as loadFraunces } from '@remotion/google-fonts/Fraunces';
 import { K } from './kit';
 
 const fredoka = loadFont('normal', { weights: ['500', '600', '700'], subsets: ['latin'] });
+const fraunces = loadFraunces('normal', { weights: ['900'], subsets: ['latin'] });
 
 export type ClayProps = {
   previewSamples: number;
@@ -30,7 +32,7 @@ export const ClayVideo: React.FC<ClayProps & { clayStyle: any; storyTime?: (vide
     let S: Stage | null = null;
     let cancelled = false;
     (async () => {
-      await fredoka.waitUntilDone();
+      await Promise.all([fredoka.waitUntilDone(), fraunces.waitUntilDone()]);
       S = await K.run(canvasRef.current, clayStyle, { samples, width, height });
       if (cancelled) S?.renderer.dispose();
       else setStage(S);

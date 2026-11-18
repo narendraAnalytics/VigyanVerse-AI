@@ -23,6 +23,15 @@ export const EXPLAINERS: Partial<Record<Subject, Explainer>> = {
   },
 };
 
+/** The Home page plate: the welcome video (Toy Blocks style). */
+export const HOME_EXPLAINER: Explainer = {
+  title: 'The secret behind a rainbow',
+  chapter: 'Chapter 10, dispersion of light',
+  seconds: 48,
+  video: 'home/rainbow-720p.mp4',
+  poster: 'home/rainbow-poster.jpg',
+};
+
 export function explainerUrl(key: string): string {
   // pure string construction in the SDK (no network call); data is never null here
   return publicClient().storage.from('explainers').getPublicUrl(key).data?.publicUrl ?? '';
