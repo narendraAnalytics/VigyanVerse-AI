@@ -1,0 +1,34 @@
+{
+  "voice": "en-IN-NeerjaNeural",
+  "rate": 1.08,
+  "lines": [
+    {
+      "file": "voiceover/signin/01-girl.mp3",
+      "at": 0.4,
+      "seconds": 4.896,
+      "text": "New to VigyanVerse? Signing in takes just one tap.",
+      "voice": "en-IN-NeerjaNeural"
+    },
+    {
+      "file": "voiceover/signin/02-boy.mp3",
+      "at": 5.8,
+      "seconds": 3.72,
+      "text": "Just pick Google or GitHub, whichever you use.",
+      "voice": "en-IN-PrabhatNeural"
+    },
+    {
+      "file": "voiceover/signin/03-girl.mp3",
+      "at": 9.7,
+      "seconds": 1.872,
+      "text": "And you're in!",
+      "voice": "en-IN-NeerjaNeural"
+    },
+    {
+      "file": "voiceover/signin/04-boy.mp3",
+      "at": 11.8,
+      "seconds": 2.088,
+      "text": "Let's start learning!",
+      "voice": "en-IN-PrabhatNeural"
+    }
+  ]
+}

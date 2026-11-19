@@ -49,6 +49,15 @@ export const HOME_EXPLAINER: Explainer = {
   poster: 'home/rainbow-poster.jpg',
 };
 
+/** The sign-in page plate: two students sign in with Google or GitHub (Spotlight Stage style). */
+export const SIGNIN_EXPLAINER: Explainer = {
+  title: 'Welcome to VigyanVerse',
+  chapter: 'sign in with Google or GitHub',
+  seconds: 16,
+  video: 'signin/signin-720p.mp4',
+  poster: 'signin/signin-poster.jpg',
+};
+
 export function explainerUrl(key: string): string {
   // pure string construction in the SDK (no network call); data is never null here
   return publicClient().storage.from('explainers').getPublicUrl(key).data?.publicUrl ?? '';

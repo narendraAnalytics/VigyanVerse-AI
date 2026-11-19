@@ -8,6 +8,8 @@ import { authPost, useAuth } from '@/lib/auth';
 import { insforge } from '@/lib/insforge';
 import { Bindu, Speech } from '@/components/mascot/Bindu';
 import { Cover } from '@/components/book/Cover';
+import { ExplainerVideo } from '@/components/labs/ExplainerVideo';
+import { SIGNIN_EXPLAINER } from '@/lib/explainers';
 
 const ROLE_KEY = 'vv-signup-role';
 
@@ -22,9 +24,16 @@ export function AccountArt({ kind }: { kind: 'sign-in' | 'sign-up' | 'reset' }) 
   }[kind];
   return (
     <div className="flex h-full min-h-[28rem] flex-col">
-      <div className="relative mx-auto mt-2 aspect-[3/4] w-[min(100%,300px,32vh)] overflow-hidden rounded-sm shadow-[6px_8px_0_rgba(34,30,23,.12)]">
-        <Cover />
-      </div>
+      {kind === 'sign-in' ? (
+        // the sign-in page shows the short welcome video (poster first, loaded only on play) where the cover was
+        <div className="mx-auto mt-2 w-[min(100%,560px,75vh)]">
+          <ExplainerVideo explainer={SIGNIN_EXPLAINER} color="#23706b" />
+        </div>
+      ) : (
+        <div className="relative mx-auto mt-2 aspect-[3/4] w-[min(100%,300px,32vh)] overflow-hidden rounded-sm shadow-[6px_8px_0_rgba(34,30,23,.12)]">
+          <Cover />
+        </div>
+      )}
       <div className="mt-auto flex items-end gap-3 pt-6">
         <Bindu size={70} />
         <Speech className="mb-5 max-w-[32ch]">{line}</Speech>

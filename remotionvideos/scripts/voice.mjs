@@ -37,6 +37,13 @@ const VIDEOS = {
     { id: '04-heredity', at: 25.6, text: 'Through reproduction, life continues. DNA carries hereditary information from one generation to the next.' },
     { id: '05-end', at: 35.7, text: 'And every organism depends on its environment. Life is connected. Life is extraordinary. Discover its science!' },
   ],
+  // the sign-in page: two students, so each line can name its own voice (made with RATE=1.08)
+  signin: [
+    { id: '01-girl', at: 0.4, voice: 'en-IN-NeerjaNeural', text: 'New to VigyanVerse? Signing in takes just one tap.' },
+    { id: '02-boy', at: 5.8, voice: 'en-IN-PrabhatNeural', text: 'Just pick Google or GitHub, whichever you use.' },
+    { id: '03-girl', at: 9.7, voice: 'en-IN-NeerjaNeural', text: "And you're in!" },
+    { id: '04-boy', at: 11.8, voice: 'en-IN-PrabhatNeural', text: "Let's start learning!" },
+  ],
 };
 const VIDEO = process.argv[2] || 'ohms-law';
 const LINES = VIDEOS[VIDEO];
@@ -49,11 +56,11 @@ const ffprobe = join('node_modules', '@remotion', 'compositor-win32-x64-msvc', '
 mkdirSync(DIR, { recursive: true });
 // The Edge service sometimes answers 429 (too many requests): wait and try again with a fresh connection.
 const sleep = (ms) => new Promise((ok) => setTimeout(ok, ms));
-async function speak(text) {
+async function speak(text, voice = VOICE) {
   for (let attempt = 1; ; attempt++) {
     const tts = new MsEdgeTTS();
     try {
-      await tts.setMetadata(VOICE, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
+      await tts.setMetadata(voice, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
       const res = await tts.toFile(DIR, text, { rate: RATE });
       tts.close?.();
       return res;
@@ -68,12 +75,12 @@ async function speak(text) {
 }
 const out = [];
 for (const line of LINES) {
-  const { audioFilePath } = await speak(line.text);
+  const { audioFilePath } = await speak(line.text, line.voice || VOICE);
   await sleep(1500);
   const dest = join(DIR, `${line.id}.mp3`);
   renameSync(audioFilePath, dest);
   const seconds = parseFloat(execFileSync(ffprobe, ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', dest]).toString().trim().replace(',', '.'));
-  out.push({ file: `voiceover/${VIDEO}/${line.id}.mp3`, at: line.at, seconds, text: line.text });
+  out.push({ file: `voiceover/${VIDEO}/${line.id}.mp3`, at: line.at, seconds, text: line.text, ...(line.voice ? { voice: line.voice } : {}) });
   console.log(line.id, `starts ${line.at}s, lasts ${seconds.toFixed(2)}s, ends ${(line.at + seconds).toFixed(2)}s`);
 }
 mkdirSync('src/voice', { recursive: true });

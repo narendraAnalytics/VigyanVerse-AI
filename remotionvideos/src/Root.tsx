@@ -4,12 +4,14 @@ import { ClayVideo, type ClayProps } from './ClayVideo';
 import { ohmStyle, SOUND_CUES as OHM_SOUNDS } from './styles/ohm.js';
 import { rainbowStyle, SOUND_CUES as RAINBOW_SOUNDS } from './styles/rainbow.js';
 import { chemistryStyle, SOUND_CUES as CHEMISTRY_SOUNDS } from './styles/chemistry.js';
+import { signinStyle, SOUND_CUES as SIGNIN_SOUNDS, BEATS as SIGNIN_BEATS } from './styles/signin.js';
 import { biologyStyle, SOUND_CUES as BIOLOGY_SOUNDS, BEATS as BIOLOGY_BEATS } from './styles/biology.js';
 import { makeTimeline } from './timeline';
 import ohmVoice from './voice/ohms-law.json';
 import rainbowVoice from './voice/rainbow.json';
 import chemistryVoice from './voice/chemistry.json';
 import biologyVoice from './voice/biology.json';
+import signinVoice from './voice/signin.json';
 
 const FPS = 30;
 type Props = ClayProps & { voice: boolean; sounds: boolean };
@@ -48,6 +50,9 @@ const Chemistry = explainer(chemistryStyle, CHEMISTRY_SOUNDS as [number, string,
 // biology: the story beats already match the narration lengths, so story time is (almost) video time
 const biologyTl = makeTimeline(biologyVoice, BIOLOGY_BEATS, [0.5, 0.5, 0.5, 0.5, 1.8]);
 const Biology = explainer(biologyStyle, BIOLOGY_SOUNDS as [number, string, number][], biologyTl);
+// sign-in page: beats fitted to the four short lines, so story time is video time
+const signinTl = makeTimeline(signinVoice, SIGNIN_BEATS, [0.3, 0.05, 0.1, 1.6]);
+const SignIn = explainer(signinStyle, SIGNIN_SOUNDS as [number, string, number][], signinTl);
 const Rainbow = explainer(rainbowStyle, RAINBOW_SOUNDS as [number, string, number][], rainbowTl);
 const defaults = { previewSamples: 2, renderSamples: 32, voice: true, sounds: true };
 
@@ -62,6 +67,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Chemistry" component={Chemistry} durationInFrames={Math.ceil(chemistryTl.seconds * FPS)} fps={FPS} width={1920} height={1080} defaultProps={defaults} />
       {/* Biology overview: cell, life processes, control, reproduction and heredity, environment. Exploded View style. Biology page. */}
       <Composition id="Biology" component={Biology} durationInFrames={Math.ceil(biologyTl.seconds * FPS)} fps={FPS} width={1920} height={1080} defaultProps={defaults} />
+      {/* Sign-in page welcome: two students sign in with Google or GitHub. Spotlight Stage style. */}
+      <Composition id="SignIn" component={SignIn} durationInFrames={Math.ceil(signinTl.seconds * FPS)} fps={FPS} width={1920} height={1080} defaultProps={defaults} />
     </>
   );
 };

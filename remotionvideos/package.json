@@ -13,7 +13,8 @@
     "voice": "node scripts/voice.mjs",
     "render:rainbow": "remotion render Rainbow out/rainbow-720p.mp4 --scale=0.6666666666666666 --crf=26",
     "render:chemistry": "remotion render Chemistry out/chemistry-720p.mp4 --scale=0.6666666666666666 --crf=26 --props={\"previewSamples\":2,\"renderSamples\":24,\"voice\":true,\"sounds\":true}",
-    "render:biology": "remotion render Biology out/biology-720p.mp4 --scale=0.6666666666666666 --crf=26 --props={\"previewSamples\":2,\"renderSamples\":24,\"voice\":true,\"sounds\":true}"
+    "render:biology": "remotion render Biology out/biology-720p.mp4 --scale=0.6666666666666666 --crf=26 --props={\"previewSamples\":2,\"renderSamples\":24,\"voice\":true,\"sounds\":true}",
+    "render:signin": "remotion render SignIn out/signin-720p.mp4 --scale=0.6666666666666666 --crf=26 --props={\"previewSamples\":2,\"renderSamples\":24,\"voice\":true,\"sounds\":true}"
   },
   "repository": {},
   "license": "UNLICENSED",
