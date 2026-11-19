@@ -30,6 +30,13 @@ const VIDEOS = {
     { id: '04-carbon', at: 20.0, text: 'And carbon? Its ability to form strong bonds and long chains creates an extraordinary variety of compounds.' },
     { id: '05-end', at: 27.0, text: 'Chemistry is everywhere. Discover the science behind everything!' },
   ],
+  biology: [
+    { id: '01-life', at: 0.5, text: 'Life is an extraordinary system. Every living organism performs essential processes to survive.' },
+    { id: '02-energy', at: 10.1, text: 'Living things obtain nutrition, break down food and release energy through respiration.' },
+    { id: '03-control', at: 17.5, text: 'They sense changes around them and respond through nervous systems, hormones and plant movements.' },
+    { id: '04-heredity', at: 25.6, text: 'Through reproduction, life continues. DNA carries hereditary information from one generation to the next.' },
+    { id: '05-end', at: 35.7, text: 'And every organism depends on its environment. Life is connected. Life is extraordinary. Discover its science!' },
+  ],
 };
 const VIDEO = process.argv[2] || 'ohms-law';
 const LINES = VIDEOS[VIDEO];

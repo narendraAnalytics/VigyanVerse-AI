@@ -7,11 +7,16 @@ import { AbsoluteFill, cancelRender, continueRender, delayRender, getRemotionEnv
 import { loadFont } from '@remotion/google-fonts/Fredoka';
 import { loadFont as loadFraunces } from '@remotion/google-fonts/Fraunces';
 import { loadFont as loadInter } from '@remotion/google-fonts/Inter';
+import { loadFont as loadPlexMono } from '@remotion/google-fonts/IBMPlexMono';
+import { loadFont as loadGrotesk } from '@remotion/google-fonts/SpaceGrotesk';
 import { K } from './kit';
 
 const fredoka = loadFont('normal', { weights: ['500', '600', '700'], subsets: ['latin'] });
 const fraunces = loadFraunces('normal', { weights: ['900'], subsets: ['latin'] });
 const inter = loadInter('normal', { weights: ['600', '700'], subsets: ['latin'] });
+// the Exploded View style (biology): labels in IBM Plex Mono, headings in Space Grotesk
+const plexMono = loadPlexMono('normal', { weights: ['500', '600'], subsets: ['latin'] });
+const grotesk = loadGrotesk('normal', { weights: ['700'], subsets: ['latin'] });
 
 export type ClayProps = {
   previewSamples: number;
@@ -34,7 +39,7 @@ export const ClayVideo: React.FC<ClayProps & { clayStyle: any; storyTime?: (vide
     let S: Stage | null = null;
     let cancelled = false;
     (async () => {
-      await Promise.all([fredoka.waitUntilDone(), fraunces.waitUntilDone(), inter.waitUntilDone()]);
+      await Promise.all([fredoka.waitUntilDone(), fraunces.waitUntilDone(), inter.waitUntilDone(), plexMono.waitUntilDone(), grotesk.waitUntilDone()]);
       S = await K.run(canvasRef.current, clayStyle, { samples, width, height });
       if (cancelled) S?.renderer.dispose();
       else setStage(S);

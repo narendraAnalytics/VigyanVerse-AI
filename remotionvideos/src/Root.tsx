@@ -4,10 +4,12 @@ import { ClayVideo, type ClayProps } from './ClayVideo';
 import { ohmStyle, SOUND_CUES as OHM_SOUNDS } from './styles/ohm.js';
 import { rainbowStyle, SOUND_CUES as RAINBOW_SOUNDS } from './styles/rainbow.js';
 import { chemistryStyle, SOUND_CUES as CHEMISTRY_SOUNDS } from './styles/chemistry.js';
+import { biologyStyle, SOUND_CUES as BIOLOGY_SOUNDS, BEATS as BIOLOGY_BEATS } from './styles/biology.js';
 import { makeTimeline } from './timeline';
 import ohmVoice from './voice/ohms-law.json';
 import rainbowVoice from './voice/rainbow.json';
 import chemistryVoice from './voice/chemistry.json';
+import biologyVoice from './voice/biology.json';
 
 const FPS = 30;
 type Props = ClayProps & { voice: boolean; sounds: boolean };
@@ -43,6 +45,9 @@ const rainbowTl = makeTimeline(rainbowVoice, [0, 6, 13, 22, 29, 35], [0.5, 0.5, 
 const OhmsLaw = explainer(ohmStyle, OHM_SOUNDS as [number, string, number][], ohmTl);
 const chemistryTl = makeTimeline(chemistryVoice, [0, 7, 13, 20, 27, 30], [0.5, 0.5, 0.5, 0.5, 1.8]);
 const Chemistry = explainer(chemistryStyle, CHEMISTRY_SOUNDS as [number, string, number][], chemistryTl);
+// biology: the story beats already match the narration lengths, so story time is (almost) video time
+const biologyTl = makeTimeline(biologyVoice, BIOLOGY_BEATS, [0.5, 0.5, 0.5, 0.5, 1.8]);
+const Biology = explainer(biologyStyle, BIOLOGY_SOUNDS as [number, string, number][], biologyTl);
 const Rainbow = explainer(rainbowStyle, RAINBOW_SOUNDS as [number, string, number][], rainbowTl);
 const defaults = { previewSamples: 2, renderSamples: 32, voice: true, sounds: true };
 
@@ -55,6 +60,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Rainbow" component={Rainbow} durationInFrames={Math.ceil(rainbowTl.seconds * FPS)} fps={FPS} width={1920} height={1080} defaultProps={defaults} />
       {/* Chemistry overview: reactions, acids and bases, metals, carbon. Glass and Light style. Chemistry page. */}
       <Composition id="Chemistry" component={Chemistry} durationInFrames={Math.ceil(chemistryTl.seconds * FPS)} fps={FPS} width={1920} height={1080} defaultProps={defaults} />
+      {/* Biology overview: cell, life processes, control, reproduction and heredity, environment. Exploded View style. Biology page. */}
+      <Composition id="Biology" component={Biology} durationInFrames={Math.ceil(biologyTl.seconds * FPS)} fps={FPS} width={1920} height={1080} defaultProps={defaults} />
     </>
   );
 };

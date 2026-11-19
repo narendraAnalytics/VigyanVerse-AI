@@ -30,6 +30,14 @@ export const EXPLAINERS: Partial<Record<Subject, Explainer>> = {
     video: 'chemistry/chemistry-720p.mp4',
     poster: 'chemistry/chemistry-poster.jpg',
   },
+  biology: {
+    title: 'The science of life',
+    tab: 'The science of life',
+    chapter: 'Chapters 5 to 8 and 13',
+    seconds: 49,
+    video: 'biology/biology-720p.mp4',
+    poster: 'biology/biology-poster.jpg',
+  },
 };
 
 /** The Home page plate: the welcome video (Toy Blocks style). */

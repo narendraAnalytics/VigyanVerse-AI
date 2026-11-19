@@ -1,0 +1,36 @@
+{
+  "voice": "en-IN-NeerjaNeural",
+  "rate": 0.95,
+  "lines": [
+    {
+      "file": "voiceover/biology/01-life.mp3",
+      "at": 0.5,
+      "seconds": 8.712,
+      "text": "Life is an extraordinary system. Every living organism performs essential processes to survive."
+    },
+    {
+      "file": "voiceover/biology/02-energy.mp3",
+      "at": 10.1,
+      "seconds": 6.552,
+      "text": "Living things obtain nutrition, break down food and release energy through respiration."
+    },
+    {
+      "file": "voiceover/biology/03-control.mp3",
+      "at": 17.5,
+      "seconds": 7.272,
+      "text": "They sense changes around them and respond through nervous systems, hormones and plant movements."
+    },
+    {
+      "file": "voiceover/biology/04-heredity.mp3",
+      "at": 25.6,
+      "seconds": 9.192,
+      "text": "Through reproduction, life continues. DNA carries hereditary information from one generation to the next."
+    },
+    {
+      "file": "voiceover/biology/05-end.mp3",
+      "at": 35.7,
+      "seconds": 11.688,
+      "text": "And every organism depends on its environment. Life is connected. Life is extraordinary. Discover its science!"
+    }
+  ]
+}
