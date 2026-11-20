@@ -382,6 +382,43 @@ body {
 .nav-link:focus-visible {
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--nav-c) 55%, transparent);
 }
+/* Icon-only navbar (signed in): the section name on a small hand-written sticky note under the icon.
+   Warm paper + coloured ink per section (set by Ribbons.tsx); never white, black or blue. */
+.nav-note {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  left: 50%;
+  translate: -50% 0;
+  z-index: 60;
+  pointer-events: none;
+  white-space: nowrap;
+  padding: 0.2rem 0.7rem 0.25rem;
+  border-radius: 3px 3px 10px 3px;
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 1.02rem;
+  line-height: 1.2;
+  color: var(--note-ink);
+  background:
+    linear-gradient(transparent 92%, color-mix(in srgb, var(--note-edge) 35%, transparent) 92%) 0 0 / 100% 1.2em,
+    var(--note-paper);
+  border: 1.5px solid color-mix(in srgb, var(--note-edge) 70%, transparent);
+  box-shadow: 2px 3px 0 color-mix(in srgb, var(--note-ink) 18%, transparent), 0 8px 18px -8px color-mix(in srgb, var(--note-ink) 45%, transparent);
+}
+.nav-note::before {
+  /* a strip of tape holding the note */
+  content: ;
+  position: absolute;
+  top: -0.42rem;
+  left: 50%;
+  width: 1.9rem;
+  height: 0.6rem;
+  translate: -50% 0;
+  rotate: 3deg;
+  background: color-mix(in srgb, var(--note-edge) 45%, #f3e9d2);
+  opacity: 0.85;
+  border-radius: 1px;
+}
 .nav-link:hover .nav-anim-spin, .nav-link:focus-visible .nav-anim-spin { animation: nav-spin 0.9s cubic-bezier(0.45, 0, 0.2, 1); }
 .nav-link:hover .nav-anim-swirl, .nav-link:focus-visible .nav-anim-swirl { animation: nav-swirl 0.8s ease-in-out; transform-origin: 50% 85%; }
 .nav-link:hover .nav-anim-sway, .nav-link:focus-visible .nav-anim-sway { animation: nav-sway 0.9s ease-in-out; transform-origin: 15% 90%; }
