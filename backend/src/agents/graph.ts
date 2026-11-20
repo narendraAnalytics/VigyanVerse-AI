@@ -14,6 +14,8 @@ import type { AgentContext, AgentRun, AgentUsage, ChatFn } from './kit.ts';
 import { buildDiagram } from './diagram.ts';
 import { runMath, type MathOutput } from './math.ts';
 import { routeMessage, type RouterOutput, type Subject } from './router.ts';
+import { routeFast } from './prism-router.ts';
+import type { DecideFn } from '../shared/prism.ts';
 import { runSocratic, type SocraticOutput } from './socratic.ts';
 import { runTutor, type Citation, type Language, type TutorOutput, type Turn } from './tutor.ts';
 
@@ -30,6 +32,8 @@ export interface TurnInput {
 
 export interface TurnDeps {
   chat?: ChatFn;
+  /** Sarvam Prism decision call: when set, Prism routes first and the DeepSeek router is the backup (prism-router.ts). */
+  decide?: DecideFn;
   retrieve(input: RetrievalInput): Promise<RetrievalOutput>;
   /** Milliseconds left for this turn; each model call gets at most this (30 s function limit). */
   timeLeft(): number;
@@ -133,7 +137,13 @@ export function lastQuestion(history: readonly Turn[]): string | undefined {
 
 const route = async (s: S, config: Config): Promise<Partial<S>> => {
   const previous = lastQuestion(s.input.history);
-  const run = await routeMessage({ message: s.input.message, subjectHint: s.input.subject, previousMessage: previous }, agentCtx(config));
+  const input = { message: s.input.message, subjectHint: s.input.subject, previousMessage: previous };
+  const decide = depsOf(config).decide;
+  if (decide) {
+    const fast = await routeFast(input, decide, agentCtx(config));
+    return { routed: fast.output, usage: fast.runs.flatMap((r) => usageOf('router', r)) };
+  }
+  const run = await routeMessage(input, agentCtx(config));
   return { routed: run.output, usage: usageOf('router', run) };
 };
 

@@ -14,6 +14,7 @@ import { retrieveContext } from '../../agents/retrieval.ts';
 import { SUBJECTS } from '../../agents/router.ts';
 import type { Turn } from '../../agents/tutor.ts';
 import { authenticate, json, preflight, withCors } from '../../shared/http.ts';
+import { prismDecide } from '../../shared/prism.ts';
 import { chargeFailed, chargeTask, refundCharge } from '../../shared/wallet.ts';
 import { CONVERSATION_COLUMNS, findOrCreateImageConversation, type ConversationRow } from '../../shared/image-conversation.ts';
 
@@ -114,7 +115,8 @@ export default withCors(async function (req: Request): Promise<Response> {
   try {
     turn = await runTurn(
       { message: body.message, mode, subject: body.subject ?? (conversation.subject_code as (typeof SUBJECTS)[number] | null) ?? undefined, history, socratic },
-      { retrieve: (input) => retrieveContext(user.client, input), timeLeft: () => TURN_BUDGET_MS - (Date.now() - started) },
+      // decide: Sarvam Prism routes first (fast); the DeepSeek router is the backup (agents/prism-router.ts).
+      { retrieve: (input) => retrieveContext(user.client, input), timeLeft: () => TURN_BUDGET_MS - (Date.now() - started), decide: prismDecide },
     );
   } catch (e) {
     console.error(`${FUNCTION_SLUG}: turn failed: ${e instanceof Error ? e.message.slice(0, 200) : 'unknown'}`);
