@@ -56,7 +56,14 @@ export interface ChatMessage {
 /** Mark answers whose Bindu lesson is saved (after a conversation loads, or after a lesson is bought). */
 export function markLessonsSaved(ids: Set<string>) {
   if (!ids.size) return;
-  chat.set((p) => ({ messages: p.messages.map((m) => (ids.has(m.id) ? { ...m, lessonSaved: true } : m)) }));
+  chat.set((p) => {
+    const hit = p.messages.some((m) => ids.has(m.id));
+    const conv = hit && p.conversationId && !p.lessonConversations.includes(p.conversationId) ? [p.conversationId] : [];
+    return {
+      messages: p.messages.map((m) => (ids.has(m.id) ? { ...m, lessonSaved: true } : m)),
+      lessonConversations: conv.length ? [...p.lessonConversations, ...conv] : p.lessonConversations,
+    };
+  });
 }
 const markSavedLessonsIn = (rows: { id: string; role: string }[]) =>
   void savedLessonIds(rows.filter((r) => r.role === 'tutor').map((r) => r.id)).then(markLessonsSaved);
@@ -71,6 +78,8 @@ export const chat = createStore({
   sending: false,
   socraticOpen: false,
   conversations: [] as Conversation[],
+  /** Conversations with at least one saved "Bindu explains" lesson (whiteboard icon in the list). */
+  lessonConversations: [] as string[],
   /** When set, questions go to this uploaded document instead of the tutor. */
   notesDocId: null as string | null,
   draft: '',
@@ -91,6 +100,12 @@ export async function loadConversations() {
   const { data } = await insforge().database.from('conversations')
     .select('id, title, mode, updated_at, document_id').order('updated_at', { ascending: false }).limit(20);
   chat.set({ conversations: (data as Conversation[] | null) ?? [] });
+  // Which of them have a saved Bindu lesson (lesson_audio -> messages.conversation_id; RLS: own rows only).
+  const lessons = await insforge().database.from('lesson_audio').select('messages(conversation_id)').limit(500);
+  if (lessons.error) return;
+  const rows = (lessons.data as { messages: { conversation_id: string } | { conversation_id: string }[] | null }[] | null) ?? [];
+  const ids = rows.flatMap((r) => (Array.isArray(r.messages) ? r.messages : r.messages ? [r.messages] : []).map((x) => x.conversation_id));
+  chat.set({ lessonConversations: [...new Set(ids)] });
 }
 
 export async function openConversation(c: Conversation) {

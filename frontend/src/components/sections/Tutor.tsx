@@ -5,7 +5,7 @@ import { useDropzone } from 'react-dropzone';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { clsx } from 'clsx';
-import { BookMarked, Check, FileImage, ImageIcon, Lightbulb, Loader2, Lock, Mic, Plus, Presentation, SendHorizontal, Square, Trash2, Volume2, X } from 'lucide-react';
+import { BookMarked, Check, FileImage, ImageIcon, Lightbulb, Loader2, Lock, MessageCircle, Mic, Plus, Presentation, SendHorizontal, Square, Trash2, Volume2, X } from 'lucide-react';
 import { useStore } from '@/lib/store';
 import { useAuth } from '@/lib/auth';
 import { useConsent } from '@/lib/consent';
@@ -98,7 +98,10 @@ function History() {
           {s.conversations.slice(0, 6).map((c) => (
             <li key={c.id}>
               <button type="button" onClick={() => open(c)} className={clsx('flex w-full items-baseline gap-2 py-2 text-left hover:text-emerald', c.id === s.conversationId && 'text-emerald')}>
-                {(c.document_id || isImageTitle(c.title)) && <ImageIcon aria-label="Solved from an image" className="h-4 w-4 shrink-0 self-center text-image" />}
+                {/* chat type: image chat, chat with a saved Bindu whiteboard lesson, or a plain text chat */}
+                {c.document_id || isImageTitle(c.title) ? <ImageIcon aria-label="Solved from an image" className="h-4 w-4 shrink-0 self-center text-image" />
+                  : s.lessonConversations.includes(c.id) ? <Presentation aria-label="Has a Bindu whiteboard lesson" className="h-4 w-4 shrink-0 self-center text-emerald" />
+                  : <MessageCircle aria-label="Text chat" className="h-4 w-4 shrink-0 self-center text-ink-faint" />}
                 <span className="min-w-0 flex-1 truncate">{isImageTitle(c.title) ? c.title!.slice(IMAGE_TITLE_PREFIX.length) : c.title ?? 'Untitled'}</span>
                 <span className="shrink-0 text-xs italic text-ink-faint">{c.mode === 'socratic' ? 'hints' : ''} {new Date(c.updated_at).toLocaleDateString()}</span>
               </button>
