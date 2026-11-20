@@ -133,11 +133,14 @@ export default withCors(async function (req: Request): Promise<Response> {
     db.from('messages').insert([
       { conversation_id: conversation.id, role: 'student', content: body.message, citations: [], meta: {} },
       { conversation_id: conversation.id, role: 'tutor', content: turn.reply.slice(0, 6000), agent: turn.agent, citations: turn.citations, meta: { ...turn.meta, label: turn.label, related: turn.related } },
-    ]),
+    ]).select('id, role'),
     db.from('conversations').update({ mode, language: turn.language, socratic_topic: turn.socratic.topic, socratic_hints: turn.socratic.hints }).eq('id', conversation.id),
     usageRows.length ? db.from('model_usage').insert(usageRows) : Promise.resolve({ error: null }),
   ]);
   const saveErrors = writes.filter((w) => w.error).length;
+  // The saved tutor answer's id: the app links a "Bindu explains" lesson to it (voice-speak `lesson.messageId`).
+  const savedRows = (writes[0].data ?? []) as { id: number; role: string }[];
+  const messageId = savedRows.find((r) => r.role === 'tutor')?.id ?? null;
   // Logs carry no conversation text (child-data rule): counts and ids only.
   if (saveErrors) console.error(`${FUNCTION_SLUG}: ${saveErrors} save(s) failed for conversation ${conversation.id}`);
 
@@ -153,6 +156,7 @@ export default withCors(async function (req: Request): Promise<Response> {
     mode,
     socraticOpen: turn.socratic.topic !== null,
     saved: saveErrors === 0,
+    messageId,
     balancePaise: charge.balancePaise,
   });
 });

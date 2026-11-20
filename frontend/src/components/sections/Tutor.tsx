@@ -9,13 +9,14 @@ import { BookMarked, Check, FileImage, ImageIcon, Lightbulb, Loader2, Lock, Mic,
 import { useStore } from '@/lib/store';
 import { useAuth } from '@/lib/auth';
 import { useConsent } from '@/lib/consent';
-import { chat, displayTitle, IMAGE_TITLE_PREFIX, isImageTitle, loadConversations, newConversation, openConversation, openImage, send, splitImageQuestion, type ChatMessage } from '@/lib/tutor-store';
+import { chat, markLessonsSaved, displayTitle, IMAGE_TITLE_PREFIX, isImageTitle, loadConversations, newConversation, openConversation, openImage, send, splitImageQuestion, type ChatMessage } from '@/lib/tutor-store';
 import { docName, docs, KIND_LABEL, loadDocs, photoUrl, removeDoc, uploadAndRead, type DocKind, type UploadedDoc } from '@/lib/docs-store';
 import { tutorIntent } from '@/lib/intents';
 import { ApiError, type Subject } from '@/lib/api';
 import { fetchLessonAudio, speakText, startRecording, stopSpeaking, type Recording } from '@/lib/voice';
 import { WhiteboardLesson } from '@/components/tutor/WhiteboardLesson';
 import { lessonGreeting, lessonTitle, markWelcomed, topicName } from '@/lib/board-script';
+import { loadSavedLesson, savedMessageId } from '@/lib/lessons';
 import { usePageLayout, usePreview } from '@/components/book/page-context';
 import { Bindu, Speech } from '@/components/mascot/Bindu';
 import { StudentGate } from './Gate';
@@ -458,25 +459,48 @@ function Bubble({ m, language, image = false, question }: { m: ChatMessage; lang
   const listenLocked = isLocked(walletState, 'voice_read') && speaking === 'idle';
   // English tutor / maths answers only (not Socratic hints, not answers read from a photo).
   const canExplain = !m.error && !image && !telugu && m.source !== 'notes' && m.agent !== 'socratic' && m.text.trim().length > 20;
-  const explainLocked = isLocked(walletState, 'bindu_explain') && !lesson;
+  // Paid once per answer: a saved lesson (or one bought on this page) plays again for free.
+  const watchFree = Boolean(lesson || m.lessonSaved);
+  const explainLocked = isLocked(walletState, 'bindu_explain') && !watchFree;
+
+  const openSaved = async (): Promise<boolean> => {
+    const saved = await loadSavedLesson(m.id);
+    if (!saved) return false;
+    setLesson(saved); setLessonOpen(true);
+    return true;
+  };
 
   const explain = async () => {
     if (lessonOpen || lessonLoading) return;
-    if (lesson) { stopSpeaking(); setSpeaking('idle'); setLessonOpen(true); return; }
-    if (!hasCredits('bindu_explain', 'watch Bindu explain this on the whiteboard')) return;
     stopSpeaking(); setSpeaking('idle');
-    setLessonLoading(true); setLessonError(null);
+    if (lesson) { setLessonOpen(true); return; }
+    setLessonError(null);
+    if (m.lessonSaved) {
+      setLessonLoading(true);
+      try {
+        if (!(await openSaved())) setLessonError('Could not load your saved lesson. Check your connection and try again.');
+      } finally {
+        setLessonLoading(false);
+      }
+      return;
+    }
+    if (!hasCredits('bindu_explain', 'watch Bindu explain this on the whiteboard')) return;
+    setLessonLoading(true);
     try {
       // Heading = the textbook topic the answer came from; Bindu's welcome is spoken first (same request, one charge).
       const c = m.citations?.[0];
       const title = lessonTitle(c ?? null, question);
       const greeting = lessonGreeting(title, Boolean(c && (topicName(c.section) || c.chapterTitle)));
+      const messageId = savedMessageId(m.id);
       const audio = await fetchLessonAudio(`${greeting}
-${m.text}`, 'en');
+${m.text}`, 'en', messageId ? { messageId, title, greeting } : undefined);
       markWelcomed();
-      setLesson({ ...audio, title, greeting });
+      setLesson({ src: audio.src, spokenText: audio.spokenText, title, greeting });
       setLessonOpen(true);
+      if (audio.saved) markLessonsSaved(new Set([m.id]));
     } catch (e) {
+      // Already paid and saved (e.g. on another device): play the saved one, no charge.
+      if (e instanceof ApiError && e.code === 'lesson_saved' && (await openSaved())) { markLessonsSaved(new Set([m.id])); return; }
       setLessonError(e instanceof ApiError ? e.message : 'Bindu could not start the lesson. Try again.');
     } finally {
       setLessonLoading(false);
@@ -540,7 +564,7 @@ ${m.text}`, 'en');
               className="flex items-center gap-1 rounded-full border border-emerald/40 bg-emerald/5 px-2 py-0.5 text-xs font-semibold text-emerald hover:bg-emerald/10 disabled:opacity-50"
               aria-label={explainLocked ? 'Bindu explains on the whiteboard (locked: no credits)' : 'Bindu explains this answer on the whiteboard'}>
               {lessonLoading ? <Loader2 aria-hidden className="h-3.5 w-3.5 animate-spin" /> : explainLocked ? <Lock aria-hidden className="h-3.5 w-3.5 text-pencil" /> : <Presentation aria-hidden className="h-3.5 w-3.5" />}
-              {lessonLoading ? 'Getting the board ready…' : <>Bindu explains {lesson ? <span className="font-normal opacity-70">(watch again, free)</span> : <span className="font-normal opacity-70">({rupees(priceOf('bindu_explain'))})</span>}</>}
+              {lessonLoading ? 'Getting the board ready…' : <>Bindu explains {watchFree ? <span className="font-normal opacity-70">(watch again, free)</span> : <span className="font-normal opacity-70">({rupees(priceOf('bindu_explain'))})</span>}</>}
             </button>
           )}
           {speakError && <span className="text-xs text-pencil">{speakError}</span>}

@@ -5,6 +5,7 @@ import { api, ApiError, type Citation, type Diagram, type Lang, type Subject } f
 import { insforge } from './insforge';
 import { docName, docs } from './docs-store';
 import { hasCredits } from './wallet-store';
+import { savedLessonIds } from './lessons';
 
 /** Solving needs working, which a photo does not contain: these go to the tutor (and its maths agent) with the photo's text. */
 const SOLVE_INTENT = /\b(solve|solution|solutions|work it out|calculate|find the answer|answer (this|the|these) questions?|step by step)\b/i;
@@ -48,7 +49,17 @@ export interface ChatMessage {
   diagram?: Diagram;
   /** The photo did not contain the answer: offer to send this question, with the photo's text, to the tutor. */
   askTutor?: string;
+  /** A "Bindu explains" lesson for this answer is saved (watch again for free). */
+  lessonSaved?: boolean;
 }
+
+/** Mark answers whose Bindu lesson is saved (after a conversation loads, or after a lesson is bought). */
+export function markLessonsSaved(ids: Set<string>) {
+  if (!ids.size) return;
+  chat.set((p) => ({ messages: p.messages.map((m) => (ids.has(m.id) ? { ...m, lessonSaved: true } : m)) }));
+}
+const markSavedLessonsIn = (rows: { id: string; role: string }[]) =>
+  void savedLessonIds(rows.filter((r) => r.role === 'tutor').map((r) => r.id)).then(markLessonsSaved);
 
 export interface Conversation { id: string; title: string | null; mode: 'tutor' | 'socratic'; updated_at: string; document_id: string | null }
 
@@ -99,6 +110,7 @@ export async function openConversation(c: Conversation) {
     convError: rows.length === 0 ? 'This conversation has no saved messages.' : null,
     messages: rows.map(toMessage),
   });
+  markSavedLessonsIn(rows.map(toMessage));
 }
 
 type MessageRow = { id: number | string; role: 'student' | 'tutor'; content: string; citations: Citation[] | null; meta: { label?: string | null; diagram?: Diagram } | null; agent: string | null };
@@ -128,6 +140,7 @@ export async function openImage(docId: string) {
     convError: error ? 'Could not load the earlier answers for this image. You can still ask new questions.' : null,
     messages: ((data as MessageRow[] | null) ?? []).map(toMessage),
   });
+  markSavedLessonsIn(((data as MessageRow[] | null) ?? []).map(toMessage));
 }
 export function newConversation() {
   chat.set({ conversationId: null, messages: [], socraticOpen: false, notesDocId: null, loadingConv: false, convError: null, openingId: null, reading: null });
@@ -166,7 +179,7 @@ export async function send(text: string, language: Lang, opts: { newTopic?: bool
       chat.set((p) => ({
         conversationId: r.conversationId,
         socraticOpen: r.socraticOpen,
-        messages: [...p.messages, { id: localId(), role: 'tutor', text: r.reply, citations: r.citations, label: r.label ?? (tutorMessage ? 'Solved by the tutor, using the question in your image' : null), agent: r.agent, source: 'tutor', diagram: r.meta?.diagram as Diagram | undefined }],
+        messages: [...p.messages, { id: r.messageId ? String(r.messageId) : localId(), role: 'tutor', text: r.reply, citations: r.citations, label: r.label ?? (tutorMessage ? 'Solved by the tutor, using the question in your image' : null), agent: r.agent, source: 'tutor', diagram: r.meta?.diagram as Diagram | undefined }],
       }));
       if (!s.conversationId) void loadConversations();
     }

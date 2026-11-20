@@ -52,6 +52,8 @@ export interface TutorReply {
   mode: 'tutor' | 'socratic';
   socraticOpen: boolean;
   saved: boolean;
+  /** The saved tutor answer's id (null if saving failed): a "Bindu explains" lesson is linked to it. */
+  messageId?: number | null;
 }
 
 export interface QuizQuestion {
@@ -222,8 +224,8 @@ export const api = {
     call<DocAnswer>('document-ask', body),
   voiceTranscribe: (body: { audioBase64: string; mime: string; seconds: number; language: Lang | 'auto' }) =>
     call<{ transcript: string; languageCode: string | null }>('voice-transcribe', body),
-  voiceSpeak: (body: { text: string; language: Lang; purpose?: 'listen' | 'bindu' }) =>
-    call<{ audioBase64: string; mime: string; chars: number; spokenText: string }>('voice-speak', body),
+  voiceSpeak: (body: { text: string; language: Lang; purpose?: 'listen' | 'bindu'; lesson?: { messageId: number; title: string; greeting: string } }) =>
+    call<{ audioBase64: string; mime: string; chars: number; spokenText: string; saved?: boolean }>('voice-speak', body),
 };
 
 // ---------------------------------------------------------------------------
