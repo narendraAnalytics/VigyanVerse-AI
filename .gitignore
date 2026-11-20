@@ -42,3 +42,6 @@ Thumbs.db
 # --- Licensed source material (NCERT etc.): never commit ---
 textbooks/
 *.pdf
+
+# Owner payment QR (personal, never commit)
+QrCode.jpeg
