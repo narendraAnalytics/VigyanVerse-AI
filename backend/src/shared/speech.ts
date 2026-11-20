@@ -19,6 +19,13 @@ export const MAX_AUDIO_BYTES = 1_000_000;
 /** One spoken tutor answer. 600 chars is about Rs 0.60: answers are short by the owner's rule. */
 export const MAX_SPEAK_CHARS = 600;
 export const MAX_TRANSCRIPT_CHARS = 600;
+/** "Bindu explains" (Rs 2): Bindu's welcome + the whole answer, at most about Rs 0.90 of voice. */
+export const MAX_LESSON_SPEAK_CHARS = 900;
+
+/** Which price a voice-speak request pays: Listen and "Bindu explains" use the same voice, own prices. */
+export function speakTask(purpose: 'listen' | 'bindu'): 'voice_read' | 'bindu_explain' {
+  return purpose === 'bindu' ? 'bindu_explain' : 'voice_read';
+}
 
 export type SpeechLanguage = 'en' | 'te' | 'auto';
 

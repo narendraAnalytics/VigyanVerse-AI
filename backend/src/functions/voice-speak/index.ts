@@ -1,5 +1,8 @@
 // Edge Function: text to speech (Phase 6d). Bulbul v4 Flash.
-// POST { text, language: 'en' | 'te' }  (text <= 600 characters: one short tutor answer)
+// POST { text, language: 'en' | 'te', purpose?: 'listen' | 'bindu' }
+//   listen (default): Listen, charges voice_read, spoken text <= 600 characters (one short answer).
+//   bindu: "Bindu explains" (the app writes the answer on a whiteboard while this audio plays), charges
+//   bindu_explain, spoken text <= 900 characters (Bindu's welcome + the answer). Same voice and limits.
 //
 //   authenticate -> zod -> consent (ai_tutoring) -> limit (reserve_ai_call) -> Bulbul
 //   -> { audioBase64, mime: 'audio/mpeg' }.
@@ -8,7 +11,7 @@
 import { z } from 'zod';
 import { authenticate, json, preflight, withCors } from '../../shared/http.ts';
 import { chargeFailed, chargeTask, refundCharge } from '../../shared/wallet.ts';
-import { MAX_SPEAK_CHARS, speak, speakableText, TTS_MODEL } from '../../shared/speech.ts';
+import { MAX_LESSON_SPEAK_CHARS, MAX_SPEAK_CHARS, speak, speakableText, speakTask, TTS_MODEL } from '../../shared/speech.ts';
 
 const FUNCTION_SLUG = 'voice-speak';
 const MAX_PER_MINUTE = 6;
@@ -18,6 +21,7 @@ const MAX_COST_INR_PER_DAY = 10;
 const Body = z.object({
   text: z.string().trim().min(2).max(2000),
   language: z.enum(['en', 'te']),
+  purpose: z.enum(['listen', 'bindu']).default('listen'),
 });
 
 export default withCors(async function (req: Request): Promise<Response> {
@@ -37,7 +41,7 @@ export default withCors(async function (req: Request): Promise<Response> {
   if (consent.error) return json({ error: 'consent_check_failed' }, 500);
   if (consent.data !== true) return json({ error: 'consent_required' }, 403);
 
-  const text = speakableText(body.text, MAX_SPEAK_CHARS);
+  const text = speakableText(body.text, body.purpose === 'bindu' ? MAX_LESSON_SPEAK_CHARS : MAX_SPEAK_CHARS);
   if (text.length < 2) return json({ error: 'Invalid request', message: 'nothing to speak' }, 400);
 
   const reserved = await db.rpc('reserve_ai_call', {
@@ -48,8 +52,8 @@ export default withCors(async function (req: Request): Promise<Response> {
   if (reserved.data === 'slow_down' || reserved.data === 'daily_limit') return json({ error: reserved.data }, 429);
   if (reserved.data !== 'ok') return json({ error: 'usage_failed' }, 500);
 
-  // Pay (Rs 0.50) before the speech model; refunded if it fails.
-  const charge = await chargeTask(db, 'voice_read');
+  // Pay (task_prices: voice_read or bindu_explain) before the speech model; refunded if it fails.
+  const charge = await chargeTask(db, speakTask(body.purpose));
   if (!charge.ok) return chargeFailed(charge);
 
   let result: Awaited<ReturnType<typeof speak>>;

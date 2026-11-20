@@ -5,7 +5,7 @@ import { useDropzone } from 'react-dropzone';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { clsx } from 'clsx';
-import { BookMarked, Check, FileImage, ImageIcon, Lightbulb, Loader2, Lock, Mic, Plus, SendHorizontal, Square, Trash2, Volume2, X } from 'lucide-react';
+import { BookMarked, Check, FileImage, ImageIcon, Lightbulb, Loader2, Lock, Mic, Plus, Presentation, SendHorizontal, Square, Trash2, Volume2, X } from 'lucide-react';
 import { useStore } from '@/lib/store';
 import { useAuth } from '@/lib/auth';
 import { useConsent } from '@/lib/consent';
@@ -13,7 +13,9 @@ import { chat, displayTitle, IMAGE_TITLE_PREFIX, isImageTitle, loadConversations
 import { docName, docs, KIND_LABEL, loadDocs, photoUrl, removeDoc, uploadAndRead, type DocKind, type UploadedDoc } from '@/lib/docs-store';
 import { tutorIntent } from '@/lib/intents';
 import { ApiError, type Subject } from '@/lib/api';
-import { speakText, startRecording, stopSpeaking, type Recording } from '@/lib/voice';
+import { fetchLessonAudio, speakText, startRecording, stopSpeaking, type Recording } from '@/lib/voice';
+import { WhiteboardLesson } from '@/components/tutor/WhiteboardLesson';
+import { lessonGreeting, lessonTitle, markWelcomed, topicName } from '@/lib/board-script';
 import { usePageLayout, usePreview } from '@/components/book/page-context';
 import { Bindu, Speech } from '@/components/mascot/Bindu';
 import { StudentGate } from './Gate';
@@ -313,10 +315,10 @@ function ChatPanel() {
             <h2 className="font-display text-xl leading-tight">{displayTitle(s.reading.title) ?? 'Conversation'}</h2>
           </div>
         )}
-        {s.messages.map((m) => (
+        {s.messages.map((m, i) => (
           <div key={m.id}>
             {s.reading && <p className="mb-1 text-xs font-semibold text-ink-faint">{m.role === 'student' ? 'Your question' : 'Tutor’s answer'}</p>}
-            <Bubble m={m} language={language} image={imageChat} />
+            <Bubble m={m} language={language} image={imageChat} question={i > 0 && s.messages[i - 1].role === 'student' ? splitImageQuestion(s.messages[i - 1].text)[0] : undefined} />
           </div>
         ))}
         {s.sending && (
@@ -435,11 +437,51 @@ function keepLineBreaks(text: string): string {
   return text.replace(/([^\n])\n(?!\n)/g, '$1  \n');
 }
 
-function Bubble({ m, language, image = false }: { m: ChatMessage; language: 'en' | 'te'; image?: boolean }) {
+/** "Ch 12 · page 205" for the whiteboard's last line (from the retrieved chunk, never from model text). */
+function boardCitation(c: ChatMessage['citations']): string | null {
+  const first = c?.[0];
+  if (!first) return null;
+  const pages = first.pageStart === first.pageEnd ? `page ${first.pageStart}` : `pages ${first.pageStart}-${first.pageEnd}`;
+  return first.chapterNumber ? `NCERT Ch ${first.chapterNumber} · ${pages}` : `NCERT ${pages}`;
+}
+
+function Bubble({ m, language, image = false, question }: { m: ChatMessage; language: 'en' | 'te'; image?: boolean; question?: string }) {
   const [speaking, setSpeaking] = useState<'idle' | 'loading' | 'playing'>('idle');
   const [speakError, setSpeakError] = useState<string | null>(null);
+  // "Bindu explains": the audio is paid once; closing and reopening the board (or replaying) is free.
+  const [lesson, setLesson] = useState<{ src: string; spokenText: string; title: string; greeting: string } | null>(null);
+  const [lessonOpen, setLessonOpen] = useState(false);
+  const [lessonLoading, setLessonLoading] = useState(false);
+  const [lessonError, setLessonError] = useState<string | null>(null);
   const telugu = /[ఀ-౿]/.test(m.text);
-  const listenLocked = isLocked(useStore(wallet), 'voice_read') && speaking === 'idle';
+  const walletState = useStore(wallet);
+  const listenLocked = isLocked(walletState, 'voice_read') && speaking === 'idle';
+  // English tutor / maths answers only (not Socratic hints, not answers read from a photo).
+  const canExplain = !m.error && !image && !telugu && m.source !== 'notes' && m.agent !== 'socratic' && m.text.trim().length > 20;
+  const explainLocked = isLocked(walletState, 'bindu_explain') && !lesson;
+
+  const explain = async () => {
+    if (lessonOpen || lessonLoading) return;
+    if (lesson) { stopSpeaking(); setSpeaking('idle'); setLessonOpen(true); return; }
+    if (!hasCredits('bindu_explain', 'watch Bindu explain this on the whiteboard')) return;
+    stopSpeaking(); setSpeaking('idle');
+    setLessonLoading(true); setLessonError(null);
+    try {
+      // Heading = the textbook topic the answer came from; Bindu's welcome is spoken first (same request, one charge).
+      const c = m.citations?.[0];
+      const title = lessonTitle(c ?? null, question);
+      const greeting = lessonGreeting(title, Boolean(c && (topicName(c.section) || c.chapterTitle)));
+      const audio = await fetchLessonAudio(`${greeting}
+${m.text}`, 'en');
+      markWelcomed();
+      setLesson({ ...audio, title, greeting });
+      setLessonOpen(true);
+    } catch (e) {
+      setLessonError(e instanceof ApiError ? e.message : 'Bindu could not start the lesson. Try again.');
+    } finally {
+      setLessonLoading(false);
+    }
+  };
 
   const listen = async () => {
     if (speaking === 'playing') { stopSpeaking(); setSpeaking('idle'); return; }
@@ -488,13 +530,25 @@ function Bubble({ m, language, image = false }: { m: ChatMessage; language: 'en'
         <button type="button" onClick={() => void send(m.askTutor!, language, { viaTutor: true })} className="ghost-button mt-2 !border-image/40 !px-3 !py-1 text-sm !text-image hover:!bg-image/10">Ask the tutor to solve it from my image</button>
       )}
       {!m.error && (
-        <div className="mt-1.5 flex items-center gap-2">
+        <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1.5">
           <button type="button" onClick={listen} className="flex items-center gap-1 text-xs text-ink-faint hover:text-emerald" aria-label={speaking === 'playing' ? 'Stop reading aloud' : listenLocked ? 'Read this answer aloud (locked: no credits)' : 'Read this answer aloud'}>
             {speaking === 'loading' ? <Loader2 aria-hidden className="h-3.5 w-3.5 animate-spin" /> : speaking === 'playing' ? <Square aria-hidden className="h-3.5 w-3.5" /> : listenLocked ? <Lock aria-hidden className="h-3.5 w-3.5 text-pencil" /> : <Volume2 aria-hidden className="h-3.5 w-3.5" />}
             {speaking === 'playing' ? 'Stop' : <>Listen <span className="opacity-70">({rupees(priceOf('voice_read'))})</span></>}
           </button>
+          {canExplain && (
+            <button type="button" onClick={explain} disabled={lessonOpen}
+              className="flex items-center gap-1 rounded-full border border-emerald/40 bg-emerald/5 px-2 py-0.5 text-xs font-semibold text-emerald hover:bg-emerald/10 disabled:opacity-50"
+              aria-label={explainLocked ? 'Bindu explains on the whiteboard (locked: no credits)' : 'Bindu explains this answer on the whiteboard'}>
+              {lessonLoading ? <Loader2 aria-hidden className="h-3.5 w-3.5 animate-spin" /> : explainLocked ? <Lock aria-hidden className="h-3.5 w-3.5 text-pencil" /> : <Presentation aria-hidden className="h-3.5 w-3.5" />}
+              {lessonLoading ? 'Getting the board ready…' : <>Bindu explains {lesson ? <span className="font-normal opacity-70">(watch again, free)</span> : <span className="font-normal opacity-70">({rupees(priceOf('bindu_explain'))})</span>}</>}
+            </button>
+          )}
           {speakError && <span className="text-xs text-pencil">{speakError}</span>}
+          {lessonError && <span className="text-xs text-pencil">{lessonError}</span>}
         </div>
+      )}
+      {lesson && lessonOpen && (
+        <WhiteboardLesson src={lesson.src} answer={m.text} spokenText={lesson.spokenText} title={lesson.title} greeting={lesson.greeting} citation={boardCitation(m.citations)} onClose={() => setLessonOpen(false)} />
       )}
     </TutorTurn>
   );

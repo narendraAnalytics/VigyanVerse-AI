@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import {
-  decodeBase64, speak, speakableText, sttCostInr, transcribe, ttsCostInr, MAX_SPEAK_CHARS, STT_MODEL, TTS_MODEL, TTS_SPEAKER, type FetchFn,
+  decodeBase64, speak, speakableText, speakTask, sttCostInr, transcribe, ttsCostInr, MAX_SPEAK_CHARS, STT_MODEL, TTS_MODEL, TTS_SPEAKER, type FetchFn,
 } from '../src/shared/speech.ts';
 
 beforeAll(() => { process.env.SARVAM_API_KEY = 'test-key'; });
@@ -132,5 +132,12 @@ describe('keyterms', () => {
     expect((seen[1].init.body as FormData).get('keyterms')).not.toBeNull();
     await transcribe(new Uint8Array([1]), 'audio/wav', 'en', 2, { fetchFn });
     expect((seen[2].init.body as FormData).get('keyterms')).toBeNull();
+  });
+});
+
+describe('speakTask (price per purpose)', () => {
+  it('charges Listen as voice_read and "Bindu explains" as bindu_explain', () => {
+    expect(speakTask('listen')).toBe('voice_read');
+    expect(speakTask('bindu')).toBe('bindu_explain');
   });
 });

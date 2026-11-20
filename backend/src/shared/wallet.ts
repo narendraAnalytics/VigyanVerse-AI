@@ -11,7 +11,7 @@ import { requireEnv } from './env.ts';
 import { json } from './http.ts';
 
 /** Task codes in public.task_prices (prices live in the database, not here). */
-export type PaidTask = 'tutor_turn' | 'photo_read' | 'photo_question' | 'voice_input' | 'voice_read' | 'quiz_batch';
+export type PaidTask = 'tutor_turn' | 'photo_read' | 'photo_question' | 'voice_input' | 'voice_read' | 'bindu_explain' | 'quiz_batch';
 
 export type Charge =
   | { ok: true; chargeId: number | null; balancePaise: number; pricePaise: number }

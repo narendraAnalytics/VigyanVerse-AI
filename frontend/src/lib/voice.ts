@@ -63,3 +63,13 @@ export function stopSpeaking() {
   playing?.pause();
   playing = null;
 }
+
+/**
+ * "Bindu explains": fetch the spoken answer (charged as bindu_explain) WITHOUT playing it, so the
+ * whiteboard can start the audio after its title is written and replay it for free.
+ */
+export async function fetchLessonAudio(text: string, language: Lang): Promise<{ src: string; spokenText: string }> {
+  stopSpeaking();
+  const r = await api.voiceSpeak({ text, language, purpose: 'bindu' });
+  return { src: `data:${r.mime};base64,${r.audioBase64}`, spokenText: r.spokenText };
+}
