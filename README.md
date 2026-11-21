@@ -35,7 +35,8 @@ for now; Telugu support stays in the backend and returns later.
 | Credits wallet + Razorpay top-ups (₹1 = 1 credit, pay per AI task, refunds on failure) | ✅ Built and security-checked; test mode |
 | Logged-in end-to-end tests on the live site (top-up, tutor, quiz, photo upload, voice) | ✅ Passed, owner tested from a fresh account 2026-11-17 |
 | Credit checks before every paid action (locks, low-credit notes, top-up prompt) | ✅ Tested live 2026-11-17 |
-| Razorpay live mode | ⏳ After the DPDP legal review (minors now pay) |
+| Policy pages (About, Contact, Pricing, Terms, Privacy, Refunds) | ✅ Live on vigyanverseai.live (2026-11-21) |
+| Razorpay live mode | ⏳ In progress: website review by Razorpay (2026-11-21), then live keys + live webhook (owner decided to go live before the DPDP review; the review is still advised before a public launch) |
 | AP SSC curriculum, Telugu chapter titles | ⏳ Waiting for official sources |
 | NCERT usage permission | ⏳ Launch blocker |
 
@@ -107,7 +108,9 @@ Paid functions (`tutor-chat`, `quiz-generate`, `document-process`, `document-ask
 | Tutor, Socratic or maths question | ₹0.50 |
 | Question about a photo | ₹0.50 |
 | Read a photo of notes | ₹1.50 |
-| Speak a question / hear an answer read aloud | ₹0.50 each |
+| Speak a question | ₹0.50 |
+| Hear an answer read aloud | ₹1 |
+| "Bindu explains": an answer as a voiced whiteboard lesson (watch again free) | ₹3 |
 | Quiz (per 5 questions, checking included) | ₹2 |
 | Answer checking, progress, revision, learning advice | free |
 
@@ -117,6 +120,10 @@ Flow: `start_topup` (amount from the pack table) → InsForge creates the Razorp
 Checkout in the app → Razorpay webhook to InsForge → a database trigger credits the wallet once per
 payment, only if the paid amount equals the pack price and the payment environment is the current one
 (`wallet_settings`). Students can read but never write their wallet, history or top-ups.
+
+Sign-in is required to pay (email + password, Google or GitHub, then the bookplate): credits belong
+to one student account. Razorpay keys stay in InsForge only; test and live keys are separate pairs.
+End-to-end test top-up re-checked on vigyanverseai.live on 2026-11-21 (₹10 credited by the webhook).
 
 The header shows the balance as a pill (green from ₹50, amber ₹10–₹49, red "Low" under ₹10, red at
 ₹0); clicking it opens the top-up window, and a hand-written note on hover says roughly how many
@@ -258,13 +265,13 @@ database). Mastery is tracked per chapter for now; topic-level tracking needs an
 5. ✅ **Learning intelligence:** per-chapter mastery, spaced repetition, next activity, advice
 6. ✅ **Documents & voice:** reading uploaded images, Telugu / English speech in and out
 7. ✅ **Frontend:** full-screen 3D open-textbook site with page-turn navigation, landing page, sign-up and
-   sign-in (email code, Google, GitHub), student bookplate, tutor chat (explain and hint modes), quiz,
+   sign-in (email + password with a 6-digit email check at sign-up, Google, GitHub), student bookplate, tutor chat (explain and hint modes), quiz,
    progress page, photo upload, voice; deployed on Vercel
 8. ✅ **Credits & payments:** rupee wallet, Razorpay top-ups (test mode), pay per AI task with refunds
 9. ✅ **Real-user testing:** logged-in end-to-end tests on the live site (top-up, tutor, quiz, photo, voice),
    credit checks and low-credit messages (2026-11-17)
 10. ✅ **Production:** frontend on Vercel, backend on InsForge, payments wired end to end (Razorpay test mode)
-11. ⏳ **Public launch:** Razorpay live mode, NCERT usage permission, legal review of student consent and
+11. ⏳ **Public launch:** Razorpay live mode (website under Razorpay review 2026-11-21), NCERT usage permission, legal review of student consent and
     payments by minors (see Privacy), native Telugu review, AP SSC chapters, pilot study
 
 Learning-outcome claims will come only from a consented pre-test / post-test pilot, never from
@@ -280,5 +287,6 @@ sees card numbers or UPI PINs, and stores only the order / payment ids and the c
 **Open item:** since 2026-11-15 a student does not need a parent's permission to use the AI features
 (owner decision). India's DPDP Act requires verifiable parental consent for under-18s, so a legal
 review is required before public launch. The parent tables and the old rule can be restored with one
-migration. Students now also pay for AI tasks (test mode only so far), so the same review must cover
-payments by minors before Razorpay live mode is switched on.
+migration. Students now also pay for AI tasks, so the same review should cover payments by minors.
+The owner decided on 2026-11-21 to switch Razorpay to live mode before that review; it is still
+advised before a public launch.
