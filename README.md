@@ -2,7 +2,7 @@
 
 **A multilingual AI learning platform for Class 10 Science, in English and Telugu.**
 
-**Live:** [vigyanverseai.vercel.app](https://vigyanverseai.vercel.app) (frontend on Vercel, backend on InsForge; payments in Razorpay test mode)
+**Live:** [vigyanverseai.live](https://vigyanverseai.live) (fallback: [vigyanverseai.vercel.app](https://vigyanverseai.vercel.app); frontend on Vercel, backend on InsForge; payments in Razorpay test mode)
 
 VigyanVerse AI helps Class 10 students understand Physics, Chemistry and Biology, not just memorise
 answers. It combines a textbook-grounded AI tutor, Socratic questioning, quizzes with verified
@@ -16,7 +16,7 @@ is built for CBSE and Andhra Pradesh SSC students.
 ## Status
 
 **In production.** The backend runs on InsForge and the frontend (Next.js, in `frontend/`) on Vercel at
-[https://vigyanverseai.vercel.app](https://vigyanverseai.vercel.app). Students pay per AI task from a rupee
+[https://vigyanverseai.live](https://vigyanverseai.live). Students pay per AI task from a rupee
 credits wallet topped up through Razorpay (test mode). The owner tested every logged-in flow on the live
 site on 2026-11-17 (top-up, tutor, quiz, photo questions, voice). The student-facing app is English only
 for now; Telugu support stays in the backend and returns later.
@@ -31,7 +31,7 @@ for now; Telugu support stays in the backend and returns later.
 | Document reading (Gemma 4) and questions about an upload | ✅ Live-evaluated |
 | Voice: Telugu / English speech in (Saaras v4) and out (Bulbul v4 Flash) | ✅ Round trip checked |
 | Identity, roles, RLS; parent linking and consent tables | ✅ Applied and security-checked. Students now use their own account: `has_consent()` is true for a student's own account (migration 20) |
-| Frontend: 3D open-textbook site (Home, Physics, Chemistry, Biology, AI Tutor, My Learning, Wallet, sign-in, bookplate) | ✅ Deployed on Vercel: [vigyanverseai.vercel.app](https://vigyanverseai.vercel.app) |
+| Frontend: 3D open-textbook site (Home, Physics, Chemistry, Biology, AI Tutor, My Learning, Wallet, sign-in, bookplate) | ✅ Deployed on Vercel: [vigyanverseai.live](https://vigyanverseai.live) |
 | Credits wallet + Razorpay top-ups (₹1 = 1 credit, pay per AI task, refunds on failure) | ✅ Built and security-checked; test mode |
 | Logged-in end-to-end tests on the live site (top-up, tutor, quiz, photo upload, voice) | ✅ Passed, owner tested from a fresh account 2026-11-17 |
 | Credit checks before every paid action (locks, low-credit notes, top-up prompt) | ✅ Tested live 2026-11-17 |
@@ -217,7 +217,7 @@ turns the page. AI Tutor and My Learning appear in the navbar only after sign-in
 
 | Part | Where | Notes |
 |---|---|---|
-| Frontend | Vercel: [vigyanverseai.vercel.app](https://vigyanverseai.vercel.app) | Root directory `frontend`, framework Next.js, deployed manually |
+| Frontend | Vercel: [vigyanverseai.live](https://vigyanverseai.live) (custom domain from Hostinger; www and vigyanverseai.vercel.app redirect / still work) | Root directory `frontend`, framework Next.js, deployed manually |
 | Backend | InsForge (`https://r2f4a6w6.ap-southeast.insforge.app`) | Migrations with `npm run db:up`, functions with `npm run fn:deploy -- <slug>` |
 | Payments | Razorpay test mode via InsForge | Webhook: `https://r2f4a6w6.ap-southeast.insforge.app/api/webhooks/razorpay/test` (events `payment.captured`, `payment.failed`, `order.paid`) |
 
@@ -227,13 +227,13 @@ turns the page. AI Tutor and My Learning appear in the navbar only after sign-in
 |---|---|
 | `NEXT_PUBLIC_INSFORGE_URL` | the InsForge API URL |
 | `NEXT_PUBLIC_INSFORGE_ANON_KEY` | the InsForge anon key |
-| `NEXT_PUBLIC_APP_URL` | `https://vigyanverseai.vercel.app` (used for sign-up, reset and OAuth redirects) |
+| `NEXT_PUBLIC_APP_URL` | `https://vigyanverseai.live` (used for sign-up, reset and OAuth redirects) |
 
 Razorpay keys, the Sarvam key and the InsForge API key live only in InsForge, never in Vercel.
 `NEXT_PUBLIC_` values are fixed at build time: redeploy after changing them.
 
 **Backend settings that name the site:** the function secret `ALLOWED_ORIGIN` is a comma-separated
-list (`http://localhost:3000,https://vigyanverseai.vercel.app`), and `backend/insforge.toml`
+list (`http://localhost:3000,https://vigyanverseai.vercel.app,https://vigyanverseai.live,https://www.vigyanverseai.live`), and `backend/insforge.toml`
 `allowed_redirect_urls` lists `/api/auth/callback`, `/sign-in` and `/reset-password` for both sites
 (apply with `npx -y @insforge/cli config apply`). A new domain needs both updated.
 

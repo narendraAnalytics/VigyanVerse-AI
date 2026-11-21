@@ -1,5 +1,5 @@
 [auth]
-allowed_redirect_urls = ["http://localhost:3000/api/auth/callback", "http://localhost:3000/reset-password", "http://localhost:3000/sign-in", "https://vigyanverseai.vercel.app/api/auth/callback", "https://vigyanverseai.vercel.app/reset-password", "https://vigyanverseai.vercel.app/sign-in"]
+allowed_redirect_urls = ["http://localhost:3000/api/auth/callback", "http://localhost:3000/reset-password", "http://localhost:3000/sign-in", "https://vigyanverseai.vercel.app/api/auth/callback", "https://vigyanverseai.vercel.app/reset-password", "https://vigyanverseai.vercel.app/sign-in", "https://vigyanverseai.live/api/auth/callback", "https://vigyanverseai.live/reset-password", "https://vigyanverseai.live/sign-in"]
 require_email_verification = true
 verify_email_method = "code"
 reset_password_method = "code"
