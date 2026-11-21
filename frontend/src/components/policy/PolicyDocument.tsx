@@ -76,7 +76,7 @@ function ContactCard() {
     <div className="deco-frame max-w-[62ch] bg-[#fbf6ea] px-5 py-3">
       <p className={line}>
         <Store aria-hidden className={icon} />
-        <span><span className="block text-sm text-ink-faint">Business</span>{BUSINESS.legalName} (owner: {BUSINESS.owner})</span>
+        <span><span className="block text-sm text-ink-faint">Business</span>{BUSINESS.legalName}</span>
       </p>
       <p className={line}>
         <Mail aria-hidden className={icon} />

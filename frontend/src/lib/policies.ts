@@ -16,8 +16,8 @@ export const BUSINESS = {
   owner: 'Narendra Kumar',
   email: 'narendra.adp@gmail.com',
   /** Shown on the Contact page when set (owner to provide). */
-  phone: null as string | null,
-  address: null as string | null,
+  phone: '+91 90322 68522' as string | null,
+  address: 'Palakollu, West Godavari district, Andhra Pradesh 534260, India' as string | null,
   website: 'https://vigyanverseai.live',
   jurisdiction: 'Andhra Pradesh',
   replyTime: 'within 2 working days',
@@ -68,7 +68,7 @@ export const PRICE_LINES: { task: string; what: string; paise: number; after?: s
   { task: 'voice_read', what: 'Hearing an answer read aloud (Listen)', paise: 100 },
   { task: 'photo_read', what: 'Reading an uploaded photo of notes or a question', paise: 150 },
   { task: 'quiz_batch', what: 'A practice quiz, per 5 questions', paise: 200 },
-  { task: 'bindu_explain', what: '"Bindu explains": an answer as a spoken whiteboard lesson', paise: 300, after: ' once; replays are free' },
+  { task: 'bindu_explain', what: '"Bindu explains": an answer as a spoken whiteboard lesson', paise: 300, after: ' (replays free)' },
 ];
 
 export function packRows(packs: { price_paise: number; credit_paise: number }[]): [string, string][] {
