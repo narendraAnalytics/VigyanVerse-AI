@@ -11,6 +11,8 @@ import { AccountArt, SignInForm, SignUpForm, ResetForm } from './Account';
 import { BookplateLeft, BookplateRight } from './Onboarding';
 import { ParentLeft, ParentRight } from './Parent';
 import { WalletLeft, WalletRight } from '@/components/wallet/Wallet';
+import { PolicyIndex, PolicyPage } from './Policies';
+import type { PolicyId } from '@/lib/policies';
 
 interface FrameOpts { ruled?: boolean; margin?: boolean; runningHead?: ReactNode; folio?: ReactNode; className?: string; backdrop?: ReactNode }
 interface Spread {
@@ -23,6 +25,14 @@ interface Spread {
 }
 
 const head = (l: string, r: string) => (<><span>{l}</span><span>{r}</span></>);
+
+/** Back matter: the policy index on the left, the policy itself on the right (first on phones). */
+const policy = (id: PolicyId, title: string): Spread => ({
+  left: () => <PolicyIndex current={id} />, right: () => <PolicyPage id={id} />,
+  leftFrame: { runningHead: head('Back matter', 'The fine print'), ruled: true },
+  rightFrame: { runningHead: head('The fine print', title), ruled: true, margin: true },
+  rightFirst: true,
+});
 
 const SPREADS: Record<SectionId, Spread> = {
   home: {
@@ -78,6 +88,12 @@ const SPREADS: Record<SectionId, Spread> = {
     leftFrame: { runningHead: head('Back matter', 'Your wallet'), ruled: true },
     rightFrame: { runningHead: head('Your wallet', 'Top up'), ruled: true, margin: true },
   },
+  about: policy('about', 'About us'),
+  contact: policy('contact', 'Contact us'),
+  pricing: policy('pricing', 'Pricing'),
+  terms: policy('terms', 'Terms'),
+  privacy: policy('privacy', 'Privacy'),
+  refunds: policy('refunds', 'Refunds'),
   parent: {
     left: () => <ParentLeft />, right: () => <ParentRight />,
     leftFrame: { runningHead: head('For parents', 'Permission slip') },

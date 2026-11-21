@@ -4,6 +4,7 @@
 // changing route turns the page in the direction of the book's reading order. Links, browser
 // back/forward, direct URLs, arrow keys and swipes all go through the URL, so they all turn pages.
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import { clsx } from 'clsx';
@@ -16,6 +17,7 @@ import { LayoutProvider, PreviewProvider } from './page-context';
 import { SectionPage } from '@/components/sections/registry';
 import { Header } from './Header';
 import { AddMoneySheet, TopUpPrompt } from '@/components/wallet/Wallet';
+import { BUSINESS, POLICIES } from '@/lib/policies';
 
 interface Turn {
   from: SectionId;
@@ -198,7 +200,8 @@ export function BookShell() {
   const blankPage = <div className="paper grain absolute inset-0" />;
 
   const sectionCount = MAIN_SECTIONS.length;
-  const readIndex = Math.max(0, sectionById(current).order);
+  // back matter (wallet, policies) sits after the last main section
+  const readIndex = Math.min(sectionCount - 1, Math.max(0, sectionById(current).order));
   const leftStack = 3 + readIndex * 1.5;
   const rightStack = 3 + (sectionCount - 1 - readIndex) * 1.5;
 
@@ -295,6 +298,7 @@ export function BookShell() {
               </div>
             )}
           </div>
+          <SiteFooter current={current} />
         </div>
         <p className="sr-only" aria-live="polite">{announce}</p>
       </div>
@@ -302,6 +306,28 @@ export function BookShell() {
       <AddMoneySheet />
       <TopUpPrompt />
     </LayoutProvider>
+  );
+}
+
+/** The site footer, stamped on the desk under the book: the policy pages, on every page. */
+function SiteFooter({ current }: { current: SectionId }) {
+  return (
+    <footer className="relative z-20 flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-0.5 px-4 py-1.5 text-[0.72rem] leading-tight text-gold sm:gap-x-4 sm:text-[0.78rem]">
+      <nav aria-label="The fine print" className="flex flex-wrap items-center justify-center gap-x-3 gap-y-0.5 sm:gap-x-4">
+        {POLICIES.map((p) => (
+          <Link
+            key={p.id}
+            href={p.path}
+            aria-current={current === p.id ? "page" : undefined}
+            className={clsx("underline-offset-4 hover:text-paper hover:underline", current === p.id && "text-paper underline decoration-gold")}
+          >
+            {p.short}
+          </Link>
+        ))}
+      </nav>
+      <span aria-hidden className="hidden h-3 w-px bg-gold/40 sm:block" />
+      <span className="text-gold/75">© 2026 {BUSINESS.legalName}</span>
+    </footer>
   );
 }
 
