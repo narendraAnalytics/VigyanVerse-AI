@@ -5,6 +5,7 @@ import type { SectionId } from '@/lib/sections';
 import { PageFrame } from '@/components/book/page-context';
 import { HomeLeft, HomeRight } from './Home';
 import { SubjectLeft, SubjectRight } from './Subject';
+import { StoryLeft, StoryRight } from './Story';
 import { ImageBackdrop, TutorLeft, TutorRight, TutorRightHead } from './Tutor';
 import { LearningLeft, LearningRight } from './Learning';
 import { AccountArt, SignInForm, SignUpForm, ResetForm } from './Account';
@@ -55,15 +56,20 @@ const SPREADS: Record<SectionId, Spread> = {
     leftFrame: { runningHead: head('Part III', 'Biology'), folio: '5' },
     rightFrame: { runningHead: head('Biology', 'Chapters 5 to 8 and 13'), ruled: true, margin: true, folio: '6' },
   },
+  story: {
+    left: () => <StoryLeft />, right: () => <StoryRight />,
+    leftFrame: { runningHead: head('Part IV', 'Our Story'), folio: '7' },
+    rightFrame: { runningHead: head('Our Story', 'What’s next'), ruled: true, margin: true, folio: '8' },
+  },
   tutor: {
     left: () => <TutorLeft />, right: () => <TutorRight />,
-    leftFrame: { runningHead: head('Part IV', 'The tutor’s desk') },
+    leftFrame: { runningHead: head('Part V', 'The tutor’s desk') },
     rightFrame: { runningHead: <TutorRightHead />, backdrop: <ImageBackdrop />, className: 'flex flex-col !pb-3' },
     rightFirst: true,
   },
   learning: {
     left: () => <LearningLeft />, right: () => <LearningRight />,
-    leftFrame: { runningHead: head('Part V', 'My Learning'), ruled: true },
+    leftFrame: { runningHead: head('Part VI', 'My Learning'), ruled: true },
     rightFrame: { runningHead: head('Progress', 'Chapter by chapter'), ruled: true, margin: true },
   },
   'sign-in': {

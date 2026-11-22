@@ -30,8 +30,9 @@ const CONTENTS = [
   { n: 'I', href: '/physics', title: 'Physics', page: 1, about: 'Light, the human eye, electricity and magnetism' },
   { n: 'II', href: '/chemistry', title: 'Chemistry', page: 3, about: 'Reactions and equations, acids and bases, metals, carbon' },
   { n: 'III', href: '/biology', title: 'Biology', page: 5, about: 'Life processes, control, reproduction, heredity, our environment' },
-  { n: 'IV', href: '/tutor', title: 'AI Tutor', page: 7, about: 'Type or speak a question, or upload a photo of your notes' },
-  { n: 'V', href: '/learning', title: 'My Learning', page: 9, about: 'Practice quizzes, chapter mastery and what to revise next' },
+  { n: 'IV', href: '/story', title: 'Our Story', page: 7, about: 'The idea behind VigyanVerse AI, how it helps, and what comes next' },
+  { n: 'V', href: '/tutor', title: 'AI Tutor', page: 9, about: 'Type or speak a question, or upload a photo of your notes' },
+  { n: 'VI', href: '/learning', title: 'My Learning', page: 11, about: 'Practice quizzes, chapter mastery and what to revise next' },
 ];
 
 const PROMISES = [

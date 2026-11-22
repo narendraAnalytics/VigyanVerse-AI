@@ -25,6 +25,7 @@
   --biology: #3d7a45;
   --tutor: #1f5f5b;
   --learning: #9b3a2a;
+  --story: #8a5a1c;
   /* "Ask about an image" mode: indigo ink on blue graph paper, so it never looks like a tutor chat */
   --image: #3a4a8f;
   --image-paper: #e6ebf2;
@@ -54,6 +55,7 @@
   --color-biology: var(--biology);
   --color-tutor: var(--tutor);
   --color-learning: var(--learning);
+  --color-story: var(--story);
   --color-image: var(--image);
   --color-image-paper: var(--image-paper);
   --color-desk: var(--desk);
@@ -425,10 +427,17 @@ body {
 .nav-link:hover .nav-anim-flip, .nav-link:focus-visible .nav-anim-flip { animation: nav-flip 0.7s ease-in-out; }
 .nav-link:hover .nav-anim-hop, .nav-link:focus-visible .nav-anim-hop { animation: nav-hop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
 .nav-link:hover .nav-anim-write, .nav-link:focus-visible .nav-anim-write { animation: nav-write 0.8s ease-in-out; transform-origin: 20% 80%; }
+.nav-link:hover .nav-anim-glow, .nav-link:focus-visible .nav-anim-glow { animation: nav-glow 0.9s ease-in-out; }
 
 }
 
 @keyframes nav-spin { to { transform: rotate(360deg); } }
+/* the bulb lights up: a small pop and a warm glow */
+@keyframes nav-glow {
+  0%, 100% { transform: scale(1); filter: none; }
+  35% { transform: scale(1.18); filter: drop-shadow(0 0 4px #f2c14e); }
+  70% { transform: scale(0.96); filter: drop-shadow(0 0 2px #f2c14e); }
+}
 @keyframes nav-swirl {
   0%, 100% { transform: rotate(0); }
   25% { transform: rotate(-14deg); }

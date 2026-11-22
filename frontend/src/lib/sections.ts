@@ -3,7 +3,7 @@
 // (account, bookplate, parent permission slip) reached by links.
 
 export type SectionId =
-  | 'home' | 'physics' | 'chemistry' | 'biology' | 'tutor' | 'learning'
+  | 'home' | 'physics' | 'chemistry' | 'biology' | 'story' | 'tutor' | 'learning'
   | 'sign-in' | 'sign-up' | 'reset-password' | 'onboarding' | 'parent' | 'wallet'
   | 'about' | 'contact' | 'pricing' | 'terms' | 'privacy' | 'refunds';
 
@@ -27,17 +27,18 @@ export const SECTIONS: Section[] = [
   { id: 'physics', path: '/physics', label: 'Physics', order: 1, color: 'var(--physics)', main: true },
   { id: 'chemistry', path: '/chemistry', label: 'Chemistry', order: 2, color: 'var(--chemistry)', main: true },
   { id: 'biology', path: '/biology', label: 'Biology', order: 3, color: 'var(--biology)', main: true },
-  { id: 'tutor', path: '/tutor', label: 'AI Tutor', order: 4, color: 'var(--tutor)', main: true },
-  { id: 'learning', path: '/learning', label: 'My Learning', order: 5, color: 'var(--learning)', main: true },
+  { id: 'story', path: '/story', label: 'Our Story', order: 4, color: 'var(--story)', main: true },
+  { id: 'tutor', path: '/tutor', label: 'AI Tutor', order: 5, color: 'var(--tutor)', main: true },
+  { id: 'learning', path: '/learning', label: 'My Learning', order: 6, color: 'var(--learning)', main: true },
   // Back matter: reached from the balance pill and the account menu (signed in).
-  { id: 'wallet', path: '/wallet', label: 'Credits', order: 6, color: 'var(--emerald)', main: false },
+  { id: 'wallet', path: '/wallet', label: 'Credits', order: 7, color: 'var(--emerald)', main: false },
   // The fine print (policy pages), linked from the footer under the book on every page.
-  { id: 'about', path: '/about', label: 'About us', order: 7, color: 'var(--gold-deep)', main: false },
-  { id: 'contact', path: '/contact', label: 'Contact us', order: 8, color: 'var(--gold-deep)', main: false },
-  { id: 'pricing', path: '/pricing', label: 'Pricing', order: 9, color: 'var(--gold-deep)', main: false },
-  { id: 'terms', path: '/terms', label: 'Terms and Conditions', order: 10, color: 'var(--gold-deep)', main: false },
-  { id: 'privacy', path: '/privacy', label: 'Privacy Policy', order: 11, color: 'var(--gold-deep)', main: false },
-  { id: 'refunds', path: '/refunds', label: 'Cancellation and Refund Policy', order: 12, color: 'var(--gold-deep)', main: false },
+  { id: 'about', path: '/about', label: 'About us', order: 8, color: 'var(--gold-deep)', main: false },
+  { id: 'contact', path: '/contact', label: 'Contact us', order: 9, color: 'var(--gold-deep)', main: false },
+  { id: 'pricing', path: '/pricing', label: 'Pricing', order: 10, color: 'var(--gold-deep)', main: false },
+  { id: 'terms', path: '/terms', label: 'Terms and Conditions', order: 11, color: 'var(--gold-deep)', main: false },
+  { id: 'privacy', path: '/privacy', label: 'Privacy Policy', order: 12, color: 'var(--gold-deep)', main: false },
+  { id: 'refunds', path: '/refunds', label: 'Cancellation and Refund Policy', order: 13, color: 'var(--gold-deep)', main: false },
 ];
 
 export const MAIN_SECTIONS = SECTIONS.filter((s) => s.main);

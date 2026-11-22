@@ -4,7 +4,7 @@
 // subject colour; the open section's stamp is filled in and a coloured ink stroke under it slides
 // to the next section when the page turns. A faint pencil-grey wash follows the pointer between
 // links (no coloured link backgrounds), and each icon has its own small hover animation
-// (atom spins, flask swirls, leaf sways...). Motion respects prefers-reduced-motion.
+// (atom spins, flask swirls, leaf sways, bulb lights up...). Motion respects prefers-reduced-motion.
 // Each item is an ordinary link, so history and direct URLs work.
 // Signed in (more sections, labels were cut off): icons only; hovering or focusing an icon shows its name on a
 // small hand-written sticky note (Kalam), each in its own warm colour (owner 2026-11-20: no white / black / blue).
@@ -12,7 +12,7 @@ import Link from 'next/link';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { clsx } from 'clsx';
 import { AnimatePresence, MotionConfig, motion } from 'motion/react';
-import { Atom, BookOpen, FlaskConical, Leaf, MessageCircleQuestion, NotebookPen } from 'lucide-react';
+import { Atom, BookOpen, FlaskConical, Leaf, Lightbulb, MessageCircleQuestion, NotebookPen } from 'lucide-react';
 import { visibleSections, type SectionId } from '@/lib/sections';
 import { useAuth } from '@/lib/auth';
 
@@ -21,6 +21,7 @@ const ICONS: Partial<Record<SectionId, { Icon: typeof Atom; anim: string }>> = {
   physics: { Icon: Atom, anim: 'nav-anim-spin' },
   chemistry: { Icon: FlaskConical, anim: 'nav-anim-swirl' },
   biology: { Icon: Leaf, anim: 'nav-anim-sway' },
+  story: { Icon: Lightbulb, anim: 'nav-anim-glow' },
   tutor: { Icon: MessageCircleQuestion, anim: 'nav-anim-hop' },
   learning: { Icon: NotebookPen, anim: 'nav-anim-write' },
 };
@@ -31,6 +32,7 @@ const NOTES: Partial<Record<SectionId, { paper: string; ink: string; edge: strin
   physics: { paper: '#fdd3b0', ink: '#7a3812', edge: '#e0915a' },
   chemistry: { paper: '#f8c4b4', ink: '#8a2c1e', edge: '#d9786a' },
   biology: { paper: '#d3e9c3', ink: '#2f5a24', edge: '#86b46c' },
+  story: { paper: '#f3dcb8', ink: '#6a4316', edge: '#c99a5a' },
   tutor: { paper: '#f6c8d5', ink: '#7a2347', edge: '#d97c9c' },
   learning: { paper: '#e6d1ef', ink: '#5b2a70', edge: '#b48ac8' },
 };
