@@ -30,7 +30,7 @@ export const SECTIONS: Section[] = [
   { id: 'tutor', path: '/tutor', label: 'AI Tutor', order: 4, color: 'var(--tutor)', main: true },
   { id: 'learning', path: '/learning', label: 'My Learning', order: 5, color: 'var(--learning)', main: true },
   // Back matter: reached from the balance pill and the account menu (signed in).
-  { id: 'wallet', path: '/wallet', label: 'Wallet', order: 6, color: 'var(--emerald)', main: false },
+  { id: 'wallet', path: '/wallet', label: 'Credits', order: 6, color: 'var(--emerald)', main: false },
   // The fine print (policy pages), linked from the footer under the book on every page.
   { id: 'about', path: '/about', label: 'About us', order: 7, color: 'var(--gold-deep)', main: false },
   { id: 'contact', path: '/contact', label: 'Contact us', order: 8, color: 'var(--gold-deep)', main: false },

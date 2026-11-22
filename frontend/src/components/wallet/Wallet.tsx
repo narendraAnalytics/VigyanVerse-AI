@@ -124,7 +124,7 @@ function PackCard({ pack, selected, onPick }: { pack: Pack; selected: boolean; o
       )}
       <span className="font-display text-3xl leading-none text-ink">{rupees(pack.price_paise)}</span>
       <span className="mt-1 text-sm text-ink-soft">
-        {bonus > 0 ? <>you get <b className="text-emerald">{rupees(pack.credit_paise)}</b></> : 'in your wallet'}
+        {bonus > 0 ? <>you get <b className="text-emerald">{rupees(pack.credit_paise)}</b></> : 'in credits'}
       </span>
       {bonus > 0 && (
         <span className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-gold/25 px-2 py-0.5 text-xs font-semibold text-gold-deep">
@@ -210,7 +210,7 @@ export function AddMoneySheet() {
           </div>
         ) : (
           <>
-            <p className="font-hand text-lg text-gold-deep">Your wallet</p>
+            <p className="font-hand text-lg text-gold-deep">Your credits</p>
             <h2 id="add-money-h" className="font-display text-3xl leading-tight">Top up credits</h2>
             <p className="mt-1 text-sm text-ink-soft">
               Your credits: <b className={clsx('tabular-nums', TONE[toneOf(balance)].text)}>{rupees(balance)}</b>
@@ -260,7 +260,7 @@ export function AddMoneySheet() {
             <details className="mt-5 rounded-md border border-ink/10 bg-white/30 px-3 py-2">
               <summary className="cursor-pointer text-sm font-semibold text-ink-soft">What things cost</summary>
               <div className="mt-1"><PriceList compact /></div>
-              <p className="mt-2 text-xs text-ink-faint">If the AI cannot answer, the money goes back to your wallet automatically.</p>
+              <p className="mt-2 text-xs text-ink-faint">If the AI cannot answer, the credits go back to your account automatically.</p>
             </details>
           </>
         )}
@@ -293,8 +293,8 @@ export function WalletLeft() {
   useEffect(() => { if (!preview && user) void loadActivity(); }, [preview, user]);
 
   return (
-    <StudentGate what="your wallet">
-      <h1 className="font-display text-4xl leading-tight">Your wallet</h1>
+    <StudentGate what="your credits">
+      <h1 className="font-display text-4xl leading-tight">Your credits</h1>
       {w.balancePaise === null ? (
         <div className="mt-5 h-36 animate-pulse rounded-xl bg-ink/10" />
       ) : (
@@ -351,7 +351,7 @@ export function WalletRight() {
   useEffect(() => { if (!preview) void loadCatalogue(); }, [preview]);
 
   return (
-    <StudentGate what="your wallet" quiet>
+    <StudentGate what="your credits" quiet>
       <h2 className="font-display text-3xl">Top up</h2>
       <p className="mt-1 text-ink-soft">Pick an amount. Bigger packs come with a little extra.</p>
       <div className="mt-4 grid grid-cols-2 gap-3">
@@ -361,7 +361,7 @@ export function WalletRight() {
       <h2 className="mt-8 font-display text-2xl">What things cost</h2>
       <div className="mt-2"><PriceList /></div>
       <ul className="mt-5 space-y-2 text-sm text-ink-soft">
-        <li className="flex gap-2"><RotateCcw aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-emerald" /> If the AI cannot answer, the money goes back to your wallet automatically.</li>
+        <li className="flex gap-2"><RotateCcw aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-emerald" /> If the AI cannot answer, the credits go back to your account automatically.</li>
         <li className="flex gap-2"><ShieldCheck aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-emerald" /> Payments are handled by Razorpay (UPI, cards, net banking).</li>
       </ul>
       <p className="mt-6 text-sm"><Link href="/learning" className="underline decoration-gold underline-offset-4 hover:text-emerald">Back to My Learning</Link></p>

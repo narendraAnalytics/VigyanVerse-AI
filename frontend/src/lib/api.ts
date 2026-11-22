@@ -181,7 +181,7 @@ const MESSAGES: Record<string, string> = {
   REQUEST_TIMEOUT: 'This took too long. Try again.',
   NETWORK_ERROR: 'You seem to be offline. Check your connection.',
   no_credits: 'You have no credits left. Top up to keep learning.',
-  wallet_failed: 'Could not check your wallet. Try again in a moment.',
+  wallet_failed: 'Could not check your credits. Try again in a moment.',
 };
 
 export function friendly(code: string, fallback = 'Something went wrong. Try again.'): string {

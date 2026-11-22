@@ -68,7 +68,7 @@ export function Header({ current }: { current: SectionId }) {
                     <ScrollText aria-hidden className="h-4 w-4" /> Your bookplate
                   </Link>
                   <Link role="menuitem" href="/wallet" onClick={() => setOpen(false)} className="flex items-center gap-2 px-4 py-2.5 hover:bg-gold/15">
-                    <Wallet aria-hidden className="h-4 w-4" /> Wallet and payments
+                    <Wallet aria-hidden className="h-4 w-4" /> Credits and payments
                   </Link>
                   </>
                 )}

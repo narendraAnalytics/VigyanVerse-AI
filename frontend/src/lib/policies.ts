@@ -7,7 +7,7 @@
 // stored, photos stay until the student deletes them, money is credited only by the
 // verified Razorpay webhook. Change a policy here and bump UPDATED.
 
-export const UPDATED = '21 November 2026';
+export const UPDATED = '22 November 2026';
 
 export const BUSINESS = {
   brand: 'VigyanVerse AI',
@@ -46,7 +46,7 @@ export interface PolicyDoc {
   sections: PolicySection[];
 }
 
-/** ₹12.50, ₹110, ₹0.50 (same format as the wallet). */
+/** ₹12.50, ₹110, ₹0.50 (same format as the credits page). */
 export function inr(paise: number): string {
   const r = paise / 100;
   return `₹${Number.isInteger(r) ? r.toLocaleString('en-IN') : r.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -111,7 +111,7 @@ export const POLICIES: PolicyDoc[] = [
       {
         heading: 'How we charge',
         blocks: [
-          { p: 'There is no subscription. You top up a small prepaid balance (from ₹10) and each AI task uses a few rupees of it. The full price list is on the Pricing page.' },
+          { p: 'There is no subscription. You buy a small pack of credits (from ₹10) and each AI task uses a few of them. The full price list is on the Pricing page.' },
         ],
       },
       {
@@ -156,20 +156,20 @@ export const POLICIES: PolicyDoc[] = [
     short: 'Pricing',
     summary: 'Top-up packs and what each AI task costs, in rupees.',
     intro:
-      'VigyanVerse AI is pay-as-you-go. You add credits to your wallet, and each AI task uses some of them. ' +
+      'VigyanVerse AI is pay-as-you-go. You buy credits, and each AI task uses some of them. ' +
       '1 credit = ₹1. There is no subscription and nothing renews automatically.',
     sections: [
       {
         heading: 'Top-up packs',
         blocks: [
-          { rows: packRows(PACKS_SNAPSHOT), caption: 'You pay the first amount; your wallet gets the second.', kind: 'packs' },
-          { p: 'Payments are made through Razorpay (UPI, debit and credit cards, net banking and wallets). The amount shown is the amount you pay: there are no extra charges at checkout.' },
+          { rows: packRows(PACKS_SNAPSHOT), caption: 'You pay the first amount; your account gets the second in credits.', kind: 'packs' },
+          { p: 'Payments are made through Razorpay (UPI, debit and credit cards and net banking). The amount shown is the amount you pay: there are no extra charges at checkout.' },
         ],
       },
       {
         heading: 'What each task costs',
         blocks: [
-          { rows: priceRows(), caption: 'Taken from your wallet only when the task runs.', kind: 'prices' },
+          { rows: priceRows(), caption: 'Taken from your credits only when the task runs.', kind: 'prices' },
           { p: 'Always free: creating an account, the subject pages and explainer videos, checking your quiz answers, your progress and your revision list.' },
         ],
       },
@@ -178,9 +178,10 @@ export const POLICIES: PolicyDoc[] = [
         blocks: [
           { list: [
             'The app checks your balance before every paid task, so you are never charged without enough credits.',
-            'If a task fails on our side, its credits go back to your wallet automatically.',
+            'If a task fails on our side, its credits go back to your account automatically.',
             'Credits do not expire while your account is open.',
-            'Credits are added to your wallet as soon as Razorpay confirms the payment, usually within a minute. Nothing is shipped: everything is delivered online, in your account.',
+            'Credits are used only on VigyanVerse AI: they cannot be withdrawn, sent to anyone else or exchanged for cash (see the Refund Policy for refunds of unused top-ups).',
+            'Credits are added to your account as soon as Razorpay confirms the payment, usually within a minute. Nothing is shipped: everything is delivered online, in your account.',
           ] },
         ],
       },
@@ -215,8 +216,9 @@ export const POLICIES: PolicyDoc[] = [
         heading: '3. Credits and payments',
         blocks: [
           { list: [
-            'Credits are a prepaid balance in Indian rupees (1 credit = ₹1), bought through Razorpay. Prices are on the Pricing page and may change; a change never affects credits you already have.',
-            'Credits can only be used for tasks on VigyanVerse AI. They cannot be transferred to another account or exchanged for cash, except as described in the Cancellation and Refund Policy.',
+            'Credits are prepaid units for using VigyanVerse AI’s own AI tasks, priced in Indian rupees (1 credit = ₹1) and bought through Razorpay. Prices are on the Pricing page and may change; a change never affects credits you already have.',
+            'Credits can only be used for tasks on VigyanVerse AI. They cannot be transferred to another account or person, withdrawn, exchanged for cash, or used to pay for anything else, except a refund as described in the Cancellation and Refund Policy.',
+            'Credits are not a wallet, bank account or stored money, and they earn no interest.',
             'We do not see or store your card, UPI or bank details: Razorpay handles them.',
           ] },
         ],
@@ -278,7 +280,7 @@ export const POLICIES: PolicyDoc[] = [
             'Learning: your questions, the answers, quizzes and results, and your chapter progress, so you can come back to them.',
             'Photos you upload, and the text read from them, until you delete them (deleting a photo also deletes its chat).',
             '"Bindu explains" lessons you buy: the spoken audio of that answer, so you can replay it.',
-            'Wallet: your balance, top-ups and what each task cost. Razorpay handles card, UPI and bank details; we never see them.',
+            'Credits: your balance, top-ups and what each task cost. Razorpay handles card, UPI and bank details; we never see them.',
           ] },
           { p: 'Voice questions are turned into text and the recording is thrown away straight away: we never store your voice.' },
         ],
@@ -286,7 +288,7 @@ export const POLICIES: PolicyDoc[] = [
       {
         heading: 'Why we use it',
         blocks: [
-          { p: 'Only to run VigyanVerse AI: to answer your questions, save your chats and progress, run your wallet, keep your account safe and reply when you write to us. We do not use your data for advertising, and we do not sell or rent it to anyone.' },
+          { p: 'Only to run VigyanVerse AI: to answer your questions, save your chats and progress, keep track of your credits, keep your account safe and reply when you write to us. We do not use your data for advertising, and we do not sell or rent it to anyone.' },
         ],
       },
       {
@@ -305,7 +307,7 @@ export const POLICIES: PolicyDoc[] = [
       {
         heading: 'How we protect it',
         blocks: [
-          { p: 'Every student’s data is kept separate: the database itself only lets your account read your own chats, photos and wallet. Your photos are private files, and all traffic is encrypted (HTTPS).' },
+          { p: 'Every student’s data is kept separate: the database itself only lets your account read your own chats, photos and credits. Your photos are private files, and all traffic is encrypted (HTTPS).' },
         ],
       },
       {
@@ -320,7 +322,7 @@ export const POLICIES: PolicyDoc[] = [
           { list: [
             'See or correct your data: most of it is in the app; or write to us.',
             'Delete a photo yourself at any time in the AI Tutor.',
-            'Delete your whole account: email us from your account’s email address. We delete your account and all its data (chats, quizzes, photos, saved lessons, wallet) within 7 days. Razorpay keeps its own payment records as the law requires.',
+            'Delete your whole account: email us from your account’s email address. We delete your account and all its data (chats, quizzes, photos, saved lessons, credits) within 7 days. Razorpay keeps its own payment records as the law requires.',
             'A parent or guardian can write to us to see, correct or delete their child’s data.',
           ] },
         ],
@@ -359,7 +361,7 @@ export const POLICIES: PolicyDoc[] = [
           { list: [
             'Money taken from your bank or UPI but no credits added: Razorpay either completes the top-up or returns the money automatically, usually within 5 to 7 working days. If not, write to us with the payment ID.',
             'Paying twice for the same top-up: we refund the extra payment in full.',
-            'An AI task that fails on our side: its credits go back to your wallet automatically, straight away.',
+            'An AI task that fails on our side: its credits go back to your account automatically, straight away.',
           ] },
         ],
       },
@@ -379,7 +381,7 @@ export const POLICIES: PolicyDoc[] = [
       {
         heading: 'Delivery (no shipping)',
         blocks: [
-          { p: 'Everything we sell is digital and delivered online. Credits appear in your wallet as soon as Razorpay confirms the payment, usually within a minute. Nothing is shipped to an address.' },
+          { p: 'Everything we sell is digital and delivered online. Credits appear in your account as soon as Razorpay confirms the payment, usually within a minute. Nothing is shipped to an address.' },
         ],
       },
     ],

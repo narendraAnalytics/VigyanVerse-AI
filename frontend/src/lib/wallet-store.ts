@@ -223,7 +223,7 @@ export async function buyPack(user: { id: string; email?: string | null; name?: 
       amount: t.amount_paise,
       currency: 'INR',
       subject: { type: 'user', id: user.id },
-      description: `VigyanVerse wallet: ${rupees(t.credit_paise)}`,
+      description: `VigyanVerse AI credits: ${rupees(t.credit_paise)}`,
       customerEmail: user.email ?? null,
       customerName: user.name ?? null,
       notes: { topup_id: t.topup_id },
@@ -237,7 +237,7 @@ export async function buyPack(user: { id: string; email?: string | null; name?: 
       const rzp = new Razorpay({
         ...order.data!.checkoutOptions,
         name: 'VigyanVerse AI',
-        description: `Add ${rupees(t.credit_paise)} to your wallet`,
+        description: `${rupees(t.credit_paise)} in VigyanVerse AI credits`,
         image: `${window.location.origin}/logo.png`,
         notes: { topup_id: t.topup_id },
         theme: { color: '#1f5f5b', backdrop_color: 'rgba(16, 43, 41, 0.72)' },

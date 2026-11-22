@@ -85,8 +85,8 @@ const SPREADS: Record<SectionId, Spread> = {
   },
   wallet: {
     left: () => <WalletLeft />, right: () => <WalletRight />,
-    leftFrame: { runningHead: head('Back matter', 'Your wallet'), ruled: true },
-    rightFrame: { runningHead: head('Your wallet', 'Top up'), ruled: true, margin: true },
+    leftFrame: { runningHead: head('Back matter', 'Your credits'), ruled: true },
+    rightFrame: { runningHead: head('Your credits', 'Top up'), ruled: true, margin: true },
   },
   about: policy('about', 'About us'),
   contact: policy('contact', 'Contact us'),
