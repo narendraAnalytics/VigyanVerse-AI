@@ -14,7 +14,7 @@ export const BUSINESS = {
   /** Must match the name on the Razorpay account. */
   legalName: 'Freelance Services – Narendra Kumar',
   owner: 'Narendra Kumar',
-  email: 'narendra.adp@gmail.com',
+  email: 'admin@vigyanverseai.live',
   /** Shown on the Contact page when set (owner to provide). */
   phone: '+91 90322 68522' as string | null,
   address: 'Palakollu, West Godavari district, Andhra Pradesh 534260, India' as string | null,
