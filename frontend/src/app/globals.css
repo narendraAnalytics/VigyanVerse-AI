@@ -474,3 +474,13 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Hover cursor (owner 2026-11-22): over anything clickable, a pencil in the open section's colour
+   (a fountain pen on the sign-in pages); src/lib/cursors.ts makes it and BookShell sets --cursor-link.
+   Mouse / trackpad only. Left unlayered on purpose so it also replaces Tailwind's cursor-pointer;
+   disabled controls and cursor-default / cursor-not-allowed keep their own cursor, text boxes keep the I-beam. */
+@media (pointer: fine) {
+  :is(a[href], button, summary, select, [role='button'], [role='tab'], [role='menuitem'], [role='option'], .cursor-pointer):not(:disabled, [aria-disabled='true'], .cursor-default, .cursor-not-allowed, [data-cursor='default']) {
+    cursor: var(--cursor-link, pointer);
+  }
+}

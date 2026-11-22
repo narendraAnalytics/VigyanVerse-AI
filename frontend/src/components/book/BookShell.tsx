@@ -18,6 +18,7 @@ import { SectionPage } from '@/components/sections/registry';
 import { Header } from './Header';
 import { AddMoneySheet, TopUpPrompt } from '@/components/wallet/Wallet';
 import { BUSINESS, POLICIES } from '@/lib/policies';
+import { linkCursor } from '@/lib/cursors';
 
 interface Turn {
   from: SectionId;
@@ -125,6 +126,13 @@ export function BookShell() {
     const h = bookRef.current?.querySelector<HTMLElement>('[data-page-heading]');
     if (h && document.activeElement === document.body) h.focus({ preventScroll: true });
   }, [current, turn]);
+
+  // Hover cursor for clickable things: a pencil in the section's colour, a fountain pen on the
+  // account pages (globals.css reads --cursor-link; set on <html> so sheets and the footer get it too).
+  const cursorSection = turn?.to ?? current;
+  useEffect(() => {
+    document.documentElement.style.setProperty('--cursor-link', linkCursor(cursorSection));
+  }, [cursorSection]);
 
   // Keyboard: left / right arrow turn to the previous / next main section.
   useEffect(() => {
