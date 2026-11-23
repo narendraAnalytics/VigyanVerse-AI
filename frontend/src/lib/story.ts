@@ -66,5 +66,7 @@ export const STORY = {
     heading: 'Find us',
     website: BUSINESS.website,
     email: BUSINESS.email,
+    builtBy: 'Built by Narendra Kumar. See more of my work at',
+    portfolio: 'https://buildflows.shop',
   },
 };

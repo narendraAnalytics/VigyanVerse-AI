@@ -17,7 +17,7 @@ import { LayoutProvider, PreviewProvider } from './page-context';
 import { SectionPage } from '@/components/sections/registry';
 import { Header } from './Header';
 import { AddMoneySheet, TopUpPrompt } from '@/components/wallet/Wallet';
-import { BUSINESS, POLICIES } from '@/lib/policies';
+import { POLICIES } from '@/lib/policies';
 import { linkCursor } from '@/lib/cursors';
 import { useStore } from '@/lib/store';
 import { decideIntroVideo, introVideo } from '@/lib/intro-video';
@@ -342,7 +342,8 @@ function SiteFooter({ current }: { current: SectionId }) {
         ))}
       </nav>
       <span aria-hidden className="hidden h-3 w-px bg-gold/40 sm:block" />
-      <span className="text-gold/75">© 2026 {BUSINESS.legalName}</span>
+      {/* brand only; the legal business name stays on About, Contact and the policy pages (Razorpay checks those) */}
+      <span className="text-gold/75">© 2026 VigyanVerse AI</span>
     </footer>
   );
 }

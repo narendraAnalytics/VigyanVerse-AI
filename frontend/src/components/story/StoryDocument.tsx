@@ -1,6 +1,6 @@
 // "Our Story", printed like a textbook's preface. No hooks and no 'use client': the same markup
 // renders on the book pages (client) and in the /story route's plain server HTML. Text: src/lib/story.ts.
-import { Globe, Handshake, Lightbulb, Mail } from 'lucide-react';
+import { ExternalLink, Globe, Handshake, Lightbulb, Mail } from 'lucide-react';
 import { STORY } from '@/lib/story';
 
 const C = 'var(--story)';
@@ -130,6 +130,18 @@ export function StoryNext({ bookHeading = false }: { bookHeading?: boolean }) {
             </a>
           </li>
         </ul>
+        <p className="mt-3 font-hand text-lg leading-snug" style={{ color: C }}>
+          {STORY.find.builtBy}{' '}
+          <a
+            href={STORY.find.portfolio}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 whitespace-nowrap text-emerald underline decoration-gold underline-offset-4 hover:text-emerald-deep"
+          >
+            {STORY.find.portfolio.replace(/^https:\/\//, '')} <ExternalLink aria-hidden className="h-3.5 w-3.5" />
+            <span className="sr-only"> (opens in a new tab)</span>
+          </a>
+        </p>
       </section>
     </article>
   );
