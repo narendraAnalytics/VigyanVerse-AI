@@ -6,22 +6,36 @@ import { rainbowStyle, SOUND_CUES as RAINBOW_SOUNDS } from './styles/rainbow.js'
 import { chemistryStyle, SOUND_CUES as CHEMISTRY_SOUNDS } from './styles/chemistry.js';
 import { signinStyle, SOUND_CUES as SIGNIN_SOUNDS, BEATS as SIGNIN_BEATS } from './styles/signin.js';
 import { biologyStyle, SOUND_CUES as BIOLOGY_SOUNDS, BEATS as BIOLOGY_BEATS } from './styles/biology.js';
+import { introStyle, SOUND_CUES as INTRO_SOUNDS, BEATS as INTRO_BEATS } from './styles/intro.js';
 import { makeTimeline } from './timeline';
+import { Captions, type CaptionLine } from './Captions';
 import ohmVoice from './voice/ohms-law.json';
 import rainbowVoice from './voice/rainbow.json';
 import chemistryVoice from './voice/chemistry.json';
 import biologyVoice from './voice/biology.json';
 import signinVoice from './voice/signin.json';
+import introVoice from './voice/intro.json';
 
 const FPS = 30;
 type Props = ClayProps & { voice: boolean; sounds: boolean };
 type Timeline = ReturnType<typeof makeTimeline>;
 
+// Optional music bed (intro, 2026-11-22): `volume`, ducked to `duck` while a narration line plays, faded in and out.
+type Music = { file: string; volume: number; duck: number };
+const musicVolume = (m: Music, tl: Timeline, seconds: number, voiceLengths: number[]) => (f: number) => {
+  const t = f / FPS;
+  const talking = tl.voiceCues.some((v, i) => t > v.at - 0.15 && t < v.at + voiceLengths[i] + 0.25);
+  const fade = Math.min(1, t / 0.8, Math.max(0, (seconds - t) / 1.5));
+  return (talking ? m.duck : m.volume) * fade;
+};
+
 // One explainer: the 3D scene (story time mapped onto video time), its narration and its sound effects.
-const explainer = (style: unknown, cues: [number, string, number][], tl: Timeline) => {
+const explainer = (style: unknown, cues: [number, string, number][], tl: Timeline, music?: Music, voiceLengths: number[] = [], captions?: CaptionLine[]) => {
   const Video: React.FC<Props> = ({ voice, sounds, ...rest }) => (
     <AbsoluteFill>
       <ClayVideo clayStyle={style} storyTime={tl.toStory} {...rest} />
+      {/* gentle music bed, synthesized by scripts/synth.mjs */}
+      {music && sounds && <Audio src={staticFile(music.file)} volume={musicVolume(music, tl, tl.seconds, voiceLengths)} />}
       {/* narration: Edge TTS (npm run voice -- <video>), one file per beat */}
       {voice &&
         tl.voiceCues.map((v) => (
@@ -36,6 +50,8 @@ const explainer = (style: unknown, cues: [number, string, number][], tl: Timelin
             <Audio src={staticFile(`sfx/${name}.wav`)} volume={volume} />
           </Sequence>
         ))}
+      {/* word-by-word captions (intro): Edge TTS word timings, video time */}
+      {captions && <Captions lines={captions} />}
     </AbsoluteFill>
   );
   return Video;
@@ -54,6 +70,12 @@ const Biology = explainer(biologyStyle, BIOLOGY_SOUNDS as [number, string, numbe
 const signinTl = makeTimeline(signinVoice, SIGNIN_BEATS, [0.3, 0.05, 0.1, 1.6]);
 const SignIn = explainer(signinStyle, SIGNIN_SOUNDS as [number, string, number][], signinTl);
 const Rainbow = explainer(rainbowStyle, RAINBOW_SOUNDS as [number, string, number][], rainbowTl);
+// home-page introduction: Paper Pop-Up, built scene by scene (BEATS grows as scenes are added); music bed under it
+// pads: 0.4 s after each line; beat 4 (the friend's short line) may end inside the silent tail of its mp3
+const introPads = INTRO_BEATS.map((_, i) => (i === 4 ? -0.6 : 0.4));
+const introTl = makeTimeline(introVoice, INTRO_BEATS, introPads);
+const Intro = explainer(introStyle, INTRO_SOUNDS as [number, string, number][], introTl, { file: 'music/intro-bed.wav', volume: 0.16, duck: 0.1 }, introVoice.lines.map((l) => l.seconds),
+  introTl.voiceCues.map((c, i) => ({ at: c.at, text: introVoice.lines[i].text, words: introVoice.lines[i].words as [string, number, number][] })));
 const defaults = { previewSamples: 2, renderSamples: 32, voice: true, sounds: true };
 
 export const RemotionRoot: React.FC = () => {
@@ -69,6 +91,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Biology" component={Biology} durationInFrames={Math.ceil(biologyTl.seconds * FPS)} fps={FPS} width={1920} height={1080} defaultProps={defaults} />
       {/* Sign-in page welcome: two students sign in with Google or GitHub. Spotlight Stage style. */}
       <Composition id="SignIn" component={SignIn} durationInFrames={Math.ceil(signinTl.seconds * FPS)} fps={FPS} width={1920} height={1080} defaultProps={defaults} />
+      {/* Home-page introduction: what VigyanVerse AI is, told by a student. Paper Pop-Up style. Built scene by scene. */}
+      <Composition id="Intro" component={Intro} durationInFrames={Math.ceil(introTl.seconds * FPS)} fps={FPS} width={1920} height={1080} defaultProps={{ ...defaults, renderSamples: 24 }} />
     </>
   );
 };

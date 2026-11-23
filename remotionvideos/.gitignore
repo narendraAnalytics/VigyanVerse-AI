@@ -7,3 +7,6 @@ dist
 out
 *.txt
 *.md
+*.png
+# 23 MB music bed: rebuilt exactly (seeded) by: node scripts/synth.mjs
+public/music/

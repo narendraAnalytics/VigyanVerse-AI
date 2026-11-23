@@ -19,6 +19,9 @@ import { Header } from './Header';
 import { AddMoneySheet, TopUpPrompt } from '@/components/wallet/Wallet';
 import { BUSINESS, POLICIES } from '@/lib/policies';
 import { linkCursor } from '@/lib/cursors';
+import { useStore } from '@/lib/store';
+import { decideIntroVideo, introVideo } from '@/lib/intro-video';
+import { IntroPlayer } from '@/components/intro/IntroPlayer';
 
 interface Turn {
   from: SectionId;
@@ -65,9 +68,12 @@ export function BookShell() {
   const turnRef = useRef<Turn | null>(null);
   turnRef.current = turn;
 
-  // Opening the cover: shown once per browser session.
+  // Opening the cover: shown once per browser session. On the first home-page visit of a device the intro VIDEO
+  // plays first (src/lib/intro-video.ts); the cover waits until it has ended or been skipped.
   const [intro, setIntro] = useState<'closed' | 'opening' | 'done'>('done');
+  const introVid = useStore(introVideo);
   useEffect(() => {
+    decideIntroVideo(window.location.pathname);
     let seen = true;
     try { seen = sessionStorage.getItem(INTRO_KEY) === '1'; } catch { /* storage blocked */ }
     if (!seen && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) setIntro('closed');
@@ -172,10 +178,10 @@ export function BookShell() {
     try { sessionStorage.setItem(INTRO_KEY, '1'); } catch { /* storage blocked */ }
   }, [intro]);
   useEffect(() => {
-    if (intro !== 'closed') return;
+    if (intro !== 'closed' || !introVid.decided || introVid.open) return;
     const id = window.setTimeout(openBook, 1400);
     return () => window.clearTimeout(id);
-  }, [intro, openBook]);
+  }, [intro, openBook, introVid.decided, introVid.open]);
   useLayoutEffect(() => {
     const book = bookRef.current;
     if (!book || !spread) return;
@@ -313,6 +319,8 @@ export function BookShell() {
       {/* Add-money sheet (Razorpay), opened from the balance pill or a "not enough money" reply */}
       <AddMoneySheet />
       <TopUpPrompt />
+      {/* the home-page intro video: once per device, and again from the Home page button */}
+      <IntroPlayer />
     </LayoutProvider>
   );
 }

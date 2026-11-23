@@ -5,7 +5,7 @@
 // Lines come from each video's script.txt; `at` is when the line starts in story time (one line per beat).
 import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, renameSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const VIDEOS = {
@@ -44,6 +44,28 @@ const VIDEOS = {
     { id: '03-girl', at: 9.7, voice: 'en-IN-NeerjaNeural', text: "And you're in!" },
     { id: '04-boy', at: 11.8, voice: 'en-IN-PrabhatNeural', text: "Let's start learning!" },
   ],
+  // the home-page introduction (script.txt, 2026-11-22): a Class 10 student tells how she studies now. Built scene by
+  // scene, so lines are added as their scenes are made (made with RATE=1.0). Girl = Neerja, her friend = Prabhat.
+  intro: [
+    { id: '01-hook', at: 0.6, voice: 'en-IN-NeerjaNeural', text: "It's the night before my science exam, and I'm stuck on one question." },
+    { id: '02-problem', at: 6.5, voice: 'en-IN-NeerjaNeural', text: 'No teacher to ask at this hour. So I opened VigyanVerse AI.' },
+    { id: '03-ask', at: 13.75, voice: 'en-IN-NeerjaNeural', text: 'I can type my question, say it out loud, or just snap a photo of my notes.' },
+    { id: '04-textbook', at: 21.2, voice: 'en-IN-NeerjaNeural', text: 'It finds the answer in my own NCERT textbook, explains it in short, simple words, and shows the chapter and page.' },
+    { id: '05-doubt', at: 31.0, voice: 'en-IN-PrabhatNeural', text: 'But can AI get the maths wrong?' },
+    { id: '06-code', at: 34.1, voice: 'en-IN-NeerjaNeural', text: 'Not here. AI writes the words, but code does the maths and marks the quizzes.' },
+    // scene 6 (owner 2026-11-22: say "agents", show the real model names and their jobs)
+    { id: '07-team', at: 42.2, voice: 'en-IN-NeerjaNeural', text: 'Behind it is a team of AI agents, each with its own job, powered by models served through Sarvam Token Factory, from the Indian AI company Sarvam AI.' },
+    // scene 6b (owner 2026-11-22): the workflow, how a question travels between the agents
+    { id: '08-flow', at: 55.2, voice: 'en-IN-NeerjaNeural', text: "Here's how it works. A photo is read by the photo agent, and my voice is turned into text by the voice agent. Then the router agent sends my question to the tutor or the maths agent, with the right NCERT pages, and the answer comes back to me." },
+    { id: '09-think', at: 74.6, voice: 'en-IN-NeerjaNeural', text: 'Want to really learn? Hint mode asks me small questions till I get it myself. And with Bindu explains, an answer becomes a whiteboard lesson.' },
+    { id: '10-practise', at: 87.8, voice: 'en-IN-NeerjaNeural', text: 'Then I practise. Quizzes are marked by code, my mistakes are explained, and Revise next tells me which chapter to go over, and when.' },
+    // scene 9 (the friend): fair prices. There are NO free credits, so "credits start at", never "you start with"
+    { id: '11-fair', at: 100.0, voice: 'en-IN-PrabhatNeural', text: "And it's fair. No subscription: credits start at just ten rupees, and a typed question costs fifty paise. Videos and progress are free, and there are no ads." },
+    // scene 10: back at her desk, the next morning
+    { id: '12-result', at: 116.0, voice: 'en-IN-NeerjaNeural', text: 'That question from last night? Solved, with the page to prove it.' },
+    // scene 11: the book closes on its cover
+    { id: '13-close', at: 123.6, voice: 'en-IN-NeerjaNeural', text: "Let's learn science together, on VigyanVerse AI!" },
+  ],
 };
 const VIDEO = process.argv[2] || 'ohms-law';
 const LINES = VIDEOS[VIDEO];
@@ -60,7 +82,7 @@ async function speak(text, voice = VOICE) {
   for (let attempt = 1; ; attempt++) {
     const tts = new MsEdgeTTS();
     try {
-      await tts.setMetadata(voice, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
+      await tts.setMetadata(voice, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3, { wordBoundaryEnabled: true });   // word timings for captions
       const res = await tts.toFile(DIR, text, { rate: RATE });
       tts.close?.();
       return res;
@@ -73,14 +95,22 @@ async function speak(text, voice = VOICE) {
     }
   }
 }
+// Edge sends word boundaries in 100-ns ticks: keep [word, start s, end s] for the on-screen captions
+function readWords(path) {
+  const raw = JSON.parse(readFileSync(path, 'utf8'));
+  rmSync(path, { force: true });
+  const items = (Array.isArray(raw) ? raw : raw.Metadata || []).flatMap((m) => m.Metadata || [m]);
+  return items.filter((m) => m.Type === 'WordBoundary').map((m) => [m.Data.text.Text, +(m.Data.Offset / 1e7).toFixed(3), +((m.Data.Offset + m.Data.Duration) / 1e7).toFixed(3)]);
+}
 const out = [];
 for (const line of LINES) {
-  const { audioFilePath } = await speak(line.text, line.voice || VOICE);
+  const { audioFilePath, metadataFilePath } = await speak(line.text, line.voice || VOICE);
+  const words = metadataFilePath ? readWords(metadataFilePath) : [];
   await sleep(1500);
   const dest = join(DIR, `${line.id}.mp3`);
   renameSync(audioFilePath, dest);
   const seconds = parseFloat(execFileSync(ffprobe, ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', dest]).toString().trim().replace(',', '.'));
-  out.push({ file: `voiceover/${VIDEO}/${line.id}.mp3`, at: line.at, seconds, text: line.text, ...(line.voice ? { voice: line.voice } : {}) });
+  out.push({ file: `voiceover/${VIDEO}/${line.id}.mp3`, at: line.at, seconds, text: line.text, ...(words.length ? { words } : {}), ...(line.voice ? { voice: line.voice } : {}) });
   console.log(line.id, `starts ${line.at}s, lasts ${seconds.toFixed(2)}s, ends ${(line.at + seconds).toFixed(2)}s`);
 }
 mkdirSync('src/voice', { recursive: true });

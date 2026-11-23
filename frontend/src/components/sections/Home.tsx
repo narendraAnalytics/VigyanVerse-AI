@@ -5,10 +5,15 @@ import { ExplainerVideo } from '@/components/labs/ExplainerVideo';
 import { HOME_EXPLAINER } from '@/lib/explainers';
 import { Bindu, Speech } from '@/components/mascot/Bindu';
 import { useAuth, nextSetupStep } from '@/lib/auth';
-import { usePageLayout } from '@/components/book/page-context';
+import { usePageLayout, usePreview } from '@/components/book/page-context';
+import { RotateCcw } from 'lucide-react';
+import { useStore } from '@/lib/store';
+import { INTRO_VIDEO, introVideo, playIntroAgain } from '@/lib/intro-video';
 
 export function HomeLeft() {
   const layout = usePageLayout();
+  const preview = usePreview();
+  const { seen } = useStore(introVideo);
   return (
     <div className={layout === 'single' ? 'flex flex-col pl-10' : 'flex h-full min-h-[22rem] flex-col pl-10'}>
       <h1 data-page-heading tabIndex={-1} className="font-display text-[clamp(1.6rem,min(2.6vw,4.6vh),3rem)] leading-[1.08] text-ink outline-none">
@@ -22,6 +27,16 @@ export function HomeLeft() {
       <div className={layout === 'single' ? 'relative mt-4' : 'relative mt-4 flex-1'}>
         <ExplainerVideo explainer={HOME_EXPLAINER} color="var(--emerald)" />
       </div>
+      {/* the intro video (it played once on the first visit): watch it again, with sound */}
+      <button
+        type="button"
+        onClick={playIntroAgain}
+        tabIndex={preview ? -1 : undefined}
+        className="mt-2 inline-flex w-fit items-center gap-1.5 rounded-full border border-emerald/40 px-3 py-1 font-display text-sm text-emerald hover:bg-emerald/10"
+      >
+        <RotateCcw className="h-3.5 w-3.5" aria-hidden />
+        {seen ? 'Watch the intro again' : 'Watch the intro'} <span className="text-ink-soft">· {Math.round(INTRO_VIDEO.seconds / 60)} min</span>
+      </button>
     </div>
   );
 }

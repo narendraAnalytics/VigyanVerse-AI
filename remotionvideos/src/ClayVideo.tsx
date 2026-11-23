@@ -15,7 +15,7 @@ import { loadFont as loadKalam } from '@remotion/google-fonts/Kalam';
 import { K } from './kit';
 
 const fredoka = loadFont('normal', { weights: ['500', '600', '700'], subsets: ['latin'] });
-const fraunces = loadFraunces('normal', { weights: ['900'], subsets: ['latin'] });
+const fraunces = loadFraunces('normal', { weights: ['700', '900'], subsets: ['latin'] });   // 700: the Paper Pop-Up ribbons and labels (intro)
 const inter = loadInter('normal', { weights: ['600', '700'], subsets: ['latin'] });
 // the Exploded View style (biology): labels in IBM Plex Mono, headings in Space Grotesk
 const plexMono = loadPlexMono('normal', { weights: ['500', '600'], subsets: ['latin'] });
