@@ -7,7 +7,7 @@
 // stored, photos stay until the student deletes them, money is credited only by the
 // verified Razorpay webhook. Change a policy here and bump UPDATED.
 
-export const UPDATED = '22 November 2026';
+export const UPDATED = '23 November 2026';
 
 export const BUSINESS = {
   brand: 'VigyanVerse AI',
@@ -164,6 +164,19 @@ export const POLICIES: PolicyDoc[] = [
         blocks: [
           { rows: packRows(PACKS_SNAPSHOT), caption: 'You pay the first amount; your account gets the second in credits.', kind: 'packs' },
           { p: 'Payments are made through Razorpay (UPI, debit and credit cards and net banking). The amount shown is the amount you pay: there are no extra charges at checkout.' },
+        ],
+      },
+      {
+        heading: 'Safe payments',
+        blocks: [
+          { list: [
+            'Payments are handled by Razorpay, an RBI-regulated payment company certified to PCI DSS (the card-security standard).',
+            'You pay inside Razorpay’s secure window, or approve the payment in your own UPI app with your own PIN.',
+            'VigyanVerse AI never sees or stores your card number, bank details or UPI PIN.',
+            'The whole site uses a secure HTTPS connection (look for the padlock in your browser).',
+            'Credits are added only after Razorpay confirms the payment to our server, and each payment is counted once.',
+            'A payment problem? Email us with the Razorpay payment ID (it starts with "pay_"); see the Contact page and the Refund Policy.',
+          ] },
         ],
       },
       {

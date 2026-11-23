@@ -253,9 +253,16 @@ export function AddMoneySheet() {
                 : w.phase === 'cancelled' || w.phase === 'failed' ? <><RotateCcw aria-hidden className="h-4 w-4" /> Try again: pay {pack ? rupees(pack.price_paise) : ''}</>
                 : <><Lock aria-hidden className="h-4 w-4" /> Pay {pack ? rupees(pack.price_paise) : ''} securely</>}
             </button>
-            <p className="mt-2 flex items-center justify-center gap-1.5 text-xs text-ink-faint">
-              <ShieldCheck aria-hidden className="h-3.5 w-3.5" /> UPI, cards and net banking through Razorpay. We never see your card or UPI PIN.
-            </p>
+            <div className="mt-3 rounded-md border border-emerald/25 bg-emerald/5 px-3 py-2 text-xs text-ink-soft">
+              <p className="flex items-center gap-1.5 text-sm font-semibold text-emerald">
+                <ShieldCheck aria-hidden className="h-4 w-4" /> Safe payments by Razorpay
+              </p>
+              <ul className="mt-1 list-disc space-y-0.5 pl-5">
+                <li>You pay in Razorpay&apos;s secure window (UPI, cards, net banking) or approve it in your own UPI app.</li>
+                <li>We never see your card number, bank details or UPI PIN.</li>
+                <li>Credits are added only after Razorpay confirms the payment.</li>
+              </ul>
+            </div>
 
             <details className="mt-5 rounded-md border border-ink/10 bg-white/30 px-3 py-2">
               <summary className="cursor-pointer text-sm font-semibold text-ink-soft">What things cost</summary>
