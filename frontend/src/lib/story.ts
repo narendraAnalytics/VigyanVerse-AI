@@ -56,6 +56,12 @@ export const STORY = {
     ] as StoryItem[],
     promise: 'Nothing on this page is on sale yet. A new feature is added to the Pricing page only when it is ready, and we never charge for a plan.',
   },
+  work: {
+    heading: 'Work with us',
+    text: 'Are you a startup, founder, school or educator? We are open to partnerships: school pilots, learning content, tools that work with VigyanVerse AI, or support to grow.',
+    ask: 'Write to us with “Partnership” in the subject.',
+    subject: 'Partnership',
+  },
   find: {
     heading: 'Find us',
     website: BUSINESS.website,

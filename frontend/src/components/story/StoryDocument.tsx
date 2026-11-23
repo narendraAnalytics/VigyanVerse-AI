@@ -1,6 +1,6 @@
 // "Our Story", printed like a textbook's preface. No hooks and no 'use client': the same markup
 // renders on the book pages (client) and in the /story route's plain server HTML. Text: src/lib/story.ts.
-import { Globe, Lightbulb, Mail } from 'lucide-react';
+import { Globe, Handshake, Lightbulb, Mail } from 'lucide-react';
 import { STORY } from '@/lib/story';
 
 const C = 'var(--story)';
@@ -99,6 +99,22 @@ export function StoryNext({ bookHeading = false }: { bookHeading?: boolean }) {
       </ol>
 
       <p className="mt-6 max-w-[56ch] border-l-2 pl-4 text-[0.93rem] italic text-ink-soft" style={{ borderColor: C }}>{STORY.next.promise}</p>
+
+      <section className="deco-frame mt-7 bg-[#f7efdc] p-4 sm:p-5" aria-labelledby="story-work">
+        <h2 id="story-work" className="flex items-center gap-2 font-display text-xl italic" style={{ color: C }}>
+          <Handshake aria-hidden className="h-5 w-5" /> {STORY.work.heading}
+        </h2>
+        <p className="mt-1.5 max-w-[56ch] text-[0.95rem] leading-snug text-ink-soft">{STORY.work.text}</p>
+        <p className="mt-2 text-[0.95rem]">
+          {STORY.work.ask}{' '}
+          <a
+            href={`mailto:${STORY.find.email}?subject=${encodeURIComponent(STORY.work.subject)}`}
+            className="inline-flex items-center gap-1.5 text-emerald underline decoration-gold underline-offset-4 hover:text-emerald-deep"
+          >
+            <Mail aria-hidden className="h-4 w-4" /> {STORY.find.email}
+          </a>
+        </p>
+      </section>
 
       <section className="mt-7" aria-labelledby="story-find">
         <h2 id="story-find" className="font-display text-xl">{STORY.find.heading}</h2>

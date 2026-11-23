@@ -144,6 +144,7 @@ export const POLICIES: PolicyDoc[] = [
             'Write from the email address you use to sign in.',
             'For a payment problem, add the Razorpay payment ID (it starts with "pay_") and the date and amount.',
             'For a privacy request (see, correct or delete your data), say which one you want.',
+            'For partnerships (startups, founders, schools, educators), put "Partnership" in the subject.',
           ] },
         ],
       },
