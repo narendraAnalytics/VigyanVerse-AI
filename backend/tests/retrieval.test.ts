@@ -43,6 +43,27 @@ describe('sanitizeKeywords', () => {
     expect(sanitizeKeywords(many)).toHaveLength(MAX_KEYWORDS);
     expect(sanitizeKeywords(['a'.repeat(41), 'ok'])).toEqual(['ok']);
   });
+
+  it('skips stop words and request words before the cap (photo "solve" questions)', () => {
+    const photo = 'Solve this question step by step.\n\nThe question from my photo:\n1. Why is a dilute solution of hydrochloric acid used for cleaning the surfaces of metal articles? Explain with a chemical equation.';
+    expect(sanitizeKeywords([photo])).toEqual([
+      'dilute', 'solution', 'hydrochloric', 'acid', 'used', 'cleaning', 'surfaces', 'metal', 'articles', 'explain', 'chemical', 'equation',
+    ]);
+  });
+
+  it('keeps science words that look like small words', () => {
+    expect(sanitizeKeywords(['What is the pH of NaOH and CO2 in water?'])).toEqual(['ph', 'naoh', 'co2', 'water']);
+  });
+
+  it('skips plain numbers and "find" but keeps formulas and "image"', () => {
+    expect(sanitizeKeywords(['An object is placed 20 cm in front of a concave mirror of focal length 15 cm. Find the image position.']))
+      .toEqual(['object', 'placed', 'cm', 'front', 'concave', 'mirror', 'focal', 'length', 'image', 'position']);
+    expect(sanitizeKeywords(['2H2 + O2 gives 2H2O'])).toEqual(['2h2', 'o2', 'gives', '2h2o']);
+  });
+
+  it('falls back to the skipped words when nothing else is left', () => {
+    expect(sanitizeKeywords(['Why is this?'])).toEqual(['why', 'is', 'this']);
+  });
 });
 
 describe('parseRewrite', () => {

@@ -37,20 +37,50 @@ export function buildRewriteMessages(question: string, subjectHint?: string): Ch
   ];
 }
 
+/**
+ * Words skipped before the MAX_KEYWORDS cap (2026-11-24). Postgres's English stop words (the search
+ * runs `to_tsvector('english', ...)`, which drops them anyway, so skipping them changes nothing but
+ * the cap) plus request words with no science meaning. Before this, a photo question sent as
+ * "Solve this question step by step. The question from my photo: 1. Why is a dilute solution of
+ * hydrochloric acid..." used all 12 places on "solve this question step by the from my photo why is
+ * dilute", never searched "hydrochloric acid metal", found nothing and was wrongly labelled
+ * "Not from your Class 10 textbook".
+ */
+const SKIP_WORDS = new Set([
+  // Postgres english stop words (snowball list; 2-letter and longer)
+  'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', 'your', 'yours', 'yourself', 'yourselves',
+  'he', 'him', 'his', 'himself', 'she', 'her', 'hers', 'herself', 'it', 'its', 'itself', 'they', 'them',
+  'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 'this', 'that', 'these', 'those', 'am',
+  'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did',
+  'doing', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 'while', 'of', 'at', 'by',
+  'for', 'with', 'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above',
+  'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under', 'again', 'further',
+  'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few',
+  'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too',
+  'very', 'can', 'will', 'just', 'don', 'should', 'now',
+  // request words: how the student asks, not what about
+  // (not 'image': a physics word, mirror and lens images)
+  'solve', 'find', 'step', 'steps', 'question', 'questions', 'photo', 'picture', 'please', 'kindly',
+]);
+
 /** Keep only plain ASCII search terms: letters, digits, and inner hyphens. */
 export function sanitizeKeywords(raw: readonly string[]): string[] {
   const seen = new Set<string>();
   const out: string[] = [];
+  const skipped: string[] = [];
   for (const item of raw) {
     for (const word of item.toLowerCase().split(/[^a-z0-9-]+/)) {
       const w = word.replace(/^-+|-+$/g, '');
       if (w.length < 2 || w.length > MAX_KEYWORD_LENGTH || seen.has(w)) continue;
       seen.add(w);
+      // Plain numbers ("20 cm", "12 V") match exercise pages that share the number, not the topic.
+      if (SKIP_WORDS.has(w) || /^[0-9]+$/.test(w)) { skipped.push(w); continue; }
       out.push(w);
       if (out.length === MAX_KEYWORDS) return out;
     }
   }
-  return out;
+  // Only skipped words (e.g. "why is this?"): search them as before rather than nothing.
+  return out.length ? out : skipped.slice(0, MAX_KEYWORDS);
 }
 
 const RewriteOutput = z.object({ keywords: z.array(z.string()).min(1).max(30) });

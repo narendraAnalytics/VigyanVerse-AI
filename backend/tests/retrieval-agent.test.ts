@@ -58,7 +58,7 @@ describe('retrieveContext', () => {
     expect(te.calls[0]).toMatchObject({ fn: 'match_chunks_weighted', query: 'ozone layer cfcs' });
     const en = fakeClient({ all: good });
     const out = await retrieveContext(en.client, { question: 'Why is the ozone layer important?', routerKeywords: ['ignored'] });
-    expect(en.calls[0].query).toBe('why is the ozone layer important');
+    expect(en.calls[0].query).toBe('ozone layer important'); // stop words skipped (Postgres drops them anyway)
     expect(out.keywordSource).toBe('question');
   });
 
