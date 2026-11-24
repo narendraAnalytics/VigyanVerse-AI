@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { DATA_RULE, type ChatFn } from '../src/agents/kit.ts';
 import { askedForAnswer, MAX_HINTS, planTurn, runSocratic, SOCRATIC_MAX_TOKENS, stripAnswerLeaks, stripDefinitions, type SocraticInput } from '../src/agents/socratic.ts';
-import { NOT_IN_TEXTBOOK_LABEL } from '../src/agents/tutor.ts';
 import type { ChatOverrides, ChatResult } from '../src/shared/llm.ts';
 import type { ChunkHit } from '../src/shared/retrieval.ts';
 
@@ -185,12 +184,12 @@ describe('socratic output (deterministic part)', () => {
 });
 
 describe('not a textbook topic', () => {
-  it('uses the tutor’s labelled short answer in one model call, no guided questions', async () => {
+  it('uses the tutor’s short answer in one model call, no guided questions', async () => {
     const { chat, calls } = mockChat(reply({ answer: 'Living things change slowly over many generations.', inTextbook: false, sources: [], relatedPassage: null }));
     const run = await runSocratic({ ...first, topic: 'Explain evolution', message: 'Explain evolution', status: 'none', language: 'te_latn' }, { chat });
     expect(calls).toHaveLength(1);
     expect(calls[0].task).toBe('tutor');
-    expect(run.output).toMatchObject({ kind: 'reveal', done: true, inTextbook: false, citations: [], label: NOT_IN_TEXTBOOK_LABEL.te_latn });
+    expect(run.output).toMatchObject({ kind: 'reveal', done: true, inTextbook: false, citations: [], label: null });
   });
 });
 

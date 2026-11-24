@@ -47,7 +47,7 @@ export interface TurnResult {
   reply: string;
   language: Language;
   citations: Citation[];
-  /** "Not from your Class 10 textbook" label, when it applies. */
+  /** Title above the answer (always null now: the out-of-book label was removed 2026-11-24). */
   label: string | null;
   related: Citation | null;
   /** Small facts for the UI and analytics (intent, kind, check, done...). */

@@ -43,9 +43,8 @@ export function cleanLine(line: string): string {
     .trim();
 }
 
-/** Marker colour for a line: red for the out-of-book label, blue for working, green for the conclusion. */
+/** Marker colour for a line: blue for working, green for the conclusion. */
 export function toneOf(text: string): InkTone {
-  if (/^not from your class 10 textbook/i.test(text)) return 'red';
   if (/^(so|therefore|hence|answer)\b/i.test(text)) return 'green';
   if (text.length <= 70 && /=/.test(text) && /[0-9a-z]\s*=|=\s*[-0-9a-z(]/i.test(text)) return 'blue';
   return 'ink';

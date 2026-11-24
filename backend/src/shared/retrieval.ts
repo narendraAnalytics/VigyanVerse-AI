@@ -43,8 +43,8 @@ export function buildRewriteMessages(question: string, subjectHint?: string): Ch
  * the cap) plus request words with no science meaning. Before this, a photo question sent as
  * "Solve this question step by step. The question from my photo: 1. Why is a dilute solution of
  * hydrochloric acid..." used all 12 places on "solve this question step by the from my photo why is
- * dilute", never searched "hydrochloric acid metal", found nothing and was wrongly labelled
- * "Not from your Class 10 textbook".
+ * dilute", never searched "hydrochloric acid metal", found nothing and was wrongly treated as
+ * not in the textbook.
  */
 const SKIP_WORDS = new Set([
   // Postgres english stop words (snowball list; 2-letter and longer)

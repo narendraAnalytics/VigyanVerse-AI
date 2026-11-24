@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { DATA_RULE, STYLE_RULE, type ChatFn } from '../src/agents/kit.ts';
-import { extractiveAnswer, MAX_TOKENS, NOT_IN_TEXTBOOK_LABEL, runTutor, type TutorInput } from '../src/agents/tutor.ts';
+import { extractiveAnswer, MAX_TOKENS, runTutor, type TutorInput } from '../src/agents/tutor.ts';
 import type { ChatOverrides, ChatResult } from '../src/shared/llm.ts';
 import type { ChunkHit } from '../src/shared/retrieval.ts';
 
@@ -60,17 +60,17 @@ describe('tutor output (deterministic part)', () => {
     expect(run.output.label).toBeNull();
   });
 
-  it('labels a general-knowledge answer, gives no citations, and keeps a real related topic', async () => {
+  it('gives a general-knowledge answer no label and no citations, and keeps a real related topic', async () => {
     const { chat } = mockChat(reply({ answer: 'Force = mass × acceleration.', inTextbook: false, sources: [], relatedPassage: 2 }));
     const run = await runTutor({ ...base, question: 'Newton second law?', status: 'none', language: 'te_latn' }, { chat });
-    expect(run.output).toMatchObject({ inTextbook: false, citations: [], label: NOT_IN_TEXTBOOK_LABEL.te_latn });
+    expect(run.output).toMatchObject({ inTextbook: false, citations: [], label: null });
     expect(run.output.related?.section).toBe('11.5 Factors on Which the Resistance of a Conductor Depends');
   });
 
   it('never claims "in the textbook" without a real passage behind it', async () => {
     const { chat } = mockChat(reply({ answer: 'A black hole is...', inTextbook: true, sources: [9], relatedPassage: 9 }));
     const run = await runTutor({ ...base, status: 'none' }, { chat });
-    expect(run.output).toMatchObject({ inTextbook: false, citations: [], label: NOT_IN_TEXTBOOK_LABEL.en, related: null, droppedSources: 1 });
+    expect(run.output).toMatchObject({ inTextbook: false, citations: [], label: null, related: null, droppedSources: 1 });
   });
 });
 

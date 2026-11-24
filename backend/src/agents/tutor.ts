@@ -6,8 +6,9 @@
 //   - citations: ONLY from the passages we gave (passage number -> chapter / section / page
 //     from the database). Unknown numbers are dropped. The model never writes page numbers.
 //   - NOT-IN-TEXTBOOK POLICY (owner, 2026-11-13): when the passages do not answer the
-//     question, a 1-2 sentence general answer, labelled "Not from your Class 10 textbook -
-//     not needed for the exam", no citations, plus a related textbook topic if one exists.
+//     question, a 1-2 sentence general answer, no citations, plus a related textbook topic if
+//     one exists. No label above it (owner 2026-11-24: the old "Not from your Class 10 textbook"
+//     label was removed; it also showed on real textbook questions the search missed).
 //   - fallback (model error / invalid JSON): quote the textbook's own words with a citation.
 import { z } from 'zod';
 import type { ChunkHit } from '../shared/retrieval.ts';
@@ -49,19 +50,13 @@ export interface TutorOutput {
   answer: string;
   inTextbook: boolean;
   citations: Citation[];
-  /** Shown above a general-knowledge answer; null when the answer is from the textbook. */
+  /** Title shown above the answer. Always null since 2026-11-24 (the out-of-book label was removed). */
   label: string | null;
   /** "Related in your book" pointer for not-in-textbook answers. */
   related: Citation | null;
   /** How many source numbers the model gave that did not exist (logged, then dropped). */
   droppedSources: number;
 }
-
-export const NOT_IN_TEXTBOOK_LABEL: Record<Language, string> = {
-  en: 'Not from your Class 10 textbook – not needed for the exam',
-  te: 'ఇది మీ 10వ తరగతి పాఠ్యపుస్తకంలో లేదు – పరీక్షకు అవసరం లేదు',
-  te_latn: 'Idi mee Class 10 textbook lo ledu – exam ki avasaram ledu',
-};
 
 export const LANGUAGE_RULE: Record<Language, string> = {
   en: 'Write the answer in simple English.',
@@ -154,7 +149,7 @@ export function finalize(out: ModelOutput, input: Pick<TutorInput, 'passages' | 
     answer: out.answer.replace(/\s*\[\s*\d+(\s*,\s*\d+)*\s*\]/g, '').replace(/\s{2,}/g, ' ').trim(),
     inTextbook,
     citations: inTextbook ? kept.map((n) => citationOf(input.passages[n - 1])) : [],
-    label: inTextbook ? null : NOT_IN_TEXTBOOK_LABEL[input.language],
+    label: null,
     related,
     droppedSources: sources.length - kept.length,
   };

@@ -49,8 +49,8 @@ owner's machine and not in this repository.
   scoring, marks, mastery, revision dates, calculations, equation balancing, citations, consent and
   limits. A model can never change a grade, a mastery state or a citation.
 - **Grounded, not guessed.** Answers come from retrieved NCERT passages. Citations come from stored
-  chunk metadata, never from model text. A question outside the textbook gets a 1–2 sentence answer
-  labelled "Not from your Class 10 textbook – not needed for the exam".
+  chunk metadata, never from model text. A question outside the textbook gets a short 1–2 sentence answer
+  with no textbook citation.
 - **Simple and short.** Every agent answers in plain Class 10 language; detail only on request.
 - **No web search.** Answers come from the textbook and the student's own uploads.
 - **Private by design.** Every table has row-level security, so a student only sees their own chats,

@@ -96,6 +96,12 @@ export const chat = createStore({
 let seq = 0;
 const localId = () => `local-${Date.now()}-${seq++}`;
 
+// Owner 2026-11-24: the "Not from your Class 10 textbook – not needed for the exam" title is gone. The backend no
+// longer sends it, and answers saved before that (meta.label) hide it too: no title instead.
+const OLD_OUT_OF_BOOK = /^(not from your class 10 textbook|idi mee class 10 textbook|ఇది మీ 10వ తరగతి)/i;
+const shownLabel = (label: string | null | undefined): string | null =>
+  label && !OLD_OUT_OF_BOOK.test(label.trim()) ? label : null;
+
 export async function loadConversations() {
   const { data } = await insforge().database.from('conversations')
     .select('id, title, mode, updated_at, document_id').order('updated_at', { ascending: false }).limit(20);
@@ -130,7 +136,7 @@ export async function openConversation(c: Conversation) {
 
 type MessageRow = { id: number | string; role: 'student' | 'tutor'; content: string; citations: Citation[] | null; meta: { label?: string | null; diagram?: Diagram } | null; agent: string | null };
 const toMessage = (r: MessageRow): ChatMessage => ({
-  id: String(r.id), role: r.role, text: r.content, citations: r.citations ?? [], label: r.meta?.label ?? null, diagram: r.meta?.diagram,
+  id: String(r.id), role: r.role, text: r.content, citations: r.citations ?? [], label: shownLabel(r.meta?.label), diagram: r.meta?.diagram,
   agent: r.agent ?? undefined, source: r.agent === 'docqa' ? 'notes' : 'tutor',
 });
 
@@ -194,7 +200,7 @@ export async function send(text: string, language: Lang, opts: { newTopic?: bool
       chat.set((p) => ({
         conversationId: r.conversationId,
         socraticOpen: r.socraticOpen,
-        messages: [...p.messages, { id: r.messageId ? String(r.messageId) : localId(), role: 'tutor', text: r.reply, citations: r.citations, label: r.label ?? (tutorMessage ? 'Solved by the tutor, using the question in your image' : null), agent: r.agent, source: 'tutor', diagram: r.meta?.diagram as Diagram | undefined }],
+        messages: [...p.messages, { id: r.messageId ? String(r.messageId) : localId(), role: 'tutor', text: r.reply, citations: r.citations, label: shownLabel(r.label) ?? (tutorMessage ? 'Solved by the tutor, using the question in your image' : null), agent: r.agent, source: 'tutor', diagram: r.meta?.diagram as Diagram | undefined }],
       }));
       if (!s.conversationId) void loadConversations();
     }

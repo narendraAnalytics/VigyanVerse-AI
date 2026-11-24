@@ -154,8 +154,6 @@ const FAQ: PolicyDoc = {
           '"Explain it" gives a short, clear answer with the textbook pages. "Hint me" does not give the answer straight away: it asks you small questions and gives hints so you work it out yourself. If you get stuck, just ask it to tell you the answer.'],
         ['Where do the answers come from?',
           'From the NCERT Class 10 Science textbook. The tutor searches the textbook first and answers from the passages it finds, then shows the chapter and page. Calculations are worked out and checked by code, not guessed by the AI.'],
-        ['What does "Not from your Class 10 textbook – not needed for the exam" mean?',
-          'Your question is not covered by the Class 10 textbook, so you get a short 1 or 2 sentence answer and this label, to show it is not needed for your exam. If you think it is in your textbook, try asking again with the words your textbook uses.'],
         ['What is "Bindu explains"?',
           `A button under a tutor answer. Bindu, our science friend, turns the answer into a short whiteboard lesson: she says it aloud while the board is written out line by line, with the textbook chapter and page at the end. It costs ${cost('bindu_explain')} once per answer, and you can watch it again for free, even on another device.`],
         ['Can I ask about a photo of my notes or homework?',

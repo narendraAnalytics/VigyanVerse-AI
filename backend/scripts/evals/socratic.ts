@@ -129,7 +129,7 @@ export async function evalSocratic(ctx: AgentContext, opts: { only?: string[] })
     hint: r.expect === 'idk' ? r.o.kind === 'hint' : null,
     wrongCaught: r.expect === 'wrong' ? r.o.studentCorrect === false : null,
     confirmed: r.expect === 'correct' ? r.o.kind === 'feedback' && r.o.studentCorrect === true : null,
-    oobLabelled: r.expect === 'oob' ? r.o.label !== null && !r.o.inTextbook : null,
+    oobLabelled: r.expect === 'oob' ? !r.o.inTextbook : null,
     accurate: r.grade.accurate,
     respectful: r.grade.respectful,
   });
