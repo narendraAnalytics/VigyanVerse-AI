@@ -10,3 +10,6 @@ out
 *.png
 # 23 MB music bed: rebuilt exactly (seeded) by: node scripts/synth.mjs
 public/music/
+
+# LinkedIn demo: the owner's screen recording (73 MB, copy of ../demovideo.mp4)
+public/demo/

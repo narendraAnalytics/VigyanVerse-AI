@@ -15,6 +15,7 @@ import chemistryVoice from './voice/chemistry.json';
 import biologyVoice from './voice/biology.json';
 import signinVoice from './voice/signin.json';
 import introVoice from './voice/intro.json';
+import { Demo, DEMO_SECONDS } from './demo/Demo';
 
 const FPS = 30;
 type Props = ClayProps & { voice: boolean; sounds: boolean };
@@ -92,6 +93,8 @@ export const RemotionRoot: React.FC = () => {
       {/* Sign-in page welcome: two students sign in with Google or GitHub. Spotlight Stage style. */}
       <Composition id="SignIn" component={SignIn} durationInFrames={Math.ceil(signinTl.seconds * FPS)} fps={FPS} width={1920} height={1080} defaultProps={defaults} />
       {/* Home-page introduction: what VigyanVerse AI is, told by a student. Paper Pop-Up style. Built scene by scene. */}
+      {/* LinkedIn demo (2026-11-24): two mothers + the real website recording. Mid-century cartoon. Built scene by scene. */}
+      <Composition id="Demo" component={Demo} durationInFrames={Math.ceil(DEMO_SECONDS * FPS)} fps={FPS} width={1920} height={1080} defaultProps={{ voice: true, sounds: true }} />
       <Composition id="Intro" component={Intro} durationInFrames={Math.ceil(introTl.seconds * FPS)} fps={FPS} width={1920} height={1080} defaultProps={{ ...defaults, renderSamples: 24 }} />
     </>
   );

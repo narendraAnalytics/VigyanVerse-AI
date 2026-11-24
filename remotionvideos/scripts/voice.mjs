@@ -66,6 +66,32 @@ const VIDEOS = {
     // scene 11: the book closes on its cover
     { id: '13-close', at: 123.6, voice: 'en-IN-NeerjaNeural', text: "Let's learn science together, on VigyanVerse AI!" },
   ],
+  // LinkedIn demo (script.txt, 2026-11-24, mid-century cartoon, built scene by scene): two mothers on their balconies.
+  // Priya = Neerja; Meera = Neerja Expressive a little lower and slower, so the two women sound different (RATE=1.0).
+  demo: [
+    { id: '01-priya-ask', at: 1.2, voice: 'en-IN-NeerjaNeural', text: 'Meera, you look so worried today. What happened?' },
+    { id: '02-meera-worry', at: 5.8, voice: 'en-IN-NeerjaExpressiveNeural', pitch: '-8%', rate: 1.0, text: "It's Anika. Her Class 10 board exams are coming, and chemistry just isn't going in. Equations, acids, bases... she reads the chapter three times, and still feels lost." },
+    // scene 2: Priya recommends the app (starts after scene 1 ends at 20.63 s)
+    { id: '03-priya-tip', at: 21.1, voice: 'en-IN-NeerjaNeural', text: 'My son had the same problem last year. Then he started using VigyanVerse AI. It teaches straight from the NCERT textbook, in a really simple way. Look.' },
+    // scene 3 (owner 2026-11-24): the recording, Priya explains, Meera asks in between (ats set from the line lengths)
+    { id: '04-priya-chapters', at: 35.4, voice: 'en-IN-NeerjaNeural', text: 'Every chapter is right there, with short videos that make it easy to see.' },
+    { id: '05-meera-stuck', at: 40.41, voice: 'en-IN-NeerjaExpressiveNeural', pitch: '-8%', rate: 1.0, text: "But what if she's stuck on a question late at night?" },
+    { id: '06-priya-tutor', at: 43.53, voice: 'en-IN-NeerjaNeural', text: 'She just types it, or says it out loud, and the AI tutor explains it simply, with the exact chapter and page from her book.' },
+    { id: '07-meera-homework', at: 52.48, voice: 'en-IN-NeerjaExpressiveNeural', pitch: '-8%', rate: 1.0, text: 'And her homework questions, from the notebook?' },
+    { id: '08-priya-photo', at: 55.48, voice: 'en-IN-NeerjaNeural', text: "She snaps a photo, and it's solved step by step." },
+    { id: '09-meera-learning', at: 59.16, voice: 'en-IN-NeerjaExpressiveNeural', pitch: '-8%', rate: 1.0, text: "How will I know she's really learning?" },
+    { id: '10-priya-quiz', at: 61.62, voice: 'en-IN-NeerjaNeural', text: 'Short quizzes, checked by code, show what she has learnt, and what to revise next.' },
+    { id: '11-priya-bindu', at: 67.86, voice: 'en-IN-NeerjaNeural', text: 'And Bindu turns any answer into a little whiteboard lesson.' },
+    { id: '12-meera-cost', at: 71.86, voice: 'en-IN-NeerjaExpressiveNeural', pitch: '-8%', rate: 1.0, text: 'Is it expensive?' },
+    { id: '13-priya-price', at: 73.45, voice: 'en-IN-NeerjaNeural', text: 'Not at all. No subscription, and credits start at just ten rupees.' },
+    // owner 2026-11-24: safe payments (wording from the site's "Safe payments by Razorpay" box and Pricing page)
+    { id: '14-meera-safe', at: 79.44, voice: 'en-IN-NeerjaExpressiveNeural', pitch: '-8%', rate: 1.0, text: 'And paying online, is that safe?' },
+    { id: '15-priya-safe', at: 82.17, voice: 'en-IN-NeerjaNeural', text: 'Yes. Payments go through Razorpay, with UPI or a card, and VigyanVerse AI never sees her card number or UPI PIN. Her data stays private, and there are no ads.' },
+    // scene 4 (owner 2026-11-24: say the website): back on the balcony, Meera smiles
+    { id: '16-meera-site', at: 97.3, voice: 'en-IN-NeerjaExpressiveNeural', pitch: '-8%', rate: 1.0, text: "That sounds wonderful! What's the website?" },
+    { id: '17-priya-site', at: 101.4, voice: 'en-IN-NeerjaNeural', text: 'Just open VigyanVerse AI dot live, on her phone or laptop.' },
+    { id: '18-meera-smile', at: 106.64, voice: 'en-IN-NeerjaExpressiveNeural', pitch: '-8%', rate: 1.0, text: "That's exactly what she needs. Simple, and from her own textbook. I'll tell Anika to start tonight!" },
+  ],
 };
 const VIDEO = process.argv[2] || 'ohms-law';
 const LINES = VIDEOS[VIDEO];
@@ -78,12 +104,12 @@ const ffprobe = join('node_modules', '@remotion', 'compositor-win32-x64-msvc', '
 mkdirSync(DIR, { recursive: true });
 // The Edge service sometimes answers 429 (too many requests): wait and try again with a fresh connection.
 const sleep = (ms) => new Promise((ok) => setTimeout(ok, ms));
-async function speak(text, voice = VOICE) {
+async function speak(text, voice = VOICE, prosody = {}) {
   for (let attempt = 1; ; attempt++) {
     const tts = new MsEdgeTTS();
     try {
       await tts.setMetadata(voice, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3, { wordBoundaryEnabled: true });   // word timings for captions
-      const res = await tts.toFile(DIR, text, { rate: RATE });
+      const res = await tts.toFile(DIR, text, { rate: prosody.rate ?? RATE, ...(prosody.pitch ? { pitch: prosody.pitch } : {}) });
       tts.close?.();
       return res;
     } catch (e) {
@@ -104,7 +130,7 @@ function readWords(path) {
 }
 const out = [];
 for (const line of LINES) {
-  const { audioFilePath, metadataFilePath } = await speak(line.text, line.voice || VOICE);
+  const { audioFilePath, metadataFilePath } = await speak(line.text, line.voice || VOICE, { rate: line.rate, pitch: line.pitch });
   const words = metadataFilePath ? readWords(metadataFilePath) : [];
   await sleep(1500);
   const dest = join(DIR, `${line.id}.mp3`);
