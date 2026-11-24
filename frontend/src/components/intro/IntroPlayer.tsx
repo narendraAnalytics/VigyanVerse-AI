@@ -1,7 +1,8 @@
 'use client';
 
-// Full-screen player for the home-page intro (see src/lib/intro-video.ts). The video fills the whole window (edge to
-// edge, letterboxed on black so the burned-in captions and the end card are never cropped) and starts at once.
+// Full-screen player for the home-page intro (see src/lib/intro-video.ts). The video fills the whole window edge to
+// edge (`.intro-fill` in globals.css: landscape crops a little top / bottom, mostly from the top so the burned-in
+// captions and the end card stay; anything left over glows with a blurred copy of the frame) and starts at once.
 // Autoplay rules (Chrome autoplay policy, iOS Safari): it starts MUTED with playsInline; "Tap for sound" unmutes inside
 // the click (a user gesture) and, in that same gesture, asks for real fullscreen (+ landscape on Android). If play() is
 // refused anyway (e.g. iPhone Low Power Mode) a big play button is shown instead. Skip appears after a few seconds (at
@@ -30,6 +31,7 @@ export function IntroPlayer() {
   const { open, replay } = useStore(introVideo);
   const shell = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLVideoElement>(null);
+  const ambient = useRef<HTMLCanvasElement>(null);
   const [muted, setMuted] = useState(true);
   const [blocked, setBlocked] = useState(false);
   const [canSkip, setCanSkip] = useState(false);
@@ -66,6 +68,22 @@ export function IntroPlayer() {
     };
   }, [open, replay, finish]);
 
+  // ambient fill: copy the current frame onto a tiny canvas a few times a second (CSS blurs it); no extra download
+  useEffect(() => {
+    if (!open) return;
+    let id = 0;
+    const draw = () => {
+      const v = ref.current, c = ambient.current;
+      const ctx = c?.getContext('2d');
+      if (v && c && ctx && v.readyState >= 2 && c.offsetParent !== null) {
+        try { ctx.drawImage(v, 0, 0, c.width, c.height); } catch { /* not ready */ }
+      }
+      id = window.setTimeout(draw, 250);
+    };
+    draw();
+    return () => window.clearTimeout(id);
+  }, [open]);
+
   if (!open) return null;
 
   const soundOn = () => {
@@ -97,10 +115,11 @@ export function IntroPlayer() {
       className="fixed inset-0 z-[100] bg-black transition-opacity duration-500"
       style={{ opacity: leaving ? 0 : 1 }}
     >
-      {/* edge to edge: contain (not cover) so captions and the website card are never cut off */}
+      <canvas ref={ambient} width={48} height={27} aria-hidden className="intro-ambient" />
+      {/* edge to edge: see .intro-fill in globals.css (captions and the website card stay in view) */}
       <video
         ref={ref}
-        className="absolute inset-0 h-full w-full cursor-pointer object-contain"
+        className="intro-fill cursor-pointer"
         src={introVideoUrl()}
         poster={introPosterUrl()}
         muted
