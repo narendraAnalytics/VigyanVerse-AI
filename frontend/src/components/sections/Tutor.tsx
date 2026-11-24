@@ -492,7 +492,7 @@ function Bubble({ m, language, image = false, question }: { m: ChatMessage; lang
     try {
       // Heading = the textbook topic the answer came from; Bindu's welcome is spoken first (same request, one charge).
       const c = m.citations?.[0];
-      const title = lessonTitle(c ?? null, question);
+      const title = lessonTitle(c ?? null, question, m.text);
       const greeting = lessonGreeting(title, Boolean(c && (topicName(c.section) || c.chapterTitle)));
       const messageId = savedMessageId(m.id);
       const audio = await fetchLessonAudio(`${greeting}

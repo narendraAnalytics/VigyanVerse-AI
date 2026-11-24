@@ -115,12 +115,34 @@ export function topicName(section: string | null | undefined): string {
   return NOT_A_TOPIC.test(name) ? '' : name;
 }
 
+/** Words too general to tell two sections apart ("Displacement Reaction" vs "Decomposition Reaction"). */
+const GENERAL_WORDS = new Set([
+  'reaction', 'reactions', 'chemical', 'properties', 'property', 'types', 'type', 'nature', 'what', 'does',
+  'happens', 'when', 'their', 'with', 'from', 'into', 'some', 'more', 'about', 'using', 'used', 'other',
+  'effect', 'effects', 'important', 'common', 'understanding', 'everyday', 'life', 'human', 'beings',
+]);
+
 /**
- * Board heading: the topic of the textbook section the answer came from, else the chapter title,
- * else the student's question (shortened), else a friendly default.
+ * True when the section name fits the answer: at least one of its specific words (first 4 letters,
+ * so "Metallic" fits "metal", "Acids" fits "acidic") is in the answer. A textbook passage can span two sections and carry
+ * the later one's name (2026-11-24: the "black and white photography" text of 1.2.2 Decomposition
+ * is stored under "1.2.3 Displacement Reaction"); then the chapter title is the safer heading.
  */
-export function lessonTitle(topic: { section?: string | null; chapterTitle?: string | null } | null, question?: string): string {
-  const fromBook = topicName(topic?.section) || cleanLine(topic?.chapterTitle ?? '');
+export function topicFitsAnswer(topic: string, answer: string): boolean {
+  const stems = (s: string) => s.toLowerCase().split(/[^a-z]+/).filter((w) => w.length >= 4).map((w) => w.slice(0, 4));
+  const specific = topic.toLowerCase().split(/[^a-z]+/).filter((w) => w.length >= 4 && !GENERAL_WORDS.has(w)).map((w) => w.slice(0, 4));
+  if (!specific.length || !answer.trim()) return true; // nothing to check against
+  const inAnswer = new Set(stems(answer));
+  return specific.some((w) => inAnswer.has(w));
+}
+
+/**
+ * Board heading: the topic of the textbook section the answer came from (when it fits the answer),
+ * else the chapter title, else the student's question (shortened), else a friendly default.
+ */
+export function lessonTitle(topic: { section?: string | null; chapterTitle?: string | null } | null, question?: string, answer?: string): string {
+  const section = topicName(topic?.section);
+  const fromBook = (section && topicFitsAnswer(section, answer ?? '') ? section : '') || cleanLine(topic?.chapterTitle ?? '') || section;
   if (fromBook) return shorten(fromBook, 40);
   const q = cleanLine(question ?? '').replace(/[?.!]+$/, '');
   return q ? shorten(q, 34) : "Let's see!";
