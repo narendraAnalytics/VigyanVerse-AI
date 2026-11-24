@@ -485,11 +485,11 @@ body {
   }
 }
 
-/* Home-page intro video (IntroPlayer.tsx). Landscape: fill the window edge to edge. A window wider than 16:9 (a laptop
-   browser) crops the top and bottom, 75% of the crop from the top so the burned-in captions, the logo badge and the
-   "vigyanverseai.live" end card at the bottom stay in view. At most 16% of the height is cropped (fully covers up to
-   about 2.12:1); a narrower window (4:3 tablet) crops at most 4% of the width. Anything left over is filled by
-   .intro-ambient (a blurred copy of the current frame) instead of black bars. Phones held upright are unchanged. */
+/* Home-page intro video (IntroPlayer.tsx). Landscape: always fills the full window width (owner 2026-11-24: no side
+   gaps). A window wider than 16:9 (a laptop browser) crops the top and bottom: at most 4% of the video's height from
+   the bottom (the burned-in captions, logo badge and "vigyanverseai.live" end card sit just above that), the rest from
+   the top. A narrower window (4:3 tablet) crops at most 4% of the width; the bands left above and below are filled by
+   .intro-ambient (a blurred copy of the current frame) instead of black. Phones held upright are unchanged. */
 .intro-fill {
   position: absolute;
   inset: 0;
@@ -500,14 +500,16 @@ body {
 .intro-ambient { display: none; }
 @media (orientation: landscape) {
   .intro-fill {
-    --intro-w: max(min(100vw, 100dvh * 16 / 9 / 0.84), min(100dvh * 16 / 9, 100vw / 0.96));
+    --intro-w: max(100vw, min(100dvh * 16 / 9, 100vw / 0.96));
     --intro-h: calc(var(--intro-w) * 9 / 16);
     inset: auto;
     max-width: none; /* Tailwind base caps a video at 100% */
     width: var(--intro-w);
     height: var(--intro-h);
     left: calc((100vw - var(--intro-w)) / 2);
-    top: min((100dvh - var(--intro-h)) * 0.75, (100dvh - var(--intro-h)) * 0.5);
+    /* bars: centred; crop: bottom crop = min(25% of the crop, 4% of the height), the rest from the top */
+    top: min((100dvh - var(--intro-h)) / 2,
+      100dvh - var(--intro-h) + min(max(var(--intro-h) - 100dvh, 0px) * 0.25, var(--intro-h) * 0.04));
     object-fit: cover;
   }
   .intro-ambient {
