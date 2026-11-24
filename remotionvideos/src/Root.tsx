@@ -1,4 +1,4 @@
-import { AbsoluteFill, Composition, Sequence, staticFile } from 'remotion';
+import { AbsoluteFill, Composition, Sequence, Still, staticFile } from 'remotion';
 import { Audio } from '@remotion/media';
 import { ClayVideo, type ClayProps } from './ClayVideo';
 import { ohmStyle, SOUND_CUES as OHM_SOUNDS } from './styles/ohm.js';
@@ -16,6 +16,7 @@ import biologyVoice from './voice/biology.json';
 import signinVoice from './voice/signin.json';
 import introVoice from './voice/intro.json';
 import { Demo, DEMO_SECONDS } from './demo/Demo';
+import { Thumb } from './demo/Thumb';
 
 const FPS = 30;
 type Props = ClayProps & { voice: boolean; sounds: boolean };
@@ -95,6 +96,8 @@ export const RemotionRoot: React.FC = () => {
       {/* Home-page introduction: what VigyanVerse AI is, told by a student. Paper Pop-Up style. Built scene by scene. */}
       {/* LinkedIn demo (2026-11-24): two mothers + the real website recording. Mid-century cartoon. Built scene by scene. */}
       <Composition id="Demo" component={Demo} durationInFrames={Math.ceil(DEMO_SECONDS * FPS)} fps={FPS} width={1920} height={1080} defaultProps={{ voice: true, sounds: true }} />
+      {/* LinkedIn thumbnail for the demo video */}
+      <Still id="DemoThumb" component={Thumb} width={1920} height={1080} />
       <Composition id="Intro" component={Intro} durationInFrames={Math.ceil(introTl.seconds * FPS)} fps={FPS} width={1920} height={1080} defaultProps={{ ...defaults, renderSamples: 24 }} />
     </>
   );
