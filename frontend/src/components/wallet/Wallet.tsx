@@ -2,6 +2,7 @@
 
 // The rupee wallet: header balance pill, the Add-money sheet (Razorpay Checkout) and the Wallet
 // page. Every number comes from the backend (wallets, wallet_ledger, topup_packs, task_prices).
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import clsx from 'clsx';
@@ -104,35 +105,80 @@ export function BalancePill() {
 // ---------------------------------------------------------------------------
 // Pack cards (sheet + Wallet page)
 // ---------------------------------------------------------------------------
+/**
+ * "Credit note" look (owner 2026-11-24): each pack is tinted in the colour family of the matching rupee
+ * note so it feels like money, but it is an ORIGINAL design: no RBI text, emblem, portrait, signature or
+ * serial number (Indian law forbids anything resembling a currency note, and the Terms say credits are
+ * not stored money). Drawn in code: no image download.
+ */
+const NOTE_TINT: Record<number, { paper: string; ink: string; line: string }> = {
+  1000:  { paper: '#f7e4cd', ink: '#6f3810', line: '#b5652b' }, // ₹10: chocolate / orange-brown
+  5000:  { paper: '#dcefe9', ink: '#1b5452', line: '#3b8d87' }, // ₹50: teal
+  10000: { paper: '#e9e1f1', ink: '#4a3574', line: '#7a62a6' }, // ₹100: lavender
+  20000: { paper: '#f7eabb', ink: '#6e5106', line: '#c39518' }, // ₹200: bright yellow
+};
+const NOTE_DEFAULT = { paper: '#fbf6ea', ink: '#3b2f22', line: '#b08a3e' };
+
+/** Fine wavy "security" lines, like the pattern on a note (pure SVG). */
+const NOTE_WAVES = Array.from({ length: 7 }, (_, k) => {
+  const y = 12 + k * 13;
+  let d = `M0 ${y}`;
+  for (let x = 0; x <= 200; x += 5) d += ` L${x} ${(y + 4 * Math.sin((x + k * 9) / 9) + 2 * Math.sin((x - k * 5) / 4)).toFixed(1)}`;
+  return d;
+});
+
+function NoteBackdrop() {
+  return (
+    <>
+      <svg aria-hidden viewBox="0 0 200 100" preserveAspectRatio="none" className="pointer-events-none absolute inset-0 h-full w-full text-[var(--note-line)] opacity-[.22]">
+        {NOTE_WAVES.map((d, i) => <path key={i} d={d} fill="none" stroke="currentColor" strokeWidth="0.7" vectorEffect="non-scaling-stroke" />)}
+      </svg>
+      {/* inner frame, like a note's printed border */}
+      <span aria-hidden className="pointer-events-none absolute inset-1.5 rounded-md border border-[var(--note-line)]/45" />
+      <span aria-hidden className="pointer-events-none absolute inset-[9px] rounded-[5px] border border-dashed border-[var(--note-line)]/30" />
+      {/* big faint rupee watermark */}
+      <span aria-hidden className="pointer-events-none absolute -bottom-6 right-2 select-none font-display text-[7rem] leading-none text-[var(--note-ink)] opacity-[.07]">₹</span>
+    </>
+  );
+}
+
 function PackCard({ pack, selected, onPick }: { pack: Pack; selected: boolean; onPick: () => void }) {
   const bonus = pack.credit_paise - pack.price_paise;
+  const tint = NOTE_TINT[pack.price_paise] ?? NOTE_DEFAULT;
   return (
     <button
       type="button"
       role="radio"
       aria-checked={selected}
       onClick={onPick}
+      style={{ '--note-paper': tint.paper, '--note-ink': tint.ink, '--note-line': tint.line } as React.CSSProperties}
       className={clsx(
-        'relative flex flex-col items-start overflow-hidden rounded-lg border-[1.5px] bg-[#fbf6ea] px-4 pb-3 pt-4 text-left transition',
+        'relative flex flex-col items-start overflow-hidden rounded-lg border-[1.5px] bg-[var(--note-paper)] px-4 pb-3 pt-3 text-left transition',
         selected ? 'border-emerald shadow-[0_0_0_3px_rgba(31,95,91,.18)]' : 'border-ink/15 hover:-translate-y-0.5 hover:border-gold-deep hover:shadow-md',
       )}
     >
-      {/* ticket perforation */}
-      <span aria-hidden className="absolute inset-x-3 top-1.5 h-0 border-t-2 border-dotted border-gold/50" />
+      <NoteBackdrop />
+      {/* logo in an oval, where a note has its portrait (wider cards only: phones keep the text clear) */}
+      <span aria-hidden className="pointer-events-none absolute right-4 top-1/2 hidden h-[3.6rem] w-[2.9rem] -translate-y-1/2 items-center justify-center rounded-[50%] border-[1.5px] border-[var(--note-line)]/60 bg-white/35 shadow-[inset_0_0_0_3px_rgba(255,255,255,.35)] sm:flex">
+        <span className="relative h-8 w-8">
+          <Image src="/logo.png" alt="" fill sizes="32px" className="object-contain" />
+        </span>
+      </span>
       {pack.highlight && (
-        <span className="absolute -right-8 top-3 rotate-45 bg-gold px-8 py-0.5 text-[0.62rem] font-bold uppercase tracking-wider text-ink shadow">Popular</span>
+        <span className="absolute -right-8 top-3 z-10 rotate-45 bg-gold px-8 py-0.5 text-[0.62rem] font-bold uppercase tracking-wider text-ink shadow">Popular</span>
       )}
-      <span className="font-display text-3xl leading-none text-ink">{rupees(pack.price_paise)}</span>
-      <span className="mt-1 text-sm text-ink-soft">
+      <span className="relative mb-1.5 text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-[var(--note-ink)]/75">VigyanVerse credits</span>
+      <span className="relative font-display text-3xl leading-none text-[var(--note-ink)]">{rupees(pack.price_paise)}</span>
+      <span className="relative mt-1 text-sm text-ink-soft">
         {bonus > 0 ? <>you get <b className="text-emerald">{rupees(pack.credit_paise)}</b></> : 'in credits'}
       </span>
       {bonus > 0 && (
-        <span className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-gold/25 px-2 py-0.5 text-xs font-semibold text-gold-deep">
+        <span className="relative mt-1.5 inline-flex items-center gap-1 rounded-full bg-white/50 px-2 py-0.5 text-xs font-semibold text-gold-deep">
           <Sparkles aria-hidden className="h-3 w-3" /> +{rupees(bonus)} extra
         </span>
       )}
-      <span className="mt-2 text-xs text-ink-faint">about {questionsFor(pack.credit_paise)} questions</span>
-      {selected && <Check aria-hidden className="absolute bottom-3 right-3 h-5 w-5 rounded-full bg-emerald p-0.5 text-paper" />}
+      <span className="relative mt-2 text-xs text-ink-soft">about {questionsFor(pack.credit_paise)} questions</span>
+      {selected && <Check aria-hidden className="absolute bottom-3 right-3 z-10 h-5 w-5 rounded-full bg-emerald p-0.5 text-paper" />}
     </button>
   );
 }
