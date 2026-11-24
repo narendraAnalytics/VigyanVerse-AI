@@ -38,6 +38,13 @@ describe('sanitizeKeywords', () => {
     ]);
   });
 
+  it('turns a spoken percentage into the digits the textbook prints ("10%"), but still skips plain numbers', () => {
+    expect(sanitizeKeywords(['What is the ten percent law in a food chain?'])).toEqual(['10', 'law', 'food', 'chain']);
+    expect(sanitizeKeywords(['10% law'])).toEqual(['10', 'law']);
+    expect(sanitizeKeywords(['10 per cent of energy'])).toEqual(['10', 'energy']);
+    expect(sanitizeKeywords(['image at 20 cm'])).toEqual(['image', 'cm']);
+  });
+
   it('caps the number and length of keywords', () => {
     const many = Array.from({ length: 50 }, (_, i) => `term${i}`);
     expect(sanitizeKeywords(many)).toHaveLength(MAX_KEYWORDS);

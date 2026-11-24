@@ -63,18 +63,36 @@ const SKIP_WORDS = new Set([
   'solve', 'find', 'step', 'steps', 'question', 'questions', 'photo', 'picture', 'please', 'kindly',
 ]);
 
+/**
+ * Percentages are written "10%" in the textbook ("An average of 10% of the food eaten...", Ch 13 p. 210), but students
+ * say "ten percent law" / "10 per cent". Such a number is kept as digits (the "%" and the word "percent" go), even though
+ * plain numbers are skipped. 2026-11-24: "What is the ten percent law in a food chain?" matched only "food chain",
+ * coverage fell under 0.5 and the answer was treated as not in the textbook.
+ */
+const NUMBER_WORDS: Record<string, string> = {
+  one: '1', two: '2', three: '3', four: '4', five: '5', six: '6', seven: '7', eight: '8', nine: '9', ten: '10',
+  twenty: '20', thirty: '30', forty: '40', fifty: '50', sixty: '60', seventy: '70', eighty: '80', ninety: '90', hundred: '100',
+};
+const PERCENT = new RegExp(String.raw`\b(\d+|${Object.keys(NUMBER_WORDS).join('|')})\s*(?:%|percent(?:age)?\b|per\s*cent\b)`, 'g');
+
 /** Keep only plain ASCII search terms: letters, digits, and inner hyphens. */
 export function sanitizeKeywords(raw: readonly string[]): string[] {
   const seen = new Set<string>();
   const out: string[] = [];
   const skipped: string[] = [];
+  const percents = new Set<string>();
   for (const item of raw) {
-    for (const word of item.toLowerCase().split(/[^a-z0-9-]+/)) {
+    const text = item.toLowerCase().replace(PERCENT, (_, n: string) => {
+      const digits = NUMBER_WORDS[n] ?? n;
+      percents.add(digits);
+      return ` ${digits} `;
+    });
+    for (const word of text.split(/[^a-z0-9-]+/)) {
       const w = word.replace(/^-+|-+$/g, '');
       if (w.length < 2 || w.length > MAX_KEYWORD_LENGTH || seen.has(w)) continue;
       seen.add(w);
       // Plain numbers ("20 cm", "12 V") match exercise pages that share the number, not the topic.
-      if (SKIP_WORDS.has(w) || /^[0-9]+$/.test(w)) { skipped.push(w); continue; }
+      if (SKIP_WORDS.has(w) || (/^[0-9]+$/.test(w) && !percents.has(w))) { skipped.push(w); continue; }
       out.push(w);
       if (out.length === MAX_KEYWORDS) return out;
     }
