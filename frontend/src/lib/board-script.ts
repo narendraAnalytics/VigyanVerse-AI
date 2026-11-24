@@ -102,10 +102,17 @@ export function planLesson(answer: string, spokenText: string, voiceSeconds: num
 
 const shorten = (s: string, max: number) => (s.length <= max ? s : `${s.slice(0, max - 2).replace(/\s+\S*$/, '')}…`);
 
+/**
+ * NCERT end-of-chapter / box sections that are not a topic ("What you have learnt" is the chapter summary,
+ * "Exercises" the questions): the board heading falls back to the chapter title for these.
+ */
+const NOT_A_TOPIC = /^(what you have learnt|exercises?|questions?|activity|do you know\??|more to know!?|think it over|example)$/i;
+
 /** Topic name from a section path ("Light > 9.2.3 Mirror Formula and Magnification" -> "Mirror Formula and Magnification"). */
 export function topicName(section: string | null | undefined): string {
   const lastPart = (section ?? '').split(/\s*[>/|»]\s*/).filter(Boolean).pop() ?? '';
-  return cleanLine(lastPart.replace(/^(chapter|activity|example)?\s*[\d.]+\s*[:.)-]?\s*/i, ''));
+  const name = cleanLine(lastPart.replace(/^(chapter|activity|example)?\s*[\d.]+\s*[:.)-]?\s*/i, ''));
+  return NOT_A_TOPIC.test(name) ? '' : name;
 }
 
 /**
