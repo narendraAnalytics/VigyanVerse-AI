@@ -2,7 +2,7 @@
 
 **A multilingual AI learning platform for Class 10 Science, in English and Telugu.**
 
-**Live:** [vigyanverseai.live](https://vigyanverseai.live) (fallback: [vigyanverseai.vercel.app](https://vigyanverseai.vercel.app); frontend on Vercel, backend on InsForge; payments in Razorpay test mode)
+**Live:** [vigyanverseai.live](https://vigyanverseai.live) (fallback: [vigyanverseai.vercel.app](https://vigyanverseai.vercel.app); frontend on Vercel, backend on InsForge; real (live) Razorpay payments since 2026-11-23)
 
 VigyanVerse AI helps Class 10 students understand Physics, Chemistry and Biology, not just memorise
 answers. It combines a textbook-grounded AI tutor, Socratic questioning, quizzes with verified
@@ -17,14 +17,14 @@ is built for CBSE and Andhra Pradesh SSC students.
 
 **In production.** The backend runs on InsForge and the frontend (Next.js, in `frontend/`) on Vercel at
 [https://vigyanverseai.live](https://vigyanverseai.live). Students pay per AI task from a rupee
-credits wallet topped up through Razorpay (test mode). The owner tested every logged-in flow on the live
-site on 2026-11-17 (top-up, tutor, quiz, photo questions, voice). The student-facing app is English only
+credits wallet topped up through Razorpay, with real (live) payments since 2026-11-23. The owner tested every
+logged-in flow on the live site on 2026-11-17 (top-up, tutor, quiz, photo questions, voice). The student-facing app is English only
 for now; Telugu support stays in the backend and returns later.
 
 | Area | State |
 |---|---|
-| InsForge backend project (Nano compute) | ✅ Deployed: 26 migrations, 9 Edge Functions |
-| Knowledge base (13 NCERT chapters, 360 chunks, keyword search) | ✅ Recall@5 100%, MRR 0.92 |
+| InsForge backend project (Nano compute) | ✅ Deployed: 30 migrations, 9 Edge Functions |
+| Knowledge base (13 NCERT chapters, 360 chunks, keyword search) | ✅ Recall@5 100%, Recall@1 87%, MRR 0.93 |
 | Tutor, Socratic mode, maths reasoning (LangGraph.js) | ✅ Live-evaluated |
 | Quizzes: generate → validate → grade → mistake feedback | ✅ Live-evaluated |
 | Learning intelligence: mastery, spaced revision, next activity, advice | ✅ Live-evaluated |
@@ -32,11 +32,12 @@ for now; Telugu support stays in the backend and returns later.
 | Voice: Telugu / English speech in (Saaras v4) and out (Bulbul v4 Flash) | ✅ Round trip checked |
 | Identity, roles, RLS; parent linking and consent tables | ✅ Applied and security-checked. Students now use their own account: `has_consent()` is true for a student's own account (migration 20) |
 | Frontend: 3D open-textbook site (Home, Physics, Chemistry, Biology, AI Tutor, My Learning, Wallet, sign-in, bookplate) | ✅ Deployed on Vercel: [vigyanverseai.live](https://vigyanverseai.live) |
-| Credits wallet + Razorpay top-ups (₹1 = 1 credit, pay per AI task, refunds on failure) | ✅ Built and security-checked; test mode |
+| Credits wallet + Razorpay top-ups (₹1 = 1 credit, pay per AI task, refunds on failure) | ✅ Built and security-checked; live since 2026-11-23 |
 | Logged-in end-to-end tests on the live site (top-up, tutor, quiz, photo upload, voice) | ✅ Passed, owner tested from a fresh account 2026-11-17 |
 | Credit checks before every paid action (locks, low-credit notes, top-up prompt) | ✅ Tested live 2026-11-17 |
 | Policy pages (About, Contact, Pricing, Terms, Privacy, Refunds) | ✅ Live on vigyanverseai.live (2026-11-21) |
-| Razorpay live mode | ⏳ In progress: website review by Razorpay (2026-11-21), then live keys + live webhook (owner decided to go live before the DPDP review; the review is still advised before a public launch) |
+| Razorpay live mode | ✅ Live since 2026-11-23 (new Razorpay account for vigyanverseai.live, live keys + live webhook, a real ₹10 top-up credited once). The DPDP review is still advised before a public launch |
+| Videos: home intro (2:10), Physics / Chemistry / Biology / sign-in explainers, LinkedIn demo (2:11) | ✅ Made with Remotion in `remotionvideos/`; site videos on InsForge Storage (CDN), the demo kept local |
 | AP SSC curriculum, Telugu chapter titles | ⏳ Waiting for official sources |
 | NCERT usage permission | ⏳ Launch blocker |
 
@@ -68,8 +69,8 @@ owner's machine and not in this repository.
 
 | Agent | Model | What it does |
 |---|---|---|
-| Router | DeepSeek V4.1 Flash | Decides the intent (concept, numerical, quiz, follow-up, greeting, off-topic, unsafe), subject and language |
-| Curriculum Retrieval | none (code) | Keyword + IDF search; rates the result grounded / weak / none; builds citations |
+| Router | Sarvam Prism (decision model, ~0.15 s), DeepSeek V4.1 Flash as backup | Decides the intent (concept, numerical, quiz, follow-up, greeting, off-topic, unsafe), subject and language |
+| Curriculum Retrieval | none (code) | Keyword + IDF search (stop words and plain numbers skipped; a spoken percentage such as "ten percent" becomes "10", as the book prints it); rates the result grounded / weak / none; builds citations |
 | AI Tutor | Sarvam 105B | Short answers from the retrieved passages, English or Telugu |
 | Socratic Tutor | Sarvam 105B | Hints instead of answers; code owns the turn plan and leak guards |
 | Maths & Science Reasoning | DeepSeek V4.1 Flash + code | Model writes givens and an expression, code calculates and checks |
@@ -123,7 +124,10 @@ payment, only if the paid amount equals the pack price and the payment environme
 
 Sign-in is required to pay (email + password, Google or GitHub, then the bookplate): credits belong
 to one student account. Razorpay keys stay in InsForge only; test and live keys are separate pairs.
-End-to-end test top-up re-checked on vigyanverseai.live on 2026-11-21 (₹10 credited by the webhook).
+Payments are live since 2026-11-23: a real ₹10 UPI top-up was credited once by the live webhook.
+`wallet_settings.payment_environment` = 'live' (set it to 'test' to go back to test money). The top-up
+window and the Pricing page explain safe payments: Razorpay's secure window (UPI, cards, net banking),
+the app never sees card numbers, bank details or UPI PINs, and credits are added only after Razorpay confirms.
 
 The header shows the balance as a pill (green from ₹50, amber ₹10–₹49, red "Low" under ₹10, red at
 ₹0); clicking it opens the top-up window, and a hand-written note on hover says roughly how many
@@ -145,10 +149,11 @@ read the photo but leave nothing to ask about it. The server still checks and ch
 | AI | [Sarvam](https://docs.sarvam.ai): Token Factory chat models, Saaras (speech-to-text), Bulbul (text-to-speech). One API key covers all |
 | Agents | LangGraph.js StateGraph, TypeScript |
 | Validation & verification | zod, mathjs, custom chemical equation balancer |
-| Testing | vitest (316 unit tests), live per-agent evals with pass bars set before the run, rolled-back SQL checks |
+| Testing | vitest (343 unit tests), live per-agent evals with pass bars set before the run, rolled-back SQL checks |
 | Frontend | Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, React Three Fiber, GSAP, Motion |
 | Hosting | Vercel (frontend), InsForge (backend) |
 | Payments | Razorpay (Orders + Checkout.js) through InsForge's built-in payments module |
+| Videos | Remotion 4 (three.js style kits and flat SVG scenes), Edge TTS narration, synthesized music |
 
 ## Repository structure
 
@@ -158,6 +163,7 @@ vigyanverseai/
 ├── backenddescription.txt     detailed backend description (kept locally, not in git)
 ├── projectOverview.txt        product vision (kept locally; some parts outdated)
 ├── frontend/                  Next.js web app (see below)
+├── remotionvideos/            explainer, intro and LinkedIn demo videos (Remotion; see "Videos")
 └── backend/
     ├── migrations/            SQL migrations (schema, RLS, seed data)
     ├── src/
@@ -226,7 +232,7 @@ turns the page. AI Tutor and My Learning appear in the navbar only after sign-in
 |---|---|---|
 | Frontend | Vercel: [vigyanverseai.live](https://vigyanverseai.live) (custom domain from Hostinger; www and vigyanverseai.vercel.app redirect / still work) | Root directory `frontend`, framework Next.js, deployed manually |
 | Backend | InsForge (`https://r2f4a6w6.ap-southeast.insforge.app`) | Migrations with `npm run db:up`, functions with `npm run fn:deploy -- <slug>` |
-| Payments | Razorpay test mode via InsForge | Webhook: `https://r2f4a6w6.ap-southeast.insforge.app/api/webhooks/razorpay/test` (events `payment.captured`, `payment.failed`, `order.paid`) |
+| Payments | Razorpay LIVE via InsForge (since 2026-11-23) | Live webhook: `https://r2f4a6w6.ap-southeast.insforge.app/api/webhooks/razorpay/live` (events `payment.captured`, `payment.failed`, `order.paid`); the test webhook ends in `/test` |
 
 **Vercel environment variables (only these three):**
 
@@ -243,6 +249,21 @@ Razorpay keys, the Sarvam key and the InsForge API key live only in InsForge, ne
 list (`http://localhost:3000,https://vigyanverseai.vercel.app,https://vigyanverseai.live,https://www.vigyanverseai.live`), and `backend/insforge.toml`
 `allowed_redirect_urls` lists `/api/auth/callback`, `/sign-in` and `/reset-password` for both sites
 (apply with `npx -y @insforge/cli config apply`). A new domain needs both updated.
+
+## Videos
+
+All videos are made in `remotionvideos/` with Remotion (Studio: `npm run dev`; renders run on the dev machine).
+Narration is Edge TTS (Indian English voices, no API key); music and sound effects are synthesized by scripts
+(no samples, no licences).
+
+| Video | Where it plays | Notes |
+|---|---|---|
+| Home intro "Welcome to VigyanVerse AI" (2:10, Paper Pop-Up style) | Home page, once per device, muted autoplay with "Tap for sound" | Fills the window edge to edge in landscape; upright phones letterbox |
+| Ohm's law, The Hidden Chemistry Around Us, The Science of Life | Physics, Chemistry and Biology pages (Watch tab) | Facts checked against the NCERT chapters |
+| Welcome to VigyanVerse (15 s) | Sign-in page | Two students, Google / GitHub sign-in |
+| LinkedIn demo (2:11, mid-century cartoon + the real site) | LinkedIn post (not on the site) | Two mothers talk while the owner's screen recording shows the tutor, photo questions, quizzes, Bindu, credits and safe payments; ends with "Work with us" and vigyanverseai.live. The recording and the rendered file stay local |
+
+Site videos live in the public InsForge Storage bucket `explainers` (served by the CDN); they load only when played.
 
 ## Curriculum scope
 
@@ -270,9 +291,11 @@ database). Mastery is tracked per chapter for now; topic-level tracking needs an
 8. ✅ **Credits & payments:** rupee wallet, Razorpay top-ups (test mode), pay per AI task with refunds
 9. ✅ **Real-user testing:** logged-in end-to-end tests on the live site (top-up, tutor, quiz, photo, voice),
    credit checks and low-credit messages (2026-11-17)
-10. ✅ **Production:** frontend on Vercel, backend on InsForge, payments wired end to end (Razorpay test mode)
-11. ⏳ **Public launch:** Razorpay live mode (website under Razorpay review 2026-11-21), NCERT usage permission, legal review of student consent and
-    payments by minors (see Privacy), native Telugu review, AP SSC chapters, pilot study
+10. ✅ **Production:** frontend on Vercel, backend on InsForge, payments wired end to end
+11. ✅ **Live payments:** Razorpay live mode on vigyanverseai.live (2026-11-23)
+12. ✅ **Videos:** home intro, subject and sign-in explainers, LinkedIn demo video (2026-11-24)
+13. ⏳ **Public launch:** NCERT usage permission, legal review of student consent and payments by minors
+    (see Privacy), native Telugu review, AP SSC chapters, pilot study
 
 Learning-outcome claims will come only from a consented pre-test / post-test pilot, never from
 assumptions.
@@ -288,5 +311,5 @@ sees card numbers or UPI PINs, and stores only the order / payment ids and the c
 (owner decision). India's DPDP Act requires verifiable parental consent for under-18s, so a legal
 review is required before public launch. The parent tables and the old rule can be restored with one
 migration. Students now also pay for AI tasks, so the same review should cover payments by minors.
-The owner decided on 2026-11-21 to switch Razorpay to live mode before that review; it is still
-advised before a public launch.
+Razorpay live mode was switched on before that review (owner decision 2026-11-21, live since 2026-11-23);
+the review is still advised before a public launch.
