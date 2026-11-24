@@ -11,6 +11,7 @@
 import { z } from 'zod';
 import { runTurn, type UsageRow } from '../../agents/graph.ts';
 import { retrieveContext } from '../../agents/retrieval.ts';
+import { stripPrivateUse } from '../../shared/text.ts';
 import { SUBJECTS } from '../../agents/router.ts';
 import type { Turn } from '../../agents/tutor.ts';
 import { authenticate, json, preflight, withCors } from '../../shared/http.ts';
@@ -134,7 +135,7 @@ export default withCors(async function (req: Request): Promise<Response> {
   const writes = await Promise.all([
     db.from('messages').insert([
       { conversation_id: conversation.id, role: 'student', content: body.message, citations: [], meta: {} },
-      { conversation_id: conversation.id, role: 'tutor', content: turn.reply.slice(0, 6000), agent: turn.agent, citations: turn.citations, meta: { ...turn.meta, label: turn.label, related: turn.related } },
+      { conversation_id: conversation.id, role: 'tutor', content: stripPrivateUse(turn.reply).slice(0, 6000), agent: turn.agent, citations: turn.citations, meta: { ...turn.meta, label: turn.label, related: turn.related } },
     ]).select('id, role'),
     db.from('conversations').update({ mode, language: turn.language, socratic_topic: turn.socratic.topic, socratic_hints: turn.socratic.hints }).eq('id', conversation.id),
     usageRows.length ? db.from('model_usage').insert(usageRows) : Promise.resolve({ error: null }),
@@ -148,7 +149,7 @@ export default withCors(async function (req: Request): Promise<Response> {
 
   return json({
     conversationId: conversation.id,
-    reply: turn.reply,
+    reply: stripPrivateUse(turn.reply),
     agent: turn.agent,
     language: turn.language,
     citations: turn.citations,

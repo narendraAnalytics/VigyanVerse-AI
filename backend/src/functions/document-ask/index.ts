@@ -12,6 +12,7 @@ import { runDocQa } from '../../agents/docqa.ts';
 import { authenticate, json, preflight, withCors } from '../../shared/http.ts';
 import { chargeFailed, chargeTask, refundCharge } from '../../shared/wallet.ts';
 import { findOrCreateImageConversation } from '../../shared/image-conversation.ts';
+import { stripPrivateUse } from '../../shared/text.ts';
 
 const FUNCTION_SLUG = 'document-ask';
 const MAX_PER_MINUTE = 4;
@@ -86,7 +87,7 @@ export default withCors(async function (req: Request): Promise<Response> {
     conversationId = conversation.id;
     const write = await db.from('messages').insert([
       { conversation_id: conversation.id, role: 'student', content: body.question, agent: null, citations: [], meta: {} },
-      { conversation_id: conversation.id, role: 'tutor', content: run.output.answer.slice(0, 6000), agent: 'docqa', citations: [], meta: { label, found: run.output.found } },
+      { conversation_id: conversation.id, role: 'tutor', content: stripPrivateUse(run.output.answer).slice(0, 6000), agent: 'docqa', citations: [], meta: { label, found: run.output.found } },
     ]);
     saved = !write.error;
     if (!saved) console.error(`${FUNCTION_SLUG}: message save failed for conversation ${conversation.id}`);
@@ -99,7 +100,7 @@ export default withCors(async function (req: Request): Promise<Response> {
     documentId: doc.id,
     conversationId,
     saved,
-    answer: run.output.answer,
+    answer: stripPrivateUse(run.output.answer),
     found: run.output.found,
     // The reading may have been uncertain: the app can show a "check the text" hint.
     needsReview: doc.needs_review,

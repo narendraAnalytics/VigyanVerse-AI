@@ -11,6 +11,8 @@ export interface Chunk {
   content: string;
 }
 
+import { stripPrivateUse } from '../shared/text.ts';
+
 const REPRINT_MARK = /Reprint\s+\d{4}-\d{2}/g;
 
 /**
@@ -158,7 +160,8 @@ export function toItems(pages: readonly string[], chapterNumber: number, offset:
   // Titles start upper-case, except "pH of Salts".
   const headingRe = new RegExp(`^(${chapterNumber}\\.\\d{1,2}(?:\\.\\d{1,2})?)\\s+((?:[A-Z]|pH\\b)[^=]{2,120})$`);
   const pageLines = pages.map((raw) => {
-    const lines = raw.replace(REPRINT_MARK, '').split('\n').map((l) => normalizeHeadingNumber(collapseShadowText(l).trim()));
+    // stripPrivateUse: the PDFs' long reaction arrows come out as U+F8E7 "arrow extender" glyphs (see shared/text.ts)
+    const lines = stripPrivateUse(raw.replace(REPRINT_MARK, '')).split('\n').map((l) => normalizeHeadingNumber(collapseShadowText(l).trim()));
     if (lines.length && parseHeaderPageNumber(lines[0]) !== null) lines.shift(); // running header
     return lines;
   });

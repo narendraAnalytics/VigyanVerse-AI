@@ -99,6 +99,11 @@ const localId = () => `local-${Date.now()}-${seq++}`;
 // Owner 2026-11-24: the "Not from your Class 10 textbook – not needed for the exam" title is gone. The backend no
 // longer sends it, and answers saved before that (meta.label) hide it too: no title instead.
 const OLD_OUT_OF_BOOK = /^(not from your class 10 textbook|idi mee class 10 textbook|ఇది మీ 10వ తరగతి)/i;
+// 2026-11-24: the NCERT PDFs' long reaction arrows were stored as private-use "arrow extender" characters (U+F8E7) that
+// no font draws ("Sunlight □ →□□□□"). The backend now removes them; this also cleans answers saved before the fix.
+const cleanText = (text: string): string =>
+  /[-]/.test(text) ? text.replace(/[-]/g, '').replace(/[ \t]{2,}/g, ' ').replace(/[ \t]+$/gm, '') : text;
+
 const shownLabel = (label: string | null | undefined): string | null =>
   label && !OLD_OUT_OF_BOOK.test(label.trim()) ? label : null;
 
@@ -136,7 +141,7 @@ export async function openConversation(c: Conversation) {
 
 type MessageRow = { id: number | string; role: 'student' | 'tutor'; content: string; citations: Citation[] | null; meta: { label?: string | null; diagram?: Diagram } | null; agent: string | null };
 const toMessage = (r: MessageRow): ChatMessage => ({
-  id: String(r.id), role: r.role, text: r.content, citations: r.citations ?? [], label: shownLabel(r.meta?.label), diagram: r.meta?.diagram,
+  id: String(r.id), role: r.role, text: cleanText(r.content), citations: r.citations ?? [], label: shownLabel(r.meta?.label), diagram: r.meta?.diagram,
   agent: r.agent ?? undefined, source: r.agent === 'docqa' ? 'notes' : 'tutor',
 });
 
@@ -183,7 +188,7 @@ export async function send(text: string, language: Lang, opts: { newTopic?: bool
       const r = await api.documentAsk({ documentId: s.notesDocId, question: message, language, title: imageTitle(s.notesDocId) });
       const label = r.found ? r.label : null;
       const note = r.needsReview && r.found ? ' (The image was hard to read in places, so check this against it.)' : '';
-      chat.set((p) => ({ messages: [...p.messages, { id: localId(), role: 'tutor', text: r.answer + note, label, source: 'notes', askTutor: r.found ? undefined : message }], conversationId: r.conversationId ?? p.conversationId }));
+      chat.set((p) => ({ messages: [...p.messages, { id: localId(), role: 'tutor', text: cleanText(r.answer) + note, label, source: 'notes', askTutor: r.found ? undefined : message }], conversationId: r.conversationId ?? p.conversationId }));
       void loadConversations();
     } else {
       const r = await api.tutorChat({
@@ -200,7 +205,7 @@ export async function send(text: string, language: Lang, opts: { newTopic?: bool
       chat.set((p) => ({
         conversationId: r.conversationId,
         socraticOpen: r.socraticOpen,
-        messages: [...p.messages, { id: r.messageId ? String(r.messageId) : localId(), role: 'tutor', text: r.reply, citations: r.citations, label: shownLabel(r.label) ?? (tutorMessage ? 'Solved by the tutor, using the question in your image' : null), agent: r.agent, source: 'tutor', diagram: r.meta?.diagram as Diagram | undefined }],
+        messages: [...p.messages, { id: r.messageId ? String(r.messageId) : localId(), role: 'tutor', text: cleanText(r.reply), citations: r.citations, label: shownLabel(r.label) ?? (tutorMessage ? 'Solved by the tutor, using the question in your image' : null), agent: r.agent, source: 'tutor', diagram: r.meta?.diagram as Diagram | undefined }],
       }));
       if (!s.conversationId) void loadConversations();
     }
