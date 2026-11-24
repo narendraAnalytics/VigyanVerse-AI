@@ -96,6 +96,7 @@ const SPREADS: Record<SectionId, Spread> = {
   },
   about: policy('about', 'About us'),
   contact: policy('contact', 'Contact us'),
+  faq: policy('faq', 'FAQ'),
   pricing: policy('pricing', 'Pricing'),
   terms: policy('terms', 'Terms'),
   privacy: policy('privacy', 'Privacy'),

@@ -5,7 +5,7 @@
 export type SectionId =
   | 'home' | 'physics' | 'chemistry' | 'biology' | 'story' | 'tutor' | 'learning'
   | 'sign-in' | 'sign-up' | 'reset-password' | 'onboarding' | 'parent' | 'wallet'
-  | 'about' | 'contact' | 'pricing' | 'terms' | 'privacy' | 'refunds';
+  | 'about' | 'contact' | 'faq' | 'pricing' | 'terms' | 'privacy' | 'refunds';
 
 export interface Section {
   id: SectionId;
@@ -35,6 +35,7 @@ export const SECTIONS: Section[] = [
   // The fine print (policy pages), linked from the footer under the book on every page.
   { id: 'about', path: '/about', label: 'About us', order: 8, color: 'var(--gold-deep)', main: false },
   { id: 'contact', path: '/contact', label: 'Contact us', order: 9, color: 'var(--gold-deep)', main: false },
+  { id: 'faq', path: '/faq', label: 'FAQ', order: 9.5, color: 'var(--gold-deep)', main: false },
   { id: 'pricing', path: '/pricing', label: 'Pricing', order: 10, color: 'var(--gold-deep)', main: false },
   { id: 'terms', path: '/terms', label: 'Terms and Conditions', order: 11, color: 'var(--gold-deep)', main: false },
   { id: 'privacy', path: '/privacy', label: 'Privacy Policy', order: 12, color: 'var(--gold-deep)', main: false },

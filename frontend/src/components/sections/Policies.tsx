@@ -1,7 +1,7 @@
 'use client';
 
-// Back matter of the book: About, Contact, Pricing, Terms, Privacy, Refunds. The left page is
-// an index of all six ("The fine print"); the right page is the chosen policy. Text lives in
+// Back matter of the book: About, Contact, FAQ, Pricing, Terms, Privacy, Refunds. The left page is
+// an index of all of them ("The fine print"); the right page is the chosen policy. Text lives in
 // src/lib/policies.ts; the Pricing page swaps in the live packs and prices from the backend.
 import Link from 'next/link';
 import { useEffect } from 'react';

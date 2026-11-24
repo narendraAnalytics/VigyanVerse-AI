@@ -50,6 +50,22 @@ function BlockView({ block, rowsFor }: { block: Block; rowsFor?: Props['rowsFor'
       </ul>
     );
   }
+  if ('qa' in block) {
+    // <details>: opens without JavaScript, so the server copy and the book page behave the same.
+    return (
+      <div className="max-w-[62ch] divide-y divide-dashed divide-ink/15 border-y border-gold/50">
+        {block.qa.map(([q, a]) => (
+          <details key={q} className="group py-2.5">
+            <summary className="flex cursor-pointer list-none items-start gap-2.5 text-[0.98rem] font-semibold text-ink marker:hidden hover:text-emerald [&::-webkit-details-marker]:hidden">
+              <span aria-hidden className="-mt-[0.05em] w-4 shrink-0 text-center text-xl font-bold leading-none text-gold-deep transition-transform group-open:rotate-45">+</span>
+              <span>{q}</span>
+            </summary>
+            <p className="ml-[1.6rem] mt-1.5 text-[0.95rem] leading-relaxed text-ink-soft">{a}</p>
+          </details>
+        ))}
+      </div>
+    );
+  }
   if ('rows' in block) {
     const rows = (block.kind && rowsFor?.(block.kind)) || block.rows;
     return (

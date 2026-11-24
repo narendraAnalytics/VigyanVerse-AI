@@ -23,11 +23,13 @@ export const BUSINESS = {
   replyTime: 'within 2 working days',
 };
 
-export type PolicyId = 'about' | 'contact' | 'pricing' | 'terms' | 'privacy' | 'refunds';
+export type PolicyId = 'about' | 'contact' | 'faq' | 'pricing' | 'terms' | 'privacy' | 'refunds';
 
 export type Block =
   | { p: string }
   | { list: string[] }
+  /** Questions and answers, each opening on a click (FAQ). */
+  | { qa: [string, string][] }
   | { rows: [string, string][]; caption?: string; kind?: 'packs' | 'prices' }
   | { contact: true };
 
@@ -86,6 +88,112 @@ export function priceRows(live?: Map<string, number>): [string, string][] {
 }
 
 const contactLine = `${BUSINESS.email} (we reply ${BUSINESS.replyTime})`;
+
+/** A task's snapshot price for FAQ answers ("₹0.50"), from PRICE_LINES so the two never disagree. */
+const cost = (task: string) => inr(PRICE_LINES.find((l) => l.task === task)!.paise);
+const smallestPack = PACKS_SNAPSHOT[0];
+const bonusPacks = PACKS_SNAPSHOT.filter((p) => p.credit_paise > p.price_paise)
+  .map((p) => `pay ${inr(p.price_paise)} and get ${inr(p.credit_paise)}`).join(', or ');
+
+/**
+ * FAQ (owner 2026-11-24). Every answer states what the app really does (see CLAUDE.md files) or
+ * repeats the policies above; English only for now (no student-visible mention of other languages).
+ */
+const FAQ: PolicyDoc = {
+  id: 'faq',
+  path: '/faq',
+  title: 'Frequently asked questions',
+  short: 'FAQ',
+  summary: 'Quick answers about credits, payments, the AI tutor, quizzes and your data.',
+  intro: 'Short answers to the questions students and parents ask most. Tap a question to open it. Still stuck? Write to us from the Contact page.',
+  sections: [
+    {
+      heading: 'Getting started',
+      blocks: [{ qa: [
+        ['What is VigyanVerse AI?',
+          'A website that helps Class 10 students learn Science: Physics, Chemistry and Biology. You can read chapter guides, watch explainer videos, ask an AI tutor questions and practise with quizzes.'],
+        ['Which syllabus does it follow?',
+          'The NCERT Class 10 Science textbook: the 13 chapters in the CBSE 2026-27 syllabus. Tutor answers come from this textbook and show the chapter and page they came from.'],
+        ['Is it free?',
+          'Creating an account, the subject pages, the explainer videos, checking your quiz answers, your progress and your revision list are all free. The AI tasks (asking the tutor, quizzes, photos, voice) use credits that you buy in small packs. There is no subscription.'],
+        ['How do I sign up?',
+          'Sign up with your email (we send you a 6-digit code), or with Google or GitHub. Then fill in your bookplate: your first name, board and class.'],
+        ['Do I need a parent’s permission?',
+          'There is no separate parent step: you use your own account. If you are under 18, use VigyanVerse AI with your parent’s or guardian’s knowledge, as our Terms say. Parents can write to us at any time about their child’s account or data.'],
+        ['Does it work on a phone?',
+          'Yes. It works in the browser on phones, tablets and computers. Nothing to install.'],
+      ] }],
+    },
+    {
+      heading: 'Credits and payments',
+      blocks: [{ qa: [
+        ['What are credits?',
+          `Credits pay for the AI tasks. 1 credit = ₹1. You top up once and each task takes a little from your credits. Credits do not expire while your account is open.`],
+        ['How much does each task cost?',
+          `A typed question to the tutor: ${cost('tutor_turn')}. A question about your photo: ${cost('photo_question')}. Reading an uploaded photo: ${cost('photo_read')}. A spoken question: ${cost('voice_input')}, plus the answer. Hearing an answer read aloud (Listen): ${cost('voice_read')}. "Bindu explains" lesson: ${cost('bindu_explain')} (replays free). A quiz: ${cost('quiz_batch')} for every 5 questions. The full list is on the Pricing page.`],
+        ['Which packs can I buy?',
+          `Packs start at ${inr(smallestPack.price_paise)} (about ${Math.floor(smallestPack.credit_paise / PRICE_LINES[0].paise)} tutor questions). The bigger packs give extra credits: ${bonusPacks}.`],
+        ['How do I pay? Is it safe?',
+          'Tap your credits balance at the top of the page and pick a pack. You pay through Razorpay, an RBI-regulated payment company, with UPI, a debit or credit card or net banking. VigyanVerse AI never sees your card number, bank details or UPI PIN.'],
+        ['Why do I have to fill in my bookplate before topping up?',
+          'Credits belong to a student account, and the bookplate (your name, board and class) is what creates it. It takes a few seconds, and the top-up sheet links straight to it.'],
+        ['I paid, but my credits did not show up. What now?',
+          'Credits are usually added within a minute. If your bank is still confirming the payment, it can take a few minutes. If money was taken but no credits were added, Razorpay either completes the top-up or returns the money automatically, usually within 5 to 7 working days. If not, email us with the Razorpay payment ID (it starts with "pay_").'],
+        ['What happens if a task fails?',
+          'If the AI cannot answer because of a problem on our side, the credits for that task go back to your account automatically, straight away. The app also checks your balance before every paid task, so you are never charged without enough credits.'],
+        ['Can I get a refund?',
+          'Yes, a full refund of a top-up within 7 days of paying, if none of its credits have been used. Credits cannot be withdrawn as cash or sent to someone else. The details are in the Cancellation and Refund Policy.'],
+        ['Is there a subscription to cancel?',
+          'No. You only pay when you choose to top up. Nothing renews by itself.'],
+      ] }],
+    },
+    {
+      heading: 'The AI tutor',
+      blocks: [{ qa: [
+        ['What is the difference between "Explain it" and "Hint me"?',
+          '"Explain it" gives a short, clear answer with the textbook pages. "Hint me" does not give the answer straight away: it asks you small questions and gives hints so you work it out yourself. If you get stuck, just ask it to tell you the answer.'],
+        ['Where do the answers come from?',
+          'From the NCERT Class 10 Science textbook. The tutor searches the textbook first and answers from the passages it finds, then shows the chapter and page. Calculations are worked out and checked by code, not guessed by the AI.'],
+        ['What does "Not from your Class 10 textbook – not needed for the exam" mean?',
+          'Your question is not covered by the Class 10 textbook, so you get a short 1 or 2 sentence answer and this label, to show it is not needed for your exam. If you think it is in your textbook, try asking again with the words your textbook uses.'],
+        ['What is "Bindu explains"?',
+          `A button under a tutor answer. Bindu, our science friend, turns the answer into a short whiteboard lesson: she says it aloud while the board is written out line by line, with the textbook chapter and page at the end. It costs ${cost('bindu_explain')} once per answer, and you can watch it again for free, even on another device.`],
+        ['Can I ask about a photo of my notes or homework?',
+          `Yes. Upload a photo (images only) and the app reads it (${cost('photo_read')}). Then ask about it, or tap "Ask the tutor to solve it" (${cost('photo_question')} per question). Your photo and its chat stay until you delete the photo.`],
+        ['Can I speak my question?',
+          `Yes. Tap the microphone and ask. Turning your voice into text costs ${cost('voice_input')}, plus the answer. Your recording is turned into text and then thrown away: we never store your voice.`],
+        ['Can it draw diagrams?',
+          'Ask it to "draw" a mirror or lens ray diagram and it draws one from exact calculations. For other diagrams (like the heart or the nephron) it shows which NCERT figure and page to look at in your textbook.'],
+        ['Are the answers always right?',
+          'We work hard to keep them right: answers come from the textbook and numbers are checked by code. But AI can still make mistakes, so check important answers against your textbook or teacher.'],
+        ['Which language are the answers in?',
+          'English.'],
+      ] }],
+    },
+    {
+      heading: 'Quizzes and progress',
+      blocks: [{ qa: [
+        ['How do the quizzes work?',
+          `Pick a whole chapter (Practise) or type a topic (Quiz me on a topic), then choose 5, 10 or 15 questions. Each set of 5 costs ${cost('quiz_batch')}. You can add a timer: 60 seconds for each multiple-choice question and 120 seconds for each numerical. Your answers are checked by code, and you can read any finished quiz again under "Your quizzes" on My Learning.`],
+        ['Why can I not get a quiz on some topics?',
+          'Quizzes only cover topics in your textbook. A topic that is not in it is refused before anything is charged.'],
+        ['What is "Revise next"?',
+          'After a quiz, My Learning plans when to revise each chapter (today, tomorrow or in a few days), based on how you did. Revising at the right time helps you remember for longer.'],
+      ] }],
+    },
+    {
+      heading: 'Your data and account',
+      blocks: [{ qa: [
+        ['Is my data safe?',
+          'Yes. The database only lets your account read your own chats, photos and credits, your photos are private files, and all traffic is encrypted (HTTPS). We never show ads and never sell anyone’s data.'],
+        ['How do I delete my account?',
+          'Email us from your account’s email address. We delete your account and all its data (chats, quizzes, photos, saved lessons, credits) within 7 days. You can delete a single photo yourself at any time in the AI Tutor.'],
+        ['How do I contact you?',
+          `Email ${BUSINESS.email}. We reply ${BUSINESS.replyTime}. For a payment problem, add the Razorpay payment ID (it starts with "pay_").`],
+      ] }],
+    },
+  ],
+};
 
 export const POLICIES: PolicyDoc[] = [
   {
@@ -150,6 +258,7 @@ export const POLICIES: PolicyDoc[] = [
       },
     ],
   },
+  FAQ,
   {
     id: 'pricing',
     path: '/pricing',
@@ -196,6 +305,7 @@ export const POLICIES: PolicyDoc[] = [
             'Credits do not expire while your account is open.',
             'Credits are used only on VigyanVerse AI: they cannot be withdrawn, sent to anyone else or exchanged for cash (see the Refund Policy for refunds of unused top-ups).',
             'Credits are added to your account as soon as Razorpay confirms the payment, usually within a minute. Nothing is shipped: everything is delivered online, in your account.',
+            'More questions? See the FAQ page (Frequently asked questions), linked at the bottom of every page.',
           ] },
         ],
       },

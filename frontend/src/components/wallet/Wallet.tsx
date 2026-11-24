@@ -315,6 +315,10 @@ export function AddMoneySheet() {
               <div className="mt-1"><PriceList compact /></div>
               <p className="mt-2 text-xs text-ink-faint">If the AI cannot answer, the credits go back to your account automatically.</p>
             </details>
+            <p className="mt-3 text-center text-xs text-ink-soft">
+              Questions about credits or payments?{' '}
+              <Link href="/faq" onClick={closeAddMoney} className="font-semibold text-emerald underline decoration-gold underline-offset-4 hover:text-emerald-deep">Read the FAQ</Link>
+            </p>
           </>
         )}
       </div>
