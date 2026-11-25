@@ -9,6 +9,7 @@ import { usePageLayout, usePreview } from '@/components/book/page-context';
 import { RotateCcw } from 'lucide-react';
 import { useStore } from '@/lib/store';
 import { INTRO_VIDEO, introVideo, playIntroAgain } from '@/lib/intro-video';
+import { HOME_CONTENTS as CONTENTS, HOME_HEADING, HOME_INTRO, HOME_PROMISES as PROMISES } from '@/lib/site-copy';
 
 export function HomeLeft() {
   const layout = usePageLayout();
@@ -17,12 +18,9 @@ export function HomeLeft() {
   return (
     <div className={layout === 'single' ? 'flex flex-col pl-10' : 'flex h-full min-h-[22rem] flex-col pl-10'}>
       <h1 data-page-heading tabIndex={-1} className="font-display text-[clamp(1.6rem,min(2.6vw,4.6vh),3rem)] leading-[1.08] text-ink outline-none">
-        Class 10 Science, explained the way you ask it
+        {HOME_HEADING}
       </h1>
-      <p className="mt-2 max-w-[46ch] text-ink-soft">
-        Answers from your NCERT textbook, hints when you want to work it out yourself, and practice
-        questions with checked answers.
-      </p>
+      <p className="mt-2 max-w-[46ch] text-ink-soft">{HOME_INTRO}</p>
       {/* the welcome video (was the 3D hero): plays only when the student presses play */}
       <div className={layout === 'single' ? 'relative mt-4' : 'relative mt-4 flex-1'}>
         <ExplainerVideo explainer={HOME_EXPLAINER} color="var(--emerald)" />
@@ -40,23 +38,6 @@ export function HomeLeft() {
     </div>
   );
 }
-
-const CONTENTS = [
-  { n: 'I', href: '/physics', title: 'Physics', page: 1, about: 'Light, the human eye, electricity and magnetism' },
-  { n: 'II', href: '/chemistry', title: 'Chemistry', page: 3, about: 'Reactions and equations, acids and bases, metals, carbon' },
-  { n: 'III', href: '/biology', title: 'Biology', page: 5, about: 'Life processes, control, reproduction, heredity, our environment' },
-  { n: 'IV', href: '/story', title: 'Our Story', page: 7, about: 'The idea behind VigyanVerse AI, how it helps, and what comes next' },
-  { n: 'V', href: '/tutor', title: 'AI Tutor', page: 9, about: 'Type or speak a question, or upload a photo of your notes' },
-  { n: 'VI', href: '/learning', title: 'My Learning', page: 11, about: 'Practice quizzes, chapter mastery and what to revise next' },
-];
-
-const PROMISES = [
-  'Answers come from your textbook and show the pages they came from.',
-  'A question from outside the textbook gets a short answer that says so.',
-  'Numbers are worked out by code, not guessed by the AI.',
-  'Quiz questions are checked twice before you see them, and marking is done by code.',
-  'Your photos stay private to you, and voice recordings are never stored.',
-];
 
 export function HomeRight() {
   const auth = useAuth();

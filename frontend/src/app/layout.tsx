@@ -35,7 +35,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" className={`${bodoni.variable} ${literata.variable} ${telugu.variable} ${kalam.variable} ${marker.variable} ${boardHand.variable}`}>
+    <html lang="en-IN" className={`${bodoni.variable} ${literata.variable} ${telugu.variable} ${kalam.variable} ${marker.variable} ${boardHand.variable}`}>
       <body>
         <AuthProvider>
           <BookShell />

@@ -7,6 +7,7 @@ import { Clapperboard, FlaskConical, MessageCircleQuestion, PencilLine } from 'l
 import type { Subject } from '@/lib/api';
 import { useChapters } from '@/lib/chapters';
 import { EXPLAINERS } from '@/lib/explainers';
+import { SUBJECT_INTRO } from '@/lib/site-copy';
 import { learningIntent, tutorIntent } from '@/lib/intents';
 import { OhmLab, PeaLab, PhLab } from '@/components/labs/Labs';
 import { ExplainerVideo } from '@/components/labs/ExplainerVideo';
@@ -14,17 +15,17 @@ import { ExplainerVideo } from '@/components/labs/ExplainerVideo';
 const SUBJECTS: Record<Subject, { numeral: string; title: string; color: string; intro: string; Lab: () => React.JSX.Element; labTitle: string }> = {
   physics: {
     numeral: 'I', title: 'Physics', color: 'var(--physics)',
-    intro: 'How light bends and reflects, how your eye sees colour, and how electric current and magnets behave.',
+    intro: SUBJECT_INTRO.physics,
     Lab: OhmLab, labTitle: 'Try it: current in a circuit',
   },
   chemistry: {
     numeral: 'II', title: 'Chemistry', color: 'var(--chemistry)',
-    intro: 'What happens in a chemical reaction, why some things are acids and others bases, and how metals and carbon compounds behave.',
+    intro: SUBJECT_INTRO.chemistry,
     Lab: PhLab, labTitle: 'Try it: the pH scale',
   },
   biology: {
     numeral: 'III', title: 'Biology', color: 'var(--biology)',
-    intro: 'How living things feed, breathe, respond, reproduce and pass traits on, and how they depend on their environment.',
+    intro: SUBJECT_INTRO.biology,
     Lab: PeaLab, labTitle: 'Try it: Mendel’s pea plants',
   },
 };
