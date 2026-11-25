@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Bodoni_Moda, Kalam, Literata, Noto_Serif_Telugu, Patrick_Hand, Permanent_Marker } from 'next/font/google';
 import { AuthProvider } from '@/lib/auth';
+import { SITE_URL } from '@/lib/site';
 import { BookShell } from '@/components/book/BookShell';
 import './globals.css';
 
@@ -13,8 +14,17 @@ const marker = Permanent_Marker({ variable: '--font-marker', subsets: ['latin'],
 const boardHand = Patrick_Hand({ variable: '--font-board', subsets: ['latin'], weight: '400', display: 'swap' });
 
 export const metadata: Metadata = {
+  // Canonical links and share images resolve against the live domain, also on vercel.app and previews.
+  metadataBase: new URL(SITE_URL),
   title: { default: 'VigyanVerse AI', template: '%s | VigyanVerse AI' },
   description: 'Class 10 Science (Physics, Chemistry, Biology) with an AI tutor that answers from the NCERT textbook.',
+  applicationName: 'VigyanVerse AI',
+  openGraph: {
+    type: 'website',
+    siteName: 'VigyanVerse AI',
+    locale: 'en_IN',
+    images: [{ url: '/logo.png', alt: 'VigyanVerse AI' }],
+  },
 };
 
 export const viewport: Viewport = {

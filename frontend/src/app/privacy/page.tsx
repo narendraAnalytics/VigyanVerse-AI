@@ -3,7 +3,7 @@ import { policyById } from '@/lib/policies';
 import { PolicyPlainCopy } from '@/components/policy/PolicyPlainCopy';
 
 const doc = policyById('privacy');
-export const metadata: Metadata = { title: doc.title, description: doc.summary };
+export const metadata: Metadata = { title: doc.title, description: doc.summary, alternates: { canonical: '/privacy' } };
 
 // The book (src/components/book/BookShell.tsx) draws this page from the URL; the plain copy
 // below is the same text in the server HTML.
