@@ -17,6 +17,7 @@ import signinVoice from './voice/signin.json';
 import introVoice from './voice/intro.json';
 import { Demo, DEMO_SECONDS } from './demo/Demo';
 import { Thumb } from './demo/Thumb';
+import { LifeProcesses, LIFE_SECONDS } from './life/Life';
 
 const FPS = 30;
 type Props = ClayProps & { voice: boolean; sounds: boolean };
@@ -98,6 +99,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Demo" component={Demo} durationInFrames={Math.ceil(DEMO_SECONDS * FPS)} fps={FPS} width={1920} height={1080} defaultProps={{ voice: true, sounds: true }} />
       {/* LinkedIn thumbnail for the demo video */}
       <Still id="DemoThumb" component={Thumb} width={1920} height={1080} />
+      {/* Life Processes study video (2026-11-28): Scale Zoom style (lemo-opuscar). Built scene by scene. */}
+      <Composition id="LifeProcesses" component={LifeProcesses} durationInFrames={Math.ceil(LIFE_SECONDS * FPS)} fps={FPS} width={1920} height={1080} defaultProps={{ voice: true, sounds: true }} />
       <Composition id="Intro" component={Intro} durationInFrames={Math.ceil(introTl.seconds * FPS)} fps={FPS} width={1920} height={1080} defaultProps={{ ...defaults, renderSamples: 24 }} />
     </>
   );

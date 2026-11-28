@@ -92,6 +92,26 @@ const VIDEOS = {
     { id: '17-priya-site', at: 101.4, voice: 'en-IN-NeerjaNeural', text: 'Just open VigyanVerse AI dot live, on her phone or laptop.' },
     { id: '18-meera-smile', at: 106.64, voice: 'en-IN-NeerjaExpressiveNeural', pitch: '-8%', rate: 1.0, text: "That's exactly what she needs. Simple, and from her own textbook. I'll tell Anika to start tonight!" },
   ],
+  // Life Processes study video (script.txt, 2026-11-28, Scale Zoom style from lemo-opuscar, built scene by scene).
+  // Narrator = Neerja, a warm unhurried teacher (RATE=0.95). Lines are added as their scenes are built.
+  life: [
+    // scene 1: the mystery of life
+    { id: '01-wonder', at: 1.2, text: 'Have you ever wondered what keeps you alive?' },
+    { id: '02-sleep', at: 4.6, text: 'Even when you are sleeping, your body never stops working.' },
+    { id: '03-heart', at: 9.0, text: 'Your heart pumps blood, your lungs exchange gases, and millions of cells perform essential activities every second.' },
+    { id: '04-how', at: 17.8, text: 'But how does all this happen?' },
+    { id: '05-answer', at: 20.5, text: 'The answer lies in something called Life Processes.' },
+    // scene 2: what are life processes?
+    { id: '06-define', at: 27.6, text: 'Life processes are the basic maintenance activities performed by living organisms to stay alive.' },
+    { id: '07-four', at: 34.6, text: 'The four major life processes are nutrition, respiration, transportation and excretion.' },
+    { id: '08-together', at: 41.4, text: 'Each process performs a different function, but together they keep an organism alive.' },
+    // scene 3: nutrition
+    { id: '09-food', at: 49.9, text: 'Every living organism needs food for energy, growth and repair. But not all organisms obtain food in the same way.' },
+    { id: '10-photo', at: 59.5, text: 'Green plants prepare their own food through photosynthesis. They use sunlight, carbon dioxide and water in the presence of chlorophyll to produce glucose and release oxygen.' },
+    { id: '11-auto', at: 72.3, text: 'This is called autotrophic nutrition.' },
+    { id: '12-hetero', at: 77.0, text: 'Animals, on the other hand, depend on other organisms for food. This is called heterotrophic nutrition.' },
+    { id: '13-humans', at: 86.6, text: 'In humans, digestion begins in the mouth, continues in the stomach and is completed in the small intestine, where nutrients are absorbed.' },
+  ],
 };
 const VIDEO = process.argv[2] || 'ohms-law';
 const LINES = VIDEOS[VIDEO];
